@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministerio de Ciencia, Tecnología e Innovación - Presentación Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .slide {
+            background: white;
+            width: 90%;
+            max-width: 1200px;
+            height: 85vh;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 60px;
+            display: none;
+            flex-direction: column;
+            position: relative;
+            animation: slideIn 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            margin: -60px -60px 40px -60px;
+            border-radius: 20px 20px 0 0;
+        }
+
+        .slide-header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .slide-header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .slide-content {
+            flex: 1;
+            overflow-y: auto;
+            padding-right: 20px;
+        }
+
+        .slide-content h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 25px;
+            border-bottom: 3px solid #764ba2;
+            padding-bottom: 10px;
+        }
+
+        .slide-content h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 25px 0 15px 0;
+        }
+
+        .slide-content p, .slide-content li {
+            font-size: 1.15em;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .slide-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .slide-content ul li {
+            padding-left: 30px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .slide-content ul li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.3em;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e7ff 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+            border-left: 5px solid #667eea;
+        }
+
+        .info-box strong {
+            color: #764ba2;
+            font-size: 1.2em;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 30px 0;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 30px;
+        }
+
+        .timeline-item:before {
+            content: "";
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: -30px;
+            width: 3px;
+            background: #667eea;
+        }
+
+        .timeline-item:last-child:before {
+            display: none;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: #764ba2;
+            border: 4px solid white;
+            box-shadow: 0 0 0 3px #667eea;
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .functions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .function-card {
+            background: linear-gradient(135deg, #f5f7ff 0%, #fef5ff 100%);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+            transition: transform 0.3s;
+        }
+
+        .function-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .function-number {
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e0e0e0;
+        }
+
+        .nav-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover:not(:disabled) {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .nav-btn:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+
+        .structure-diagram {
+            background: linear-gradient(135deg, #f5f7ff 0%, #fef5ff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .structure-level {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #667eea;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #fff5e1 0%, #ffe5f5 100%);
+            padding: 3px 8px;
+            border-radius: 5px;
+            font-weight: bold;
+            color: #764ba2;
+        }
+
+        .logo-area {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .logo-placeholder {
+            width: 100%;
+            max-width: 600px;
+            height: 220px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3.5em;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <!-- Slide 1: Portada -->
+        <div class="slide active">
+            <div class="slide-header">
+                <h1>Ministerio de Ciencia, Tecnología e Innovación</h1>
+                <p>MinCiencias - República de Colombia</p>
+            </div>
+            <div class="slide-content">
+                <div class="logo-area">
+                    <div class="logo-placeholder">MinCiencias</div>
+                </div>
+                <h2 style="text-align: center; margin-top: 40px;">Análisis Institucional Completo</h2>
+                <p style="text-align: center; font-size: 1.3em; color: #666; margin-top: 20px;">
+                    Presentación interactiva sobre estructura, funciones y evolución del ente rector del Sistema Nacional de Ciencia, Tecnología e Innovación
+                </p>
+                <div class="info-box" style="margin-top: 40px;">
+                    <p style="text-align: center;"><strong>Octubre 2025</strong></p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()" disabled>← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">1</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Slide 2: Fecha de Creación -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>1. Fecha de Creación</h1>
+                <p>Origen del Ministerio</p>
+            </div>
+            <div class="slide-content">
+                <h2>Creación Oficial del Ministerio</h2>
+                <div class="info-box">
+                    <p><strong>📅 24 de enero de 2019</strong></p>
+                    <p>Mediante la <span class="highlight">Ley 1951 de 2019</span>, promulgada durante el gobierno del presidente Iván Duque Márquez, se crea oficialmente el Ministerio de Ciencia, Tecnología e Innovación.</p>
+                </div>
+
+                <h3>Formalización y Entrada en Funcionamiento</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">24 de enero de 2019</div>
+                        <p>Ley 1951 de 2019 crea el Ministerio</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">25 de mayo de 2019</div>
+                        <p>Ley 1955 fusiona Colciencias en el nuevo Ministerio</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">5 de diciembre de 2019</div>
+                        <p>Decreto 2226 establece la estructura organizacional</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2020</div>
+                        <p>Inicio oficial de operaciones como Ministerio</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>⚡ Dato clave:</strong> El Ministerio reemplazó al Departamento Administrativo de Ciencia, Tecnología e Innovación (Colciencias), elevando la jerarquía institucional de la ciencia en Colombia.</p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">2</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Slide 3: Ministra Actual -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>2. Ministra Actual</h1>
+                <p>Liderazgo del Ministerio</p>
+            </div>
+            <div class="slide-content">
+                <h2>Yesenia Olaya Requene</h2>
+                <div class="info-box">
+                    <p><strong>👤 Ministra de Ciencia, Tecnología e Innovación</strong></p>
+                    <p>En ejercicio desde <span class="highlight">abril de 2023</span> bajo el gobierno del presidente Gustavo Petro Urrego.</p>
+                </div>
+
+                <h3>Perfil Profesional</h3>
+                <ul>
+                    <li><strong>Formación académica:</strong> Socióloga de la Universidad de Caldas</li>
+                    <li><strong>Posgrado:</strong> Doctora en Antropología por la Universidad Nacional Autónoma de México (UNAM)</li>
+                    <li><strong>Especialización:</strong> Estudios afrodescendientes, inclusión social y políticas públicas</li>
+                    <li><strong>Experiencia:</strong> Trayectoria en investigación social, educación superior y cooperación internacional</li>
+                </ul>
+
+                <h3>Ejes de su Gestión</h3>
+                <div class="functions-grid">
+                    <div class="function-card">
+                        <div class="function-number">1</div>
+                        <p><strong>Inclusión étnica y territorial</strong> en la ciencia colombiana</p>
+                    </div>
+                    <div class="function-card">
+                        <div class="function-number">2</div>
+                        <p><strong>Equidad de género</strong> en la investigación científica</p>
+                    </div>
+                    <div class="function-card">
+                        <div class="function-number">3</div>
+                        <p><strong>Inteligencia artificial</strong> y transformación digital</p>
+                    </div>
+                    <div class="function-card">
+                        <div class="function-number">4</div>
+                        <p><strong>Ciencia abierta</strong> y apropiación social del conocimiento</p>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 25px;">
+                    <p><strong>🏆 Reconocimientos:</strong> En 2025, la Ministra Yesenia Olaya recibió el reconocimiento de "Líder de Innovación en América Latina" por su trabajo en políticas de inclusión científica.</p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">3</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Slide 4: Cambio de Nombre - Historia -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>3. Cambio de Nombre</h1>
+                <p>Evolución Institucional</p>
+            </div>
+            <div class="slide-content">
+                <h2>¿Ha cambiado de nombre?</h2>
+                <div class="info-box">
+                    <p><strong>✅ Sí</strong>, la institución ha tenido transformaciones significativas en su denominación y estructura.</p>
+                </div>
+
+                <h3>Línea de Tiempo Histórica</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">1968</div>
+                        <p><strong>Consejo Nacional de Ciencia y Tecnología (Colciencias)</strong><br>
+                        Creado mediante Decreto 2869 como entidad adscrita al Ministerio de Educación.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">1991</div>
+                        <p><strong>Instituto Colombiano para el Desarrollo de la Ciencia y la Tecnología "Francisco José de Caldas" (Colciencias)</strong><br>
+                        Reestructuración institucional.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2009</div>
+                        <p><strong>Departamento Administrativo de Ciencia, Tecnología e Innovación (Colciencias)</strong><br>
+                        Mediante Ley 1286 adquiere rango de Departamento Administrativo.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-year">2019</div>
+                        <p><strong>Ministerio de Ciencia, Tecnología e Innovación (MinCiencias)</strong><br>
+                        Ley 1951 transforma la entidad en ministerio.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>📌 Nombre anterior más reciente:</strong> <span class="highlight">Departamento Administrativo de Ciencia, Tecnología e Innovación - Colciencias (2009-2019)</span></p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">4</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Slide 5: Razones del Cambio -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>3. Razones del Cambio de Nombre</h1>
+                <p>¿Por qué se transformó en Ministerio?</p>
+            </div>
+            <div class="slide-content">
+                <h2>Motivos de la Transformación</h2>
+                
+                <h3>1. Jerarquía Institucional</h3>
+                <div class="info-box">
+                    <p>Otorgar <span class="highlight">rango ministerial</span> a la política científica nacional, elevando su importancia dentro de la estructura del Estado colombiano.</p>
+                </div>
+
+                <h3>2. Mayor Capacidad de Gestión</h3>
+                <ul>
+                    <li>Incremento de la autonomía administrativa y presupuestal</li>
+                    <li>Participación directa en el Consejo de Ministros</li>
+                    <li>Mayor capacidad de articulación con otras entidades del Estado</li>
+                    <li>Fortalecimiento de la toma de decisiones estratégicas</li>
+                </ul>
+
+                <h3>3. Articulación Universidad-Empresa-Estado-Sociedad</h3>
+                <div class="info-box">
+                    <p>Promover la <span class="highlight">triple hélice</span> y fomentar la economía del conocimiento como base del desarrollo nacional.</p>
+                </div>
+
+                <h3>4. Competitividad Internacional</h3>
+                <ul>
+                    <li>Alineación con estándares internacionales (mayoría de países latinoamericanos ya contaban con ministerios de ciencia)</li>
+                    <li>Fortalecimiento de la cooperación científica internacional</li>
+                    <li>Impulso a la cuarta revolución industrial</li>
+                </ul>
+
+                <h3>5. Consolidación del SNCTI</h3>
+                <div class="info-box">
+                    <p>Fortalecer el <span class="highlight">Sistema Nacional de Ciencia, Tecnología e Innovación</span> como motor de transformación productiva y social.</p>
+                </div>
+
+                <div class="info-box" style="background: linear-gradient(135deg, #fff5e1 0%, #ffe5f5 100%); margin-top: 20px;">
+                    <p><strong>💡 Impacto:</strong> La transformación no generó mayores costos presupuestales, pero sí incrementó significativamente la capacidad de formulación y ejecución de políticas públicas en CTI.</p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">5</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Slide 6: Función General -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>4. Función General del Ministerio</h1>
+                <p>Misión y Objetivos</p>
+            </div>
+            <div class="slide-content">
+                <h2>Órgano Rector del SNCTI</h2>
+                <div class="info-box">
+                    <p><strong>El Ministerio de Ciencia, Tecnología e Innovación es el organismo principal de la Administración Pública del Sector de CTI, encargado de formular, orientar, dirigir, coordinar, ejecutar, implementar y controlar la política del Estado en esta materia.</strong></p>
+                </div>
+
+                <h3>Misión Institucional</h3>
+                <ul>
+                    <li>Dirigir el <span class="highlight">Sistema Nacional de Ciencia, Tecnología e Innovación (SNCTI)</span></li>
+                    <li>Formular políticas públicas que promuevan el desarrollo científico y tecnológico</li>
+                    <li>Impulsar la <span class="highlight">innovación y transferencia tecnológica</span></li>
+                    <li>Fomentar la <span class="highlight">apropiación social del conocimiento</span></li>
+                    <li>Fortalecer la competitividad nacional basada en ciencia e innovación</li>
+                </ul>
+
+                <h3>Objetivos Estratégicos</h3>
+                <div class="functions-grid">
+                    <div class="function-card">
+                        <p><strong>Bienestar Social</strong><br>Impulsar soluciones científicas para mejorar la calidad de vida</p>
+                    </div>
+                    <div class="function-card">
+                        <p><strong>Equidad</strong><br>Democratizar el acceso al conocimiento científico</p>
+                    </div>
+                    <div class="function-card">
+                        <p><strong>Sostenibilidad</strong><br>Promover desarrollo científico ambientalmente responsable</p>
+                    </div>
+                    <div class="function-card">
+                        <p><strong>Competitividad</strong><br>Fortalecer la productividad mediante innovación</p>
+                    </div>
+                </div>
+
+                <h3>Alcance de su Gestión</h3>
+                <div class="info-box">
+                    <p>El Ministerio articula esfuerzos de los sectores <span class="highlight">académico, empresarial, gubernamental y social</span>, consolidando una economía basada en el conocimiento y alineada con el Plan Nacional de Desarrollo y la Agenda 2030.</p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">6</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Slide 7: Funciones Específicas 1-6 -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>5. Funciones Específicas (Parte 1)</h1>
+                <p>Funciones 1 a 6</p>
+            </div>
+            <div class="slide-content">
+                <h2>Seis Funciones Específicas del Ministerio</h2>
+                
+                <div class="function-card" style="margin-bottom: 25px;">
+                    <div class="function-number">1</div>
+                    <h3 style="margin: 15px 0 10px 0; color: #667eea;">Formular Políticas Públicas en CTI</h3>
+                    <p>Diseñar y dirigir las políticas nacionales en ciencia, tecnología e innovación, en concordancia con el Plan Nacional de Desarrollo y los objetivos de competitividad del país.</p>
+                </div>
+
+                <div class="function-card" style="margin-bottom: 25px;">
+                    <div class="function-number">2</div>
+                    <h3 style="margin: 15px 0 10px 0; color: #667eea;">Coordinar el Sistema Nacional de CTI (SNCTI)</h3>
+                    <p>Dirigir, coordinar y fortalecer el funcionamiento del SNCTI, asegurando la participación de actores académicos, empresariales, gubernamentales y sociales.</p>
+                </div>
+
+                <div class="function-card" style="margin-bottom: 25px;">
+                    <div class="function-number">3</div>
+                    <h3 style="margin: 15px 0 10px 0; color: #667eea;">Fomentar la Formación de Talento Humano</h3>
+                    <p>Promover programas de formación de investigadores, profesionales y técnicos de alto nivel mediante becas nacionales e internacionales, doctorados y posdoctorados.</p>
+                </div>
+
+                <div class="function-card" style="margin-bottom: 25px;">
+                    <div class="function-number">4</div>
+                    <h3 style="margin: 15px 0 10px 0; color: #667eea;">Impulsar la Apropiación Social del Conocimiento</h3>
+                    <p>Desarrollar estrategias para democratizar el acceso a la ciencia y la tecnología, promoviendo vocaciones científicas, cultura de innovación y divulgación del conocimiento en toda la población.</p>
+                </div>
+
+                <div class="function-card" style="margin-bottom: 25px;">
+                    <div class="function-number">5</div>
+                    <h3 style="margin: 15px 0 10px 0; color: #667eea;">Administrar el Fondo Francisco José de Caldas</h3>
+                    <p>Gestionar los recursos del principal fondo de financiación de proyectos de investigación, desarrollo tecnológico e innovación en Colombia.</p>
+                </div>
+
+                <div class="function-card" style="margin-bottom: 25px;">
+                    <div class="function-number">6</div>
+                    <h3 style="margin: 15px 0 10px 0; color: #667eea;">Promover la Transferencia Tecnológica e Innovación Empresarial</h3>
+                    <p>Fortalecer la relación entre la investigación académica y el sector productivo, impulsando la innovación empresarial, startups científicas y la competitividad de las industrias nacionales.</p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">7</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Slide 8: Funciones Adicionales -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>5. Funciones Específicas (Parte 2)</h1>
+                <p>Funciones Complementarias</p>
+            </div>
+            <div class="slide-content">
+                <h2>Funciones Específicas Complementarias</h2>
+                
+                <div class="function-card" style="margin-bottom: 20px;">
+                    <h3 style="color: #667eea;">Cooperación Internacional</h3>
+                    <p>Desarrollar alianzas estratégicas con organismos internacionales, redes científicas globales y programas de cooperación bilateral y multilateral en CTI.</p>
+                </div>
+
+                <div class="function-card" style="margin-bottom: 20px;">
+                    <h3 style="color: #667eea;">Articulación Territorial y Regional</h3>
+                    <p>Promover la descentralización de la ciencia mediante comisiones regionales, planes departamentales de CTI y fortalecimiento de ecosistemas de innovación locales.</p>
+                </div>
+
+                <div class="function-card" style="margin-bottom: 20px;">
+                    <h3 style="color: #667eea;">Infraestructura Científica</h3>
+                    <p>Desarrollar y consolidar infraestructuras de investigación (laboratorios, centros de excelencia, parques tecnológicos) y plataformas de datos científicos.</p>
+                </div>
+
+                <div class="function-card" style="margin-bottom: 20px;">
+                    <h3 style="color: #667eea;">Asesoría al Gobierno Nacional</h3>
+                    <p>Asesorar al Presidente de la República, al Congreso y a entidades territoriales en asuntos relacionados con ciencia, tecnología e innovación.</p>
+                </div>
+
+                <div class="function-card" style="margin-bottom: 20px;">
+                    <h3 style="color: #667eea;">Políticas de Inclusión y Equidad</h3>
+                    <p>Garantizar la inclusión de mujeres, comunidades étnicas, regiones apartadas y poblaciones vulnerables en el desarrollo científico nacional.</p>
+                </div>
+
+                <div class="function-card" style="margin-bottom: 20px;">
+                    <h3 style="color: #667eea;">Investigación Aplicada y Desarrollo Tecnológico</h3>
+                    <p>Impulsar proyectos de I+D+i orientados a resolver problemáticas nacionales en salud, agricultura, medio ambiente, educación, energía y transformación digital.</p>
+                </div>
+
+                <div class="info-box" style="margin-top: 20px;">
+                    <p><strong>📊 Impacto:</strong> Estas funciones permiten al Ministerio posicionarse como el principal articulador del ecosistema científico colombiano, conectando academia, Estado, empresa y sociedad.</p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">8</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Slide 9: Estructura Organizacional -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>Estructura Organizacional</h1>
+                <p>Decreto 2226 de 2019</p>
+            </div>
+            <div class="slide-content">
+                <h2>Organización del Ministerio</h2>
+                
+                <div class="structure-diagram">
+                    <div class="structure-level" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                        <strong style="font-size: 1.3em;">DESPACHO DEL MINISTRO</strong>
+                    </div>
+                    
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 20px 0;">
+                        <div class="structure-level" style="border-color: #667eea;">
+                            <strong>Viceministerio de Conocimiento, Innovación y Productividad</strong>
+                            <ul style="text-align: left; margin-top: 15px;">
+                                <li>→ Dirección de Ciencias</li>
+                                <li>→ Dirección de Desarrollo Tecnológico e Innovación</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="structure-level" style="border-color: #764ba2;">
+                            <strong>Viceministerio de Talento y Apropiación Social del Conocimiento</strong>
+                            <ul style="text-align: left; margin-top: 15px;">
+                                <li>→ Dirección de Vocaciones y Formación</li>
+                                <li>→ Dirección de Capacidades y Apropiación</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="structure-level">
+                        <strong>SECRETARÍA GENERAL</strong>
+                        <p style="margin-top: 10px;">Dirección de Talento Humano | Dirección Administrativa y Financiera</p>
+                    </div>
+
+                    <div class="structure-level" style="border-color: #ff9800;">
+                        <strong>OFICINAS ASESORAS</strong>
+                        <p style="margin-top: 10px;">Planeación e Innovación Institucional | Jurídica | Control Interno | Comunicaciones</p>
+                    </div>
+
+                    <div class="structure-level" style="border-color: #4caf50;">
+                        <strong>DIRECCIÓN DE GESTIÓN DE RECURSOS DE LA CTI</strong>
+                        <p style="margin-top: 10px;">Administración del Fondo Francisco José de Caldas (FFJC)</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <p><strong>🏛️ Consejo Asesor:</strong> El Ministerio cuenta con el <span class="highlight">Consejo Asesor de Ciencia, Tecnología e Innovación (CACTI)</span>, presidido por la Vicepresidencia de la República, integrado por ministros, directores de entidades, representantes académicos, científicos y del sector productivo.</p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">9</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Slide 10: Impacto y Logros -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>Impacto Institucional</h1>
+                <p>Logros y Proyecciones</p>
+            </div>
+            <div class="slide-content">
+                <h2>Consolidación del Ecosistema Científico Nacional</h2>
+
+                <h3>Principales Logros desde 2020</h3>
+                <ul>
+                    <li>Incremento del presupuesto nacional para CTI: más de <span class="highlight">2.7 billones de pesos</span> en 2025</li>
+                    <li>Fortalecimiento de infraestructuras científicas regionales y parques tecnológicos</li>
+                    <li>Consolidación de Colombia como <span class="highlight">líder regional en Inteligencia Artificial</span></li>
+                    <li>Impulso a la transición energética mediante investigación científica</li>
+                    <li>Formación de más de 84 docentes del Pacífico Nariñense en competencias científicas</li>
+                </ul>
+
+                <h3>Áreas Prioritarias de Desarrollo</h3>
+                <div class="functions-grid">
+                    <div class="function-card">
+                        <p><strong>🤖 Inteligencia Artificial</strong><br>Liderazgo regional en IA aplicada</p>
+                    </div>
+                    <div class="function-card">
+                        <p><strong>🌱 Sostenibilidad</strong><br>Transición energética y bioeconomía</p>
+                    </div>
+                    <div class="function-card">
+                        <p><strong>💻 Transformación Digital</strong><br>Ciencia de datos y tecnologías 4.0</p>
+                    </div>
+                    <div class="function-card">
+                        <p><strong>🌍 Cooperación Internacional</strong><br>Alianzas con Horizon Europe y BID</p>
+                    </div>
+                    <div class="function-card">
+                        <p><strong>🏥 Salud y Biotecnología</strong><br>Investigación biomédica avanzada</p>
+                    </div>
+                    <div class="function-card">
+                        <p><strong>🎓 Ciencia Abierta</strong><br>Democratización del conocimiento</p>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 25px;">
+                    <p><strong>🎯 Visión 2030:</strong> Posicionar a Colombia entre los 30 países más innovadores del mundo mediante el fortalecimiento de capacidades científicas, innovación empresarial y apropiación social del conocimiento.</p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">10</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Slide 11: Información de Contacto -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>Información de Contacto</h1>
+                <p>MinCiencias</p>
+            </div>
+            <div class="slide-content">
+                <h2>Datos de Contacto Oficial</h2>
+
+                <div class="info-box">
+                    <p><strong>🏢 Dirección:</strong></p>
+                    <p style="font-size: 1.2em;">Avenida Calle 26 No. 57-83, Torre 8, Pisos 2 al 6<br>
+                    Bogotá D.C., Colombia<br>
+                    Código Postal: 111321</p>
+                </div>
+
+                <div class="functions-grid" style="margin-top: 30px;">
+                    <div class="function-card">
+                        <p><strong>📞 Teléfono</strong></p>
+                        <p style="font-size: 1.2em;">(+57) (601) 6258480<br>Ext. 2081</p>
+                    </div>
+                    <div class="function-card">
+                        <p><strong>📱 Línea Gratuita</strong></p>
+                        <p style="font-size: 1.2em;">01800-0914446</p>
+                    </div>
+                    <div class="function-card">
+                        <p><strong>✉️ Correo Electrónico</strong></p>
+                        <p style="font-size: 1.1em;">atencionalciudadano@minciencias.gov.co</p>
+                    </div>
+                    <div class="function-card">
+                        <p><strong>🌐 Sitio Web</strong></p>
+                        <p style="font-size: 1.2em;">www.minciencias.gov.co</p>
+                    </div>
+                </div>
+
+                <div class="info-box" style="margin-top: 30px;">
+                    <p><strong>🕐 Horario de Atención:</strong></p>
+                    <p style="font-size: 1.1em;">
+                        Lunes a Jueves: 8:00 AM - 5:00 PM<br>
+                        Viernes: 7:00 AM - 4:00 PM<br>
+                        (Jornada continua)
+                    </p>
+                </div>
+
+                <div class="info-box" style="margin-top: 20px; background: linear-gradient(135deg, #fff5e1 0%, #ffe5f5 100%);">
+                    <p><strong>📢 Línea Anticorrupción:</strong> 01800-914446</p>
+                    <p><strong>⚖️ Notificaciones Judiciales:</strong> notificacionesjudiciales@minciencias.gov.co</p>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">11</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- Slide 12: Conclusiones -->
+        <div class="slide">
+            <div class="slide-header">
+                <h1>Conclusiones</h1>
+                <p>Síntesis del Análisis</p>
+            </div>
+            <div class="slide-content">
+                <h2>El Ministerio como Motor del Desarrollo Nacional</h2>
+
+                <div class="info-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+                    <p style="font-size: 1.3em; text-align: center;"><strong>El Ministerio de Ciencia, Tecnología e Innovación representa un hito histórico en la consolidación de Colombia como sociedad del conocimiento.</strong></p>
+                </div>
+
+                <h3>Puntos Clave</h3>
+                <ul>
+                    <li><strong>Creación:</strong> Ley 1951 del 24 de enero de 2019, marcando un antes y después en la política científica colombiana</li>
+                    <li><strong>Liderazgo:</strong> Ministra Yesenia Olaya Requene impulsa una agenda de inclusión, equidad y sostenibilidad</li>
+                    <li><strong>Evolución:</strong> De Colciencias (1968) a Ministerio (2019), reflejando la madurez institucional del país</li>
+                    <li><strong>Función:</strong> Órgano rector del SNCTI, articulador de la economía del conocimiento</li>
+                    <li><strong>Impacto:</strong> Fortalecimiento de capacidades científicas, innovación empresarial y cooperación internacional</li>
+                </ul>
+
+                <h3>Proyección Futura</h3>
+                <div class="info-box">
+                    <p>El Ministerio consolida su rol como <span class="highlight">catalizador de la competitividad nacional</span>, impulsando:</p>
+                    <ul style="margin-top: 15px;">
+                        <li>Investigación de frontera en áreas estratégicas</li>
+                        <li>Transferencia tecnológica hacia sectores productivos</li>
+                        <li>Formación de capital humano altamente calificado</li>
+                        <li>Apropiación social del conocimiento en todo el territorio</li>
+                        <li>Contribución a los Objetivos de Desarrollo Sostenible 2030</li>
+                    </ul>
+                </div>
+
+                <div style="text-align: center; margin-top: 40px;">
+                    <h2 style="color: #667eea; font-size: 2em;">🇨🇴 Ciencia para la Transformación de Colombia 🇨🇴</h2>
+                </div>
+            </div>
+            <div class="navigation">
+                <button class="nav-btn" onclick="previousSlide()">← Anterior</button>
+                <span class="slide-counter">Slide <span id="current">12</span> de <span id="total">12</span></span>
+                <button class="nav-btn" onclick="nextSlide()" disabled>Siguiente →</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        // Actualizar contadores en todas las slides
+        document.querySelectorAll('#total').forEach(el => el.textContent = totalSlides);
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                if (i === index) {
+                    slide.classList.add('active');
+                }
+            });
+
+            // Actualizar contadores
+            document.querySelectorAll('#current').forEach(el => el.textContent = index + 1);
+
+            // Actualizar botones de navegación
+            const prevButtons = document.querySelectorAll('.nav-btn:first-child');
+            const nextButtons = document.querySelectorAll('.nav-btn:last-child');
+
+            prevButtons.forEach(btn => {
+                btn.disabled = index === 0;
+            });
+
+            nextButtons.forEach(btn => {
+                btn.disabled = index === totalSlides - 1;
+            });
+
+            // Scroll al inicio del contenido
+            const activeSlide = slides[index];
+            const content = activeSlide.querySelector('.slide-content');
+            if (content) {
+                content.scrollTop = 0;
+            }
+        }
+
+        function nextSlide() {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                showSlide(currentSlide);
+            }
+        }
+
+        function previousSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                showSlide(currentSlide);
+            }
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') {
+                nextSlide();
+            } else if (e.key === 'ArrowLeft') {
+                previousSlide();
+            }
+        });
+
+        // Mostrar primera slide
+        showSlide(0);
+    </script>
+</body>
+</html>
