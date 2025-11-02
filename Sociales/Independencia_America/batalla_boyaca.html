@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Batalla de Boyacá - Infografía Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            padding: 40px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 20px;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            color: #764ba2;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .date-place {
+            font-size: 0.95em;
+            color: #666;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        /* SECCIONES PRINCIPALES */
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .section h2 {
+            font-size: 1.8em;
+            color: #764ba2;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .section h2:hover {
+            color: #667eea;
+        }
+
+        .toggle-icon {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #667eea;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 15px;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: transform 0.3s ease;
+        }
+
+        .section-content {
+            display: none;
+            margin-top: 15px;
+            animation: slideDown 0.3s ease;
+        }
+
+        .section-content.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 15px;
+        }
+
+        .card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            border-top: 4px solid #667eea;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+        }
+
+        .card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 6px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #764ba2;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.5;
+        }
+
+        /* MAPA */
+        .map-section {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            border: 2px solid #667eea;
+        }
+
+        .map-section h2 {
+            text-align: center;
+            color: #764ba2;
+            margin-bottom: 20px;
+        }
+
+        .map-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .ruta-libertadora-img {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            margin: 20px auto;
+            display: block;
+        }
+
+        canvas {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            display: block;
+            margin: 20px 0;
+            background: white;
+        }
+
+        .map-legend {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .legend-color {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 2px solid #333;
+        }
+
+        .legend-color.patriotas {
+            background: #4CAF50;
+        }
+
+        .legend-color.realistas {
+            background: #f44336;
+        }
+
+        .legend-color.puente {
+            background: #8B7355;
+        }
+
+        .legend-color.rio {
+            background: #2196F3;
+        }
+
+        .legend-color.casa {
+            background: #FFC107;
+        }
+
+        .map-explanation {
+            background: #e3f2fd;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #2196F3;
+            margin-top: 15px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .ruta-info {
+            background: #fff3e0;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #FF9800;
+            margin-top: 15px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .ruta-info strong {
+            color: #E65100;
+        }
+
+        /* IMAGEN GRANDE */
+        .large-image {
+            width: 100%;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* CUESTIONARIO */
+        .quiz-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 40px;
+        }
+
+        .quiz-section h2 {
+            text-align: center;
+            color: #764ba2;
+            margin-bottom: 30px;
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-radius: 8px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .quiz-question h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .quiz-options {
+            display: grid;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid #ddd;
+        }
+
+        .option-label:hover {
+            background: #f0f0f0;
+            border-color: #667eea;
+        }
+
+        .option-label input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .feedback {
+            display: none;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            font-weight: 600;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .feedback.active {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #f44336;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .feedback-text {
+            margin-top: 10px;
+            font-size: 0.95em;
+            line-height: 1.6;
+            font-weight: normal;
+        }
+
+        .quiz-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 6px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-check {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-check:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-reset {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #5a6268;
+        }
+
+        .score-display {
+            text-align: center;
+            font-size: 1.2em;
+            color: #764ba2;
+            font-weight: bold;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .score-display.active {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #ddd;
+            color: #666;
+            font-size: 0.9em;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+            border: none;
+            font-size: 1.5em;
+        }
+
+        .back-to-top:hover {
+            background: #764ba2;
+            transform: translateY(-5px);
+        }
+
+        .back-to-top.active {
+            display: flex;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .map-legend {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- ENCABEZADO -->
+    <header>
+        <h1>🇨🇴 La Batalla de Boyacá</h1>
+        <p class="subtitle">La Batalla Decisiva por la Independencia de Colombia</p>
+        <p class="date-place">7 de agosto de 1819 | Puente de Boyacá, Departamento de Boyacá</p>
+    </header>
+
+    <!-- CONTEXTO HISTÓRICO -->
+    <section class="section">
+        <h2 onclick="toggleSection(this)">
+            <span class="toggle-icon">➤</span>
+            📚 Contexto Histórico
+        </h2>
+        <div class="section-content">
+            <p>A principios del siglo XIX, el Virreinato de Nueva Granada (actual Colombia) se encontraba bajo el dominio español. Sin embargo, las ideas de independencia y libertad comenzaban a germinar en América Latina. Simón Bolívar, un ambicioso militar y político venezolano, concibió un plan para liberar no solo Nueva Granada, sino también los territorios de la Capitanía General de Venezuela y la Real Audiencia de Quito.</p>
+            <p>En 1819, después de consolidar fuerzas en el Congreso de Angostura (donde se proclamó la creación de la Gran Colombia), Bolívar se dirigió hacia Nueva Granada. Tras una ardua campaña de 77 días, durante la cual sus tropas escalaron la Cordillera de los Andes en condiciones extremas y ganaron enfrentamientos previos como Gámeza y el Pantano de Vargas, el ejército libertador se preparaba para el enfrentamiento final.</p>
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/22986424-7b25-4d20-a279-a1d8a0c3534f.png" alt="Panorama del terreno de Boyacá" class="large-image">
+            <p class="image-caption">Panorama del terreno montañoso donde se libró la Batalla de Boyacá, con el río Teatinos</p>
+        </div>
+    </section>
+
+    <!-- PERSONAJES CLAVE -->
+    <section class="section">
+        <h2 onclick="toggleSection(this)">
+            <span class="toggle-icon">➤</span>
+            👥 Personajes Clave
+        </h2>
+        <div class="section-content">
+            <div class="content-grid">
+                <div class="card">
+                    <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/f3951cc7-a5ef-481c-8e81-0f3ebca49dc0.png" alt="Simón Bolívar" class="card-image">
+                    <h3>Simón Bolívar</h3>
+                    <p><strong>El Libertador</strong></p>
+                    <p>Comandante en jefe del ejército patriota. Fue quien concibió la estrategia de sorpresa y dirección desde la colina de la Casa de Teja. Su liderazgo carismático y visión política fueron fundamentales para la victoria.</p>
+                </div>
+
+                <div class="card">
+                    <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/227f2d43-1f01-4672-9c8a-3eb7e0c57d87.png" alt="Francisco de Paula Santander" class="card-image">
+                    <h3>Francisco de Paula Santander</h3>
+                    <p><strong>Organizador de la Victoria</strong></p>
+                    <p>Vicepresidente y estratega militar que lideró la vanguardia del ejército. Fue herido en combates anteriores pero demostró capacidad de coordinación y táctica que resultó clave para derrotar al enemigo.</p>
+                </div>
+
+                <div class="card">
+                    <h3>José Antonio Anzoátegui</h3>
+                    <p><strong>General de División</strong></p>
+                    <p>Uno de los oficiales más valientes y leales a Bolívar. Comandó la retaguardia del ejército patriota y fue fundamental en el enfrentamiento decisivo en el campo de batalla.</p>
+                </div>
+
+                <div class="card">
+                    <h3>José María Barreiro</h3>
+                    <p><strong>Coronel Realista</strong></p>
+                    <p>Líder del ejército español en Nueva Granada. Comandaba 2,670 soldados realistas pero fue sorprendido por la estrategia patriota. Fue capturado durante la batalla.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Juan Sámano</h3>
+                    <p><strong>Virrey de Nueva Granada</strong></p>
+                    <p>Representante de la corona española. Al enterarse de la derrota en Boyacá, huyó de Santafé hacia Cartagena, marcando así el fin del dominio español directo.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Juan José Rondón</h3>
+                    <p><strong>Comandante de Lanceros</strong></p>
+                    <p>Comandante de los Lanceros de Llano Arriba que realizaron el ataque crucial por el centro. Su valentía y carga de caballería fue fundamental para romper las líneas realistas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CAUSAS DE LA CONFRONTACIÓN -->
+    <section class="section">
+        <h2 onclick="toggleSection(this)">
+            <span class="toggle-icon">➤</span>
+            ⚔️ Causas de la Confrontación
+        </h2>
+        <div class="section-content">
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Debilitamiento del Imperio Español</h3>
+                    <p>El dominio español en América estaba en crisis. Las luchas internas en la metrópoli y la resistencia de los pueblos americanos crearon las condiciones propicias para los movimientos independentistas.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Sueño de la Gran Colombia</h3>
+                    <p>Simón Bolívar no solo buscaba liberar Nueva Granada. Su objetivo era crear una república que unificara los territorios de Venezuela, Nueva Granada, Quito (actual Ecuador) y Panamá en una sola nación.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Resistencia Patriota</h3>
+                    <p>La población criolla, mestiza y negra de Nueva Granada deseaba libertad política y económica. Años de dominación española motivaron la participación de 2,850 combatientes que cruzaron los Andes por Bolívar.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Reconquista Española</h3>
+                    <p>En 1815, España envió una expedición bajo el mando del general Pablo Morillo para reconquistar sus posesiones en América. Esta amenaza aceleró los planes independentistas de Bolívar.</p>
+                </div>
+            </div>
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/e29674c3-2c67-4098-b808-d68884e453cf.png" alt="Escena de combate" class="large-image">
+            <p class="image-caption">Escena de combate durante la Batalla de Boyacá con soldados patriotas enfrentándose a las fuerzas realistas</p>
+        </div>
+    </section>
+
+    <!-- DESARROLLO DE LA BATALLA -->
+    <section class="section">
+        <h2 onclick="toggleSection(this)">
+            <span class="toggle-icon">➤</span>
+            🎯 Desarrollo de la Batalla
+        </h2>
+        <div class="section-content">
+            <p><strong>Fecha: 7 de agosto de 1819</strong></p>
+            <p><strong>Lugar: Alrededores del Puente de Boyacá (sobre el río Teatinos, a 14 km de Tunja)</strong></p>
+            
+            <h3 style="margin-top: 20px; color: #667eea;">⏰ Cronología de los Hechos</h3>
+            <p><strong>5 de agosto:</strong> Bolívar captura Tunja</p>
+            <p><strong>6 de agosto:</strong> Bolívar anticipa los movimientos realistas y prepara la emboscada</p>
+            <p><strong>7 de agosto - 10:00 AM:</strong> Barreiro inicia la marcha desde Motavita hacia Santafé de Bogotá</p>
+            <p><strong>7 de agosto - 2:00 PM:</strong> Las descubiertas patriotas contactan con la vanguardia realista en Casa de Teja</p>
+            <p><strong>7 de agosto - 3:00 PM:</strong> Comienzan los combates simultáneos en dos frentes</p>
+            <p><strong>7 de agosto - 4:00 PM:</strong> Termina la batalla con victoria patriota decisiva</p>
+
+            <h3 style="margin-top: 20px; color: #667eea;">La Estrategia Ganadora de Bolívar</h3>
+            <p>Bolívar conocía que el ejército realista de Barreiro necesitaba cruzar el río Teatinos por el puente para llegar a Santafé. Allí planeó una emboscada coordinada que tomara al enemigo completamente por sorpresa. El plan consistía en:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Atacar la vanguardia realista en los alrededores del puente</li>
+                <li>Envolver por la espalda con los guías de Casanare</li>
+                <li>Atacar el centro con los Lanceros de Llano Arriba</li>
+                <li>Mantener comunicaciones facilitas entre unidades patriotas</li>
+                <li>Dividir al ejército realista con el río Teatinos</li>
+            </ul>
+
+            <h3 style="margin-top: 20px; color: #667eea;">Los Dos Frentes del Combate</h3>
+            <p><strong>Frente del Puente (Vanguardia):</strong> La vanguardia patriota comandada por Santander, con los batallones Cazadores y Primero de Línea, atacó directamente el puente. Los guías de Casanare realizaron un movimiento envolvente por la espalda de los realistas comandados por Francisco Jiménez.</p>
+            <p><strong>Frente de la Planicie (Centro):</strong> El coronel Juan José Rondón con sus lanceros del Llano Arriba atacó por el centro. Anzoátegui presionó la retaguardia realista. Simón Bolívar se posicionó en la Casa de Teja, en una colina equidistante entre ambos frentes para coordinar toda la operación.</p>
+
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/0c2c9cbf-ac5f-4c25-b4c0-8806b2f58610.png" alt="Lanceros de Llano Arriba" class="large-image">
+            <p class="image-caption">Los Lanceros de Llano Arriba comandados por Juan José Rondón realizando su carga decisiva</p>
+
+            <h3 style="margin-top: 20px; color: #667eea;">El Resultado (4 PM)</h3>
+            <p>Tras aproximadamente 2 horas de combate intenso, el ejército patriota logró una victoria decisiva:</p>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>66 bajas patriotas (muertos y heridos)</li>
+                <li>Aproximadamente 250 muertos realistas</li>
+                <li>Aproximadamente 1,600 soldados realistas capturados</li>
+                <li>Captura del Coronel José María Barreiro</li>
+                <li>Aproximadamente 800 realistas escaparon</li>
+                <li>Las fuerzas realistas quedaron completamente desorganizadas</li>
+            </ul>
+
+            <p style="margin-top: 20px;"><strong>La velocidad y sorpresa de la emboscada hizo que el 90% de las tropas realistas fuera asesinado o capturado, evitando que pudieran reorganizarse o reforzar la defensa de Santafé.</strong></p>
+        </div>
+    </section>
+
+    <!-- RUTA LIBERTADORA - CONTEXTO -->
+    <section class="section">
+        <h2 onclick="toggleSection(this)">
+            <span class="toggle-icon">➤</span>
+            🗺️ La Ruta Libertadora: El Camino a Boyacá
+        </h2>
+        <div class="section-content">
+            <p>La Batalla de Boyacá no fue un evento aislado, sino el punto culminante de una campaña épica conocida como la <strong>Ruta Libertadora</strong>. Simón Bolívar, después de procurar la unidad en el Congreso de Angostura en Venezuela, emprendió una travesía de 77 días que lo llevaría a través de terrenos difíciles e inhóspitos.</p>
+
+            <h3 style="margin-top: 20px; color: #667eea;">📍 Principales Etapas de la Campaña:</h3>
+            
+            <ul style="margin-left: 20px; margin-top: 10px; line-height: 2;">
+                <li><strong>Punto de Partida - Angostura (Venezuela):</strong> Congreso fundacional de la Gran Colombia (febrero 1819)</li>
+                <li><strong>Cruce de los Llanos Arauracos:</strong> Travesía de 77 días por terreno inhóspito (junio-julio 1819)</li>
+                <li><strong>Ascenso a la Cordillera de los Andes:</strong> Campaña de alta montaña en condiciones extremas</li>
+                <li><strong>Batalla de Gámeza:</strong> Enfrentamiento previo a Boyacá (junio 28, 1819)</li>
+                <li><strong>Batalla del Pantano de Vargas:</strong> Otra victoria patriota que abrió camino a Boyacá (julio 25, 1819)</li>
+                <li><strong>Captura de Tunja:</strong> Control del territorio antes de la batalla definitiva (agosto 5, 1819)</li>
+                <li><strong>🏆 Batalla de Boyacá:</strong> Victoria decisiva que selló la independencia (agosto 7, 1819)</li>
+                <li><strong>Entrada a Santafé de Bogotá:</strong> Bolívar ingresa sin resistencia (agosto 10, 1819)</li>
+            </ul>
+
+            <div class="ruta-info">
+                <strong>📊 Datos de la Ruta Libertadora:</strong>
+                <p style="margin-top: 10px;"><strong>Distancia total:</strong> Aproximadamente 857 kilómetros desde Angostura hasta el Puente de Boyacá. Si se hubiera recorrido a pie como hace 200 años, habría tomado aproximadamente 179 horas sin descanso.</p>
+                <p><strong>Duración:</strong> 77 días de campaña continua</p>
+                <p><strong>Terrenos:</strong> Llanos tropicales, ríos caudalosos, serranías, páramos de alta montaña</p>
+                <p><strong>Condiciones:</strong> Hambre, enfermedades, falta de equipo, deserción de tropas, pero también determinación inquebrantable</p>
+            </div>
+
+            <h3 style="margin-top: 20px; color: #667eea;">El Viaje y Sus Desafíos</h3>
+            <p>Los hombres de Bolívar no solo enfrentaron la geografía, sino también el clima extremo. En los Llanos Arauracos, la temperatura alcanzaba niveles insoportables durante el día y descendía drásticamente en la noche. El río Meta debía ser cruzado bajo condiciones difíciles. Posteriormente, al ascender hacia la Cordillera de los Andes, la temperatura bajaba significativamente, enfrentando nevadas y páramos desolados.</p>
+            
+            <p>A pesar de estas dificultades, Bolívar mantuvo cohesionada su tropa reclutando soldados en el camino, incluyendo a los Lanceros de Llano Arriba y los Guías de Casanare, que resultarían ser cruciales en la victoria de Boyacá. Su estrategia era mantener el movimiento, no permitir que el enemigo se reorganizara, y llegar con suficiente fuerza a Nueva Granada.</p>
+
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/d2d86d40-e1b7-4b35-aa81-912ef4f8f587.png" alt="Mapa de la Ruta Libertadora" class="ruta-libertadora-img">
+            <p class="image-caption">Mapa de la Ruta Libertadora: El épico viaje de Simón Bolívar desde Angostura (Venezuela) hasta Boyacá</p>
+        </div>
+    </section>
+
+    <!-- MAPA ESTRATÉGICO DE LA BATALLA -->
+    <div class="map-section">
+        <h2>🗺️ Mapa Estratégico de la Batalla de Boyacá (7 de agosto de 1819)</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 15px;">Ubicación aproximada de fuerzas y movimientos principales - Represenación táctico-estratégica</p>
+        <canvas id="battleMap" width="1000" height="700"></canvas>
+        <div class="map-legend">
+            <div class="legend-item">
+                <div class="legend-color patriotas"></div>
+                <span>Fuerzas Patriotas</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color realistas"></div>
+                <span>Fuerzas Realistas</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color rio"></div>
+                <span>Río Teatinos</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color puente"></div>
+                <span>Puente de Boyacá</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color casa"></div>
+                <span>Casa de Teja</span>
+            </div>
+        </div>
+        <div class="map-explanation">
+            <strong>📍 Explicación del Mapa:</strong> El mapa muestra cómo el ejército realista se movía desde Motavita hacia Santafé, pasando por el Puente de Boyacá. Bolívar interceptó esta ruta, dividiendo al ejército realista con el río Teatinos como barrera natural. Los patriotas atacaron simultáneamente en el puente (Santander), el centro (Rondón) y la retaguardia (Anzoátegui), mientras Bolívar coordinaba desde la Casa de Teja. La estrategia de sorpresa y coordinación resultó decisiva en menos de 2 horas de combate.
+        </div>
+    </div>
+
+    <!-- CONSECUENCIAS Y SIGNIFICADO HISTÓRICO -->
+    <section class="section">
+        <h2 onclick="toggleSection(this)">
+            <span class="toggle-icon">➤</span>
+            🏛️ Consecuencias y Significado Histórico
+        </h2>
+        <div class="section-content">
+            <div class="content-grid">
+                <div class="card">
+                    <h3>Fin del Dominio Español</h3>
+                    <p>El 10 de agosto de 1819, solo 3 días después de la batalla, Bolívar entró triunfante en Santafé sin encontrar resistencia. El virrey Sámano había huido, marcando el colapso del gobierno español en Nueva Granada.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Creación de la Gran Colombia</h3>
+                    <p>La victoria en Boyacá permitió a Bolívar consolidar sus planes de unificar los territorios americanos. Se estableció la República de la Gran Colombia, que englobaba Nueva Granada, Venezuela, Quito (actual Ecuador) y Panamá.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Impulso a Otras Independencias</h3>
+                    <p>La victoria en Boyacá inspiró movimientos independentistas en otros países sudamericanos. Bolívar continuó su campaña libertadora en Ecuador, Perú, Bolivia (que lleva su nombre) y Panamá.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Identidad Nacional</h3>
+                    <p>La Batalla de Boyacá se convirtió en un símbolo de identidad colombiana. El 7 de agosto se celebra en Colombia como una fecha emblemática que conmemora la valentía y el sacrificio por la libertad y la independencia.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Construcción de Instituciones</h3>
+                    <p>La victoria abrió el camino para la construcción de instituciones republicanas y democráticas. Se establecieron las bases para un Estado moderno con constituciones, leyes y un sistema de gobierno independiente.</p>
+                </div>
+
+                <div class="card">
+                    <h3>Legado en América Latina</h3>
+                    <p>Boyacá representa uno de los hechos más transcendentales de la independencia americana. Junto con la Batalla de Ayacucho (1824), marcó el fin de la presencia española significativa en América del Sur.</p>
+                </div>
+            </div>
+            <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/66e76335-0e96-4f09-9461-98cf765aaa95.png" alt="Casa de Teja" class="large-image">
+            <p class="image-caption">Casa de Teja, la posición estratégica desde donde Simón Bolívar coordinó toda la batalla</p>
+        </div>
+    </section>
+
+    <!-- CUESTIONARIO -->
+    <div class="quiz-section">
+        <h2>📝 Cuestionario Interactivo sobre la Batalla de Boyacá</h2>
+        <p style="text-align: center; color: #666; margin-bottom: 30px;">Responde las preguntas y obtén retroalimentación inmediata sobre tus respuestas</p>
+
+        <!-- Pregunta 1 -->
+        <div class="quiz-question">
+            <h3>1. ¿Cuál fue la fecha de la Batalla de Boyacá?</h3>
+            <div class="quiz-options">
+                <label class="option-label">
+                    <input type="radio" name="q1" value="a"> 20 de julio de 1810
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q1" value="b"> 7 de agosto de 1819
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q1" value="c"> 15 de noviembre de 1820
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q1" value="d"> 10 de octubre de 1821
+                </label>
+            </div>
+            <button class="btn-check" onclick="checkAnswer('q1', 'b', 'La Batalla de Boyacá ocurrió el 7 de agosto de 1819. Esta fue la fecha decisiva en la que Simón Bolívar derrotó al ejército realista comandado por José María Barreiro en el Puente de Boyacá, un evento que selló la independencia definitiva de Colombia del dominio español.', 'feedback1')">Enviar Respuesta</button>
+            <div class="feedback" id="feedback1"></div>
+        </div>
+
+        <!-- Pregunta 2 -->
+        <div class="quiz-question">
+            <h3>2. ¿Quién fue el comandante en jefe del ejército patriota en la Batalla de Boyacá?</h3>
+            <div class="quiz-options">
+                <label class="option-label">
+                    <input type="radio" name="q2" value="a"> José María Barreiro
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q2" value="b"> Francisco de Paula Santander
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q2" value="c"> Simón Bolívar
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q2" value="d"> Juan Sámano
+                </label>
+            </div>
+            <button class="btn-check" onclick="checkAnswer('q2', 'c', 'Simón Bolívar fue el comandante en jefe del ejército patriota. Era conocido como \'El Libertador\' y dirigió la batalla desde la Casa de Teja. Su estrategia de sorpresa fue decisiva para lograr la victoria. Los otros líderes patriotas como Santander y Anzoátegui actuaban bajo sus órdenes.', 'feedback2')">Enviar Respuesta</button>
+            <div class="feedback" id="feedback2"></div>
+        </div>
+
+        <!-- Pregunta 3 -->
+        <div class="quiz-question">
+            <h3>3. ¿Cuál fue la estrategia principal de Bolívar para ganar la batalla?</h3>
+            <div class="quiz-options">
+                <label class="option-label">
+                    <input type="radio" name="q3" value="a"> Atacar directamente desde el norte
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q3" value="b"> Tomar por sorpresa al ejército realista que tenía que cruzar el río Teatinos por el puente
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q3" value="c"> Esperar refuerzos desde Venezuela
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q3" value="d"> Negociar la rendición con Barreiro
+                </label>
+            </div>
+            <button class="btn-check" onclick="checkAnswer('q3', 'b', 'Bolívar sabía que Barreiro necesitaba cruzar el río Teatinos por el puente para llegar a Santafé. Por eso preparó una emboscada coordinada desde ambos lados del río. El movimiento envolvente de los guías de Casanare por la espalda de los realistas fue crucial para obtener la victoria decisiva.', 'feedback3')">Enviar Respuesta</button>
+            <div class="feedback" id="feedback3"></div>
+        </div>
+
+        <!-- Pregunta 4 -->
+        <div class="quiz-question">
+            <h3>4. ¿Aproximadamente cuántos soldados conformaban cada ejército?</h3>
+            <div class="quiz-options">
+                <label class="option-label">
+                    <input type="radio" name="q4" value="a"> 1,000 patriotas y 500 realistas
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q4" value="b"> 2,850 patriotas y 2,670 realistas
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q4" value="c"> 5,000 patriotas y 3,000 realistas
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q4" value="d"> 3,500 patriotas y 4,000 realistas
+                </label>
+            </div>
+            <button class="btn-check" onclick="checkAnswer('q4', 'b', 'El ejército patriota contaba con aproximadamente 2,850 combatientes bajo el mando de Simón Bolívar, mientras que el ejército realista tenía alrededor de 2,670 hombres bajo las órdenes del Coronel José María Barreiro. A pesar de números similares, la sorpresa y la mejor coordinación patriota resultaron decisivas.', 'feedback4')">Enviar Respuesta</button>
+            <div class="feedback" id="feedback4"></div>
+        </div>
+
+        <!-- Pregunta 5 -->
+        <div class="quiz-question">
+            <h3>5. ¿Cuál fue la duración de la Ruta Libertadora desde Angostura hasta Boyacá?</h3>
+            <div class="quiz-options">
+                <label class="option-label">
+                    <input type="radio" name="q5" value="a"> 30 días
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q5" value="b"> 77 días
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q5" value="c"> 120 días
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q5" value="d"> 150 días
+                </label>
+            </div>
+            <button class="btn-check" onclick="checkAnswer('q5', 'b', 'La Ruta Libertadora duró 77 días, comenzando desde el Congreso de Angostura en Venezuela (febrero de 1819) hasta la Batalla de Boyacá (agosto 7 de 1819). Durante este tiempo, el ejército patriota cruzó terrenos inhóspitos, ríos caudalosos, serranías, páramos de alta montaña y enfrentó condiciones extremas de hambre, enfermedades y falta de equipo.', 'feedback5')">Enviar Respuesta</button>
+            <div class="feedback" id="feedback5"></div>
+        </div>
+
+        <!-- Pregunta 6 -->
+        <div class="quiz-question">
+            <h3>6. ¿Quién fue Francisco de Paula Santander en la Batalla de Boyacá?</h3>
+            <div class="quiz-options">
+                <label class="option-label">
+                    <input type="radio" name="q6" value="a"> El líder del ejército realista
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q6" value="b"> Un general patriota que comandaba la vanguardia y fue clave en la coordinación de las fuerzas
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q6" value="c"> Un diplomático que negoció la paz
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q6" value="d"> Un periodista que documentó la batalla
+                </label>
+            </div>
+            <button class="btn-check" onclick="checkAnswer('q6', 'b', 'Francisco de Paula Santander fue conocido como el \'Organizador de la Victoria\'. Comandaba la vanguardia del ejército patriota y fue fundamental en la coordinación y ejecución de la estrategia. Había sido herido en batallas anteriores (como en el Pantano de Vargas) pero demostró su capacidad táctica decisiva en Boyacá. Santander fue ascendido a general de división en el campo de batalla.', 'feedback6')">Enviar Respuesta</button>
+            <div class="feedback" id="feedback6"></div>
+        </div>
+
+        <!-- Pregunta 7 -->
+        <div class="quiz-question">
+            <h3>7. ¿Cuál fue el significado histórico más importante de la Batalla de Boyacá?</h3>
+            <div class="quiz-options">
+                <label class="option-label">
+                    <input type="radio" name="q7" value="a"> El descubrimiento de oro en Nueva Granada
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q7" value="b"> Selló la independencia definitiva de Colombia y fue el punto de partida para la creación de la Gran Colombia
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q7" value="c"> La construcción del ferrocarril transcontinental
+                </label>
+                <label class="option-label">
+                    <input type="radio" name="q7" value="d"> El primer tratado comercial con Francia
+                </label>
+            </div>
+            <button class="btn-check" onclick="checkAnswer('q7', 'b', 'La Batalla de Boyacá fue decisiva para sellar la independencia definitiva de Colombia. Marcó el fin de la reconquista española iniciada en 1815. La victoria permitió a Simón Bolívar consolidar sus planes de crear la Gran Colombia, una república que unificaba Nueva Granada, Venezuela, Quito (Ecuador) y Panamá. Además, inspiró movimientos independentistas en otros territorios sudamericanos, convirtiéndose en un hito fundamental para toda América Latina.', 'feedback7')">Enviar Respuesta</button>
+            <div class="feedback" id="feedback7"></div>
+        </div>
+
+        <!-- Botones de control -->
+        <div class="quiz-buttons">
+            <button class="btn-reset" onclick="resetQuiz()">Reiniciar Cuestionario</button>
+            <button class="btn-check" onclick="calculateScore()">Ver Puntuación Final</button>
+        </div>
+
+        <!-- Mostrar puntuación -->
+        <div class="score-display" id="scoreDisplay"></div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>📚 Infografía Interactiva para Educación Secundaria | Batalla de Boyacá - 7 de agosto de 1819</p>
+        <p>Fuente: Historia de Colombia, Colegio CEDAP | Ruta Libertadora | Imágenes Generadas Históricamente</p>
+    </footer>
+</div>
+
+<button class="back-to-top" id="backToTop" onclick="scrollToTop()">↑</button>
+
+<script>
+    // Función para dibujar el mapa mejorado
+    function drawBattleMap() {
+        const canvas = document.getElementById('battleMap');
+        const ctx = canvas.getContext('2d');
+
+        // Limpiar canvas
+        ctx.fillStyle = '#f0f4e8';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Dibujar terreno (colinas y planicies)
+        ctx.fillStyle = '#e0e8d8';
+        ctx.beginPath();
+        ctx.ellipse(500, 250, 400, 200, 0.2, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Dibujar río Teatinos (principal)
+        ctx.fillStyle = '#2196F3';
+        ctx.strokeStyle = '#0D47A1';
+        ctx.lineWidth = 3;
+        
+        // Río con curvas naturales
+        ctx.beginPath();
+        ctx.moveTo(300, 150);
+        ctx.bezierCurveTo(350, 200, 400, 250, 420, 320);
+        ctx.bezierCurveTo(425, 380, 420, 450, 400, 550);
+        ctx.stroke();
+
+        // Llenar río
+        ctx.fillStyle = 'rgba(33, 150, 243, 0.3)';
+        ctx.beginPath();
+        ctx.moveTo(300, 150);
+        ctx.bezierCurveTo(350, 200, 400, 250, 420, 320);
+        ctx.bezierCurveTo(425, 380, 420, 450, 400, 550);
+        ctx.lineTo(395, 550);
+        ctx.bezierCurveTo(415, 450, 420, 380, 415, 320);
+        ctx.bezierCurveTo(395, 250, 345, 200, 295, 150);
+        ctx.fill();
+
+        // Puente de Boyacá (marcador importante)
+        ctx.fillStyle = '#8B7355';
+        ctx.fillRect(410, 310, 25, 40);
+        ctx.strokeStyle = '#654321';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(410, 310, 25, 40);
+        
+        ctx.fillStyle = '#000';
+        ctx.font = 'bold 14px Arial';
+        ctx.fillText('Puente', 415, 365);
+
+        // Camino Real (Tunja - Bogotá)
+        ctx.strokeStyle = '#8B7355';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([10, 5]);
+        ctx.beginPath();
+        ctx.moveTo(200, 100);
+        ctx.lineTo(500, 300);
+        ctx.lineTo(650, 500);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        
+        ctx.fillStyle = '#666';
+        ctx.font = '12px Arial';
+        ctx.fillText('Camino Real a Santafé', 550, 320);
+
+        // Camino de Samacá
+        ctx.strokeStyle = '#A0826D';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([10, 5]);
+        ctx.beginPath();
+        ctx.moveTo(600, 100);
+        ctx.lineTo(450, 320);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        
+        ctx.fillStyle = '#666';
+        ctx.fillText('Camino de Samacá', 520, 200);
+
+        // Ubicaciones de ciudades
+        ctx.fillStyle = '#333';
+        ctx.font = 'bold 13px Arial';
+        ctx.fillText('🏛️ Tunja', 150, 100);
+        ctx.fillText('🏛️ Bogotá', 680, 510);
+
+        // ===== POSICIONES DE FUERZAS =====
+
+        // CASA DE TEJA (Bolívar - Posición de observación)
+        ctx.fillStyle = '#FFC107';
+        ctx.fillRect(480, 270, 35, 35);
+        ctx.strokeStyle = '#F57F17';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(480, 270, 35, 35);
+        ctx.fillStyle = '#F57F17';
+        ctx.font = 'bold 20px Arial';
+        ctx.fillText('⛺', 488, 295);
+        
+        ctx.fillStyle = '#000';
+        ctx.font = 'bold 11px Arial';
+        ctx.fillText('Casa de Teja', 515, 282);
+        ctx.fillText('(Bolívar)', 520, 295);
+
+        // ===== FUERZAS REALISTAS (ESTE DEL RÍO) =====
+        
+        ctx.fillStyle = '#f44336';
+        ctx.font = 'bold 12px Arial';
+
+        // Vanguardia Realista (Francisco Jiménez)
+        ctx.beginPath();
+        ctx.arc(550, 200, 12, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.strokeStyle = '#c62828';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillStyle = '#000';
+        ctx.fillText('Vanguardia', 560, 200);
+        ctx.fillText('Realista', 560, 215);
+
+        // Grueso del ejército Realista (Barreiro)
+        ctx.fillStyle = '#f44336';
+        ctx.beginPath();
+        ctx.arc(620, 340, 15, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.strokeStyle = '#c62828';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillStyle = '#000';
+        ctx.font = 'bold 11px Arial';
+        ctx.fillText('Barreiro', 625, 340);
+        ctx.fillText('(Grueso)', 625, 355);
+
+        // ===== FUERZAS PATRIOTAS (OESTE DEL RÍO) =====
+
+        ctx.fillStyle = '#4CAF50';
+
+        // Santander - Vanguardia Patriota
+        ctx.beginPath();
+        ctx.arc(280, 280, 12, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.strokeStyle = '#2e7d32';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillStyle = '#000';
+        ctx.font = 'bold 11px Arial';
+        ctx.fillText('Santander', 290, 280);
+        ctx.fillText('(Vanguardia)', 275, 295);
+
+        // Anzoátegui - Retaguardia Patriota
+        ctx.fillStyle = '#4CAF50';
+        ctx.beginPath();
+        ctx.arc(350, 380, 12, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.strokeStyle = '#2e7d32';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillStyle = '#000';
+        ctx.fillText('Anzoátegui', 360, 380);
+        ctx.fillText('(Retaguardia)', 355, 395);
+
+        // Juan José Rondón - Lanceros
+        ctx.fillStyle = '#4CAF50';
+        ctx.beginPath();
+        ctx.arc(320, 150, 12, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.strokeStyle = '#2e7d32';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillStyle = '#000';
+        ctx.fillText('Rondón', 330, 150);
+        ctx.fillText('(Lanceros)', 320, 165);
+
+        // Guías de Casanare
+        ctx.fillStyle = '#4CAF50';
+        ctx.beginPath();
+        ctx.arc(220, 350, 12, 0, 2 * Math.PI);
+        ctx.fill();
+        ctx.strokeStyle = '#2e7d32';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillStyle = '#000';
+        ctx.fillText('Guías', 230, 350);
+        ctx.fillText('Casanare', 215, 365);
+
+        // ===== FLECHAS DE ATAQUE (MOVIMIENTOS) =====
+
+        // Ataque de Santander al puente
+        ctx.strokeStyle = '#4CAF50';
+        ctx.lineWidth = 3;
+        ctx.globalAlpha = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(295, 295);
+        ctx.quadraticCurveTo(350, 300, 410, 320);
+        ctx.stroke();
+        ctx.fillStyle = '#4CAF50';
+        ctx.beginPath();
+        ctx.moveTo(410, 320);
+        ctx.lineTo(400, 315);
+        ctx.lineTo(405, 330);
+        ctx.fill();
+
+        // Ataque envolvente de Guías de Casanare
+        ctx.strokeStyle = '#81C784';
+        ctx.lineWidth = 2;
+        ctx.setLineDash([5, 5]);
+        ctx.beginPath();
+        ctx.moveTo(235, 330);
+        ctx.quadraticCurveTo(350, 380, 420, 330);
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Ataque de Rondón (Lanceros)
+        ctx.strokeStyle = '#4CAF50';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(330, 165);
+        ctx.quadraticCurveTo(450, 250, 550, 320);
+        ctx.stroke();
+        ctx.fillStyle = '#4CAF50';
+        ctx.beginPath();
+        ctx.moveTo(550, 320);
+        ctx.lineTo(540, 315);
+        ctx.lineTo(545, 330);
+        ctx.fill();
+
+        // Ataque de Anzoátegui
+        ctx.strokeStyle = '#4CAF50';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(360, 395);
+        ctx.quadraticCurveTo(500, 380, 600, 340);
+        ctx.stroke();
+        ctx.fillStyle = '#4CAF50';
+        ctx.beginPath();
+        ctx.moveTo(600, 340);
+        ctx.lineTo(590, 335);
+        ctx.lineTo(595, 350);
+        ctx.fill();
+
+        ctx.globalAlpha = 1;
+
+        // Leyenda de horas
+        ctx.fillStyle = '#333';
+        ctx.font = '11px Arial';
+        ctx.fillText('⏰ 2:00 PM: Inicia el combate en la vanguardia', 20, canvas.height - 50);
+        ctx.fillText('⏰ 3:00 PM: Combates simultáneos en dos frentes', 20, canvas.height - 30);
+        ctx.fillText('⏰ 4:00 PM: Victoria decisiva patriota', 20, canvas.height - 10);
+    }
+
+    // Función para alternar secciones
+    function toggleSection(header) {
+        const content = header.nextElementSibling;
+        const icon = header.querySelector('.toggle-icon');
+        
+        if (content.classList.contains('active')) {
+            content.classList.remove('active');
+            icon.style.transform = 'rotate(0deg)';
+        } else {
+            content.classList.add('active');
+            icon.style.transform = 'rotate(90deg)';
+        }
+    }
+
+    // Función para verificar respuesta
+    function checkAnswer(questionName, correctAnswer, explanation, feedbackId) {
+        const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+        const feedbackDiv = document.getElementById(feedbackId);
+
+        if (!selectedAnswer) {
+            alert('Por favor selecciona una respuesta');
+            return;
+        }
+
+        const isCorrect = selectedAnswer.value === correctAnswer;
+        feedbackDiv.classList.add('active');
+        feedbackDiv.classList.toggle('correct', isCorrect);
+        feedbackDiv.classList.toggle('incorrect', !isCorrect);
+
+        const resultText = isCorrect ? '✓ ¡Correcto!' : '✗ Incorrecto';
+        feedbackDiv.innerHTML = `
+            <strong>${resultText}</strong>
+            <div class="feedback-text">${explanation}</div>
+        `;
+
+        // Marcar que la pregunta fue respondida
+        const question = document.querySelector(`input[name="${questionName}"]`).closest('.quiz-question');
+        question.classList.add('answered');
+    }
+
+    // Función para calcular la puntuación
+    function calculateScore() {
+        let correct = 0;
+        let total = 7;
+
+        for (let i = 1; i <= total; i++) {
+            const feedback = document.getElementById(`feedback${i}`);
+            if (feedback.classList.contains('correct')) {
+                correct++;
+            }
+        }
+
+        const percentage = Math.round((correct / total) * 100);
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        scoreDisplay.classList.add('active');
+
+        let message = '';
+        if (percentage === 100) {
+            message = '¡Excelente! Has demostrado tener un dominio completo sobre la Batalla de Boyacá. Eres un verdadero experto en la historia colombiana. 🏆';
+        } else if (percentage >= 80) {
+            message = '¡Muy bien! Has comprendido muy bien los aspectos principales de la batalla. Tu conocimiento es sólido y profundo. 📚';
+        } else if (percentage >= 60) {
+            message = 'Buen trabajo. Tienes una buena comprensión del tema, pero te recomendamos repasar algunas secciones para perfeccionar tu conocimiento. 📖';
+        } else if (percentage >= 40) {
+            message = 'Deberías repasar el contenido para mejorar tu comprensión sobre la Batalla de Boyacá. Lee con atención cada sección. 💡';
+        } else {
+            message = 'Te recomendamos leer cuidadosamente todo el contenido nuevamente antes de volver a intentar el cuestionario. 🔍';
+        }
+
+        scoreDisplay.innerHTML = `
+            <div style="background: #f0f0f0; padding: 20px; border-radius: 8px; border-left: 5px solid #667eea;">
+                <p style="font-size: 1.3em; margin-bottom: 10px;">Tu Puntuación: <strong>${correct}/${total}</strong> (${percentage}%)</p>
+                <p style="color: #666; font-size: 1em;">${message}</p>
+            </div>
+        `;
+
+        // Scroll to score
+        scoreDisplay.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // Función para reiniciar el cuestionario
+    function resetQuiz() {
+        // Limpiar todas las respuestas
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.checked = false;
+        });
+
+        // Limpiar todos los feedbacks
+        document.querySelectorAll('.feedback').forEach(feedback => {
+            feedback.classList.remove('active', 'correct', 'incorrect');
+            feedback.innerHTML = '';
+        });
+
+        // Limpiar puntuación
+        document.getElementById('scoreDisplay').classList.remove('active');
+        document.getElementById('scoreDisplay').innerHTML = '';
+
+        alert('El cuestionario ha sido reiniciado. ¡Intenta de nuevo!');
+    }
+
+    // Función para scroll al inicio
+    function scrollToTop() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Mostrar botón de scroll
+    window.addEventListener('scroll', () => {
+        const backToTop = document.getElementById('backToTop');
+        if (window.pageYOffset > 300) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+    });
+
+    // Dibujar el mapa cuando carga la página
+    window.addEventListener('load', () => {
+        drawBattleMap();
+    });
+
+    // Abrir la primera sección por defecto
+    window.addEventListener('load', () => {
+        const firstSection = document.querySelector('.section-content');
+        if (firstSection) {
+            firstSection.classList.add('active');
+            const icon = firstSection.previousElementSibling.querySelector('.toggle-icon');
+            icon.style.transform = 'rotate(90deg)';
+        }
+    });
+</script>
+
+</body>
+</html>

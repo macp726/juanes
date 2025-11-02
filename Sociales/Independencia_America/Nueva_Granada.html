@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Nueva Granada - Infografía Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: slideDown 0.8s ease;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .section-nav {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            color: #667eea;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            border-left: 5px solid #667eea;
+        }
+
+        .info-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .info-card p {
+            line-height: 1.8;
+            font-size: 1.05em;
+            color: #555;
+        }
+
+        .card-image {
+            width: 100%;
+            height: auto;
+            max-height: none;
+            border-radius: 12px;
+            object-fit: contain;
+            margin: 25px 0;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            background: white;
+            padding: 15px;
+        }
+
+        .image-caption {
+            text-align: center;
+            font-size: 0.9em;
+            color: #999;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 25px 0;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 30px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 30px;
+            width: 3px;
+            height: calc(100% + 30px);
+            background: linear-gradient(180deg, #667eea, #764ba2);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-dot {
+            width: 45px;
+            height: 45px;
+            background: #667eea;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            flex-shrink: 0;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-content {
+            margin-left: 30px;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-content h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .timeline-content p {
+            color: #666;
+            font-size: 0.95em;
+        }
+
+        .timeline-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: contain;
+            margin-top: 15px;
+            background: white;
+            padding: 10px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea20, #764ba220);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+
+        .highlight-box strong {
+            color: #667eea;
+        }
+
+        .map-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .map-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .map-image-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 25px 0;
+            background: white;
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid #667eea;
+        }
+
+        .map-image-container img {
+            max-width: 100%;
+            height: auto;
+            object-fit: contain;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .map-info {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .map-info ul {
+            margin: 10px 0 10px 20px;
+            line-height: 1.8;
+        }
+
+        .map-info li {
+            margin-bottom: 8px;
+        }
+
+        .quiz-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .quiz-section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .question-item {
+            margin-bottom: 30px;
+            padding-bottom: 25px;
+            border-bottom: 2px solid #eee;
+        }
+
+        .question-item:last-child {
+            border-bottom: none;
+        }
+
+        .question-text {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .option {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 12px;
+            cursor: pointer;
+            padding: 10px;
+            border-radius: 8px;
+            transition: background 0.3s;
+        }
+
+        .option:hover {
+            background: #f0f0f0;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 12px;
+            margin-top: 4px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            animation: slideDown 0.4s ease;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+
+        .feedback strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            display: block;
+            margin: 30px auto;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(102, 126, 234, 0.6);
+        }
+
+        .results-summary {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .results-summary.show {
+            display: block;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .score-circle {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .indigenous-box {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #d63031;
+        }
+
+        .indigenous-box h4 {
+            color: #d63031;
+            margin-bottom: 10px;
+        }
+
+        .indigenous-box p {
+            color: #2d3436;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .territories-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .territory-card {
+            background: linear-gradient(135deg, #e8f4f8, #f0e8f8);
+            border-radius: 10px;
+            padding: 20px;
+            border: 2px solid #667eea;
+            text-align: center;
+        }
+
+        .territory-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .territory-card p {
+            color: #555;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+
+            .territories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+            }
+
+            .timeline-content {
+                margin-left: 0;
+                margin-top: 10px;
+            }
+
+            .card-image {
+                max-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🏛️ La Nueva Granada</h1>
+            <p>Historia, territorio y transformación administrativa colonial</p>
+        </header>
+
+        <div class="section-nav">
+            <button class="nav-btn active" onclick="switchSection('introduccion')">Introducción</button>
+            <button class="nav-btn" onclick="switchSection('timeline')">Cronología</button>
+            <button class="nav-btn" onclick="switchSection('territorios')">Territorios</button>
+            <button class="nav-btn" onclick="switchSection('mapa')">Mapa Histórico</button>
+            <button class="nav-btn" onclick="switchSection('quiz')">Cuestionario</button>
+        </div>
+
+        <!-- SECCIÓN INTRODUCCIÓN -->
+        <div id="introduccion" class="content-section active">
+            <div class="info-card">
+                <h2>📜 Antes de la Nueva Granada</h2>
+                <p>Antes de la llegada de los españoles, el territorio que hoy es Colombia estaba habitado por diversas civilizaciones indígenas con estructuras políticas y económicas propias. Estos pueblos no tenían un nombre unificado para el territorio, pues cada civilización tenía sus propias denominaciones para sus tierras.</p>
+                <div class="image-container">
+                    <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/93fb6fcc-db40-4d94-bb44-ddaf0fd17029.png" alt="Civilización Muisca" class="card-image">
+                </div>
+                <div class="image-caption">Civilización Muisca en el altiplano cundiboyacense - Confederación política prehispánica</div>
+                <div class="indigenous-box">
+                    <h4>Principales Civilizaciones Indígenas:</h4>
+                    <p><strong>• Muiscas:</strong> Ubicados en el altiplano cundiboyacense, organizados en confederaciones como la Confederación Muisca. Destacaban por su agricultura, textiles y organización política compleja.<br><br>
+                    <strong>• Taironas:</strong> En la región caribeña y la Sierra Nevada. Constructores de ciudades en terraza y desarrollada red comercial.<br><br>
+                    <strong>• Quimbayas:</strong> En el eje cafetero. Reconocidos por su maestría en la orfebrería y trabajos en oro.<br><br>
+                    <strong>• Zenúes:</strong> En la costa atlántica. Expertos en tejidos, cerámica y manejo hidráulico de terrenos.<br><br>
+                    <strong>• Pijaos:</strong> En el Tolima y regiones montañosas. Guerreros y agricultores de la zona andina.</p>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="info-card">
+                    <h2>🗺️ La Conquista Española</h2>
+                    <p>Durante el siglo XVI, los conquistadores españoles llegaron al territorio y comenzaron a referirse a la región como <strong>Nueva Andalucía</strong> inicialmente, y posteriormente como el <strong>Nuevo Reino de Granada</strong>.</p>
+                    <div class="image-container">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/99594e3c-9841-4415-9515-278ad5ff1abc.png" alt="Conquista Española" class="card-image">
+                    </div>
+                    <div class="image-caption">Conquistadores españoles del siglo XVI en América</div>
+                    <div class="highlight-box">
+                        <strong>Importante:</strong> Los españoles solían nombrar los nuevos territorios en honor a regiones de la península ibérica, estableciendo un vínculo cultural y político con la metrópoli.
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h2>🔤 Origen del Nombre "Nueva Granada"</h2>
+                    <p>El nombre se debe a la ciudad de <strong>Granada en España</strong>, que fue uno de los últimos territorios reconquistados por los Reyes Católicos en 1492. Los colonizadores, especialmente <strong>Gonzalo Jiménez de Quesada</strong>, usaron este nombre para establecer un vínculo simbólico entre la colonia y la metrópoli.</p>
+                    <div class="image-container">
+                        <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/46a55b83-87c7-43b0-91ff-19de61e43f20.png" alt="Escudo de Granada" class="card-image">
+                    </div>
+                    <div class="image-caption">Escudo de Granada, España - Símbolo del origen del nombre</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN CRONOLOGÍA -->
+        <div id="timeline" class="content-section">
+            <div class="info-card" style="border-left: 5px solid #764ba2;">
+                <h2>⏱️ Evolución Administrativa del Territorio</h2>
+                <p>El territorio que hoy es Colombia experimentó varias transformaciones administrativas antes de consolidarse como el Virreinato de la Nueva Granada en 1717. Esta evolución refleja la política borbónica de reorganización y centralización del imperio español en América.</p>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot">1</div>
+                    <div class="timeline-content">
+                        <h3>1500s - Gobernaciones Iniciales</h3>
+                        <p>Las tierras recién conquistadas fueron organizadas en varias gobernaciones independientes, como la <strong>Gobernación de Nueva Andalucía</strong> (1528), la <strong>Gobernación de Popayán</strong> y la <strong>Gobernación de Castilla de Oro</strong> (Panamá). Cada gobernador actuaba con considerable autonomía.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">2</div>
+                    <div class="timeline-content">
+                        <h3>Año 1550 - Real Audiencia de Santa Fe</h3>
+                        <p>Se establece la <strong>Real Audiencia de Santa Fe</strong>, que marcó el <strong>inicio de la centralización del poder colonial</strong> en la región. Esta institución centralizaba el poder administrativo y judicial, aunque seguía dependiendo del <strong>Virreinato del Perú</strong>. La capital fue trasladada de Cartagena a Santa Fe (actual Bogotá).</p>
+                        <div class="image-container">
+                            <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/a5f9b81c-6199-4aed-bec0-6791be1a69de.png" alt="Real Audiencia" class="timeline-image">
+                        </div>
+                        <div class="image-caption">Real Audiencia de Santa Fe - Centro de administración y justicia</div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">3</div>
+                    <div class="timeline-content">
+                        <h3>Siglo XVI-XVII - Período de Autonomía Relativa</h3>
+                        <p>El territorio forma parte de la <strong>Gobernación de Santa Fe</strong> y la <strong>Audiencia de Santa Fe</strong>, ambas bajo la jurisdicción del <strong>Virreinato del Perú</strong>. Las grandes distancias geográficas otorgaban considerable autonomía administrativa a las diferentes gobernaciones.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot">4</div>
+                    <div class="timeline-content">
+                        <h3>27 de Mayo de 1717 - Virreinato de la Nueva Granada</h3>
+                        <p>El rey <strong>Felipe V</strong> crea formalmente el <strong>Virreinato de la Nueva Granada</strong> mediante Real Cédula. Esta decisión respondía a la nueva política borbónica de reorganización administrativa. El virreinato se creó para:</p>
+                        <div class="highlight-box">
+                            <strong>• Centralizar</strong> el poder administrativo y fiscal<br>
+                            <strong>• Controlar</strong> el comercio y combatir el contrabando<br>
+                            <strong>• Administrar</strong> la importante producción aurífera<br>
+                            <strong>• Defender</strong> estratégicamente la región frente a potencias rivales
+                        </div>
+                        <div class="image-container">
+                            <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/16a94201-a911-437b-8144-d2e11520581a.png" alt="Virreinato" class="timeline-image">
+                        </div>
+                        <div class="image-caption">Virreinato de la Nueva Granada bajo autoridad virreinal</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN TERRITORIOS -->
+        <div id="territorios" class="content-section">
+            <div class="info-card">
+                <h2>🌍 Territorios del Virreinato de la Nueva Granada</h2>
+                <p>El Virreinato de la Nueva Granada fue una división administrativa colonial que abarcaba un territorio mucho más extenso que la Colombia actual. Comprendía aproximadamente <strong>el territorio de cuatro naciones modernas</strong>, con una extensión estimada de más de 2.5 millones de kilómetros cuadrados.</p>
+            </div>
+
+            <div class="territories-grid">
+                <div class="territory-card">
+                    <h4>🇨🇴 Colombia</h4>
+                    <p><strong>Entidades administrativas:</strong><br>Gobernación de Santa Fe<br>Gobernación de Cartagena<br>Gobernación de Santa Marta<br>Gobernación de Antioquia<br>Gobernación de Popayán</p>
+                </div>
+                <div class="territory-card">
+                    <h4>🇻🇪 Venezuela</h4>
+                    <p><strong>Entidades administrativas:</strong><br>Capitanía General de Venezuela<br>Gobernación de Maracaibo<br>Gobernación de Guayana<br>Provincias de Trinidad y Cumaná</p>
+                </div>
+                <div class="territory-card">
+                    <h4>🇪🇨 Ecuador</h4>
+                    <p><strong>Entidades administrativas:</strong><br>Real Audiencia de Quito<br>Gobernación de Quito<br>Provincias de Chimborazo y Tungurahua</p>
+                </div>
+                <div class="territory-card">
+                    <h4>🇵🇦 Panamá</h4>
+                    <p><strong>Entidades administrativas:</strong><br>Gobernación de Castilla de Oro<br>Gobernación de Veragua<br>Ciudad de Panamá<br>Provincia de Darién</p>
+                </div>
+            </div>
+
+            <div class="grid-2">
+                <div class="info-card">
+                    <h2>📍 Ciudades Principales del Virreinato</h2>
+                    <p>Las principales ciudades que formaban parte del virreinato eran centros administrativos, comerciales y culturales:</p>
+                    <div class="highlight-box">
+                        <strong>• Santa Fe de Bogotá:</strong> Capital del virreinato<br>
+                        <strong>• Cartagena de Indias:</strong> Puerto principal caribeño<br>
+                        <strong>• Quito:</strong> Importante centro administrativo andino<br>
+                        <strong>• Caracas:</strong> Centro de la gobernación de Venezuela<br>
+                        <strong>• Panamá:</strong> Importante puerto del Pacífico<br>
+                        <strong>• Santa Marta:</strong> Puerta de entrada al norte<br>
+                        <strong>• Popayán:</strong> Centro de la gobernación del sur
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <h2>🏛️ Estructura del Virreinato</h2>
+                    <p>El Virreinato fue organizado jerárquicamente bajo autoridad del Rey de España:</p>
+                    <div class="highlight-box">
+                        <strong>Virrey</strong> (máxima autoridad)<br>
+                        <strong>Real Audiencia</strong> (poder judicial)<br>
+                        <strong>Gobernadores</strong> (autoridades regionales)<br>
+                        <strong>Cabildos</strong> (gobiernos locales)<br>
+                        <strong>Corregidores</strong> (autoridades municipales)<br>
+                        <strong>Alcaldes</strong> (ejecutores locales)
+                    </div>
+                    <p style="margin-top: 15px; color: #999; font-size: 0.9em;"><em>Esta estructura permitía mantener el control desde la metrópoli mientras otorgaba autonomía relativa a los niveles locales.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN MAPA -->
+        <div id="mapa" class="content-section">
+            <div class="map-section">
+                <h2>🗺️ Territorio del Virreinato de la Nueva Granada (1717-1810)</h2>
+                <div class="map-image-container">
+                    <img src="data:image/jpeg;base64,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" alt="Mapa Virreinato de Nueva Granada" style="max-width: 100%; height: auto; max-height: 600px;">
+                </div>
+                <div class="image-caption">Virreinato de la Nueva Granada - Mapa histórico mostrando las divisiones administrativas de 1717</div>
+
+                <div class="map-info">
+                    <h3 style="color: #667eea; margin-bottom: 15px;">📌 Información del Mapa Histórico</h3>
+                    <p><strong>Divisiones Administrativas del Virreinato:</strong></p>
+                    <ul>
+                        <li><strong style="color: #667eea;">Amarillo:</strong> Nuevo Reino de Granada (Colombia) - con sus gobernaciones de Santa Fe, Cartagena, Santa Marta, Antioquia y Popayán</li>
+                        <li><strong style="color: #667eea;">Verde claro:</strong> Capitanía General de Venezuela - incluyendo Maracaibo, Cumaná y Guayana</li>
+                        <li><strong style="color: #667eea;">Rosa/Púrpura:</strong> Real Audiencia de Quito (Ecuador) - centro administrativo andino</li>
+                        <li><strong style="color: #667eea;">Beige/Marrón:</strong> Gobernación de Panamá (Castilla de Oro) - puerta hacia el Pacífico</li>
+                    </ul>
+
+                    <p style="margin-top: 15px;"><strong>Extensión Territorial:</strong> Aproximadamente 2.5 millones de kilómetros cuadrados, una de las divisiones administrativas más grandes del imperio español en América.</p>
+
+                    <p style="margin-top: 10px;"><strong>Capital Virreinal:</strong> Santa Fe de Bogotá fue establecida como la capital del virreinato. Su ubicación en el altiplano cundiboyacense a 2.640 metros sobre el nivel del mar permitía un control administrativo centralizado del vasto territorio.</p>
+
+                    <p style="margin-top: 10px;"><strong>Puertos Estratégicos Principales:</strong></p>
+                    <ul>
+                        <li><strong>Cartagena de Indias:</strong> Puerto más importante del Atlántico, principal puerto de entrada y salida de mercancías en el Caribe</li>
+                        <li><strong>Santa Marta:</strong> Punto de entrada al norte del territorio</li>
+                        <li><strong>Panamá:</strong> Punto de conexión hacia el Pacífico, importante centro comercial</li>
+                        <li><strong>Golfito (Castilla de Oro):</strong> Puerta a las regiones del Pacífico</li>
+                    </ul>
+
+                    <p style="margin-top: 10px;"><strong>Características Geográficas Importantes:</strong> La Cordillera de los Andes atravesaba el territorio de norte a sur, siendo una barrera natural que dificultaba las comunicaciones internas pero proporcionaba recursos mineros valiosos, especialmente oro, que fue fundamental para la economía colonial.</p>
+
+                    <p style="margin-top: 10px;"><strong>Formación del Virreinato (1717):</strong> Se formó mediante la unión de: (1) La Real Audiencia de Santa Fe, (2) La Real Audiencia de Quito, (3) La Capitanía General de Venezuela, y (4) Las gobernaciones de Cartagena, Santa Marta, Popayán y Castilla de Oro. Esta reorganización respondía a la política borbónica de centralización administrativa.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN CUESTIONARIO -->
+        <div id="quiz" class="content-section">
+            <div class="quiz-section">
+                <h2>📝 Cuestionario de Evaluación</h2>
+
+                <form id="quizForm" onsubmit="evaluarQuiz(event)">
+                    <!-- Pregunta 1 -->
+                    <div class="question-item">
+                        <div class="question-text">1. El territorio colombiano experimentó varias transformaciones administrativas antes de consolidarse como el Virreinato de la Nueva Granada. ¿Cuál de las siguientes afirmaciones es correcta respecto a su evolución territorial?</div>
+                        <div class="option">
+                            <input type="radio" id="q1a" name="pregunta1" value="a">
+                            <label for="q1a">a) Antes de ser un virreinato, pertenecía al Virreinato de Nueva España.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1b" name="pregunta1" value="b">
+                            <label for="q1b">b) La Gobernación de Santa Fe fue la última entidad territorial antes de la creación del virreinato.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1c" name="pregunta1" value="c">
+                            <label for="q1c">c) La Real Audiencia de Santa Fe, establecida en 1550, marcó el inicio de la centralización del poder colonial en la región.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1d" name="pregunta1" value="d">
+                            <label for="q1d">d) La Nueva Granada se convirtió en un virreinato por orden directa de Simón Bolívar.</label>
+                        </div>
+                        <div class="feedback" id="feedback1"></div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="question-item">
+                        <div class="question-text">2. ¿Qué territorios formaron parte oficial del Virreinato de la Nueva Granada?</div>
+                        <div class="option">
+                            <input type="radio" id="q2a" name="pregunta2" value="a">
+                            <label for="q2a">a) Solo la actual Colombia.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2b" name="pregunta2" value="b">
+                            <label for="q2b">b) Colombia, Venezuela y Ecuador.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2c" name="pregunta2" value="c">
+                            <label for="q2c">c) Colombia, Venezuela, Ecuador y Panamá.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2d" name="pregunta2" value="d">
+                            <label for="q2d">d) Colombia, Venezuela, Ecuador, Panamá y Perú.</label>
+                        </div>
+                        <div class="feedback" id="feedback2"></div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="question-item">
+                        <div class="question-text">3. ¿Cómo comenzaron los españoles a llamar a la región antes de la creación del Virreinato de la Nueva Granada en 1717?</div>
+                        <div class="option">
+                            <input type="radio" id="q3a" name="pregunta3" value="a">
+                            <label for="q3a">a) Capitanía General de Venezuela.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3b" name="pregunta3" value="b">
+                            <label for="q3b">b) Nueva Andalucía y luego Nuevo Reino de Granada.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3c" name="pregunta3" value="c">
+                            <label for="q3c">c) Virreinato de Nueva España.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3d" name="pregunta3" value="d">
+                            <label for="q3d">d) Reino de Quito.</label>
+                        </div>
+                        <div class="feedback" id="feedback3"></div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="question-item">
+                        <div class="question-text">4. Antes del Virreinato de la Nueva Granada, ¿bajo qué jurisdicción se encontraba el territorio que hoy es Colombia?</div>
+                        <div class="option">
+                            <input type="radio" id="q4a" name="pregunta4" value="a">
+                            <label for="q4a">a) Virreinato de Nueva España.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4b" name="pregunta4" value="b">
+                            <label for="q4b">b) Virreinato del Perú.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4c" name="pregunta4" value="c">
+                            <label for="q4c">c) Reino de Chile.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4d" name="pregunta4" value="d">
+                            <label for="q4d">d) Capitanía General de Guatemala.</label>
+                        </div>
+                        <div class="feedback" id="feedback4"></div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="question-item">
+                        <div class="question-text">5. Observando el mapa histórico del Virreinato de la Nueva Granada, ¿cuál era la función principal de ciudades como Cartagena de Indias y Panamá?</div>
+                        <div class="option">
+                            <input type="radio" id="q5a" name="pregunta5" value="a">
+                            <label for="q5a">a) Servir como capitales administrativas de sus respectivas gobernaciones.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5b" name="pregunta5" value="b">
+                            <label for="q5b">b) Fungir como puertos estratégicos que controlaban el comercio colonial entre Europa y América.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5c" name="pregunta5" value="c">
+                            <label for="q5c">c) Ser las únicas ciudades con poder judicial en el virreinato.</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5d" name="pregunta5" value="d">
+                            <label for="q5d">d) Servir exclusivamente como bases militares de defensa.</label>
+                        </div>
+                        <div class="feedback" id="feedback5"></div>
+                    </div>
+
+                    <button type="submit" class="btn-submit">✓ Enviar y Calificar</button>
+                </form>
+
+                <div class="results-summary" id="resultados">
+                    <div class="score-circle" id="scoreCircle">0/5</div>
+                    <h3 id="resultMessage">Resultado</h3>
+                    <p id="resultDetail"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function switchSection(sectionId) {
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            document.getElementById(sectionId).classList.add('active');
+
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function evaluarQuiz(event) {
+            event.preventDefault();
+
+            const respuestasCorrectas = {
+                pregunta1: 'c',
+                pregunta2: 'c',
+                pregunta3: 'b',
+                pregunta4: 'b',
+                pregunta5: 'b'
+            };
+
+            const retroalimentacion = {
+                pregunta1: {
+                    c: {
+                        correcto: true,
+                        explicacion: 'Correcto. La Real Audiencia de Santa Fe, establecida en 1550, fue el punto de inflexión en la administración colonial, marcando el inicio de la centralización del poder administrativo y judicial en la región. Esto fue un hito importante antes de la creación del virreinato.'
+                    },
+                    a: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. El territorio pertenecía al Virreinato del Perú, no al de Nueva España. El Virreinato de Nueva España gobernaba el territorio de México y Centroamérica.'
+                    },
+                    b: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. La Real Audiencia de Santa Fe (1550), no la Gobernación de Santa Fe, fue la institución más importante que precedió al virreinato.'
+                    },
+                    d: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. La creación del Virreinato fue un proceso administrativo español decidido por el Rey Felipe V en 1717. Simón Bolívar vivió posteriormente y contribuyó a la independencia, no a la creación del virreinato.'
+                    }
+                },
+                pregunta2: {
+                    c: {
+                        correcto: true,
+                        explicacion: 'Correcto. El Virreinato de la Nueva Granada incluía los territorios de Colombia, Venezuela, Ecuador y Panamá (Castilla de Oro). Estos cuatro países formaban parte de la jurisdicción virreinal establecida en 1717.'
+                    },
+                    a: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. El virreinato abarcaba un territorio mucho más extenso que la actual Colombia. Incluía Venezuela, Ecuador y Panamá.'
+                    },
+                    b: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. Aunque es verdad que incluía Colombia, Venezuela y Ecuador, falta incluir a Panamá en la respuesta.'
+                    },
+                    d: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. Perú no formaba parte del Virreinato de la Nueva Granada; era territorio del Virreinato del Perú, que fue una entidad administrativa separada.'
+                    }
+                },
+                pregunta3: {
+                    b: {
+                        correcto: true,
+                        explicacion: 'Correcto. Inicialmente los españoles llamaron a la región Nueva Andalucía (siglo XVI), y posteriormente Nuevo Reino de Granada, reflejando la costumbre de nombrar las colonias en honor a regiones españolas. Esto ocurrió antes de la creación formal del virreinato en 1717.'
+                    },
+                    a: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. La Capitanía General de Venezuela fue una entidad administrativa separada, no el nombre de toda la región de la Nueva Granada.'
+                    },
+                    c: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. El Virreinato de Nueva España era un territorio diferente, ubicado en México y Centroamérica.'
+                    },
+                    d: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. Reino de Quito era una denominación relacionada con la región andina (Ecuador), no de toda la Nueva Granada.'
+                    }
+                },
+                pregunta4: {
+                    b: {
+                        correcto: true,
+                        explicacion: 'Correcto. Antes de la creación del Virreinato de la Nueva Granada en 1717, el territorio estaba bajo la jurisdicción del Virreinato del Perú, específicamente a través de la Gobernación de Santa Fe y la Real Audiencia de Santa Fe.'
+                    },
+                    a: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. El Virreinato de Nueva España gobernaba el territorio de México, Centroamérica y partes del sur de Norteamérica, no el de la Nueva Granada.'
+                    },
+                    c: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. Chile era un territorio separado dentro de la administración española, bajo su propio virreinato.'
+                    },
+                    d: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. La Capitanía General de Guatemala era una entidad administrativa distinta que gobernaba territorio centroamericano.'
+                    }
+                },
+                pregunta5: {
+                    b: {
+                        correcto: true,
+                        explicacion: 'Correcto. Cartagena de Indias era el puerto más importante del Atlántico controlando el comercio caribeño, mientras que Panamá fungía como puerta de entrada al Pacífico. Ambas ciudades eran puertos estratégicos vitales para la economía colonial.'
+                    },
+                    a: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. Aunque tenían importancia administrativa, su función primordial era portuaria y comercial.'
+                    },
+                    c: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. El poder judicial estaba centralizado en la Real Audiencia de Santa Fe en Bogotá.'
+                    },
+                    d: {
+                        correcto: false,
+                        explicacion: 'Incorrecto. Aunque tenían guarniciones militares, su función principal era comercial, no exclusivamente militar.'
+                    }
+                }
+            };
+
+            let calificacion = 0;
+            let respuestasSeleccionadas = {};
+
+            for (let pregunta in respuestasCorrectas) {
+                const respuestaSeleccionada = document.querySelector(`input[name="${pregunta}"]:checked`);
+
+                if (respuestaSeleccionada) {
+                    respuestasSeleccionadas[pregunta] = respuestaSeleccionada.value;
+                    const esCorrecta = respuestaSeleccionada.value === respuestasCorrectas[pregunta];
+
+                    if (esCorrecta) {
+                        calificacion++;
+                    }
+
+                    const feedbackDiv = document.getElementById(`feedback${pregunta.charAt(pregunta.length - 1)}`);
+                    const respuesta = respuestasSeleccionadas[pregunta];
+                    const feedback = retroalimentacion[pregunta][respuesta];
+
+                    feedbackDiv.classList.add(feedback.correcto ? 'correct' : 'incorrect');
+                    feedbackDiv.innerHTML = `
+                        <strong>${feedback.correcto ? '✓ ¡Correcto!' : '✗ Incorrecto'}</strong>
+                        ${feedback.explicacion}
+                    `;
+                    feedbackDiv.style.display = 'block';
+                } else {
+                    const feedbackDiv = document.getElementById(`feedback${pregunta.charAt(pregunta.length - 1)}`);
+                    feedbackDiv.classList.add('incorrect');
+                    feedbackDiv.innerHTML = `
+                        <strong>✗ Pregunta sin responder</strong>
+                        Por favor selecciona una opción para esta pregunta.
+                    `;
+                    feedbackDiv.style.display = 'block';
+                }
+            }
+
+            mostrarResultados(calificacion);
+        }
+
+        function mostrarResultados(calificacion) {
+            const resultsDiv = document.getElementById('resultados');
+            const scoreCircle = document.getElementById('scoreCircle');
+            const resultMessage = document.getElementById('resultMessage');
+            const resultDetail = document.getElementById('resultDetail');
+
+            scoreCircle.textContent = `${calificacion}/5`;
+
+            if (calificacion === 5) {
+                resultMessage.textContent = '¡Excelente! 🌟';
+                resultDetail.textContent = 'Has demostrado un excelente dominio del tema. ¡Felicidades! Comprendiste completamente la evolución administrativa del Virreinato de la Nueva Granada.';
+                resultsDiv.style.borderTop = '5px solid #28a745';
+            } else if (calificacion === 4) {
+                resultMessage.textContent = 'Muy Bien 👍';
+                resultDetail.textContent = 'Has respondido correctamente la mayoría de las preguntas. Tu comprensión del tema es sólida. Repasa el área en la que fallaste.';
+                resultsDiv.style.borderTop = '5px solid #17a2b8';
+            } else if (calificacion >= 3) {
+                resultMessage.textContent = 'Bien 📖';
+                resultDetail.textContent = 'Has respondido correctamente más de la mitad. Te recomendamos que repases el material especialmente la cronología y estructura administrativa.';
+                resultsDiv.style.borderTop = '5px solid #ffc107';
+            } else {
+                resultMessage.textContent = 'Necesitas Practicar 📚';
+                resultDetail.textContent = 'Te recomendamos que repases cuidadosamente el contenido de todas las secciones y vuelvas a intentar el cuestionario.';
+                resultsDiv.style.borderTop = '5px solid #dc3545';
+            }
+
+            resultsDiv.classList.add('show');
+            window.scrollTo({ top: resultsDiv.offsetTop - 100, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>

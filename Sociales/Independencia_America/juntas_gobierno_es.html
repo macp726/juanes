@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primeras Juntas de Gobierno en América Latina</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .content {
+            padding: 40px 20px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #764ba2;
+            padding-bottom: 10px;
+        }
+        
+        .section h3 {
+            color: #667eea;
+            font-size: 1.4em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+        
+        .section p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+        
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 20px;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+        
+        .card p {
+            color: #333;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .map-container {
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 8px;
+            padding: 25px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .map-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .map-note {
+            font-size: 0.95em;
+            color: #666;
+            margin-top: 15px;
+            font-style: italic;
+        }
+        
+        .legend-box {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            padding: 15px 20px;
+            margin-top: 15px;
+            display: inline-block;
+        }
+        
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin: 8px 15px;
+            font-size: 0.9em;
+        }
+        
+        .legend-color {
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            margin-right: 10px;
+            border: 2px solid #333;
+        }
+        
+        .location-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .location-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 12px;
+            text-align: left;
+            font-weight: bold;
+            border: none;
+        }
+        
+        .location-table td {
+            padding: 12px;
+            border-bottom: 1px solid #e0e0e0;
+            background: white;
+        }
+        
+        .location-table tbody tr:hover {
+            background: #f9f9f9;
+            transition: background 0.2s;
+        }
+        
+        .location-table td strong {
+            color: #667eea;
+        }
+        
+        .quiz-section {
+            background: #f5f7fa;
+            border-radius: 8px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .quiz-section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+        }
+        
+        .quiz-intro {
+            color: #666;
+            margin-bottom: 25px;
+            font-size: 1em;
+        }
+        
+        .question {
+            background: white;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        
+        .question p {
+            color: #333;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .options {
+            margin-bottom: 10px;
+        }
+        
+        .option {
+            display: block;
+            margin: 8px 0;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 8px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .option label {
+            cursor: pointer;
+            user-select: none;
+            font-size: 0.95em;
+        }
+        
+        .feedback {
+            display: none;
+            margin-top: 10px;
+            padding: 12px 15px;
+            border-radius: 5px;
+            font-weight: 500;
+            font-size: 0.9em;
+            line-height: 1.5;
+        }
+        
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 5px solid #28a745;
+            display: block;
+        }
+        
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 5px solid #f5c6cb;
+            display: block;
+        }
+        
+        .btn-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+        
+        .btn-submit:hover {
+            transform: scale(1.05);
+        }
+        
+        .btn-reset {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: transform 0.2s;
+        }
+        
+        .btn-reset:hover {
+            transform: scale(1.05);
+        }
+        
+        .results {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.1em;
+        }
+        
+        .results.show {
+            display: block;
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.5em;
+            }
+            
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .legend-item {
+                margin: 5px 10px;
+            }
+            
+            .location-table {
+                font-size: 0.85em;
+            }
+            
+            .location-table td {
+                padding: 8px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>🗺️ Primeras Juntas de Gobierno en América Latina</h1>
+        <p>Contexto histórico: Después del encarcelamiento del Rey Fernando VII en 1808</p>
+    </div>
+    
+    <div class="content">
+        <!-- SECCIÓN CONTEXTO -->
+        <div class="section">
+            <h2>📚 Contexto Histórico</h2>
+            <p>El 2 de mayo de 1808, el Rey Fernando VII de España fue encarcelado por Napoleón Bonaparte durante la invasión francesa a la Península Ibérica. Este evento provocó una crisis política sin precedentes en toda América Latina, dejando un vacío de autoridad que sería el punto de partida para el movimiento independentista.</p>
+            <p>Sin un rey legítimo gobernando en España, los territorios coloniales americanos tuvieron que tomar decisiones sobre su propio futuro. Es así como surgieron las Juntas de Gobierno, organismos que inicialmente argumentaban actuar en nombre del rey cautivo, pero que gradualmente evolucionaron hacia la búsqueda de la independencia completa.</p>
+        </div>
+
+        <!-- SECCIÓN MAPA -->
+        <div class="section">
+            <h2>🗺️ Mapa de América Latina - Ubicación de las Juntas</h2>
+            <div class="map-container">
+                <img src="https://user-gen-media-assets.s3.amazonaws.com/gemini_images/fa7adc20-2da7-43e5-b794-75b8f97b0ba1.png" alt="Mapa de América Latina con ubicación de Juntas de Gobierno" style="border: 2px solid #ddd;">
+                
+                <div class="legend-box">
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #4a90e2;"></div>
+                        <span><strong>Azul:</strong> Países de América Latina</span>
+                    </div>
+                    <div class="legend-item">
+                        <div class="legend-color" style="background: #e74c3c;"></div>
+                        <span><strong>Rojo:</strong> Ubicación de Juntas de Gobierno</span>
+                    </div>
+                </div>
+                <p class="map-note">📍 El mapa muestra la ubicación geográfica exacta de las seis principales Juntas de Gobierno en sus respectivas ciudades (1808-1810)</p>
+            </div>
+
+            <!-- TABLA DE UBICACIONES -->
+            <h3>📍 Ubicación Detallada de las Seis Juntas</h3>
+            <table class="location-table">
+                <thead>
+                    <tr>
+                        <th>Junta de Gobierno</th>
+                        <th>País Actual</th>
+                        <th>Ciudad Principal</th>
+                        <th>Año de Formación</th>
+                        <th>Región Geográfica</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>🇲🇽 Junta de Mexico</strong></td>
+                        <td>México</td>
+                        <td>México</td>
+                        <td>1808</td>
+                        <td>Mesoamérica (Norte)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🇻🇪 Junta Suprema de Venezuela</strong></td>
+                        <td>Venezuela</td>
+                        <td>Caracas</td>
+                        <td>1810</td>
+                        <td>Noroeste de Sudamérica</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🇪🇨 Junta soberana de Quito</strong></td>
+                        <td>Ecuador</td>
+                        <td>Quito</td>
+                        <td>1809</td>
+                        <td>Noroeste de Sudamérica</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🇧🇴 Junta de Chuquisaca y la paz</strong></td>
+                        <td>Bolivia</td>
+                        <td>La Paz / Chuquisaca</td>
+                        <td>1809</td>
+                        <td>Centro de Sudamérica</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🇨🇱 Junta de Gobierno de Chile</strong></td>
+                        <td>Chile</td>
+                        <td>Santiago</td>
+                        <td>1810</td>
+                        <td>Sur de Sudamérica</td>
+                    </tr>
+                    <tr>
+                        <td><strong>🇦🇷 Junta de gobierno del Río de la plata</strong></td>
+                        <td>Argentina, Uruguay, Paraguay</td>
+                        <td>Buenos Aires</td>
+                        <td>1810</td>
+                        <td>Cono Sur</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- SECCIÓN JUNTAS DETALLADAS -->
+        <div class="section">
+            <h2>🏛️ Las Seis Juntas de Gobierno - Descripción Detallada</h2>
+            
+            <h3>Primer Grupo: Juntas Tempranas (1808-1809)</h3>
+            <div class="info-cards">
+                <div class="card">
+                    <h4>🇲🇽 Junta de Mexico (1808)</h4>
+                    <p><strong>Ubicación:</strong> Nueva España - Ciudad de México<br>
+                    <strong>Región:</strong> Mesoamérica - Norte<br>
+                    <strong>Descripción:</strong> Una de las primeras en formarse en América. Los criollos mexicanos buscaban participación activa en el gobierno ante la crisis causada por el encarcelamiento de Fernando VII en 1808.</p>
+                </div>
+                <div class="card">
+                    <h4>🇪🇨 Junta soberana de Quito (1809)</h4>
+                    <p><strong>Ubicación:</strong> Audiencia de Quito - Quito<br>
+                    <strong>Región:</strong> Noroeste de Sudamérica - Sierra<br>
+                    <strong>Descripción:</strong> La más antigua de las juntas hispanoamericanas. Marcó un precedente importante al afirmar su soberanía y cuestionar la legitimidad de la Junta de Cádiz en España.</p>
+                </div>
+                <div class="card">
+                    <h4>🇧🇴 Junta de Chuquisaca y la paz (1809)</h4>
+                    <p><strong>Ubicación:</strong> Alto Perú - La Paz y Chuquisaca<br>
+                    <strong>Región:</strong> Centro de Sudamérica - Andes<br>
+                    <strong>Descripción:</strong> Surgió en respuesta a las reformas españolas. Fue fundamental en el desarrollo del movimiento independentista en la región andina y el Cono Sur.</p>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">Segundo Grupo: Juntas Principales (1810)</h3>
+            <div class="info-cards">
+                <div class="card">
+                    <h4>🇻🇪 Junta Suprema de Venezuela (1810)</h4>
+                    <p><strong>Ubicación:</strong> Capitanía General de Venezuela - Caracas<br>
+                    <strong>Región:</strong> Noroeste de Sudamérica - Costa<br>
+                    <strong>Descripción:</strong> Punto de partida para la independencia venezolana. De esta junta surgió Simón Bolívar, que sería fundamental para la independencia de toda Sudamérica.</p>
+                </div>
+                <div class="card">
+                    <h4>🇨🇱 Junta de Gobierno de Chile (1810)</h4>
+                    <p><strong>Ubicación:</strong> Capitanía General de Chile - Santiago<br>
+                    <strong>Región:</strong> Sur de Sudamérica - Costa Oeste<br>
+                    <strong>Descripción:</strong> Crucial para el proceso de independencia chileno. Se considera una de las más estables y mejor estructuradas de América del Sur.</p>
+                </div>
+                <div class="card">
+                    <h4>🇦🇷 Junta de gobierno del Río de la plata (1810)</h4>
+                    <p><strong>Ubicación:</strong> Virreinato del Río de la Plata - Buenos Aires<br>
+                    <strong>Región:</strong> Cono Sur - Este<br>
+                    <strong>Descripción:</strong> Fundamental para la independencia de Argentina, Uruguay y Paraguay. Fue impulsora de importantes reformas políticas y sociales en el Cono Sur.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CUESTIONARIO -->
+        <div class="quiz-section">
+            <h2>✅ Cuestionario Interactivo</h2>
+            <p class="quiz-intro">Demuestra tu comprensión del tema respondiendo las siguientes preguntas. Recibirás retroalimentación inmediata sobre tus respuestas.</p>
+            
+            <div class="question">
+                <p>1. ¿Cuál fue el evento que precipitó la formación de las Juntas de Gobierno en América Latina?</p>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q1" value="a" id="q1a"><label for="q1a">La muerte del Rey Carlos IV</label></div>
+                    <div class="option"><input type="radio" name="q1" value="b" id="q1b"><label for="q1b">El encarcelamiento del Rey Fernando VII por Napoleón en 1808</label></div>
+                    <div class="option"><input type="radio" name="q1" value="c" id="q1c"><label for="q1c">Una revuelta de indígenas contra la corona</label></div>
+                    <div class="option"><input type="radio" name="q1" value="d" id="q1d"><label for="q1d">La invasión de Inglaterra a América Latina</label></div>
+                </div>
+                <div class="feedback" id="feedback1"></div>
+            </div>
+
+            <div class="question">
+                <p>2. ¿En qué año se formó la Junta soberana de Quito, considerada la más antigua?</p>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q2" value="a" id="q2a"><label for="q2a">1808</label></div>
+                    <div class="option"><input type="radio" name="q2" value="b" id="q2b"><label for="q2b">1809</label></div>
+                    <div class="option"><input type="radio" name="q2" value="c" id="q2c"><label for="q2c">1810</label></div>
+                    <div class="option"><input type="radio" name="q2" value="d" id="q2d"><label for="q2d">1811</label></div>
+                </div>
+                <div class="feedback" id="feedback2"></div>
+            </div>
+
+            <div class="question">
+                <p>3. ¿Cuál es la Junta que se formó en Buenos Aires y fue crucial para la independencia del Cono Sur?</p>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q3" value="a" id="q3a"><label for="q3a">Junta de Gobierno de Chile</label></div>
+                    <div class="option"><input type="radio" name="q3" value="b" id="q3b"><label for="q3b">Junta Suprema de Venezuela</label></div>
+                    <div class="option"><input type="radio" name="q3" value="c" id="q3c"><label for="q3c">Junta de gobierno del Río de la plata</label></div>
+                    <div class="option"><input type="radio" name="q3" value="d" id="q3d"><label for="q3d">Junta de Mexico</label></div>
+                </div>
+                <div class="feedback" id="feedback3"></div>
+            </div>
+
+            <div class="question">
+                <p>4. ¿A qué territorio actual corresponde la Junta de Chuquisaca y la paz?</p>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q4" value="a" id="q4a"><label for="q4a">Perú</label></div>
+                    <div class="option"><input type="radio" name="q4" value="b" id="q4b"><label for="q4b">Bolivia</label></div>
+                    <div class="option"><input type="radio" name="q4" value="c" id="q4c"><label for="q4c">Colombia</label></div>
+                    <div class="option"><input type="radio" name="q4" value="d" id="q4d"><label for="q4d">Ecuador</label></div>
+                </div>
+                <div class="feedback" id="feedback4"></div>
+            </div>
+
+            <div class="question">
+                <p>5. ¿Cuál fue una de las consecuencias principales de la formación de las Juntas de Gobierno?</p>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q5" value="a" id="q5a"><label for="q5a">El fortalecimiento del dominio español en América</label></div>
+                    <div class="option"><input type="radio" name="q5" value="b" id="q5b"><label for="q5b">El empoderamiento de los criollos y el inicio del camino hacia la independencia</label></div>
+                    <div class="option"><input type="radio" name="q5" value="c" id="q5c"><label for="q5c">La unificación de toda América Latina bajo un solo gobierno</label></div>
+                    <div class="option"><input type="radio" name="q5" value="d" id="q5d"><label for="q5d">El regreso inmediato del Rey Fernando VII al poder en España</label></div>
+                </div>
+                <div class="feedback" id="feedback5"></div>
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-submit" onclick="verificarRespuestas()">Verificar Respuestas</button>
+                <button class="btn-reset" onclick="reiniciarCuestionario()">Reiniciar Cuestionario</button>
+            </div>
+            <div class="results" id="results"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+const respuestasCorrectas = {q1:'b',q2:'b',q3:'c',q4:'b',q5:'b'};
+const retroalimentacion = {
+  q1:{
+    b:{correcto:true, mensaje:'✓ CORRECTO. El encarcelamiento del Rey Fernando VII por Napoleón en 1808 fue el evento determinante que causó la crisis de legitimidad en los territorios españoles, llevando a la formación de las Juntas de Gobierno.'},
+    a:{correcto:false,mensaje:'✗ INCORRECTO. La muerte del Rey Carlos IV no fue el evento desencadenante. El evento crucial fue el encarcelamiento de Fernando VII en 1808.'},
+    c:{correcto:false,mensaje:'✗ INCORRECTO. Aunque hubo revueltas indígenas, no fue la causa directa de las Juntas. El factor decisivo fue la crisis en España.'},
+    d:{correcto:false,mensaje:'✗ INCORRECTO. No hubo invasión inglesa. El evento fue el encarcelamiento de Fernando VII en 1808.'}
+  },
+  q2:{
+    b:{correcto:true,mensaje:'✓ CORRECTO. La Junta soberana de Quito se formó en 1809, siendo la más antigua de las Juntas hispanoamericanas. Fue pionera en la búsqueda de autogobierno.'},
+    a:{correcto:false,mensaje:'✗ INCORRECTO. En 1808 se produjo el encarcelamiento del rey, pero la Junta de Quito se formó un año después, en 1809.'},
+    c:{correcto:false,mensaje:'✗ INCORRECTO. Aunque varias Juntas se formaron en 1810, la de Quito fue anterior, en 1809.'},
+    d:{correcto:false,mensaje:'✗ INCORRECTO. Para 1811 ya existían múltiples Juntas establecidas. La de Quito fue la primera, en 1809.'}
+  },
+  q3:{
+    c:{correcto:true, mensaje:'✓ CORRECTO. La Junta de gobierno del Río de la plata se estableció en Buenos Aires en 1810 y fue fundamental para la independencia de Argentina, Uruguay y Paraguay, consolidando el movimiento en el Cono Sur.'},
+    a:{correcto:false,mensaje:'✗ INCORRECTO. La Junta de Gobierno de Chile fue importante, pero se ubicó en Santiago, no en Buenos Aires.'},
+    b:{correcto:false,mensaje:'✗ INCORRECTO. La Junta Suprema de Venezuela se ubicó en Caracas, no en Buenos Aires.'},
+    d:{correcto:false,mensaje:'✗ INCORRECTO. La Junta de Mexico se ubicó en Nueva España, no en Buenos Aires.'}
+  },
+  q4:{
+    b:{correcto:true,mensaje:'✓ CORRECTO. La Junta de Chuquisaca y la paz corresponde al territorio del Alto Perú, que actualmente es Bolivia. Esta región fue clave en los Andes.'},
+    a:{correcto:false,mensaje:'✗ INCORRECTO. El Alto Perú donde se formó esta Junta no es el Perú actual. Corresponde a Bolivia.'},
+    c:{correcto:false,mensaje:'✗ INCORRECTO. Chuquisaca y la paz no están en Colombia. Se ubicaban en el Alto Perú, actual Bolivia.'},
+    d:{correcto:false,mensaje:'✗ INCORRECTO. Estos territorios no corresponden a Ecuador. Corresponden a Bolivia.'}
+  },
+  q5:{
+    b:{correcto:true,mensaje:'✓ CORRECTO. Las Juntas permitieron que los criollos accedieran al poder político y marcaron el inicio del proceso de independencia de América Latina, siendo el primer paso hacia la autodeterminación.'},
+    a:{correcto:false,mensaje:'✗ INCORRECTO. Las Juntas no fortalecieron el dominio español, sino que lo debilitaron significativamente.'},
+    c:{correcto:false,mensaje:'✗ INCORRECTO. Las Juntas no unificaron a toda América Latina. Cada territorio tenía su propia Junta y proceso de independencia independiente.'},
+    d:{correcto:false,mensaje:'✗ INCORRECTO. Fernando VII fue liberado años después, pero nunca regresó a gobernar América Latina.'}
+  }
+};
+
+function verificarRespuestas(){
+  let correctas = 0;
+  let noResponde = false;
+  for(let i=1;i<=5;i++){
+    let nombre='q'+i;
+    let seleccion=document.querySelector('input[name="'+nombre+'"]:checked');
+    let feedback=document.getElementById('feedback'+i);
+    if(!seleccion){
+      feedback.className='feedback incorrect';
+      feedback.style.display='block';
+      feedback.textContent='⚠️ Por favor, responde esta pregunta.';
+      noResponde = true;
+      continue;
+    }
+    let val=seleccion.value;
+    let dato=retroalimentacion[nombre][val];
+    feedback.className=dato.correcto?'feedback correct':'feedback incorrect';
+    feedback.style.display='block';
+    feedback.textContent=dato.mensaje;
+    if(!dato.correcto){
+      let respuestaCorrecta = document.querySelector('input[name="'+nombre+'"][value="'+respuestasCorrectas[nombre]+'"]').nextElementSibling.textContent;
+      feedback.textContent+='\n\nℹ️ Respuesta correcta: '+respuestaCorrecta;
+    }
+    if(dato.correcto)correctas++;
+  }
+  if(noResponde) return;
+  let results=document.getElementById('results');
+  results.className='results show';
+  let porcentaje=Math.round(correctas/5*100);
+  if(porcentaje==100){results.textContent='🎉 ¡EXCELENTE! Obtuviste '+correctas+'/5 respuestas correctas ('+porcentaje+'%). ¡Dominas completamente el tema!';}
+  else if(porcentaje>=80){results.textContent='⭐ ¡MUY BIEN! Obtuviste '+correctas+'/5 respuestas correctas ('+porcentaje+'%). Tienes muy buen dominio del tema.';}
+  else if(porcentaje>=60){results.textContent='✓ BIEN. Obtuviste '+correctas+'/5 respuestas correctas ('+porcentaje+'%). Revisa los conceptos donde tuviste dificultades.';}
+  else{results.textContent='📚 NECESITAS REPASAR. Obtuviste '+correctas+'/5 respuestas correctas ('+porcentaje+'%). Te recomendamos revisar el contenido nuevamente.';}
+}
+
+function reiniciarCuestionario(){
+  document.querySelectorAll('input[type="radio"]').forEach(r=>r.checked=false);
+  for(let i=1;i<=5;i++){
+    let f=document.getElementById('feedback'+i);
+    f.className='feedback';
+    f.style.display='none';
+    f.textContent='';
+  }
+  let res=document.getElementById('results');
+  res.className='results';
+  res.textContent='';
+}
+</script>
+</body>
+</html>
