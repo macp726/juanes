@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciclo del Agua Urbana - Infografía Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .infografia-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        .infografia-section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .ciclo-visual {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+            min-height: 400px;
+        }
+
+        .etapa {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            min-width: 140px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            position: relative;
+            user-select: none;
+        }
+
+        .etapa:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        .etapa.active {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%) !important;
+            transform: scale(1.1) !important;
+            box-shadow: 0 12px 35px rgba(245, 87, 108, 0.5) !important;
+        }
+
+        .etapa h3 {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+        }
+
+        .etapa-numero {
+            display: inline-block;
+            background: rgba(255,255,255,0.3);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            line-height: 40px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .etapa-icon {
+            font-size: 2.5em;
+            margin: 10px 0;
+        }
+
+        .flecha {
+            font-size: 2em;
+            color: #667eea;
+            user-select: none;
+            pointer-events: none;
+        }
+
+        .contenido-etapa {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            line-height: 1.8;
+            color: #333;
+            margin-top: 20px;
+            animation: slideIn 0.3s ease;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .contenido-etapa h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+
+        .contenido-etapa p {
+            margin-bottom: 12px;
+            text-align: justify;
+        }
+
+        .contenido-etapa strong {
+            color: #764ba2;
+        }
+
+        .navegacion {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        .cuestionario-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .cuestionario-section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .pregunta-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+        }
+
+        .pregunta-titulo {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .opciones {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .opcion {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .opcion input[type="radio"] {
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .opcion label {
+            cursor: pointer;
+            flex-grow: 1;
+            padding: 10px;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .opcion label:hover {
+            background: #e9ecef;
+        }
+
+        .retroalimentacion {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            animation: slideDown 0.3s ease;
+        }
+
+        .retroalimentacion.show {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+            }
+        }
+
+        .retroalimentacion.correcta {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            color: #155724;
+        }
+
+        .retroalimentacion.incorrecta {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            color: #721c24;
+        }
+
+        .retroalimentacion p {
+            margin: 5px 0;
+            line-height: 1.6;
+        }
+
+        .retroalimentacion strong {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 1.05em;
+        }
+
+        .botones-cuestionario {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .botones-cuestionario button {
+            padding: 12px 30px;
+            font-size: 1.05em;
+        }
+
+        .botones-cuestionario button.secondary {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+
+        .resultados {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+            display: none;
+            text-align: center;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .resultados.show {
+            display: block;
+        }
+
+        .resultados h3 {
+            color: #667eea;
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .puntuacion {
+            font-size: 1.3em;
+            color: #764ba2;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .mensaje-resultado {
+            font-size: 1.1em;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        .progreso {
+            background: #e9ecef;
+            height: 8px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progreso-barra {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            transition: width 0.3s ease;
+        }
+
+        .descripcion-breve {
+            font-size: 0.9em;
+            opacity: 0.8;
+            margin-top: 8px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .infografia-section {
+                padding: 20px;
+            }
+
+            .ciclo-visual {
+                min-height: auto;
+                gap: 10px;
+            }
+
+            .etapa {
+                min-width: 120px;
+                padding: 15px;
+                font-size: 0.9em;
+            }
+
+            .etapa h3 {
+                font-size: 1em;
+            }
+
+            .etapa-icon {
+                font-size: 2em;
+            }
+
+            .flecha {
+                font-size: 1.5em;
+            }
+
+            .pregunta-container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌊 Ciclo del Agua Urbana</h1>
+            <p>Descubre cómo el agua viaja desde su captación hasta su retorno a la naturaleza</p>
+        </header>
+
+        <!-- INFOGRAFÍA INTERACTIVA -->
+        <div class="infografia-section active">
+            <div class="ciclo-visual" id="cicloDinamico">
+                <!-- Las etapas se generarán dinámicamente con JavaScript -->
+            </div>
+
+            <div id="contenidoDetallado"></div>
+
+            <div class="navegacion">
+                <button onclick="etapaAnterior()">← Anterior</button>
+                <button onclick="mostrarTodas()">Ver Todo el Ciclo</button>
+                <button onclick="etapaSiguiente()">Siguiente →</button>
+            </div>
+        </div>
+
+        <!-- CUESTIONARIO -->
+        <div class="cuestionario-section" id="seccionCuestionario">
+            <h2>📝 Cuestionario - Ciclo del Agua Urbana</h2>
+            <div class="progreso">
+                <div class="progreso-barra" id="progresoBar" style="width: 0%"></div>
+            </div>
+
+            <form id="formularioCuestionario">
+                <!-- Pregunta 1 -->
+                <div class="pregunta-container">
+                    <div class="pregunta-titulo">1. ¿Cuál es el primer paso del ciclo urbano del agua?</div>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="p1_a" name="pregunta1" value="a">
+                            <label for="p1_a">La potabilización del agua</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p1_b" name="pregunta1" value="b">
+                            <label for="p1_b">La captación de agua de una fuente</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p1_c" name="pregunta1" value="c">
+                            <label for="p1_c">El almacenamiento en depósitos</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p1_d" name="pregunta1" value="d">
+                            <label for="p1_d">La distribución a los hogares</label>
+                        </div>
+                    </div>
+                    <div class="retroalimentacion" id="ret1"></div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="pregunta-container">
+                    <div class="pregunta-titulo">2. ¿Cuáles de las siguientes son fuentes de agua para las ciudades?</div>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="p2_a" name="pregunta2" value="a">
+                            <label for="p2_a">Solo embalses artificiales creados por presas</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p2_b" name="pregunta2" value="b">
+                            <label for="p2_b">Embalses, acuíferos, ríos, manantiales y agua de mar</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p2_c" name="pregunta2" value="c">
+                            <label for="p2_c">Solo ríos y manantiales naturales</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p2_d" name="pregunta2" value="d">
+                            <label for="p2_d">Únicamente agua de mar desalinizada</label>
+                        </div>
+                    </div>
+                    <div class="retroalimentacion" id="ret2"></div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="pregunta-container">
+                    <div class="pregunta-titulo">3. ¿Cuál es el propósito principal de los depósitos de almacenamiento ubicados en lugares altos?</div>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="p3_a" name="pregunta3" value="a">
+                            <label for="p3_a">Evitar que el agua se contamine</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p3_b" name="pregunta3" value="b">
+                            <label for="p3_b">Distribuir agua por presión natural sin bombearla</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p3_c" name="pregunta3" value="c">
+                            <label for="p3_c">Acelerar el proceso de potabilización</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p3_d" name="pregunta3" value="d">
+                            <label for="p3_d">Proteger el agua de la lluvia</label>
+                        </div>
+                    </div>
+                    <div class="retroalimentacion" id="ret3"></div>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="pregunta-container">
+                    <div class="pregunta-titulo">4. ¿Qué procesos se utilizan en la potabilización del agua?</div>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="p4_a" name="pregunta4" value="a">
+                            <label for="p4_a">Solo filtración y desinfección</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p4_b" name="pregunta4" value="b">
+                            <label for="p4_b">Filtración, decantación, desinfección y desalinización (si es necesario)</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p4_c" name="pregunta4" value="c">
+                            <label for="p4_c">Solo desalinización</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p4_d" name="pregunta4" value="d">
+                            <label for="p4_d">Ebullición y destilación</label>
+                        </div>
+                    </div>
+                    <div class="retroalimentacion" id="ret4"></div>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="pregunta-container">
+                    <div class="pregunta-titulo">5. ¿Cuál es la diferencia principal entre depuración y reutilización?</div>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="p5_a" name="pregunta5" value="a">
+                            <label for="p5_a">No hay diferencia, son el mismo proceso</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p5_b" name="pregunta5" value="b">
+                            <label for="p5_b">La depuración limpia el agua y la reutilización la aprovecha para nuevos usos industriales, riego, etc.</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p5_c" name="pregunta5" value="c">
+                            <label for="p5_c">La depuración es solo para agua potable y la reutilización para agua de lluvia</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p5_d" name="pregunta5" value="d">
+                            <label for="p5_d">La reutilización es más importante que la depuración</label>
+                        </div>
+                    </div>
+                    <div class="retroalimentacion" id="ret5"></div>
+                </div>
+
+                <!-- Pregunta 6 -->
+                <div class="pregunta-container">
+                    <div class="pregunta-titulo">6. ¿Es el agua que sale de la estación de depuración potable para el consumo humano?</div>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="p6_a" name="pregunta6" value="a">
+                            <label for="p6_a">Sí, es completamente segura para beber</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p6_b" name="pregunta6" value="b">
+                            <label for="p6_b">No, está limpia pero no es potable</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p6_c" name="pregunta6" value="c">
+                            <label for="p6_c">Depende del tipo de contaminación</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p6_d" name="pregunta6" value="d">
+                            <label for="p6_d">Solo si ha sido filtrada nuevamente</label>
+                        </div>
+                    </div>
+                    <div class="retroalimentacion" id="ret6"></div>
+                </div>
+
+                <!-- Pregunta 7 -->
+                <div class="pregunta-container">
+                    <div class="pregunta-titulo">7. ¿Cuáles son algunos usos del agua depurada en la reutilización?</div>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="p7_a" name="pregunta7" value="a">
+                            <label for="p7_a">Solo consumo humano</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p7_b" name="pregunta7" value="b">
+                            <label for="p7_b">Usos industriales, riego, agricultura, fuentes ornamentales</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p7_c" name="pregunta7" value="c">
+                            <label for="p7_c">Solo agricultura</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p7_d" name="pregunta7" value="d">
+                            <label for="p7_d">No tiene ningún uso</label>
+                        </div>
+                    </div>
+                    <div class="retroalimentacion" id="ret7"></div>
+                </div>
+
+                <!-- Pregunta 8 -->
+                <div class="pregunta-container">
+                    <div class="pregunta-titulo">8. ¿Hacia dónde se devuelve el agua en la fase final del ciclo?</div>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="p8_a" name="pregunta8" value="a">
+                            <label for="p8_a">Al almacenamiento para su reutilización</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p8_b" name="pregunta8" value="b">
+                            <label for="p8_b">A ríos y al mar mediante tuberías</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p8_c" name="pregunta8" value="c">
+                            <label for="p8_c">A plantas de potabilización</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p8_d" name="pregunta8" value="d">
+                            <label for="p8_d">A sistemas de alcantarillado nuevamente</label>
+                        </div>
+                    </div>
+                    <div class="retroalimentacion" id="ret8"></div>
+                </div>
+
+                <!-- Pregunta 9 -->
+                <div class="pregunta-container">
+                    <div class="pregunta-titulo">9. ¿Qué técnica es considerada la más relevante en la depuración del agua?</div>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="p9_a" name="pregunta9" value="a">
+                            <label for="p9_a">Decantación de sedimentos</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p9_b" name="pregunta9" value="b">
+                            <label for="p9_b">Desinfección química</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p9_c" name="pregunta9" value="c">
+                            <label for="p9_c">Filtración de carbón</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p9_d" name="pregunta9" value="d">
+                            <label for="p9_d">Congelamiento y descongelamiento</label>
+                        </div>
+                    </div>
+                    <div class="retroalimentacion" id="ret9"></div>
+                </div>
+
+                <!-- Pregunta 10 -->
+                <div class="pregunta-container">
+                    <div class="pregunta-titulo">10. ¿Pueden los lodos y gases generados en la depuración del agua ser reciclados?</div>
+                    <div class="opciones">
+                        <div class="opcion">
+                            <input type="radio" id="p10_a" name="pregunta10" value="a">
+                            <label for="p10_a">No, deben ser eliminados como residuos</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p10_b" name="pregunta10" value="b">
+                            <label for="p10_b">Sí, pueden ser reciclados</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p10_c" name="pregunta10" value="c">
+                            <label for="p10_c">Solo los lodos, no los gases</label>
+                        </div>
+                        <div class="opcion">
+                            <input type="radio" id="p10_d" name="pregunta10" value="d">
+                            <label for="p10_d">Solo en plantas grandes de depuración</label>
+                        </div>
+                    </div>
+                    <div class="retroalimentacion" id="ret10"></div>
+                </div>
+            </form>
+
+            <div class="botones-cuestionario">
+                <button onclick="corregirCuestionario()">Verificar Respuestas</button>
+                <button class="secondary" onclick="reiniciarCuestionario()">Reiniciar Cuestionario</button>
+            </div>
+
+            <div class="resultados" id="resultadosDiv"></div>
+        </div>
+    </div>
+
+    <script>
+        let etapaActual = 0;
+
+        const respuestasCorrectas = {
+            pregunta1: 'b',
+            pregunta2: 'b',
+            pregunta3: 'b',
+            pregunta4: 'b',
+            pregunta5: 'b',
+            pregunta6: 'b',
+            pregunta7: 'b',
+            pregunta8: 'b',
+            pregunta9: 'a',
+            pregunta10: 'b'
+        };
+
+        const etapas = [
+            {
+                titulo: "Captación",
+                icon: "💧",
+                contenido: "Es el primer paso del ciclo urbano del agua y consiste en conseguir agua de alguna fuente. Las fuentes que abastecen las grandes ciudades suelen ser grandes embalses artificiales creados mediante presas, pero es posible captar agua de otras fuentes como: acuíferos, ríos, manantiales o incluso el mar."
+            },
+            {
+                titulo: "Potabilización",
+                icon: "🔬",
+                contenido: "En esta fase se limpia el agua para que sea potable y óptima para el consumo humano. Para eso, el agua sufre varios procesos de limpieza físicos y químicos en plantas potabilizadoras. Dichos procesos consisten en filtrar el agua, decantarla, desinfectarla, etc. Y en el caso de que se potabilice agua de mar, es necesario desalinizarla."
+            },
+            {
+                titulo: "Almacenamiento",
+                icon: "📦",
+                contenido: "Una vez que el agua es potable, se almacena en depósitos para que siempre haya agua disponible bajo cualquier demanda. Hay que destacar que dichos depósitos suelen estar colocados en lugares altos, para que sea posible distribuir el agua a los elevados edificios de las ciudades sin tener que bombearla. Y es que cuando la fuente de agua es más alta que el lugar donde la vamos a consumir, es posible que llegue hasta ahí por su propia presión."
+            },
+            {
+                titulo: "Distribución",
+                icon: "🚿",
+                contenido: "Esta es la fase en la que el agua se canaliza a cada hogar. Ese transporte se hace mediante grandes tuberías que llevan agua limpia a tuberías secundarias que la transportan a cada grifo."
+            },
+            {
+                titulo: "Consumo",
+                icon: "🏠",
+                contenido: "Una vez que el agua llega a cada hogar, esta se consume. Es aquí donde el agua se ensucia de nuevo."
+            },
+            {
+                titulo: "Alcantarillado",
+                icon: "🔌",
+                contenido: "El agua que ya ha sido consumida y, por tanto, puede estar contaminada, se tiene que limpiar para poder introducirla al medio ambiente de forma respetuosa. Para eso, tanto el agua consumida como el agua de lluvia se transporta mediante el alcantarillado a una estación de saneamiento."
+            },
+            {
+                titulo: "Depuración",
+                icon: "♻️",
+                contenido: "En esta fase el agua residual se limpia en estaciones de depuración. Es la fase en la que se elimina la contaminación física, química y biológica del agua. En el proceso de depuración se utilizan diversas técnicas, pero la más relevante suele ser la decantación de sedimentos. Y cabe destacar que el agua que sale de esta fase es limpia y se puede verter en la naturaleza, pero no es potable."
+            },
+            {
+                titulo: "Reutilización",
+                icon: "🔄",
+                contenido: "El agua depurada no es apropiada para el consumo humano, pero sí que es útil para otros cometidos. Suele ser común, por ejemplo, reutilizar el agua para usos industriales, riego, agricultura, fuentes ornamentales, etc. Además, incluso los lodos o el gas que se generan al depurar el agua también pueden ser reciclados."
+            },
+            {
+                titulo: "Retorno",
+                icon: "🌍",
+                contenido: "En el retorno se devuelve el agua a la naturaleza. Para eso, se canaliza agua mediante tuberías tanto a ríos como al propio mar."
+            }
+        ];
+
+        const retroalimentaciones = {
+            pregunta1: {
+                correcta: "¡Correcto! La captación es efectivamente el primer paso del ciclo del agua urbana, donde se obtiene el agua de una fuente (embalses, acuíferos, ríos, manantiales o mar).",
+                incorrecta_a: "Incorrecto. La potabilización es la segunda fase, no la primera. Primero se debe captar el agua de una fuente.",
+                incorrecta_c: "Incorrecto. El almacenamiento ocurre después de la potabilización, no es el primer paso.",
+                incorrecta_d: "Incorrecto. La distribución ocurre después del almacenamiento, no es el primer paso del ciclo."
+            },
+            pregunta2: {
+                correcta: "¡Correcto! Las ciudades pueden obtener agua de múltiples fuentes incluyendo embalses artificiales, acuíferos, ríos, manantiales e incluso desalinizar agua de mar.",
+                incorrecta_a: "Incorrecto. Aunque los embalses son importantes, no son la única fuente. También se utilizan acuíferos, ríos, manantiales y agua de mar.",
+                incorrecta_c: "Incorrecto. Las ciudades también utilizan embalses artificiales, acuíferos y agua de mar desalinizada, además de ríos y manantiales.",
+                incorrecta_d: "Incorrecto. El agua de mar desalinizada es una opción, pero no es la única fuente de agua para las ciudades."
+            },
+            pregunta3: {
+                correcta: "¡Correcto! Los depósitos ubicados en lugares altos aprovechan la presión natural del agua para distribuirla sin necesidad de bombearla, lo que es más eficiente.",
+                incorrecta_a: "Incorrecto. Aunque los depósitos ayudan, la altura principal no es evitar contaminación sino aprovechar la presión natural.",
+                incorrecta_c: "Incorrecto. La altura de los depósitos no acelera la potabilización, sino que facilita la distribución.",
+                incorrecta_d: "Incorrecto. La altura no está diseñada para proteger del agua de lluvia."
+            },
+            pregunta4: {
+                correcta: "¡Correcto! La potabilización utiliza múltiples procesos incluyendo filtración, decantación, desinfección y desalinización cuando es necesario potabilizar agua de mar.",
+                incorrecta_a: "Incorrecto. Aunque son importantes, se utilizan más procesos además de filtración y desinfección, como la decantación.",
+                incorrecta_c: "Incorrecto. La desalinización solo se usa cuando el agua proviene del mar, no es el único proceso.",
+                incorrecta_d: "Incorrecto. La ebullición y destilación no son los procesos principales utilizados en plantas potabilizadoras."
+            },
+            pregunta5: {
+                correcta: "¡Correcto! La depuración es el proceso de limpieza del agua residual, mientras que la reutilización es el aprovechamiento de esa agua limpia para nuevos usos industriales, riego, agricultura, etc.",
+                incorrecta_a: "Incorrecto. Son procesos diferentes pero relacionados en el ciclo del agua.",
+                incorrecta_c: "Incorrecto. La depuración se aplica a toda agua residual (consumida e industrial), no solo a agua potable.",
+                incorrecta_d: "Incorrecto. Ambos procesos son igualmente importantes en el ciclo urbano del agua."
+            },
+            pregunta6: {
+                correcta: "¡Correcto! El agua que sale de la estación de depuración está limpia y es segura para el medio ambiente, pero no es potable para el consumo humano.",
+                incorrecta_a: "Incorrecto. Aunque el agua está limpia, no cumple con los estándares de potabilidad para el consumo humano.",
+                incorrecta_c: "Incorrecto. El tipo de contaminación no cambia el hecho de que el agua depurada no es potable.",
+                incorrecta_d: "Incorrecto. Aunque se filtre nuevamente, el agua depurada tiene una calidad menor a la potable."
+            },
+            pregunta7: {
+                correcta: "¡Correcto! El agua depurada es reutilizada en múltiples aplicaciones como industria, riego, agricultura y fuentes ornamentales.",
+                incorrecta_a: "Incorrecto. Aunque podría usarse en consumo con más procesamiento, su uso principal es industrial y agrícola.",
+                incorrecta_c: "Incorrecto. El agua depurada tiene múltiples usos más allá de solo agricultura.",
+                incorrecta_d: "Incorrecto. El agua depurada tiene muchos usos valiosos tanto económica como ambientalmente."
+            },
+            pregunta8: {
+                correcta: "¡Correcto! En la fase final del ciclo, el agua se devuelve a la naturaleza mediante tuberías hacia ríos y al mar.",
+                incorrecta_a: "Incorrecto. El agua no se devuelve al almacenamiento inicial, sino que completa su ciclo en la naturaleza.",
+                incorrecta_c: "Incorrecto. El agua no regresa a las plantas de potabilización en esta fase.",
+                incorrecta_d: "Incorrecto. El agua ya pasó por el alcantarillado en fases anteriores del ciclo."
+            },
+            pregunta9: {
+                correcta: "¡Correcto! La decantación de sedimentos es la técnica más relevante en la depuración del agua residual.",
+                incorrecta_b: "Incorrecto. La desinfección química es importante, pero la decantación de sedimentos es la más relevante.",
+                incorrecta_c: "Incorrecto. La filtración de carbón no es la técnica más relevante en depuración de aguas residuales.",
+                incorrecta_d: "Incorrecto. El congelamiento y descongelamiento no es una técnica utilizada en depuración."
+            },
+            pregunta10: {
+                correcta: "¡Correcto! Los lodos y gases generados en la depuración pueden ser reciclados, lo que contribuye a la sostenibilidad del proceso.",
+                incorrecta_a: "Incorrecto. Estos subproductos no son solo residuos; tienen potencial de reciclaje.",
+                incorrecta_c: "Incorrecto. Tanto los lodos como los gases pueden ser reciclados.",
+                incorrecta_d: "Incorrecto. El reciclaje de lodos y gases puede realizarse en plantas de cualquier tamaño."
+            }
+        };
+
+        // Función para generar las etapas dinámicamente en el HTML
+        function generarEtapas() {
+            let html = '';
+            etapas.forEach((etapa, idx) => {
+                html += `<div class="etapa ${idx === 0 ? 'active' : ''}" onclick="mostrarEtapa(${idx})" data-index="${idx}">
+                    <div class="etapa-numero">${idx + 1}</div>
+                    <div class="etapa-icon">${etapa.icon}</div>
+                    <h3>${etapa.titulo}</h3>
+                    <div class="descripcion-breve">Paso ${idx + 1}</div>
+                </div>`;
+                if (idx < etapas.length - 1) {
+                    html += '<div class="flecha">→</div>';
+                }
+            });
+            document.getElementById('cicloDinamico').innerHTML = html;
+            
+            // Agregar event listeners a todas las etapas
+            document.querySelectorAll('.etapa').forEach(etapa => {
+                etapa.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const index = parseInt(this.getAttribute('data-index'));
+                    mostrarEtapa(index);
+                });
+            });
+        }
+
+        function mostrarEtapa(indice) {
+            console.log('Mostrando etapa:', indice);
+            etapaActual = indice;
+            actualizarVisualizacion();
+        }
+
+        function actualizarVisualizacion() {
+            // Remover la clase active de todas las etapas
+            document.querySelectorAll('.etapa').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Agregar la clase active solo a la etapa actual
+            const etapaActualElement = document.querySelector(`.etapa[data-index="${etapaActual}"]`);
+            if (etapaActualElement) {
+                etapaActualElement.classList.add('active');
+            }
+
+            // Actualizar contenido
+            const etapa = etapas[etapaActual];
+            const contenidoHTML = `
+                <div class="contenido-etapa">
+                    <h2>${etapa.icon} ${etapa.titulo}</h2>
+                    <p>${etapa.contenido}</p>
+                </div>
+            `;
+            document.getElementById('contenidoDetallado').innerHTML = contenidoHTML;
+
+            // Actualizar progreso
+            const progreso = ((etapaActual + 1) / etapas.length) * 100;
+            document.getElementById('progresoBar').style.width = progreso + '%';
+        }
+
+        function etapaAnterior() {
+            if (etapaActual > 0) {
+                etapaActual--;
+                actualizarVisualizacion();
+            }
+        }
+
+        function etapaSiguiente() {
+            if (etapaActual < etapas.length - 1) {
+                etapaActual++;
+                actualizarVisualizacion();
+            }
+        }
+
+        function mostrarTodas() {
+            let contenido = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">';
+            etapas.forEach((etapa, idx) => {
+                contenido += `
+                    <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 10px;">
+                        <h3>${etapa.icon} ${etapa.titulo}</h3>
+                        <p style="font-size: 0.95em; line-height: 1.6; margin-top: 10px;">${etapa.contenido}</p>
+                    </div>
+                `;
+            });
+            contenido += '</div>';
+            document.getElementById('contenidoDetallado').innerHTML = contenido;
+        }
+
+        function corregirCuestionario() {
+            let respuestasUsuario = {};
+            let correctas = 0;
+            let total = 10;
+
+            for (let i = 1; i <= 10; i++) {
+                const preguntaName = `pregunta${i}`;
+                const respuesta = document.querySelector(`input[name="${preguntaName}"]:checked`);
+                
+                if (!respuesta) {
+                    alert(`Por favor responde la pregunta ${i}`);
+                    return;
+                }
+
+                respuestasUsuario[preguntaName] = respuesta.value;
+                
+                if (respuesta.value === respuestasCorrectas[preguntaName]) {
+                    correctas++;
+                    mostrarRetroalimentacion(i, true, respuestasCorrectas[preguntaName]);
+                } else {
+                    mostrarRetroalimentacion(i, false, respuestasCorrectas[preguntaName]);
+                }
+            }
+
+            mostrarResultados(correctas, total);
+        }
+
+        function mostrarRetroalimentacion(numPregunta, esCorrecta, respuestaCorrecta) {
+            const div = document.getElementById(`ret${numPregunta}`);
+            const feedback = retroalimentaciones[`pregunta${numPregunta}`];
+            
+            if (esCorrecta) {
+                div.className = 'retroalimentacion show correcta';
+                div.innerHTML = `<strong>✓ Respuesta Correcta</strong><p>${feedback.correcta}</p>`;
+            } else {
+                const clave = `incorrecta_${respuestaCorrecta}`;
+                div.className = 'retroalimentacion show incorrecta';
+                div.innerHTML = `<strong>✗ Respuesta Incorrecta</strong><p>${feedback[clave]}</p><p><strong>Respuesta correcta:</strong> ${document.querySelector(`input[value="${respuestaCorrecta}"][name="pregunta${numPregunta}"]`).nextElementSibling.textContent}</p>`;
+            }
+        }
+
+        function mostrarResultados(correctas, total) {
+            const porcentaje = Math.round((correctas / total) * 100);
+            let mensaje = '';
+            let color = '';
+
+            if (porcentaje >= 90) {
+                mensaje = "¡Excelente! Demostraste un dominio excepcional del ciclo del agua urbana.";
+                color = "#28a745";
+            } else if (porcentaje >= 70) {
+                mensaje = "¡Muy bien! Tienes una buena comprensión del ciclo del agua urbana.";
+                color = "#007bff";
+            } else if (porcentaje >= 50) {
+                mensaje = "Buen intento. Revisa los temas donde tuviste dificultades y vuelve a intentar.";
+                color = "#ffc107";
+            } else {
+                mensaje = "Necesitas repasar el contenido del ciclo del agua urbana. Consulta la infografía nuevamente.";
+                color = "#dc3545";
+            }
+
+            const resultadosDiv = document.getElementById('resultadosDiv');
+            resultadosDiv.className = 'resultados show';
+            resultadosDiv.innerHTML = `
+                <h3>📊 Resultados de tu Cuestionario</h3>
+                <div class="puntuacion" style="color: ${color};">${correctas}/${total} respuestas correctas</div>
+                <div class="puntuacion" style="color: ${color}; font-size: 1.8em;">${porcentaje}%</div>
+                <div class="mensaje-resultado">${mensaje}</div>
+            `;
+            resultadosDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function reiniciarCuestionario() {
+            document.getElementById('formularioCuestionario').reset();
+            document.querySelectorAll('.retroalimentacion').forEach(el => {
+                el.classList.remove('show');
+            });
+            document.getElementById('resultadosDiv').classList.remove('show');
+            document.getElementById('progresoBar').style.width = '0%';
+            alert('Cuestionario reiniciado. ¡Adelante!');
+        }
+
+        // Inicializar
+        generarEtapas();
+        actualizarVisualizacion();
+    </script>
+</body>
+</html>

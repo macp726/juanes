@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía Interactiva: El Agua Potable</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Carga de Google Font 'Inter' -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Estilos personalizados */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Transiciones suaves para elementos interactivos */
+        .card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        /* Estilo para el ícono del proceso activo */
+        .process-icon.active svg {
+            color: #2563eb; /* text-blue-600 */
+        }
+        .process-icon.active p {
+            font-weight: 600; /* font-semibold */
+            color: #2563eb; /* text-blue-600 */
+        }
+        /* Animación para la aparición del modal */
+        #modal {
+            transition: opacity 0.3s ease;
+        }
+        #modal-box {
+            transition: transform 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 text-gray-800">
+
+    <!-- Contenedor Principal -->
+    <div class="container mx-auto p-4 md:p-8 max-w-7xl">
+
+        <!-- Título -->
+        <header class="text-center my-8 md:my-12">
+            <h1 class="text-3xl md:text-5xl font-bold text-blue-800">
+                La Vital Importancia del Agua Potable
+            </h1>
+            <p class="text-lg md:text-xl text-blue-600 mt-2">
+                Un recurso esencial para la vida y el bienestar
+            </p>
+        </header>
+
+        <!-- Cuadrícula de Tarjetas Interactivas -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+            
+            <!-- Tarjeta 1: Importancia -->
+            <div id="card-importancia" class="card bg-white p-6 rounded-xl shadow-lg cursor-pointer" onclick="openModal('importancia')">
+                <div class="flex flex-col items-center text-center">
+                    <div class="p-4 bg-red-100 rounded-full">
+                        <!-- Icono SVG: Corazón (Salud) -->
+                        <svg class="w-12 h-12 text-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-semibold text-blue-700 mt-4">¿Por qué es Vital?</h2>
+                    <p class="text-gray-600 mt-2">El agua es la base de nuestra salud, higiene y desarrollo como sociedad.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 2: Fuentes -->
+            <div id="card-fuentes" class="card bg-white p-6 rounded-xl shadow-lg cursor-pointer" onclick="openModal('fuentes')">
+                <div class="flex flex-col items-center text-center">
+                    <div class="p-4 bg-green-100 rounded-full">
+                        <!-- Icono SVG: Montaña (Naturaleza/Fuentes) -->
+                        <svg class="w-12 h-12 text-green-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 18.75h16.5M3.75 12h16.5m-16.5 6.75h16.5M12 3.75L19.5 11.25M12 3.75L4.5 11.25" clip-rule="evenodd" fill-rule="evenodd"/>
+                            <path d="M20.25 20.25l-8.25-8.25-8.25 8.25" stroke-linecap="round" stroke-linejoin="round" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75l-8.25 8.25H12v-8.25zM12 12.75l8.25 8.25H12v-8.25z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 18.75h16.5M3.75 12h16.5m-16.5 6.75h16.5M12 3.75L19.5 11.25M12 3.75L4.5 11.25"/>
+                            <path d="M12 3.75l7.5 7.5-7.5 7.5-7.5-7.5L12 3.75z" stroke-width="0" fill="currentColor" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-semibold text-blue-700 mt-4">Fuentes de Agua</h2>
+                    <p class="text-gray-600 mt-2">De dónde obtenemos el agua que consumimos diariamente.</p>
+                </div>
+            </div>
+
+            <!-- Tarjeta 3: Conservación -->
+            <div id="card-conservacion" class="card bg-white p-6 rounded-xl shadow-lg cursor-pointer" onclick="openModal('conservacion')">
+                <div class="flex flex-col items-center text-center">
+                    <div class="p-4 bg-yellow-100 rounded-full">
+                        <!-- Icono SVG: Mano Sosteniendo Gota (Conservación) -->
+                        <svg class="w-12 h-12 text-yellow-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.375c.996 0 1.83.69 1.996 1.625l.004.175v.75c0 .621.504 1.125 1.125 1.125h.75c.996 0 1.83.69 1.996 1.625l.004.175v.75c0 .621.504 1.125 1.125 1.125h.75c.996 0 1.83.69 1.996 1.625l.004.175v3.375c0 2.485-2.015 4.5-4.5 4.5H8.625c-2.485 0-4.5-2.015-4.5-4.5v-3.375c0-.996.69-1.83 1.625-1.996l.175-.004h.75c.621 0 1.125-.504 1.125-1.125v-.75c0-.996.69-1.83 1.625-1.996l.175-.004h.75c.621 0 1.125-.504 1.125-1.125v-.75c0-.996.69-1.83 1.625-1.996L12 6.375zM12 1.5c-2.828 0-5.11 2.282-5.11 5.11v.222c0 .604-.214 1.18-.59 1.637-.375.457-.89.706-1.425.706H4.66c-1.39 0-2.518 1.128-2.518 2.518v.222c0 .604-.214 1.18-.59 1.637-.375.457-.89.706-1.425.706H-0.215c-1.39 0-2.518 1.128-2.518 2.518v3.654c0 3.758 3.042 6.8 6.8 6.8h7.2c3.758 0 6.8-3.042 6.8-6.8v-3.654c0-1.39-1.128-2.518-2.518-2.518h-.215c-.535 0-1.05-.249-1.425-.706-.376-.457-.59-.1.037-.59-1.637z" transform="translate(4 1)" />
+                        </svg>
+                    </div>
+                    <h2 class="text-2xl font-semibold text-blue-700 mt-4">Formas de Conservación</h2>
+                    <p class="text-gray-600 mt-2">Cómo podemos proteger este recurso vital para el futuro.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Interactiva: El Ciclo del Agua Urbana (Basado en el PDF) -->
+        <div class="bg-white p-6 md:p-8 rounded-xl shadow-lg mt-8 md:mt-12">
+            <h2 class="text-2xl md:text-3xl font-bold text-blue-700 text-center">
+                El Ciclo del Agua Urbana
+            </h2>
+            <p class="text-center text-gray-600 mt-2 mb-8">
+                Sigue el viaje del agua. Haz clic en cada ícono para ver la definición.
+            </p>
+
+            <!-- Contenedor de iconos del proceso -->
+            <div class="flex flex-wrap justify-center items-start gap-4 md:gap-6">
+                
+                <!-- Icono 1: Captación -->
+                <div id="step-captacion" class="process-icon flex flex-col items-center text-center cursor-pointer p-2 w-24" onclick="showProcessInfo('captacion', this)">
+                    <svg class="w-12 h-12 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25c-2.625 0-4.904 1.06-6.51 2.836M19.5 14.25v6.096c0 .356-.01.71-.029 1.061-.02.351-.044.7-.075 1.045a4.5 4.5 0 11-8.75 0c-.031-.345-.055-.694-.075-1.045-.019-.351-.029-.705-.029-1.061v-6.096M19.5 14.25h-15M4.5 9.75c0-2.625 2.125-4.75 4.75-4.75s4.75 2.125 4.75 4.75M4.5 9.75v11.096c0 .356.01.71.029 1.061.02.351.044.7.075 1.045a4.5 4.5 0 10 8.75 0c.031-.345.055-.694.075-1.045.019-.351.029-.705.029-1.061V9.75M4.5 9.75h15" /></svg>
+                    <p class="text-sm mt-2 text-gray-700">Captación</p>
+                </div>
+                
+                <!-- Icono 2: Almacenamiento -->
+                <div id="step-almacenamiento" class="process-icon flex flex-col items-center text-center cursor-pointer p-2 w-24" onclick="showProcessInfo('almacenamiento', this)">
+                    <svg class="w-12 h-12 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-8.25 8.25-8.25-8.25M12 15.75V3" /></svg>
+                    <p class="text-sm mt-2 text-gray-700">Almacenamiento</p>
+                </div>
+
+                <!-- Icono 3: Potabilización -->
+                <div id="step-potabilizacion" class="process-icon flex flex-col items-center text-center cursor-pointer p-2 w-24" onclick="showProcessInfo('potabilizacion', this)">
+                    <svg class="w-12 h-12 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <p class="text-sm mt-2 text-gray-700">Potabilización</p>
+                </div>
+
+                <!-- Icono 4: Distribución -->
+                <div id="step-distribucion" class="process-icon flex flex-col items-center text-center cursor-pointer p-2 w-24" onclick="showProcessInfo('distribucion', this)">
+                    <svg class="w-12 h-12 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 21v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21m0 0h4.5m-4.5 0H5.25m15 0H1.5M5.25 7.5h13.5m-13.5 0V3.75c0-.621.504-1.125 1.125-1.125h11.25c.621 0 1.125.504 1.125 1.125V7.5m-13.5 0h13.5" /></svg>
+                    <p class="text-sm mt-2 text-gray-700">Distribución</p>
+                </div>
+
+                <!-- Icono 5: Consumo -->
+                <div id="step-consumo" class="process-icon flex flex-col items-center text-center cursor-pointer p-2 w-24" onclick="showProcessInfo('consumo', this)">
+                    <svg class="w-12 h-12 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.263-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5h.375m-.375 3h.375m0 3h.375M12 10.5h.375m-.375 3h.375m0 3h.375m3.375-6h.375m-.375 3h.375m0 3h.375" /></svg>
+                    <p class="text-sm mt-2 text-gray-700">Consumo</p>
+                </div>
+
+                <!-- Icono 6: Alcantarillado -->
+                <div id="step-alcantarillado" class="process-icon flex flex-col items-center text-center cursor-pointer p-2 w-24" onclick="showProcessInfo('alcantarillado', this)">
+                    <svg class="w-12 h-12 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 00-3.7-3.7 4.824 4.824 0 00-3.662-.138c-1.232-.092-2.453-.138-3.662-.138-1.232 0-2.453.046-3.662.138a4.006 4.006 0 00-3.7 3.7 4.824 4.824 0 00-.138 3.662c-.092 1.232-.138 2.453-.138 3.662s.046 2.453.138 3.662a4.006 4.006 0 003.7 3.7 4.824 4.824 0 003.662.138c1.232.092 2.453.138 3.662.138s2.453-.046 3.662-.138a4.006 4.006 0 003.7-3.7 4.824 4.824 0 00.138-3.662c.092-1.232.138-2.453.138-3.662z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 12v.01" /></svg>
+                    <p class="text-sm mt-2 text-gray-700">Alcantarillado</p>
+                </div>
+
+                <!-- Icono 7: Depuración -->
+                <div id="step-depuracion" class="process-icon flex flex-col items-center text-center cursor-pointer p-2 w-24" onclick="showProcessInfo('depuracion', this)">
+                    <svg class="w-12 h-12 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    <p class="text-sm mt-2 text-gray-700">Depuración</p>
+                </div>
+
+                <!-- Icono 8: Retorno -->
+                <div id="step-retorno" class="process-icon flex flex-col items-center text-center cursor-pointer p-2 w-24" onclick="showProcessInfo('retorno', this)">
+                    <svg class="w-12 h-12 text-gray-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.181m0-3.181l-3.181-3.181m13.232 5.17h-4.992v.001M17.015 4.355v4.992m0 0h-4.992m4.993 0l-3.181-3.181m0 3.181l3.181 3.181" /></svg>
+                    <p class="text-sm mt-2 text-gray-700">Retorno</p>
+                </div>
+            </div>
+
+            <!-- Caja de descripción del proceso -->
+            <div class="mt-8 p-4 md:p-6 bg-blue-50 rounded-lg min-h-[120px] flex items-center justify-center">
+                <p id="process-description" class="text-center text-gray-700 italic">
+                    Selecciona un paso del ciclo para ver su descripción.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Pie de página -->
+        <footer class="text-center mt-12">
+            <p class="text-2xl font-black text-blue-800">¡CADA GOTA CUENTA!</p>
+        </footer>
+
+    </div>
+
+    <!-- Contenedor del Modal (Oculto por defecto) -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-4 z-50 hidden opacity-0" onclick="closeModal()">
+        <div id="modal-box" class="bg-white rounded-xl shadow-2xl max-w-lg w-full p-6 md:p-8 relative transform scale-95" onclick="event.stopPropagation()">
+            <!-- Botón de Cerrar -->
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-500 hover:text-gray-800">
+                <svg class="w-6 h-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            
+            <!-- Contenido del Modal -->
+            <h2 id="modal-title" class="text-3xl font-bold text-blue-700 mb-4"></h2>
+            <div id="modal-content" class="text-gray-700 space-y-4">
+                <!-- El contenido se inyectará aquí -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // --- Lógica para el Modal ---
+
+        // Datos para los modales
+        const modalData = {
+            'importancia': {
+                title: '¿Por qué es Vital?',
+                content: `
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong>Salud:</strong> Previene la transmisión de enfermedades como el cólera, la disentería y la fiebre tifoidea.</li>
+                        <li><strong>Bienestar:</strong> Es esencial para la hidratación, la preparación de alimentos y mantenernos con energía.</li>
+                        <li><strong>Higiene:</strong> Fundamental para el aseo personal y la limpieza del hogar, previniendo infecciones.</li>
+                        <li><strong>Desarrollo:</strong> Es un pilar para la agricultura (producir alimentos) y la industria (generar bienes).</li>
+                    </ul>
+                `
+            },
+            'fuentes': {
+                title: 'Fuentes de Agua',
+                content: `
+                    <p>Obtenemos agua potable de diversas fuentes naturales:</p>
+                    <ul class="list-disc list-inside space-y-2 mt-4">
+                        <li><strong>Aguas Superficiales:</strong> Ríos, lagos y embalses. Son las más visibles pero a menudo requieren más tratamiento.</li>
+                        <li><strong>Aguas Subterráneas:</strong> Acuíferos y pozos. Agua almacenada bajo tierra, naturalmente filtrada por la roca y el suelo.</li>
+                        <li><strong>Agua de Lluvia:</strong> Recolección y almacenamiento del agua de lluvia (pluvial).</li>
+                    </ul>
+                `
+            },
+            'conservacion': {
+                title: 'Formas de Conservación',
+                content: `
+                    <p>Proteger el agua es tarea de todos:</p>
+                    <ul class="list-disc list-inside space-y-2 mt-4">
+                        <li><strong>En el Hogar:</strong> Reparar fugas, cerrar el grifo, tomar duchas cortas y reutilizar el agua siempre que sea posible.</li>
+                        <li><strong>En la Comunidad:</strong> Proteger las fuentes de agua (ríos, lagos) de la contaminación, crear sistemas de captación de lluvia y educar sobre el uso responsable.</li>
+                        <li><strong>Tecnología:</strong> Usar dispositivos ahorradores en grifos y sanitarios.</li>
+                    </ul>
+                `
+            }
+        };
+
+        const modal = document.getElementById('modal');
+        const modalBox = document.getElementById('modal-box');
+        const modalTitle = document.getElementById('modal-title');
+        const modalContent = document.getElementById('modal-content');
+
+        // Función para abrir el modal
+        function openModal(type) {
+            const data = modalData[type];
+            if (!data) return;
+
+            modalTitle.innerText = data.title;
+            modalContent.innerHTML = data.content;
+
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalBox.classList.remove('scale-95');
+            }, 10); // Pequeño retraso para activar la transición de CSS
+        }
+
+        // Función para cerrar el modal
+        function closeModal() {
+            modal.classList.add('opacity-0');
+            modalBox.classList.add('scale-95');
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300); // Coincide con la duración de la transición
+        }
+
+        // --- Lógica para el Ciclo del Agua ---
+
+        // Definiciones del PDF
+        const processData = {
+            'captacion': '<strong>Captación:</strong> Proceso de recolectar y almacenar agua de fuentes naturales (como ríos, lagos, acuíferos o la lluvia) para su posterior uso.',
+            'almacenamiento': '<strong>Almacenamiento:</strong> Guardar agua en contenedores o estructuras (como embalses, estanques o tanques) para su uso futuro.',
+            'potabilizacion': '<strong>Potabilización:</strong> Proceso mediante el cual se eliminan impurezas y se realiza desinfección en una planta de tratamiento.',
+            'distribucion': '<strong>Distribución:</strong> Fase en la que el agua se canaliza a cada hogar. Ese transporte se hace mediante grandes tuberías.',
+            'consumo': '<strong>Consumo:</strong> Cantidad de agua utilizada para satisfacer necesidades humanas en diversos ámbitos (doméstico, agricultura, industria).',
+            'alcantarillado': '<strong>Alcantarillado:</strong> Sistema de tuberías subterráneas que recogen y transportan aguas residuales y pluviales.',
+            'depuracion': '<strong>Depuración:</strong> Fase en la que se elimina la contaminación física, química y biológica del agua residual.',
+            'retorno': '<strong>Retorno / Reutilización:</strong> Se devuelve el agua a la naturaleza (ríos, mar) o se reutiliza para otros fines como riego (agua depurada).'
+        };
+
+        const processDescription = document.getElementById('process-description');
+        let activeProcessIcon = null;
+
+        // Función para mostrar la info del proceso
+        function showProcessInfo(step, element) {
+            const data = processData[step];
+            if (!data) return;
+
+            processDescription.innerHTML = data;
+            processDescription.classList.remove('italic');
+
+            // Quitar clase activa del ícono anterior
+            if (activeProcessIcon) {
+                activeProcessIcon.classList.remove('active');
+            }
+            
+            // Añadir clase activa al ícono actual
+            element.classList.add('active');
+            activeProcessIcon = element;
+        }
+
+        // Iniciar con el primer paso seleccionado
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstIcon = document.getElementById('step-captacion');
+            showProcessInfo('captacion', firstIcon);
+        });
+
+    </script>
+
+</body>
+</html>
