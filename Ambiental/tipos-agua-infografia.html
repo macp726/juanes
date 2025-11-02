@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía Interactiva: Tipos de Agua</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #667eea;
+            margin: 40px 0 30px 0;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        .water-types-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+        }
+
+        .water-card {
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .water-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .water-card-image {
+            width: 100%;
+            height: 200px;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .water-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .water-card-content {
+            padding: 20px;
+        }
+
+        .water-card-title {
+            font-size: 1.4em;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .water-card-description {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.6;
+            text-align: justify;
+        }
+
+        .characteristics {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .characteristic-item {
+            font-size: 0.85em;
+            color: #666;
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .characteristic-item:before {
+            content: "•";
+            color: #667eea;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+
+        /* Sección de Cuestionario */
+        .quiz-section {
+            background: #f9f9f9;
+            padding: 40px;
+            margin-top: 50px;
+            border-radius: 10px;
+            border: 2px solid #e0e0e0;
+        }
+
+        .quiz-section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .question-container {
+            background: white;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #667eea;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .question-number {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .question-text {
+            font-size: 1.05em;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f5f5f5;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .option-label:hover {
+            background: #efefef;
+        }
+
+        .option-label input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .option-text {
+            font-size: 0.95em;
+            color: #555;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            border-left: 4px solid #28a745;
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+            display: block;
+        }
+
+        .feedback-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .quiz-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-reset {
+            background: #6c757d;
+            color: white;
+        }
+
+        .btn-reset:hover {
+            background: #5a6268;
+        }
+
+        .results-summary {
+            margin-top: 30px;
+            padding: 20px;
+            background: #e7f3ff;
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+            text-align: center;
+            display: none;
+        }
+
+        .results-summary.show {
+            display: block;
+        }
+
+        .results-summary h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .results-text {
+            font-size: 1.1em;
+            color: #333;
+        }
+
+        .score-percentage {
+            font-size: 2em;
+            color: #667eea;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .water-types-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+            }
+
+            .quiz-section {
+                padding: 20px;
+            }
+        }
+
+        .scroll-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            display: none;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .scroll-to-top:hover {
+            background: #764ba2;
+        }
+
+        .scroll-to-top.show {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>💧 Infografía de Tipos de Agua</h1>
+            <p>Conoce las características, usos y calidad de diferentes tipos de agua</p>
+        </div>
+
+        <div class="content">
+            <!-- SECCIÓN DE INFOGRAFÍA -->
+            <div class="section-title">Clasificación de Tipos de Agua</div>
+            
+            <div class="water-types-grid" id="waterGrid">
+                <!-- Las tarjetas se generarán con JavaScript -->
+            </div>
+
+            <!-- SECCIÓN DE CUESTIONARIO -->
+            <div class="quiz-section">
+                <h2>📝 Cuestionario Interactivo</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 1.05em;">Prueba tu conocimiento sobre los tipos de agua. Responde todas las preguntas y obtén retroalimentación inmediata.</p>
+                
+                <form id="quizForm">
+                    <!-- Las preguntas se generarán con JavaScript -->
+                </form>
+
+                <div class="quiz-buttons">
+                    <button type="button" class="btn btn-submit" onclick="submitQuiz()">Verificar Respuestas</button>
+                    <button type="button" class="btn btn-reset" onclick="resetQuiz()">Limpiar Formulario</button>
+                </div>
+
+                <div class="results-summary" id="resultsSummary">
+                    <h3>Resultado Final</h3>
+                    <div class="score-percentage" id="scorePercentage">0%</div>
+                    <div class="results-text" id="resultsText"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button class="scroll-to-top" id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // DATOS DE TIPOS DE AGUA
+        const waterTypes = [
+            {
+                id: 1,
+                name: "Agua Potable",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/91839323-ab2e-431a-a454-b619e00de8a8.png",
+                description: "Es el agua apta para el consumo humano, que tras un tratamiento adecuado puede ser consumida sin peligro para la salud.",
+                characteristics: [
+                    "Limpia y transparente",
+                    "Sin olores ni sabores desagradables",
+                    "Libre de contaminantes",
+                    "Tratada mediante filtración y desinfección"
+                ]
+            },
+            {
+                id: 2,
+                name: "Agua Dulce",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/2461a439-c608-4ae2-922f-42bc4a6252ce.png",
+                description: "Se encuentra en ríos, lagos, humedales, acuíferos. Tiene una baja concentración de sales.",
+                characteristics: [
+                    "Menos de 1,000 mg/l de sales disueltas",
+                    "Encontrada en superficies y bajo tierra",
+                    "Importante para ecosistemas terrestres",
+                    "Fuente principal de agua dulce del planeta"
+                ]
+            },
+            {
+                id: 3,
+                name: "Agua Salada",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/924281fb-f2a3-4fdf-9af1-f94d9c3191b4.png",
+                description: "Se encuentra en océanos y mares. Contiene aproximadamente 35% de concentración de sales minerales.",
+                characteristics: [
+                    "Composición de cloruro de sodio y magnesio",
+                    "No apta para consumo humano directo",
+                    "Alrededor del 97% del agua terrestre",
+                    "Varía según ubicación geográfica"
+                ]
+            },
+            {
+                id: 4,
+                name: "Agua Salobre",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/6e5e1574-0ae3-4906-b83b-090e8de24992.png",
+                description: "Tiene salinidad intermedia entre agua dulce y salada. Contiene 0.5 a 30 gramos de sal por litro.",
+                characteristics: [
+                    "Encontrada en estuarios y marismas",
+                    "Mezcla de agua dulce y salada",
+                    "Salinidad variable y no precisa",
+                    "Importante en ecosistemas costeros"
+                ]
+            },
+            {
+                id: 5,
+                name: "Agua Dura",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/619ee0c7-75cf-4ce8-aaff-bf3f19a99faf.png",
+                description: "Contiene alto nivel de minerales disueltos, especialmente sales de magnesio y calcio.",
+                characteristics: [
+                    "Forma depósitos de cal en tuberías",
+                    "Afecta la eficacia de jabones",
+                    "También llamada agua calcárea",
+                    "Problemas en sistemas de calentamiento"
+                ]
+            },
+            {
+                id: 6,
+                name: "Agua Blanda",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/5732daac-687b-4bd7-ad5e-f69b6f673670.png",
+                description: "Tiene mínimas cantidades de sales disueltas. Menos de 50 mg/l de carbonato cálcico.",
+                characteristics: [
+                    "Preferida en aplicaciones industriales",
+                    "Mejor para la salud de tuberías",
+                    "Mejora eficacia de detergentes",
+                    "Ideal para equipos sensibles"
+                ]
+            },
+            {
+                id: 7,
+                name: "Agua Destilada",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/6a091ef7-522b-41bb-a813-5f228265f781.png",
+                description: "Purificada mediante destilación (evaporación y condensación), eliminando impurezas y sales.",
+                characteristics: [
+                    "Composición: moléculas de H2O pura",
+                    "Libre de sales disueltas",
+                    "Usado en laboratorios y acumuladores",
+                    "Proceso: evaporación y condensación"
+                ]
+            },
+            {
+                id: 8,
+                name: "Agua Residual",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/2da0a684-0414-4405-8b97-e9d25e3033d6.png",
+                description: "Agua cuya calidad está afectada negativamente por la influencia antropogénica (actividad humana).",
+                characteristics: [
+                    "Requiere tratamiento antes de uso",
+                    "Contaminada por actividades humanas",
+                    "Debe tratarse antes de verterla al ambiente",
+                    "Puede contener químicos y microorganismos"
+                ]
+            },
+            {
+                id: 9,
+                name: "Aguas Negras",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/09843125-739c-415c-911c-8e16ae03f374.png",
+                description: "Aguas residuales contaminadas con heces u orina. Alto riesgo para salud y ambiente.",
+                characteristics: [
+                    "Subtipo de aguas residuales",
+                    "Alta carga de patógenos",
+                    "Contaminantes orgánicos peligrosos",
+                    "Requiere tratamiento especializado"
+                ]
+            },
+            {
+                id: 10,
+                name: "Aguas Grises",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/9345e639-28e1-408b-8add-cebf00bbcd4d.png",
+                description: "Aguas de uso doméstico del lavado de ropa, duchas y platos. Menos contaminadas que aguas negras.",
+                characteristics: [
+                    "Generadas por actividades domésticas",
+                    "Menor contenido de nitrógeno y fósforo",
+                    "Pueden ser reutilizadas tras tratamiento",
+                    "Ideal para riego y usos no potables"
+                ]
+            },
+            {
+                id: 11,
+                name: "Agua Bruta",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/62217ee4-6629-48f0-b7b4-c83cafeacac3.png",
+                description: "Agua cruda sin tratamiento de fuentes naturales. Contiene contaminantes naturales y antropogénicos.",
+                characteristics: [
+                    "Sin tratamiento previo",
+                    "Contiene microorganismos variados",
+                    "Puede tener compuestos orgánicos e inorgánicos",
+                    "Primera fase en plantas de tratamiento"
+                ]
+            },
+            {
+                id: 12,
+                name: "Agua de Deshielo",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/ef1d2f4c-04b0-403b-8e7b-8660bea66929.png",
+                description: "Proviene del derretimiento de nieve e hielo en regiones montañosas y polares.",
+                characteristics: [
+                    "Importancia creciente por cambio climático",
+                    "Afecta glaciares y capas de hielo",
+                    "Tiene impacto en ciclos hidrológicos",
+                    "Fuente vital en regiones montañosas"
+                ]
+            },
+            {
+                id: 13,
+                name: "Agua Mineral",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/659d5151-4301-47cc-95c2-4a2904a60e49.png",
+                description: "Contiene minerales u otras sustancias disueltas que le confieren valores terapéuticos.",
+                characteristics: [
+                    "Extraída de manantiales subterráneos",
+                    "Propiedades terapéuticas beneficiosas",
+                    "Altera sabor naturalmente",
+                    "Regulada como bebida mineral"
+                ]
+            },
+            {
+                id: 14,
+                name: "Agua Desalinizada",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/7751dd63-41c1-40a7-b856-9cc0f69b699a.png",
+                description: "Obtenida mediante desalinización, eliminando sal y minerales del agua de mar.",
+                characteristics: [
+                    "Convierte agua de mar en potable",
+                    "Proceso: eliminación de sales",
+                    "Apta para consumo humano",
+                    "Solución para zonas áridas"
+                ]
+            },
+            {
+                id: 15,
+                name: "Agua Ultrapura",
+                image: "https://user-gen-media-assets.s3.amazonaws.com/seedream_images/7f262e0f-057c-4af3-a47e-85b8cf8b8ec4.png",
+                description: "Purificada extremadamente, eliminando casi todos minerales y contaminantes.",
+                characteristics: [
+                    "Usada en laboratorios e industria",
+                    "Esencial para semiconductores",
+                    "Crítica para investigación científica",
+                    "Impurezas pueden afectar resultados"
+                ]
+            }
+        ];
+
+        // DATOS DEL CUESTIONARIO
+        const quizQuestions = [
+            {
+                question: "¿Cuál es la concentración aproximada de sales en el agua salada?",
+                options: [
+                    "5%",
+                    "35%",
+                    "10%",
+                    "50%"
+                ],
+                correct: 1,
+                explanation: "El agua salada (agua de mar) contiene aproximadamente 35% de concentración de sales minerales disueltas, compuestas principalmente por cloruro de sodio, sulfato de magnesio y bicarbonato de calcio."
+            },
+            {
+                question: "¿Qué características tiene el agua potable?",
+                options: [
+                    "Contiene altos niveles de sal",
+                    "Es limpia, transparente, sin olores desagradables y libre de contaminantes",
+                    "Proviene directamente de ríos sin tratar",
+                    "Tiene alto contenido de minerales"
+                ],
+                correct: 1,
+                explanation: "El agua potable es limpia, transparente, sin olores o sabores desagradables y está libre de contaminantes. Ha recibido un tratamiento adecuado mediante filtración, desinfección y eliminación de contaminantes químicos y biológicos."
+            },
+            {
+                question: "¿En dónde se encuentra comúnmente el agua salobre?",
+                options: [
+                    "En montañas nevadas",
+                    "En acuíferos subterráneos profundos",
+                    "En estuarios y marismas",
+                    "En lagos de agua dulce"
+                ],
+                correct: 2,
+                explanation: "El agua salobre se encuentra comúnmente en estuarios y marismas, donde el agua dulce se mezcla con el agua de mar. Contiene entre 0.5 y 30 gramos de sal por litro."
+            },
+            {
+                question: "¿Cuál es el proceso mediante el cual se obtiene el agua destilada?",
+                options: [
+                    "Filtración en carbón activo",
+                    "Evaporación seguida de condensación",
+                    "Adición de desinfectantes",
+                    "Sedimentación en tanques"
+                ],
+                correct: 1,
+                explanation: "El agua destilada se obtiene mediante un proceso de destilación que implica la evaporación del agua seguida de la condensación, eliminando así la mayoría de sus impurezas y sales disueltas."
+            },
+            {
+                question: "¿Cuál es la principal diferencia entre aguas negras y aguas grises?",
+                options: [
+                    "Las aguas negras vienen de ríos",
+                    "Las aguas grises tienen más contaminación",
+                    "Las aguas negras están contaminadas con heces u orina, mientras que las grises vienen de actividades domésticas como lavado",
+                    "No hay diferencia, son lo mismo"
+                ],
+                correct: 2,
+                explanation: "Las aguas negras son aquellas contaminadas con heces u orina y representan un riesgo significativo para la salud. Las aguas grises provienen del uso doméstico (lavado de ropa, duchas, platos) y tienen menor contenido de contaminantes, pudiendo ser reutilizadas tras tratamiento."
+            },
+            {
+                question: "¿Qué problema causa el agua dura en los sistemas de tuberías?",
+                options: [
+                    "Corrosión total del metal",
+                    "Formación de depósitos de cal",
+                    "Ruptura inmediata de válvulas",
+                    "Aumento de presión del agua"
+                ],
+                correct: 1,
+                explanation: "El agua dura contiene altos niveles de minerales, especialmente sales de magnesio y calcio, lo que causa la formación de depósitos de cal en tuberías y sistemas de calentamiento, afectando su eficiencia."
+            },
+            {
+                question: "¿Cuál es el contenido de carbonato cálcico que caracteriza al agua blanda?",
+                options: [
+                    "Más de 100 mg/l",
+                    "Entre 50 y 100 mg/l",
+                    "Menos de 50 mg/l",
+                    "Exactamente 75 mg/l"
+                ],
+                correct: 2,
+                explanation: "El agua blanda se caracteriza por tener menos de 50 mg/l de carbonato cálcico, con mínimas cantidades de sales disueltas. Es preferida en aplicaciones industriales y domésticas."
+            },
+            {
+                question: "¿Cuál es la fuente principal del agua de deshielo?",
+                options: [
+                    "Condensación atmosférica",
+                    "Derretimiento de nieve e hielo en regiones montañosas y polares",
+                    "Filtración de lluvia",
+                    "Evaporación de lagos"
+                ],
+                correct: 1,
+                explanation: "El agua de deshielo proviene del derretimiento de nieve e hielo, especialmente en regiones montañosas y polares. Su importancia es creciente debido al cambio climático y su impacto en los glaciares."
+            },
+            {
+                question: "¿Para qué se utiliza principalmente el agua ultrapura?",
+                options: [
+                    "Riego agrícola general",
+                    "Consumo humano cotidiano",
+                    "Industrias y laboratorios donde las impurezas pueden afectar resultados",
+                    "Limpieza de piscinas"
+                ],
+                correct: 2,
+                explanation: "El agua ultrapura se utiliza en industrias y laboratorios, especialmente en la fabricación de semiconductores y en investigación científica, donde la presencia de impurezas puede afectar significativamente los resultados."
+            },
+            {
+                question: "¿Cuántos gramos de sal por litro puede contener el agua salobre?",
+                options: [
+                    "0.1 a 5 gramos",
+                    "0.5 a 30 gramos",
+                    "35 a 40 gramos",
+                    "50 a 100 gramos"
+                ],
+                correct: 1,
+                explanation: "El agua salobre puede contener entre 0.5 y 30 gramos de sal por litro, lo que la posiciona entre el agua dulce (menos de 1,000 mg/l) y el agua de mar (aproximadamente 35%)."
+            }
+        ];
+
+        // INICIALIZAR LA PÁGINA
+        function initializeWaterCards() {
+            const gridContainer = document.getElementById('waterGrid');
+            waterTypes.forEach(water => {
+                const card = document.createElement('div');
+                card.className = 'water-card';
+                card.innerHTML = `
+                    <div class="water-card-image">
+                        <img src="${water.image}" alt="${water.name}">
+                    </div>
+                    <div class="water-card-content">
+                        <div class="water-card-title">${water.name}</div>
+                        <div class="water-card-description">${water.description}</div>
+                        <div class="characteristics">
+                            ${water.characteristics.map(char => 
+                                `<div class="characteristic-item">${char}</div>`
+                            ).join('')}
+                        </div>
+                    </div>
+                `;
+                gridContainer.appendChild(card);
+            });
+        }
+
+        function initializeQuiz() {
+            const quizForm = document.getElementById('quizForm');
+            quizQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question-container';
+                questionDiv.innerHTML = `
+                    <div class="question-number">Pregunta ${index + 1} de ${quizQuestions.length}</div>
+                    <div class="question-text">${q.question}</div>
+                    <div class="options">
+                        ${q.options.map((option, optIndex) => `
+                            <label class="option-label">
+                                <input type="radio" name="question${index}" value="${optIndex}">
+                                <span class="option-text">${option}</span>
+                            </label>
+                        `).join('')}
+                    </div>
+                    <div class="feedback" id="feedback${index}"></div>
+                `;
+                quizForm.appendChild(questionDiv);
+            });
+        }
+
+        function submitQuiz() {
+            let correctCount = 0;
+            let allAnswered = true;
+
+            quizQuestions.forEach((q, index) => {
+                const selectedOption = document.querySelector(`input[name="question${index}"]:checked`);
+                const feedbackDiv = document.getElementById(`feedback${index}`);
+
+                if (!selectedOption) {
+                    allAnswered = false;
+                    feedbackDiv.className = 'feedback';
+                    return;
+                }
+
+                const selectedValue = parseInt(selectedOption.value);
+                const isCorrect = selectedValue === q.correct;
+
+                if (isCorrect) {
+                    correctCount++;
+                    feedbackDiv.className = 'feedback correct';
+                    feedbackDiv.innerHTML = `
+                        <div class="feedback-title">✓ ¡Correcto!</div>
+                        <div>${q.explanation}</div>
+                    `;
+                } else {
+                    feedbackDiv.className = 'feedback incorrect';
+                    const correctOption = q.options[q.correct];
+                    feedbackDiv.innerHTML = `
+                        <div class="feedback-title">✗ Incorrecto</div>
+                        <div><strong>Respuesta correcta:</strong> ${correctOption}</div>
+                        <div style="margin-top: 8px;"><strong>Explicación:</strong> ${q.explanation}</div>
+                    `;
+                }
+            });
+
+            if (!allAnswered) {
+                alert('Por favor, responde todas las preguntas antes de enviar.');
+                return;
+            }
+
+            // Mostrar resumen de resultados
+            const percentage = Math.round((correctCount / quizQuestions.length) * 100);
+            const resultsSummary = document.getElementById('resultsSummary');
+            document.getElementById('scorePercentage').textContent = percentage + '%';
+            
+            let resultMessage = '';
+            if (percentage === 100) {
+                resultMessage = '¡Excelente! ¡Dominas perfectamente los tipos de agua!';
+            } else if (percentage >= 80) {
+                resultMessage = '¡Muy bien! Tienes un excelente conocimiento sobre los tipos de agua.';
+            } else if (percentage >= 60) {
+                resultMessage = 'Bien. Has acertado la mayoría de las preguntas. Revisa los temas con mayor dificultad.';
+            } else {
+                resultMessage = 'Necesitas estudiar más sobre los tipos de agua. Revisa las explicaciones de las respuestas incorrectas.';
+            }
+            
+            document.getElementById('resultsText').innerHTML = `
+                <p>${resultMessage}</p>
+                <p style="margin-top: 10px;">Respondiste correctamente <strong>${correctCount} de ${quizQuestions.length}</strong> preguntas.</p>
+            `;
+            resultsSummary.classList.add('show');
+
+            // Scroll a resultados
+            setTimeout(() => {
+                resultsSummary.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+        }
+
+        function resetQuiz() {
+            document.getElementById('quizForm').reset();
+            document.querySelectorAll('.feedback').forEach(fb => {
+                fb.className = 'feedback';
+                fb.innerHTML = '';
+            });
+            document.getElementById('resultsSummary').classList.remove('show');
+            document.getElementById('resultsSummary').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+
+        // Scroll to top button
+        window.addEventListener('scroll', function() {
+            const scrollBtn = document.getElementById('scrollToTopBtn');
+            if (window.scrollY > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Inicializar al cargar
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeWaterCards();
+            initializeQuiz();
+        });
+    </script>
+</body>
+</html>
