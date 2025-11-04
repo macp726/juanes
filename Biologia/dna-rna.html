@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Material Genético: ADN y ARN</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            color: #667eea;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+            border-left: 5px solid #667eea;
+        }
+
+        .info-card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 2em;
+        }
+
+        .info-card p {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.05em;
+            margin-bottom: 10px;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .comparison-table th {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .bases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .base-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 3px solid transparent;
+        }
+
+        .base-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .base-card.adenina {
+            border-color: #e74c3c;
+        }
+
+        .base-card.adenina:hover {
+            background: #ffe0e0;
+        }
+
+        .base-card.guanina {
+            border-color: #3498db;
+        }
+
+        .base-card.guanina:hover {
+            background: #e0f2ff;
+        }
+
+        .base-card.citosina {
+            border-color: #f39c12;
+        }
+
+        .base-card.citosina:hover {
+            background: #fff8e0;
+        }
+
+        .base-card.timina {
+            border-color: #27ae60;
+        }
+
+        .base-card.timina:hover {
+            background: #e0ffe0;
+        }
+
+        .base-card.uracilo {
+            border-color: #9b59b6;
+        }
+
+        .base-card.uracilo:hover {
+            background: #f5e0ff;
+        }
+
+        .base-card h3 {
+            font-size: 1.5em;
+            margin: 10px 0;
+        }
+
+        .base-card .symbol {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #667eea;
+        }
+
+        .base-card p {
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .quiz-section {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .quiz-section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .question {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .question h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .question-number {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+            margin: 20px 0;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            font-size: 1.05em;
+        }
+
+        .feedback {
+            display: none;
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+            display: block;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+            display: block;
+        }
+
+        .feedback-text {
+            margin-top: 10px;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .quiz-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1em;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .quiz-results {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .quiz-results.show {
+            display: block;
+        }
+
+        .quiz-results h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .quiz-results p {
+            font-size: 1.3em;
+            margin: 10px 0;
+        }
+
+        .score-display {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .nucleotide-diagram {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .diagram-box {
+            display: inline-block;
+            background: white;
+            border: 3px solid #667eea;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 10px;
+            min-width: 200px;
+        }
+
+        .diagram-component {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .diagram-component strong {
+            color: #667eea;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .comparison-table {
+                font-size: 0.9em;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px;
+            }
+
+            .bases-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧬 Material Genético: ADN y ARN</h1>
+            <p>Descubre los secretos del código de la vida</p>
+        </header>
+
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showSection('intro')">Introducción</button>
+            <button class="nav-btn" onclick="showSection('adn')">ADN</button>
+            <button class="nav-btn" onclick="showSection('arn')">ARN</button>
+            <button class="nav-btn" onclick="showSection('bases')">Bases Nitrogenadas</button>
+            <button class="nav-btn" onclick="showSection('nucleotidos')">Nucleótidos</button>
+            <button class="nav-btn" onclick="showSection('quiz')">Cuestionario</button>
+        </div>
+
+        <!-- INTRODUCCIÓN -->
+        <div id="intro" class="section active">
+            <div class="info-card">
+                <h2>¿Qué es el Material Genético?</h2>
+                <p>El material genético es el conjunto de moléculas que contienen la información hereditaria de los seres vivos. Las dos moléculas principales son el <strong>ADN (Ácido Desoxirribonucleico)</strong> y el <strong>ARN (Ácido Ribonucleico)</strong>.</p>
+                <p>Estas moléculas están presentes en todas las células vivas y son responsables de transmitir características de padres a hijos, así como de dirigir el funcionamiento celular.</p>
+                
+                <div class="image-container">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23e8f4f8' width='400' height='300'/%3E%3Ctext x='200' y='30' font-size='24' font-weight='bold' text-anchor='middle' fill='%23667eea'%3EMoléculas de ADN y ARN%3C/text%3E%3Ccircle cx='100' cy='150' r='50' fill='%23e74c3c' opacity='0.3' stroke='%23e74c3c' stroke-width='2'/%3E%3Ctext x='100' y='155' font-size='16' font-weight='bold' text-anchor='middle' fill='%23c0392b'%3EADN%3C/text%3E%3Ccircle cx='300' cy='150' r='50' fill='%233498db' opacity='0.3' stroke='%233498db' stroke-width='2'/%3E%3Ctext x='300' y='155' font-size='16' font-weight='bold' text-anchor='middle' fill='%232980b9'%3EARN%3C/text%3E%3Ctext x='200' y='260' font-size='12' text-anchor='middle' fill='%23666'%3EAmbas moléculas contienen información genética%3C/text%3E%3C/svg%3E" alt="ADN y ARN">
+                </div>
+
+                <h3 style="color: #667eea; margin-top: 30px;">Objetivos de Aprendizaje</h3>
+                <ul style="color: #333; line-height: 2; margin-left: 20px;">
+                    <li>Identificar la estructura del ADN y ARN</li>
+                    <li>Comprender las diferencias entre estas moléculas</li>
+                    <li>Conocer las bases nitrogenadas y sus parejas complementarias</li>
+                    <li>Entender los componentes de los nucleótidos</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ADN -->
+        <div id="adn" class="section">
+            <div class="info-card">
+                <h2>ADN (Ácido Desoxirribonucleico)</h2>
+                <p><strong>Ubicación:</strong> Se encuentra principalmente en el núcleo de la célula y también en mitocondrias y cloroplastos.</p>
+                <p><strong>Función:</strong> Almacena la información genética de los organismos y es responsable de transmitir las características hereditarias de padres a hijos.</p>
+                
+                <h3 style="color: #667eea; margin-top: 20px;">Características principales:</h3>
+                <div style="background: #f0f4ff; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <p>📌 <strong>Estructura:</strong> Doble hélice formada por dos cadenas complementarias</p>
+                    <p>📌 <strong>Azúcar:</strong> Desoxirribosa (sin un oxígeno)</p>
+                    <p>📌 <strong>Bases nitrogenadas:</strong> Adenina (A), Timina (T), Guanina (G), Citosina (C)</p>
+                    <p>📌 <strong>Estabilidad:</strong> Muy estable y resistente</p>
+                    <p>📌 <strong>Función de pareamiento:</strong> A se empareja con T (2 enlaces), G se empareja con C (3 enlaces)</p>
+                </div>
+
+                <div class="image-container">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 350'%3E%3Crect fill='%23fff9e6' width='400' height='350'/%3E%3Ctext x='200' y='30' font-size='20' font-weight='bold' text-anchor='middle' fill='%23667eea'%3EEstructura de la Doble Hélice de ADN%3C/text%3E%3Cg id='helix'%3E%3Cpath d='M 80 80 Q 150 120 80 160 T 80 320' stroke='%23e74c3c' stroke-width='3' fill='none'/%3E%3Cpath d='M 320 80 Q 250 120 320 160 T 320 320' stroke='%23e74c3c' stroke-width='3' fill='none'/%3E%3Cline x1='80' y1='100' x2='320' y2='100' stroke='%233498db' stroke-width='2'/%3E%3Cline x1='75' y1='140' x2='325' y2='140' stroke='%233498db' stroke-width='2'/%3E%3Cline x1='80' y1='180' x2='320' y2='180' stroke='%233498db' stroke-width='2'/%3E%3Cline x1='75' y1='220' x2='325' y2='220' stroke='%233498db' stroke-width='2'/%3E%3Cline x1='80' y1='260' x2='320' y2='260' stroke='%233498db' stroke-width='2'/%3E%3Ctext x='30' y='200' font-size='12' fill='%23e74c3c'%3ECadena%3C/text%3E%3Ctext x='30' y='215' font-size='12' fill='%23e74c3c'%3e1%3C/text%3E%3Ctext x='340' y='200' font-size='12' fill='%23e74c3c'%3ECadena%3C/text%3E%3Ctext x='350' y='215' font-size='12' fill='%23e74c3c'%3E2%3C/text%3E%3Ctext x='200' y='330' font-size='11' text-anchor='middle' fill='%23666'%3EEnlaces entre bases nitrogenadas%3C/text%3E%3C/g%3E%3C/svg%3E" alt="Estructura ADN">
+                </div>
+            </div>
+        </div>
+
+        <!-- ARN -->
+        <div id="arn" class="section">
+            <div class="info-card">
+                <h2>ARN (Ácido Ribonucleico)</h2>
+                <p><strong>Ubicación:</strong> Se encuentra principalmente en el citoplasma de la célula, aunque también hay algo en el núcleo.</p>
+                <p><strong>Función:</strong> Actúa como intermediario entre el ADN y las proteínas. Transporta la información genética y participa en la síntesis de proteínas.</p>
+                
+                <h3 style="color: #667eea; margin-top: 20px;">Características principales:</h3>
+                <div style="background: #e0f2ff; padding: 20px; border-radius: 10px; margin: 20px 0;">
+                    <p>📌 <strong>Estructura:</strong> Cadena simple (no es una doble hélice)</p>
+                    <p>📌 <strong>Azúcar:</strong> Ribosa (con un oxígeno adicional)</p>
+                    <p>📌 <strong>Bases nitrogenadas:</strong> Adenina (A), Uracilo (U), Guanina (G), Citosina (C)</p>
+                    <p>📌 <strong>Estabilidad:</strong> Menos estable que el ADN, más fácil de degradar</p>
+                    <p>📌 <strong>Diferencia clave:</strong> Posee Uracilo (U) en lugar de Timina (T)</p>
+                </div>
+
+                <h3 style="color: #667eea; margin-top: 20px;">Tipos de ARN:</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Tipo de ARN</th>
+                            <th>Función</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>ARN Mensajero (mARN)</strong></td>
+                            <td>Transporta la información genética del ADN al citoplasma</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ARN de Transferencia (tARN)</strong></td>
+                            <td>Transporta aminoácidos durante la síntesis de proteínas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ARN Ribosomal (rARN)</strong></td>
+                            <td>Forma parte de los ribosomas donde se sintetizan proteínas</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="image-container">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 300'%3E%3Crect fill='%23f0e6ff' width='400' height='300'/%3E%3Ctext x='200' y='30' font-size='20' font-weight='bold' text-anchor='middle' fill='%23667eea'%3EEstructura de Cadena Simple de ARN%3C/text%3E%3Cpath d='M 100 80 Q 120 100 100 120 Q 120 140 100 160 Q 120 180 100 200 Q 120 220 100 240' stroke='%233498db' stroke-width='3' fill='none'/%3E%3Ccircle cx='100' cy='80' r='6' fill='%23f39c12'/%3E%3Ccircle cx='100' cy='120' r='6' fill='%23e74c3c'/%3E%3Ccircle cx='100' cy='160' r='6' fill='%2327ae60'/%3E%3Ccircle cx='100' cy='200' r='6' fill='%239b59b6'/%3E%3Ccircle cx='100' cy='240' r='6' fill='%23f39c12'/%3E%3Ctext x='140' y='85' font-size='12' fill='%23f39c12'%3ECitosina (C)%3C/text%3E%3Ctext x='140' y='125' font-size='12' fill='%23e74c3c'%3EAdenina (A)%3C/text%3E%3Ctext x='140' y='165' font-size='12' fill='%2327ae60'%3EGuanina (G)%3C/text%3E%3Ctext x='140' y='205' font-size='12' fill='%239b59b6'%3EUracilo (U)%3C/text%3E%3Ctext x='200' y='280' font-size='11' text-anchor='middle' fill='%23666'%3EStructura de cadena única%3C/text%3E%3C/svg%3E" alt="Estructura ARN">
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPARACIÓN -->
+        <div id="adn-arn-comparison" class="section" style="display: none;">
+            <div class="info-card">
+                <h2>Diferencias y Semejanzas entre ADN y ARN</h2>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>ADN</th>
+                            <th>ARN</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Estructura</strong></td>
+                            <td>Doble hélice</td>
+                            <td>Cadena simple</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Azúcar</strong></td>
+                            <td>Desoxirribosa</td>
+                            <td>Ribosa</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Ubicación celular</strong></td>
+                            <td>Núcleo, mitocondrias, cloroplastos</td>
+                            <td>Citoplasma, núcleo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bases nitrogenadas</strong></td>
+                            <td>A, T, G, C</td>
+                            <td>A, U, G, C</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estabilidad</strong></td>
+                            <td>Muy estable</td>
+                            <td>Menos estable</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Función principal</strong></td>
+                            <td>Almacena información genética</td>
+                            <td>Transmite y usa información genética</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Emparejamiento</strong></td>
+                            <td>A-T, G-C</td>
+                            <td>A-U, G-C</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">Semejanzas</h3>
+                <div style="background: #f0f4ff; padding: 15px; border-radius: 10px; border-left: 4px solid #667eea;">
+                    <p>✓ Ambas son ácidos nucleicos</p>
+                    <p>✓ Ambas contienen información genética</p>
+                    <p>✓ Ambas están formadas por nucleótidos</p>
+                    <p>✓ Ambas poseen bases nitrogenadas, un azúcar y un grupo fosfato</p>
+                    <p>✓ Ambas se encuentran en todas las células vivas</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- BASES NITROGENADAS -->
+        <div id="bases" class="section">
+            <div class="info-card">
+                <h2>Bases Nitrogenadas</h2>
+                <p>Las bases nitrogenadas son moléculas que contienen nitrógeno y forman parte de los nucleótidos. Son los "caracteres" del código genético.</p>
+                
+                <h3 style="color: #667eea; margin-top: 20px; margin-bottom: 15px;">Bases Púricas (Grandes)</h3>
+                <div class="bases-grid">
+                    <div class="base-card adenina">
+                        <div class="symbol">A</div>
+                        <h3>Adenina</h3>
+                        <p><strong>Presente en:</strong> ADN y ARN</p>
+                        <p><strong>Se empareja con:</strong> Timina (ADN) o Uracilo (ARN)</p>
+                        <p style="font-size: 0.85em; color: #999; margin-top: 10px;">Base púrica</p>
+                    </div>
+
+                    <div class="base-card guanina">
+                        <div class="symbol">G</div>
+                        <h3>Guanina</h3>
+                        <p><strong>Presente en:</strong> ADN y ARN</p>
+                        <p><strong>Se empareja con:</strong> Citosina</p>
+                        <p style="font-size: 0.85em; color: #999; margin-top: 10px;">Base púrica</p>
+                    </div>
+                </div>
+
+                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">Bases Pirimidínicas (Pequeñas)</h3>
+                <div class="bases-grid">
+                    <div class="base-card timina">
+                        <div class="symbol">T</div>
+                        <h3>Timina</h3>
+                        <p><strong>Presente en:</strong> Solo en ADN</p>
+                        <p><strong>Se empareja con:</strong> Adenina</p>
+                        <p style="font-size: 0.85em; color: #999; margin-top: 10px;">Base pirimidínica</p>
+                    </div>
+
+                    <div class="base-card uracilo">
+                        <div class="symbol">U</div>
+                        <h3>Uracilo</h3>
+                        <p><strong>Presente en:</strong> Solo en ARN</p>
+                        <p><strong>Se empareja con:</strong> Adenina</p>
+                        <p style="font-size: 0.85em; color: #999; margin-top: 10px;">Base pirimidínica</p>
+                    </div>
+
+                    <div class="base-card citosina">
+                        <div class="symbol">C</div>
+                        <h3>Citosina</h3>
+                        <p><strong>Presente en:</strong> ADN y ARN</p>
+                        <p><strong>Se empareja con:</strong> Guanina</p>
+                        <p style="font-size: 0.85em; color: #999; margin-top: 10px;">Base pirimidínica</p>
+                    </div>
+                </div>
+
+                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">Reglas de Pareamiento</h3>
+                <div style="background: #fff9e6; padding: 20px; border-radius: 10px; border-left: 4px solid #f39c12;">
+                    <p><strong>En el ADN:</strong></p>
+                    <p>🔗 Adenina (A) ↔ Timina (T) — 2 enlaces de hidrógeno</p>
+                    <p>🔗 Guanina (G) ↔ Citosina (C) — 3 enlaces de hidrógeno</p>
+                    <p style="margin-top: 15px;"><strong>En el ARN:</strong></p>
+                    <p>🔗 Adenina (A) ↔ Uracilo (U) — 2 enlaces de hidrógeno</p>
+                    <p>🔗 Guanina (G) ↔ Citosina (C) — 3 enlaces de hidrógeno</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- NUCLEÓTIDOS -->
+        <div id="nucleotidos" class="section">
+            <div class="info-card">
+                <h2>Nucleótidos</h2>
+                <p>Los nucleótidos son las unidades básicas que forman tanto el ADN como el ARN. Son como los "ladrillos" con los que se construyen estas moléculas.</p>
+
+                <h3 style="color: #667eea; margin-top: 20px; margin-bottom: 15px;">Componentes de un Nucleótido</h3>
+                <div class="nucleotide-diagram">
+                    <div class="diagram-box">
+                        <h4 style="color: #667eea; margin-bottom: 15px;">Estructura de un Nucleótido</h4>
+                        <div class="diagram-component">
+                            <strong>1. Azúcar (5 carbonos)</strong><br>
+                            <span style="font-size: 0.95em;">
+                                • Desoxirribosa (en ADN)<br>
+                                • Ribosa (en ARN)
+                            </span>
+                        </div>
+                        <div class="diagram-component">
+                            <strong>2. Ácido Fosfórico (Fosfato)</strong><br>
+                            <span style="font-size: 0.95em;">PO₄³⁻</span>
+                        </div>
+                        <div class="diagram-component">
+                            <strong>3. Base Nitrogenada</strong><br>
+                            <span style="font-size: 0.95em;">
+                                Púrica o Pirimidínica
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="image-container">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 500 400'%3E%3Crect fill='%23f5f5f5' width='500' height='400'/%3E%3Ctext x='250' y='30' font-size='18' font-weight='bold' text-anchor='middle' fill='%23667eea'%3EComponentes de un Nucleótido%3C/text%3E%3Cg id='phosphate'%3E%3Ccircle cx='100' cy='150' r='35' fill='%23f39c12' opacity='0.3' stroke='%23f39c12' stroke-width='2'/%3E%3Ctext x='100' y='155' font-size='12' font-weight='bold' text-anchor='middle' fill='%23d68910'%3EFosfato%3C/text%3E%3C/g%3E%3Cg id='sugar'%3E%3Ccircle cx='250' cy='150' r='35' fill='%233498db' opacity='0.3' stroke='%233498db' stroke-width='2'/%3E%3Ctext x='250' y='155' font-size='12' font-weight='bold' text-anchor='middle' fill='%232980b9'%3EAzúcar%3C/text%3E%3C/g%3E%3Cg id='base'%3E%3Ccircle cx='400' cy='150' r='35' fill='%23e74c3c' opacity='0.3' stroke='%23e74c3c' stroke-width='2'/%3E%3Ctext x='400' y='155' font-size='12' font-weight='bold' text-anchor='middle' fill='%23c0392b'%3EBase%3C/text%3E%3C/g%3E%3Cline x1='130' y1='150' x2='215' y2='150' stroke='%23999' stroke-width='2' marker-end='url(%23arrowhead)' /%3E%3Cline x1='280' y1='150' x2='365' y2='150' stroke='%23999' stroke-width='2'/%3E%3Ctext x='250' y='250' font-size='13' text-anchor='middle' fill='%23333'%3EEstos tres componentes se unen para formar un nucleótido%3C/text%3E%3Ctext x='250' y='280' font-size='12' text-anchor='middle' fill='%23999'%3ELa unión de muchos nucleótidos forma el ADN o ARN%3C/text%3E%3Ctext x='100' y='230' font-size='11' text-anchor='middle' fill='%23d68910' font-weight='bold'%3E(PO₄)%3C/text%3E%3Ctext x='250' y='230' font-size='11' text-anchor='middle' fill='%232980b9' font-weight='bold'%3EDesoxirribosa<br/>o Ribosa%3C/text%3E%3Ctext x='400' y='230' font-size='11' text-anchor='middle' fill='%23c0392b' font-weight='bold'%3EA, T, G, C<br/>(o U en ARN)%3C/text%3E%3C/svg%3E" alt="Componentes nucleótido">
+                </div>
+
+                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">¿Cómo se forman las cadenas?</h3>
+                <div style="background: #e0ffe0; padding: 20px; border-radius: 10px; border-left: 4px solid #27ae60;">
+                    <p>Los nucleótidos se unen entre sí mediante enlaces fosfodiéster, creando largas cadenas. El enlace se forma entre:</p>
+                    <p style="margin-top: 10px;">🔗 El grupo fosfato de un nucleótido</p>
+                    <p>🔗 El azúcar del siguiente nucleótido</p>
+                    <p style="margin-top: 10px; font-style: italic;">Este proceso se repite miles de millones de veces para crear moléculas de ADN o ARN.</p>
+                </div>
+
+                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">Diferencias en los Azúcares</h3>
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Aspecto</th>
+                            <th>Desoxirribosa (ADN)</th>
+                            <th>Ribosa (ARN)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Fórmula molecular</strong></td>
+                            <td>C₅H₁₀O₄</td>
+                            <td>C₅H₁₀O₅</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Diferencia clave</strong></td>
+                            <td>Le falta un oxígeno en el carbono 2</td>
+                            <td>Tiene un oxígeno extra en el carbono 2</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Estructura</strong></td>
+                            <td>Más simple, más estable</td>
+                            <td>Más compleja, menos estable</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- CUESTIONARIO -->
+        <div id="quiz" class="section">
+            <div class="quiz-section">
+                <h2>📋 Cuestionario: Evaluando tu Conocimiento</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 1.1em;">Responde las siguientes preguntas para evaluar lo que has aprendido sobre ADN y ARN.</p>
+
+                <!-- PREGUNTA 1 -->
+                <div class="question">
+                    <h3><span class="question-number">1</span>La base nitrogenada complementaria de la Citosina (C) en el ADN es:</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q1" value="a">
+                            <span><strong>a)</strong> Guanina (G)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="b">
+                            <span><strong>b)</strong> Uracilo (U)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="c">
+                            <span><strong>c)</strong> Adenina (A)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q1" value="d">
+                            <span><strong>d)</strong> Timina (T)</span>
+                        </label>
+                    </div>
+                    <div class="feedback q1-feedback">
+                        <span class="feedback-correct">✓ CORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> La Citosina (C) siempre se empareja con Guanina (G) en el ADN, formando 3 enlaces de hidrógeno. Esta es una regla fundamental del apareamiento de bases complementarias.
+                        </div>
+                    </div>
+                    <div class="feedback q1-incorrect">
+                        <span class="feedback-incorrect">✗ INCORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> La respuesta correcta es Guanina (G). La Citosina siempre se empareja con Guanina en el ADN. Recuerda que:<br>
+                            • Adenina (A) ↔ Timina (T)<br>
+                            • Guanina (G) ↔ Citosina (C)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREGUNTA 2 -->
+                <div class="question">
+                    <h3><span class="question-number">2</span>La base complementaria de la Adenina (A) en el ADN es:</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q2" value="a">
+                            <span><strong>a)</strong> Timina</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="b">
+                            <span><strong>b)</strong> Uracilo</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="c">
+                            <span><strong>c)</strong> Guanina</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q2" value="d">
+                            <span><strong>d)</strong> Citosina</span>
+                        </label>
+                    </div>
+                    <div class="feedback q2-feedback">
+                        <span class="feedback-correct">✓ CORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> La Adenina (A) siempre se empareja con Timina (T) en el ADN, formando 2 enlaces de hidrógeno. Esta es una de las parejas de bases complementarias más importantes.
+                        </div>
+                    </div>
+                    <div class="feedback q2-incorrect">
+                        <span class="feedback-incorrect">✗ INCORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> La respuesta correcta es Timina (T). En el ADN:<br>
+                            • Adenina (A) ↔ Timina (T) - 2 enlaces de hidrógeno<br>
+                            Nota: En ARN, la Adenina se empareja con Uracilo (U), no con Timina.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREGUNTA 3 -->
+                <div class="question">
+                    <h3><span class="question-number">3</span>Los componentes de los nucleótidos son:</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q3" value="a">
+                            <span><strong>a)</strong> Azúcar y base nitrogenada</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="b">
+                            <span><strong>b)</strong> Azúcar, ácido fosfórico, ácido nucleico</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="c">
+                            <span><strong>c)</strong> Ácido fosfórico, azúcar ribosa y desoxirribosa</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q3" value="d">
+                            <span><strong>d)</strong> Azúcar, base nitrogenada, ácido fosfórico o fosfato</span>
+                        </label>
+                    </div>
+                    <div class="feedback q3-feedback">
+                        <span class="feedback-correct">✓ CORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> Un nucleótido está compuesto por tres componentes esenciales:<br>
+                            1. Un azúcar (desoxirribosa o ribosa)<br>
+                            2. Una base nitrogenada (A, T, G, C, o U)<br>
+                            3. Un grupo ácido fosfórico o fosfato (PO₄)
+                        </div>
+                    </div>
+                    <div class="feedback q3-incorrect">
+                        <span class="feedback-incorrect">✗ INCORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> La respuesta correcta es la opción d. Los nucleótidos SIEMPRE tienen tres componentes:<br>
+                            ✓ Azúcar (ribosa o desoxirribosa)<br>
+                            ✓ Base nitrogenada<br>
+                            ✓ Grupo fosfato
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREGUNTA 4 -->
+                <div class="question">
+                    <h3><span class="question-number">4</span>¿Cuál es la principal diferencia estructural entre ADN y ARN?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q4" value="a">
+                            <span><strong>a)</strong> El ADN tiene una doble hélice y el ARN una cadena simple</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="b">
+                            <span><strong>b)</strong> El ADN contiene Uracilo y el ARN contiene Timina</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="c">
+                            <span><strong>c)</strong> El ARN tiene desoxirribosa y el ADN tiene ribosa</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q4" value="d">
+                            <span><strong>d)</strong> No hay diferencias estructurales importantes</span>
+                        </label>
+                    </div>
+                    <div class="feedback q4-feedback">
+                        <span class="feedback-correct">✓ CORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> La diferencia estructural más evidente es que el ADN forma una doble hélice (dos cadenas complementarias), mientras que el ARN forma una cadena simple. Esta es una diferencia fundamental que afecta sus funciones y estabilidad.
+                        </div>
+                    </div>
+                    <div class="feedback q4-incorrect">
+                        <span class="feedback-incorrect">✗ INCORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> La respuesta correcta es la opción a. La principal diferencia estructural es:<br>
+                            • ADN: Doble hélice (dos cadenas)<br>
+                            • ARN: Cadena simple (una cadena)<br>
+                            Otras diferencias incluyen el azúcar y las bases nitrogenadas, pero la estructura es la diferencia más notoria.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREGUNTA 5 -->
+                <div class="question">
+                    <h3><span class="question-number">5</span>¿Cuál de las siguientes bases nitrogenadas se encuentra SOLO en el ARN?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q5" value="a">
+                            <span><strong>a)</strong> Adenina (A)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="b">
+                            <span><strong>b)</strong> Uracilo (U)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="c">
+                            <span><strong>c)</strong> Guanina (G)</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q5" value="d">
+                            <span><strong>d)</strong> Citosina (C)</span>
+                        </label>
+                    </div>
+                    <div class="feedback q5-feedback">
+                        <span class="feedback-correct">✓ CORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> El Uracilo (U) se encuentra solo en el ARN. Es el reemplazo del Timina (T) que se encuentra en el ADN. Esta es la diferencia más importante en las bases nitrogenadas entre estos ácidos nucleicos.
+                        </div>
+                    </div>
+                    <div class="feedback q5-incorrect">
+                        <span class="feedback-incorrect">✗ INCORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> La respuesta correcta es Uracilo (U). Aquí está la distribución de bases:<br>
+                            • En ADN: Adenina, Timina, Guanina, Citosina<br>
+                            • En ARN: Adenina, Uracilo, Guanina, Citosina<br>
+                            El Uracilo es único del ARN y reemplaza a la Timina.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREGUNTA 6 -->
+                <div class="question">
+                    <h3><span class="question-number">6</span>¿Cuál es la función principal del ADN?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q6" value="a">
+                            <span><strong>a)</strong> Sintetizar proteínas</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="b">
+                            <span><strong>b)</strong> Almacenar y transmitir información genética</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="c">
+                            <span><strong>c)</strong> Transportar energía en la célula</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q6" value="d">
+                            <span><strong>d)</strong> Actuar como catalizador de reacciones</span>
+                        </label>
+                    </div>
+                    <div class="feedback q6-feedback">
+                        <span class="feedback-correct">✓ CORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> El ADN es la molécula de la herencia. Su función principal es almacenar toda la información genética de un organismo y transmitirla de una generación a la siguiente. Es el "libro de instrucciones" de la vida.
+                        </div>
+                    </div>
+                    <div class="feedback q6-incorrect">
+                        <span class="feedback-incorrect">✗ INCORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> La respuesta correcta es la opción b. Aunque el ADN es importante para muchos procesos, su función principal es almacenar y transmitir información genética. Es el material hereditario que pasa de padres a hijos.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PREGUNTA 7 -->
+                <div class="question">
+                    <h3><span class="question-number">7</span>¿En qué tipo de célula NO se encuentra ADN?</h3>
+                    <div class="options">
+                        <label class="option">
+                            <input type="radio" name="q7" value="a">
+                            <span><strong>a)</strong> Célula eucariota</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="b">
+                            <span><strong>b)</strong> Célula procariota</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="c">
+                            <span><strong>c)</strong> Glóbulo rojo maduro de mamífero</span>
+                        </label>
+                        <label class="option">
+                            <input type="radio" name="q7" value="d">
+                            <span><strong>d)</strong> Bacteria</span>
+                        </label>
+                    </div>
+                    <div class="feedback q7-feedback">
+                        <span class="feedback-correct">✓ CORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> Los glóbulos rojos (eritrocitos) maduros de los mamíferos no tienen núcleo y, por lo tanto, no contienen ADN. Esto es una adaptación que permite que transportem más oxígeno. Todas las otras células contienen ADN.
+                        </div>
+                    </div>
+                    <div class="feedback q7-incorrect">
+                        <span class="feedback-incorrect">✗ INCORRECTO</span>
+                        <div class="feedback-text">
+                            <strong>Explicación:</strong> La respuesta correcta es la opción c. Los glóbulos rojos maduros de los mamíferos son las únicas células que NO contienen ADN porque carecen de núcleo. Este es una característica única de estos glóbulos rojos que optimiza su capacidad de transporte de oxígeno.
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BOTONES -->
+                <div class="quiz-buttons">
+                    <button class="btn-submit" onclick="verificarRespuestas()">🔍 Verificar Respuestas</button>
+                    <button class="btn-submit" onclick="reiniciarQuiz()" style="background: linear-gradient(135deg, #f39c12 0%, #e67e22 100%);">🔄 Reiniciar Cuestionario</button>
+                </div>
+
+                <!-- RESULTADOS -->
+                <div id="quiz-results" class="quiz-results">
+                    <h3>Resultados de tu Evaluación</h3>
+                    <div class="score-display" id="score-display">0/7</div>
+                    <p id="results-message">Excelente trabajo</p>
+                    <p id="results-feedback"></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>🧬 Material educativo sobre ADN y ARN - Taller de Biología Grado 8</p>
+            <p>Basado en contenidos de educación personalizada CEDAP</p>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId).classList.add('active');
+
+            // Actualizar botones activos
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Scroll hacia arriba
+            window.scrollTo(0, 0);
+        }
+
+        function verificarRespuestas() {
+            const respuestasCorrectas = {
+                q1: 'a', // Guanina
+                q2: 'a', // Timina
+                q3: 'd', // Azúcar, base nitrogenada, ácido fosfórico
+                q4: 'a', // Doble hélice vs cadena simple
+                q5: 'b', // Uracilo
+                q6: 'b', // Almacenar información genética
+                q7: 'c'  // Glóbulo rojo maduro
+            };
+
+            let correctas = 0;
+            let total = Object.keys(respuestasCorrectas).length;
+
+            for (let i = 1; i <= total; i++) {
+                const preguntaId = 'q' + i;
+                const respuestaSeleccionada = document.querySelector(`input[name="${preguntaId}"]:checked`);
+                const feedbackCorrect = document.querySelector(`.${preguntaId}-feedback .feedback-correct`);
+                const feedbackIncorrect = document.querySelector(`.${preguntaId}-feedback .feedback-incorrect`).parentElement;
+                const feedbackCorrectDiv = feedbackCorrect.parentElement;
+
+                // Ocultar todos los feedbacks primero
+                feedbackCorrectDiv.style.display = 'none';
+                feedbackIncorrect.style.display = 'none';
+
+                if (respuestaSeleccionada) {
+                    if (respuestaSeleccionada.value === respuestasCorrectas[preguntaId]) {
+                        feedbackCorrectDiv.style.display = 'block';
+                        feedbackCorrectDiv.classList.add('correct');
+                        feedbackCorrectDiv.classList.remove('incorrect');
+                        correctas++;
+                    } else {
+                        feedbackIncorrect.style.display = 'block';
+                        feedbackIncorrect.classList.add('incorrect');
+                        feedbackIncorrect.classList.remove('correct');
+                    }
+                } else {
+                    feedbackIncorrect.style.display = 'block';
+                    feedbackIncorrect.classList.add('incorrect');
+                    feedbackIncorrect.classList.remove('correct');
+                }
+            }
+
+            // Mostrar resultados
+            const resultsDiv = document.getElementById('quiz-results');
+            const scoreDisplay = document.getElementById('score-display');
+            const resultsMessage = document.getElementById('results-message');
+            const resultsFeedback = document.getElementById('results-feedback');
+
+            scoreDisplay.textContent = `${correctas}/${total}`;
+            resultsDiv.classList.add('show');
+
+            const porcentaje = (correctas / total) * 100;
+
+            if (porcentaje === 100) {
+                resultsMessage.textContent = '¡EXCELENTE! 🌟';
+                resultsFeedback.textContent = 'Dominas perfectamente el tema de ADN y ARN. ¡Felicidades!';
+            } else if (porcentaje >= 80) {
+                resultsMessage.textContent = '¡MUY BIEN! 👏';
+                resultsFeedback.textContent = 'Tienes un muy buen conocimiento del material. Solo repasa algunos conceptos.';
+            } else if (porcentaje >= 60) {
+                resultsMessage.textContent = 'Bien 👍';
+                resultsFeedback.textContent = 'Has adquirido conocimientos importantes. Te recomendamos repasar los conceptos fallidos.';
+            } else {
+                resultsMessage.textContent = 'Necesitas estudiar más 📚';
+                resultsFeedback.textContent = 'Te sugerimos revisar nuevamente el material y volver a intentar el cuestionario.';
+            }
+
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        function reiniciarQuiz() {
+            // Limpiar todas las respuestas
+            const radios = document.querySelectorAll('input[type="radio"]');
+            radios.forEach(radio => radio.checked = false);
+
+            // Ocultar feedbacks
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => feedback.style.display = 'none');
+
+            // Ocultar resultados
+            document.getElementById('quiz-results').classList.remove('show');
+
+            // Scroll hacia arriba
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>

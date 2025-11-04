@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: El Sistema Endocrino</title>
+    <!-- Importa Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importa la fuente Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+        /* Estilos para el modal */
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        .modal-content {
+            transition: transform 0.25s ease;
+        }
+        /* Ocultar scrollbar */
+        .modal-body::-webkit-scrollbar {
+            display: none;
+        }
+        .modal-body {
+            -ms-overflow-style: none; /* IE y Edge */
+            scrollbar-width: none; /* Firefox */
+        }
+        /* Estilos para el quiz */
+        .quiz-option {
+            transition: all 0.2s ease-in-out;
+        }
+        .quiz-option:hover {
+            background-color: #374151; /* gray-700 */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-gray-100">
+
+    <!-- ==== Encabezado ==== -->
+    <header class="bg-gray-800 shadow-xl p-6">
+        <h1 class="text-4xl font-bold text-center text-blue-400">Infografía Interactiva: El Sistema Endocrino</h1>
+        <p class="text-center text-lg text-gray-300 mt-2">Una mirada a la red de comunicación química del cuerpo.</p>
+    </header>
+
+    <!-- ==== Sección de Introducción ==== -->
+    <section class="container mx-auto px-6 py-12">
+        <div class="bg-gray-800 rounded-lg shadow-2xl p-8 md:flex items-center">
+            <div class="md:w-2/3">
+                <h2 class="text-3xl font-bold text-blue-300 mb-4">¿Qué es el Sistema Endocrino?</h2>
+                <p class="text-lg mb-4">
+                    Es el conjunto de glándulas y tejidos que liberan <strong class="text-blue-300">hormonas</strong> en el torrente sanguíneo. A diferencia del sistema nervioso, actúa de forma más lenta pero sus efectos son más prolongados.
+                </p>
+                <p class="text-lg">
+                    Su principal objetivo es mantener el equilibrio del cuerpo, un estado conocido como <strong class="text-blue-300">homeostasis</strong>. Influye en casi todas las células, órganos y funciones, incluyendo:
+                </p>
+            </div>
+            <div class="md:w-1/3 mt-6 md:mt-0 md:pl-8">
+                <ul class="list-disc list-inside bg-gray-700 p-6 rounded-lg space-y-2">
+                    <li>Metabolismo</li>
+                    <li>Crecimiento y desarrollo</li>
+                    <li>Funciones sexuales y reproducción</li>
+                    <li>Respuesta al estrés y al peligro</li>
+                    <li>Regulación de emociones (miedo, alegría, ira)</li>
+                    <li>Ciclos de sueño y temperatura corporal</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==== AÑADIDO: Sección de Video Introductorio ==== -->
+    <section class="container mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold text-center text-blue-300 mb-8">Video Introductorio: ¿Qué son las Hormonas?</h2>
+        <div class="bg-gray-800 rounded-lg shadow-2xl p-4 md:p-6 max-w-3xl mx-auto">
+            <a href="https://www.youtube.com/watch?v=WdsBaroAv_k" target="_blank" rel="noopener noreferrer">
+                <img src="https://img.youtube.com/vi/WdsBaroAv_k/0.jpg" alt="Video de YouTube: ¿Qué son las hormonas?" class="rounded-lg">
+            </a>
+        </div>
+    </section>
+    <!-- ==== Fin de la Sección de Video ==== -->
+
+    <!-- ==== Sección del Mapa Interactivo ==== -->
+    <section class="container mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold text-center text-blue-300 mb-8">Explora las Glándulas Principales</h2>
+        <p class="text-center text-lg text-gray-300 mb-10">Haz clic en el nombre de una glándula para descubrir su función.</p>
+        
+        <div class="md:flex bg-gray-800 rounded-lg shadow-2xl overflow-hidden">
+            <!-- Columna de la Imagen -->
+            <div class="md:w-1/2 p-4 flex items-center justify-center">
+                <!-- Imagen del sistema endocrino, como la de la página 4 del PDF -->
+                                <img src="https://placehold.co/400x600/111827/7DD3FC?text=Diagrama+del+Sistema+Endocrino" 
+                     alt="Diagrama de las glándulas del sistema endocrino en el cuerpo humano" 
+                     class="rounded-lg object-contain max-h-[600px]"
+                     onerror="this.onerror=null;this.src='https://placehold.co/400x600/111827/7DD3FC?text=Error+al+cargar+imagen';">
+            </div>
+
+            <!-- Columna de Botones Interactivos -->
+            <div class="md:w-1/2 p-8 grid grid-cols-2 gap-4">
+                <!-- Lista de glándulas para hacer clic -->
+                <button onclick="openModal('hipotalamo')" class="gland-button">Hipotálamo</button>
+                <button onclick="openModal('hipofisis')" class="gland-button">Hipófisis (Pituitaria)</button>
+                <button onclick="openModal('pineal')" class="gland-button">Glándula Pineal</button>
+                <button onclick="openModal('tiroides')" class="gland-button">Tiroides</button>
+                <button onclick="openModal('paratiroides')" class="gland-button">Paratiroides</button>
+                <button onclick="openModal('suprarrenales')" class="gland-button">Glándulas Suprarrenales</button>
+                <button onclick="openModal('pancreas')" class="gland-button">Páncreas</button>
+                <button onclick="openModal('gonadas')" class="gland-button">Gónadas (Ovarios/Testículos)</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Estilo para los botones de las glándulas -->
+    <style>
+        .gland-button {
+            background-color: #1F2937; /* gray-800 */
+            border: 2px solid #3B82F6; /* blue-500 */
+            color: #E5E7EB; /* gray-200 */
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .gland-button:hover {
+            background-color: #3B82F6; /* blue-500 */
+            color: #FFFFFF;
+            transform: translateY(-3px);
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+    </style>
+
+    <!-- ==== Sección de Regulación ==== -->
+    <section class="container mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold text-center text-blue-300 mb-8">¿Cómo se Regula el Sistema?</h2>
+        <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-gray-800 rounded-lg shadow-2xl p-8">
+                <h3 class="text-2xl font-bold text-blue-300 mb-4">Comunicación Hormonal</h3>
+                <p class="mb-3">Las hormonas viajan por la sangre hasta encontrar su <strong class="text-blue-200">célula diana</strong>, que tiene un receptor específico, como una llave en una cerradura.</p>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong class="text-blue-200">Comunicación Sistémica:</strong> La hormona viaja por la sangre a todo el cuerpo.</li>
+                    <li><strong class="text-blue-200">Comunicación Paracrina:</strong> La hormona actúa en células vecinas.</li>
+                    <li><strong class="text-blue-200">Comunicación Autocrina:</strong> La hormona actúa sobre la misma célula que la produjo.</li>
+                </ul>
+            </div>
+            <div class="bg-gray-800 rounded-lg shadow-2xl p-8">
+                <h3 class="text-2xl font-bold text-blue-300 mb-4">Regulación: Retroalimentación Negativa</h3>
+                <p class="mb-3">Es el principal mecanismo de control. Funciona como un termostato:</p>
+                <ol class="list-decimal list-inside space-y-2">
+                    <li>El <strong class="text-blue-200">Hipotálamo</strong> detecta una necesidad y ordena a la Hipófisis.</li>
+                    <li>La <strong class="text-blue-200">Hipófisis</strong> libera una hormona que estimula a otra glándula (ej. Tiroides).</li>
+                    <li>La <strong class="text-blue-200">Glándula</strong> libera su hormona (ej. Tiroxina) al cuerpo.</li>
+                    <li>Cuando el nivel de Tiroxina es suficiente, el Hipotálamo <strong class="text-red-400">deja de dar la orden</strong>.</li>
+                </ol>
+                <p class="mt-3">Este bucle (feedback) mantiene los niveles hormonales estables.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==== Sección Cuestionario ==== -->
+    <section id="quiz" class="container mx-auto px-6 py-12">
+        <h2 class="text-3xl font-bold text-center text-blue-300 mb-8">Pon a Prueba tu Conocimiento</h2>
+        <div class="bg-gray-800 rounded-lg shadow-2xl p-8 max-w-3xl mx-auto">
+            <form id="quizForm">
+                <!-- Pregunta 1 -->
+                <div class="mb-8">
+                    <p class="text-xl font-semibold mb-4">1. ¿Cuál es la función principal del sistema endocrino descrita como el mantenimiento del equilibrio corporal?</p>
+                    <div class="space-y-3">
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q1" value="crecimiento" class="mr-3"> Regular el crecimiento y desarrollo</label>
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q1" value="homeostasis" class="mr-3"> Mantener la homeostasis</label>
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q1" value="sinapsis" class="mr-3"> Realizar la sinapsis neuronal</label>
+                    </div>
+                    <!-- Retroalimentación P1 -->
+                    <div id="feedback-q1-correct" class="hidden mt-3 p-3 rounded-lg bg-green-900 border border-green-500 text-green-200">
+                        <strong>¡Correcto!</strong> La homeostasis es el estado de equilibrio interno que el sistema endocrino se encarga de mantener.
+                    </div>
+                    <div id="feedback-q1-incorrect" class="hidden mt-3 p-3 rounded-lg bg-red-900 border border-red-500 text-red-200">
+                        <strong>Incorrecto.</strong> Aunque el sistema endocrino regula el crecimiento, su función principal y más general es mantener la homeostasis o equilibrio del cuerpo.
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="mb-8">
+                    <p class="text-xl font-semibold mb-4">2. ¿Qué glándula es conocida como la "glándula maestra" porque regula a la mayoría de las otras glándulas?</p>
+                    <div class="space-y-3">
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q2" value="hipotalamo" class="mr-3"> Hipotálamo</label>
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q2" value="tiroides" class="mr-3"> Tiroides</label>
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q2" value="hipofisis" class="mr-3"> Hipófisis (Pituitaria)</label>
+                    </div>
+                    <!-- Retroalimentación P2 -->
+                    <div id="feedback-q2-correct" class="hidden mt-3 p-3 rounded-lg bg-green-900 border border-green-500 text-green-200">
+                        <strong>¡Correcto!</strong> La hipófisis o pituitaria es la "glándula maestra", ya que produce hormonas que estimulan y controlan a muchas otras glándulas del sistema.
+                    </div>
+                    <div id="feedback-q2-incorrect" class="hidden mt-3 p-3 rounded-lg bg-red-900 border border-red-500 text-red-200">
+                        <strong>Incorrecto.</strong> La respuesta correcta es la hipófisis. El hipotálamo controla a la hipófisis (es el "jefe"), pero la hipófisis (la "maestra" o "directora") es la que da las órdenes directas a las demás glándulas.
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="mb-8">
+                    <p class="text-xl font-semibold mb-4">3. ¿Qué hormona, producida por la glándula pineal, ayuda a regular los ciclos de sueño-vigilia?</p>
+                    <div class="space-y-3">
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q3" value="melatonina" class="mr-3"> Melatonina</label>
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q3" value="adrenalina" class="mr-3"> Adrenalina (Epinefrina)</label>
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q3" value="tiroxina" class="mr-3"> Tiroxina</label>
+                    </div>
+                    <!-- Retroalimentación P3 -->
+                    <div id="feedback-q3-correct" class="hidden mt-3 p-3 rounded-lg bg-green-900 border border-green-500 text-green-200">
+                        <strong>¡Correcto!</strong> La glándula pineal secreta melatonina, que es fundamental para regular nuestros ritmos circadianos (el ciclo de sueño y vigilia).
+                    </div>
+                    <div id="feedback-q3-incorrect" class="hidden mt-3 p-3 rounded-lg bg-red-900 border border-red-500 text-red-200">
+                        <strong>Incorrecto.</strong> La hormona es la melatonina. La adrenalina se relaciona con el estrés y la tiroxina con el metabolismo.
+                    </div>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="mb-8">
+                    <p class="text-xl font-semibold mb-4">4. La insulina y el glucagón, que regulan el nivel de azúcar en sangre, son producidos por:</p>
+                    <div class="space-y-3">
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q4" value="suprarrenales" class="mr-3"> Las glándulas suprarrenales</label>
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q4" value="pancreas" class="mr-3"> El páncreas</label>
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q4" value="gonadas" class="mr-3"> Las gónadas</label>
+                    </div>
+                    <!-- Retroalimentación P4 -->
+                    <div id="feedback-q4-correct" class="hidden mt-3 p-3 rounded-lg bg-green-900 border border-green-500 text-green-200">
+                        <strong>¡Correcto!</strong> El páncreas es una glándula mixta. Su parte endocrina produce insulina (baja el azúcar) y glucagón (sube el azúcar) para mantener el equilibrio.
+                    </div>
+                    <div id="feedback-q4-incorrect" class="hidden mt-3 p-3 rounded-lg bg-red-900 border border-red-500 text-red-200">
+                        <strong>Incorrecto.</strong> La respuesta es el páncreas. Las glándulas suprarrenales manejan la respuesta al estrés (adrenalina).
+                    </div>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="mb-8">
+                    <p class="text-xl font-semibold mb-4">5. ¿Cuál es el trastorno endocrino que puede causar síntomas como ansiedad, tristeza e hiperactividad o conductas maniformes?</p>
+                    <div class="space-y-3">
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q5" value="hipoglucemia" class="mr-3"> Hipoglucemia</label>
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q5" value="hipertiroidismo" class="mr-3"> Hipertiroidismo</label>
+                        <label class="quiz-option block p-4 rounded-lg border border-gray-700 cursor-pointer"><input type="radio" name="q5" value="hipotiroidismo" class="mr-3"> Hipotiroidismo</label>
+                    </div>
+                    <!-- Retroalimentación P5 -->
+                    <div id="feedback-q5-correct" class="hidden mt-3 p-3 rounded-lg bg-green-900 border border-green-500 text-green-200">
+                        <strong>¡Correcto!</strong> El hipertiroidismo (exceso de hormona tiroidea) acelera el metabolismo y puede manifestarse psiquiátricamente como ansiedad, irritabilidad y conductas hiperactivas o maniformes.
+                    </div>
+                    <div id="feedback-q5-incorrect" class="hidden mt-3 p-3 rounded-lg bg-red-900 border border-red-500 text-red-200">
+                        <strong>Incorrecto.</strong> Es el hipertiroidismo (hiper = exceso). El hipotiroidismo (hipo = deficiencia) suele causar lo opuesto: bradipsiquia (lentitud mental), tristeza y apatía. La hipoglucemia causa temblor y ansiedad, pero no conductas maniformes.
+                    </div>
+                </div>
+
+                <!-- Botón de Calificar -->
+                <div class="text-center mt-10">
+                    <button type="button" onclick="checkQuiz()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-lg text-xl transition-transform transform hover:scale-105">
+                        Calificar
+                    </button>
+                </div>
+
+                <!-- Puntuación Final -->
+                <div id="quiz-results" class="hidden text-center mt-8 p-6 bg-gray-700 rounded-lg">
+                    <h3 class="text-2xl font-bold">Resultados</h3>
+                    <p id="score-text" class="text-xl mt-2"></p>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- ==== Pie de Página ==== -->
+    <footer class="text-center p-6 bg-gray-800 border-t border-gray-700 mt-12">
+        <p class="text-gray-400">Infografía interactiva creada con base en el documento "Sistema endocrino.pdf".</p>
+    </footer>
+
+
+    <!-- ==== Modal (Oculto por defecto) ==== -->
+    <div id="glandModal" class="modal fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center p-6 opacity-0 pointer-events-none z-50">
+        <div class="modal-content bg-gray-800 rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] flex flex-col transform -translate-y-10">
+            <!-- Encabezado del Modal -->
+            <div class="flex justify-between items-center p-6 border-b border-gray-700">
+                <h3 id="modalTitle" class="text-3xl font-bold text-blue-300"></h3>
+                <button onclick="closeModal()" class="text-gray-400 hover:text-white text-3xl font-bold">&times;</button>
+            </div>
+            <!-- Cuerpo del Modal -->
+            <div id="modalBody" class="modal-body p-8 overflow-y-auto">
+                <p id="modalDescription" class="text-lg mb-6"></p>
+                <h4 class="text-2xl font-semibold text-blue-200 mb-4">Hormonas Principales</h4>
+                <p id="modalHormones" class="text-lg"></p>
+            </div>
+            <!-- Pie del Modal -->
+            <div class="p-4 bg-gray-900 border-t border-gray-700 text-right rounded-b-lg">
+                <button onclick="closeModal()" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-6 rounded-lg">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ==== JavaScript ==== -->
+    <script>
+        // --- Datos de las Glándulas (del PDF) ---
+        const glandData = {
+            hipotalamo: {
+                title: "Hipotálamo",
+                description: "Aunque es parte del cerebro (sistema nervioso), es el centro de control principal del sistema endocrino. Produce neurohormonas que le dicen a la hipófisis (glándula pituitaria) qué hacer. Es el vínculo clave entre el sistema nervioso y el endocrino.",
+                hormones: "Produce factores liberadores e inhibidores que controlan la hipófisis. También produce la Oxitocina y la Vasopresina (que se almacenan en la neurohipófisis)."
+            },
+            hipofisis: {
+                title: "Hipófisis (Glándula Pituitaria)",
+                description: "Considerada la 'glándula maestra'. Es una glándula pequeña ubicada en la base del cerebro que regula a la mayoría de las otras glándulas endocrinas. Influye en el crecimiento, la presión sanguínea, la sed y la conducta sexual.",
+                hormones: "Adenohipófisis: Hormona del Crecimiento (STH), Prolactina, Tirotropina (TSH), Adrenocorticotrópica (ACTH), Hormona Folículo Estimulante (FSH) y Hormona Luteinizante (LH). \nNeurohipófisis: Almacena Oxitocina y Vasopresina (ADH)."
+            },
+            pineal: {
+                title: "Glándula Pineal",
+                description: "Una pequeña glándula ubicada cerca del centro del cerebro. Su función principal es regular los ciclos de día y noche.",
+                hormones: "Melatonina: Ayuda a regular los ciclos de sueño y vigilia (ritmos circadianos)."
+            },
+            tiroides: {
+                title: "Glándula Tiroides",
+                description: "Ubicada en el cuello, delante de la tráquea. Regula el metabolismo del cuerpo, es decir, la velocidad a la que el cuerpo utiliza la energía. Influye en el estado de alerta y la maduración de los tejidos.",
+                hormones: "Tiroxina (T4) y Triyodotironina (T3): Controlan el metabolismo general."
+            },
+            paratiroides: {
+                title: "Glándulas Paratiroides",
+                description: "Son cuatro glándulas muy pequeñas ubicadas detrás de la tiroides. Su función es crucial para el equilibrio de minerales en el cuerpo.",
+                hormones: "Hormona Paratiroidea (PTH): Regula los niveles de calcio y fosfato en la sangre, lo cual influye en la excitabilidad del sistema nervioso."
+            },
+            suprarrenales: {
+                title: "Glándulas Suprarrenales",
+                description: "Hay dos, una encima de cada riñón. Son fundamentales para la respuesta del cuerpo al estrés ('lucha o huida').",
+                hormones: "Corteza: Cortisol (estrés, metabolismo), Aldosterona (presión arterial). \nMédula: Epinefrina (Adrenalina) y Norepinefrina (activan el cuerpo ante el estrés, aumentan ritmo cardíaco y presión)."
+            },
+            pancreas: {
+                title: "Páncreas",
+                description: "Es una glándula mixta (endocrina y exocrina). Como glándula exocrina, produce jugos digestivos. Como glándula endocrina, controla los niveles de azúcar en la sangre.",
+                hormones: "Insulina: Reduce los niveles de azúcar en sangre (permite que entre a las células). \nGlucagón: Aumenta los niveles de azúcar en sangre (libera glucosa almacenada)."
+            },
+            gonadas: {
+                title: "Gónadas (Ovarios y Testículos)",
+                description: "Son las glándulas sexuales. Producen las hormonas responsables del desarrollo de las características sexuales secundarias (vello corporal, voz, desarrollo mamario, etc.) y de la reproducción.",
+                hormones: "Ovarios (mujeres): Estrógenos y Progesterona. \nTestículos (hombres): Andrógenos (principalmente Testosterona)."
+            }
+        };
+
+        // --- Lógica del Modal ---
+        const modal = document.getElementById('glandModal');
+        const modalContent = modal.querySelector('.modal-content');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalDescription = document.getElementById('modalDescription');
+        const modalHormones = document.getElementById('modalHormones');
+
+        function openModal(glandId) {
+            const data = glandData[glandId];
+            if (!data) return;
+
+            modalTitle.textContent = data.title;
+            modalDescription.textContent = data.description;
+            // Usar 'pre-wrap' para respetar los saltos de línea en la lista de hormonas
+            modalHormones.textContent = data.hormones;
+            modalHormones.style.whiteSpace = 'pre-wrap';
+            
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modalContent.classList.remove('-translate-y-10');
+        }
+
+        function closeModal() {
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modalContent.classList.add('-translate-y-10');
+        }
+
+        // --- Lógica del Cuestionario ---
+        const correctAnswers = {
+            q1: "homeostasis",
+            q2: "hipofisis",
+            q3: "melatonina",
+            q4: "pancreas",
+            q5: "hipertiroidismo"
+        };
+
+        function checkQuiz() {
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+
+            // Ocultar todos los feedbacks antes de empezar
+            document.querySelectorAll('[id^="feedback-"]').forEach(el => el.style.display = 'none');
+            
+            // Ocultar resultados anteriores
+            document.getElementById('quiz-results').style.display = 'none';
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const qName = `q${i}`;
+                const selectedAnswer = document.querySelector(`input[name="${qName}"]:checked`);
+                const questionLabel = selectedAnswer ? selectedAnswer.closest('label') : null;
+
+                // Resetear estilos de bordes
+                document.querySelectorAll(`input[name="${qName}"]`).forEach(radio => {
+                    radio.closest('label').style.border = '1px solid #4B5563'; // gray-700
+                });
+
+                if (selectedAnswer) {
+                    const userAnswer = selectedAnswer.value;
+                    
+                    if (userAnswer === correctAnswers[qName]) {
+                        // Respuesta Correcta
+                        score++;
+                        document.getElementById(`feedback-${qName}-correct`).style.display = 'block';
+                        if (questionLabel) questionLabel.style.border = '2px solid #10B981'; // green-500
+                    } else {
+                        // Respuesta Incorrecta
+                        document.getElementById(`feedback-${qName}-incorrect`).style.display = 'block';
+                        if (questionLabel) questionLabel.style.border = '2px solid #EF4444'; // red-500
+                    }
+                } else {
+                    // Sin respuesta
+                    // Opcional: marcar en rojo la pregunta
+                    document.getElementById(`feedback-${qName}-incorrect`).textContent = 'No has seleccionado una respuesta.';
+                    document.getElementById(`feedback-${qName}-incorrect`).style.display = 'block';
+                }
+            }
+
+            // Mostrar puntuación final
+            const resultsDiv = document.getElementById('quiz-results');
+            const scoreText = document.getElementById('score-text');
+            scoreText.textContent = `Tu puntuación es: ${score} de ${totalQuestions}`;
+            resultsDiv.style.display = 'block';
+            
+            // Scroll a los resultados
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+    </script>
+
+</body>
+</html>
+

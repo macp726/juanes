@@ -1,0 +1,1366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meiosis y Sistema Endocrino - Presentación Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+            padding-left: 15px;
+        }
+
+        .infographic {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .process-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            flex: 1;
+            min-width: 200px;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .process-box h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .arrow {
+            font-size: 2em;
+            color: #667eea;
+        }
+
+        .card {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .hormone-chart {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .hormone-item {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .hormone-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+        }
+
+        .hormone-item h4 {
+            color: #667eea;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .hormone-item p {
+            font-size: 0.95em;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .map-container {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .map-title {
+            color: #667eea;
+            font-size: 1.3em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .meiosis-map {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .map-column h4 {
+            color: #667eea;
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .map-step {
+            background: #f8f9fa;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .map-step-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .map-step-desc {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.5;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .quiz-section {
+            margin-top: 50px;
+        }
+
+        .quiz-question {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .quiz-question h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .option input[type="radio"],
+        .option input[type="checkbox"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            color: #721c24;
+        }
+
+        .quiz-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .true-false-options {
+            display: flex;
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        .tf-option {
+            flex: 1;
+        }
+
+        .tf-option label {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tf-option label:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .tf-option input {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .results {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .results h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .score {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .fill-blank {
+            border: none;
+            border-bottom: 2px solid #667eea;
+            width: 100%;
+            padding: 5px;
+            font-size: 1em;
+            margin-top: 10px;
+        }
+
+        .section-indicator {
+            text-align: center;
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🧬 Meiosis y Sistema Endocrino</h1>
+            <p>Presentación Interactiva - Grado Octavo</p>
+        </div>
+
+        <div class="content">
+            <!-- SECCIÓN 1: INTRODUCCIÓN -->
+            <div class="section active">
+                <div class="section-indicator">Sección 1 de 6</div>
+                <h2>Introducción a la Meiosis y Gametogénesis</h2>
+                <div class="infographic">
+                    <div class="card">
+                        <h3>¿Qué es la Meiosis?</h3>
+                        <p>La meiosis es un tipo de división celular que produce <span class="highlight">gametos (células sexuales)</span> con la mitad del número de cromosomas de la célula original. En los humanos, las células somáticas tienen 46 cromosomas (23 pares), mientras que los gametos tienen 23 cromosomas.</p>
+                    </div>
+
+                    <div class="card">
+                        <h3>Objetivo de la Gametogénesis</h3>
+                        <p>La <span class="highlight">gametogénesis</span> es el proceso de formación de gametos. Se divide en dos tipos principales:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li><strong>Espermatogénesis:</strong> Producción de espermatozoides en los testículos</li>
+                            <li><strong>Ovogénesis:</strong> Producción de óvulos en los ovarios</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Relación con el Sistema Endocrino</h3>
+                        <p>El sistema endocrino regula la gametogénesis mediante la producción de hormonas. Estas hormonas actúan sobre las gónadas (testículos y ovarios) para controlar el proceso de formación de gametos.</p>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button onclick="previousSection()" disabled>← Anterior</button>
+                    <button onclick="nextSection()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 2: ESPERMATOGÉNESIS -->
+            <div class="section">
+                <div class="section-indicator">Sección 2 de 6</div>
+                <h2>Espermatogénesis</h2>
+                <div class="infographic">
+                    <div class="card">
+                        <h3>Proceso de Producción de Espermatozoides</h3>
+                        <p>La espermatogénesis es el proceso mediante el cual se producen los espermatozoides. Ocurre en los <span class="highlight">túbulos seminíferos</span> de los testículos y dura aproximadamente 74 días.</p>
+                    </div>
+
+                    <div class="map-container">
+                        <div class="map-title">Fases de la Espermatogénesis</div>
+                        <div class="meiosis-map">
+                            <div>
+                                <h4>🔄 Fase de Mitosis</h4>
+                                <div class="map-step">
+                                    <div class="map-step-title">1. Espermatogonia (2n)</div>
+                                    <div class="map-step-desc">Célula germinal diploide que se divide por mitosis para mantener una población de células madre.</div>
+                                </div>
+                                <div class="map-step">
+                                    <div class="map-step-title">↓ División Mitótica</div>
+                                    <div class="map-step-desc">Produce espermatogonias iguales para continuidad del proceso.</div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>⚡ Fase de Meiosis</h4>
+                                <div class="map-step">
+                                    <div class="map-step-title">2. Espermatocito Primario (2n)</div>
+                                    <div class="map-step-desc">Resultado de la diferenciación de espermatogonia. Diploide, entra en Meiosis I.</div>
+                                </div>
+                                <div class="map-step">
+                                    <div class="map-step-title">↓ Meiosis I</div>
+                                    <div class="map-step-desc">Produce DOS espermatocitos secundarios (n), cada uno haploide.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+                        <div class="map-title">Continuación de las Fases</div>
+                        <div class="meiosis-map">
+                            <div>
+                                <h4>✨ Fase de Diferenciación I</h4>
+                                <div class="map-step">
+                                    <div class="map-step-title">3. Meiosis II</div>
+                                    <div class="map-step-desc">Cada espermatocito secundario se divide, produciendo DOS espermatátides (n) de cada uno.</div>
+                                </div>
+                                <div class="map-step">
+                                    <div class="map-step-title">Resultado: 4 Espermátides</div>
+                                    <div class="map-step-desc">Del espermatocito primario inicial se obtienen 4 espermátides haploides.</div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>🎯 Espermiogénesis</h4>
+                                <div class="map-step">
+                                    <div class="map-step-title">4. Diferenciación</div>
+                                    <div class="map-step-desc">Las espermátides se transforman en espermatozoides maduros mediante cambios morfológicos.</div>
+                                </div>
+                                <div class="map-step">
+                                    <div class="map-step-title">5. Espermatozoides Maduros</div>
+                                    <div class="map-step-desc">Células móviles con flagelo, mitocondrias y núcleo. Listos para la fecundación.</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Células de Soporte: Células de Sertoli</h3>
+                        <p>Las <span class="highlight">células de Sertoli</span> son células de soporte especializadas que:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Nutren y brindan soporte a las células germinales</li>
+                            <li>Participan en la fagocitosis de cuerpos residuales durante la espermiogénesis</li>
+                            <li>Secretan factores de crecimiento y proteínas de unión</li>
+                            <li>Contribuyen a la formación de la barrera hematotesticular</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Importante: Gametos Masculinos</h3>
+                        <p>Los espermatozoides producidos pueden ser de dos tipos:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li><strong>23,X</strong> - Espermatozoides que portan cromosoma X</li>
+                            <li><strong>23,Y</strong> - Espermatozoides que portan cromosoma Y</li>
+                        </ul>
+                        <p style="margin-top: 10px;">Esto significa que <span class="highlight">el espermatozoide determina el sexo del futuro individuo</span>.</p>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button onclick="previousSection()">← Anterior</button>
+                    <button onclick="nextSection()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3: OVOGÉNESIS -->
+            <div class="section">
+                <div class="section-indicator">Sección 3 de 6</div>
+                <h2>Ovogénesis</h2>
+                <div class="infographic">
+                    <div class="card">
+                        <h3>Proceso de Producción de Óvulos</h3>
+                        <p>La ovogénesis es el proceso de producción de óvulos en los ovarios. A diferencia de la espermatogénesis, este proceso comienza <span class="highlight">antes del nacimiento</span> y se completa en etapas distintas.</p>
+                    </div>
+
+                    <div class="map-container">
+                        <div class="map-title">Fases Temporales de la Ovogénesis</div>
+                        <div class="meiosis-map">
+                            <div>
+                                <h4>👶 Fase Fetal (Antes del Nacimiento)</h4>
+                                <div class="map-step">
+                                    <div class="map-step-title">1. Oogonia (2n)</div>
+                                    <div class="map-step-desc">Células germinales diploides en la vida intrauterina. Se dividen por mitosis.</div>
+                                </div>
+                                <div class="map-step">
+                                    <div class="map-step-title">2. Oocito Primario (2n)</div>
+                                    <div class="map-step-desc">Resultado de la diferenciación. Se detiene en Profase I de Meiosis I.</div>
+                                </div>
+                                <div class="map-step">
+                                    <div class="map-step-title">⏸️ DETENCIÓN EN PROFASE I</div>
+                                    <div class="map-step-desc">Los oocitos primarios permanecen detenidos hasta la pubertad (pueden estar hasta 50+ años).</div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>🌕 Fase Reproductiva (Después de Pubertad)</h4>
+                                <div class="map-step">
+                                    <div class="map-step-title">3. Reanudación Meiótica</div>
+                                    <div class="map-step-desc">La hormona LH desencadena la reanudación de la meiosis I.</div>
+                                </div>
+                                <div class="map-step">
+                                    <div class="map-step-title">4. Oocito Secundario (n)</div>
+                                    <div class="map-step-desc">Resultado de Meiosis I. Es liberado durante la ovulación.</div>
+                                </div>
+                                <div class="map-step">
+                                    <div class="map-step-title">5. Cuerpo Polar I (n)</div>
+                                    <div class="map-step-desc">Primera división produce un cuerpo polar que degenera (poco citoplasma).</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-container">
+                        <div class="map-title">Meiosis II en la Ovogénesis</div>
+                        <div class="meiosis-map">
+                            <div>
+                                <h4>🎯 Antes de Fecundación</h4>
+                                <div class="map-step">
+                                    <div class="map-step-title">Oocito Secundario Liberado</div>
+                                    <div class="map-step-desc">Se detiene en Metafase II, listo para ser fecundado.</div>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>❤️ Posterior a Fecundación</h4>
+                                <div class="map-step">
+                                    <div class="map-step-title">Meiosis II se Completa</div>
+                                    <div class="map-step-desc">Solo tras la penetración del espermatozoide se completa Meiosis II.</div>
+                                </div>
+                                <div class="map-step">
+                                    <div class="map-step-title">Óvulo Maduro + Cuerpo Polar II</div>
+                                    <div class="map-step-desc">Se produce un óvulo haploide funcional y otro cuerpo polar (degenera).</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Características Importante de los Cuerpos Polares</h3>
+                        <p>Los cuerpos polares son estructuras especiales de la ovogénesis:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>💧 <strong>Reciben poco citoplasma:</strong> Esto maximiza los nutrientes en el óvulo</li>
+                            <li>❌ <strong>Degeneran:</strong> No se convierten en óvulos funcionales</li>
+                            <li>🔄 <strong>Función desconocida:</strong> Podría estar relacionada con equilibrio meiótico</li>
+                            <li>📍 <strong>Ubicación:</strong> En el espacio perivitelino del óvulo</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <h3>Gametos Femeninos</h3>
+                        <p>Los óvulos producidos siempre contienen:</p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li><strong>23,X</strong> - El gameto femenino siempre aporta cromosoma X</li>
+                        </ul>
+                        <p style="margin-top: 10px;">Por esta razón, el cromosoma del óvulo NO determina el sexo del futuro individuo.</p>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button onclick="previousSection()">← Anterior</button>
+                    <button onclick="nextSection()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 4: SISTEMA ENDOCRINO Y GAMETOGÉNESIS -->
+            <div class="section">
+                <div class="section-indicator">Sección 4 de 6</div>
+                <h2>Sistema Endocrino Regulador</h2>
+                <div class="infographic">
+                    <div class="card">
+                        <h3>Eje Hipotálamo-Hipófisis-Gónada (HPG)</h3>
+                        <p>La gametogénesis está regulada por el <span class="highlight">eje hipotálamo-hipófisis-gónada</span>, un sistema complejo de comunicación hormonal entre el cerebro y las gónadas.</p>
+                    </div>
+
+                    <div class="hormone-chart">
+                        <div class="hormone-item">
+                            <h4>🧠 Hipotálamo</h4>
+                            <p><strong>Hormona:</strong> GnRH (Hormona Liberadora de Gonadotropinas)</p>
+                            <p>Inicia la cascada hormonal estimulando a la hipófisis anterior para liberar FSH y LH.</p>
+                        </div>
+
+                        <div class="hormone-item">
+                            <h4>🔘 Hipófisis Anterior</h4>
+                            <p><strong>Hormonas:</strong> FSH y LH (Gonadotropinas)</p>
+                            <p>FSH estimula el crecimiento de gónadas; LH estimula la producción de hormonas sexuales.</p>
+                        </div>
+
+                        <div class="hormone-item">
+                            <h4>💪 Testículos (Hombre)</h4>
+                            <p><strong>Hormona:</strong> Testosterona</p>
+                            <p>Producida por células de Leydig. Estimula y mantiene la espermatogénesis.</p>
+                        </div>
+
+                        <div class="hormone-item">
+                            <h4>🌹 Ovarios (Mujer)</h4>
+                            <p><strong>Hormonas:</strong> Estrógenos y Progesterona</p>
+                            <p>Regulan el ciclo ovárico y preparan el útero para la posible implantación.</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Regulación Hormonal en la Espermatogénesis</h3>
+                        <div style="margin-top: 15px;">
+                            <p><strong>🔴 GnRH (Hormona Liberadora de Gonadotropinas)</strong></p>
+                            <p style="margin-left: 20px; margin-bottom: 10px;">Producida por: Hipotálamo | Estimula: Liberación de FSH y LH</p>
+                            
+                            <p><strong>🔴 FSH (Hormona Estimulante del Folículo)</strong></p>
+                            <p style="margin-left: 20px; margin-bottom: 10px;">Producida por: Hipófisis anterior | Acción: Estimula proliferación de espermatogonias y células de Sertoli</p>
+                            
+                            <p><strong>🔴 LH (Hormona Luteinizante)</strong></p>
+                            <p style="margin-left: 20px; margin-bottom: 10px;">Producida por: Hipófisis anterior | Acción: Estimula células de Leydig para producir testosterona</p>
+                            
+                            <p><strong>🔴 Testosterona</strong></p>
+                            <p style="margin-left: 20px;">Producida por: Células de Leydig | Acción: Estimula y mantiene toda la espermatogénesis; control por retroalimentación negativa</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Regulación Hormonal en la Ovogénesis</h3>
+                        <div style="margin-top: 15px;">
+                            <p><strong>🔵 Ciclo Menstrual</strong></p>
+                            <p style="margin-left: 20px; margin-bottom: 10px;">La ovogénesis está vinculada al ciclo menstrual que dura ~28 días en humanos.</p>
+                            
+                            <p><strong>🔵 FSH (Fase Folicular)</strong></p>
+                            <p style="margin-left: 20px; margin-bottom: 10px;">Estimula el crecimiento del folículo ovárico y producción de estrógenos</p>
+                            
+                            <p><strong>🔵 Pico de LH</strong></p>
+                            <p style="margin-left: 20px; margin-bottom: 10px;">Desencadena la ovulación (~día 14) y la reanudación de Meiosis I</p>
+                            
+                            <p><strong>🔵 Progesterona (Fase Lútea)</strong></p>
+                            <p style="margin-left: 20px;">Prepara el útero para implantación; si no hay fecundación, disminuye y comienza menstruación</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Comparación: Espermatogénesis vs Ovogénesis</h3>
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 15px;">
+                            <tr style="background: #667eea; color: white;">
+                                <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Aspecto</th>
+                                <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Espermatogénesis</th>
+                                <th style="border: 1px solid #ddd; padding: 10px; text-align: left;">Ovogénesis</th>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 10px;"><strong>Inicia</strong></td>
+                                <td style="border: 1px solid #ddd; padding: 10px;">Pubertad</td>
+                                <td style="border: 1px solid #ddd; padding: 10px;">Vida intrauterina</td>
+                            </tr>
+                            <tr style="background: #f8f9fa;">
+                                <td style="border: 1px solid #ddd; padding: 10px;"><strong>Duración</strong></td>
+                                <td style="border: 1px solid #ddd; padding: 10px;">~74 días</td>
+                                <td style="border: 1px solid #ddd; padding: 10px;">13-50+ años</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 10px;"><strong>Gametos por célula</strong></td>
+                                <td style="border: 1px solid #ddd; padding: 10px;">4 espermatozoides</td>
+                                <td style="border: 1px solid #ddd; padding: 10px;">1 óvulo</td>
+                            </tr>
+                            <tr style="background: #f8f9fa;">
+                                <td style="border: 1px solid #ddd; padding: 10px;"><strong>Distribución citoplasma</strong></td>
+                                <td style="border: 1px solid #ddd; padding: 10px;">Igual en los 4</td>
+                                <td style="border: 1px solid #ddd; padding: 10px;">Desigual (óvulo >> polares)</td>
+                            </tr>
+                            <tr>
+                                <td style="border: 1px solid #ddd; padding: 10px;"><strong>Continua después pubertad</strong></td>
+                                <td style="border: 1px solid #ddd; padding: 10px;">Sí</td>
+                                <td style="border: 1px solid #ddd; padding: 10px;">Periódicamente</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button onclick="previousSection()">← Anterior</button>
+                    <button onclick="nextSection()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 5: MAPA CONCEPTUAL RESUELTO -->
+            <div class="section">
+                <div class="section-indicator">Sección 5 de 6</div>
+                <h2>Mapa Conceptual Resuelto</h2>
+                <div class="infographic">
+                    <p style="text-align: center; margin-bottom: 20px; font-size: 1.1em; color: #667eea;"><strong>Relación entre Meiosis y Sistema Endocrino en Gametogénesis</strong></p>
+                    
+                    <svg viewBox="0 0 800 900" style="width: 100%; height: auto; border: 2px solid #667eea; border-radius: 10px; background: white;">
+                        <!-- Título -->
+                        <text x="400" y="30" text-anchor="middle" font-size="18" font-weight="bold" fill="#667eea">MEIOSIS Y SISTEMA ENDOCRINO</text>
+                        
+                        <!-- Nivel 1 -->
+                        <rect x="50" y="60" width="700" height="60" fill="#f0f4ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                        <text x="400" y="85" text-anchor="middle" font-size="14" font-weight="bold" fill="#667eea">GAMETOGÉNESIS</text>
+                        <text x="400" y="105" text-anchor="middle" font-size="12" fill="#333">Producción de gametos haploides bajo regulación endocrina</text>
+                        
+                        <!-- Flechas hacia nivel 2 -->
+                        <line x1="200" y1="120" x2="200" y2="150" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <line x1="600" y1="120" x2="600" y2="150" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        
+                        <!-- Nivel 2 -->
+                        <rect x="50" y="150" width="300" height="80" fill="#f0f4ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                        <text x="200" y="175" text-anchor="middle" font-size="13" font-weight="bold" fill="#667eea">ESPERMATOGÉNESIS</text>
+                        <text x="200" y="195" text-anchor="middle" font-size="11" fill="#333">Testículos • Comienza pubertad</text>
+                        <text x="200" y="212" text-anchor="middle" font-size="11" fill="#333">Produce 4 espermatozoides (23,X o 23,Y)</text>
+                        
+                        <rect x="450" y="150" width="300" height="80" fill="#f0f4ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                        <text x="600" y="175" text-anchor="middle" font-size="13" font-weight="bold" fill="#667eea">OVOGÉNESIS</text>
+                        <text x="600" y="195" text-anchor="middle" font-size="11" fill="#333">Ovarios • Comienza vida intrauterina</text>
+                        <text x="600" y="212" text-anchor="middle" font-size="11" fill="#333">Produce 1 óvulo (23,X) + cuerpos polares</text>
+                        
+                        <!-- Flechas nivel 2 a 3 -->
+                        <line x1="200" y1="230" x2="200" y2="270" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <line x1="600" y1="230" x2="600" y2="270" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        
+                        <!-- Nivel 3: Regulación Endocrina -->
+                        <rect x="50" y="270" width="300" height="100" fill="#e8f0ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                        <text x="200" y="295" text-anchor="middle" font-size="12" font-weight="bold" fill="#667eea">REGULACIÓN ENDOCRINA</text>
+                        <text x="200" y="315" text-anchor="middle" font-size="10" fill="#333">GnRH → FSH + LH</text>
+                        <text x="200" y="330" text-anchor="middle" font-size="10" fill="#333">Células Leydig → Testosterona</text>
+                        <text x="200" y="345" text-anchor="middle" font-size="10" fill="#333">Células Sertoli nutren gametos</text>
+                        
+                        <rect x="450" y="270" width="300" height="100" fill="#e8f0ff" stroke="#667eea" stroke-width="2" rx="5"/>
+                        <text x="600" y="295" text-anchor="middle" font-size="12" font-weight="bold" fill="#667eea">REGULACIÓN ENDOCRINA</text>
+                        <text x="600" y="315" text-anchor="middle" font-size="10" fill="#333">GnRH → FSH + LH</text>
+                        <text x="600" y="330" text-anchor="middle" font-size="10" fill="#333">Ciclo menstrual ~28 días</text>
+                        <text x="600" y="345" text-anchor="middle" font-size="10" fill="#333">Estrógenos + Progesterona</text>
+                        
+                        <!-- Flechas nivel 3 a 4 -->
+                        <line x1="200" y1="370" x2="200" y2="410" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <line x1="600" y1="370" x2="600" y2="410" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        
+                        <!-- Nivel 4: Etapas Meióticas -->
+                        <rect x="50" y="410" width="300" height="120" fill="#fff3cd" stroke="#f39c12" stroke-width="2" rx="5"/>
+                        <text x="200" y="435" text-anchor="middle" font-size="11" font-weight="bold" fill="#f39c12">ETAPAS MEIÓTICAS</text>
+                        <text x="200" y="453" text-anchor="middle" font-size="10" fill="#333">Espermatogonia (2n) →</text>
+                        <text x="200" y="468" text-anchor="middle" font-size="10" fill="#333">Espermatocito I (2n) →</text>
+                        <text x="200" y="483" text-anchor="middle" font-size="10" fill="#333">Espermatocito II (n) →</text>
+                        <text x="200" y="498" text-anchor="middle" font-size="10" fill="#333">Espermátide (n) →</text>
+                        <text x="200" y="513" text-anchor="middle" font-size="10" font-weight="bold" fill="#f39c12">Espermatozoide (n)</text>
+                        
+                        <rect x="450" y="410" width="300" height="120" fill="#fff3cd" stroke="#f39c12" stroke-width="2" rx="5"/>
+                        <text x="600" y="435" text-anchor="middle" font-size="11" font-weight="bold" fill="#f39c12">ETAPAS MEIÓTICAS</text>
+                        <text x="600" y="453" text-anchor="middle" font-size="10" fill="#333">Oogonia (2n) →</text>
+                        <text x="600" y="468" text-anchor="middle" font-size="10" fill="#333">Oocito I (2n) DETENIDO</text>
+                        <text x="600" y="483" text-anchor="middle" font-size="10" fill="#333">Oocito II (n) Liberado →</text>
+                        <text x="600" y="498" text-anchor="middle" font-size="10" fill="#333">Cuerpos polares (n)</text>
+                        <text x="600" y="513" text-anchor="middle" font-size="10" font-weight="bold" fill="#f39c12">Óvulo (n) Fecundado</text>
+                        
+                        <!-- Flechas nivel 4 a 5 -->
+                        <line x1="200" y1="530" x2="200" y2="570" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <line x1="600" y1="530" x2="600" y2="570" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        
+                        <!-- Nivel 5: Resultado -->
+                        <rect x="50" y="570" width="300" height="70" fill="#d4edda" stroke="#28a745" stroke-width="2" rx="5"/>
+                        <text x="200" y="595" text-anchor="middle" font-size="12" font-weight="bold" fill="#28a745">RESULTADO</text>
+                        <text x="200" y="615" text-anchor="middle" font-size="11" fill="#333">Gameto funcional haploide</text>
+                        <text x="200" y="630" text-anchor="middle" font-size="10" fill="#333">Listo para fecundación</text>
+                        
+                        <rect x="450" y="570" width="300" height="70" fill="#d4edda" stroke="#28a745" stroke-width="2" rx="5"/>
+                        <text x="600" y="595" text-anchor="middle" font-size="12" font-weight="bold" fill="#28a745">RESULTADO</text>
+                        <text x="600" y="615" text-anchor="middle" font-size="11" fill="#333">Gameto funcional haploide</text>
+                        <text x="600" y="630" text-anchor="middle" font-size="10" fill="#333">Almacenado hasta ovulación</text>
+                        
+                        <!-- Flechas finales convergentes -->
+                        <line x1="200" y1="640" x2="280" y2="700" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        <line x1="600" y1="640" x2="520" y2="700" stroke="#667eea" stroke-width="2" marker-end="url(#arrowhead)"/>
+                        
+                        <!-- Nivel Final -->
+                        <rect x="250" y="700" width="300" height="60" fill="#f0f4ff" stroke="#667eea" stroke-width="3" rx="5"/>
+                        <text x="400" y="725" text-anchor="middle" font-size="13" font-weight="bold" fill="#667eea">FECUNDACIÓN</text>
+                        <text x="400" y="745" text-anchor="middle" font-size="11" fill="#333">Unión de gameto masculino + gameto femenino</text>
+                        
+                        <!-- Flecha marker definition -->
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                                <polygon points="0 0, 10 5, 0 10" fill="#667eea"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+
+                <div class="nav-buttons">
+                    <button onclick="previousSection()">← Anterior</button>
+                    <button onclick="nextSection()">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 6: CUESTIONARIO -->
+            <div class="section">
+                <div class="section-indicator">Sección 6 de 6 - CUESTIONARIO</div>
+                <h2>Evaluación de Aprendizaje</h2>
+                
+                <div class="quiz-section">
+                    <div class="quiz-question">
+                        <h4>Pregunta 1: La hormona producida por el hipotálamo que inicia la espermatogénesis es:</h4>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q1" value="a">
+                                <span>a) LH (Hormona Luteinizante)</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="b">
+                                <span>b) FSH (Hormona Estimulante del Folículo)</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="c">
+                                <span>c) GnRH (Hormona Liberadora de Gonadotropinas)</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q1" value="d">
+                                <span>d) Testosterona</span>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback1"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>Pregunta 2: Las células de Leydig secretan principalmente:</h4>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q2" value="a">
+                                <span>a) Estrógenos</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="b">
+                                <span>b) Testosterona</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="c">
+                                <span>c) Progesterona</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q2" value="d">
+                                <span>d) GnRH</span>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback2"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>Pregunta 3: Las células que brindan soporte y nutren a las células germinales en los túbulos seminíferos son:</h4>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q3" value="a">
+                                <span>a) Espermátides</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="b">
+                                <span>b) Oogonias</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="c">
+                                <span>c) Células de Sertoli</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q3" value="d">
+                                <span>d) Folículos</span>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback3"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>Pregunta 4: ¿Cuál es el resultado de la primera división meiótica en la espermatogénesis?</h4>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q4" value="a">
+                                <span>a) Espermátides</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="b">
+                                <span>b) Espermatozoides</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="c">
+                                <span>c) Espermátogonias</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q4" value="d">
+                                <span>d) Espermátocitos secundarios</span>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback4"></div>
+                    </div>
+
+                    <!-- Verdadero y Falso -->
+                    <div style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 10px;">
+                        <h3 style="color: #667eea; margin-bottom: 20px;">Verdadero o Falso (Preguntas 5-12)</h3>
+
+                        <div class="quiz-question">
+                            <h4>5. La LH estimula a las células de Leydig para que produzcan testosterona.</h4>
+                            <div class="true-false-options">
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q5" value="true">
+                                        <strong>Verdadero</strong>
+                                    </label>
+                                </div>
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q5" value="false">
+                                        <strong>Falso</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="feedback" id="feedback5"></div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>6. Las células de Sertoli participan en la fagocitosis de cuerpos residuales durante la espermiogénesis.</h4>
+                            <div class="true-false-options">
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q6" value="true">
+                                        <strong>Verdadero</strong>
+                                    </label>
+                                </div>
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q6" value="false">
+                                        <strong>Falso</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="feedback" id="feedback6"></div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>7. Los espermatozoides se producen desde el nacimiento.</h4>
+                            <div class="true-false-options">
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q7" value="true">
+                                        <strong>Verdadero</strong>
+                                    </label>
+                                </div>
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q7" value="false">
+                                        <strong>Falso</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="feedback" id="feedback7"></div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>8. Las espermatogonias son diploides y se dividen por mitosis.</h4>
+                            <div class="true-false-options">
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q8" value="true">
+                                        <strong>Verdadero</strong>
+                                    </label>
+                                </div>
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q8" value="false">
+                                        <strong>Falso</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="feedback" id="feedback8"></div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>9. Los gametos masculinos pueden ser 23,X o 23,Y.</h4>
+                            <div class="true-false-options">
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q9" value="true">
+                                        <strong>Verdadero</strong>
+                                    </label>
+                                </div>
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q9" value="false">
+                                        <strong>Falso</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="feedback" id="feedback9"></div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>10. En la ovogénesis se producen nuevos oocitos primarios después del nacimiento.</h4>
+                            <div class="true-false-options">
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q10" value="true">
+                                        <strong>Verdadero</strong>
+                                    </label>
+                                </div>
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q10" value="false">
+                                        <strong>Falso</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="feedback" id="feedback10"></div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>11. El ovocito secundario completa la meiosis II antes de ser fecundado.</h4>
+                            <div class="true-false-options">
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q11" value="true">
+                                        <strong>Verdadero</strong>
+                                    </label>
+                                </div>
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q11" value="false">
+                                        <strong>Falso</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="feedback" id="feedback11"></div>
+                        </div>
+
+                        <div class="quiz-question">
+                            <h4>12. Los gametos femeninos siempre son de tipo 23,X.</h4>
+                            <div class="true-false-options">
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q12" value="true">
+                                        <strong>Verdadero</strong>
+                                    </label>
+                                </div>
+                                <div class="tf-option">
+                                    <label>
+                                        <input type="radio" name="q12" value="false">
+                                        <strong>Falso</strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="feedback" id="feedback12"></div>
+                        </div>
+                    </div>
+
+                    <!-- Preguntas de respuesta corta -->
+                    <div class="quiz-question" style="margin-top: 30px;">
+                        <h4>Pregunta 13: ¿Cuál es el proceso de diferenciación de espermátides en espermatozoides?</h4>
+                        <p style="font-size: 0.9em; color: #667eea; margin-top: 10px;"><em>(Escribe el nombre del proceso)</em></p>
+                        <input type="text" id="q13" placeholder="Escribe tu respuesta..." class="fill-blank">
+                        <div class="feedback" id="feedback13"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>Pregunta 14: La ovogénesis inicia en:</h4>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q14" value="a">
+                                <span>a) Pubertad</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q14" value="b">
+                                <span>b) Vida intrauterina</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q14" value="c">
+                                <span>c) Nacimiento</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q14" value="d">
+                                <span>d) Adolescencia</span>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback14"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>Pregunta 15: Los oocitos primarios quedan detenidos en:</h4>
+                        <p style="font-size: 0.9em; color: #667eea; margin-top: 10px;"><em>(Escribe la fase de meiosis)</em></p>
+                        <input type="text" id="q15" placeholder="Escribe tu respuesta..." class="fill-blank">
+                        <div class="feedback" id="feedback15"></div>
+                    </div>
+
+                    <div class="quiz-question">
+                        <h4>Pregunta 16: En la ovogénesis, el cuerpo polar tiene como característica:</h4>
+                        <div class="options">
+                            <label class="option">
+                                <input type="radio" name="q16" value="a">
+                                <span>a) Recibe la mayor cantidad de citoplasma</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q16" value="b">
+                                <span>b) Se transforma en óvulo</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q16" value="c">
+                                <span>c) Degenera</span>
+                            </label>
+                            <label class="option">
+                                <input type="radio" name="q16" value="d">
+                                <span>d) Contiene flagelo</span>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback16"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-buttons">
+                    <button onclick="checkAnswers()">Verificar Respuestas</button>
+                    <button onclick="resetQuiz()">Reiniciar Cuestionario</button>
+                </div>
+
+                <div class="results" id="results"></div>
+
+                <div class="nav-buttons" style="margin-top: 30px;">
+                    <button onclick="previousSection()">← Anterior</button>
+                    <button disabled>Siguiente →</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSection = 0;
+        const sections = document.querySelectorAll('.section');
+        const totalSections = sections.length;
+
+        function showSection(n) {
+            sections.forEach(s => s.classList.remove('active'));
+            if (n >= totalSections) currentSection = totalSections - 1;
+            if (n < 0) currentSection = 0;
+            sections[currentSection].classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function nextSection() {
+            currentSection++;
+            showSection(currentSection);
+        }
+
+        function previousSection() {
+            currentSection--;
+            showSection(currentSection);
+        }
+
+        const answers = {
+            q1: 'c',
+            q2: 'b',
+            q3: 'c',
+            q4: 'd',
+            q5: 'true',
+            q6: 'true',
+            q7: 'false',
+            q8: 'true',
+            q9: 'true',
+            q10: 'false',
+            q11: 'false',
+            q12: 'true',
+            q13: ['espermiogénesis', 'espermiogenesis', 'espermiogenesis'],
+            q14: 'b',
+            q15: ['profase i', 'profase i de meiosis i', 'profase i de la meiosis i', 'profase'],
+            q16: 'c'
+        };
+
+        const explanations = {
+            q1: { correct: 'La GnRH (Hormona Liberadora de Gonadotropinas) es secretada por el hipotálamo e inicia la cascada hormonal que lleva a la espermatogénesis estimulando la liberación de FSH y LH en la hipófisis anterior.', incorrect: 'Incorrecto. Aunque LH, FSH y Testosterona son importantes en la espermatogénesis, la hormona inicial del hipotálamo es GnRH. LH estimula células de Leydig, FSH estimula células de Sertoli, y Testosterona mantiene el proceso.' },
+            q2: { correct: 'Las células de Leydig secretan principalmente testosterona, la hormona sexual masculina que estimula y mantiene la espermatogénesis.', incorrect: 'Incorrecto. Aunque estrógenos y progesterona son hormonas reproductivas, son producidas en los ovarios. Las células de Leydig producen testosterona, no GnRH.' },
+            q3: { correct: 'Las células de Sertoli brindan soporte nutricional a las células germinales en los túbulos seminíferos. También participan en la fagocitosis de cuerpos residuales durante la espermiogénesis.', incorrect: 'Incorrecto. Las espermátides son resultado de la meiosis II, no células de soporte. Las oogonias están relacionadas con la ovogénesis, no la espermatogénesis. Los folículos están en los ovarios.' },
+            q4: { correct: 'La primera división meiótica (Meiosis I) en la espermatogénesis produce DOS espermatocitos secundarios, cada uno haploide (n). Estos son el resultado directo de la división del espermatocito primario.', incorrect: 'Incorrecto. Las espermátides son resultado de Meiosis II, no de Meiosis I. Los espermatozoides son el producto final. Las espermatogonias son el punto de partida.' },
+            q5: { correct: 'Verdadero. La LH (Hormona Luteinizante) estimula específicamente a las células de Leydig en los testículos para que produzcan y secreten testosterona, la hormona clave para la espermatogénesis.', incorrect: 'Falso. De hecho es Verdadero. LH estimula directamente a las células de Leydig para producir testosterona. Sin esta estimulación, la testosterona no se produce adecuadamente.' },
+            q6: { correct: 'Verdadero. Las células de Sertoli participan activamente en la fagocitosis de cuerpos residuales (restos de citoplasma) durante la espermiogénesis, ayudando en la transformación de espermátides a espermatozoides maduros.', incorrect: 'Falso. De hecho es Verdadero. Las células de Sertoli tienen capacidad fagocítica y limpian los restos celulares generados durante la diferenciación de espermátides.' },
+            q7: { correct: 'Falso. Los espermatozoides comienzan a producirse en la pubertad, no desde el nacimiento. La producción continua (espermatogénesis) es un proceso que solo se inicia con los cambios hormonales de la pubertad.', incorrect: 'Incorrecto. De hecho es Falso. La espermatogénesis comienza en la pubertad. Los testículos de los niños recién nacidos no producen espermatozoides aún. El proceso requiere la activación hormonal del eje HPG durante la pubertad.' },
+            q8: { correct: 'Verdadero. Las espermatogonias son células germinales diploides (2n) que se dividen por mitosis para mantener una población constante de células madre mientras también producen espermatocitos primarios que entran en meiosis.', incorrect: 'Falso. De hecho es Verdadero. Las espermatogonias son definitivamente diploides (2n) y se dividen por mitosis. Este proceso proporciona autorrenovación de las células madre.' },
+            q9: { correct: 'Verdadero. Los espermatozoides pueden portar un cromosoma X (23,X) o un cromosoma Y (23,Y). Esto significa que el espermatozoide determina el sexo del futuro individuo: si X + X = XX (mujer), si Y + X = XY (hombre).', incorrect: 'Falso. De hecho es Verdadero. Los gametos masculinos son de dos tipos cromosómicos: 23,X y 23,Y. Esto es lo que permite que el espermatozoide determine el sexo.' },
+            q10: { correct: 'Falso. La ovogénesis produce nuevos oocitos primarios SOLO durante la vida intrauterina (fetal). Después del nacimiento, NO se producen nuevos oocitos. La niña nace con un número limitado de oocitos primarios que degeneran durante su vida hasta la menopausia.', incorrect: 'Incorrecto. De hecho es Falso. Los oocitos primarios se forman solo durante la vida fetal. Después del nacimiento, el número de oocitos solo disminuye, nunca aumenta.' },
+            q11: { correct: 'Falso. El ovocito secundario se detiene en Metafase II de la meiosis II. Solo completa la meiosis II después de la fecundación por el espermatozoide. Este es un punto de control importante en la reproducción.', incorrect: 'Incorrecto. De hecho es Falso. El ovocito secundario no completa meiosis II antes de la fecundación. Se detiene en Metafase II durante la ovulación y solo continúa si es fecundado.' },
+            q12: { correct: 'Verdadero. Todos los óvulos (gametos femeninos) contienen el cromosoma X, teniendo el genotipo 23,X. Por lo tanto, el sex determinante es siempre el gameto masculino (X o Y).', incorrect: 'Falso. De hecho es Verdadero. Los óvulos siempre portan 23,X, nunca 23,Y. Esto es por qué las mujeres son XX, porque el óvulo siempre contribuye X.' },
+            q13: { correct: 'Correcto. La espermiogénesis es el proceso de diferenciación de espermátides inmaduras en espermatozoides maduros y funcionales. Implica cambios morfológicos, desarrollo del flagelo, formación del acrosoma y redistribución de mitocondrias.', incorrect: 'Incorrecto. La respuesta esperada es "espermiogénesis". Este es el nombre específico del proceso de transformación de espermátides a espermatozoides maduros.' },
+            q14: { correct: 'Correcto. La ovogénesis inicia durante la vida intrauterina (fetal), cuando se forman los oocitos primarios en los ovarios. Es diferente de la espermatogénesis, que inicia en la pubertad.', incorrect: 'Incorrecto. La ovogénesis comienza en la vida intrauterina (vida fetal), no en pubertad, nacimiento o adolescencia. Este es un punto importante de diferencia con la espermatogénesis.' },
+            q15: { correct: 'Correcto. Los oocitos primarios se detienen en Profase I (de Meiosis I). Esta detención puede durar 13-50+ años hasta que se produce la ovulación en la edad reproductiva de la mujer.', incorrect: 'Incorrecto. Los oocitos primarios quedan detenidos específicamente en Profase I de la Meiosis I. Esta es una parada de larga duración que dura desde antes del nacimiento hasta la ovulación individual.' },
+            q16: { correct: 'Correcto. Los cuerpos polares degeneran. Reciben muy poco citoplasma (a diferencia del óvulo que recibe la mayoría) y no tienen funciones reproductivas. Se desintegran después de la división meiótica.', incorrect: 'Incorrecto. La característica principal de los cuerpos polares es que DEGENERAN. No reciben citoplasma (reciben muy poco), no se transforman en óvulos, y definitivamente no contienen flagelos.' }
+        };
+
+        function checkAnswers() {
+            let correctCount = 0;
+            let totalQuestions = 16;
+            let answered = 0;
+
+            // Preguntas 1-4 (opción múltiple)
+            for (let i = 1; i <= 4; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected) {
+                    answered++;
+                    const isCorrect = selected.value === answers[`q${i}`];
+                    showFeedback(i, isCorrect);
+                    if (isCorrect) correctCount++;
+                } else {
+                    showFeedback(i, null);
+                }
+            }
+
+            // Preguntas 5-12 (verdadero/falso)
+            for (let i = 5; i <= 12; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected) {
+                    answered++;
+                    const isCorrect = selected.value === answers[`q${i}`];
+                    showFeedback(i, isCorrect);
+                    if (isCorrect) correctCount++;
+                } else {
+                    showFeedback(i, null);
+                }
+            }
+
+            // Pregunta 13 (respuesta corta)
+            const answer13 = document.getElementById('q13').value.toLowerCase().trim();
+            if (answer13) {
+                answered++;
+                const isCorrect = answers.q13.some(a => answer13.includes(a.toLowerCase()));
+                showFeedback(13, isCorrect);
+                if (isCorrect) correctCount++;
+            } else {
+                showFeedback(13, null);
+            }
+
+            // Pregunta 14 (opción múltiple)
+            const selected14 = document.querySelector(`input[name="q14"]:checked`);
+            if (selected14) {
+                answered++;
+                const isCorrect = selected14.value === answers.q14;
+                showFeedback(14, isCorrect);
+                if (isCorrect) correctCount++;
+            } else {
+                showFeedback(14, null);
+            }
+
+            // Pregunta 15 (respuesta corta)
+            const answer15 = document.getElementById('q15').value.toLowerCase().trim();
+            if (answer15) {
+                answered++;
+                const isCorrect = answers.q15.some(a => answer15.includes(a.toLowerCase()));
+                showFeedback(15, isCorrect);
+                if (isCorrect) correctCount++;
+            } else {
+                showFeedback(15, null);
+            }
+
+            // Pregunta 16 (opción múltiple)
+            const selected16 = document.querySelector(`input[name="q16"]:checked`);
+            if (selected16) {
+                answered++;
+                const isCorrect = selected16.value === answers.q16;
+                showFeedback(16, isCorrect);
+                if (isCorrect) correctCount++;
+            } else {
+                showFeedback(16, null);
+            }
+
+            // Mostrar resultados
+            const percentage = Math.round((correctCount / answered) * 100);
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.classList.add('show');
+            resultsDiv.innerHTML = `
+                <h3>📊 Resultados de tu Evaluación</h3>
+                <div class="score">Preguntas Correctas: ${correctCount} de ${answered}</div>
+                <p>Calificación: <strong>${percentage}%</strong></p>
+                <p>${percentage >= 80 ? '¡Excelente trabajo! Demuestras un muy buen dominio del tema.' : percentage >= 60 ? 'Buen esfuerzo. Repasa las respuestas incorrectas para mejorar.' : 'Necesitas repasar los conceptos. Estudia las explicaciones con atención.'}</p>
+            `;
+
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        function showFeedback(questionNum, isCorrect) {
+            const feedbackDiv = document.getElementById(`feedback${questionNum}`);
+            feedbackDiv.classList.add('show');
+
+            if (isCorrect === null) {
+                feedbackDiv.innerHTML = '<strong>⚠️ Esta pregunta no fue respondida.</strong>';
+                feedbackDiv.className = 'feedback show';
+            } else if (isCorrect) {
+                feedbackDiv.innerHTML = `<strong>✓ ¡Correcto!</strong><br>${explanations[`q${questionNum}`].correct}`;
+                feedbackDiv.className = 'feedback show correct';
+            } else {
+                feedbackDiv.innerHTML = `<strong>✗ Incorrecto</strong><br>${explanations[`q${questionNum}`].incorrect}`;
+                feedbackDiv.className = 'feedback show incorrect';
+            }
+        }
+
+        function resetQuiz() {
+            // Limpiar todas las respuestas
+            document.querySelectorAll('input[type="radio"], input[type="text"]').forEach(input => {
+                input.checked = false;
+                input.value = '';
+            });
+
+            // Limpiar feedback
+            document.querySelectorAll('.feedback').forEach(fb => {
+                fb.classList.remove('show', 'correct', 'incorrect');
+                fb.innerHTML = '';
+            });
+
+            // Limpiar resultados
+            document.getElementById('results').classList.remove('show');
+            document.getElementById('results').innerHTML = '';
+
+            window.scrollTo(0, 0);
+        }
+
+        showSection(currentSection);
+    </script>
+</body>
+</html>
