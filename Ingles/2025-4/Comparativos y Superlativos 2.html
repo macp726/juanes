@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Comparativos y Superlativos con Respuestas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .section h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin: 20px 0 15px 0;
+        }
+
+        .exercise {
+            background: #f9f9f9;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #667eea;
+        }
+
+        .exercise-number {
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .exercise-text {
+            color: #333;
+            margin: 10px 0;
+            font-size: 1.05em;
+        }
+
+        .answer-box {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border: 2px solid #28a745;
+        }
+
+        .answer-box h4 {
+            color: #155724;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .answer-text {
+            color: #155724;
+            margin: 8px 0;
+            font-weight: 500;
+        }
+
+        .explanation {
+            background: #e7f3ff;
+            padding: 12px;
+            border-radius: 5px;
+            margin-top: 10px;
+            border-left: 4px solid #667eea;
+            color: #333;
+            font-size: 0.95em;
+            line-height: 1.6;
+        }
+
+        .explanation strong {
+            color: #667eea;
+        }
+
+        .toggle-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .toggle-btn:hover {
+            background: #764ba2;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .answer-content {
+            display: none;
+            margin-top: 10px;
+        }
+
+        .answer-content.show {
+            display: block;
+        }
+
+        .study-mode {
+            background: #fff9e6;
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px dashed #f39c12;
+            margin: 20px 0;
+        }
+
+        .study-mode h3 {
+            color: #f39c12;
+        }
+
+        .tab-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            font-size: 1em;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .example-sentence {
+            background: #f0f8ff;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 8px 0;
+            border-left: 3px solid #3498db;
+            font-style: italic;
+        }
+
+        .correct-answer {
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .incorrect-answer {
+            color: #e74c3c;
+            text-decoration: line-through;
+            font-weight: bold;
+        }
+
+        .family-info {
+            background: #f5f7fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border: 2px solid #667eea;
+        }
+
+        .family-info h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+
+        .family-member {
+            padding: 8px 0;
+            color: #333;
+        }
+
+        .family-member strong {
+            color: #764ba2;
+        }
+
+        .icon {
+            font-size: 1.5em;
+            margin-right: 8px;
+        }
+
+        .footer {
+            background: #f5f7fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background: white;
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table tr:hover {
+            background: #f5f7fa;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .tab-buttons {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Quiz: Comparativos y Superlativos</h1>
+            <p>Soluciones Detalladas para Estudio</p>
+        </div>
+
+        <div class="content">
+            <!-- Botones de navegación -->
+            <div class="tab-buttons">
+                <button class="tab-btn active" onclick="switchTab('overview')">📋 Descripción General</button>
+                <button class="tab-btn" onclick="switchTab('answers')">✅ Respuestas</button>
+                <button class="tab-btn" onclick="switchTab('study')">📖 Modo Estudio</button>
+            </div>
+
+            <!-- Tab 1: Overview -->
+            <div id="overview" class="tab-content active">
+                <div class="section">
+                    <h2>📝 Información del Quiz</h2>
+                    <div class="family-info">
+                        <h4>Datos Básicos:</h4>
+                        <p><strong>Institución:</strong> CEDAP - Educación Personalizada</p>
+                        <p><strong>Profesor:</strong> Francy Dayanna Ruiz Vega</p>
+                        <p><strong>Grado:</strong> 8° (A - B)</p>
+                        <p><strong>Tema:</strong> Comparativos y Superlativos</p>
+                        <p><strong>Tiempo de finalización:</strong> 30 minutos</p>
+                        <p><strong>Puntaje total:</strong> 5 puntos</p>
+                    </div>
+
+                    <h3>🎯 Objetivo:</h3>
+                    <p style="font-size: 1.1em; color: #333; line-height: 1.8;">
+                        Evaluar cómo los estudiantes reconocen la forma comparativa y superlativa de adjetivos e identifican errores en oraciones.
+                    </p>
+
+                    <h3>👨‍👩‍👧‍👦 Información de la Familia:</h3>
+                    <div class="family-info">
+                        <p><strong>Andrew:</strong> 15 años, altura 1.80m</p>
+                        <p><strong>Kathy:</strong> 13 años, altura 1.60m</p>
+                        <p><strong>Tom:</strong> 11 años, altura 1.40m</p>
+                        <p><strong>Suzanne:</strong> 17 años</p>
+                    </div>
+
+                    <h3>📊 Estructura del Quiz:</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Pregunta</th>
+                                <th>Tipo</th>
+                                <th>Puntos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1. Complete the sentence</td>
+                                <td>Completar (Comparativo)</td>
+                                <td>1 punto</td>
+                            </tr>
+                            <tr>
+                                <td>2-3. Write sentences</td>
+                                <td>Producción (1 Comparativo + 1 Superlativo)</td>
+                                <td>2 puntos</td>
+                            </tr>
+                            <tr>
+                                <td>4-5. Identify and correct</td>
+                                <td>Identificación de errores</td>
+                                <td>2 puntos</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 2: Answers -->
+            <div id="answers" class="tab-content">
+                <div class="section">
+                    <h2>✅ Respuestas del Quiz</h2>
+
+                    <!-- Pregunta 1 -->
+                    <div class="exercise">
+                        <div class="exercise-number">Pregunta 1: Completar la oración (1 punto)</div>
+                        <div class="exercise-text">
+                            <strong>Enunciado:</strong> "Andrew is _______________________________ (tall) than Kathy."
+                        </div>
+                        <button class="toggle-btn" onclick="toggleAnswer(1)">Ver Respuesta y Explicación</button>
+                        <div id="answer1" class="answer-content">
+                            <div class="answer-box">
+                                <h4>✅ Respuesta Correcta:</h4>
+                                <div class="answer-text">Andrew is <span class="correct-answer">taller</span> than Kathy.</div>
+                                <div class="explanation">
+                                    <strong>¿Por qué es correcta?</strong><br>
+                                    • "Tall" es un adjetivo corto (1 sílaba)<br>
+                                    • Para adjetivos cortos, agregamos <strong>-er</strong> para formar el comparativo<br>
+                                    • Regla: Adjective + -er + than<br>
+                                    • Cambio ortográfico: tall → taller (la "l" se duplica porque termina en una consonante precedida de una vocal)
+                                </div>
+                            </div>
+                            <div class="example-sentence">
+                                <strong>Ejemplo adicional:</strong> "John is taller than his sister" (Juan es más alto que su hermana)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="exercise">
+                        <div class="exercise-number">Pregunta 2: Escribir 1 oración comparativa (1 de 2 puntos)</div>
+                        <div class="exercise-text">
+                            <strong>Enunciado:</strong> "Write 1 comparative sentence using the information of the family"
+                        </div>
+                        <button class="toggle-btn" onclick="toggleAnswer(2)">Ver Respuesta y Explicación</button>
+                        <div id="answer2" class="answer-content">
+                            <div class="answer-box">
+                                <h4>✅ Respuestas Correctas (Opciones):</h4>
+                                <div class="answer-text">
+                                    • Andrew is taller than Tom.<br>
+                                    • Kathy is younger than Suzanne.<br>
+                                    • Tom is shorter than Andrew.<br>
+                                    • Suzanne is older than Kathy.
+                                </div>
+                                <div class="explanation">
+                                    <strong>Explicación:</strong><br>
+                                    • Debes escribir una oración que compare a DOS miembros de la familia<br>
+                                    • La oración debe tener un adjetivo en forma comparativa<br>
+                                    • Estructura: Subject + verb (to be) + comparative + than + subject<br>
+                                    • Ejemplos válidos: "Andrew is taller than Tom", "Suzanne is the oldest" (nota: esta última es superlativo)
+                                </div>
+                            </div>
+                            <div class="example-sentence">
+                                <strong>Ejemplo de familia:</strong> "Andrew (1.80m) is taller than Kathy (1.60m)" ✓
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="exercise">
+                        <div class="exercise-number">Pregunta 3: Escribir 1 oración superlativa (1 de 2 puntos)</div>
+                        <div class="exercise-text">
+                            <strong>Enunciado:</strong> "Write 1 superlative sentence using the information of the family"
+                        </div>
+                        <button class="toggle-btn" onclick="toggleAnswer(3)">Ver Respuesta y Explicación</button>
+                        <div id="answer3" class="answer-content">
+                            <div class="answer-box">
+                                <h4>✅ Respuestas Correctas (Opciones):</h4>
+                                <div class="answer-text">
+                                    • Andrew is the tallest of the family.<br>
+                                    • Tom is the shortest of the family.<br>
+                                    • Suzanne is the oldest of the family.<br>
+                                    • Tom is the youngest of the family.
+                                </div>
+                                <div class="explanation">
+                                    <strong>Explicación:</strong><br>
+                                    • Debes escribir una oración que use un superlativo<br>
+                                    • El superlativo compara a más de dos personas y expresa el grado máximo<br>
+                                    • Estructura: Subject + verb (to be) + the + superlative + of/in + group<br>
+                                    • Para adjetivos cortos: the + adjective + -est<br>
+                                    • Para adjetivos largos: the + most + adjective
+                                </div>
+                            </div>
+                            <div class="example-sentence">
+                                <strong>Ejemplo de familia:</strong> "Andrew is the tallest of the family" (Andrew es el más alto de la familia) ✓
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="exercise">
+                        <div class="exercise-number">Pregunta 4: Identificar y corregir el error (1 de 2 puntos)</div>
+                        <div class="exercise-text">
+                            <strong>Oración con error:</strong> "<span class="incorrect-answer">Tom is the most young</span> of the family"
+                        </div>
+                        <button class="toggle-btn" onclick="toggleAnswer(4)">Ver Respuesta y Explicación</button>
+                        <div id="answer4" class="answer-content">
+                            <div class="answer-box">
+                                <h4>✅ Corrección:</h4>
+                                <div class="answer-text">Tom is <span class="correct-answer">the youngest</span> of the family.</div>
+                                <div class="explanation">
+                                    <strong>Error Identificado:</strong><br>
+                                    ❌ "the most young" es incorrecto<br><br>
+                                    <strong>¿Por qué está mal?</strong><br>
+                                    • "Young" es un adjetivo corto (1 sílaba)<br>
+                                    • Los adjetivos cortos NO usan "most"<br>
+                                    • Se debe usar -est: young → youngest<br>
+                                    • Solo los adjetivos largos (2+ sílabas) usan "the most"<br><br>
+                                    <strong>Forma correcta:</strong><br>
+                                    • the + youngest (no "the most young")<br>
+                                    • Regla: Adjective corto + -est en superlativos
+                                </div>
+                            </div>
+                            <div class="example-sentence">
+                                <strong>Comparación:</strong><br>
+                                ✗ "Tom is the most young"<br>
+                                ✓ "Tom is the youngest"
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="exercise">
+                        <div class="exercise-number">Pregunta 5: Identificar y corregir el error (1 de 2 puntos)</div>
+                        <div class="exercise-text">
+                            <strong>Oración con error:</strong> "<span class="incorrect-answer">Suzanne is the beatifulest</span> woman of the family."
+                        </div>
+                        <button class="toggle-btn" onclick="toggleAnswer(5)">Ver Respuesta y Explicación</button>
+                        <div id="answer5" class="answer-content">
+                            <div class="answer-box">
+                                <h4>✅ Corrección:</h4>
+                                <div class="answer-text">Suzanne is <span class="correct-answer">the most beautiful</span> woman of the family.</div>
+                                <div class="explanation">
+                                    <strong>Error Identificado:</strong><br>
+                                    ❌ "beatifulest" es incorrecto (también hay error ortográfico: "beatifulest" en lugar de "beautifulest")<br><br>
+                                    <strong>¿Por qué está mal?</strong><br>
+                                    • "Beautiful" es un adjetivo largo (3 sílabas: beau-ti-ful)<br>
+                                    • Los adjetivos largos NO usan -est<br>
+                                    • Se debe usar "the most": beautiful → the most beautiful<br>
+                                    • "Beautifulest" no es una palabra válida en inglés<br><br>
+                                    <strong>Forma correcta:</strong><br>
+                                    • the + most + beautiful<br>
+                                    • Regla: Para adjetivos largos usamos "the most" + adjective
+                                </div>
+                            </div>
+                            <div class="example-sentence">
+                                <strong>Comparación:</strong><br>
+                                ✗ "Suzanne is the beautifulest woman"<br>
+                                ✓ "Suzanne is the most beautiful woman"
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tab 3: Study Mode -->
+            <div id="study" class="tab-content">
+                <div class="section">
+                    <h2>📖 Modo Estudio Interactivo</h2>
+
+                    <div class="study-mode">
+                        <h3>💡 Consejos para Aprender</h3>
+                        <p style="margin-top: 10px; line-height: 1.8;">
+                            <strong>1. Memoriza las reglas básicas:</strong> Adjetivos cortos usan -er/-est, adjetivos largos usan more/most.<br>
+                            <strong>2. Identifica irregulares:</strong> good→better→best, bad→worse→worst.<br>
+                            <strong>3. Practica con ejemplos:</strong> Crea tus propias oraciones comparativas y superlativas.<br>
+                            <strong>4. Revisa errores comunes:</strong> No mezcles -er con more (no digas "more taller").
+                        </p>
+                    </div>
+
+                    <h3>📋 Tabla Comparativa de Reglas:</h3>
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Tipo de Adjetivo</th>
+                                <th>Comparativo</th>
+                                <th>Superlativo</th>
+                                <th>Ejemplo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Corto (1 sílaba)</strong></td>
+                                <td>adj + -er</td>
+                                <td>the + adj + -est</td>
+                                <td>tall → taller → the tallest</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Largo (2+ sílabas)</strong></td>
+                                <td>more + adj</td>
+                                <td>the most + adj</td>
+                                <td>beautiful → more beautiful → the most beautiful</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Irregular</strong></td>
+                                <td>irregular form</td>
+                                <td>irregular form</td>
+                                <td>good → better → the best</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <h3>🎯 Ejercicios para Practicar:</h3>
+                    <div class="exercise">
+                        <div class="exercise-number">Práctica 1: Con la familia del quiz</div>
+                        <div class="exercise-text">
+                            <strong>Crea dos oraciones:</strong><br>
+                            • Una comparativa: "Andrew is _____________ (tall) than Tom"<br>
+                            • Una superlativa: "Suzanne is _____________ (old) of the family"
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <div class="exercise-number">Práctica 2: Identifica si es comparativo o superlativo</div>
+                        <div class="exercise-text">
+                            "She is the most intelligent student in her class."<br>
+                            → Superlativo (usa "the most" y compara con un grupo)
+                        </div>
+                    </div>
+
+                    <div class="exercise">
+                        <div class="exercise-number">Práctica 3: Detecta y corrige el error</div>
+                        <div class="exercise-text">
+                            ❌ "This car is more faster than that one."<br>
+                            ✓ "This car is faster than that one."<br>
+                            (No puedes usar "more" + adjetivo corto + -er)
+                        </div>
+                    </div>
+
+                    <h3>📚 Resumen de Puntos Clave:</h3>
+                    <div class="answer-box" style="background: linear-gradient(135deg, #c3cfe2 0%, #c3e6cb 100%); border: 2px solid #667eea;">
+                        <h4 style="color: #333;">✅ Lo que aprendiste hoy:</h4>
+                        <div style="color: #333; margin: 10px 0;">
+                            • Los <strong>comparativos</strong> comparan DOS cosas<br>
+                            • Los <strong>superlativos</strong> comparan TRES O MÁS cosas (el máximo)<br>
+                            • Adjetivos <strong>cortos:</strong> -er (comparativo) y -est (superlativo)<br>
+                            • Adjetivos <strong>largos:</strong> more (comparativo) y the most (superlativo)<br>
+                            • Los adjetivos <strong>irregulares</strong> tienen formas especiales que memorizar<br>
+                            • NUNCA mezcles formas: no digas "more taller" o "the most youngest"
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div style="margin-bottom: 15px;">
+                <button class="tab-btn" onclick="toggleAllAnswers()" style="background: #3498db; border-color: #3498db; color: white;">👁️ Mostrar/Ocultar Todo</button>
+            </div>
+            <p><strong>Institución:</strong> CEDAP - Educación Personalizada</p>
+            <p><strong>Profesor:</strong> Francy Dayanna Ruiz Vega | <strong>Grado:</strong> 8° | <strong>Tema:</strong> Comparativos y Superlativos</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleAnswer(questionNumber) {
+            const answerDiv = document.getElementById(`answer${questionNumber}`);
+            answerDiv.classList.toggle('show');
+            
+            // Cambiar el texto del botón
+            const btn = event.target;
+            if (answerDiv.classList.contains('show')) {
+                btn.textContent = 'Ocultar Respuesta';
+                btn.style.background = '#e74c3c';
+            } else {
+                btn.textContent = 'Ver Respuesta y Explicación';
+                btn.style.background = '#667eea';
+            }
+        }
+
+        function switchTab(tabName) {
+            // Ocultar todos los tabs
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            // Desactivar todos los botones
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            // Mostrar el tab seleccionado
+            document.getElementById(tabName).classList.add('active');
+            
+            // Activar el botón correspondiente
+            event.target.classList.add('active');
+        }
+
+        function toggleAllAnswers() {
+            const allAnswers = document.querySelectorAll('.answer-content');
+            const firstIsShown = allAnswers[0].classList.contains('show');
+            
+            allAnswers.forEach(answer => {
+                if (firstIsShown) {
+                    answer.classList.remove('show');
+                } else {
+                    answer.classList.add('show');
+                }
+            });
+        }
+
+        // Event listeners para los botones de toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleBtns = document.querySelectorAll('.toggle-btn');
+            toggleBtns.forEach(btn => {
+                btn.addEventListener('mouseover', function() {
+                    if (this.textContent === 'Ver Respuesta y Explicación') {
+                        this.style.opacity = '0.8';
+                    }
+                });
+                btn.addEventListener('mouseout', function() {
+                    this.style.opacity = '1';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

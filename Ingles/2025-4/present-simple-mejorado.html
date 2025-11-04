@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Present Simple - Taller Interactivo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 5px solid #ff6b6b;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            animation: fadeIn 0.6s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 5px;
+            height: 40px;
+            background: linear-gradient(180deg, #f093fb, #f5576c);
+            border-radius: 3px;
+        }
+
+        .story-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 30px;
+            border-radius: 15px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            border-left: 5px solid #ff6b6b;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .story-box p {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .language-toggle {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            justify-content: center;
+        }
+
+        .toggle-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-btn.active {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            transform: scale(1.05);
+        }
+
+        .toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .story-content {
+            display: none;
+        }
+
+        .story-content.active {
+            display: block;
+        }
+
+        .grammar-box {
+            background: linear-gradient(135deg, #e0c3fc 0%, #8ec5fc 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .grammar-structure {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .form-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 4px solid #667eea;
+            text-align: center;
+        }
+
+        .form-box h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .form-box .example {
+            background: #f0f0f0;
+            padding: 15px;
+            border-radius: 8px;
+            font-style: italic;
+            color: #555;
+            margin-top: 10px;
+        }
+
+        .vocabulary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .vocab-card {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .vocab-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .vocab-card strong {
+            display: block;
+            color: white;
+            font-size: 1.2em;
+            margin-bottom: 8px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .vocab-card em {
+            color: #fff;
+            font-size: 0.95em;
+        }
+
+        .verbs-section {
+            background: linear-gradient(135deg, #e0ffd0 0%, #d4f1d4 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .verb-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .verb-table th {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            font-size: 1.05em;
+        }
+
+        .verb-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .verb-table tr:hover {
+            background: #f9f9f9;
+        }
+
+        .verb-base {
+            font-weight: 600;
+            color: #667eea;
+            font-size: 1.05em;
+        }
+
+        .verb-present {
+            background: linear-gradient(120deg, rgba(102, 126, 234, 0.1), transparent);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .verb-past {
+            background: linear-gradient(120deg, rgba(245, 87, 108, 0.1), transparent);
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .image-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .story-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .story-image:hover {
+            transform: scale(1.05);
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #fff5e6 0%, #ffe6cc 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 50px;
+        }
+
+        .quiz-title {
+            text-align: center;
+            font-size: 2.2em;
+            color: #667eea;
+            margin-bottom: 40px;
+        }
+
+        .question-container {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            border-left: 5px solid #f5576c;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-number {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .question-text {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #f0f0f0;
+            transform: translateX(5px);
+        }
+
+        input[type="radio"] {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            cursor: pointer;
+            accent-color: #667eea;
+        }
+
+        input[type="radio"]:checked + .option-text {
+            font-weight: 600;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 10px;
+            display: none;
+            animation: slideIn 0.5s ease;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            color: #721c24;
+        }
+
+        .feedback-title {
+            font-weight: 700;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .feedback-text {
+            font-size: 1em;
+            line-height: 1.6;
+        }
+
+        .check-button {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+            width: 100%;
+        }
+
+        .check-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .check-button:active {
+            transform: translateY(-1px);
+        }
+
+        .submit-quiz {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            border: none;
+            padding: 20px 60px;
+            border-radius: 10px;
+            font-size: 1.3em;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .submit-quiz:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(245, 87, 108, 0.4);
+        }
+
+        .results {
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+            display: none;
+        }
+
+        .results.show {
+            display: block;
+            animation: slideIn 0.5s ease;
+        }
+
+        .results h3 {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+
+        .score {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #f5576c;
+            margin: 20px 0;
+        }
+
+        .tips {
+            background: #fff9e6;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 25px;
+            text-align: left;
+        }
+
+        .tips h4 {
+            color: #ff6b6b;
+            margin-bottom: 12px;
+            font-size: 1.1em;
+        }
+
+        .tips ul {
+            margin-left: 20px;
+            line-height: 1.8;
+        }
+
+        .tips li {
+            margin-bottom: 8px;
+            color: #666;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        .verb-category {
+            margin-bottom: 40px;
+        }
+
+        .verb-category h3 {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #dee2e6;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .grammar-structure {
+                grid-template-columns: 1fr;
+            }
+
+            .vocabulary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .quiz-section {
+                padding: 20px;
+            }
+
+            .verb-table {
+                font-size: 0.9em;
+            }
+
+            .verb-table th, .verb-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><span class="emoji">🎃</span>Present Simple</h1>
+            <p>Un viaje a través de la historia de "Too Much Candy" - Workshop Interactivo</p>
+        </header>
+
+        <div class="content">
+            <!-- Sección 1: Introducción a Present Simple -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">📚</span>¿Qué es Present Simple?
+                </div>
+                <div class="grammar-box">
+                    <p>El <strong>Present Simple</strong> (Presente Simple) es el tiempo verbal más básico en inglés. Se utiliza para hablar de:</p>
+                    <ul style="margin-left: 20px; margin-top: 15px; line-height: 1.8;">
+                        <li><strong>Hechos generales:</strong> The Earth orbits the Sun (La Tierra orbita alrededor del Sol)</li>
+                        <li><strong>Acciones habituales:</strong> I eat breakfast every morning (Como desayuno cada mañana)</li>
+                        <li><strong>Verdades universales:</strong> Water boils at 100°C (El agua hierve a 100°C)</li>
+                        <li><strong>Rutinas diarias:</strong> She goes to school at 8 AM (Ella va a la escuela a las 8 AM)</li>
+                    </ul>
+
+                    <div class="grammar-structure">
+                        <div class="form-box">
+                            <h4><span class="emoji">✅</span>Afirmativo</h4>
+                            <p>Sujeto + Verbo + Complemento</p>
+                            <div class="example">They decorate the porch<br>(Ellos decoran el porche)</div>
+                        </div>
+                        <div class="form-box">
+                            <h4><span class="emoji">❌</span>Negativo</h4>
+                            <p>Sujeto + don't/doesn't + Verbo + Complemento</p>
+                            <div class="example">Jay doesn't like too much candy<br>(A Jay no le gusta demasiado dulce)</div>
+                        </div>
+                        <div class="form-box">
+                            <h4><span class="emoji">❓</span>Interrogativo</h4>
+                            <p>Do/Does + Sujeto + Verbo + Complemento?</p>
+                            <div class="example">Do they celebrate Halloween?<br>(¿Celebran Halloween?)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 2: Historia "Too Much Candy" -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">👻</span>La Historia: Too Much Candy
+                </div>
+
+                <div class="language-toggle">
+                    <button class="toggle-btn active" onclick="toggleLanguage('english')"><span class="emoji">🇬🇧</span>English</button>
+                    <button class="toggle-btn" onclick="toggleLanguage('spanish')"><span class="emoji">🇪🇸</span>Español</button>
+                </div>
+
+                <!-- ENGLISH VERSION -->
+                <div class="story-content active" id="english">
+                    <div class="story-box">
+                        <p><strong>This is Jay and his family.</strong> They are getting ready for Halloween. Jay's mom is on the steps. She's making a Halloween costume for Jay. Jay and his dad are decorating the front porch. There is a scarecrow on the swing, spiders in the corner, and paper bats hanging from the ceiling.</p>
+
+                        <p><strong>Now, it is time to carve jack-o'-lantern.</strong> They cut out the top, pull out the seeds, and finally cut out the face. There are two circled eyes, a triangle nose, and three square teeth. They put the jack-o'-lantern on the table on the front porch next to a big, scary bowl of candy. But, Jay's mom and dad tell Jay, <strong>"You can have only one piece of candy each day!"</strong> Jay is not happy.</p>
+
+                        <p><strong>The next morning,</strong> Jay wakes up and remembers the candy. He puts on his backpack and gets ready to go to school. As he walks out the door, he grabs a big handful of candy and runs to school. When he comes home, something is different. The jack-o'-lantern is different. The eyes are a little scarier, the nose is a little smaller and the teeth are a little sharper. <strong>"What's happening?"</strong> Jay scratched his head.</p>
+
+                        <p><strong>The next morning</strong> when Jay goes to school, he takes another big handful of candy and runs to school. When he comes back, the jack-o'-lantern is even scarier. The eyes are scarier, the nose is smaller and the teeth are sharper than before. <strong>"What's happening?"</strong> little Jay thought.</p>
+
+                        <p><strong>The next morning</strong> when Jay goes to school, he grabs another big handful of candy and runs to school. But when he comes home, the jack-o'-lantern is very scary. The eyes are very scary, the nose is very small and the teeth are very very sharp.</p>
+
+                        <p><strong>That night.</strong> Jay hears a voice, a whisper from outside, <strong>"TOO MUCH CANDY!"</strong> He gets out of bed, walks down the stairs, opens the front door, and said to himself, <strong>"Where is the jack-o'-lantern? Where is the candy?"</strong> He hears the voice again, <strong>"TOO MUCH CANDY!"</strong></p>
+
+                        <p><strong>All of a sudden,</strong> Jay wakes up from his scary dream. He finds himself on his bed. But from that day, Jay never eat TOO MUCH CANDY!</p>
+                    </div>
+                </div>
+
+                <!-- SPANISH VERSION -->
+                <div class="story-content" id="spanish">
+                    <div class="story-box">
+                        <p><strong>Este es Jay y su familia.</strong> Se están preparando para Halloween. La mamá de Jay está en las escaleras. Ella está haciendo un disfraz de Halloween para Jay. Jay y su papá están decorando el porche delantero. Hay un espantapájaros en el columpio, arañas en la esquina y murciélagos de papel colgando del techo.</p>
+
+                        <p><strong>Ahora es tiempo de tallar una calabaza.</strong> Cortan la parte superior, sacan las semillas y finalmente cortan la cara. Hay dos ojos circulares, una nariz triangular y tres dientes cuadrados. Ponen la calabaza en la mesa en el porche delantero junto a un tazón grande y aterrador de dulces. Pero, los papás de Jay le dicen a Jay: <strong>"¡Solo puedes comer un dulce cada día!"</strong> Jay no está feliz.</p>
+
+                        <p><strong>A la mañana siguiente,</strong> Jay se despierta y recuerda los dulces. Se pone su mochila y se prepara para ir a la escuela. Mientras sale por la puerta, agarra un gran puñado de dulces y corre a la escuela. Cuando llega a casa, algo es diferente. La calabaza es diferente. Los ojos están un poco más aterradores, la nariz es un poco más pequeña y los dientes son un poco más afilados. <strong>"¿Qué está pasando?"</strong> Jay se rascó la cabeza.</p>
+
+                        <p><strong>A la mañana siguiente,</strong> cuando Jay va a la escuela, toma otro gran puñado de dulces y corre a la escuela. Cuando regresa, la calabaza es aún más aterradora. Los ojos son más aterradores, la nariz es más pequeña y los dientes son más afilados que antes. <strong>"¿Qué está pasando?"</strong> pensó el pequeño Jay.</p>
+
+                        <p><strong>A la mañana siguiente,</strong> cuando Jay va a la escuela, agarra otro gran puñado de dulces y corre a la escuela. Pero cuando regresa a casa, la calabaza es muy aterradora. Los ojos son muy aterradores, la nariz es muy pequeña y los dientes son muy muy afilados.</p>
+
+                        <p><strong>Esa noche.</strong> Jay escucha una voz, un susurro desde afuera: <strong>"¡DEMASIADO DULCE!"</strong> Sale de la cama, baja las escaleras, abre la puerta de entrada y se dice a sí mismo: <strong>"¿Dónde está la calabaza? ¿Dónde están los dulces?"</strong> Escucha la voz de nuevo: <strong>"¡DEMASIADO DULCE!"</strong></p>
+
+                        <p><strong>De repente,</strong> Jay se despierta de su sueño aterrador. Se encuentra en su cama. Pero desde ese día, ¡Jay nunca más come DEMASIADO DULCE!</p>
+                    </div>
+                </div>
+
+                <div class="image-container">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150'%3E%3Crect fill='%23ff9500' width='150' height='150' rx='20'/%3E%3Ccircle cx='50' cy='50' r='20' fill='%23000'/%3E%3Ccircle cx='100' cy='50' r='20' fill='%23000'/%3E%3Cpolygon points='75,60 65,80 85,80' fill='%23000'/%3E%3Crect x='60' y='90' width='10' height='15' fill='%23000'/%3E%3Crect x='80' y='90' width='10' height='15' fill='%23000'/%3E%3Crect x='75' y='105' width='8' height='12' fill='%23000'/%3E%3C/svg%3E" alt="Calabaza" class="story-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150'%3E%3Ccircle cx='75' cy='75' r='60' fill='%23ff69b4'/%3E%3Ccircle cx='60' cy='65' r='15' fill='%23fff'/%3E%3Ccircle cx='90' cy='65' r='15' fill='%23fff'/%3E%3Ccircle cx='60' cy='65' r='8' fill='%23000'/%3E%3Ccircle cx='90' cy='65' r='8' fill='%23000'/%3E%3Cpath d='M 75 85 Q 65 95 55 90' stroke='%23000' stroke-width='2' fill='none'/%3E%3C/svg%3E" alt="Dulces" class="story-image">
+                    <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 150 150'%3E%3Crect fill='%23333' width='150' height='150' rx='20'/%3E%3Ccircle cx='75' cy='50' r='25' fill='%23fff'/%3E%3Cpath d='M 75 75 L 50 120 L 100 120 Z' fill='%23fff'/%3E%3Ccircle cx='60' cy='50' r='6' fill='%23333'/%3E%3Ccircle cx='90' cy='50' r='6' fill='%23333'/%3E%3Crect x='70' y='95' width='10' height='10' fill='%23ff0000'/%3E%3C/svg%3E" alt="Fantasma" class="story-image">
+                </div>
+            </div>
+
+            <!-- Sección 3: Verbos en Present Simple y Past Simple -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">📝</span>Verbos: Present Simple vs Past Simple
+                </div>
+                
+                <div class="verbs-section">
+                    <p style="margin-bottom: 20px; font-size: 1.05em;">Aprende cómo los verbos cambian entre <strong>Present Simple</strong> (presente) y <strong>Past Simple</strong> (pasado). Los verbos regulares agregan "-ed" en pasado, mientras que los irregulares cambian completamente.</p>
+
+                    <!-- Verbos Regulares -->
+                    <div class="verb-category">
+                        <h3><span class="emoji">✅</span>Verbos Regulares (Regular Verbs)</h3>
+                        <table class="verb-table">
+                            <thead>
+                                <tr>
+                                    <th>Verbo Base</th>
+                                    <th>Present Simple (3ra persona singular)</th>
+                                    <th>Past Simple</th>
+                                    <th>Significado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="verb-base">carve</td>
+                                    <td class="verb-present">he/she carves</td>
+                                    <td class="verb-past">carved</td>
+                                    <td>Tallar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">decorate</td>
+                                    <td class="verb-present">he/she decorates</td>
+                                    <td class="verb-past">decorated</td>
+                                    <td>Decorar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">grab</td>
+                                    <td class="verb-present">he/she grabs</td>
+                                    <td class="verb-past">grabbed</td>
+                                    <td>Agarrar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">remember</td>
+                                    <td class="verb-present">he/she remembers</td>
+                                    <td class="verb-past">remembered</td>
+                                    <td>Recordar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">dress</td>
+                                    <td class="verb-present">he/she dresses</td>
+                                    <td class="verb-past">dressed</td>
+                                    <td>Vestirse</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">celebrate</td>
+                                    <td class="verb-present">he/she celebrates</td>
+                                    <td class="verb-past">celebrated</td>
+                                    <td>Celebrar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">love</td>
+                                    <td class="verb-present">he/she loves</td>
+                                    <td class="verb-past">loved</td>
+                                    <td>Amar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">hate</td>
+                                    <td class="verb-present">he/she hates</td>
+                                    <td class="verb-past">hated</td>
+                                    <td>Odiar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">scare</td>
+                                    <td class="verb-present">he/she scares</td>
+                                    <td class="verb-past">scared</td>
+                                    <td>Asustar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">accept</td>
+                                    <td class="verb-present">he/she accepts</td>
+                                    <td class="verb-past">accepted</td>
+                                    <td>Aceptar</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Verbos Irregulares -->
+                    <div class="verb-category">
+                        <h3><span class="emoji">🎭</span>Verbos Irregulares (Irregular Verbs)</h3>
+                        <table class="verb-table">
+                            <thead>
+                                <tr>
+                                    <th>Verbo Base</th>
+                                    <th>Present Simple (3ra persona singular)</th>
+                                    <th>Past Simple</th>
+                                    <th>Significado</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="verb-base">wake</td>
+                                    <td class="verb-present">he/she wakes</td>
+                                    <td class="verb-past">woke</td>
+                                    <td>Despertarse</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">go</td>
+                                    <td class="verb-present">he/she goes</td>
+                                    <td class="verb-past">went</td>
+                                    <td>Ir</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">come</td>
+                                    <td class="verb-present">he/she comes</td>
+                                    <td class="verb-past">came</td>
+                                    <td>Venir</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">hear</td>
+                                    <td class="verb-present">he/she hears</td>
+                                    <td class="verb-past">heard</td>
+                                    <td>Escuchar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">get</td>
+                                    <td class="verb-present">he/she gets</td>
+                                    <td class="verb-past">got</td>
+                                    <td>Obtener</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">put</td>
+                                    <td class="verb-present">he/she puts</td>
+                                    <td class="verb-past">put</td>
+                                    <td>Poner</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">cut</td>
+                                    <td class="verb-present">he/she cuts</td>
+                                    <td class="verb-past">cut</td>
+                                    <td>Cortar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">tell</td>
+                                    <td class="verb-present">he/she tells</td>
+                                    <td class="verb-past">told</td>
+                                    <td>Decir</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">think</td>
+                                    <td class="verb-present">he/she thinks</td>
+                                    <td class="verb-past">thought</td>
+                                    <td>Pensar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">run</td>
+                                    <td class="verb-present">he/she runs</td>
+                                    <td class="verb-past">ran</td>
+                                    <td>Correr</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">find</td>
+                                    <td class="verb-present">he/she finds</td>
+                                    <td class="verb-past">found</td>
+                                    <td>Encontrar</td>
+                                </tr>
+                                <tr>
+                                    <td class="verb-base">open</td>
+                                    <td class="verb-present">he/she opens</td>
+                                    <td class="verb-past">opened</td>
+                                    <td>Abrir</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="tips" style="margin-top: 30px;">
+                        <h4><span class="emoji">💡</span>Consejos Importantes</h4>
+                        <ul>
+                            <li><strong>Verbos Regulares:</strong> Simplemente agrega "-ed" al verbo base para formar el pasado. Ejemplos: carve → carved, decorate → decorated</li>
+                            <li><strong>Verbos Irregulares:</strong> Estos verbos no siguen una regla y debes memorizarlos. Ejemplos: go → went, come → came, think → thought</li>
+                            <li><strong>Present Simple (3ra persona singular):</strong> Agrega "-s" o "-es" al verbo base. Ejemplos: he goes, she carries</li>
+                            <li><strong>Pronunciación:</strong> El "-ed" puede sonar como /ɪd/ (si el verbo termina en "t" o "d"), /t/ (después de sonidos sordos) o /d/ (después de sonidos sonoros)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 4: Vocabulario clave -->
+            <div class="section">
+                <div class="section-title">
+                    <span class="emoji">🎃</span>Vocabulario Clave de la Historia
+                </div>
+                <div class="vocabulary-grid">
+                    <div class="vocab-card">
+                        <strong>CARVE</strong>
+                        <em>Tallar</em>
+                    </div>
+                    <div class="vocab-card">
+                        <strong>DECORATE</strong>
+                        <em>Decorar</em>
+                    </div>
+                    <div class="vocab-card">
+                        <strong>GRAB</strong>
+                        <em>Agarrar</em>
+                    </div>
+                    <div class="vocab-card">
+                        <strong>WAKE UP</strong>
+                        <em>Despertarse</em>
+                    </div>
+                    <div class="vocab-card">
+                        <strong>REMEMBER</strong>
+                        <em>Recordar</em>
+                    </div>
+                    <div class="vocab-card">
+                        <strong>DRESS UP</strong>
+                        <em>Disfrazarse</em>
+                    </div>
+                    <div class="vocab-card">
+                        <strong>SCARECROW</strong>
+                        <em>Espantapájaros</em>
+                    </div>
+                    <div class="vocab-card">
+                        <strong>PUMPKIN</strong>
+                        <em>Calabaza</em>
+                    </div>
+                    <div class="vocab-card">
+                        <strong>CANDY</strong>
+                        <em>Dulces</em>
+                    </div>
+                    <div class="vocab-card">
+                        <strong>DREAM</strong>
+                        <em>Sueño</em>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección 5: Quiz Interactivo -->
+            <div class="quiz-section">
+                <h2 class="quiz-title"><span class="emoji">🎯</span>Prueba tu Conocimiento</h2>
+                <form id="quizForm">
+                    <!-- Pregunta 1 -->
+                    <div class="question-container">
+                        <div class="question-number">1</div>
+                        <div class="question-text">¿Cuál es la forma afirmativa correcta en presente simple para "ellos decoran"?</div>
+                        <div class="options">
+                            <label class="option-label">
+                                <input type="radio" name="q1" value="a">
+                                <span class="option-text">They are decorating</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q1" value="b">
+                                <span class="option-text">They decorate</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q1" value="c">
+                                <span class="option-text">They decorated</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q1" value="d">
+                                <span class="option-text">They will decorate</span>
+                            </label>
+                        </div>
+                        <button type="button" class="check-button" onclick="checkAnswer(1, 'b', 'They decorate | En Present Simple afirmativo, se usa: Sujeto + Verbo (sin cambios). &quot;They decorate the porch&quot; es la forma correcta. Las otras opciones son: a) Presente continuo, c) Pasado simple, d) Futuro.')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback1"></div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="question-container">
+                        <div class="question-number">2</div>
+                        <div class="question-text">En la historia, ¿qué pasado realiza Jay cada mañana antes de ir a la escuela?</div>
+                        <div class="options">
+                            <label class="option-label">
+                                <input type="radio" name="q2" value="a">
+                                <span class="option-text">He remembers to eat breakfast</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q2" value="b">
+                                <span class="option-text">He grabs a big handful of candy</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q2" value="c">
+                                <span class="option-text">He makes a Halloween costume</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q2" value="d">
+                                <span class="option-text">He decorates the porch</span>
+                            </label>
+                        </div>
+                        <button type="button" class="check-button" onclick="checkAnswer(2, 'b', 'He grabs a big handful of candy | En la historia, dice: &quot;he grabs a big handful of candy and runs to school&quot;. Esta es la acción que Jay repite cada mañana.')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback2"></div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="question-container">
+                        <div class="question-number">3</div>
+                        <div class="question-text">¿Cuál es el Past Simple del verbo "hear"?</div>
+                        <div class="options">
+                            <label class="option-label">
+                                <input type="radio" name="q3" value="a">
+                                <span class="option-text">heared</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q3" value="b">
+                                <span class="option-text">heard</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q3" value="c">
+                                <span class="option-text">heard</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q3" value="d">
+                                <span class="option-text">will hear</span>
+                            </label>
+                        </div>
+                        <button type="button" class="check-button" onclick="checkAnswer(3, 'b', 'heard | &quot;Hear&quot; es un verbo irregular. Su Past Simple es &quot;heard&quot;, no &quot;heared&quot;. En la historia: &quot;Jay hears a voice&quot; (Present Simple) y &quot;Jay heard a voice&quot; (Past Simple).')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback3"></div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="question-container">
+                        <div class="question-number">4</div>
+                        <div class="question-text">Completa: "The pumpkin __________ (change/change) when Jay eats candy"</div>
+                        <div class="options">
+                            <label class="option-label">
+                                <input type="radio" name="q4" value="a">
+                                <span class="option-text">change</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q4" value="b">
+                                <span class="option-text">changes</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q4" value="c">
+                                <span class="option-text">is changing</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q4" value="d">
+                                <span class="option-text">changed</span>
+                            </label>
+                        </div>
+                        <button type="button" class="check-button" onclick="checkAnswer(4, 'b', 'changes | El sujeto es &quot;The pumpkin&quot; (tercera persona singular), por lo que agregamos &quot;-s&quot; al verbo: &quot;changes&quot;. En Present Simple, la tercera persona singular siempre lleva &quot;-s&quot; o &quot;-es&quot;.')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback4"></div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="question-container">
+                        <div class="question-number">5</div>
+                        <div class="question-text">¿Cuál es la pregunta correcta en Present Simple: "¿Escuchan ellos una voz aterradora?"?</div>
+                        <div class="options">
+                            <label class="option-label">
+                                <input type="radio" name="q5" value="a">
+                                <span class="option-text">Do they hear a scary voice?</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q5" value="b">
+                                <span class="option-text">Does they hear a scary voice?</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q5" value="c">
+                                <span class="option-text">Are they hearing a scary voice?</span>
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q5" value="d">
+                                <span class="option-text">Did they hear a scary voice?</span>
+                            </label>
+                        </div>
+                        <button type="button" class="check-button" onclick="checkAnswer(5, 'a', 'Do they hear a scary voice? | Con sujetos plurales (they) en preguntas, usamos &quot;Do&quot;. La estructura es: Do + sujeto plural + verbo base + complemento. &quot;Does&quot; se usa solo con tercera persona singular (he, she, it).')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback5"></div>
+                    </div>
+
+                    <button type="button" class="submit-quiz" onclick="submitQuiz()"><span class="emoji">🎉</span> Enviar Todas las Respuestas</button>
+                </form>
+
+                <div class="results" id="results"></div>
+            </div>
+        </div>
+
+        <footer>
+            <p><span class="emoji">📖</span> Workshop Present Simple - Grado 8°A | CEDAP - Educación Personalizada</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Basado en la historia "Too Much Candy" | Diseño Interactivo 2025</p>
+        </footer>
+    </div>
+
+    <script>
+        let answers = {};
+        let feedbackShown = {};
+
+        function toggleLanguage(lang) {
+            // Ocultar ambas versiones
+            document.getElementById('english').classList.remove('active');
+            document.getElementById('spanish').classList.remove('active');
+            
+            // Mostrar la versión seleccionada
+            document.getElementById(lang).classList.add('active');
+
+            // Actualizar botones
+            document.querySelectorAll('.toggle-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function checkAnswer(questionNum, correctAnswer, feedback) {
+            const selectedAnswer = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            
+            if (!selectedAnswer) {
+                alert('Por favor selecciona una opción antes de verificar.');
+                return;
+            }
+
+            const feedbackDiv = document.getElementById(`feedback${questionNum}`);
+            const isCorrect = selectedAnswer.value === correctAnswer;
+
+            // Extraer la respuesta correcta y la explicación
+            const [correctText, explanation] = feedback.split(' | ');
+
+            if (isCorrect) {
+                feedbackDiv.className = 'feedback show correct';
+                feedbackDiv.innerHTML = `
+                    <div class="feedback-title"><span class="emoji">✅</span> ¡Correcto!</div>
+                    <div class="feedback-text">
+                        <p><strong>Respuesta Correcta:</strong> ${correctText}</p>
+                        <p style="margin-top: 10px;"><strong>Explicación:</strong> ${explanation}</p>
+                    </div>
+                `;
+            } else {
+                feedbackDiv.className = 'feedback show incorrect';
+                feedbackDiv.innerHTML = `
+                    <div class="feedback-title"><span class="emoji">❌</span> Incorrecto</div>
+                    <div class="feedback-text">
+                        <p><strong>Tu respuesta:</strong> ${selectedAnswer.nextElementSibling.textContent}</p>
+                        <p style="margin-top: 10px;"><strong>Respuesta Correcta:</strong> ${correctText}</p>
+                        <p style="margin-top: 10px;"><strong>Explicación:</strong> ${explanation}</p>
+                    </div>
+                `;
+            }
+
+            answers[`q${questionNum}`] = selectedAnswer.value;
+            feedbackShown[`q${questionNum}`] = true;
+        }
+
+        function submitQuiz() {
+            let correct = 0;
+            let total = 5;
+            let allAnswered = true;
+
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (!selected) {
+                    allAnswered = false;
+                    break;
+                }
+            }
+
+            if (!allAnswered) {
+                alert('Por favor responde todas las preguntas antes de enviar.');
+                return;
+            }
+
+            // Verificar respuestas correctas
+            const correctAnswers = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'b',
+                q4: 'b',
+                q5: 'a'
+            };
+
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value === correctAnswers[`q${i}`]) {
+                    correct++;
+                }
+            }
+
+            const percentage = Math.round((correct / total) * 100);
+            let message = '';
+            let emoji = '';
+
+            if (percentage === 100) {
+                message = '¡Excelente! ¡Eres un experto en Present Simple!';
+                emoji = '🌟';
+            } else if (percentage >= 80) {
+                message = '¡Muy bien! Tienes un buen dominio del Present Simple.';
+                emoji = '👏';
+            } else if (percentage >= 60) {
+                message = 'Buen intento. Repasa las reglas del Present Simple.';
+                emoji = '📚';
+            } else {
+                message = 'Necesitas practicar más. ¡No te desanimes!';
+                emoji = '💪';
+            }
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.className = 'results show';
+            resultsDiv.innerHTML = `
+                <h3>${emoji} Resultados de tu Quiz ${emoji}</h3>
+                <div class="score">${correct} de ${total} correctas</div>
+                <p style="font-size: 1.3em; color: #667eea; font-weight: 600;">${percentage}%</p>
+                <p style="font-size: 1.1em; margin: 20px 0; color: #333;">${message}</p>
+                
+                <div class="tips">
+                    <h4><span class="emoji">📋</span>Resumen de tu Desempeño</h4>
+                    <ul>
+                        <li>Preguntas correctas: ${correct}</li>
+                        <li>Preguntas incorrectas: ${total - correct}</li>
+                        <li>Tasa de éxito: ${percentage}%</li>
+                    </ul>
+                </div>
+
+                <div class="tips" style="background: #e8f5e9; border-left-color: #4caf50; margin-top: 20px;">
+                    <h4><span class="emoji">💡</span>Próximos Pasos</h4>
+                    <ul>
+                        <li>Repasa las respuestas incorrectas y sus explicaciones</li>
+                        <li>Practica formando tus propias oraciones en Present Simple</li>
+                        <li>Lee la historia "Too Much Candy" en inglés varias veces</li>
+                        <li>Intenta traducir más oraciones al inglés</li>
+                    </ul>
+                </div>
+            `;
+
+            // Scroll to results
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Animación al cargar
+        window.addEventListener('load', () => {
+            console.log('Presentación de Present Simple cargada correctamente');
+        });
+    </script>
+</body>
+</html>
