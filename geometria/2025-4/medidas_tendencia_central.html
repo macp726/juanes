@@ -1,0 +1,1031 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medidas de Tendencia Central - Infografía Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        header h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            padding: 12px 25px;
+            border: 2px solid white;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: white;
+            color: #667eea;
+            transform: scale(1.05);
+        }
+
+        .section {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+        }
+
+        .card h2 {
+            color: #667eea;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #764ba2;
+            font-size: 1.5em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #333;
+            font-size: 1.05em;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            font-style: italic;
+        }
+
+        .example-box {
+            background: #f0f4ff;
+            border-left: 5px solid #764ba2;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .example-box strong {
+            color: #764ba2;
+        }
+
+        .highlight {
+            background: #ffeb3b;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .formula {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            font-size: 1.1em;
+            border-left: 4px solid #667eea;
+        }
+
+        .image-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .image-caption {
+            color: #666;
+            font-size: 0.95em;
+            margin-top: 10px;
+            font-style: italic;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .comparison-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 1.05em;
+        }
+
+        .comparison-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .interactive-example {
+            background: #e8f4f8;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px dashed #667eea;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group label {
+            display: block;
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #667eea;
+            border-radius: 5px;
+            font-size: 1em;
+        }
+
+        .btn {
+            background: #667eea;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-top: 15px;
+        }
+
+        .btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .result-box {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            color: #155724;
+            display: none;
+        }
+
+        .quiz-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .quiz-question {
+            background: #f9f9f9;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #667eea;
+        }
+
+        .quiz-question h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .quiz-options {
+            margin: 15px 0;
+        }
+
+        .option {
+            margin: 12px 0;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+        }
+
+        .option label {
+            cursor: pointer;
+            font-size: 1.05em;
+            color: #333;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            font-weight: bold;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border: 2px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .feedback-detail {
+            margin-top: 10px;
+            font-size: 0.95em;
+            font-weight: normal;
+            line-height: 1.6;
+        }
+
+        .quiz-button-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 25px;
+        }
+
+        .btn-check {
+            background: #28a745;
+        }
+
+        .btn-check:hover {
+            background: #218838;
+        }
+
+        .btn-reset {
+            background: #6c757d;
+        }
+
+        .btn-reset:hover {
+            background: #5a6268;
+        }
+
+        .progress-bar {
+            background: #ddd;
+            height: 30px;
+            border-radius: 15px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            transition: width 0.3s ease;
+        }
+
+        .emoji {
+            font-size: 2em;
+            margin-right: 10px;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2em;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 10px;
+                font-size: 0.9em;
+            }
+
+            .card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📊 Medidas de Tendencia Central</h1>
+            <p>Aprende cuál es el valor típico que mejor representa tus datos</p>
+        </header>
+
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showSection('intro')">Introducción</button>
+            <button class="nav-btn" onclick="showSection('media')">Media</button>
+            <button class="nav-btn" onclick="showSection('mediana')">Mediana</button>
+            <button class="nav-btn" onclick="showSection('moda')">Moda</button>
+            <button class="nav-btn" onclick="showSection('comparacion')">Comparación</button>
+            <button class="nav-btn" onclick="showSection('quiz')">Cuestionario</button>
+        </div>
+
+        <!-- SECCIÓN: INTRODUCCIÓN -->
+        <section id="intro" class="section active">
+            <div class="card">
+                <h2>¿Qué son las Medidas de Tendencia Central?</h2>
+                <p>Las medidas de tendencia central son valores que indican el "centro" de un conjunto de datos. En otras palabras, nos ayudan a encontrar <span class="highlight">el valor típico</span> que mejor resume la información.</p>
+                
+                <div class="definition-box">
+                    <strong>🎯 Definición:</strong> Son números que representan el punto central alrededor del cual se agrupan todos los datos de una distribución.
+                </div>
+
+                <h3>¿Por qué son importantes?</h3>
+                <p>Imagina que queremos saber la altura típica de los estudiantes de tu colegio. No podemos describir a cada uno individualmente, así que usamos <strong>una única medida</strong> que represente a todos. Eso es exactamente lo que hacen las medidas de tendencia central.</p>
+
+                <h3>¿Cuáles son?</h3>
+                <p>Existen tres principales:</p>
+                <ul style="margin-left: 20px; line-height: 2;">
+                    <li><strong>Media (promedio):</strong> La suma de todos los valores dividida entre la cantidad de datos</li>
+                    <li><strong>Mediana (p50):</strong> El valor que divide el conjunto en dos mitades iguales</li>
+                    <li><strong>Moda:</strong> El valor que aparece con mayor frecuencia</li>
+                </ul>
+
+                <div class="example-box">
+                    <strong>💡 Idea clave:</strong> Cada medida tiene un propósito diferente. La que elijas depende del tipo de datos y lo que quieras representar.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: MEDIA -->
+        <section id="media" class="section">
+            <div class="card">
+                <h2>📈 Media (Promedio)</h2>
+                
+                <div class="definition-box">
+                    <strong>Definición:</strong> La media es la suma de todos los valores dividida entre el número de datos. Es lo que comúnmente llamamos "promedio".
+                </div>
+
+                <h3>Fórmula</h3>
+                <div class="formula">
+                    Media = (x₁ + x₂ + x₃ + ... + xₙ) / n
+                </div>
+
+                <h3>Características</h3>
+                <ul style="margin-left: 20px; line-height: 2; margin: 15px 0;">
+                    <li>✅ <strong>Muy informativa:</strong> Usa todos los datos en su cálculo</li>
+                    <li>⚠️ <strong>Sensible a valores extremos:</strong> Un dato muy grande o muy pequeño puede cambiarla significativamente</li>
+                    <li>✅ <strong>Válida para datos simétricos:</strong> Funciona bien cuando los datos están distribuidos uniformemente</li>
+                </ul>
+
+                <h3>¿Cuándo usarla?</h3>
+                <p>Usa la media cuando:</p>
+                <ul style="margin-left: 20px; line-height: 1.8; margin: 15px 0;">
+                    <li>Los datos están en escala de <strong>intervalo o razón</strong> (números con sentido matemático)</li>
+                    <li>La distribución es <strong>aproximadamente simétrica</strong></li>
+                    <li><strong>No hay valores extremos</strong> (outliers) que distorsionen el resultado</li>
+                </ul>
+
+                <h3>Ejemplo Práctico</h3>
+                <div class="example-box">
+                    <strong>📚 Calificaciones de 5 estudiantes:</strong> 7, 8, 8, 9, 9<br><br>
+                    Media = (7 + 8 + 8 + 9 + 9) / 5 = 41 / 5 = <strong>8.2</strong><br><br>
+                    La calificación promedio es <strong>8.2</strong>.
+                </div>
+
+                <h3>⚠️ Cuidado: Valores Extremos</h3>
+                <div class="example-box">
+                    <strong>Salarios en una empresa pequeña (en millones de pesos):</strong><br>
+                    1.2, 1.3, 1.4, 1.3, 1.5, 1.4, 1.3, 10.0<br><br>
+                    Media = (1.2 + 1.3 + 1.4 + 1.3 + 1.5 + 1.4 + 1.3 + 10) / 8 = <strong>3.2 millones</strong><br><br>
+                    ⚠️ El salario del gerente (10.0) "arrastra" la media hacia arriba. La mayoría gana ~1.3 millones, ¡pero la media dice 3.2!<br>
+                    En este caso, la <strong>mediana sería más representativa</strong>.
+                </div>
+
+                <h3>Calculadora Interactiva</h3>
+                <div class="interactive-example">
+                    <p>Ingresa valores separados por comas para calcular la media:</p>
+                    <div class="input-group">
+                        <label for="dataInput">Valores (ej: 10, 20, 30, 40):</label>
+                        <input type="text" id="dataInput" placeholder="Ingresa números separados por comas">
+                    </div>
+                    <button class="btn" onclick="calculateMean()">Calcular Media</button>
+                    <div id="meanResult" class="result-box"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: MEDIANA -->
+        <section id="mediana" class="section">
+            <div class="card">
+                <h2>📊 Mediana (p50)</h2>
+                
+                <div class="definition-box">
+                    <strong>Definición:</strong> La mediana es el valor que divide el conjunto de datos ordenados en dos mitades iguales. El 50% de los datos está por debajo y el 50% por encima.
+                </div>
+
+                <h3>Características</h3>
+                <ul style="margin-left: 20px; line-height: 2; margin: 15px 0;">
+                    <li>✅ <strong>Robusta a valores extremos:</strong> Los outliers no la afectan mucho</li>
+                    <li>✅ <strong>Válida para datos ordinales:</strong> Funciona incluso con categorías ordenadas</li>
+                    <li>✅ <strong>Mejor con asimetrías:</strong> Ideal cuando la distribución está sesgada</li>
+                </ul>
+
+                <h3>¿Qué significa "Robusta"?</h3>
+                <div class="definition-box">
+                    <strong>Robusta:</strong> En estadística, significa que no cambia mucho si aparece un dato atípico o erróneo. Es resistente a los valores extremos.
+                </div>
+
+                <h3>Cómo Calcularla</h3>
+                <p style="margin: 15px 0;"><strong>Paso 1:</strong> Ordena los datos de menor a mayor</p>
+                <p style="margin: 15px 0;"><strong>Paso 2:</strong> 
+                    <ul style="margin-left: 20px;">
+                        <li>Si hay un número <strong>impar</strong> de datos: la mediana es el valor del medio</li>
+                        <li>Si hay un número <strong>par</strong> de datos: la mediana es el promedio de los dos valores del medio</li>
+                    </ul>
+                </p>
+
+                <h3>Ejemplos Prácticos</h3>
+                <div class="example-box">
+                    <strong>Ejemplo 1 - Número impar de datos:</strong><br>
+                    Datos: 3, 1, 4, 1, 5<br>
+                    Ordenados: 1, 1, 3, 4, 5<br>
+                    Mediana = <strong>3</strong> (valor del medio)
+                </div>
+
+                <div class="example-box">
+                    <strong>Ejemplo 2 - Número par de datos:</strong><br>
+                    Datos: 10, 20, 30, 40<br>
+                    Ordenados: 10, 20, 30, 40<br>
+                    Mediana = (20 + 30) / 2 = <strong>25</strong> (promedio de los dos del medio)
+                </div>
+
+                <h3>¿Por qué es mejor con valores extremos?</h3>
+                <div class="example-box">
+                    <strong>Salarios:</strong> 1.2, 1.3, 1.4, 1.3, 1.5, 1.4, 1.3, 10.0<br><br>
+                    Ordenados: 1.2, 1.3, 1.3, 1.3, 1.4, 1.4, 1.5, 10.0<br><br>
+                    Mediana = (1.3 + 1.4) / 2 = <strong>1.35 millones</strong><br><br>
+                    ✅ La mediana es mucho más representativa que la media (3.2), porque no fue afectada por el salario muy alto del gerente.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: MODA -->
+        <section id="moda" class="section">
+            <div class="card">
+                <h2>👑 Moda</h2>
+                
+                <div class="definition-box">
+                    <strong>Definición:</strong> La moda es el valor que aparece con mayor frecuencia en el conjunto de datos. Es el valor más repetido.
+                </div>
+
+                <h3>Características</h3>
+                <ul style="margin-left: 20px; line-height: 2; margin: 15px 0;">
+                    <li>✅ <strong>Ideal para datos categóricos:</strong> Funciona muy bien con variables discretas</li>
+                    <li>✅ <strong>No está afectada por outliers:</strong> Los valores extremos no la influencian</li>
+                    <li>⚠️ <strong>Puede no existir o ser múltiple:</strong> Puede haber una moda, varias o ninguna</li>
+                    <li>✅ <strong>Fácil de entender:</strong> Simplemente es el valor más frecuente</li>
+                </ul>
+
+                <h3>Casos Especiales</h3>
+                <p style="margin: 15px 0;">
+                    <strong>Unimodal:</strong> Existe un único valor más frecuente<br>
+                    <strong>Bimodal:</strong> Hay dos valores con igual frecuencia máxima<br>
+                    <strong>Multimodal:</strong> Hay más de dos valores con igual frecuencia máxima<br>
+                    <strong>Amodal:</strong> No hay moda (todos los valores aparecen con igual frecuencia)
+                </p>
+
+                <h3>Ejemplo Práctico: Tallas de Camisetas</h3>
+                <div class="example-box">
+                    <strong>📚 Contexto:</strong> Para una salida pedagógica, 20 estudiantes eligieron sus tallas:<br><br>
+                    S, M, M, L, M, S, M, L, M, XL, M, S, L, M, M, S, L, M, M, M<br><br>
+                    <strong>Conteo:</strong><br>
+                    • S: 4 estudiantes<br>
+                    • M: 11 estudiantes ← <strong>MODA</strong><br>
+                    • L: 4 estudiantes<br>
+                    • XL: 1 estudiante<br><br>
+                    ✅ <strong>Conclusión:</strong> La colegio debe pedir principalmente camisetas talla <strong>M</strong>, porque es la más popular entre los estudiantes.
+                </div>
+
+                <h3>¿Cuándo usarla?</h3>
+                <p>Usa la moda cuando:</p>
+                <ul style="margin-left: 20px; line-height: 1.8; margin: 15px 0;">
+                    <li>Trabajas con <strong>datos categóricos</strong> (colores, géneros, tallas, etc.)</li>
+                    <li>Necesitas saber <strong>la categoría más popular</strong></li>
+                    <li>Tienes <strong>datos discretos</strong> (números enteros que no representan medidas)</li>
+                    <li>Quieres complementar otras medidas como media y mediana</li>
+                </ul>
+
+                <h3>Otro Ejemplo: Sabor Favorito</h3>
+                <div class="example-box">
+                    <strong>Encuesta de 15 estudiantes:</strong><br>
+                    Sabores: Fresa, Fresa, Chocolate, Vainilla, Fresa, Chocolate, Fresa, Fresa, Vainilla, Fresa, Chocolate, Vainilla, Fresa, Fresa, Chocolate<br><br>
+                    Conteo:<br>
+                    • Fresa: 8 ← <strong>MODA</strong><br>
+                    • Chocolate: 4<br>
+                    • Vainilla: 3<br><br>
+                    El sabor favorito del grupo es <strong>Fresa</strong>.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: COMPARACIÓN -->
+        <section id="comparacion" class="section">
+            <div class="card">
+                <h2>🔄 Comparación y Elección</h2>
+
+                <h3>¿Cuál Medida Elegir?</h3>
+                <p>La siguiente tabla te ayudará a decidir cuál medida usar según tu situación:</p>
+
+                <table class="comparison-table">
+                    <tr>
+                        <th>Situación</th>
+                        <th>Recomendación</th>
+                        <th>Por qué</th>
+                    </tr>
+                    <tr>
+                        <td>Datos simétricos y sin outliers</td>
+                        <td><strong>Media</strong></td>
+                        <td>Usa toda la información disponible de manera efectiva</td>
+                    </tr>
+                    <tr>
+                        <td>Datos sesgados o con outliers</td>
+                        <td><strong>Mediana</strong></td>
+                        <td>No es afectada por valores extremos</td>
+                    </tr>
+                    <tr>
+                        <td>Datos categóricos / discretos</td>
+                        <td><strong>Moda</strong></td>
+                        <td>Es la única que tiene sentido con categorías</td>
+                    </tr>
+                    <tr>
+                        <td>Quieres la categoría más popular</td>
+                        <td><strong>Moda</strong></td>
+                        <td>Directamente te da lo más frecuente</td>
+                    </tr>
+                    <tr>
+                        <td>Tienes salarios o ingresos</td>
+                        <td><strong>Mediana</strong></td>
+                        <td>Los muy ricos no distorsionan el resultado</td>
+                    </tr>
+                    <tr>
+                        <td>Calificaciones escolares simétricas</td>
+                        <td><strong>Media</strong></td>
+                        <td>Es el promedio tradicional que conocemos</td>
+                    </tr>
+                </table>
+
+                <h3>Resumen Visual</h3>
+                <div class="example-box" style="margin-top: 30px;">
+                    <strong>🎯 Regla Práctica:</strong><br>
+                    • <strong>Números simétricos:</strong> Media ✓<br>
+                    • <strong>Números con extremos:</strong> Mediana ✓<br>
+                    • <strong>Categorías:</strong> Moda ✓<br>
+                    • <strong>Duda:</strong> Calcula las tres y compara cuál tiene más sentido
+                </div>
+
+                <h3>Ejemplo Integrado: Calificaciones de un Curso</h3>
+                <div class="example-box">
+                    <strong>Calificaciones de 10 estudiantes:</strong> 6, 6, 6, 7, 7, 7, 7, 8, 8, 9<br><br>
+                    
+                    <strong>Cálculo de Media:</strong><br>
+                    (6+6+6+7+7+7+7+8+8+9) / 10 = 71/10 = <strong>7.1</strong><br><br>
+
+                    <strong>Cálculo de Mediana:</strong><br>
+                    Ordenados: 6, 6, 6, 7, 7, 7, 7, 8, 8, 9<br>
+                    (7 + 7) / 2 = <strong>7</strong><br><br>
+
+                    <strong>Cálculo de Moda:</strong><br>
+                    Valor más frecuente: <strong>7</strong> (aparece 4 veces)<br><br>
+
+                    <strong>Interpretación:</strong><br>
+                    Los tres valores son cercanos (7, 7.1, 7), lo que indica que los datos son relativamente simétricos y todas las medidas son representativas.
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: CUESTIONARIO -->
+        <section id="quiz" class="section">
+            <div class="quiz-section">
+                <h2>🧠 Cuestionario Interactivo</h2>
+                <p style="font-size: 1.1em; color: #666; margin-bottom: 20px;">Responde las siguientes preguntas para verificar tu comprensión. Recuerda que puedes revisar las respuestas para aprender más.</p>
+
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar" style="width: 0%;">0%</div>
+                </div>
+
+                <!-- Pregunta 1 -->
+                <div class="quiz-question">
+                    <h3>❓ Pregunta 1: ¿Qué es la media?</h3>
+                    <div class="quiz-options">
+                        <div class="option">
+                            <input type="radio" id="q1a" name="q1" value="a">
+                            <label for="q1a">a) El valor que aparece más frecuentemente</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1b" name="q1" value="b">
+                            <label for="q1b">b) La suma de todos los valores dividida entre el número de datos</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1c" name="q1" value="c">
+                            <label for="q1c">c) El valor que divide el conjunto en dos mitades iguales</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q1d" name="q1" value="d">
+                            <label for="q1d">d) El valor más pequeño del conjunto</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('q1', 'b', 1)">Verificar</button>
+                    <div id="feedback-q1" class="feedback">
+                        <div id="feedbackText-q1"></div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="quiz-question">
+                    <h3>❓ Pregunta 2: Datos: 10, 11, 12, 100. ¿Cuál medida es más robusta a este valor extremo (100)?</h3>
+                    <div class="quiz-options">
+                        <div class="option">
+                            <input type="radio" id="q2a" name="q2" value="a">
+                            <label for="q2a">a) La media</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2b" name="q2" value="b">
+                            <label for="q2b">b) La mediana</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2c" name="q2" value="c">
+                            <label for="q2c">c) La moda</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q2d" name="q2" value="d">
+                            <label for="q2d">d) Todas son igual de robustas</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('q2', 'b', 2)">Verificar</button>
+                    <div id="feedback-q2" class="feedback">
+                        <div id="feedbackText-q2"></div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="quiz-question">
+                    <h3>❓ Pregunta 3: Se preguntó a 50 clientes cuál es su color favorito. ¿Cuál medida usarías?</h3>
+                    <div class="quiz-options">
+                        <div class="option">
+                            <input type="radio" id="q3a" name="q3" value="a">
+                            <label for="q3a">a) Media</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3b" name="q3" value="b">
+                            <label for="q3b">b) Mediana</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3c" name="q3" value="c">
+                            <label for="q3c">c) Moda</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q3d" name="q3" value="d">
+                            <label for="q3d">d) Cualquiera de las tres</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('q3', 'c', 3)">Verificar</button>
+                    <div id="feedback-q3" class="feedback">
+                        <div id="feedbackText-q3"></div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="quiz-question">
+                    <h3>❓ Pregunta 4: Calificaciones: 6, 7, 7, 8, 8, 8, 8, 9. ¿Cuál es la moda?</h3>
+                    <div class="quiz-options">
+                        <div class="option">
+                            <input type="radio" id="q4a" name="q4" value="a">
+                            <label for="q4a">a) 6</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4b" name="q4" value="b">
+                            <label for="q4b">b) 7</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4c" name="q4" value="c">
+                            <label for="q4c">c) 8</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q4d" name="q4" value="d">
+                            <label for="q4d">d) 9</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('q4', 'c', 4)">Verificar</button>
+                    <div id="feedback-q4" class="feedback">
+                        <div id="feedbackText-q4"></div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="quiz-question">
+                    <h3>❓ Pregunta 5: Para reportar el salario "típico" de una empresa con sueldos muy diferentes, ¿cuál es mejor?</h3>
+                    <div class="quiz-options">
+                        <div class="option">
+                            <input type="radio" id="q5a" name="q5" value="a">
+                            <label for="q5a">a) La media, porque usa todos los datos</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5b" name="q5" value="b">
+                            <label for="q5b">b) La mediana, porque no es afectada por salarios muy altos o muy bajos</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5c" name="q5" value="c">
+                            <label for="q5c">c) La moda, porque es más fácil de calcular</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q5d" name="q5" value="d">
+                            <label for="q5d">d) Cualquiera, porque todas dicen lo mismo</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('q5', 'b', 5)">Verificar</button>
+                    <div id="feedback-q5" class="feedback">
+                        <div id="feedbackText-q5"></div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 6 -->
+                <div class="quiz-question">
+                    <h3>❓ Pregunta 6: ¿Qué significa que una medida sea "robusta"?</h3>
+                    <div class="quiz-options">
+                        <div class="option">
+                            <input type="radio" id="q6a" name="q6" value="a">
+                            <label for="q6a">a) Que es muy fácil de calcular</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6b" name="q6" value="b">
+                            <label for="q6b">b) Que no cambia mucho si aparece un dato atípico o erróneo</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6c" name="q6" value="c">
+                            <label for="q6c">c) Que siempre da el resultado correcto</label>
+                        </div>
+                        <div class="option">
+                            <input type="radio" id="q6d" name="q6" value="d">
+                            <label for="q6d">d) Que funciona con cualquier tipo de dato</label>
+                        </div>
+                    </div>
+                    <button class="btn btn-check" onclick="checkAnswer('q6', 'b', 6)">Verificar</button>
+                    <div id="feedback-q6" class="feedback">
+                        <div id="feedbackText-q6"></div>
+                    </div>
+                </div>
+
+                <div class="quiz-button-group" style="margin-top: 40px;">
+                    <button class="btn btn-reset" onclick="resetQuiz()">🔄 Reiniciar Cuestionario</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <p>📚 Infografía Interactiva - Medidas de Tendencia Central</p>
+            <p style="opacity: 0.8;">Creada para estudiantes | Aprende estadística de forma interactiva 📊</p>
+        </footer>
+    </div>
+
+    <script>
+        let answeredQuestions = 0;
+        const totalQuestions = 6;
+
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            const sections = document.querySelectorAll('.section');
+            sections.forEach(section => section.classList.remove('active'));
+
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId).classList.add('active');
+
+            // Actualizar botones de navegación
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Scroll hacia arriba
+            window.scrollTo(0, 0);
+        }
+
+        function calculateMean() {
+            const input = document.getElementById('dataInput').value;
+            const resultBox = document.getElementById('meanResult');
+
+            if (!input.trim()) {
+                resultBox.style.display = 'none';
+                return;
+            }
+
+            try {
+                const numbers = input.split(',').map(x => parseFloat(x.trim()));
+                
+                if (numbers.some(isNaN)) {
+                    resultBox.innerHTML = '❌ Por favor ingresa solo números válidos';
+                    resultBox.style.display = 'block';
+                    return;
+                }
+
+                const sum = numbers.reduce((a, b) => a + b, 0);
+                const mean = sum / numbers.length;
+
+                resultBox.innerHTML = `
+                    <strong>📊 Resultado:</strong><br>
+                    Valores: ${numbers.join(', ')}<br>
+                    Suma: ${sum}<br>
+                    Cantidad de datos: ${numbers.length}<br>
+                    <strong>Media = ${sum} / ${numbers.length} = ${mean.toFixed(2)}</strong>
+                `;
+                resultBox.style.display = 'block';
+            } catch (error) {
+                resultBox.innerHTML = '❌ Error en el cálculo. Verifica tu entrada.';
+                resultBox.style.display = 'block';
+            }
+        }
+
+        function checkAnswer(questionName, correctAnswer, questionNum) {
+            const feedbackDiv = document.getElementById(`feedback-${questionName}`);
+            const feedbackText = document.getElementById(`feedbackText-${questionName}`);
+            const selectedAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+
+            if (!selectedAnswer) {
+                alert('Por favor selecciona una respuesta');
+                return;
+            }
+
+            const isCorrect = selectedAnswer.value === correctAnswer;
+            
+            if (isCorrect && !selectedAnswer.dataset.answered) {
+                answeredQuestions++;
+                updateProgress();
+                selectedAnswer.dataset.answered = 'true';
+            }
+
+            feedbackDiv.classList.remove('correct', 'incorrect');
+
+            let feedbackContent = '';
+
+            // Retroalimentación personalizada por pregunta
+            if (questionNum === 1) {
+                feedbackContent = isCorrect 
+                    ? `<span class="emoji">✅</span><strong>¡Correcto!</strong><div class="feedback-detail">La media es exactamente la suma de todos los valores dividida entre el número de datos. Es lo que conocemos como "promedio". Por ejemplo, si tienes 10, 20 y 30, la media es (10+20+30)/3 = 20.</div>`
+                    : `<span class="emoji">❌</span><strong>Incorrecto</strong><div class="feedback-detail">La respuesta correcta es <strong>b)</strong>. La media es la suma de todos los valores dividida entre el número de datos. La opción a) describe la moda, la opción c) describe la mediana, y la opción d) no describe ninguna medida de tendencia central.</div>`;
+            } else if (questionNum === 2) {
+                feedbackContent = isCorrect
+                    ? `<span class="emoji">✅</span><strong>¡Correcto!</strong><div class="feedback-detail">La mediana es robusta porque no se ve afectada por valores extremos. En este caso: Datos: 10, 11, 12, 100. Media = 33.25 (el 100 la "arrastra"), pero Mediana = 11.5 (prácticamente no se mueve). La mediana divide los datos ordenados en dos mitades iguales, ignorando la magnitud de los valores extremos.</div>`
+                    : `<span class="emoji">❌</span><strong>Incorrecto</strong><div class="feedback-detail">La respuesta correcta es <strong>b) La mediana</strong>. La mediana es robusta (resistente) a valores extremos. Con los datos 10, 11, 12, 100: la media sería 33.25 (muy distorsionada), pero la mediana sería 11.5 (apenas afectada). Esto demuestra por qué la mediana es mejor para datos con outliers.</div>`;
+            } else if (questionNum === 3) {
+                feedbackContent = isCorrect
+                    ? `<span class="emoji">✅</span><strong>¡Correcto!</strong><div class="feedback-detail">Los colores son datos categóricos, no numéricos. La moda es la única medida de tendencia central que tiene sentido con categorías, porque simplemente identifica la categoría más frecuente. En este caso, sería "el color favorito más popular".</div>`
+                    : `<span class="emoji">❌</span><strong>Incorrecto</strong><div class="feedback-detail">La respuesta correcta es <strong>c) Moda</strong>. Los colores son datos categóricos, no números. Solo la moda puede usarse con categorías, porque identifica el valor más frecuente. La media y la mediana requieren datos numéricos.</div>`;
+            } else if (questionNum === 4) {
+                feedbackContent = isCorrect
+                    ? `<span class="emoji">✅</span><strong>¡Correcto!</strong><div class="feedback-detail">La moda es el valor que aparece más frecuentemente. Contando: 6 aparece 1 vez, 7 aparece 2 veces, 8 aparece 4 veces (¡la más frecuente!), y 9 aparece 1 vez. Por lo tanto, la moda es 8.</div>`
+                    : `<span class="emoji">❌</span><strong>Incorrecto</strong><div class="feedback-detail">La respuesta correcta es <strong>c) 8</strong>. Contando la frecuencia: 6→1, 7→2, 8→4, 9→1. El valor que aparece más veces es 8 (cuatro veces). La moda es siempre el valor más frecuente.</div>`;
+            } else if (questionNum === 5) {
+                feedbackContent = isCorrect
+                    ? `<span class="emoji">✅</span><strong>¡Correcto!</strong><div class="feedback-detail">La mediana es mejor porque no es afectada por salarios extremadamente altos o bajos. Ejemplo: En una empresa donde 7 personas ganan $1 millón y el CEO gana $50 millones, la media sería engañosa (~$8 millones), pero la mediana sería $1 millón, representando mejor la realidad de la mayoría.</div>`
+                    : `<span class="emoji">❌</span><strong>Incorrecto</strong><div class="feedback-detail">La respuesta correcta es <strong>b) La mediana</strong>. Cuando hay grandes diferencias en los salarios (valores extremos), la mediana es superior porque divide los datos en dos mitades iguales sin ser arrastrada por salarios muy altos o muy bajos. La media podría dar una impresión falsa e irreal.</div>`;
+            } else if (questionNum === 6) {
+                feedbackContent = isCorrect
+                    ? `<span class="emoji">✅</span><strong>¡Correcto!</strong><div class="feedback-detail">"Robusta" en estadística significa que la medida es poco sensible a valores extremos o errores en los datos. Una medida robusta no cambia significativamente si aparece un dato atípico. La mediana es robusta, pero la media no.</div>`
+                    : `<span class="emoji">❌</span><strong>Incorrecto</strong><div class="feedback-detail">La respuesta correcta es <strong>b)</strong>. "Robusta" significa que una medida es poco sensible a valores extremos o errores. No cambia mucho si aparece un dato atípico. La mediana es robusta (el 100 en "10, 11, 12, 100" casi no la afecta), pero la media no lo es.</div>`;
+            }
+
+            feedbackDiv.innerHTML = feedbackContent;
+            feedbackDiv.classList.add(isCorrect ? 'correct' : 'incorrect');
+            feedbackDiv.style.display = 'block';
+        }
+
+        function updateProgress() {
+            const percentage = Math.round((answeredQuestions / totalQuestions) * 100);
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = percentage + '%';
+            progressBar.textContent = percentage + '%';
+        }
+
+        function resetQuiz() {
+            // Limpiar todas las respuestas
+            const inputs = document.querySelectorAll('input[type="radio"]');
+            inputs.forEach(input => {
+                input.checked = false;
+                input.dataset.answered = 'false';
+            });
+
+            // Ocultar todos los feedbacks
+            const feedbacks = document.querySelectorAll('.feedback');
+            feedbacks.forEach(feedback => feedback.style.display = 'none');
+
+            // Resetear contador y barra de progreso
+            answeredQuestions = 0;
+            updateProgress();
+
+            // Scroll hacia arriba
+            document.getElementById('quiz').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Permitir Enter en la calculadora de media
+        document.addEventListener('DOMContentLoaded', function() {
+            const dataInput = document.getElementById('dataInput');
+            if (dataInput) {
+                dataInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') calculateMean();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
