@@ -1,0 +1,1433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manifestaciones Culturales de Colombia</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header p {
+            font-size: 1.2em;
+            color: #7f8c8d;
+        }
+
+        .region-nav {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .nav-btn {
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .nav-btn.andina { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+        .nav-btn.caribe { background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%); }
+        .nav-btn.pacifica { background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); }
+        .nav-btn.amazonia { background: linear-gradient(135deg, #d299c2 0%, #fef9d7 100%); }
+        .nav-btn.orinoquia { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .nav-btn.insular { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); color: white; }
+
+        .region-content {
+            display: none;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            animation: fadeIn 0.5s ease;
+        }
+
+        .region-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .region-header {
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+        }
+
+        .region-header h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section h3 {
+            font-size: 1.5em;
+            color: #3498db;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .section h3::before {
+            content: "🎭";
+            margin-right: 10px;
+            font-size: 1.2em;
+        }
+
+        .section.geography h3::before { content: "🗺️"; }
+        .section.gastronomy h3::before { content: "🍽️"; }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 0.95em;
+        }
+
+        .image-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .image-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .image-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .image-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 10px;
+            font-size: 0.9em;
+            text-align: center;
+        }
+
+        .quiz-section {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            margin-top: 30px;
+        }
+
+        .quiz-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .quiz-header h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .question {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 5px solid #3498db;
+        }
+
+        .question h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .options {
+            display: grid;
+            gap: 10px;
+        }
+
+        .option {
+            padding: 15px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option:hover {
+            background: #e8f4f8;
+            border-color: #3498db;
+        }
+
+        .option.selected {
+            background: #3498db;
+            color: white;
+            border-color: #3498db;
+        }
+
+        .option.correct {
+            background: #2ecc71;
+            color: white;
+            border-color: #27ae60;
+        }
+
+        .option.incorrect {
+            background: #e74c3c;
+            color: white;
+            border-color: #c0392b;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #d5f4e6;
+            color: #27ae60;
+            border-left: 4px solid #27ae60;
+        }
+
+        .feedback.incorrect {
+            background: #fadbd8;
+            color: #c0392b;
+            border-left: 4px solid #c0392b;
+        }
+
+        .submit-btn {
+            display: block;
+            margin: 30px auto 0;
+            padding: 15px 40px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 1.1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .score {
+            text-align: center;
+            font-size: 1.5em;
+            color: #2c3e50;
+            margin-top: 20px;
+            padding: 20px;
+            background: #e8f4f8;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .score.show {
+            display: block;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            color: white;
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🇨🇴 Manifestaciones Culturales de Colombia 🇨🇴</h1>
+            <p>Descubre la riqueza y diversidad cultural de las regiones de Colombia</p>
+        </header>
+
+        <div class="region-nav">
+            <button class="nav-btn andina" onclick="showRegion('andina')">🏔️ Región Andina</button>
+            <button class="nav-btn caribe" onclick="showRegion('caribe')">🌊 Región Caribe</button>
+            <button class="nav-btn pacifica" onclick="showRegion('pacifica')">🌴 Región Pacífica</button>
+            <button class="nav-btn amazonia" onclick="showRegion('amazonia')">🦜 Región Amazonía</button>
+            <button class="nav-btn orinoquia" onclick="showRegion('orinoquia')">🐴 Región Orinoquía</button>
+            <button class="nav-btn insular" onclick="showRegion('insular')">🏝️ Región Insular</button>
+        </div>
+
+        <!-- REGIÓN ANDINA -->
+        <div id="andina" class="region-content">
+            <div class="region-header">
+                <h2>🏔️ Región Andina</h2>
+                <p>La región más poblada de Colombia, caracterizada por sus tres cordilleras y rica cultura mestiza</p>
+            </div>
+
+            <div class="section geography">
+                <h3>Geografía</h3>
+                <div class="card">
+                    <h4>Ubicación y Características</h4>
+                    <p><strong>Departamentos:</strong> Antioquia, Caldas, Risaralda, Quindío, Nariño, Huila, Tolima, Cundinamarca, Boyacá, Santander, Norte de Santander, Cauca y Valle del Cauca.</p>
+                    <p><strong>Características:</strong> Comprende las tres cordilleras (Central, Oriental y Occidental). Ríos principales: Magdalena y Cauca. Población: 34 millones de habitantes. La Zona Cafetera fue declarada Patrimonio de la Humanidad en 2011.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Grupos Culturales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>Cultura Paisa</h4>
+                        <p>Predominante en Antioquia y el Eje Cafetero. Caracterizada por su emprendimiento, amabilidad y el cultivo del café.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Cultura Cundiboyacense</h4>
+                        <p>Región de Cundinamarca y Boyacá, con fuerte influencia española. Uso del término "sumercé" como tratamiento formal.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Cultura Santandereana</h4>
+                        <p>Habitantes de Santander y Norte de Santander, conocidos por su carácter fuerte y tradiciones religiosas.</p>
+                    </div>
+                    <div class="card">
+                        <h4>Cultura Opita</h4>
+                        <p>Región del Tolima y Huila, con tradiciones relacionadas con las Fiestas de San Juan y San Pedro.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Tradiciones y Manifestaciones Culturales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🎵 Bambuco</h4>
+                        <p>Considerado el baile nacional de Colombia. Se caracteriza por pasos elegantes y movimientos que evocan un cortejo romántico. Música interpretada con guitarra, tiple y bandola.</p>
+                    </div>
+                    <div class="card">
+                        <h4>💃 Torbellino</h4>
+                        <p>Danza tradicional de origen campesino, caracterizada por movimientos circulares rápidos.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎸 Guabina</h4>
+                        <p>Ritmo típico de Santander, acompañado de tiple y guitarra.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎶 Pasillo</h4>
+                        <p>Género musical romántico, derivado del vals europeo pero con características propias colombianas.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎺 Sanjuanero</h4>
+                        <p>Originario del Huila, es una de las danzas más festivas, relacionada con el Festival de San Juan y San Pedro.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Festividades Principales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🎭 Carnaval de Negros y Blancos (Pasto)</h4>
+                        <p>Celebrado en enero, combina tradiciones indígenas, africanas y españolas. Patrimonio de la Humanidad UNESCO desde 2009.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🌸 Feria de las Flores (Medellín)</h4>
+                        <p>Celebración anual en agosto, destacada por el desfile de silleteros.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎉 Feria de Manizales</h4>
+                        <p>Una de las ferias más importantes del Eje Cafetero.</p>
+                    </div>
+                    <div class="card">
+                        <h4>✝️ Semana Santa de Popayán</h4>
+                        <p>Reconocida como una de las procesiones más importantes de Latinoamérica.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section gastronomy">
+                <h3>Gastronomía</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🍽️ Bandeja Paisa</h4>
+                        <p>Plato típico de Antioquia que incluye frijoles, arroz, carne molida, chicharrón, chorizo, huevo frito, plátano maduro, aguacate, arepa y morcilla.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🥘 Ajiaco Santafereño</h4>
+                        <p>Sopa típica de Bogotá hecha con tres tipos de papa, pollo, guascas, alcaparras y crema de leche.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🌮 Tamales Tolimenses</h4>
+                        <p>Envueltos en hojas de plátano con masa de maíz, carne de cerdo y pollo, verduras y especias.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🐖 Lechona Tolimense</h4>
+                        <p>Cerdo relleno de arroz, arvejas y especias, cocinado lentamente.</p>
+                    </div>
+                    <div class="card">
+                        <h4>☕ Café Colombiano</h4>
+                        <p>El café de la región andina es reconocido mundialmente por su calidad y sabor.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🥛 Changua</h4>
+                        <p>Sopa de desayuno con leche, huevos, cilantro y cebolla, típica de Cundinamarca.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGIÓN CARIBE -->
+        <div id="caribe" class="region-content">
+            <div class="region-header">
+                <h2>🌊 Región Caribe</h2>
+                <p>Tierra de alegría, música y sabor, donde convergen las culturas indígena, africana y española</p>
+            </div>
+
+            <div class="section geography">
+                <h3>Geografía</h3>
+                <div class="card">
+                    <h4>Ubicación y Características</h4>
+                    <p><strong>Departamentos:</strong> Atlántico, Bolívar, La Guajira, Cesar, Sucre, Córdoba, Magdalena, y las islas de San Andrés y Providencia.</p>
+                    <p><strong>Características:</strong> Ubicada al norte de Colombia, limita con el océano Atlántico y el golfo de Venezuela. Clima cálido tropical. Gran diversidad étnica: indígenas Wayúu, Arhuacos, Koguis, Zenú, población mestiza, afrodescendiente y de ascendencia libanesa.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Tradiciones y Manifestaciones Culturales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>💃 Cumbia</h4>
+                        <p>Baile y ritmo musical producto de la fusión de culturas indígena, africana y española. Uno de los ritmos más representativos de Colombia.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎵 Vallenato</h4>
+                        <p>Género musical interpretado con acordeón, caja y guacharaca. Originario de Valledupar, Cesar.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🕺 Mapalé</h4>
+                        <p>Danza alegre de origen africano que se baila en Cartagena y otros pueblos costeros. Requiere gran habilidad de los danzantes.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎩 Sombrero Vueltiao</h4>
+                        <p>Símbolo nacional de Colombia, originario de las comunidades del río Sinú. Tejido artesanalmente con caña flecha.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎭 Danzas y Disfraces</h4>
+                        <p>Personajes como La Marimonda, El Monocuco, El Congo y las danzas del Pájaro, el Caimán y El Torito son emblemáticos del Carnaval.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Festividades Principales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🎊 Carnaval de Barranquilla</h4>
+                        <p>Una de las fiestas más importantes de Colombia y la segunda más grande de Latinoamérica después de Río de Janeiro. Declarado Patrimonio Oral e Intangible de la Humanidad por UNESCO en 2003. Se celebra en febrero.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎸 Festival de la Leyenda Vallenata</h4>
+                        <p>Celebrado en Valledupar, es el evento más importante del vallenato, donde se elige al Rey Vallenato.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎺 Festival de Gaitas de San Jacinto</h4>
+                        <p>Celebración de la música autóctona con gaitas y otros instrumentos tradicionales.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🌊 Fiestas del Mar</h4>
+                        <p>Celebración en Santa Marta que exalta la cultura marina y costera.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section gastronomy">
+                <h3>Gastronomía</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🥘 Sancocho Costeño</h4>
+                        <p>Sopa tradicional con varios tipos de carne (gallina criolla preferentemente), maíz, yuca, plátano, ñame, papa y especias.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🦐 Cazuela de Mariscos</h4>
+                        <p>Plato cremoso con variedad de mariscos frescos del Caribe: pulpo, camarones, langostinos, ostras.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🍚 Arroz con Coco</h4>
+                        <p>Arroz agridulce cocinado en leche de coco, acompañamiento perfecto para pescado frito.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🐟 Pescado Frito con Patacones</h4>
+                        <p>Pescado marinado al estilo costeño acompañado de plátano verde frito.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🥟 Arepa de Huevo</h4>
+                        <p>Arepa frita rellena de huevo, típica de Cartagena y la costa atlántica.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🌭 Butifarra</h4>
+                        <p>Embutido de carne de cerdo sazonado con especias, típico de la región.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGIÓN PACÍFICA -->
+        <div id="pacifica" class="region-content">
+            <div class="region-header">
+                <h2>🌴 Región Pacífica</h2>
+                <p>Rica herencia afrocolombiana, biodiversidad y ritmos ancestrales</p>
+            </div>
+
+            <div class="section geography">
+                <h3>Geografía</h3>
+                <div class="card">
+                    <h4>Ubicación y Características</h4>
+                    <p><strong>Departamentos:</strong> Chocó, Valle del Cauca, Cauca y Nariño (áreas costeras).</p>
+                    <p><strong>Características:</strong> Ubicada en la costa occidental de Colombia sobre el océano Pacífico. Una de las regiones con mayor biodiversidad del planeta. El 90% de su población es afrodescendiente. Altas precipitaciones y selvas húmedas tropicales.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Tradiciones y Manifestaciones Culturales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🎵 Currulao</h4>
+                        <p>Ritmo y danza más representativa del Pacífico colombiano. Se caracteriza por movimientos sensuales y circulares. Música interpretada con marimba de chonta, cununo, guasá y tambores.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🥁 Marimba de Chonta</h4>
+                        <p>Instrumento musical esencial en la región, hecho de madera de chonta. Declarada Patrimonio Cultural e Inmaterial de la Humanidad por UNESCO.</p>
+                    </div>
+                    <div class="card">
+                        <h4>💃 Bunde</h4>
+                        <p>Danza tradicional afrocolombiana que se interpreta en rituales y celebraciones.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🕺 Abozao</h4>
+                        <p>Danza y ritmo característico de la región, con movimientos enérgicos.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎺 Chirimía</h4>
+                        <p>Conjunto musical tradicional que utiliza instrumentos de viento y percusión.</p>
+                    </div>
+                    <div class="card">
+                        <h4>👗 Vestimenta Tradicional</h4>
+                        <p>Las mujeres usan turbantes llamados "turbantes de raizales", blusas y faldas coloridas. Los hombres visten guayabera pacífica de lino con bordados.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Festividades Principales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🎉 Fiestas de San Pacho (Chocó)</h4>
+                        <p>Celebración en honor a San Francisco de Asís en Quibdó, a partir del 20 de septiembre. Mezcla de religión católica con tradiciones afrocolombianas.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎵 Festival Petronio Álvarez</h4>
+                        <p>Festival de Música del Pacífico que celebra la cultura afrocolombiana en Cali.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎊 Festival del Currulao (Tumaco)</h4>
+                        <p>Celebración dedicada al ritmo más representativo de la región.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🔥 Carnaval del Fuego (Tumaco)</h4>
+                        <p>Festividad con desfiles y manifestaciones culturales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section gastronomy">
+                <h3>Gastronomía</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🐟 Encocado de Pescado</h4>
+                        <p>Pescado fresco cocido en salsa de coco con especias. Combina los sabores del mar con la cremosidad del coco.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🥘 Tapao de Pescado</h4>
+                        <p>Plato insigne de la región, caldo de pescado con papa, plátano, yuca, envuelto en hojas de plátano. Originario de Guapi, Cauca.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🦀 Sopa de Cangrejo</h4>
+                        <p>Aperitivo tradicional hecho con cangrejos y verduras.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🍚 Arroz Clavado</h4>
+                        <p>Arroz cocinado con mariscos frescos y hierbas aromáticas.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🥟 Empanadas de Jaiba</h4>
+                        <p>Empanadas rellenas con carne de jaiba y especias.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🍌 Aborrajados de Plátano</h4>
+                        <p>Plátano maduro frito relleno de queso, con técnicas tradicionales del Pacífico.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGIÓN AMAZONÍA -->
+        <div id="amazonia" class="region-content">
+            <div class="region-header">
+                <h2>🦜 Región Amazonía</h2>
+                <p>El pulmón del mundo, tierra de comunidades indígenas y biodiversidad única</p>
+            </div>
+
+            <div class="section geography">
+                <h3>Geografía</h3>
+                <div class="card">
+                    <h4>Ubicación y Características</h4>
+                    <p><strong>Departamentos:</strong> Amazonas, Caquetá, Guainía, Guaviare, Putumayo y Vaupés.</p>
+                    <p><strong>Características:</strong> La región más extensa y menos poblada de Colombia. Selva tropical húmeda con la mayor biodiversidad del planeta. Atravesada por el río Amazonas. Hogar de numerosas comunidades indígenas: Ticuna, Yagua, Bora, Huitoto, Inga, Murui, Muinane, Kichwa, Siona y Coreguaje.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Grupos Indígenas y Tradiciones</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🏘️ Comunidad Ticuna</h4>
+                        <p>Uno de los grupos indígenas más numerosos de la Amazonía colombiana. Conservan su lengua, rituales y cosmovisión ancestral.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🌿 Comunidad Huitoto</h4>
+                        <p>Reconocidos por sus conocimientos sobre plantas medicinales y rituales ceremoniales en malocas.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎭 Danzas y Ceremonias</h4>
+                        <p>Rituales de fertilidad, matrimonio, nacimientos, cosechas y ceremonias fúnebres. Las danzas tienen carácter mítico-espiritual.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🥁 Música Tradicional</h4>
+                        <p>Cantos que imitan sonidos de la naturaleza, acompañados de instrumentos como el manguaré (tambor ceremonial), flautas y maracas.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎨 Artesanías</h4>
+                        <p>Tallas de madera, cestas tejidas, mochilas, bisutería con semillas y plumas, máscaras ceremoniales.</p>
+                    </div>
+                    <div class="card">
+                        <h4>📖 Tradiciones Orales</h4>
+                        <p>Leyendas y mitos que describen la relación con la selva, considerada como un gran ser viviente.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Festividades Principales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🎊 Festival de la Confraternidad Amazónica</h4>
+                        <p>Celebrado en julio en Leticia, reúne comunidades de Colombia, Brasil y Perú con desfiles, danzas y competencias deportivas.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🍇 Fiesta del Pijuayo</h4>
+                        <p>Celebración en torno a la cosecha de este fruto amazónico, con cantos, danzas y platos típicos.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🐟 Festival del Pirarucú de Oro</h4>
+                        <p>Festival de música tradicional amazónica en Leticia (noviembre), reuniendo artistas de Colombia, Brasil y Perú.</p>
+                    </div>
+                    <div class="card">
+                        <h4>✝️ Festival de San Pedro</h4>
+                        <p>Celebrado en Florencia, Caquetá, honra a los pueblos indígenas con música, baile y gastronomía.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section gastronomy">
+                <h3>Gastronomía</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🐟 Pescado Moqueado</h4>
+                        <p>Pescado (pirarucú, bocachico) envuelto en hoja de bijao y asado sobre brasas. Acompañado de casabe y ají de tucupí.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🐠 Chicharrones de Pirarucú</h4>
+                        <p>Pez emblemático del Amazonas preparado en chicharrones crujientes.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🐟 Caldo de Piraña</h4>
+                        <p>Sopa de sabor intenso con piraña fresca, yuca y plátano verde.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🍞 Casabe</h4>
+                        <p>Pan indígena hecho de yuca brava, una de las primeras comidas que conocieron los españoles.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🌶️ Tucupí</h4>
+                        <p>Salsa picante espesa y negra hecha de yuca brava con pimientos negros picantes. La mejor salsa amazónica.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🐛 Mojojoy</h4>
+                        <p>Larva nutritiva considerada un delicatessen. Se prepara asada, frita o rellena.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGIÓN ORINOQUÍA -->
+        <div id="orinoquia" class="region-content">
+            <div class="region-header">
+                <h2>🐴 Región Orinoquía (Llanos Orientales)</h2>
+                <p>Tierra de llaneros, joropo y vastas sabanas</p>
+            </div>
+
+            <div class="section geography">
+                <h3>Geografía</h3>
+                <div class="card">
+                    <h4>Ubicación y Características</h4>
+                    <p><strong>Departamentos:</strong> Arauca, Casanare, Meta, Vichada, Guainía y Guaviare.</p>
+                    <p><strong>Características:</strong> Grandes llanuras y sabanas (75% sabanas, 25% bosques). Delimitada por los ríos Orinoco, Guaviare y Arauca. Actividad principal: ganadería. Más de 450 especies de aves. Hogar de Caño Cristales, "el río de los cinco colores".</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Tradiciones y Manifestaciones Culturales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🎵 Música Llanera</h4>
+                        <p>Género musical más representativo, caracterizado por el uso del arpa, cuatro, maracas y bajo. Las letras hablan sobre la vida en el llano.</p>
+                    </div>
+                    <div class="card">
+                        <h4>💃 Joropo</h4>
+                        <p>Baile tradicional con movimientos rápidos y vigorosos de pies y piernas. Se baila en pareja con una serie de pasos y figuras características. Es la expresión cultural más emblemática de la región.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🐎 El Coleo</h4>
+                        <p>Deporte tradicional que consiste en cabalgar a gran velocidad y derribar una res tomándola de la cola. Demuestra la destreza del llanero.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎭 Cultura Llanera</h4>
+                        <p>Identidad basada en la vida ganadera, el trabajo con caballos y ganado, y la conexión con la naturaleza.</p>
+                    </div>
+                    <div class="card">
+                        <h4>📜 Poema Llanero</h4>
+                        <p>Tradición oral que perpetúa leyendas fantásticas, celebra la exuberancia del territorio y el amor.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎨 Artesanías</h4>
+                        <p>Máscaras tradicionales, alfarería, cestería y productos de cuero relacionados con la actividad ganadera.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Festividades Principales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🎵 Festival Nacional de la Canción y Torneo Internacional del Joropo</h4>
+                        <p>Celebrado anualmente en Villavicencio (Meta). El evento más importante de la música llanera donde se aprecian instrumentos, vestidos típicos y el baile del joropo.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🐴 Torneos de Vaquería</h4>
+                        <p>Competencias que incluyen el coleo y otras pruebas de destreza ecuestre.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎊 Festival de Cuadrillas (San Martín, Meta)</h4>
+                        <p>Celebración que incluye danzas y representaciones tradicionales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section gastronomy">
+                <h3>Gastronomía</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🥩 Mamona o Ternera a la Llanera</h4>
+                        <p>Carne de ternera asada lentamente a la brasa. Plato emblemático de la región, base de la cocina llanera.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🍚 Arroz Llanero</h4>
+                        <p>Arroz cocinado con rabo de res, sofrito en manteca de cochino. Textura húmeda y sabor intenso.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🦫 Chigüiro a la Brasa</h4>
+                        <p>Carne de chigüiro (capibara) adobada con sal, cebolla y cerveza, asada a la brasa.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🐟 Cachama Asada</h4>
+                        <p>Pescado típico de los ríos llaneros, preparado asado, horneado o frito.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🍲 Pabellón Criollo</h4>
+                        <p>Carne mechada, arroz blanco, frijol negro, plátano y queso blanco.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🥤 Chicha de Arroz</h4>
+                        <p>Bebida tradicional refrescante hecha de arroz fermentado.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- REGIÓN INSULAR -->
+        <div id="insular" class="region-content">
+            <div class="region-header">
+                <h2>🏝️ Región Insular</h2>
+                <p>Islas paradisíacas del Caribe con cultura raizal única</p>
+            </div>
+
+            <div class="section geography">
+                <h3>Geografía</h3>
+                <div class="card">
+                    <h4>Ubicación y Características</h4>
+                    <p><strong>Principales islas:</strong> San Andrés, Providencia y Santa Catalina en el mar Caribe. Islas Malpelo, Gorgona y Gorgonilla en el océano Pacífico.</p>
+                    <p><strong>Características:</strong> Playas de aguas cristalinas, arrecifes de coral y biodiversidad marina excepcional. Población predominantemente raizal (afrocaribeña) con herencia cultural de africanos, europeos, ingleses y holandeses.</p>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Tradiciones y Manifestaciones Culturales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🎵 Calypso</h4>
+                        <p>Música y baile típicos de Jamaica y Trinidad que se han adoptado como propios en San Andrés. Presente en festividades y eventos culturales.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎶 Reggae</h4>
+                        <p>Ritmo jamaiquino muy popular en la región insular, reflejo de la influencia antillana.</p>
+                    </div>
+                    <div class="card">
+                        <h4>💃 Contradanza, Mazurca y Shotis</h4>
+                        <p>Bailes tradicionales que forman parte de la cultura local raizal.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🗣️ Idiomas</h4>
+                        <p>Aunque el español es oficial, la mayoría de la población es trilingüe: español, inglés criollo y criollo sanandresano (palenquero).</p>
+                    </div>
+                    <div class="card">
+                        <h4>👗 Cultura Raizal</h4>
+                        <p>Identidad única que mezcla influencias africanas, europeas y caribeñas en su vestimenta, música y costumbres.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h3>Festividades Principales</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🌕 Festival de la Luna Verde (Green Moon Festival)</h4>
+                        <p>Celebración anual en San Andrés durante septiembre-octubre. Dura una semana e incluye conciertos de reggae, calypso, salsa, merengue y mazurca. Enaltece la cultura nativa y busca afianzar lazos de hermandad.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🦀 Festival del Cangrejo</h4>
+                        <p>Celebración gastronómica dedicada al cangrejo negro, producto típico de la isla.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🥥 Festival del Coco</h4>
+                        <p>Festividad que celebra el coco como ingrediente fundamental de la gastronomía insular.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🎭 Festival de la Cultura Raizal</h4>
+                        <p>Celebra la herencia e identidad cultural de la población raizal a través de eventos artísticos, musicales y gastronómicos.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section gastronomy">
+                <h3>Gastronomía</h3>
+                <div class="content-grid">
+                    <div class="card">
+                        <h4>🥘 Rondón o Rundown</h4>
+                        <p>Plato típico estrella de la isla. Guiso marinero con leche de coco, pescado, caracol, cola de cerdo, yuca, ñame, plátano verde, dumplings y fruta de pan.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🦀 Sopa de Cangrejo</h4>
+                        <p>Sopa cremosa con cangrejo negro, leche de coco, verduras y especias.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🐟 Fish Balls (Albóndigas de Pescado)</h4>
+                        <p>Albóndigas de pescado fresco (pargo, mojarra o cangrejo) sazonadas y fritas.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🦀 Crab Patty (Empanada de Cangrejo)</h4>
+                        <p>Empanada rellena de carne de cangrejo con especias, frita hasta dorar.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🥥 Pan de Coco</h4>
+                        <p>Pan dulce elaborado con harina, leche de coco, azúcar y especias. Postre típico de la isla.</p>
+                    </div>
+                    <div class="card">
+                        <h4>🍚 Arroz con Coco</h4>
+                        <p>Arroz cocinado en leche de coco fresca con especias, de aroma dulce y textura suave.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CUESTIONARIO INTERACTIVO -->
+        <div class="quiz-section">
+            <div class="quiz-header">
+                <h2>🎯 Cuestionario Interactivo</h2>
+                <p>Pon a prueba tus conocimientos sobre las manifestaciones culturales de Colombia</p>
+            </div>
+
+            <!-- Pregunta 1 -->
+            <div class="question" id="q1">
+                <h3>1. ¿Cuál es el baile considerado nacional de Colombia y característico de la región Andina?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(1, 'a', true)">
+                        <strong>A)</strong> El Bambuco
+                    </div>
+                    <div class="option" onclick="selectAnswer(1, 'b', false)">
+                        <strong>B)</strong> La Cumbia
+                    </div>
+                    <div class="option" onclick="selectAnswer(1, 'c', false)">
+                        <strong>C)</strong> El Joropo
+                    </div>
+                    <div class="option" onclick="selectAnswer(1, 'd', false)">
+                        <strong>D)</strong> El Currulao
+                    </div>
+                </div>
+                <div class="feedback" id="feedback1">
+                    <strong id="result1"></strong>
+                    <p id="explanation1"></p>
+                </div>
+            </div>
+
+            <!-- Pregunta 2 -->
+            <div class="question" id="q2">
+                <h3>2. ¿Qué instrumento musical es esencial en la región Pacífica y fue declarado Patrimonio Cultural Inmaterial por UNESCO?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(2, 'a', false)">
+                        <strong>A)</strong> El Arpa
+                    </div>
+                    <div class="option" onclick="selectAnswer(2, 'b', false)">
+                        <strong>B)</strong> El Tiple
+                    </div>
+                    <div class="option" onclick="selectAnswer(2, 'c', true)">
+                        <strong>C)</strong> La Marimba de Chonta
+                    </div>
+                    <div class="option" onclick="selectAnswer(2, 'd', false)">
+                        <strong>D)</strong> El Acordeón
+                    </div>
+                </div>
+                <div class="feedback" id="feedback2">
+                    <strong id="result2"></strong>
+                    <p id="explanation2"></p>
+                </div>
+            </div>
+
+            <!-- Pregunta 3 -->
+            <div class="question" id="q3">
+                <h3>3. ¿Cuál de estas festividades fue declarada Patrimonio Oral e Intangible de la Humanidad por UNESCO en 2003?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(3, 'a', false)">
+                        <strong>A)</strong> Festival de la Leyenda Vallenata
+                    </div>
+                    <div class="option" onclick="selectAnswer(3, 'b', true)">
+                        <strong>B)</strong> Carnaval de Barranquilla
+                    </div>
+                    <div class="option" onclick="selectAnswer(3, 'c', false)">
+                        <strong>C)</strong> Feria de las Flores
+                    </div>
+                    <div class="option" onclick="selectAnswer(3, 'd', false)">
+                        <strong>D)</strong> Festival del Joropo
+                    </div>
+                </div>
+                <div class="feedback" id="feedback3">
+                    <strong id="result3"></strong>
+                    <p id="explanation3"></p>
+                </div>
+            </div>
+
+            <!-- Pregunta 4 -->
+            <div class="question" id="q4">
+                <h3>4. ¿Qué plato típico de la región Andina incluye frijoles, chicharrón, carne molida, arroz y huevo frito?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(4, 'a', false)">
+                        <strong>A)</strong> Ajiaco Santafereño
+                    </div>
+                    <div class="option" onclick="selectAnswer(4, 'b', true)">
+                        <strong>B)</strong> Bandeja Paisa
+                    </div>
+                    <div class="option" onclick="selectAnswer(4, 'c', false)">
+                        <strong>C)</strong> Sancocho Costeño
+                    </div>
+                    <div class="option" onclick="selectAnswer(4, 'd', false)">
+                        <strong>D)</strong> Mamona Llanera
+                    </div>
+                </div>
+                <div class="feedback" id="feedback4">
+                    <strong id="result4"></strong>
+                    <p id="explanation4"></p>
+                </div>
+            </div>
+
+            <!-- Pregunta 5 -->
+            <div class="question" id="q5">
+                <h3>5. ¿Cuál es el baile más representativo de la región Orinoquía?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(5, 'a', false)">
+                        <strong>A)</strong> El Mapalé
+                    </div>
+                    <div class="option" onclick="selectAnswer(5, 'b', false)">
+                        <strong>B)</strong> El Currulao
+                    </div>
+                    <div class="option" onclick="selectAnswer(5, 'c', true)">
+                        <strong>C)</strong> El Joropo
+                    </div>
+                    <div class="option" onclick="selectAnswer(5, 'd', false)">
+                        <strong>D)</strong> El Torbellino
+                    </div>
+                </div>
+                <div class="feedback" id="feedback5">
+                    <strong id="result5"></strong>
+                    <p id="explanation5"></p>
+                </div>
+            </div>
+
+            <!-- Pregunta 6 -->
+            <div class="question" id="q6">
+                <h3>6. ¿Qué comunidad indígena es una de las más numerosas en la región Amazónica de Colombia?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(6, 'a', false)">
+                        <strong>A)</strong> Wayúu
+                    </div>
+                    <div class="option" onclick="selectAnswer(6, 'b', true)">
+                        <strong>B)</strong> Ticuna
+                    </div>
+                    <div class="option" onclick="selectAnswer(6, 'c', false)">
+                        <strong>C)</strong> Arhuaco
+                    </div>
+                    <div class="option" onclick="selectAnswer(6, 'd', false)">
+                        <strong>D)</strong> Zenú
+                    </div>
+                </div>
+                <div class="feedback" id="feedback6">
+                    <strong id="result6"></strong>
+                    <p id="explanation6"></p>
+                </div>
+            </div>
+
+            <!-- Pregunta 7 -->
+            <div class="question" id="q7">
+                <h3>7. ¿Cuál es el plato típico estrella de la región Insular (San Andrés)?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(7, 'a', false)">
+                        <strong>A)</strong> Arroz con Coco
+                    </div>
+                    <div class="option" onclick="selectAnswer(7, 'b', false)">
+                        <strong>B)</strong> Cazuela de Mariscos
+                    </div>
+                    <div class="option" onclick="selectAnswer(7, 'c', true)">
+                        <strong>C)</strong> Rondón
+                    </div>
+                    <div class="option" onclick="selectAnswer(7, 'd', false)">
+                        <strong>D)</strong> Tapao de Pescado
+                    </div>
+                </div>
+                <div class="feedback" id="feedback7">
+                    <strong id="result7"></strong>
+                    <p id="explanation7"></p>
+                </div>
+            </div>
+
+            <!-- Pregunta 8 -->
+            <div class="question" id="q8">
+                <h3>8. ¿Qué deporte tradicional de la región Orinoquía consiste en derribar una res tomándola de la cola?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(8, 'a', false)">
+                        <strong>A)</strong> El Tejo
+                    </div>
+                    <div class="option" onclick="selectAnswer(8, 'b', true)">
+                        <strong>B)</strong> El Coleo
+                    </div>
+                    <div class="option" onclick="selectAnswer(8, 'c', false)">
+                        <strong>C)</strong> La Vaquería
+                    </div>
+                    <div class="option" onclick="selectAnswer(8, 'd', false)">
+                        <strong>D)</strong> El Rodeo
+                    </div>
+                </div>
+                <div class="feedback" id="feedback8">
+                    <strong id="result8"></strong>
+                    <p id="explanation8"></p>
+                </div>
+            </div>
+
+            <!-- Pregunta 9 -->
+            <div class="question" id="q9">
+                <h3>9. ¿Qué símbolo nacional de Colombia se teje artesanalmente con caña flecha en la región Caribe?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(9, 'a', true)">
+                        <strong>A)</strong> El Sombrero Vueltiao
+                    </div>
+                    <div class="option" onclick="selectAnswer(9, 'b', false)">
+                        <strong>B)</strong> La Mochila Wayúu
+                    </div>
+                    <div class="option" onclick="selectAnswer(9, 'c', false)">
+                        <strong>C)</strong> La Ruana
+                    </div>
+                    <div class="option" onclick="selectAnswer(9, 'd', false)">
+                        <strong>D)</strong> El Carriel
+                    </div>
+                </div>
+                <div class="feedback" id="feedback9">
+                    <strong id="result9"></strong>
+                    <p id="explanation9"></p>
+                </div>
+            </div>
+
+            <!-- Pregunta 10 -->
+            <div class="question" id="q10">
+                <h3>10. ¿Cuál de estos platos es típico de la región Pacífica y se cocina en leche de coco?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(10, 'a', false)">
+                        <strong>A)</strong> Lechona
+                    </div>
+                    <div class="option" onclick="selectAnswer(10, 'b', true)">
+                        <strong>B)</strong> Encocado de Pescado
+                    </div>
+                    <div class="option" onclick="selectAnswer(10, 'c', false)">
+                        <strong>C)</strong> Ajiaco
+                    </div>
+                    <div class="option" onclick="selectAnswer(10, 'd', false)">
+                        <strong>D)</strong> Sancocho
+                    </div>
+                </div>
+                <div class="feedback" id="feedback10">
+                    <strong id="result10"></strong>
+                    <p id="explanation10"></p>
+                </div>
+            </div>
+
+            <!-- Pregunta 11 -->
+            <div class="question" id="q11">
+                <h3>11. ¿Qué festival celebra la cultura raizal en San Andrés durante septiembre-octubre?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(11, 'a', false)">
+                        <strong>A)</strong> Festival del Coco
+                    </div>
+                    <div class="option" onclick="selectAnswer(11, 'b', true)">
+                        <strong>B)</strong> Festival de la Luna Verde
+                    </div>
+                    <div class="option" onclick="selectAnswer(11, 'c', false)">
+                        <strong>C)</strong> Festival del Cangrejo
+                    </div>
+                    <div class="option" onclick="selectAnswer(11, 'd', false)">
+                        <strong>D)</strong> Festival de Calypso
+                    </div>
+                </div>
+                <div class="feedback" id="feedback11">
+                    <strong id="result11"></strong>
+                    <p id="explanation11"></p>
+                </div>
+            </div>
+
+            <!-- Pregunta 12 -->
+            <div class="question" id="q12">
+                <h3>12. ¿Qué río da nombre a la región Orinoquía?</h3>
+                <div class="options">
+                    <div class="option" onclick="selectAnswer(12, 'a', false)">
+                        <strong>A)</strong> Río Magdalena
+                    </div>
+                    <div class="option" onclick="selectAnswer(12, 'b', false)">
+                        <strong>B)</strong> Río Amazonas
+                    </div>
+                    <div class="option" onclick="selectAnswer(12, 'c', true)">
+                        <strong>C)</strong> Río Orinoco
+                    </div>
+                    <div class="option" onclick="selectAnswer(12, 'd', false)">
+                        <strong>D)</strong> Río Cauca
+                    </div>
+                </div>
+                <div class="feedback" id="feedback12">
+                    <strong id="result12"></strong>
+                    <p id="explanation12"></p>
+                </div>
+            </div>
+
+            <div class="score" id="finalScore"></div>
+
+            <button class="submit-btn" onclick="calculateScore()">Ver Resultado Final</button>
+        </div>
+
+        <footer>
+            <p>© 2025 - Manifestaciones Culturales de Colombia</p>
+            <p>Explora, aprende y celebra la diversidad cultural de nuestro país 🇨🇴</p>
+        </footer>
+    </div>
+
+    <script>
+        // Objeto para almacenar las respuestas del usuario
+        const userAnswers = {};
+        let questionsAnswered = 0;
+
+        // Datos de explicaciones para cada pregunta
+        const explanations = {
+            1: {
+                correct: "¡Correcto! El Bambuco es considerado el baile nacional de Colombia y uno de los más emblemáticos de la región Andina. Se caracteriza por pasos elegantes que evocan un cortejo romántico, y su música se interpreta con guitarra, tiple y bandola.",
+                incorrect: "Incorrecto. La respuesta correcta es el Bambuco. Aunque la Cumbia, el Joropo y el Currulao son bailes importantes de otras regiones (Caribe, Orinoquía y Pacífica respectivamente), el Bambuco es el considerado baile nacional y es típico de la región Andina."
+            },
+            2: {
+                correct: "¡Correcto! La Marimba de Chonta es un instrumento esencial de la región Pacífica, hecha de madera de chonta y declarada Patrimonio Cultural e Inmaterial de la Humanidad por la UNESCO. Es fundamental en la interpretación del currulao y otros ritmos afrocolombianos.",
+                incorrect: "Incorrecto. La respuesta correcta es la Marimba de Chonta. El Arpa es típico de la Orinoquía, el Tiple de la región Andina y el Acordeón del Caribe (vallenato). La Marimba de Chonta es el instrumento icónico del Pacífico colombiano."
+            },
+            3: {
+                correct: "¡Correcto! El Carnaval de Barranquilla fue declarado Patrimonio Oral e Intangible de la Humanidad por la UNESCO en 2003. Es una de las fiestas más importantes de Colombia y la segunda más grande de Latinoamérica después del Carnaval de Río de Janeiro.",
+                incorrect: "Incorrecto. La respuesta correcta es el Carnaval de Barranquilla. Esta festividad de la región Caribe fue reconocida por UNESCO en 2003 por ser una representación de las distintas manifestaciones del folclor del Caribe Colombiano."
+            },
+            4: {
+                correct: "¡Correcto! La Bandeja Paisa es el plato más famoso de la región Andina, especialmente de Antioquia. Este abundante plato incluye frijoles, arroz, carne molida, chicharrón, chorizo, huevo frito, plátano maduro, aguacate, arepa y morcilla.",
+                incorrect: "Incorrecto. La respuesta correcta es la Bandeja Paisa. El Ajiaco es de Bogotá, el Sancocho Costeño del Caribe y la Mamona de la Orinoquía. La Bandeja Paisa es el plato más emblemático de Antioquia y la región Andina."
+            },
+            5: {
+                correct: "¡Correcto! El Joropo es el baile más representativo de la región Orinoquía (Llanos Orientales). Se caracteriza por movimientos rápidos y vigorosos de pies y piernas, se baila en pareja y se acompaña con música llanera interpretada con arpa, cuatro y maracas.",
+                incorrect: "Incorrecto. La respuesta correcta es el Joropo. El Mapalé es del Caribe, el Currulao del Pacífico y el Torbellino de la región Andina. El Joropo es la máxima expresión cultural de los Llanos Orientales."
+            },
+            6: {
+                correct: "¡Correcto! Los Ticuna son una de las comunidades indígenas más numerosas de la Amazonía colombiana. Conservan su lengua, rituales y cosmovisión ancestral, manteniendo una profunda conexión con la selva amazónica.",
+                incorrect: "Incorrecto. La respuesta correcta es Ticuna. Los Wayúu habitan en La Guajira (Caribe), los Arhuacos en la Sierra Nevada de Santa Marta y los Zenú en la sabana (Caribe). Los Ticuna son uno de los principales grupos indígenas del Amazonas."
+            },
+            7: {
+                correct: "¡Correcto! El Rondón (o Rundown) es el plato típico estrella de San Andrés. Es un guiso marinero a base de leche de coco que mezcla pescado, caracol, cola de cerdo, yuca, ñame, plátano verde, dumplings y fruta de pan.",
+                incorrect: "Incorrecto. La respuesta correcta es el Rondón. Aunque el Arroz con Coco se prepara en la región, y la Cazuela de Mariscos es del Caribe continental, y el Tapao del Pacífico, el Rondón es el plato emblemático de la región Insular."
+            },
+            8: {
+                correct: "¡Correcto! El Coleo es un deporte tradicional de la región Orinoquía que consiste en cabalgar a gran velocidad y derribar una res tomándola de la cola. Demuestra la destreza ecuestre del llanero y está relacionado con la cultura ganadera.",
+                incorrect: "Incorrecto. La respuesta correcta es el Coleo. El Tejo es un juego tradicional de la región Andina. El Coleo es el deporte característico de los Llanos Orientales, donde se celebran torneos de vaquería."
+            },
+            9: {
+                correct: "¡Correcto! El Sombrero Vueltiao es un símbolo nacional de Colombia, originario de las comunidades asentadas alrededor del río Sinú en la región Caribe. Se teje artesanalmente con caña flecha en patrones distintivos de líneas negras.",
+                incorrect: "Incorrecto. La respuesta correcta es el Sombrero Vueltiao. La Mochila Wayúu es de La Guajira, la Ruana de la región Andina y el Carriel del Eje Cafetero. El Sombrero Vueltiao es reconocido como símbolo de identidad nacional colombiana."
+            },
+            10: {
+                correct: "¡Correcto! El Encocado de Pescado es un plato típico de la región Pacífica que se cocina en leche de coco. El pescado fresco se prepara en una salsa cremosa de coco con especias, reflejando la herencia afrocolombiana de la región.",
+                incorrect: "Incorrecto. La respuesta correcta es el Encocado de Pescado. La Lechona es del Tolima (Andina), el Ajiaco de Bogotá y el Sancocho se encuentra en varias regiones. El Encocado es característico del Pacífico por su uso de leche de coco."
+            },
+            11: {
+                correct: "¡Correcto! El Festival de la Luna Verde (Green Moon Festival) se celebra en San Andrés durante septiembre-octubre. Dura una semana e incluye conciertos de reggae, calypso, salsa y merengue, enalteciendo la cultura raizal.",
+                incorrect: "Incorrecto. La respuesta correcta es el Festival de la Luna Verde. Aunque el Festival del Coco y del Cangrejo también se celebran en San Andrés, el Festival de la Luna Verde es el más importante para celebrar la cultura raizal."
+            },
+            12: {
+                correct: "¡Correcto! El río Orinoco da nombre a la región Orinoquía o Llanos Orientales. Este importante río delimita la región junto con los ríos Guaviare y Arauca, y es parte fundamental del ecosistema llanero.",
+                incorrect: "Incorrecto. La respuesta correcta es el río Orinoco. El Magdalena atraviesa la región Andina, el Amazonas está en la región amazónica y el Cauca en la región Andina. El río Orinoco es el que da nombre a los Llanos Orientales."
+            }
+        };
+
+        // Función para mostrar una región específica
+        function showRegion(regionId) {
+            // Ocultar todas las regiones
+            const regions = document.querySelectorAll('.region-content');
+            regions.forEach(region => {
+                region.classList.remove('active');
+            });
+
+            // Mostrar la región seleccionada
+            const selectedRegion = document.getElementById(regionId);
+            if (selectedRegion) {
+                selectedRegion.classList.add('active');
+                selectedRegion.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            }
+        }
+
+        // Función para seleccionar una respuesta
+        function selectAnswer(questionNum, option, isCorrect) {
+            // Verificar si ya se respondió esta pregunta
+            if (userAnswers[questionNum]) {
+                return; // No permitir cambiar la respuesta
+            }
+
+            // Guardar la respuesta
+            userAnswers[questionNum] = {
+                option: option,
+                correct: isCorrect
+            };
+
+            questionsAnswered++;
+
+            // Obtener elementos
+            const question = document.getElementById('q' + questionNum);
+            const options = question.querySelectorAll('.option');
+            const feedback = document.getElementById('feedback' + questionNum);
+            const result = document.getElementById('result' + questionNum);
+            const explanation = document.getElementById('explanation' + questionNum);
+
+            // Deshabilitar todas las opciones
+            options.forEach(opt => {
+                opt.style.pointerEvents = 'none';
+            });
+
+            // Marcar la opción seleccionada
+            options.forEach(opt => {
+                if (opt.textContent.includes(option.toUpperCase() + ')')) {
+                    opt.classList.add('selected');
+                    if (isCorrect) {
+                        opt.classList.add('correct');
+                        opt.classList.remove('selected');
+                    } else {
+                        opt.classList.add('incorrect');
+                    }
+                }
+
+                // Si la respuesta fue incorrecta, mostrar también la correcta
+                if (!isCorrect) {
+                    const optionText = opt.textContent;
+                    // Buscar y marcar la opción correcta
+                    const clickHandler = opt.getAttribute('onclick');
+                    if (clickHandler && clickHandler.includes('true')) {
+                        opt.classList.add('correct');
+                    }
+                }
+            });
+
+            // Mostrar retroalimentación
+            feedback.classList.add('show');
+            if (isCorrect) {
+                feedback.classList.add('correct');
+                result.textContent = '✅ ¡Respuesta Correcta!';
+                explanation.textContent = explanations[questionNum].correct;
+            } else {
+                feedback.classList.add('incorrect');
+                result.textContent = '❌ Respuesta Incorrecta';
+                explanation.textContent = explanations[questionNum].incorrect;
+            }
+        }
+
+        // Función para calcular el puntaje final
+        function calculateScore() {
+            const totalQuestions = 12;
+
+            if (questionsAnswered < totalQuestions) {
+                alert('Por favor responde todas las preguntas antes de ver tu resultado final.');
+                return;
+            }
+
+            let correctAnswers = 0;
+            for (let key in userAnswers) {
+                if (userAnswers[key].correct) {
+                    correctAnswers++;
+                }
+            }
+
+            const percentage = ((correctAnswers / totalQuestions) * 100).toFixed(1);
+            const scoreDiv = document.getElementById('finalScore');
+
+            let message = '';
+            let emoji = '';
+
+            if (percentage >= 90) {
+                message = '¡Excelente! Eres un experto en cultura colombiana';
+                emoji = '🏆';
+            } else if (percentage >= 70) {
+                message = '¡Muy bien! Tienes buenos conocimientos sobre Colombia';
+                emoji = '🌟';
+            } else if (percentage >= 50) {
+                message = 'Bien hecho, pero puedes mejorar';
+                emoji = '👍';
+            } else {
+                message = 'Necesitas estudiar más sobre la cultura colombiana';
+                emoji = '📚';
+            }
+
+            scoreDiv.innerHTML = `
+                <h3>${emoji} Resultado Final ${emoji}</h3>
+                <p style="font-size: 2em; margin: 10px 0;">${correctAnswers} / ${totalQuestions}</p>
+                <p style="font-size: 1.3em; margin: 10px 0;">${percentage}%</p>
+                <p>${message}</p>
+            `;
+            scoreDiv.classList.add('show');
+            scoreDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Mostrar la primera región al cargar
+        window.addEventListener('load', function() {
+            showRegion('andina');
+        });
+    </script>
+</body>
+</html>
