@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Redes - Infografía Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .header p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-title::before {
+            content: '';
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #667eea;
+            border-radius: 50%;
+            margin-right: 15px;
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .definition-box:hover {
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .definition-box h3 {
+            color: #667eea;
+            margin-bottom: 8px;
+            font-size: 1.1em;
+        }
+
+        .definition-box p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .card {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+            border-color: #764ba2;
+        }
+
+        .card.presencial {
+            border-top: 4px solid #4CAF50;
+        }
+
+        .card.digital {
+            border-top: 4px solid #2196F3;
+        }
+
+        .card.depends {
+            border-top: 4px solid #FF9800;
+        }
+
+        .card h4 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card-label {
+            display: inline-block;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .label-presencial {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .label-digital {
+            background: #2196F3;
+            color: white;
+        }
+
+        .label-depends {
+            background: #FF9800;
+            color: white;
+        }
+
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #f5f7fa;
+        }
+
+        .risk-item {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .risk-item::before {
+            content: '⚠️ ';
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+        .quiz-question {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+        }
+
+        .quiz-question.active {
+            border-color: #667eea;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.2);
+        }
+
+        .quiz-question h4 {
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        .option {
+            margin: 10px 0;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .option:hover {
+            background: #f0f0f0;
+        }
+
+        .option label {
+            cursor: pointer;
+            flex: 1;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #c8e6c9;
+            border-left: 4px solid #4CAF50;
+            color: #2e7d32;
+        }
+
+        .feedback.incorrect {
+            background: #ffcdd2;
+            border-left: 4px solid #f44336;
+            color: #c62828;
+        }
+
+        .feedback h5 {
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 10px 5px 10px 0;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+
+        .results {
+            background: linear-gradient(135deg, #4CAF50 0%, #45a049 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 20px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .results.show {
+            display: block;
+        }
+
+        .results h4 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .svg-icon {
+            width: 100px;
+            height: 100px;
+            margin: 10px auto;
+        }
+
+        .icon-row {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            table {
+                font-size: 0.9em;
+            }
+
+            th, td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌐 Gestión de Redes</h1>
+            <p>Comunicación Digital vs Presencial - Decisiones Inteligentes</p>
+        </div>
+
+        <div class="content">
+            <!-- SECCIÓN 1: CONCEPTOS FUNDAMENTALES -->
+            <div class="section">
+                <div class="section-title">Conceptos Clave</div>
+                
+                <div class="definition-box">
+                    <h3>📱 Red de Comunicación Digital</h3>
+                    <p>Conjunto de dispositivos conectados entre sí que permiten el intercambio de información a través de medios electrónicos como redes sociales, correo electrónico y mensajería instantánea.</p>
+                </div>
+
+                <div class="definition-box">
+                    <h3>👥 Comunicación Presencial</h3>
+                    <p>Interacción cara a cara entre personas, donde se perciben gestos, tono de voz y lenguaje corporal. Permite una comunicación más empática y directa.</p>
+                </div>
+
+                <div class="definition-box">
+                    <h3>⚖️ Conveniencia Comunicativa</h3>
+                    <p>Capacidad de elegir el medio más adecuado para transmitir un mensaje según el contexto, urgencia, privacidad y propósito.</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 2: TIPOS DE COMUNICACIÓN -->
+            <div class="section">
+                <div class="section-title">Tipos de Comunicación</div>
+                
+                <div class="grid-container">
+                    <div class="card">
+                        <h4>👫 Comunicación Entre Iguales</h4>
+                        <p>Es la interacción entre personas de edad o contexto similar, como compañeros de clase. Suele ser más informal y rápida.</p>
+                    </div>
+
+                    <div class="card">
+                        <h4>👨‍👩‍👧 Comunicación Intergeneracional</h4>
+                        <p>Es la interacción entre personas de diferentes generaciones, como estudiantes y adultos (padres, docentes). Puede haber diferencias en estilo, lenguaje y expectativas.</p>
+                    </div>
+
+                    <div class="card">
+                        <h4>🔐 Redes Sociales</h4>
+                        <p>Plataformas digitales que permiten la interacción mediante publicaciones, mensajes, imágenes y videos. Ejemplos: WhatsApp, Instagram, TikTok, Facebook.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 3: CUÁNDO USAR CADA MEDIO -->
+            <div class="section">
+                <div class="section-title">¿Cuándo Usar Cada Medio?</div>
+                
+                <div class="grid-container">
+                    <div class="card presencial">
+                        <span class="card-label label-presencial">👤 PRESENCIAL</span>
+                        <h4>Resolver un conflicto con un amigo</h4>
+                        <p><strong>Razón:</strong> Se necesita empatía, tono de voz y lenguaje corporal para entender realmente el problema.</p>
+                    </div>
+
+                    <div class="card digital">
+                        <span class="card-label label-digital">📲 RED DIGITAL</span>
+                        <h4>Enviar una tarea escolar</h4>
+                        <p><strong>Razón:</strong> Es rápido, eficiente y queda un registro digital de la entrega.</p>
+                    </div>
+
+                    <div class="card presencial">
+                        <span class="card-label label-presencial">👤 PRESENCIAL</span>
+                        <h4>Pedir ayuda emocional</h4>
+                        <p><strong>Razón:</strong> El contacto humano transmite apoyo, comprensión y seguridad emocional.</p>
+                    </div>
+
+                    <div class="card digital">
+                        <span class="card-label label-digital">📲 RED DIGITAL</span>
+                        <h4>Coordinar una salida</h4>
+                        <p><strong>Razón:</strong> Es práctico y permite incluir a varios amigos al mismo tiempo.</p>
+                    </div>
+
+                    <div class="card depends">
+                        <span class="card-label label-depends">⚖️ DEPENDE</span>
+                        <h4>Felicitar por cumpleaños</h4>
+                        <p><strong>Razón:</strong> Un mensaje por red puede ser útil, pero si es alguien cercano, mejor hacerlo en persona.</p>
+                    </div>
+
+                    <div class="card digital">
+                        <span class="card-label label-digital">📲 RED DIGITAL</span>
+                        <h4>Informar al profesor</h4>
+                        <p><strong>Razón:</strong> Queda registro escrito y es más formal. Útil para ausencias o justificaciones.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 4: RIESGOS DEL MAL USO -->
+            <div class="section">
+                <div class="section-title">⚠️ Riesgos del Mal Uso de Redes</div>
+                
+                <div class="risk-item">
+                    <strong>Malentendidos por falta de tono o contexto</strong>
+                    <p style="margin-top: 5px;">Un mensaje "ok" sin emojis puede interpretarse como enojo, cuando solo era una confirmación rápida.</p>
+                </div>
+
+                <div class="risk-item">
+                    <strong>Ciberacoso o exclusión digital</strong>
+                    <p style="margin-top: 5px;">Comentarios hirientes, memes ofensivos o la exclusión de grupos puede causar daño emocional grave.</p>
+                </div>
+
+                <div class="risk-item">
+                    <strong>Pérdida de privacidad</strong>
+                    <p style="margin-top: 5px;">Los datos personales pueden ser compartidos sin consentimiento o usados de manera inapropiada.</p>
+                </div>
+
+                <div class="risk-item">
+                    <strong>Adicción digital y información falsa</strong>
+                    <p style="margin-top: 5px;">Exposición excesiva a redes y propagación de noticias falsas puede afectar la salud mental y la credibilidad.</p>
+                </div>
+
+                <div class="risk-item">
+                    <strong>Difusión de contenido ofensivo sin consentimiento</strong>
+                    <p style="margin-top: 5px;">Compartir fotos, videos o información personal sin permiso viola la privacidad y puede causar humillación.</p>
+                </div>
+
+                <div class="risk-item">
+                    <strong>Ruptura de confianza entre generaciones</strong>
+                    <p style="margin-top: 5px;">Malinterpretación de lenguaje juvenil por adultos o falta de comprensión de diferencias generacionales.</p>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 5: EJEMPLOS REALES -->
+            <div class="section">
+                <div class="section-title">Ejemplos de Situaciones Reales</div>
+                
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Situación</th>
+                                <th>¿Qué Ocurrió?</th>
+                                <th>Riesgo Presentado</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Malentendido por texto</strong></td>
+                                <td>Un estudiante escribe "ok" sin emojis ni contexto. El receptor lo interpreta como enojo.</td>
+                                <td>Falta de tono emocional → conflicto innecesario</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Brecha generacional</strong></td>
+                                <td>Un padre ve "XD" y cree que es una ofensa.</td>
+                                <td>Incomprensión → confusión y tensión familiar</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Meme ofensivo</strong></td>
+                                <td>Se comparte un meme sobre un compañero sin intención de ofender, pero él se siente humillado.</td>
+                                <td>Falta de empatía → daño emocional y exclusión</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Indirecta pública</strong></td>
+                                <td>Un estudiante publica un mensaje que otros reconocen es sobre un compañero específico.</td>
+                                <td>Ciberacoso indirecto → humillación pública</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Compartir sin permiso</strong></td>
+                                <td>Un grupo de amigos comparte una imagen de otro sin su consentimiento.</td>
+                                <td>Violación de privacidad → pérdida de confianza</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 6: QUIZ INTERACTIVO -->
+            <div class="quiz-section">
+                <div class="section-title">🧠 Cuestionario Interactivo</div>
+                <p style="margin-bottom: 20px; color: #555;">Responde estas preguntas para verificar tu comprensión sobre la gestión de redes. ¡Obtén retroalimentación inmediata sobre cada respuesta!</p>
+
+                <div id="quizContainer"></div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn" onclick="submitQuiz()">📊 Ver Resultados</button>
+                    <button class="btn btn-reset" onclick="resetQuiz()">🔄 Reiniciar Quiz</button>
+                </div>
+
+                <div id="results" class="results">
+                    <h4 id="score"></h4>
+                    <p id="message"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const quizData = [
+            {
+                question: "¿Cuál es la mejor manera de resolver un conflicto con un amigo?",
+                options: [
+                    { text: "Por mensaje de texto para tener un registro", correct: false },
+                    { text: "Presencialmente para percibir el tono y los gestos", correct: true },
+                    { text: "Publicando una indirecta en redes sociales", correct: false },
+                    { text: "Por videollamada en cualquier caso", correct: false }
+                ],
+                explanation: "La comunicación presencial es la mejor opción porque permite percibir el tono de voz, gestos y lenguaje corporal, facilitando la empatía y comprensión mutua necesarias para resolver conflictos."
+            },
+            {
+                question: "¿Cuál es un ejemplo de riesgo por brecha generacional?",
+                options: [
+                    { text: "Un padre cree que 'XD' es una ofensa cuando en realidad es una risa", correct: true },
+                    { text: "Un estudiante envía sus tareas por email", correct: false },
+                    { text: "Se comparte una foto bonita en Instagram", correct: false },
+                    { text: "Dos amigos se coordinan por WhatsApp", correct: false }
+                ],
+                explanation: "La brecha generacional se presenta cuando adultos no entienden el lenguaje juvenil, como en el caso de 'XD' (una expresión de risa). Esto puede generar malentendidos y tensión innecesaria."
+            },
+            {
+                question: "¿Por qué es importante usar mensajería digital para enviar tareas?",
+                options: [
+                    { text: "Porque es más aburrido que hacerlo en persona", correct: false },
+                    { text: "Porque es rápido, eficiente y queda un registro digital", correct: true },
+                    { text: "Porque es la única forma de enviar archivos", correct: false },
+                    { text: "Porque evita toda clase de conflictos", correct: false }
+                ],
+                explanation: "Las redes digitales son convenientes para tareas porque permiten enviar información rápidamente y dejan evidencia escrita de la entrega, lo que es importante en contextos académicos."
+            },
+            {
+                question: "¿Cuál es el riesgo principal de compartir una imagen sin consentimiento?",
+                options: [
+                    { text: "Que la imagen se corrompa", correct: false },
+                    { text: "Que violeta la privacidad y se pierde confianza", correct: true },
+                    { text: "Que se gaste demasiados datos", correct: false },
+                    { text: "Que otros no puedan verla", correct: false }
+                ],
+                explanation: "Compartir contenido sin permiso viola la privacidad y puede causar daño emocional. Esta acción es un claro riesgo del mal uso de redes sociales y puede llevar a exclusión o humillación."
+            },
+            {
+                question: "¿Cuándo es mejor felicitar a alguien por su cumpleaños?",
+                options: [
+                    { text: "Siempre por redes sociales porque llega a más gente", correct: false },
+                    { text: "Depende - en persona si es alguien cercano, por red si no lo es", correct: true },
+                    { text: "Nunca por redes, solo en persona", correct: false },
+                    { text: "Por teléfono, nunca de otra forma", correct: false }
+                ],
+                explanation: "La conveniencia comunicativa depende de la relación y contexto. Para personas cercanas, es más significativo en persona; para conocidos, un mensaje en red también es apropiado y oportuno."
+            },
+            {
+                question: "¿Qué significa 'conveniencia comunicativa'?",
+                options: [
+                    { text: "Usar siempre redes sociales por conveniencia", correct: false },
+                    { text: "Elegir el medio más adecuado según contexto, urgencia, privacidad y propósito", correct: true },
+                    { text: "Comunicarse solo presencialmente porque es más seguro", correct: false },
+                    { text: "No comunicarse en absoluto", correct: false }
+                ],
+                explanation: "La conveniencia comunicativa es la habilidad de elegir el mejor medio de comunicación dependiendo de varios factores: qué necesitas comunicar, con quién, cuán urgente es y qué tan privado debe ser."
+            },
+            {
+                question: "¿Cuál de las siguientes situaciones requiere comunicación presencial preferentemente?",
+                options: [
+                    { text: "Pedir ayuda emocional y apoyo", correct: true },
+                    { text: "Enviar un archivo de trabajo", correct: false },
+                    { text: "Confirmar una reunión", correct: false },
+                    { text: "Dar un aviso importante a varios al mismo tiempo", correct: false }
+                ],
+                explanation: "Cuando necesitas apoyo emocional, la comunicación presencial es preferible porque el contacto humano transmite comprensión, seguridad y validación de sentimientos que los mensajes no pueden proporcionar completamente."
+            },
+            {
+                question: "¿Qué pasa cuando un mensaje de texto se interpreta incorrectamente?",
+                options: [
+                    { text: "El archivo se daña", correct: false },
+                    { text: "Se crea un conflicto innecesario por falta de tono emocional", correct: true },
+                    { text: "El mensaje desaparece automáticamente", correct: false },
+                    { text: "Nadie lo puede leer", correct: false }
+                ],
+                explanation: "Sin elementos como tono de voz, gestos y contexto visual, un mensaje puede ser interpretado incorrectamente. Por ejemplo, 'ok' sin emojis puede parecer enojo cuando solo era una confirmación rápida."
+            }
+        ];
+
+        let userAnswers = [];
+
+        function initializeQuiz() {
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = '';
+
+            quizData.forEach((item, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'quiz-question active';
+                questionDiv.id = `question-${index}`;
+
+                let optionsHTML = '';
+                item.options.forEach((option, optionIndex) => {
+                    optionsHTML += `
+                        <div class="option">
+                            <input type="radio" id="option-${index}-${optionIndex}" name="question-${index}" value="${optionIndex}" onchange="updateAnswer(${index}, ${optionIndex})">
+                            <label for="option-${index}-${optionIndex}">${option.text}</label>
+                        </div>
+                    `;
+                });
+
+                questionDiv.innerHTML = `
+                    <h4>Pregunta ${index + 1}: ${item.question}</h4>
+                    ${optionsHTML}
+                    <div id="feedback-${index}" class="feedback"></div>
+                `;
+
+                container.appendChild(questionDiv);
+            });
+
+            userAnswers = new Array(quizData.length).fill(-1);
+        }
+
+        function updateAnswer(questionIndex, optionIndex) {
+            userAnswers[questionIndex] = optionIndex;
+
+            // Mostrar retroalimentación inmediatamente
+            const feedbackDiv = document.getElementById(`feedback-${questionIndex}`);
+            const isCorrect = quizData[questionIndex].options[optionIndex].correct;
+
+            if (isCorrect) {
+                feedbackDiv.className = 'feedback show correct';
+                feedbackDiv.innerHTML = `
+                    <h5>✓ ¡Correcto!</h5>
+                    <p>${quizData[questionIndex].explanation}</p>
+                `;
+            } else {
+                feedbackDiv.className = 'feedback show incorrect';
+                feedbackDiv.innerHTML = `
+                    <h5>✗ Respuesta Incorrecta</h5>
+                    <p><strong>Explicación:</strong> ${quizData[questionIndex].explanation}</p>
+                    <p><strong>Respuesta correcta:</strong> ${quizData[questionIndex].options.find(o => o.correct).text}</p>
+                `;
+            }
+        }
+
+        function submitQuiz() {
+            const answeredQuestions = userAnswers.filter(answer => answer !== -1).length;
+
+            if (answeredQuestions === 0) {
+                alert('Por favor responde al menos una pregunta antes de enviar.');
+                return;
+            }
+
+            const correctAnswers = userAnswers.filter((answer, index) => {
+                return answer !== -1 && quizData[index].options[answer].correct;
+            }).length;
+
+            const percentage = Math.round((correctAnswers / quizData.length) * 100);
+            const resultsDiv = document.getElementById('results');
+            const scoreDiv = document.getElementById('score');
+            const messageDiv = document.getElementById('message');
+
+            scoreDiv.textContent = `Tu Puntuación: ${correctAnswers}/${quizData.length} (${percentage}%)`;
+
+            let message = '';
+            if (percentage === 100) {
+                message = '🎉 ¡Excelente! Dominas perfectamente la gestión de redes. ¡Felicidades!';
+            } else if (percentage >= 80) {
+                message = '🌟 ¡Muy bien! Tienes una excelente comprensión sobre la gestión de redes.';
+            } else if (percentage >= 60) {
+                message = '👍 ¡Buen trabajo! Entiendes los conceptos principales. Revisa las respuestas incorrectas para mejorar.';
+            } else if (percentage >= 40) {
+                message = '📚 Necesitas repasar algunos conceptos. Lee de nuevo las definiciones y ejemplos.';
+            } else {
+                message = '💪 Te recomendamos revisar todo el material. ¡Puedes hacerlo mejor!';
+            }
+
+            messageDiv.textContent = message;
+            resultsDiv.classList.add('show');
+            resultsDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function resetQuiz() {
+            userAnswers = new Array(quizData.length).fill(-1);
+            document.querySelectorAll('input[type="radio"]').forEach(input => input.checked = false);
+            document.querySelectorAll('.feedback').forEach(div => div.classList.remove('show'));
+            document.getElementById('results').classList.remove('show');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Inicializar el quiz cuando carga la página
+        window.addEventListener('DOMContentLoaded', initializeQuiz);
+    </script>
+</body>
+</html>

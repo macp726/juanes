@@ -1,0 +1,1178 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deseos, Fantasías y Conductas - Infografía Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 40px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Conceptos Card */
+        .conceptos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .concepto-card {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 25px;
+            border-radius: 15px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            transform: scale(1);
+        }
+
+        .concepto-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(245, 87, 108, 0.3);
+        }
+
+        .concepto-card.deseo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .concepto-card.fantasia {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+        }
+
+        .concepto-card.conducta {
+            background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);
+        }
+
+        .concepto-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .concepto-card p {
+            font-size: 0.95em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .ejemplo {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 12px;
+            border-radius: 10px;
+            font-style: italic;
+            border-left: 3px solid white;
+        }
+
+        /* Actividad de Clasificación */
+        .clasificacion {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .frase-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .frase-item p {
+            flex: 1;
+            font-weight: 500;
+        }
+
+        .opciones-clasificacion {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn-clasificar {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 2px solid #667eea;
+            background: white;
+            color: #667eea;
+            cursor: pointer;
+            font-size: 0.9em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .btn-clasificar:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .btn-clasificar.seleccionado {
+            background: #667eea;
+            color: white;
+        }
+
+        /* Refleciones */
+        .pregunta-reflexion {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            border-left: 5px solid #f5576c;
+        }
+
+        .pregunta-reflexion h4 {
+            color: #c91432;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .pregunta-reflexion p {
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Puntos clave */
+        .puntos-clave {
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            margin: 20px 0;
+        }
+
+        .puntos-clave h3 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+        }
+
+        .punto {
+            display: flex;
+            gap: 15px;
+            margin: 15px 0;
+            align-items: flex-start;
+        }
+
+        .punto-numero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .punto-texto {
+            flex: 1;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Quiz */
+        .quiz-container {
+            margin-top: 30px;
+        }
+
+        .quiz-question {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .quiz-question h4 {
+            color: #333;
+            margin-bottom: 20px;
+            font-size: 1.1em;
+        }
+
+        .quiz-options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .quiz-option {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .quiz-option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+
+        .quiz-option input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .quiz-option label {
+            flex: 1;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .feedback.correcto {
+            background: #d4edda;
+            border-left: 5px solid #28a745;
+            color: #155724;
+            display: block;
+        }
+
+        .feedback.incorrecto {
+            background: #f8d7da;
+            border-left: 5px solid #dc3545;
+            color: #721c24;
+            display: block;
+        }
+
+        .feedback h5 {
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        .feedback p {
+            line-height: 1.6;
+            margin: 8px 0;
+        }
+
+        .icon {
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #ddd;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .resultado-final {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 30px;
+            display: none;
+        }
+
+        .resultado-final.mostrar {
+            display: block;
+        }
+
+        .resultado-final h3 {
+            font-size: 2em;
+            margin-bottom: 15px;
+        }
+
+        .resultado-final p {
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .puntuacion {
+            font-size: 3em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ddd;
+        }
+
+        .tab-button {
+            background: none;
+            border: none;
+            padding: 12px 24px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            color: #999;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button.active {
+            color: #667eea;
+            border-bottom-color: #667eea;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .conceptos-grid {
+                grid-template-columns: 1fr;
+            }
+
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .navigation {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌈 Deseos, Fantasías y Conductas</h1>
+            <p>Una guía para entender la diferencia entre lo que sentimos, imaginamos y hacemos</p>
+        </header>
+
+        <div class="content">
+            <!-- Sección 1: Introducción -->
+            <div class="section active" id="seccion1">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 20%;"></div>
+                </div>
+
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h2 style="color: #333; margin-bottom: 15px;">¿Qué vamos a aprender?</h2>
+                    <p style="color: #666; font-size: 1.1em; line-height: 1.8;">
+                        Todo el mundo tiene deseos y fantasías. Lo importante es reconocerlos, reflexionar sobre ellos 
+                        y actuar de forma consciente, respetuosa y segura. En esta sesión aprenderemos a diferenciar 
+                        estos tres conceptos fundamentales.
+                    </p>
+                </div>
+
+                <div class="puntos-clave">
+                    <h3>✨ Objetivos de aprendizaje:</h3>
+                    <div class="punto">
+                        <div class="punto-numero">1</div>
+                        <div class="punto-texto">
+                            <strong>Distinguir</strong> entre deseos, fantasías y conductas
+                        </div>
+                    </div>
+                    <div class="punto">
+                        <div class="punto-numero">2</div>
+                        <div class="punto-texto">
+                            <strong>Contrastar</strong> los roles y estereotipos de género en torno a deseos, fantasías y conductas
+                        </div>
+                    </div>
+                    <div class="punto">
+                        <div class="punto-numero">3</div>
+                        <div class="punto-texto">
+                            <strong>Diferenciar</strong> la conducta sexual de la vida real de la que aparece en medios, incluida la pornografía
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button onclick="cambiarSeccion(2)">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Sección 2: Conceptos -->
+            <div class="section" id="seccion2">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 40%;"></div>
+                </div>
+
+                <h2 style="color: #333; text-align: center; margin-bottom: 30px;">Entendiendo los Conceptos Clave</h2>
+
+                <div class="conceptos-grid">
+                    <div class="concepto-card deseo">
+                        <h3><span class="icon">💭</span>Deseo</h3>
+                        <p>Es una inclinación o interés hacia algo o alguien. Puede ser emocional, afectivo o sexual. <strong>No siempre se convierte en acción.</strong></p>
+                        <div class="ejemplo">
+                            <strong>Ejemplo:</strong> Sentir atracción por alguien
+                        </div>
+                    </div>
+
+                    <div class="concepto-card fantasia">
+                        <h3><span class="icon">🎬</span>Fantasía</h3>
+                        <p>Es una construcción mental, una imagen o historia que imaginamos. Puede estar relacionada con nuestros deseos, pero <strong>no necesariamente se realiza.</strong></p>
+                        <div class="ejemplo">
+                            <strong>Ejemplo:</strong> Imaginar una cita romántica con esa persona
+                        </div>
+                    </div>
+
+                    <div class="concepto-card conducta">
+                        <h3><span class="icon">🎯</span>Conducta</h3>
+                        <p>Es la acción concreta que realizamos. Puede estar influenciada por nuestros deseos y fantasías, pero <strong>implica una decisión consciente.</strong></p>
+                        <div class="ejemplo">
+                            <strong>Ejemplo:</strong> Invitarla a salir
+                        </div>
+                    </div>
+                </div>
+
+                <div class="puntos-clave" style="margin-top: 40px;">
+                    <h3>💡 Punto importante:</h3>
+                    <div class="punto">
+                        <div class="punto-numero">✓</div>
+                        <div class="punto-texto">
+                            Tener deseos y fantasías es <strong>completamente normal</strong>. La diferencia clave está en que 
+                            <strong>no todas las fantasías deben convertirse en conductas</strong>. Lo importante es reflexionar 
+                            sobre nuestras acciones y asegurar que sean respetuosas, seguras y consensuadas.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button onclick="cambiarSeccion(1)">← Anterior</button>
+                    <button onclick="cambiarSeccion(3)">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Sección 3: Actividad de Clasificación -->
+            <div class="section" id="seccion3">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 60%;"></div>
+                </div>
+
+                <h2 style="color: #333; text-align: center; margin-bottom: 30px;">Actividad: Clasificación de Situaciones</h2>
+                <p style="color: #666; text-align: center; margin-bottom: 30px; font-size: 1.05em;">
+                    Clasifica cada frase bajo uno de los tres conceptos: <strong>Deseo</strong>, <strong>Fantasía</strong> o <strong>Conducta</strong>
+                </p>
+
+                <div class="clasificacion">
+                    <div class="frase-item">
+                        <p>Imaginar besar a alguien</p>
+                        <div class="opciones-clasificacion">
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Fantasía')">Deseo</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Fantasía')">Fantasía</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Fantasía')">Conducta</button>
+                        </div>
+                    </div>
+
+                    <div class="frase-item">
+                        <p>Ver una película romántica</p>
+                        <div class="opciones-clasificacion">
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Deseo</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Fantasía</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Conducta</button>
+                        </div>
+                    </div>
+
+                    <div class="frase-item">
+                        <p>Sentir atracción por alguien</p>
+                        <div class="opciones-clasificacion">
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Deseo')">Deseo</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Deseo')">Fantasía</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Deseo')">Conducta</button>
+                        </div>
+                    </div>
+
+                    <div class="frase-item">
+                        <p>Soñar con una cita perfecta</p>
+                        <div class="opciones-clasificacion">
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Fantasía')">Deseo</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Fantasía')">Fantasía</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Fantasía')">Conducta</button>
+                        </div>
+                    </div>
+
+                    <div class="frase-item">
+                        <p>Abrazar a una persona que te gusta</p>
+                        <div class="opciones-clasificacion">
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Deseo</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Fantasía</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Conducta</button>
+                        </div>
+                    </div>
+
+                    <div class="frase-item">
+                        <p>Pensar en cómo sería tener pareja</p>
+                        <div class="opciones-clasificacion">
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Fantasía')">Deseo</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Fantasía')">Fantasía</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Fantasía')">Conducta</button>
+                        </div>
+                    </div>
+
+                    <div class="frase-item">
+                        <p>Decidir no actuar sobre lo que sientes</p>
+                        <div class="opciones-clasificacion">
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Deseo</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Fantasía</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Conducta</button>
+                        </div>
+                    </div>
+
+                    <div class="frase-item">
+                        <p>Buscar información sobre sexualidad</p>
+                        <div class="opciones-clasificacion">
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Deseo</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Fantasía</button>
+                            <button class="btn-clasificar" onclick="mostrarRespuestaClasif(this, 'Conducta')">Conducta</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button onclick="cambiarSeccion(2)">← Anterior</button>
+                    <button onclick="cambiarSeccion(4)">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Sección 4: Reflexión -->
+            <div class="section" id="seccion4">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 75%;"></div>
+                </div>
+
+                <h2 style="color: #333; text-align: center; margin-bottom: 30px;">Reflexiones Importantes</h2>
+
+                <div class="pregunta-reflexion">
+                    <h4>🤔 ¿Qué diferencia hay entre lo que sentimos, lo que imaginamos y lo que hacemos?</h4>
+                    <p>
+                        <strong>Sentimos:</strong> Son respuestas emocionales automáticas que ocurren sin control consciente.<br>
+                        <strong>Imaginamos:</strong> Creamos historias mentales que pueden estar alejadas de la realidad.<br>
+                        <strong>Hacemos:</strong> Son acciones que elegimos ejecutar, con plena conciencia de sus consecuencias.
+                    </p>
+                </div>
+
+                <div class="pregunta-reflexion">
+                    <h4>🎯 ¿Todas las fantasías deben convertirse en conductas? ¿Por qué sí o por qué no?</h4>
+                    <p>
+                        <strong>No, definitivamente no.</strong> Muchas fantasías pueden ser:
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Irreales o imposibles en la vida cotidiana</li>
+                            <li>Potencialmente dañinas o irrespetuosas</li>
+                            <li>Simples exploraciones mentales sin intención de realizarlas</li>
+                        </ul>
+                        Lo importante es que reflexionemos sobre ellas y decidamos conscientemente qué merece la pena convertir en acción.
+                    </p>
+                </div>
+
+                <div class="pregunta-reflexion">
+                    <h4>💭 ¿Es válido tener deseos o fantasías aunque no se compartan con otros?</h4>
+                    <p>
+                        <strong>Absolutamente sí.</strong> Tenemos derecho a la privacidad mental. Nuestros pensamientos 
+                        e imaginaciones son personales. Lo que importa es cómo tratamos a los demás con nuestras 
+                        acciones, no qué pensamos en la privacidad de nuestra mente.
+                    </p>
+                </div>
+
+                <div class="pregunta-reflexion">
+                    <h4>🤝 ¿Qué papel juega el respeto hacia uno mismo y hacia los demás en nuestras decisiones?</h4>
+                    <p>
+                        El respeto es <strong>fundamental</strong> para convertir deseos y fantasías en conductas saludables:
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li><strong>Respeto hacia uno mismo:</strong> Reconocer nuestros límites, necesidades y valores</li>
+                            <li><strong>Respeto hacia otros:</strong> Asegurar consentimiento, comunicación y cuidado emocional</li>
+                            <li><strong>Respeto mutuo:</strong> Base de cualquier conducta sana y consensuada</li>
+                        </ul>
+                    </p>
+                </div>
+
+                <div class="navigation">
+                    <button onclick="cambiarSeccion(3)">← Anterior</button>
+                    <button onclick="cambiarSeccion(5)">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Sección 5: Estereotipos y Medios -->
+            <div class="section" id="seccion5">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 85%;"></div>
+                </div>
+
+                <h2 style="color: #333; text-align: center; margin-bottom: 30px;">Estereotipos, Medios y Realidad</h2>
+
+                <div class="puntos-clave">
+                    <h3>⚠️ Roles y Estereotipos de Género</h3>
+                    <p style="color: #333; margin-bottom: 20px;">
+                        Los estereotipos de género nos dicen cómo "deberían" actuar hombres y mujeres. 
+                        Esto afecta directamente cómo expresamos nuestros deseos y fantasías.
+                    </p>
+                    <div class="punto">
+                        <div class="punto-numero">❌</div>
+                        <div class="punto-texto">
+                            <strong>Problema:</strong> Estos estereotipos limitan nuestra libertad personal y pueden crear presión 
+                            psicológica para actuar de formas que no nos representan.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="puntos-clave" style="background: linear-gradient(135deg, #FFE5E5 0%, #FFE5CC 100%);">
+                    <h3>📺 Medios y Pornografía vs. Realidad</h3>
+                    <p style="color: #333; margin-bottom: 20px;">
+                        Los medios frecuentemente distorsionan la realidad sobre la sexualidad:
+                    </p>
+                    <div class="punto">
+                        <div class="punto-numero">1</div>
+                        <div class="punto-texto">
+                            <strong>Instantaneidad:</strong> Los medios muestran la sexualidad como algo automático, sin emociones profundas ni conversación
+                        </div>
+                    </div>
+                    <div class="punto">
+                        <div class="punto-numero">2</div>
+                        <div class="punto-texto">
+                            <strong>Falta de diversidad:</strong> La pornografía presenta cuerpos y prácticas que no reflejan la diversidad real
+                        </div>
+                    </div>
+                    <div class="punto">
+                        <div class="punto-numero">3</div>
+                        <div class="punto-texto">
+                            <strong>Ausencia de consentimiento:</strong> En muchos casos, se omite el consentimiento, comunicación y cuidado emocional
+                        </div>
+                    </div>
+                    <div class="punto">
+                        <div class="punto-numero">4</div>
+                        <div class="punto-texto">
+                            <strong>Expectativas irreales:</strong> Estas representaciones pueden generar inseguridades, presión e expectativas falsas entre adolescentes
+                        </div>
+                    </div>
+                </div>
+
+                <div class="puntos-clave" style="background: linear-gradient(135deg, #E5F5FF 0%, #E5FFCC 100%);">
+                    <h3>✅ ¿Cómo identificar una conducta sexual saludable y consensuada?</h3>
+                    <div class="punto">
+                        <div class="punto-numero">✓</div>
+                        <div class="punto-texto"><strong>Consentimiento claro:</strong> Ambas personas están de acuerdo y pueden cambiar de opinión en cualquier momento</div>
+                    </div>
+                    <div class="punto">
+                        <div class="punto-numero">✓</div>
+                        <div class="punto-texto"><strong>Comunicación:</strong> Se habla sobre deseos, límites y preocupaciones</div>
+                    </div>
+                    <div class="punto">
+                        <div class="punto-numero">✓</div>
+                        <div class="punto-texto"><strong>Respeto mutuo:</strong> Se respetan los límites de ambas personas</div>
+                    </div>
+                    <div class="punto">
+                        <div class="punto-numero">✓</div>
+                        <div class="punto-texto"><strong>Seguridad:</strong> Se considera la salud física y emocional de ambos</div>
+                    </div>
+                    <div class="punto">
+                        <div class="punto-numero">✓</div>
+                        <div class="punto-texto"><strong>Libertad:</strong> Nadie se siente presionado o obligado</div>
+                    </div>
+                </div>
+
+                <div class="navigation">
+                    <button onclick="cambiarSeccion(4)">← Anterior</button>
+                    <button onclick="cambiarSeccion(6)">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- Sección 6: Quiz -->
+            <div class="section" id="seccion6">
+                <div class="progress-bar">
+                    <div class="progress-fill" style="width: 100%;"></div>
+                </div>
+
+                <h2 style="color: #333; text-align: center; margin-bottom: 30px;">📝 Cuestionario de Evaluación</h2>
+                <p style="color: #666; text-align: center; margin-bottom: 30px;">
+                    Responde las siguientes preguntas para verificar tu comprensión. Recibirás retroalimentación inmediata.
+                </p>
+
+                <div class="quiz-container">
+                    <!-- Pregunta 1 -->
+                    <div class="quiz-question">
+                        <h4>1. ¿Cuál es la definición correcta de DESEO?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="a">
+                                <label>Una construcción mental o historia que imaginamos</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="b">
+                                <label>Una inclinación o interés hacia algo o alguien que no siempre se convierte en acción</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="c">
+                                <label>Una acción concreta que realizamos consciente y deliberadamente</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q1" value="d">
+                                <label>Lo que vemos en películas y redes sociales</label>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback1">
+                            <h5>Retroalimentación:</h5>
+                            <p id="feedback1-text"></p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="quiz-question">
+                        <h4>2. ¿Por qué NO todas las fantasías deben convertirse en conductas?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="a">
+                                <label>Porque las fantasías siempre son ilegales</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="b">
+                                <label>Porque pueden ser irreales, potencialmente dañinas, o simples exploraciones mentales sin intención de realizarlas</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="c">
+                                <label>Porque los demás no entenderían nuestras fantasías</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q2" value="d">
+                                <label>Porque no son importantes</label>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback2">
+                            <h5>Retroalimentación:</h5>
+                            <p id="feedback2-text"></p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="quiz-question">
+                        <h4>3. ¿Cuál es una diferencia fundamental entre lo que vemos en pornografía y la realidad?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="a">
+                                <label>No hay diferencias, la pornografía muestra la realidad</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="b">
+                                <label>En la pornografía no hay comunicación previa, consentimiento claro, ni cuidado emocional, a diferencia de la realidad</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="c">
+                                <label>La pornografía es más aburrida que la realidad</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q3" value="d">
+                                <label>No hay diferencias, ambas son lo mismo</label>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback3">
+                            <h5>Retroalimentación:</h5>
+                            <p id="feedback3-text"></p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="quiz-question">
+                        <h4>4. ¿Cuál de los siguientes es un elemento CLAVE para identificar una conducta sexual saludable?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="a">
+                                <label>Que una persona convenza a la otra de hacer algo</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="b">
+                                <label>Consentimiento claro, comunicación y respeto mutuo</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="c">
+                                <label>Que suceda rápidamente sin hablar mucho</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q4" value="d">
+                                <label>Que sea como se ve en películas y series</label>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback4">
+                            <h5>Retroalimentación:</h5>
+                            <p id="feedback4-text"></p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="quiz-question">
+                        <h4>5. ¿Es válido tener deseos o fantasías privadas aunque no las compartas con otros?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="a">
+                                <label>No, todos deben saber qué piensas</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="b">
+                                <label>Sí, tenemos derecho a la privacidad mental y nuestros pensamientos son personales</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="c">
+                                <label>Solo si es sobre temas románticos</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q5" value="d">
+                                <label>No, es peligroso tener fantasías</label>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback5">
+                            <h5>Retroalimentación:</h5>
+                            <p id="feedback5-text"></p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 6 -->
+                    <div class="quiz-question">
+                        <h4>6. ¿Cuál es el rol principal del respeto en nuestras conductas?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="a">
+                                <label>Limitar todas nuestras libertades personales</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="b">
+                                <label>Asegurar que nuestras acciones sean consideradas, seguras y que respeten límites propios y ajenos</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="c">
+                                <label>Solo aplica a las personas mayores</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q6" value="d">
+                                <label>No tiene importancia en nuestras decisiones</label>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback6">
+                            <h5>Retroalimentación:</h5>
+                            <p id="feedback6-text"></p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 7 -->
+                    <div class="quiz-question">
+                        <h4>7. Clasifica correctamente: "Imaginar estar en una cita con alguien especial" es:</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="a">
+                                <label>Un deseo</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="b">
+                                <label>Una fantasía</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="c">
+                                <label>Una conducta</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q7" value="d">
+                                <label>Ninguna de las anteriores</label>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback7">
+                            <h5>Retroalimentación:</h5>
+                            <p id="feedback7-text"></p>
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 8 -->
+                    <div class="quiz-question">
+                        <h4>8. ¿Cómo afectan los estereotipos de género a nuestras decisiones sobre deseos y conductas?</h4>
+                        <div class="quiz-options">
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="a">
+                                <label>No afectan de ninguna manera</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="b">
+                                <label>Pueden limitar nuestra libertad personal y crear presión para actuar de formas que no nos representan</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="c">
+                                <label>Solo afectan a los hombres</label>
+                            </label>
+                            <label class="quiz-option">
+                                <input type="radio" name="q8" value="d">
+                                <label>Solo afectan a las mujeres</label>
+                            </label>
+                        </div>
+                        <div class="feedback" id="feedback8">
+                            <h5>Retroalimentación:</h5>
+                            <p id="feedback8-text"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <button style="width: 100%; margin-top: 30px; padding: 15px; font-size: 1.1em;" onclick="verificarQuiz()">
+                    Enviar Respuestas
+                </button>
+
+                <div class="resultado-final" id="resultadoFinal">
+                    <h3>¡Excelente trabajo! 🎉</h3>
+                    <p>Has completado el cuestionario</p>
+                    <div class="puntuacion" id="puntuacion">0/8</div>
+                    <p id="mensajePuntuacion"></p>
+                    <button onclick="reiniciarQuiz()" style="margin-top: 20px;">Reintentar Quiz</button>
+                </div>
+
+                <div class="navigation" style="margin-top: 30px;">
+                    <button onclick="cambiarSeccion(5)">← Anterior</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let seccionActual = 1;
+        const respuestasCorrectas = {
+            q1: 'b',
+            q2: 'b',
+            q3: 'b',
+            q4: 'b',
+            q5: 'b',
+            q6: 'b',
+            q7: 'b',
+            q8: 'b'
+        };
+
+        const retroalimentaciones = {
+            q1: {
+                correcto: '✓ Correcto. El deseo es una inclinación o interés que puede ser emocional, afectivo o sexual, pero no siempre se convierte en acción. Es importante entender que tener un deseo no significa que debamos actuar sobre él.',
+                incorrecto: '✗ Incorrecto. Esa definición corresponde a otro concepto. El deseo es una inclinación o interés que puede ser emocional, afectivo o sexual, y no siempre se convierte en acción. A diferencia de una fantasía (imaginación) o conducta (acción concreta).'
+            },
+            q2: {
+                correcto: '✓ Correcto. Excelente comprensión. Las fantasías pueden ser exploraciones mentales sin intención de realizarlas, pueden ser irreales o potencialmente dañinas. La clave es reflexionar conscientemente sobre qué merece la pena convertir en acción.',
+                incorrecto: '✗ Incorrecto. Recuerda que la mayoría de fantasías son completamente normales y privadas. No todas deben convertirse en conductas porque pueden ser irreales, dañinas, u simplemente exploraciones mentales sin intención real de realizarlas.'
+            },
+            q3: {
+                correcto: '✓ Correcto. Muy importante distinguir esto. En la pornografía frecuentemente falta la comunicación previa, el consentimiento claro, y el cuidado emocional. La realidad requiere de estos elementos esenciales para que una conducta sea saludable.',
+                incorrecto: '✗ Incorrecto. Hay diferencias fundamentales. En la pornografía se omite comúnmente el consentimiento, la comunicación y el cuidado emocional. En la realidad, estos elementos son ESENCIALES para una conducta sexual saludable y consensuada.'
+            },
+            q4: {
+                correcto: '✓ Correcto. El consentimiento claro, la comunicación y el respeto mutuo son pilares de cualquier conducta sexual saludable. Estos elementos garantizan que ambas personas se sienten seguras, respetadas y valoradas.',
+                incorrecto: '✗ Incorrecto. Una conducta sexual saludable NUNCA implica presión, rapidez sin comunicación, o imitación de películas. Los elementos clave son consentimiento claro, comunicación abierta, respeto mutuo y seguridad emocional.'
+            },
+            q5: {
+                correcto: '✓ Correcto. Tenemos derecho fundamental a la privacidad mental. Nuestros pensamientos, deseos y fantasías son personales. Lo que importa es cómo tratamos a otros con nuestras acciones, no qué pensamos en privado.',
+                incorrecto: '✗ Incorrecto. Absolutamente tenemos derecho a deseos y fantasías privadas. La privacidad mental es un derecho fundamental. Mientras nuestras acciones sean respetuosas, nuestros pensamientos privados no deben ser dictados por otros.'
+            },
+            q6: {
+                correcto: '✓ Correcto. El respeto es el puente entre nuestras inclinaciones personales y nuestras acciones. Nos ayuda a actuar considerando nuestro bienestar y el de otros, asegurando seguridad emocional y física.',
+                incorrecto: '✗ Incorrecto. El respeto no limita nuestra libertad, sino que la encamina hacia formas conscientes y seguras. Aplica a todas las personas en todas las decisiones. Es la base de conductas saludables y relaciones positivas.'
+            },
+            q7: {
+                correcto: '✓ Correcto. "Imaginar" es claramente una construcción mental, lo que define a una fantasía. No es un deseo inicial ni una acción concreta realizada.',
+                incorrecto: '✗ Incorrecto. Cuando decimos "imaginar", nos referimos a una construcción mental, imagen o historia que imaginamos, que es precisamente la definición de fantasía. No es un deseo (inicial) ni una conducta (acción concreta).'
+            },
+            q8: {
+                correcto: '✓ Correcto. Los estereotipos pueden limitar nuestra libertad personal y crear presión para actuar según lo que "deberían" hacer hombres y mujeres, en lugar de según nuestros valores y necesidades reales.',
+                incorrecto: '✗ Incorrecto. Los estereotipos de género afectan profundamente nuestras decisiones. Pueden limitarnos y presionarnos para actuar de formas que no nos representan, afectando tanto a hombres como a mujeres.'
+            }
+        };
+
+        function cambiarSeccion(numeroSeccion) {
+            document.getElementById('seccion' + seccionActual).classList.remove('active');
+            seccionActual = numeroSeccion;
+            document.getElementById('seccion' + seccionActual).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        function mostrarRespuestaClasif(boton, respuestaCorrecta) {
+            const botones = boton.parentElement.querySelectorAll('.btn-clasificar');
+            botones.forEach(b => b.classList.remove('seleccionado'));
+            
+            if (boton.textContent === respuestaCorrecta) {
+                boton.classList.add('seleccionado');
+                boton.style.background = '#28a745';
+                boton.style.borderColor = '#28a745';
+            } else {
+                boton.classList.add('seleccionado');
+                boton.style.background = '#dc3545';
+                boton.style.borderColor = '#dc3545';
+            }
+        }
+
+        function verificarQuiz() {
+            let aciertos = 0;
+            const totalPreguntas = 8;
+
+            for (let i = 1; i <= totalPreguntas; i++) {
+                const respuestaSeleccionada = document.querySelector(`input[name="q${i}"]:checked`);
+                const feedbackDiv = document.getElementById(`feedback${i}`);
+                const feedbackText = document.getElementById(`feedback${i}-text`);
+
+                if (!respuestaSeleccionada) {
+                    feedbackDiv.className = 'feedback incorrecto';
+                    feedbackText.innerHTML = '⚠️ Por favor selecciona una opción antes de enviar.';
+                    continue;
+                }
+
+                const esCorrecta = respuestaSeleccionada.value === respuestasCorrectas[`q${i}`];
+
+                if (esCorrecta) {
+                    aciertos++;
+                    feedbackDiv.className = 'feedback correcto';
+                    feedbackText.innerHTML = retroalimentaciones[`q${i}`].correcto;
+                } else {
+                    feedbackDiv.className = 'feedback incorrecto';
+                    feedbackText.innerHTML = retroalimentaciones[`q${i}`].incorrecto;
+                }
+            }
+
+            // Mostrar resultado final
+            const porcentaje = (aciertos / totalPreguntas) * 100;
+            document.getElementById('puntuacion').textContent = `${aciertos}/${totalPreguntas}`;
+            document.getElementById('resultadoFinal').classList.add('mostrar');
+
+            let mensajePuntuacion = '';
+            if (porcentaje === 100) {
+                mensajePuntuacion = '¡Perfecto! Demostraste una comprensión excelente de todos los conceptos. 🌟';
+            } else if (porcentaje >= 87) {
+                mensajePuntuacion = '¡Muy bien! Tienes una excelente comprensión del tema. Revisa las preguntas con retroalimentación para reforzar conocimientos. 👏';
+            } else if (porcentaje >= 75) {
+                mensajePuntuacion = '¡Buen trabajo! Entiendes bien los conceptos. Lee las retroalimentaciones para mejorar tu comprensión. 📚';
+            } else if (porcentaje >= 50) {
+                mensajePuntuacion = 'Has hecho un buen esfuerzo. Revisa atentamente la retroalimentación y los conceptos clave para mejorar. 💪';
+            } else {
+                mensajePuntuacion = 'Necesitas repasar los conceptos. Lee nuevamente el contenido de las secciones anteriores y consulta la retroalimentación de cada pregunta. ¡Puedes hacerlo! 📖';
+            }
+
+            document.getElementById('mensajePuntuacion').textContent = mensajePuntuacion;
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        function reiniciarQuiz() {
+            // Limpiar respuestas
+            for (let i = 1; i <= 8; i++) {
+                const inputs = document.querySelectorAll(`input[name="q${i}"]`);
+                inputs.forEach(input => input.checked = false);
+                document.getElementById(`feedback${i}`).className = 'feedback';
+            }
+            document.getElementById('resultadoFinal').classList.remove('mostrar');
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
