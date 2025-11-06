@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Rama Ejecutiva en Colombia - Infografía Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .nav-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .nav-btn {
+            padding: 12px 24px;
+            background: #fff;
+            color: #1a3a52;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            font-size: 0.95em;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: #ffd700;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .content-section {
+            display: none;
+            padding: 40px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .section-title {
+            font-size: 2em;
+            color: #1a3a52;
+            margin-bottom: 30px;
+            text-align: center;
+            border-bottom: 3px solid #ffd700;
+            padding-bottom: 15px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #ffffff 100%);
+            border-left: 5px solid #1a3a52;
+            padding: 25px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            border-left-color: #ffd700;
+        }
+
+        .card.expanded {
+            background: linear-gradient(135deg, #e8f4f8 0%, #f0f8fb 100%);
+            border-left-color: #ffd700;
+        }
+
+        .card h3 {
+            color: #1a3a52;
+            font-size: 1.4em;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            font-size: 1.8em;
+        }
+
+        .card-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 2px solid #ddd;
+        }
+
+        .card-content.show {
+            display: block;
+        }
+
+        .card-content p {
+            color: #555;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .constitutional-ref {
+            background: #fff3cd;
+            padding: 10px 15px;
+            border-left: 3px solid #ffc107;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-size: 0.9em;
+            color: #856404;
+        }
+
+        .hierarchy-chart {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+            text-align: center;
+        }
+
+        .hierarchy-level {
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            border-top: 4px solid #1a3a52;
+        }
+
+        .hierarchy-level h4 {
+            color: #1a3a52;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        .hierarchy-level p {
+            color: #666;
+            margin: 5px 0;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .feature-list li {
+            padding: 10px 0;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #ffd700;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .image-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .image-section svg {
+            max-width: 100%;
+            width: 100%;
+            max-height: 400px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .image-caption {
+            font-size: 0.9em;
+            color: #666;
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        /* Estilos del Cuestionario */
+        .quiz-section {
+            background: #f0f8ff;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 30px 0;
+        }
+
+        .question-box {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 10px;
+            border-left: 5px solid #2d5a7b;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .question-text {
+            font-weight: bold;
+            color: #1a3a52;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 12px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .option-label:hover {
+            background: #e8f4f8;
+        }
+
+        .option-label input[type="radio"] {
+            margin-right: 10px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+
+        .feedback {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 5px;
+            font-weight: 500;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            color: #155724;
+            border-left: 4px solid #28a745;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            color: #721c24;
+            border-left: 4px solid #dc3545;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #1a3a52 0%, #2d5a7b 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1.05em;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+            width: 100%;
+            max-width: 300px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(26, 58, 82, 0.4);
+        }
+
+        .results-summary {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .results-summary.show {
+            display: block;
+        }
+
+        .results-summary h3 {
+            color: #1a3a52;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .score {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #28a745;
+            margin: 20px 0;
+        }
+
+        .score.low {
+            color: #dc3545;
+        }
+
+        .score.medium {
+            color: #ffc107;
+        }
+
+        .reset-btn {
+            background: #6c757d;
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-top: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .reset-btn:hover {
+            background: #5a6268;
+            transform: translateY(-2px);
+        }
+
+        .true-false-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 15px 0;
+        }
+
+        .tf-option {
+            padding: 15px;
+            background: #f9f9f9;
+            border-radius: 5px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .tf-option:hover {
+            background: #e8f4f8;
+            transform: scale(1.05);
+        }
+
+        .tf-option input[type="radio"] {
+            margin: 10px 0;
+        }
+
+        .tf-option label {
+            cursor: pointer;
+            font-weight: bold;
+            color: #1a3a52;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .section-title {
+                font-size: 1.5em;
+            }
+
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+
+            .true-false-container {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-buttons {
+                gap: 5px;
+            }
+
+            .nav-btn {
+                padding: 10px 15px;
+                font-size: 0.85em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏛️ La Rama Ejecutiva en Colombia</h1>
+            <p>Aprende sobre la estructura y funciones del poder ejecutivo colombiano</p>
+        </div>
+
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="showSection('intro')">📌 Introducción</button>
+            <button class="nav-btn" onclick="showSection('presidente')">👨‍💼 Presidente</button>
+            <button class="nav-btn" onclick="showSection('vicepresidente')">🤝 Vicepresidente</button>
+            <button class="nav-btn" onclick="showSection('ministros')">📋 Ministros</button>
+            <button class="nav-btn" onclick="showSection('gobernadores')">🏢 Gobernadores</button>
+            <button class="nav-btn" onclick="showSection('alcaldes')">🏛️ Alcaldes</button>
+            <button class="nav-btn" onclick="showSection('quiz')">❓ Cuestionario</button>
+        </div>
+
+        <!-- Sección Introducción -->
+        <div id="intro" class="content-section active">
+            <h2 class="section-title">📌 Introducción a la Rama Ejecutiva</h2>
+            
+            <div class="image-section">
+                <img src="https://lh3.googleusercontent.com/gps-cs-s/AG0ilSwsdZbc4MkXWjKPdEDzZNrIG0JROPUiGuqmV2HMHA4akiZEe0uJPSB5dL4xjJgCmh5ulYZMZtv02R3myyaob942DMDFTDP8pR3dUjEGmf3yqi2F9h7js9n3vLW28vkuV8zI-a3-HA=s1360-w1360-h1020-rw" alt="">
+                <p class="image-caption">Palacio de Nariño - Sede del Presidente de Colombia en Bogotá</p>
+            </div>
+
+            <div class="hierarchy-chart">
+                <h3 style="color: #1a3a52; margin-bottom: 20px;">¿Qué es la Rama Ejecutiva?</h3>
+                <p style="font-size: 1.05em; color: #555; margin-bottom: 20px;">
+                    La Rama Ejecutiva es el conjunto de órganos del Estado responsables de ejecutar y cumplir las leyes, administrar el país y dirigir las políticas públicas. Es la rama encargada de administrar el país en todos sus niveles.
+                </p>
+            </div>
+
+            <div class="grid-container">
+                <div class="card">
+                    <h3 class="card-icon">🎯 Objetivo Principal</h3>
+                    <p>Ejecutar las leyes aprobadas por la Rama Legislativa y administrar los recursos del Estado para beneficio de la comunidad.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">📊 Estructura</h3>
+                    <p>La Rama Ejecutiva se organiza en niveles: Nacional (Presidente y Ministros), Departamental (Gobernadores) y Municipal (Alcaldes).</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">⚖️ Base Legal</h3>
+                    <p>Funciona de acuerdo con la Constitución Política de Colombia de 1991, que establece sus atribuciones, deberes y responsabilidades.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección Presidente -->
+        <div id="presidente" class="content-section">
+            <h2 class="section-title">👨‍💼 El Presidente de la República</h2>
+            
+            <div class="card" style="border-left: 5px solid #28a745;">
+                <h3>👨‍💼 Quien es el Presidente</h3>
+                <div class="card-content show">
+                    <p>El Presidente de la República es el jefe del Estado y el jefe del Gobierno. Es la máxima autoridad ejecutiva de Colombia.</p>
+                    <div class="constitutional-ref">
+                        📜 <strong>Artículo 188 de la Constitución:</strong> El Presidente de la República es el Jefe del Estado, Jefe del Gobierno y Suprema Autoridad Administrativa.
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-container" style="margin-top: 30px;">
+                <div class="card">
+                    <h3 class="card-icon">🗳️ Elección</h3>
+                    <p>Es elegido por voto popular directo para un período de 4 años. No puede ser reelegido consecutivamente.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">📝 Requisitos</h3>
+                    <ul class="feature-list">
+                        <li>Ser ciudadano colombiano</li>
+                        <li>Tener al menos 30 años</li>
+                        <li>Estar en ejercicio de derechos civiles</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">⚙️ Funciones</h3>
+                    <ul class="feature-list">
+                        <li>Cumplir y hacer cumplir la Constitución</li>
+                        <li>Dirigir la administración pública</li>
+                        <li>Ejercer comando de las Fuerzas Armadas</li>
+                        <li>Sancionar las leyes del Congreso</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="constitutional-ref" style="margin-top: 30px;">
+                💡 <strong>Dato importante:</strong> El Presidente también preside el Consejo de Ministros, que es el órgano colegiado encargado de asesorarlo en las decisiones relevantes.
+            </div>
+        </div>
+
+        <!-- Sección Vicepresidente -->
+        <div id="vicepresidente" class="content-section">
+            <h2 class="section-title">🤝 El Vicepresidente de la República</h2>
+            
+            <div class="card" style="border-left: 5px solid #0066cc;">
+                <h3>🤝 Quien es el Vicepresidente</h3>
+                <div class="card-content show">
+                    <p>El Vicepresidente es elegido en la misma fórmula que el Presidente. Es su segundo en el orden de sucesión y lo reemplaza en faltas temporales o absolutas.</p>
+                    <div class="constitutional-ref">
+                        📜 <strong>Artículo 202 de la Constitución:</strong> El Vicepresidente de la República sustituye al Presidente en sus faltas temporales o absolutas.
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-container" style="margin-top: 30px;">
+                <div class="card">
+                    <h3 class="card-icon">🎯 Funciones</h3>
+                    <ul class="feature-list">
+                        <li>Sustituir al Presidente cuando falta</li>
+                        <li>Realizar funciones delegadas por el Presidente</li>
+                        <li>Actuar como Jefe de Delegación en eventos especiales</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">📋 Características</h3>
+                    <p>El Vicepresidente NO dirige permanentemente el Consejo de Ministros ni tiene funciones permanentes de mando sobre los ministros. Solo actúa cuando es delegado o en caso de ausencia del Presidente.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">⏱️ Duración</h3>
+                    <p>Ejerce su cargo por el mismo período que el Presidente: 4 años. Puede ocupar carteras ministeriales según las decisiones del Presidente.</p>
+                </div>
+            </div>
+
+            <div class="constitutional-ref" style="margin-top: 30px;">
+                💡 <strong>Recuerda:</strong> El Vicepresidente es parte de la fórmula presidencial y es elegido democráticamente junto con el Presidente.
+            </div>
+        </div>
+
+        <!-- Sección Ministros -->
+        <div id="ministros" class="content-section">
+            <h2 class="section-title">📋 Los Ministros de Despacho</h2>
+            
+            <div class="card" style="border-left: 5px solid #ff6b6b;">
+                <h3>📋 Quien son los Ministros</h3>
+                <div class="card-content show">
+                    <p>Los Ministros son los jefes de la administración en cada uno de los sectores o dependencias del gobierno nacional. Son nombrados por el Presidente de la República.</p>
+                    <div class="constitutional-ref">
+                        📜 <strong>Artículo 208 de la Constitución:</strong> Los Ministros son jefes de la administración en sus respectivas dependencias y están obligados a firmar los actos presidenciales que sean relativos a sus respectivos ministerios.
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-container" style="margin-top: 30px;">
+                <div class="card">
+                    <h3 class="card-icon">👔 Requisitos</h3>
+                    <ul class="feature-list">
+                        <li>Ser ciudadano colombiano</li>
+                        <li>Haber cumplido 25 años</li>
+                        <li>Gozar de derechos civiles y políticos</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">🎯 Responsabilidades</h3>
+                    <ul class="feature-list">
+                        <li>Ejecutar las políticas del gobierno</li>
+                        <li>Administrar el sector a su cargo</li>
+                        <li>Firmar actos presidenciales de su ministerio</li>
+                        <li>Responder ante el Presidente y el Congreso</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">📊 Sectores</h3>
+                    <p>Los ministerios cubren distintos sectores: Hacienda, Defensa, Educación, Salud, Trabajo, Ambiente, Tecnología, etc.</p>
+                </div>
+            </div>
+
+            <div class="constitutional-ref" style="margin-top: 30px;">
+                💡 <strong>Dato importante:</strong> Los Ministros forman el Consejo de Ministros, que asesora al Presidente en las decisiones más relevantes del gobierno.
+            </div>
+        </div>
+
+        <!-- Sección Gobernadores -->
+        <div id="gobernadores" class="content-section">
+            <h2 class="section-title">🏢 Los Gobernadores</h2>
+            
+            <div class="card" style="border-left: 5px solid #ffa500;">
+                <h3>🏢 Quien son los Gobernadores</h3>
+                <div class="card-content show">
+                    <p>Los Gobernadores son la máxima autoridad ejecutiva en los departamentos. Representan al Presidente en sus departamentos respectivos y ejecutan las políticas del gobierno nacional.</p>
+                    <div class="constitutional-ref">
+                        📜 <strong>Artículo 303 de la Constitución:</strong> Los gobernadores son elegidos por voto popular por períodos de cuatro años y no pueden ser reelegidos inmediatamente.
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-container" style="margin-top: 30px;">
+                <div class="card">
+                    <h3 class="card-icon">🗳️ Elección</h3>
+                    <p>Son elegidos por voto popular directo para un período de 4 años. No pueden ser reelegidos consecutivamente.</p>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">🎯 Funciones</h3>
+                    <ul class="feature-list">
+                        <li>Administrar el departamento</li>
+                        <li>Representar al Presidente</li>
+                        <li>Ejecutar políticas nacionales</li>
+                        <li>Coordinar con municipios</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">⚖️ Ámbito</h3>
+                    <p>Su autoridad se extiende sobre todo el territorio del departamento, coordinando las acciones de alcaldes y municipios.</p>
+                </div>
+            </div>
+
+            <div class="constitutional-ref" style="margin-top: 30px;">
+                💡 <strong>Importante:</strong> Los gobernadores tienen autonomía administrativa y financiera dentro del marco establecido por la Constitución y la ley.
+            </div>
+        </div>
+
+        <!-- Sección Alcaldes -->
+        <div id="alcaldes" class="content-section">
+            <h2 class="section-title">🏛️ Los Alcaldes</h2>
+            
+            <div class="card" style="border-left: 5px solid #1abc9c;">
+                <h3>🏛️ Quien son los Alcaldes</h3>
+                <div class="card-content show">
+                    <p>Los Alcaldes son la máxima autoridad ejecutiva en los municipios. Son elegidos por los ciudadanos para administrar y servir a su comunidad municipal.</p>
+                    <div class="constitutional-ref">
+                        📜 <strong>Artículo 315 de la Constitución:</strong> Los alcaldes son elegidos por voto popular por períodos de cuatro años y no pueden ser reelegidos inmediatamente.
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-container" style="margin-top: 30px;">
+                <div class="card">
+                    <h3 class="card-icon">🗳️ Elección</h3>
+                    <ul class="feature-list">
+                        <li>Elegidos por voto popular directo</li>
+                        <li>Período de 4 años</li>
+                        <li>No reelección inmediata</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">📝 Requisitos</h3>
+                    <ul class="feature-list">
+                        <li>Ser ciudadano colombiano</li>
+                        <li>Tener al menos 25 años</li>
+                        <li>Ejercer derechos civiles</li>
+                        <li>Ser vecino del municipio</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <h3 class="card-icon">🎯 Funciones</h3>
+                    <ul class="feature-list">
+                        <li>Administrar municipios</li>
+                        <li>Ejecutar políticas locales</li>
+                        <li>Coordinar servicios públicos</li>
+                        <li>Promover desarrollo local</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="constitutional-ref" style="margin-top: 30px;">
+                💡 <strong>Recuerda:</strong> Los alcaldes son responsables de servicios como educación, salud, infraestructura y seguridad en sus municipios.
+            </div>
+        </div>
+
+        <!-- Sección Cuestionario -->
+        <div id="quiz" class="content-section">
+            <h2 class="section-title">❓ Cuestionario de Aprendizaje</h2>
+            
+            <div class="quiz-section">
+                <form id="quizForm">
+                    <!-- Pregunta 1 -->
+                    <div class="question-box">
+                        <div class="question-text">1. Según la Constitución (Art. 202), el Vicepresidente de Colombia:</div>
+                        <div class="options">
+                            <label class="option-label">
+                                <input type="radio" name="q1" value="a"> Tiene funciones permanentes de mando sobre los ministros
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q1" value="b"> Sustituye al Presidente en faltas temporales o absolutas
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q1" value="c"> Dirige siempre el Consejo de Ministros
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q1" value="d"> Es jefe de la Fuerza Pública
+                            </label>
+                        </div>
+                        <div class="feedback" id="fb1">
+                            <strong>Respuesta correcta:</strong> B. El Vicepresidente sustituye al Presidente en faltas temporales o absolutas. NO tiene funciones permanentes ni dirige el Consejo de Ministros. Solo actúa cuando es delegado o en caso de ausencia del Presidente.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="question-box">
+                        <div class="question-text">2. Los ministros, según el Artículo 208, son:</div>
+                        <div class="options">
+                            <label class="option-label">
+                                <input type="radio" name="q2" value="a"> Representantes del Congreso
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q2" value="b"> Jefes de la administración en su dependencia
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q2" value="c"> Magistrados de la Corte Constitucional
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q2" value="d"> Gobernadores de los departamentos
+                            </label>
+                        </div>
+                        <div class="feedback" id="fb2">
+                            <strong>Respuesta correcta:</strong> B. Los ministros son jefes de la administración en su dependencia. Están obligados a firmar los actos presidenciales relativos a sus ministerios y son responsables de ejecutar la ley en su sector.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="question-box">
+                        <div class="question-text">3. El período de los gobernadores en Colombia es de:</div>
+                        <div class="options">
+                            <label class="option-label">
+                                <input type="radio" name="q3" value="a"> Dos años
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q3" value="b"> Cuatro años
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q3" value="c"> Seis años
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q3" value="d"> Ocho años
+                            </label>
+                        </div>
+                        <div class="feedback" id="fb3">
+                            <strong>Respuesta correcta:</strong> B. El período de los gobernadores es de 4 años, según el Artículo 303 de la Constitución. No pueden ser reelegidos inmediatamente.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="question-box">
+                        <div class="question-text">4. Los alcaldes (Art. 315) son la máxima autoridad:</div>
+                        <div class="options">
+                            <label class="option-label">
+                                <input type="radio" name="q4" value="a"> Judicial del municipio
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q4" value="b"> Ejecutiva del municipio
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q4" value="c"> Legislativa del municipio
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q4" value="d"> Militar del municipio
+                            </label>
+                        </div>
+                        <div class="feedback" id="fb4">
+                            <strong>Respuesta correcta:</strong> B. Los alcaldes son la máxima autoridad ejecutiva del municipio. Son elegidos por voto popular y administran el municipio en todos los aspectos ejecutivos.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="question-box">
+                        <div class="question-text">5. ¿Qué órgano asesora al Presidente en las decisiones relevantes?</div>
+                        <div class="options">
+                            <label class="option-label">
+                                <input type="radio" name="q5" value="a"> El Congreso Nacional
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q5" value="b"> La Corte Constitucional
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q5" value="c"> El Consejo de Ministros
+                            </label>
+                            <label class="option-label">
+                                <input type="radio" name="q5" value="d"> El Banco de la República
+                            </label>
+                        </div>
+                        <div class="feedback" id="fb5">
+                            <strong>Respuesta correcta:</strong> C. El Consejo de Ministros asesora al Presidente en sus decisiones más importantes. Es un órgano colegiado conformado por los ministros, presidido por el Presidente de la República.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 6: Verdadero o Falso -->
+                    <div class="question-box">
+                        <div class="question-text">6. "Los alcaldes tienen funciones de jefatura de policía en su municipio" - ¿Verdadero o Falso?</div>
+                        <div class="true-false-container">
+                            <div class="tf-option">
+                                <input type="radio" name="q6" value="true" id="q6true">
+                                <label for="q6true">Verdadero</label>
+                            </div>
+                            <div class="tf-option">
+                                <input type="radio" name="q6" value="false" id="q6false">
+                                <label for="q6false">Falso</label>
+                            </div>
+                        </div>
+                        <div class="feedback" id="fb6">
+                            <strong>Respuesta correcta:</strong> Falso. Los alcaldes NO tienen funciones de jefatura de policía. La policía es responsabilidad de la Fuerza Pública bajo el mando del Presidente. Los alcaldes coordinan con la policía pero no la dirigen.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 7: Verdadero o Falso -->
+                    <div class="question-box">
+                        <div class="question-text">7. "Los ministros son responsables de la ejecución de la ley en su sector" - ¿Verdadero o Falso?</div>
+                        <div class="true-false-container">
+                            <div class="tf-option">
+                                <input type="radio" name="q7" value="true" id="q7true">
+                                <label for="q7true">Verdadero</label>
+                            </div>
+                            <div class="tf-option">
+                                <input type="radio" name="q7" value="false" id="q7false">
+                                <label for="q7false">Falso</label>
+                            </div>
+                        </div>
+                        <div class="feedback" id="fb7">
+                            <strong>Respuesta correcta:</strong> Verdadero. Los ministros son responsables de la ejecución de la ley en sus respectivos sectores. Deben firmar los actos presidenciales relacionados con su ministerio.
+                        </div>
+                    </div>
+
+                    <!-- Pregunta 8: Verdadero o Falso -->
+                    <div class="question-box">
+                        <div class="question-text">8. "Los alcaldes son elegidos por voto popular" - ¿Verdadero o Falso?</div>
+                        <div class="true-false-container">
+                            <div class="tf-option">
+                                <input type="radio" name="q8" value="true" id="q8true">
+                                <label for="q8true">Verdadero</label>
+                            </div>
+                            <div class="tf-option">
+                                <input type="radio" name="q8" value="false" id="q8false">
+                                <label for="q8false">Falso</label>
+                            </div>
+                        </div>
+                        <div class="feedback" id="fb8">
+                            <strong>Respuesta correcta:</strong> Verdadero. Los alcaldes son elegidos por voto popular directo según el Artículo 315 de la Constitución Política, para un período de 4 años.
+                        </div>
+                    </div>
+
+                    <button type="button" class="submit-btn" onclick="verificarRespuestas()">Verificar Respuestas</button>
+                </form>
+
+                <div class="results-summary" id="resultsSummary">
+                    <h3>📊 Resultado de tu Cuestionario</h3>
+                    <div class="score" id="scoreDisplay">0/8</div>
+                    <p id="scoreMessage"></p>
+                    <button class="reset-btn" onclick="resetQuiz()">Intentar Nuevamente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId).classList.add('active');
+
+            // Actualizar botones activos
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function verificarRespuestas() {
+            const respuestasCorrectas = {
+                q1: 'b',
+                q2: 'b',
+                q3: 'b',
+                q4: 'b',
+                q5: 'c',
+                q6: 'false',
+                q7: 'true',
+                q8: 'true'
+            };
+
+            let puntuacion = 0;
+            let totalPreguntas = 8;
+
+            // Verificar cada respuesta
+            for (let i = 1; i <= totalPreguntas; i++) {
+                const respuestaSeleccionada = document.querySelector(`input[name="q${i}"]:checked`);
+                const feedback = document.getElementById(`fb${i}`);
+
+                if (!respuestaSeleccionada) {
+                    feedback.classList.add('show');
+                    feedback.classList.add('incorrect');
+                    feedback.innerHTML = '<strong>⚠️ Por favor selecciona una respuesta</strong>';
+                    continue;
+                }
+
+                if (respuestaSeleccionada.value === respuestasCorrectas[`q${i}`]) {
+                    puntuacion++;
+                    feedback.classList.remove('incorrect');
+                    feedback.classList.add('correct');
+                    feedback.classList.add('show');
+                    feedback.innerHTML = '<strong>✓ Correcto:</strong> ' + feedback.innerHTML.split('<strong>Respuesta correcta:</strong>')[1];
+                } else {
+                    feedback.classList.remove('correct');
+                    feedback.classList.add('incorrect');
+                    feedback.classList.add('show');
+                    feedback.innerHTML = '<strong>✗ Incorrecto:</strong> ' + feedback.innerHTML.split('<strong>Respuesta correcta:</strong>')[1];
+                }
+            }
+
+            // Mostrar resultados
+            const resultsSummary = document.getElementById('resultsSummary');
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            const scoreMessage = document.getElementById('scoreMessage');
+
+            scoreDisplay.textContent = `${puntuacion}/${totalPreguntas}`;
+            
+            const porcentaje = (puntuacion / totalPreguntas) * 100;
+
+            if (porcentaje === 100) {
+                scoreDisplay.classList.remove('low', 'medium');
+                scoreMessage.textContent = '¡Excelente! 🎉 Has dominado perfectamente el tema de la Rama Ejecutiva. Continúa así.';
+            } else if (porcentaje >= 75) {
+                scoreDisplay.classList.remove('low');
+                scoreDisplay.classList.add('medium');
+                scoreMessage.textContent = '¡Muy bien! 👏 Has demostrado buen conocimiento. Repasa los temas donde tuviste dudas.';
+            } else if (porcentaje >= 50) {
+                scoreDisplay.classList.remove('low');
+                scoreDisplay.classList.add('medium');
+                scoreMessage.textContent = 'Buen intento. 📚 Te recomendamos revisar nuevamente las secciones sobre la estructura de la Rama Ejecutiva.';
+            } else {
+                scoreDisplay.classList.add('low');
+                scoreMessage.textContent = '🤔 Necesitas estudiar más. Te invitamos a revisar cuidadosamente cada sección antes de intentar nuevamente.';
+            }
+
+            resultsSummary.classList.add('show');
+            window.scrollTo(0, document.body.scrollHeight);
+        }
+
+        function resetQuiz() {
+            // Limpiar respuestas
+            document.getElementById('quizForm').reset();
+            
+            // Ocultar feedback
+            for (let i = 1; i <= 8; i++) {
+                document.getElementById(`fb${i}`).classList.remove('show', 'correct', 'incorrect');
+            }
+            
+            // Ocultar resultados
+            document.getElementById('resultsSummary').classList.remove('show');
+            
+            // Scroll al inicio
+            window.scrollTo(0, document.getElementById('quiz').offsetTop);
+        }
+    </script>
+</body>
+</html>

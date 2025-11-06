@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ministerio de Vivienda, Ciudad y Territorio - Presentación Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow: hidden;
+        }
+
+        .presentation-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: none;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        .slide.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .slide-content {
+            background: white;
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 1100px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.6s ease-out;
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h1 {
+            color: #667eea;
+            font-size: 2.8em;
+            margin-bottom: 25px;
+            text-align: center;
+            border-bottom: 4px solid #667eea;
+            padding-bottom: 15px;
+        }
+
+        h2 {
+            color: #764ba2;
+            font-size: 2.2em;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        h3 {
+            color: #667eea;
+            font-size: 1.6em;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        p, li {
+            font-size: 1.2em;
+            line-height: 1.8;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        ul {
+            margin-left: 30px;
+        }
+
+        li {
+            margin-bottom: 12px;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #ffd89b 0%, #19547b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: bold;
+        }
+
+        .important-box {
+            background: #f0f4ff;
+            border-left: 5px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .navigation {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 15px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            background: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.1em;
+            border-radius: 30px;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            background: #667eea;
+            color: white;
+        }
+
+        .nav-button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        .slide-counter {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            background: white;
+            padding: 15px 25px;
+            border-radius: 30px;
+            font-weight: bold;
+            color: #667eea;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+
+        .logo-placeholder {
+            width: 150px;
+            height: 150px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3em;
+            font-weight: bold;
+        }
+
+        .timeline-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .function-card {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 12px;
+            border: 2px solid #667eea;
+            transition: transform 0.3s;
+        }
+
+        .function-card:hover {
+            transform: translateX(10px);
+        }
+
+        .intro-subtitle {
+            text-align: center;
+            font-size: 1.4em;
+            color: #666;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <div class="slide-counter">
+            <span id="current-slide">1</span> / <span id="total-slides">12</span>
+        </div>
+
+        <!-- Slide 1: Portada -->
+        <div class="slide active">
+            <div class="slide-content">
+                <div class="logo-section">
+                    <div class="logo-placeholder">MV</div>
+                </div>
+                <h1>Ministerio de Vivienda, Ciudad y Territorio</h1>
+                <p class="intro-subtitle">República de Colombia</p>
+                <p class="intro-subtitle" style="margin-top: 40px; font-size: 1.1em;">Análisis Institucional Completo</p>
+            </div>
+        </div>
+
+        <!-- Slide 2: Fecha de Creación - Parte 1 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📅 Fecha de Creación</h2>
+                <div class="important-box">
+                    <h3>27 de septiembre de 2011</h3>
+                    <p>El Ministerio de Vivienda, Ciudad y Territorio fue creado mediante el <span class="highlight">artículo 14 de la Ley 1444 de 2011</span>, promulgada el 4 de mayo de 2011.</p>
+                </div>
+                <p>La creación oficial se concretó con el <span class="highlight">Decreto Ley 3571 del 27 de septiembre de 2011</span>, que estableció sus objetivos, estructura y funciones específicas.</p>
+            </div>
+        </div>
+
+        <!-- Slide 3: Fecha de Creación - Parte 2 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📅 Contexto de Creación</h2>
+                <p>La creación del Ministerio de Vivienda se dio durante el primer año del gobierno del presidente <span class="highlight">Juan Manuel Santos</span>, como parte de una reforma administrativa del Estado colombiano.</p>
+                <div class="timeline-item">
+                    <strong>4 de mayo de 2011:</strong> Se aprueba la Ley 1444 que autoriza la creación del ministerio
+                </div>
+                <div class="timeline-item">
+                    <strong>27 de septiembre de 2011:</strong> Se expide el Decreto Ley 3571 que establece su estructura
+                </div>
+                <div class="timeline-item">
+                    <strong>Septiembre 2011:</strong> Inicia operaciones oficialmente
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: Ministra Actual -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>👤 Ministra Actual</h2>
+                <div class="important-box">
+                    <h3>Helga María Rivas Ardila</h3>
+                    <p><strong>Periodo:</strong> Desde el 22 de julio de 2024</p>
+                </div>
+                <h3>Perfil Profesional:</h3>
+                <ul>
+                    <li><strong>Formación:</strong> Arquitecta de la Universidad de Los Andes, especialista en Diseño Urbano</li>
+                    <li><strong>Experiencia:</strong> Más de 25 años en gestión pública, academia y sector privado</li>
+                    <li><strong>Cargos previos en el gobierno actual:</strong>
+                        <ul>
+                            <li>Viceministra de Vivienda (inicio de la administración)</li>
+                            <li>Subgerente y Gerente del Fondo Adaptación</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 5: Trayectoria de la Ministra -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>👤 Trayectoria de la Ministra</h2>
+                <h3>Experiencia Destacada:</h3>
+                <ul>
+                    <li><strong>Secretaria Distrital de Hábitat de Bogotá</strong> durante la administración "Bogotá Humana"</li>
+                    <li><strong>Directora de la Caja de Vivienda Popular</strong> del Distrito Capital</li>
+                    <li><strong>Asesora en Desarrollo Urbano</strong> del Departamento Nacional de Planeación</li>
+                    <li><strong>Consultora de Naciones Unidas</strong> en temas de hábitat</li>
+                </ul>
+                <div class="important-box">
+                    <p><strong>Especialidad:</strong> Mejoramiento de barrios, vivienda social, gestión del suelo y adaptación al cambio climático</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Cambio de Nombre - Parte 1 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🔄 Cambio de Nombre del Ministerio</h2>
+                <h3>Sí ha cambiado de nombre</h3>
+                <div class="important-box">
+                    <p><strong>Nombre anterior:</strong> Formaba parte del <span class="highlight">Ministerio de Ambiente, Vivienda y Desarrollo Territorial</span> (MAVDT)</p>
+                    <p><strong>Nombre actual:</strong> <span class="highlight">Ministerio de Vivienda, Ciudad y Territorio</span> (Minvivienda)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Cambio de Nombre - Parte 2 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🔄 Historia del Cambio Institucional</h2>
+                <div class="timeline-item">
+                    <strong>1993:</strong> Se crea el Ministerio del Medio Ambiente
+                </div>
+                <div class="timeline-item">
+                    <strong>2002-2003:</strong> Fusión de tres ministerios durante el gobierno de Álvaro Uribe Vélez, creando el Ministerio de Ambiente, Vivienda y Desarrollo Territorial (MAVDT)
+                </div>
+                <div class="timeline-item">
+                    <strong>2011:</strong> Separación del MAVDT en dos ministerios independientes:
+                    <ul>
+                        <li>Ministerio de Ambiente y Desarrollo Sostenible</li>
+                        <li>Ministerio de Vivienda, Ciudad y Territorio</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Razones del Cambio -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🔄 ¿Por qué cambió de nombre?</h2>
+                <h3>Razones de la Separación (2011):</h3>
+                <ul>
+                    <li><strong>Especialización sectorial:</strong> Reconocimiento de que vivienda y medio ambiente son áreas con necesidades específicas que requieren atención independiente</li>
+                    <li><strong>Fortalecimiento institucional:</strong> Permitir que cada sector tenga un ministerio dedicado con recursos y enfoque específicos</li>
+                    <li><strong>Reforma del Estado:</strong> Parte de la reestructuración administrativa impulsada por el gobierno de Juan Manuel Santos</li>
+                    <li><strong>Autonomía de políticas:</strong> Facilitar la formulación independiente de políticas públicas en cada sector</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 9: Función General -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>🎯 Función General</h2>
+                <div class="important-box">
+                    <p>El Ministerio de Vivienda, Ciudad y Territorio tiene como <strong>objetivo primordial</strong>:</p>
+                    <p style="font-size: 1.3em; margin-top: 15px;">Formular, adoptar, dirigir, coordinar y ejecutar la política pública, planes y proyectos en materia de:</p>
+                </div>
+                <ul>
+                    <li><span class="highlight">Desarrollo territorial y urbano planificado</span> del país</li>
+                    <li><span class="highlight">Consolidación del sistema de ciudades</span></li>
+                    <li>Patrones de <span class="highlight">uso eficiente y sostenible del suelo</span></li>
+                    <li><span class="highlight">Acceso y financiación de vivienda</span></li>
+                    <li>Prestación de <span class="highlight">servicios públicos de agua potable y saneamiento básico</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Slide 10: Funciones Específicas 1-3 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📋 Funciones Específicas (1-3)</h2>
+                <div class="function-card">
+                    <h3>1. Políticas de Vivienda y Desarrollo Urbano</h3>
+                    <p>Formular, dirigir y coordinar las políticas, planes, programas y regulaciones en materia de vivienda y financiación de vivienda, desarrollo urbano, ordenamiento territorial y uso del suelo, agua potable y saneamiento básico.</p>
+                </div>
+                <div class="function-card">
+                    <h3>2. Renovación Urbana y Mejoramiento</h3>
+                    <p>Formular políticas sobre renovación urbana, mejoramiento integral de barrios, calidad de vivienda, urbanismo y construcción de vivienda sostenible, espacio público y equipamiento.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 11: Funciones Específicas 3-5 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📋 Funciones Específicas (3-5)</h2>
+                <div class="function-card">
+                    <h3>3. Ordenamiento Territorial</h3>
+                    <p>Determinar los mecanismos e instrumentos necesarios para orientar los procesos de desarrollo urbano y territorial en el orden nacional, regional y local, aplicando los principios rectores del ordenamiento territorial.</p>
+                </div>
+                <div class="function-card">
+                    <h3>4. Sistema Urbano de Ciudades</h3>
+                    <p>Formular, en coordinación con las entidades competentes, la política del Sistema Urbano de Ciudades y establecer los lineamientos del proceso de urbanización en Colombia.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 12: Funciones Específicas 5-6 -->
+        <div class="slide">
+            <div class="slide-content">
+                <h2>📋 Funciones Específicas (5-6)</h2>
+                <div class="function-card">
+                    <h3>5. Agua Potable y Saneamiento Básico</h3>
+                    <p>Definir esquemas para la financiación de los subsidios en los servicios públicos domiciliarios de acueducto, alcantarillado y aseo. Diseñar y promover programas especiales de agua potable y saneamiento básico para el sector rural.</p>
+                </div>
+                <div class="function-card">
+                    <h3>6. Asistencia Técnica y Cooperación</h3>
+                    <p>Prestar asistencia técnica a las entidades territoriales, autoridades ambientales y prestadores de servicios públicos. Orientar y dirigir negociaciones internacionales y procesos de cooperación en materia de vivienda, desarrollo urbano y agua potable.</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="navigation">
+        <button class="nav-button" id="prev-btn" onclick="changeSlide(-1)">◀ Anterior</button>
+        <button class="nav-button" id="next-btn" onclick="changeSlide(1)">Siguiente ▶</button>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        document.getElementById('total-slides').textContent = totalSlides;
+
+        function showSlide(n) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+
+            document.getElementById('current-slide').textContent = currentSlide + 1;
+
+            // Actualizar estado de botones
+            document.getElementById('prev-btn').disabled = currentSlide === 0;
+            document.getElementById('next-btn').disabled = currentSlide === totalSlides - 1;
+        }
+
+        function changeSlide(direction) {
+            showSlide(currentSlide + direction);
+        }
+
+        // Navegación con teclado
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'ArrowLeft') {
+                changeSlide(-1);
+            } else if (event.key === 'ArrowRight') {
+                changeSlide(1);
+            }
+        });
+
+        // Inicializar
+        document.getElementById('prev-btn').disabled = true;
+    </script>
+</body>
+</html>

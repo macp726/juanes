@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Constitución de Colombia - Educación Secundaria</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #ffc107 0%, #ff9800 100%);
+            padding: 40px 20px;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .flag-decoration {
+            font-size: 3em;
+            margin: 10px 0;
+        }
+
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            background: #f5f5f5;
+            border-bottom: 3px solid #ffc107;
+            justify-content: center;
+        }
+
+        .nav-tabs button {
+            padding: 15px 30px;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            color: #333;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-tabs button:hover {
+            background: rgba(255, 193, 7, 0.1);
+            color: #ffc107;
+        }
+
+        .nav-tabs button.active {
+            background: #ffc107;
+            color: white;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .slide {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .slide.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .slide h2 {
+            color: #1e3c72;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #ffc107;
+            padding-bottom: 10px;
+        }
+
+        .slide h3 {
+            color: #2a5298;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .info-box {
+            background: #f0f8ff;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .info-box p {
+            line-height: 1.8;
+            color: #333;
+            font-size: 1.05em;
+        }
+
+        .three-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .column-box {
+            background: white;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .column-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .column-box .icon {
+            font-size: 3em;
+            margin-bottom: 15px;
+        }
+
+        .column-box h3 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+        }
+
+        .column-box p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .list-item {
+            background: white;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+
+        .list-item strong {
+            color: #1e3c72;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-prev {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .btn-prev:hover {
+            background: #7f8c8d;
+        }
+
+        .btn-next {
+            background: #2a5298;
+            color: white;
+        }
+
+        .btn-next:hover {
+            background: #1e3c72;
+        }
+
+        .btn-submit {
+            background: #27ae60;
+            color: white;
+        }
+
+        .btn-submit:hover {
+            background: #229954;
+        }
+
+        /* Estilos para el cuestionario */
+        .quiz-container {
+            background: #f9f9f9;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 20px 0;
+        }
+
+        .question {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 5px solid #ffc107;
+        }
+
+        .question h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+
+        .option {
+            padding: 15px;
+            margin: 10px 0;
+            background: #f0f0f0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .option:hover {
+            background: #e0e0e0;
+            border-color: #ffc107;
+        }
+
+        .option input[type="radio"] {
+            margin-right: 10px;
+        }
+
+        .feedback {
+            padding: 20px;
+            margin-top: 15px;
+            border-radius: 8px;
+            display: none;
+            animation: slideIn 0.3s ease;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                max-height: 0;
+            }
+            to {
+                opacity: 1;
+                max-height: 500px;
+            }
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border: 2px solid #f5c6cb;
+            color: #721c24;
+        }
+
+        .feedback h4 {
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .feedback p {
+            line-height: 1.7;
+            margin: 5px 0;
+        }
+
+        .score {
+            text-align: center;
+            padding: 30px;
+            background: #e8f5e9;
+            border-radius: 10px;
+            margin: 20px 0;
+            display: none;
+        }
+
+        .score.show {
+            display: block;
+        }
+
+        .score h2 {
+            color: #27ae60;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #ffc107, #ff9800);
+            border-radius: 10px;
+            transition: width 0.3s ease;
+        }
+
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .image-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .emoji {
+            font-size: 3em;
+            margin: 10px 0;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav-tabs button {
+                padding: 10px 15px;
+                font-size: 0.9em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .three-columns {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="flag-decoration">🇨🇴</div>
+            <h1>La Constitución de Colombia</h1>
+            <p>Aprende sobre el gobierno, la democracia y tus derechos</p>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="nav-btn active" onclick="showSlide(0)">📜 Inicio</button>
+            <button class="nav-btn" onclick="showSlide(1)">⚖️ Tres Ramas</button>
+            <button class="nav-btn" onclick="showSlide(2)">🏛️ Rama Ejecutiva</button>
+            <button class="nav-btn" onclick="showSlide(3)">📋 El Presidente</button>
+            <button class="nav-btn" onclick="showSlide(4)">💡 Conceptos Clave</button>
+            <button class="nav-btn" onclick="showSlide(5)">❓ Cuestionario</button>
+        </div>
+
+        <div class="content">
+            <!-- SLIDE 0: Inicio -->
+            <div class="slide active">
+                <h2>¿Qué es la Constitución Política?</h2>
+                
+                <div class="emoji" style="text-align: center;">📜✨</div>
+
+                <div class="info-box">
+                    <p><strong>La Constitución Política de Colombia</strong> es la ley suprema de nuestro país. Es como las "reglas del juego" que establece cómo debe funcionar nuestro gobierno, qué derechos tenemos los ciudadanos y cuáles son nuestros deberes.</p>
+                </div>
+
+                <h3>Datos Importantes:</h3>
+                <div class="list-item">
+                    <strong>📅 Vigente desde:</strong> 1991 (reformada varias veces)
+                </div>
+                <div class="list-item">
+                    <strong>🏛️ Creada por:</strong> La Asamblea Constituyente
+                </div>
+                <div class="list-item">
+                    <strong>📖 Cantidad de artículos:</strong> 380 artículos principales
+                </div>
+                <div class="list-item">
+                    <strong>🤝 Tipo de gobierno:</strong> República Democrática
+                </div>
+
+                <h3>¿Por qué es importante?</h3>
+                <div class="three-columns">
+                    <div class="column-box">
+                        <div class="icon">⚖️</div>
+                        <h3>Protege Derechos</h3>
+                        <p>Garantiza la libertad, igualdad y dignidad de todos los colombianos</p>
+                    </div>
+                    <div class="column-box">
+                        <div class="icon">🎯</div>
+                        <h3>Organiza el Estado</h3>
+                        <p>Establece cómo funciona el gobierno y sus instituciones</p>
+                    </div>
+                    <div class="column-box">
+                        <div class="icon">🛡️</div>
+                        <h3>Establece Límites</h3>
+                        <p>Define los poderes y límites de quienes gobiernan</p>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-next" onclick="showSlide(1)">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 1: Tres Ramas -->
+            <div class="slide">
+                <h2>Las Tres Ramas del Poder Público (Artículo 113)</h2>
+
+                <div class="emoji" style="text-align: center;">⚙️🔄</div>
+
+                <div class="info-box">
+                    <p><strong>Colombia tiene un sistema de separación de poderes.</strong> Esto significa que el poder del Estado está dividido en tres ramas independientes que se controlan mutuamente. Esta división evita que una persona o grupo tenga demasiado poder.</p>
+                </div>
+
+                <div class="three-columns">
+                    <div class="column-box">
+                        <div class="icon">🏛️</div>
+                        <h3>Rama Legislativa</h3>
+                        <p><strong>Congreso Nacional</strong></p>
+                        <p>Hace las leyes. Está formada por el Senado y la Cámara de Representantes.</p>
+                        <p style="margin-top: 10px; font-size: 0.9em; color: #1e3c72;"><strong>Función:</strong> Crear y modificar leyes</p>
+                    </div>
+                    <div class="column-box">
+                        <div class="icon">🏰</div>
+                        <h3>Rama Ejecutiva</h3>
+                        <p><strong>Presidencia</strong></p>
+                        <p>Ejecuta las leyes. Dirigida por el Presidente de la República.</p>
+                        <p style="margin-top: 10px; font-size: 0.9em; color: #1e3c72;"><strong>Función:</strong> Cumplir y hacer cumplir las leyes</p>
+                    </div>
+                    <div class="column-box">
+                        <div class="icon">⚡</div>
+                        <h3>Rama Judicial</h3>
+                        <p><strong>Cortes y Juzgados</strong></p>
+                        <p>Interpreta las leyes y administra justicia. Incluye la Corte Suprema.</p>
+                        <p style="margin-top: 10px; font-size: 0.9em; color: #1e3c72;"><strong>Función:</strong> Administrar justicia</p>
+                    </div>
+                </div>
+
+                <h3>Colaboración Armónica:</h3>
+                <div class="info-box">
+                    <p>Aunque las tres ramas son independientes, <strong>deben colaborar armónicamente</strong> para lograr los fines del Estado. Esto significa que se ayudan mutuamente y se controlan para mantener el equilibrio del poder.</p>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-prev" onclick="showSlide(0)">← Anterior</button>
+                    <button class="btn-next" onclick="showSlide(2)">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 2: Rama Ejecutiva -->
+            <div class="slide">
+                <h2>La Rama Ejecutiva (Artículo 115)</h2>
+
+                <div class="emoji" style="text-align: center;">👔⚡</div>
+
+                <div class="info-box">
+                    <p><strong>La Rama Ejecutiva es responsable de ejecutar y hacer cumplir las leyes.</strong> Es la que administra el Estado en la práctica, a través de diferentes ministerios y departamentos.</p>
+                </div>
+
+                <h3>Composición del Gobierno Nacional:</h3>
+
+                <div class="list-item">
+                    <strong>1. El Presidente de la República</strong>
+                    <p>Es el máximo representante del Estado y cabeza de la Rama Ejecutiva</p>
+                </div>
+
+                <div class="list-item">
+                    <strong>2. Los Ministros del Despacho</strong>
+                    <p>Son los jefes de cada ministerio (Defensa, Educación, Salud, Ambiente, etc.). Trabajan bajo las órdenes del Presidente.</p>
+                </div>
+
+                <div class="list-item">
+                    <strong>3. Directores de Departamentos Administrativos</strong>
+                    <p>Son jefes de entidades especiales que apoyan la administración del Estado.</p>
+                </div>
+
+                <h3>Ministerios Principales en Colombia:</h3>
+                <div class="three-columns">
+                    <div class="column-box">
+                        <p>🏥 Salud</p>
+                    </div>
+                    <div class="column-box">
+                        <p>📚 Educación</p>
+                    </div>
+                    <div class="column-box">
+                        <p>🛡️ Defensa</p>
+                    </div>
+                    <div class="column-box">
+                        <p>💼 Hacienda</p>
+                    </div>
+                    <div class="column-box">
+                        <p>🌍 Ambiente</p>
+                    </div>
+                    <div class="column-box">
+                        <p>🏗️ Vivienda</p>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-prev" onclick="showSlide(1)">← Anterior</button>
+                    <button class="btn-next" onclick="showSlide(3)">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: El Presidente -->
+            <div class="slide">
+                <h2>El Presidente de la República</h2>
+
+                <div class="emoji" style="text-align: center;">🇨🇴👨‍⚖️</div>
+
+                <h3>Funciones del Presidente (Artículo 115):</h3>
+
+                <div class="column-box" style="margin: 20px 0;">
+                    <div class="icon">1️⃣</div>
+                    <h3>Jefe de Estado</h3>
+                    <p>Representa a la República ante el mundo y cumple funciones diplomáticas</p>
+                </div>
+
+                <div class="column-box" style="margin: 20px 0;">
+                    <div class="icon">2️⃣</div>
+                    <h3>Jefe de Gobierno</h3>
+                    <p>Dirige la administración pública colombiana</p>
+                </div>
+
+                <div class="column-box" style="margin: 20px 0;">
+                    <div class="icon">3️⃣</div>
+                    <h3>Suprema Autoridad Administrativa</h3>
+                    <p>Es la máxima autoridad ejecutiva del país</p>
+                </div>
+
+                <h3>Requisitos para ser Presidente (Artículo 191):</h3>
+                <div class="info-box">
+                    <p>✅ <strong>Ser colombiano por nacimiento</strong></p>
+                    <p>✅ <strong>Ser ciudadano en ejercicio</strong> (mayor de 18 años con derechos políticos)</p>
+                    <p>✅ <strong>Ser mayor de 30 años</strong></p>
+                    <p style="margin-top: 15px; font-size: 0.95em;">Nota: El artículo 191 menciona "colombiano de nacimiento o por adopción" en la versión completa.</p>
+                </div>
+
+                <h3>El Proceso Electoral:</h3>
+                <div class="list-item">
+                    <strong>Primera Vuelta:</strong> Todos los candidatos compiten. Si uno obtiene más del 50% de votos, gana.
+                </div>
+                <div class="list-item">
+                    <strong>Segunda Vuelta:</strong> Si nadie obtiene el 50%, los dos candidatos más votados van a una segunda votación.
+                </div>
+                <div class="list-item">
+                    <strong>Período:</strong> El Presidente sirve por 4 años y NO puede ser reelegido inmediatamente.
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-prev" onclick="showSlide(2)">← Anterior</button>
+                    <button class="btn-next" onclick="showSlide(4)">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: Conceptos Clave -->
+            <div class="slide">
+                <h2>Conceptos Clave sobre la Constitución</h2>
+
+                <div class="emoji" style="text-align: center;">💡📚</div>
+
+                <h3>Separación de Poderes:</h3>
+                <div class="info-box">
+                    <p><strong>Definición:</strong> Es el principio mediante el cual el poder del Estado se divide en tres ramas independientes (Legislativa, Ejecutiva y Judicial) para evitar que una sola persona o institución acumule demasiado poder.</p>
+                    <p style="margin-top: 10px;"><strong>Ejemplo:</strong> El Presidente no puede hacer leyes (eso es del Congreso) ni ser juez (eso es del Poder Judicial).</p>
+                </div>
+
+                <h3>Colaboración Armónica:</h3>
+                <div class="info-box">
+                    <p><strong>Definición:</strong> Aunque las tres ramas son independientes, deben trabajar juntas y coordinadamente para alcanzar los objetivos del Estado.</p>
+                    <p style="margin-top: 10px;"><strong>Ejemplo:</strong> El Presidente propone proyectos de ley, pero el Congreso es quien los aprueba o rechaza. Ambas ramas trabajan juntas.</p>
+                </div>
+
+                <h3>Soberanía Popular:</h3>
+                <div class="info-box">
+                    <p><strong>Definición:</strong> El poder político reside en el pueblo. Los ciudadanos son la fuente de la autoridad del gobierno.</p>
+                    <p style="margin-top: 10px;"><strong>Ejemplo:</strong> Los colombianos eligen a sus representantes mediante el voto. El gobierno existe para servir al pueblo.</p>
+                </div>
+
+                <h3>Estado de Derecho:</h3>
+                <div class="info-box">
+                    <p><strong>Definición:</strong> Un sistema donde todos, incluyendo los gobernantes, están sujetos a la ley. Nadie está por encima de la ley.</p>
+                    <p style="margin-top: 10px;"><strong>Ejemplo:</strong> El Presidente debe cumplir la Constitución y las leyes del país, así como cualquier ciudadano.</p>
+                </div>
+
+                <h3>Democracia:</h3>
+                <div class="info-box">
+                    <p><strong>Definición:</strong> Un sistema de gobierno donde el poder es ejercido por el pueblo, ya sea de forma directa o a través de representantes.</p>
+                    <p style="margin-top: 10px;"><strong>Ejemplo:</strong> Colombia es una democracia representativa: los ciudadanos votan para elegir a personas que los representen en el gobierno.</p>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-prev" onclick="showSlide(3)">← Anterior</button>
+                    <button class="btn-next" onclick="showSlide(5)">Siguiente →</button>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: Cuestionario -->
+            <div class="slide">
+                <h2>Cuestionario Interactivo 📝</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 20px;">Responde las siguientes preguntas sobre lo que has aprendido</p>
+
+                <div class="quiz-container">
+                    <!-- Pregunta 1 -->
+                    <div class="question">
+                        <h3>Pregunta 1: ¿Cuáles son las tres ramas del poder público en Colombia?</h3>
+                        <div class="option">
+                            <input type="radio" name="q1" value="a"> <strong>a)</strong> Legislativa, Ejecutiva y Judicial
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="b"> <strong>b)</strong> Senado, Cámara y Presidencia
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="c"> <strong>c)</strong> Federal, Provincial y Municipal
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q1" value="d"> <strong>d)</strong> Militar, Civil y Judicial
+                        </div>
+                        <button class="btn-submit" onclick="checkAnswer(1, 'a', 'Las tres ramas son Legislativa, Ejecutiva y Judicial, como establece el artículo 113 de la Constitución. La Legislativa hace las leyes, la Ejecutiva las ejecuta y la Judicial administra justicia.', 'Esta no es la respuesta correcta. Aunque el Senado y la Cámara son parte de la rama Legislativa, estas no son en sí mismas las tres ramas del poder.')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback1"></div>
+                    </div>
+
+                    <!-- Pregunta 2 -->
+                    <div class="question">
+                        <h3>Pregunta 2: ¿De cuántos años es el período presidencial en Colombia?</h3>
+                        <div class="option">
+                            <input type="radio" name="q2" value="a"> <strong>a)</strong> 3 años
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="b"> <strong>b)</strong> 4 años
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="c"> <strong>c)</strong> 5 años
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q2" value="d"> <strong>d)</strong> 6 años
+                        </div>
+                        <button class="btn-submit" onclick="checkAnswer(2, 'b', '¡Correcto! El período presidencial en Colombia es de 4 años. Además, desde 2015, los presidentes no pueden ser reelegidos inmediatamente (pueden volver después de 4 años sin ser presidente).', 'La respuesta correcta es 4 años. Este período se estableció en la Constitución de 1991.')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback2"></div>
+                    </div>
+
+                    <!-- Pregunta 3 -->
+                    <div class="question">
+                        <h3>Pregunta 3: ¿Cuál es la edad mínima requerida para ser Presidente de Colombia?</h3>
+                        <div class="option">
+                            <input type="radio" name="q3" value="a"> <strong>a)</strong> 25 años
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="b"> <strong>b)</strong> 28 años
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="c"> <strong>c)</strong> 30 años
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q3" value="d"> <strong>d)</strong> 35 años
+                        </div>
+                        <button class="btn-submit" onclick="checkAnswer(3, 'c', '¡Correcto! Según el artículo 191 de la Constitución, se requiere ser mayor de 30 años para ser Presidente. También debe ser colombiano por nacimiento y ciudadano en ejercicio.', 'Incorrecto. El artículo 191 de la Constitución establece que se necesita ser mayor de 30 años para ser Presidente.')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback3"></div>
+                    </div>
+
+                    <!-- Pregunta 4 -->
+                    <div class="question">
+                        <h3>Pregunta 4: ¿Qué significa que los órganos del Estado colaboren \"armónicamente\"?</h3>
+                        <div class="option">
+                            <input type="radio" name="q4" value="a"> <strong>a)</strong> Que todos hacen exactamente lo mismo
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="b"> <strong>b)</strong> Que trabajan juntos de manera coordinada para lograr los objetivos del Estado
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="c"> <strong>c)</strong> Que uno controla a los otros completamente
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q4" value="d"> <strong>d)</strong> Que no se comunican entre sí
+                        </div>
+                        <button class="btn-submit" onclick="checkAnswer(4, 'b', 'Exacto. La colaboración armónica significa que aunque las tres ramas del poder son independientes, deben trabajar coordinadamente para alcanzar los objetivos del Estado y servir a los ciudadanos.', 'No es correcto. La colaboración armónica no significa que todos hagan lo mismo, ni que uno controle a los otros. Significa que trabajan coordinadamente respetando su independencia.')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback4"></div>
+                    </div>
+
+                    <!-- Pregunta 5 -->
+                    <div class="question">
+                        <h3>Pregunta 5: ¿Quién compone el Gobierno Nacional según la Constitución?</h3>
+                        <div class="option">
+                            <input type="radio" name="q5" value="a"> <strong>a)</strong> Solo el Presidente
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="b"> <strong>b)</strong> El Presidente y los Gobernadores
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="c"> <strong>c)</strong> El Presidente, los Ministros del Despacho y los Directores de Departamentos Administrativos
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q5" value="d"> <strong>d)</strong> El Presidente, el Senado y la Cámara
+                        </div>
+                        <button class="btn-submit" onclick="checkAnswer(5, 'c', 'Correcto. El Gobierno Nacional está conformado por: el Presidente, los Ministros del Despacho (jefes de ministerios) y los Directores de Departamentos Administrativos, como se enseña en la presentación.', 'No es correcto. El Gobierno Nacional específicamente está formado por el Presidente, Ministros del Despacho y Directores de Departamentos Administrativos. Gobernadores y Congresistas pertenecen a otros niveles.')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback5"></div>
+                    </div>
+
+                    <!-- Pregunta 6 -->
+                    <div class="question">
+                        <h3>Pregunta 6: En el artículo 115, se menciona que el Presidente es...</h3>
+                        <div class="option">
+                            <input type="radio" name="q6" value="a"> <strong>a)</strong> Solo Jefe de Gobierno
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="b"> <strong>b)</strong> Solo Jefe de Estado
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="c"> <strong>c)</strong> Jefe de Estado, Jefe de Gobierno y Suprema Autoridad Administrativa
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q6" value="d"> <strong>d)</strong> Jefe del Congreso
+                        </div>
+                        <button class="btn-submit" onclick="checkAnswer(6, 'c', 'Perfecto. El Presidente de Colombia tiene tres roles simultáneamente: Jefe de Estado (representa la República en el exterior), Jefe de Gobierno (dirige la administración) y Suprema Autoridad Administrativa (máxima autoridad ejecutiva).', 'No es correcto. El Presidente tiene tres funciones simultáneamente como establece el artículo 115: es Jefe de Estado, Jefe de Gobierno y Suprema Autoridad Administrativa.')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback6"></div>
+                    </div>
+
+                    <!-- Pregunta 7 -->
+                    <div class="question">
+                        <h3>Pregunta 7: Verdadero o Falso - Los órganos del Estado NO pueden colaborar entre sí porque deben mantenerse completamente separados</h3>
+                        <div class="option">
+                            <input type="radio" name="q7" value="a"> <strong>Verdadero</strong>
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q7" value="b"> <strong>Falso</strong>
+                        </div>
+                        <button class="btn-submit" onclick="checkAnswer(7, 'b', 'Correcto. Aunque las tres ramas son independientes (separación de poderes), SÍ deben colaborar armónicamente. La separación significa que no se concentra el poder, no que no se comuniquen.', 'Incorrecto. Aunque son independientes, las tres ramas DEBEN colaborar armónicamente para lograr los fines del Estado. La separación de poderes no significa aislamiento total.')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback7"></div>
+                    </div>
+
+                    <!-- Pregunta 8 -->
+                    <div class="question">
+                        <h3>Pregunta 8: En una elección presidencial, si ningún candidato obtiene el 50% de votos en primera vuelta, ¿qué sucede?</h3>
+                        <div class="option">
+                            <input type="radio" name="q8" value="a"> <strong>a)</strong> El candidato con más votos gana automáticamente
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="b"> <strong>b)</strong> Se realiza una segunda votación entre los dos candidatos más votados
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="c"> <strong>c)</strong> El Congreso elige al Presidente
+                        </div>
+                        <div class="option">
+                            <input type="radio" name="q8" value="d"> <strong>d)</strong> Se anula la elección y se hace de nuevo
+                        </div>
+                        <button class="btn-submit" onclick="checkAnswer(8, 'b', 'Correcto. Según la Constitución, si ningún candidato obtiene más del 50% en la primera vuelta, se realiza una segunda votación entre los dos candidatos más votados. Así se garantiza que el Presidente elegido tiene mayoría de votos.', 'Incorrecto. El proceso correcto es hacer una segunda votación entre los dos candidatos más votados si nadie obtiene el 50% en la primera vuelta.')">Verificar Respuesta</button>
+                        <div class="feedback" id="feedback8"></div>
+                    </div>
+                </div>
+
+                <div class="score" id="scoreBox">
+                    <h2 id="scoreText"></h2>
+                    <p id="scoreMessage"></p>
+                    <button class="btn-next" onclick="resetQuiz()">Reiniciar Cuestionario</button>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px;">
+                    <p id="questionsAnswered" style="color: #666; margin-bottom: 10px;"></p>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+                    </div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn-prev" onclick="showSlide(4)">← Anterior</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let currentSlide = 0;
+        let answeredQuestions = 0;
+        let correctAnswers = 0;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slide');
+            const navBtns = document.querySelectorAll('.nav-btn');
+            
+            slides.forEach((slide, i) => {
+                slide.classList.remove('active');
+                navBtns[i].classList.remove('active');
+            });
+            
+            slides[index].classList.add('active');
+            navBtns[index].classList.add('active');
+            currentSlide = index;
+            
+            window.scrollTo(0, 0);
+        }
+
+        function checkAnswer(questionNum, correctAnswer, correctMsg, incorrectMsg) {
+            const selectedAnswer = document.querySelector(`input[name="q${questionNum}"]:checked`);
+            const feedbackElement = document.getElementById(`feedback${questionNum}`);
+            
+            if (!selectedAnswer) {
+                alert('Por favor selecciona una respuesta');
+                return;
+            }
+            
+            const isCorrect = selectedAnswer.value === correctAnswer;
+            answeredQuestions++;
+            
+            if (isCorrect) {
+                correctAnswers++;
+                feedbackElement.classList.remove('incorrect');
+                feedbackElement.classList.add('correct', 'show');
+                feedbackElement.innerHTML = `
+                    <h4>✅ ¡Respuesta Correcta!</h4>
+                    <p>${correctMsg}</p>
+                `;
+            } else {
+                feedbackElement.classList.remove('correct');
+                feedbackElement.classList.add('incorrect', 'show');
+                feedbackElement.innerHTML = `
+                    <h4>❌ Respuesta Incorrecta</h4>
+                    <p>${incorrectMsg}</p>
+                `;
+            }
+            
+            updateProgress();
+            
+            // Si todas las preguntas están respondidas, mostrar puntuación
+            if (answeredQuestions === 8) {
+                setTimeout(showFinalScore, 500);
+            }
+        }
+
+        function updateProgress() {
+            const percentage = (answeredQuestions / 8) * 100;
+            document.getElementById('progressFill').style.width = percentage + '%';
+            document.getElementById('questionsAnswered').textContent = 
+                `Preguntas respondidas: ${answeredQuestions} de 8`;
+        }
+
+        function showFinalScore() {
+            const percentage = (correctAnswers / 8) * 100;
+            const scoreBox = document.getElementById('scoreBox');
+            const scoreText = document.getElementById('scoreText');
+            const scoreMessage = document.getElementById('scoreMessage');
+            
+            scoreBox.classList.add('show');
+            
+            if (percentage === 100) {
+                scoreText.textContent = `¡Perfecto! 🌟 ${correctAnswers}/8`;
+                scoreMessage.textContent = 'Dominas perfectamente los temas de la Constitución. ¡Excelente trabajo!';
+                scoreBox.style.background = '#d4edda';
+            } else if (percentage >= 75) {
+                scoreText.textContent = `¡Muy Bien! 👏 ${correctAnswers}/8`;
+                scoreMessage.textContent = 'Has entendido muy bien los temas principales. Repasa los que fallaste.';
+                scoreBox.style.background = '#d1ecf1';
+            } else if (percentage >= 60) {
+                scoreText.textContent = `Bien 📚 ${correctAnswers}/8`;
+                scoreMessage.textContent = 'Tienes una buena base. Te recomendamos repasar la presentación.';
+                scoreBox.style.background = '#fff3cd';
+            } else {
+                scoreText.textContent = `Necesitas Práctica 📖 ${correctAnswers}/8`;
+                scoreMessage.textContent = 'Repasa la presentación y vuelve a intentar el cuestionario.';
+                scoreBox.style.background = '#f8d7da';
+            }
+        }
+
+        function resetQuiz() {
+            const allRadios = document.querySelectorAll('input[type="radio"]');
+            allRadios.forEach(radio => radio.checked = false);
+            
+            const allFeedbacks = document.querySelectorAll('.feedback');
+            allFeedbacks.forEach(feedback => feedback.classList.remove('show', 'correct', 'incorrect'));
+            
+            answeredQuestions = 0;
+            correctAnswers = 0;
+            document.getElementById('scoreBox').classList.remove('show');
+            document.getElementById('progressFill').style.width = '0%';
+            document.getElementById('questionsAnswered').textContent = '';
+            
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
