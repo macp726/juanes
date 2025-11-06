@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanguardias Literarias - Presentación Interactiva</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .nav-tabs {
+            display: flex;
+            gap: 10px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 2px solid #e9ecef;
+            overflow-x: auto;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 12px 20px;
+            border: none;
+            background: white;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+            color: #667eea;
+            transition: all 0.3s ease;
+            border: 2px solid #e9ecef;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-color: #667eea;
+        }
+
+        .content {
+            padding: 40px;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .movement-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 5px solid #667eea;
+        }
+
+        .movement-title {
+            font-size: 2em;
+            color: #667eea;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .movement-icon {
+            font-size: 1.5em;
+        }
+
+        .section-title {
+            font-size: 1.3em;
+            color: #764ba2;
+            margin-top: 20px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+
+        .characteristics {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        .characteristics ul {
+            list-style-position: inside;
+            line-height: 1.8;
+            color: #333;
+        }
+
+        .characteristics li {
+            margin-bottom: 10px;
+            padding-left: 10px;
+        }
+
+        .characteristics li strong {
+            color: #667eea;
+        }
+
+        .quiz-section {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px;
+            border-radius: 15px;
+            margin-top: 40px;
+        }
+
+        .quiz-section h2 {
+            color: #667eea;
+            margin-bottom: 30px;
+            font-size: 2em;
+            text-align: center;
+        }
+
+        .question-block {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 25px;
+            border-left: 5px solid #667eea;
+        }
+
+        .question-text {
+            font-size: 1.1em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .option-label:hover {
+            background: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .option-label input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 20px;
+            height: 20px;
+            accent-color: #667eea;
+        }
+
+        .feedback {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+            border-left: 4px solid;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback-title {
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.05em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-submit:active {
+            transform: translateY(-1px);
+        }
+
+        .result-summary {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .result-summary.show {
+            display: block;
+        }
+
+        .result-score {
+            font-size: 3em;
+            color: #667eea;
+            margin: 20px 0;
+            font-weight: 700;
+        }
+
+        .btn-reset {
+            background: #6c757d;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .btn-reset:hover {
+            background: #5a6268;
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .nav-tabs {
+                justify-content: center;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .movement-card {
+                padding: 20px;
+            }
+
+            .movement-title {
+                font-size: 1.5em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 Vanguardias Literarias del Siglo XX</h1>
+            <p>Principales movimientos y sus características</p>
+        </header>
+
+        <div class="nav-tabs">
+            <button class="tab-btn active" onclick="showTab('dadaismo')">Dadaísmo</button>
+            <button class="tab-btn" onclick="showTab('surrealismo')">Surrealismo</button>
+            <button class="tab-btn" onclick="showTab('cubismo')">Cubismo</button>
+            <button class="tab-btn" onclick="showTab('creacionismo')">Creacionismo</button>
+            <button class="tab-btn" onclick="showTab('ultraismo')">Ultraísmo</button>
+            <button class="tab-btn" onclick="showTab('futurismo')">Futurismo</button>
+            <button class="tab-btn" onclick="showTab('expresionismo')">Expresionismo</button>
+            <button class="tab-btn" onclick="showTab('quiz')">📝 Cuestionario</button>
+        </div>
+
+        <div class="content">
+            <!-- DADAÍSMO -->
+            <div id="dadaismo" class="tab-content active">
+                <div class="movement-card">
+                    <div class="movement-title">
+                        <span class="movement-icon">🎭</span>
+                        Dadaísmo
+                    </div>
+                    
+                    <div class="section-title">Concepto General</div>
+                    <p style="color: #333; line-height: 1.8; margin-bottom: 20px;">
+                        El dadaísmo es un movimiento artístico y literario de vanguardia que surgió durante la Primera Guerra Mundial, caracterizado por el rechazo absoluto de la razón, la lógica y las normas artísticas tradicionales. Busca provocar mediante el absurdo y lo irracional.
+                    </p>
+
+                    <div class="section-title">Características Principales</div>
+                    <div class="characteristics">
+                        <ul>
+                            <li><strong>Exaltación de lo absurdo:</strong> Celebra lo irracional y lo disparatado como forma de expresión artística.</li>
+                            <li><strong>Rechazo de la tradición:</strong> Se opone directamente a las convenciones artísticas establecidas.</li>
+                            <li><strong>Antiarte:</strong> Considera el arte tradicional como parte del sistema que causó la guerra.</li>
+                            <li><strong>Uso del azar:</strong> Incorpora elementos casuales en la creación artística.</li>
+                            <li><strong>Ready-made:</strong> Transforma objetos cotidianos en obras de arte.</li>
+                            <li><strong>Humor y sarcasmo:</strong> Utiliza la burla como medio de expresión.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section-title">Período y Ubicación</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        <strong>Período:</strong> 1916-1924 | <strong>Origen:</strong> Zurich, Suiza (Cabaret Voltaire)
+                    </p>
+
+                    <div class="section-title">Representantes</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        Tristán Tzara, Marcel Duchamp, Hugo Ball, Hugo Hausmann
+                    </p>
+                </div>
+            </div>
+
+            <!-- SURREALISMO -->
+            <div id="surrealismo" class="tab-content">
+                <div class="movement-card">
+                    <div class="movement-title">
+                        <span class="movement-icon">💭</span>
+                        Surrealismo
+                    </div>
+                    
+                    <div class="section-title">Concepto General</div>
+                    <p style="color: #333; line-height: 1.8; margin-bottom: 20px;">
+                        El surrealismo es un movimiento artístico y literario fundado por André Breton en 1924 que busca la expresión del subconsciente y los sueños. Libera la mente de las restricciones racionales para acceder a la creatividad pura del inconsciente.
+                    </p>
+
+                    <div class="section-title">Características Principales</div>
+                    <div class="characteristics">
+                        <ul>
+                            <li><strong>Automatismo psíquico:</strong> Escritura automática sin control racional.</li>
+                            <li><strong>Exploración del inconsciente:</strong> Acceso a los sueños y fantasías del subconsciente.</li>
+                            <li><strong>Imágenes oníricas:</strong> Representación de mundos fantásticos y absurdos.</li>
+                            <li><strong>Cadáver exquisito:</strong> Técnica colaborativa donde cada participante agrega sin ver lo anterior.</li>
+                            <li><strong>Libertad expresiva:</strong> Total desinhibición del pensamiento y la creación.</li>
+                            <li><strong>Simbolismo y metáforas:</strong> Uso profundo de símbolos para representar lo subconsciente.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section-title">Período y Ubicación</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        <strong>Período:</strong> 1924-1945+ | <strong>Origen:</strong> París, Francia
+                    </p>
+
+                    <div class="section-title">Representantes</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        André Breton, Salvador Dalí, Luis Buñuel, Max Ernst
+                    </p>
+                </div>
+            </div>
+
+            <!-- CUBISMO -->
+            <div id="cubismo" class="tab-content">
+                <div class="movement-card">
+                    <div class="movement-title">
+                        <span class="movement-icon">📐</span>
+                        Cubismo
+                    </div>
+                    
+                    <div class="section-title">Concepto General</div>
+                    <p style="color: #333; line-height: 1.8; margin-bottom: 20px;">
+                        El cubismo literario es un movimiento de vanguardia que integra elementos visuales en la poesía, rompiendo con la narrativa lineal tradicional. Descompone la realidad en múltiples perspectivas y puntos de vista simultáneos.
+                    </p>
+
+                    <div class="section-title">Características Principales</div>
+                    <div class="characteristics">
+                        <ul>
+                            <li><strong>Experimentación tipográfica:</strong> Disposición innovadora de las palabras en la página.</li>
+                            <li><strong>Caligramas:</strong> Poemas visuales que forman figuras con las palabras.</li>
+                            <li><strong>Ruptura sintáctica:</strong> Eliminación de puntuación y orden gramatical tradicional.</li>
+                            <li><strong>Múltiples perspectivas:</strong> Presentación simultánea de varios puntos de vista.</li>
+                            <li><strong>Visión fragmentada:</strong> Descomposición de la realidad en elementos geométricos.</li>
+                            <li><strong>Integración visual-textual:</strong> La forma y el contenido se fusionan en la obra.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section-title">Período y Ubicación</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        <strong>Período:</strong> 1913-1920s | <strong>Origen:</strong> París, Francia
+                    </p>
+
+                    <div class="section-title">Representantes</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        Guillaume Apollinaire, Max Jacob, Blaise Cendrars, Pierre Reverdy
+                    </p>
+                </div>
+            </div>
+
+            <!-- CREACIONISMO -->
+            <div id="creacionismo" class="tab-content">
+                <div class="movement-card">
+                    <div class="movement-title">
+                        <span class="movement-icon">✨</span>
+                        Creacionismo
+                    </div>
+                    
+                    <div class="section-title">Concepto General</div>
+                    <p style="color: #333; line-height: 1.8; margin-bottom: 20px;">
+                        El creacionismo es un movimiento poético de vanguardia que defiende la creación absoluta de mundos nuevos e independientes de la realidad. El poeta actúa como un dios creador que genera sus propias reglas y universos poéticos.
+                    </p>
+
+                    <div class="section-title">Características Principales</div>
+                    <div class="characteristics">
+                        <ul>
+                            <li><strong>Independencia del poeta:</strong> Libertad creadora absoluta sin seguir normas impuestas.</li>
+                            <li><strong>Creación de mundos nuevos:</strong> Generación de realidades poéticas completamente originales.</li>
+                            <li><strong>Rechazo a la realidad objetiva:</strong> No imita la naturaleza, la crea de nuevo.</li>
+                            <li><strong>Libertad lingüística:</strong> Uso libre del lenguaje e incorporación de palabras nuevas.</li>
+                            <li><strong>Imágenes originales:</strong> Metáforas y analogías completamente innovadoras.</li>
+                            <li><strong>Autonomía de la obra:</strong> La poesía existe como objeto autónomo independiente.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section-title">Período y Ubicación</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        <strong>Período:</strong> 1916-1925 | <strong>Origen:</strong> París/Hispanoamérica
+                    </p>
+
+                    <div class="section-title">Representantes</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        Vicente Huidobro (Chile), Pierre Reverdy (Francia), Juan Larrea (España)
+                    </p>
+                </div>
+            </div>
+
+            <!-- ULTRAÍSMO -->
+            <div id="ultraismo" class="tab-content">
+                <div class="movement-card">
+                    <div class="movement-title">
+                        <span class="movement-icon">🚀</span>
+                        Ultraísmo
+                    </div>
+                    
+                    <div class="section-title">Concepto General</div>
+                    <p style="color: #333; line-height: 1.8; margin-bottom: 20px;">
+                        El ultraísmo es un movimiento literario español que busca ir más allá (ultra) del modernismo tradicional. Propone la renovación radical de las estructuras literarias, enfatizando la metáfora como esencia de la escritura poética.
+                    </p>
+
+                    <div class="section-title">Características Principales</div>
+                    <div class="characteristics">
+                        <ul>
+                            <li><strong>Rechazo del modernismo:</strong> Oposición activa contra los estilos literarios previos.</li>
+                            <li><strong>Primacía de la metáfora:</strong> La metáfora es el elemento fundamental de la poesía.</li>
+                            <li><strong>Libertad de la palabra:</strong> Experimentación radical con el lenguaje poético.</li>
+                            <li><strong>Influencia del futurismo:</strong> Adopta elementos dinámicos y modernistas.</li>
+                            <li><strong>Renovación estructural:</strong> Ruptura con las formas métricas tradicionales.</li>
+                            <li><strong>Vitalidad expresiva:</strong> Énfasis en la energía y la fuerza del lenguaje.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section-title">Período y Ubicación</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        <strong>Período:</strong> 1919-1925 | <strong>Origen:</strong> España (Madrid)
+                    </p>
+
+                    <div class="section-title">Representantes</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        Rafael Cansinos Assens, Jorge Luis Borges (en España), Guillermo de Torre
+                    </p>
+                </div>
+            </div>
+
+            <!-- FUTURISMO -->
+            <div id="futurismo" class="tab-content">
+                <div class="movement-card">
+                    <div class="movement-title">
+                        <span class="movement-icon">⚡</span>
+                        Futurismo
+                    </div>
+                    
+                    <div class="section-title">Concepto General</div>
+                    <p style="color: #333; line-height: 1.8; margin-bottom: 20px;">
+                        El futurismo es un movimiento de vanguardia italiano obsesionado con la velocidad, la tecnología y la modernidad. Busca capturar el dinamismo de la vida contemporánea a través de formas fragmentadas y experimentación formal radical.
+                    </p>
+
+                    <div class="section-title">Características Principales</div>
+                    <div class="characteristics">
+                        <ul>
+                            <li><strong>Exaltación de la velocidad:</strong> Celebra el movimiento y la aceleración de la vida moderna.</li>
+                            <li><strong>Fascinación por la tecnología:</strong> Adoración de máquinas, automóviles y aviones.</li>
+                            <li><strong>Dinamismo y movimiento:</strong> Representa el vértigo del cambio continuo.</li>
+                            <li><strong>Revolución tipográfica:</strong> Uso de diversas fuentes, colores y disposiciones audaces.</li>
+                            <li><strong>Ruptura sintáctica:</strong> Destrucción de la puntuación y la gramática tradicional.</li>
+                            <li><strong>Violencia expresiva:</strong> Exaltación de la confrontación y la acción.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section-title">Período y Ubicación</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        <strong>Período:</strong> 1909-1944 | <strong>Origen:</strong> Italia
+                    </p>
+
+                    <div class="section-title">Representantes</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        Filippo Tommaso Marinetti, Ezra Pound, Vladimir Mayakovsky
+                    </p>
+                </div>
+            </div>
+
+            <!-- EXPRESIONISMO -->
+            <div id="expresionismo" class="tab-content">
+                <div class="movement-card">
+                    <div class="movement-title">
+                        <span class="movement-icon">😢</span>
+                        Expresionismo
+                    </div>
+                    
+                    <div class="section-title">Concepto General</div>
+                    <p style="color: #333; line-height: 1.8; margin-bottom: 20px;">
+                        El expresionismo es un movimiento de vanguardia surgido en Alemania que prioriza la expresión de emociones intensas sobre la representación objetiva de la realidad. Distorsiona las formas para transmitir sentimientos de angustia, soledad y desesperación.
+                    </p>
+
+                    <div class="section-title">Características Principales</div>
+                    <div class="characteristics">
+                        <ul>
+                            <li><strong>Distorsión de la realidad:</strong> Deformación deliberada para expresar estados emocionales.</li>
+                            <li><strong>Subjetividad extrema:</strong> Prioriza la visión personal sobre la objetividad.</li>
+                            <li><strong>Temas oscuros:</strong> Exploración de la soledad, angustia, miedo y muerte.</li>
+                            <li><strong>Intensidad emocional:</strong> Expresión cruda y sin censura de sentimientos profundos.</li>
+                            <li><strong>Rechazo de la belleza tradicional:</strong> Busca lo morboso y lo prohibido.</li>
+                            <li><strong>Pesimismo:</strong> Visión pesimista y crítica de la realidad moderna.</li>
+                        </ul>
+                    </div>
+
+                    <div class="section-title">Período y Ubicación</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        <strong>Período:</strong> 1905-1945 | <strong>Origen:</strong> Alemania
+                    </p>
+
+                    <div class="section-title">Representantes</div>
+                    <p style="color: #333; line-height: 1.8;">
+                        Georg Büchner, Frank Wedekind, August Strindberg, Franz Kafka
+                    </p>
+                </div>
+            </div>
+
+            <!-- CUESTIONARIO -->
+            <div id="quiz" class="tab-content">
+                <div class="quiz-section">
+                    <h2>📝 Cuestionario Interactivo</h2>
+                    <p style="text-align: center; color: #666; margin-bottom: 30px; font-size: 1.05em;">
+                        Responde las siguientes preguntas para evaluar tu comprensión de las vanguardias literarias. Recibirás retroalimentación inmediata.
+                    </p>
+
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+
+                    <form id="quizForm">
+                        <!-- Pregunta 1 -->
+                        <div class="question-block">
+                            <div class="question-text">1. ¿Cuál es la característica principal del Dadaísmo?</div>
+                            <div class="options">
+                                <label class="option-label">
+                                    <input type="radio" name="q1" value="a">
+                                    <span>a) La exploración del subconsciente mediante la escritura automática</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q1" value="b">
+                                    <span>b) La exaltación de lo absurdo y el rechazo de la razón y la lógica</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q1" value="c">
+                                    <span>c) La celebración de la velocidad y la tecnología moderna</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q1" value="d">
+                                    <span>d) La creación de mundos poéticos completamente nuevos e independientes</span>
+                                </label>
+                            </div>
+                            <div class="feedback" id="feedback1"></div>
+                        </div>
+
+                        <!-- Pregunta 2 -->
+                        <div class="question-block">
+                            <div class="question-text">2. ¿Quién fue el fundador del Surrealismo?</div>
+                            <div class="options">
+                                <label class="option-label">
+                                    <input type="radio" name="q2" value="a">
+                                    <span>a) Filippo Tommaso Marinetti</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q2" value="b">
+                                    <span>b) André Breton</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q2" value="c">
+                                    <span>c) Vicente Huidobro</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q2" value="d">
+                                    <span>d) Guillaume Apollinaire</span>
+                                </label>
+                            </div>
+                            <div class="feedback" id="feedback2"></div>
+                        </div>
+
+                        <!-- Pregunta 3 -->
+                        <div class="question-block">
+                            <div class="question-text">3. Los "Caligramas" son características principales del:</div>
+                            <div class="options">
+                                <label class="option-label">
+                                    <input type="radio" name="q3" value="a">
+                                    <span>a) Cubismo Literario</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q3" value="b">
+                                    <span>b) Expresionismo</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q3" value="c">
+                                    <span>c) Futurismo</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q3" value="d">
+                                    <span>d) Creacionismo</span>
+                                </label>
+                            </div>
+                            <div class="feedback" id="feedback3"></div>
+                        </div>
+
+                        <!-- Pregunta 4 -->
+                        <div class="question-block">
+                            <div class="question-text">4. ¿Cuál de los siguientes poetas fue un representante importante del Creacionismo?</div>
+                            <div class="options">
+                                <label class="option-label">
+                                    <input type="radio" name="q4" value="a">
+                                    <span>a) Franz Kafka</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q4" value="b">
+                                    <span>b) Vicente Huidobro</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q4" value="c">
+                                    <span>c) Salvador Dalí</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q4" value="d">
+                                    <span>d) Tristán Tzara</span>
+                                </label>
+                            </div>
+                            <div class="feedback" id="feedback4"></div>
+                        </div>
+
+                        <!-- Pregunta 5 -->
+                        <div class="question-block">
+                            <div class="question-text">5. El Ultraísmo surgió como oposición a:</div>
+                            <div class="options">
+                                <label class="option-label">
+                                    <input type="radio" name="q5" value="a">
+                                    <span>a) El Romanticismo inglés</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q5" value="b">
+                                    <span>b) El Realismo del siglo XIX</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q5" value="c">
+                                    <span>c) El Modernismo tradicional</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q5" value="d">
+                                    <span>d) El Naturalismo de Émile Zola</span>
+                                </label>
+                            </div>
+                            <div class="feedback" id="feedback5"></div>
+                        </div>
+
+                        <!-- Pregunta 6 -->
+                        <div class="question-block">
+                            <div class="question-text">6. ¿Cuál es la obsesión central del Futurismo?</div>
+                            <div class="options">
+                                <label class="option-label">
+                                    <input type="radio" name="q6" value="a">
+                                    <span>a) Los sueños y el inconsciente</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q6" value="b">
+                                    <span>b) La velocidad, la tecnología y el dinamismo moderno</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q6" value="c">
+                                    <span>c) La expresión de emociones internas y la angustia</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q6" value="d">
+                                    <span>d) La creación de formas visuales con las palabras</span>
+                                </label>
+                            </div>
+                            <div class="feedback" id="feedback6"></div>
+                        </div>
+
+                        <!-- Pregunta 7 -->
+                        <div class="question-block">
+                            <div class="question-text">7. El Expresionismo se caracteriza principalmente por:</div>
+                            <div class="options">
+                                <label class="option-label">
+                                    <input type="radio" name="q7" value="a">
+                                    <span>a) La distorsión de la realidad para expresar estados emocionales intensos</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q7" value="b">
+                                    <span>b) La reproducción exacta de la realidad con precisión científica</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q7" value="c">
+                                    <span>c) El uso de símbolos únicamente de la mitología clásica</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q7" value="d">
+                                    <span>d) La exaltación de la belleza ideal y la perfección formal</span>
+                                </label>
+                            </div>
+                            <div class="feedback" id="feedback7"></div>
+                        </div>
+
+                        <!-- Pregunta 8 -->
+                        <div class="question-block">
+                            <div class="question-text">8. ¿En qué país surgió principalmente el Expresionismo?</div>
+                            <div class="options">
+                                <label class="option-label">
+                                    <input type="radio" name="q8" value="a">
+                                    <span>a) Italia</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q8" value="b">
+                                    <span>b) Francia</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q8" value="c">
+                                    <span>c) Alemania</span>
+                                </label>
+                                <label class="option-label">
+                                    <input type="radio" name="q8" value="d">
+                                    <span>d) España</span>
+                                </label>
+                            </div>
+                            <div class="feedback" id="feedback8"></div>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Enviar Respuestas</button>
+                    </form>
+
+                    <div class="result-summary" id="resultSummary">
+                        <h3 style="color: #667eea; font-size: 1.5em;">🎉 ¡Cuestionario Completado!</h3>
+                        <div class="result-score" id="resultScore"></div>
+                        <p id="resultMessage" style="font-size: 1.1em; color: #666; margin: 20px 0;"></p>
+                        <button class="btn-reset" onclick="resetQuiz()">Intentar de Nuevo</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const answers = {
+            q1: 'b', // Exaltación de lo absurdo
+            q2: 'b', // André Breton
+            q3: 'a', // Cubismo Literario
+            q4: 'b', // Vicente Huidobro
+            q5: 'c', // Modernismo
+            q6: 'b', // Velocidad y tecnología
+            q7: 'a', // Distorsión para expresar emociones
+            q8: 'c'  // Alemania
+        };
+
+        const feedbacks = {
+            q1: {
+                correct: '✅ ¡Correcto! El Dadaísmo se caracteriza por la exaltación de lo absurdo y el rechazo total de la razón, nacido como reacción a la Primera Guerra Mundial.',
+                incorrect: '❌ Incorrecto. La respuesta correcta es: La exaltación de lo absurdo y el rechazo de la razón. El Dadaísmo celebra lo irracional como forma de protesta contra la lógica que llevó a la guerra.'
+            },
+            q2: {
+                correct: '✅ ¡Correcto! André Breton fundó el Surrealismo en 1924, publicando el "Primer Manifiesto Surrealista".',
+                incorrect: '❌ Incorrecto. La respuesta correcta es: André Breton. Él publicó el Manifiesto Surrealista en 1924 e inspiró el movimiento en la exploración del subconsciente.'
+            },
+            q3: {
+                correct: '✅ ¡Correcto! Los caligramas fueron la expresión principal del Cubismo Literario, creados especialmente por Guillaume Apollinaire.',
+                incorrect: '❌ Incorrecto. La respuesta correcta es: Cubismo Literario. Los caligramas son poemas visuales que forman figuras con las palabras, característica fundamental del cubismo literario.'
+            },
+            q4: {
+                correct: '✅ ¡Correcto! Vicente Huidobro fue el fundador del Creacionismo, movimiento que él instauró en 1916.',
+                incorrect: '❌ Incorrecto. La respuesta correcta es: Vicente Huidobro. El poeta chileno fue el fundador del Creacionismo, filosofía de creación artística absoluta e independiente.'
+            },
+            q5: {
+                correct: '✅ ¡Correcto! El Ultraísmo surgió en España en 1918/1919 como oposición directa al Modernismo tradicional.',
+                incorrect: '❌ Incorrecto. La respuesta correcta es: El Modernismo tradicional. El Ultraísmo, originado en España, buscaba ir "más allá" (ultra) del Modernismo imperante.'
+            },
+            q6: {
+                correct: '✅ ¡Correcto! El Futurismo exaltaba la velocidad, la tecnología y el dinamismo de la vida moderna, especialmente los automóviles y aviones.',
+                incorrect: '❌ Incorrecto. La respuesta correcta es: La velocidad, la tecnología y el dinamismo moderno. El Futurismo nació en Italia celebrando la industrialización y la modernidad.'
+            },
+            q7: {
+                correct: '✅ ¡Correcto! El Expresionismo distorsiona la realidad deliberadamente para transmitir emociones intensas como angustia, miedo y soledad.',
+                incorrect: '❌ Incorrecto. La respuesta correcta es: La distorsión de la realidad para expresar estados emocionales intensos. El Expresionismo prioriza la expresión emocional subjetiva sobre la objetividad.'
+            },
+            q8: {
+                correct: '✅ ¡Correcto! El Expresionismo surgió principalmente en Alemania entre 1905 y 1920, como reacción a la crisis social y política.',
+                incorrect: '❌ Incorrecto. La respuesta correcta es: Alemania. El Expresionismo surgió en este país durante un período de crisis social e industrialización, reflejando angustia y alienación.'
+            }
+        };
+
+        function showTab(tabName) {
+            const contents = document.querySelectorAll('.tab-content');
+            const buttons = document.querySelectorAll('.tab-btn');
+
+            contents.forEach(content => content.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        document.getElementById('quizForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            let correctCount = 0;
+            let totalQuestions = 8;
+
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionName = 'q' + i;
+                const userAnswer = document.querySelector(`input[name="${questionName}"]:checked`);
+                const feedbackElement = document.getElementById('feedback' + i);
+
+                if (!userAnswer) {
+                    feedbackElement.innerHTML = '⚠️ Por favor responde esta pregunta.';
+                    feedbackElement.classList.add('show', 'incorrect');
+                    continue;
+                }
+
+                const isCorrect = userAnswer.value === answers[questionName];
+                
+                if (isCorrect) {
+                    correctCount++;
+                    feedbackElement.innerHTML = '<div class="feedback-title">' + feedbacks[questionName].correct + '</div>';
+                    feedbackElement.classList.add('show', 'correct');
+                } else {
+                    feedbackElement.innerHTML = '<div class="feedback-title">' + feedbacks[questionName].incorrect + '</div>';
+                    feedbackElement.classList.add('show', 'incorrect');
+                }
+            }
+
+            // Mostrar resultado final
+            const score = Math.round((correctCount / totalQuestions) * 100);
+            const resultSummary = document.getElementById('resultSummary');
+            document.getElementById('resultScore').textContent = correctCount + '/' + totalQuestions + ' (' + score + '%)';
+
+            let message = '';
+            if (score === 100) {
+                message = '¡Excelente! Dominas perfectamente los movimientos vanguardistas literarios.';
+            } else if (score >= 75) {
+                message = '¡Muy bien! Tienes un buen conocimiento de las vanguardias literarias.';
+            } else if (score >= 50) {
+                message = 'Buen intento. Revisa nuevamente los movimientos que no respondiste correctamente.';
+            } else {
+                message = 'Te invitamos a revisar detenidamente cada movimiento para mejorar tu comprensión.';
+            }
+
+            document.getElementById('resultMessage').textContent = message;
+            resultSummary.classList.add('show');
+
+            // Actualizar barra de progreso
+            document.getElementById('progressFill').style.width = score + '%';
+
+            // Desplazarse al resultado
+            resultSummary.scrollIntoView({ behavior: 'smooth' });
+        });
+
+        function resetQuiz() {
+            document.getElementById('quizForm').reset();
+            document.querySelectorAll('.feedback').forEach(f => f.classList.remove('show'));
+            document.getElementById('resultSummary').classList.remove('show');
+            document.getElementById('progressFill').style.width = '0%';
+            window.scrollTo(0, 0);
+        }
+    </script>
+</body>
+</html>
