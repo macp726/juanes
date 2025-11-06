@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía: Literatura Realista</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;700&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #F8F9FA;
+        }
+        h1, h2, h3 {
+            font-family: 'Roboto Slab', serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 1.25rem;
+            left: -0.4rem;
+            width: 0.8rem;
+            height: 0.8rem;
+            background-color: #FD7E14;
+            border-radius: 9999px;
+            border: 2px solid white;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-bold text-[#007BFF]">Literatura Realista</h1>
+            <p class="text-xl md:text-2xl mt-2 text-gray-600">Un Espejo de la Sociedad del Siglo XIX</p>
+        </header>
+
+        <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <section class="md:col-span-2 lg:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-3xl font-bold text-[#6F42C1] mb-4">Origen y Expansión</h2>
+                <p class="mb-6 text-gray-600">El Realismo no surgió de la nada; fue una respuesta directa al idealismo del Romanticismo. Buscaba despojar a la literatura de fantasía para anclarla en el mundo tangible. A continuación, se muestra su evolución cronológica clave.</p>
+                <div class="relative border-l-4 border-[#FD7E14] pl-8 py-4">
+                    <div class="timeline-item mb-8 relative">
+                        <h3 class="text-2xl font-bold text-[#FD7E14]">~1830</h3>
+                        <p class="font-semibold text-xl">Nacimiento en Francia</p>
+                        <p class="text-gray-600">Emerge como una corriente que rechaza la subjetividad romántica, con autores como Balzac buscando una "comedia humana" basada en la observación directa.</p>
+                    </div>
+                    <div class="timeline-item relative">
+                        <h3 class="text-2xl font-bold text-[#FD7E14]">~1870</h3>
+                        <p class="font-semibold text-xl">Consolidación en España</p>
+                        <p class="text-gray-600">El movimiento se afianza con fuerza, siendo "La Fontana de Oro" de Benito Pérez Galdós una obra inaugural que marcó el camino para reflejar la realidad española.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="lg:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-3xl font-bold text-[#6F42C1] mb-4">El Motor del Cambio: La Revolución Industrial</h2>
+                <p class="mb-6 text-gray-600">El telón de fondo del Realismo fue una era de transformación social sin precedentes. La industrialización alteró cada faceta de la vida, y la literatura se convirtió en la crónica de estas convulsiones.</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <span class="text-5xl">🏭</span>
+                        <h3 class="text-xl font-bold mt-2">Transformación Económica</h3>
+                        <p class="text-gray-600 mt-1">De una economía agraria a un modelo industrial que concentró a la población en ciudades y fábricas.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <span class="text-5xl">😞</span>
+                        <h3 class="text-xl font-bold mt-2">Condiciones Extremas</h3>
+                        <p class="text-gray-600 mt-1">Jornadas agotadoras, explotación infantil y salarios míseros generaron una nueva clase social: el proletariado urbano.</p>
+                    </div>
+                    <div class="bg-gray-50 p-6 rounded-lg">
+                        <span class="text-5xl">✊</span>
+                        <h3 class="text-xl font-bold mt-2">Movimientos Sociales</h3>
+                        <p class="text-gray-600 mt-1">El auge del sindicalismo y las ideas socialistas como respuesta a la desigualdad influyó en los temas de denuncia de las novelas.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="md:col-span-2 bg-white rounded-lg shadow-lg p-6">
+                <h2 class="text-3xl font-bold text-[#6F42C1] mb-4">Pilares Fundamentales del Realismo</h2>
+                 <p class="mb-6 text-gray-600">Para lograr su objetivo de ser un reflejo fiel, el Realismo se construyó sobre un conjunto de características y técnicas narrativas muy definidas, rompiendo con las convenciones anteriores.</p>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-xl font-bold text-[#007BFF] border-b-2 border-[#007BFF] pb-2 mb-3">Características</h3>
+                        <ul class="space-y-3 list-disc list-inside text-gray-600">
+                            <li><span class="font-semibold">Fidelidad a la Realidad:</span> Representación objetiva sin idealizar.</li>
+                            <li><span class="font-semibold">Personajes Comunes:</span> Foco en la clase media y baja.</li>
+                            <li><span class="font-semibold">Lenguaje Sencillo:</span> Estilo claro, cercano al habla popular.</li>
+                            <li><span class="font-semibold">Intención Crítica:</span> Denuncia social y análisis de la sociedad.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-bold text-[#007BFF] border-b-2 border-[#007BFF] pb-2 mb-3">Técnicas Narrativas</h3>
+                        <ul class="space-y-3 list-disc list-inside text-gray-600">
+                             <li><span class="font-semibold">Narrador Omnisciente:</span> Voz en 3ª persona que conoce todo.</li>
+                            <li><span class="font-semibold">Descripciones Detalladas:</span> Ambientes y personajes minuciosos.</li>
+                            <li><span class="font-semibold">Rechazo de lo Fantástico:</span> Enfoque exclusivo en lo verosímil.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="bg-white rounded-lg shadow-lg p-6 flex flex-col">
+                <h2 class="text-3xl font-bold text-[#6F42C1] mb-4">Temas Bajo la Lupa</h2>
+                <p class="mb-6 text-gray-600 flex-grow">La literatura realista se centró en los dramas humanos y sociales de su tiempo. Este gráfico muestra el peso relativo de sus temas más recurrentes, evidenciando su profundo compromiso con la crítica social.</p>
+                <div class="chart-container">
+                    <canvas id="themesChart"></canvas>
+                </div>
+            </section>
+
+            <section class="lg:col-span-3 bg-white rounded-lg shadow-lg p-6">
+                 <h2 class="text-3xl font-bold text-[#6F42C1] mb-4">Los Grandes Cronistas de la Realidad</h2>
+                 <p class="mb-6 text-gray-600">El Realismo fue moldeado por autores cuya obra trascendió la literatura para convertirse en un invaluable documento sociológico. Su maestría para capturar la esencia de su tiempo dejó una huella imborrable.</p>
+                 <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="border-t-4 border-[#007BFF] bg-gray-50 p-4 rounded-lg text-center">
+                        <h3 class="text-xl font-bold">Honoré de Balzac</h3>
+                        <p class="text-[#007BFF] font-semibold">Francia</p>
+                        <p class="text-gray-600 mt-2">Pionero del movimiento, su proyecto "La Comedia Humana" es un ambicioso retrato de la sociedad francesa post-napoleónica.</p>
+                    </div>
+                     <div class="border-t-4 border-[#FD7E14] bg-gray-50 p-4 rounded-lg text-center">
+                        <h3 class="text-xl font-bold">Benito Pérez Galdós</h3>
+                        <p class="text-[#FD7E14] font-semibold">España</p>
+                        <p class="text-gray-600 mt-2">Considerado el mayor novelista español después de Cervantes. Obras como "Fortunata y Jacinta" son un fresco monumental del Madrid del siglo XIX.</p>
+                    </div>
+                     <div class="border-t-4 border-[#20C997] bg-gray-50 p-4 rounded-lg text-center">
+                        <h3 class="text-xl font-bold">Emilia Pardo Bazán</h3>
+                        <p class="text-[#20C997] font-semibold">España</p>
+                        <p class="text-gray-600 mt-2">Introdujo el Naturalismo en España. Su obra explora la condición humana y critica las estructuras sociales con una mirada penetrante y a menudo polémica.</p>
+                    </div>
+                 </div>
+            </section>
+        </main>
+
+        <footer class="text-center mt-12 text-gray-500">
+            <p>Infografía generada dinámicamente. Ni Mermaid JS ni SVG fueron utilizados en la creación de esta visualización.</p>
+        </footer>
+    </div>
+    
+    <div id="quiz-container" class="bg-white rounded-lg shadow-lg p-6 max-w-2xl w-full mx-auto mt-12">
+        <h1 class="text-3xl font-bold text-[#6F42C1] mb-2 text-center">Cuestionario sobre la Literatura Realista</h1>
+        <p class="text-center text-gray-600 mb-6">¡Pon a prueba tus conocimientos sobre los conceptos clave de la literatura realista!</p>
+        
+        <div id="start-screen" class="text-center">
+            <h2 class="text-2xl font-semibold mb-4 text-[#007BFF]">Listo para empezar?</h2>
+            <p class="text-gray-600 mb-6">Responde a 10 preguntas para evaluar tu comprensión.</p>
+            <button id="start-btn" class="bg-[#20C997] hover:bg-[#1BA176] text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                Comenzar Cuestionario
+            </button>
+        </div>
+
+        <div id="quiz-screen" class="hidden">
+            <div id="question-container" class="mb-6">
+                <div class="flex justify-between items-center mb-4">
+                    <span id="question-number" class="text-xl font-bold text-[#FD7E14]"></span>
+                    <span id="score" class="text-xl font-bold text-[#007BFF]">Puntuación: 0</span>
+                </div>
+                <h2 id="question-text" class="text-xl font-semibold mb-4 text-gray-800"></h2>
+                <div id="answers-container" class="grid gap-4"></div>
+            </div>
+            <div id="feedback-container" class="mt-4 p-4 rounded-lg hidden">
+                <p id="feedback-text" class="font-semibold"></p>
+                <p id="rationale-text" class="text-sm mt-2"></p>
+            </div>
+            <button id="next-btn" class="bg-[#6F42C1] hover:bg-[#523297] text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105 w-full mt-6 hidden">
+                Siguiente
+            </button>
+        </div>
+
+        <div id="results-screen" class="hidden text-center">
+            <h2 class="text-3xl font-bold text-[#007BFF] mb-4">Cuestionario Terminado</h2>
+            <p class="text-xl font-semibold mb-2">Tu puntuación final es:</p>
+            <p id="final-score" class="text-5xl font-bold text-[#FD7E14] mb-6"></p>
+            <button id="restart-btn" class="bg-[#20C997] hover:bg-[#1BA176] text-white font-bold py-2 px-6 rounded-full shadow-lg transition duration-300 transform hover:scale-105">
+                Reiniciar Cuestionario
+            </button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function wrapLabel(str, maxWidth) {
+                if (str.length <= maxWidth) {
+                    return str;
+                }
+                const words = str.split(' ');
+                let lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + word).length > maxWidth) {
+                        lines.push(currentLine.trim());
+                        currentLine = '';
+                    }
+                    currentLine += word + ' ';
+                });
+                lines.push(currentLine.trim());
+                return lines;
+            }
+
+            const ctx = document.getElementById('themesChart').getContext('2d');
+            const originalLabels = ['Conflictos Sociales', 'Familia y Moralidad', 'Crítica Institucional'];
+            const chartData = {
+                labels: originalLabels.map(label => wrapLabel(label, 16)),
+                datasets: [{
+                    label: 'Importancia Temática',
+                    data: [5, 4, 4.5],
+                    backgroundColor: ['#007BFF', '#6F42C1', '#20C997'],
+                    borderColor: ['#007BFF', '#6F42C1', '#20C997'],
+                    borderWidth: 1
+                }]
+            };
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: chartData,
+                options: {
+                    indexAxis: 'y',
+                    maintainAspectRatio: false,
+                    responsive: true,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            max: 5,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.1)'
+                            },
+                            ticks: {
+                                font: {
+                                    family: "'Roboto', sans-serif"
+                                }
+                            }
+                        },
+                        y: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 14,
+                                    family: "'Roboto', sans-serif"
+                                }
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                title: function(tooltipItems) {
+                                    const item = tooltipItems[0];
+                                    let label = item.chart.data.labels[item.dataIndex];
+                                    if (Array.isArray(label)) {
+                                      return label.join(' ');
+                                    } else {
+                                      return label;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        // --- Lógica del Cuestionario ---
+        const quizData = {
+            "questions": [
+                {
+                    "questionNumber": 1,
+                    "question": "¿En qué siglo y en qué país surge la literatura realista como respuesta al Romanticismo?",
+                    "answerOptions": [
+                        {
+                            "text": "Siglo XVIII, Alemania",
+                            "isCorrect": false,
+                            "rationale": "El Realismo no surgió en el siglo XVIII ni en Alemania; ese período está más asociado con la Ilustración."
+                        },
+                        {
+                            "text": "Siglo XIX, Francia",
+                            "isCorrect": true,
+                            "rationale": "El movimiento realista emergió en Francia a principios del siglo XIX como una reacción directa a la idealización del Romanticismo."
+                        },
+                        {
+                            "text": "Siglo XIX, España",
+                            "isCorrect": false,
+                            "rationale": "Aunque el Realismo se consolidó en España en el siglo XIX, su origen fue en Francia."
+                        },
+                        {
+                            "text": "Siglo XVII, Inglaterra",
+                            "isCorrect": false,
+                            "rationale": "El Realismo no tiene sus orígenes en el siglo XVII ni en Inglaterra."
+                        }
+                    ],
+                    "hint": "El movimiento tiene sus raíces en el país de la Torre Eiffel y en el siglo de la Revolución Industrial."
+                },
+                {
+                    "questionNumber": 2,
+                    "question": "Una de las características fundamentales del Realismo es su enfoque en los personajes de...",
+                    "answerOptions": [
+                        {
+                            "text": "la realeza y la aristocracia.",
+                            "isCorrect": false,
+                            "rationale": "El Realismo se alejó de los personajes idealizados y de la nobleza del Romanticismo para enfocarse en la gente común."
+                        },
+                        {
+                            "text": "la clase media y baja.",
+                            "isCorrect": true,
+                            "rationale": "Los personajes realistas suelen ser personas comunes, de la clase media y baja, para reflejar fielmente la sociedad de su tiempo."
+                        },
+                        {
+                            "text": "héroes mitológicos y seres fantásticos.",
+                            "isCorrect": false,
+                            "rationale": "El Realismo rechazó explícitamente lo fantástico y se centró en lo verosímil y lo cotidiano."
+                        },
+                        {
+                            "text": "viajeros exóticos y exploradores.",
+                            "isCorrect": false,
+                            "rationale": "Aunque el Romanticismo exploraba lo exótico, el Realismo se enfocó en lo cotidiano y reconocible."
+                        }
+                    ],
+                    "hint": "Piensa en el tipo de personas que vivieron la Revolución Industrial, no en los reyes o príncipes."
+                },
+                {
+                    "questionNumber": 3,
+                    "question": "Verdadero o Falso: El Realismo se caracteriza por un narrador omnisciente y el uso de descripciones detalladas.",
+                    "answerOptions": [
+                        {
+                            "text": "Verdadero",
+                            "isCorrect": true,
+                            "rationale": "El narrador omnisciente permite una visión completa de la historia y las descripciones detalladas crean una sensación de autenticidad."
+                        },
+                        {
+                            "text": "Falso",
+                            "isCorrect": false,
+                            "rationale": "Ambas afirmaciones son correctas. El narrador omnisciente y las descripciones minuciosas son técnicas clave para lograr la objetividad realista."
+                        }
+                    ],
+                    "hint": "Considera cómo un autor realista podría 'documentar' la realidad en una novela."
+                },
+                {
+                    "questionNumber": 4,
+                    "question": "El Realismo surgió en España alrededor de...",
+                    "answerOptions": [
+                        {
+                            "text": "1830.",
+                            "isCorrect": false,
+                            "rationale": "1830 fue la fecha de origen del Realismo en Francia, no en España."
+                        },
+                        {
+                            "text": "1800.",
+                            "isCorrect": false,
+                            "rationale": "El Realismo en España se consolidó más tarde, a mediados del siglo XIX."
+                        },
+                        {
+                            "text": "1870.",
+                            "isCorrect": true,
+                            "rationale": "Hacia 1870, el Realismo se afianzó en España, con Benito Pérez Galdós como uno de sus máximos exponentes."
+                        },
+                        {
+                            "text": "1900.",
+                            "isCorrect": false,
+                            "rationale": "Para 1900, el Realismo ya había evolucionado hacia otras corrientes literarias."
+                        }
+                    ],
+                    "hint": "La fecha está relacionada con la publicación de la novela de Galdós, 'La Fontana de Oro'."
+                },
+                {
+                    "questionNumber": 5,
+                    "question": "¿Cuál de los siguientes no es un tema recurrente en la literatura realista?",
+                    "answerOptions": [
+                        {
+                            "text": "Conflictos sociales y lucha de clases.",
+                            "isCorrect": false,
+                            "rationale": "Los conflictos sociales son un tema central del Realismo, que busca documentar las tensiones de la sociedad."
+                        },
+                        {
+                            "text": "Rechazo de las normas sociales y las instituciones.",
+                            "isCorrect": false,
+                            "rationale": "La crítica institucional es un tema recurrente, ya que los autores cuestionaban las estructuras de poder de su época."
+                        },
+                        {
+                            "text": "El heroísmo de figuras mitológicas.",
+                            "isCorrect": true,
+                            "rationale": "El Realismo se alejó por completo de lo fantástico y lo mitológico, centrándose en lo verosímil y lo cotidiano."
+                        },
+                        {
+                            "text": "La familia, el matrimonio y la hipocresía social.",
+                            "isCorrect": false,
+                            "rationale": "La familia y las relaciones personales son un espacio clave para el análisis de los problemas sociales en el Realismo."
+                        }
+                    ],
+                    "hint": "Recuerda que el Realismo se opone directamente al Romanticismo y a la idealización."
+                },
+                {
+                    "questionNumber": 6,
+                    "question": "La Revolución Industrial influyó en el Realismo al crear una nueva clase social llamada...",
+                    "answerOptions": [
+                        {
+                            "text": "la burguesía mercantil.",
+                            "isCorrect": false,
+                            "rationale": "La burguesía ya existía, pero la industrialización transformó su papel y la literatura la retrató."
+                        },
+                        {
+                            "text": "la aristocracia rural.",
+                            "isCorrect": false,
+                            "rationale": "Esta clase social estaba en declive durante la época, mientras que el Realismo se centraba en las nuevas realidades urbanas."
+                        },
+                        {
+                            "text": "el proletariado urbano.",
+                            "isCorrect": true,
+                            "rationale": "La industrialización creó el proletariado urbano, una clase obrera que fue objeto de la denuncia social en la literatura realista."
+                        },
+                        {
+                            "text": "el clero.",
+                            "isCorrect": false,
+                            "rationale": "El clero fue un tema de crítica, pero no fue una clase social creada por la Revolución Industrial."
+                        }
+                    ],
+                    "hint": "Piensa en las personas que trabajaban en las nuevas fábricas."
+                },
+                {
+                    "questionNumber": 7,
+                    "question": "¿Cuál de los siguientes autores es considerado el mayor novelista español después de Cervantes y un cronista de su tiempo?",
+                    "answerOptions": [
+                        {
+                            "text": "Honoré de Balzac",
+                            "isCorrect": false,
+                            "rationale": "Honoré de Balzac fue un autor francés, considerado pionero del Realismo."
+                        },
+                        {
+                            "text": "Emilia Pardo Bazán",
+                            "isCorrect": false,
+                            "rationale": "Emilia Pardo Bazán fue una autora española clave, pero el apodo de 'el mayor novelista' se le atribuye a otro autor."
+                        },
+                        {
+                            "text": "Benito Pérez Galdós",
+                            "isCorrect": true,
+                            "rationale": "Benito Pérez Galdós es reconocido por sus retratos de la sociedad madrileña del siglo XIX."
+                        },
+                        {
+                            "text": "Miguel de Cervantes",
+                            "isCorrect": false,
+                            "rationale": "Aunque Cervantes fue el autor más grande de la literatura española, no fue realista ni del siglo XIX."
+                        }
+                    ],
+                    "hint": "Su obra 'Fortunata y Jacinta' es una de las más representativas del Realismo español."
+                },
+                {
+                    "questionNumber": 8,
+                    "question": "Verdadero o Falso: El Realismo se caracteriza por su rechazo a lo fantástico y su enfoque en lo verosímil y lo cotidiano.",
+                    "answerOptions": [
+                        {
+                            "text": "Verdadero",
+                            "isCorrect": true,
+                            "rationale": "El Realismo se opone a lo fantástico y a lo idealizado, buscando plasmar la realidad tal como es."
+                        },
+                        {
+                            "text": "Falso",
+                            "isCorrect": false,
+                            "rationale": "La afirmación es correcta; el rechazo a lo fantástico es una de las características clave del movimiento."
+                        }
+                    ],
+                    "hint": "Piensa en el propósito principal del Realismo: ser un 'espejo de la sociedad'."
+                },
+                {
+                    "questionNumber": 9,
+                    "question": "¿Qué obra de Benito Pérez Galdós se menciona como un 'fresco monumental del Madrid del siglo XIX'?",
+                    "answerOptions": [
+                        {
+                            "text": "La Fontana de Oro",
+                            "isCorrect": false,
+                            "rationale": "Aunque 'La Fontana de Oro' es una obra importante de Galdós, 'Fortunata y Jacinta' es la que se considera el fresco de la vida madrileña."
+                        },
+                        {
+                            "text": "Los Pazos de Ulloa",
+                            "isCorrect": false,
+                            "rationale": "'Los Pazos de Ulloa' es una obra de Emilia Pardo Bazán, no de Benito Pérez Galdós."
+                        },
+                        {
+                            "text": "El Quijote",
+                            "isCorrect": false,
+                            "rationale": "Esta es la obra maestra de Cervantes, no de Galdós, y pertenece a otro período literario."
+                        },
+                        {
+                            "text": "Fortunata y Jacinta",
+                            "isCorrect": true,
+                            "rationale": "'Fortunata y Jacinta' es una de las obras más importantes de Galdós y un retrato detallado de la sociedad madrileña de la época."
+                        }
+                    ],
+                    "hint": "El título de la novela incluye dos nombres de mujer."
+                },
+                {
+                    "questionNumber": 10,
+                    "question": "El auge de los movimientos sindicales y socialistas influyó en el Realismo al...",
+                    "answerOptions": [
+                        {
+                            "text": "limitar la libertad de los autores para escribir.",
+                            "isCorrect": false,
+                            "rationale": "El Realismo, lejos de ser limitado, se inspiró en los movimientos sociales para denunciar las injusticias."
+                        },
+                        {
+                            "text": "cambiar el enfoque del movimiento hacia la aristocracia.",
+                            "isCorrect": false,
+                            "rationale": "Los movimientos sociales hicieron que el Realismo se enfocara más en los problemas de las clases trabajadoras."
+                        },
+                        {
+                            "text": "proporcionar un nuevo tema de denuncia social.",
+                            "isCorrect": true,
+                            "rationale": "Los autores realistas utilizaron estos movimientos y las problemáticas que abordaban como base para sus críticas sociales."
+                        },
+                        {
+                            "text": "generar un ambiente de guerra civil en los países europeos.",
+                            "isCorrect": false,
+                            "rationale": "Aunque hubo tensiones, el Realismo no se centró en guerras civiles como un tema principal, sino en los problemas sociales y económicos."
+                        }
+                    ],
+                    "hint": "Piensa en la intención crítica del Realismo y su relación con los problemas de la gente común."
+                }
+            ]
+        };
+
+        const startBtn = document.getElementById('start-btn');
+        const startScreen = document.getElementById('start-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultsScreen = document.getElementById('results-screen');
+        const questionNumberEl = document.getElementById('question-number');
+        const scoreEl = document.getElementById('score');
+        const questionTextEl = document.getElementById('question-text');
+        const answersContainer = document.getElementById('answers-container');
+        const feedbackContainer = document.getElementById('feedback-container');
+        const feedbackTextEl = document.getElementById('feedback-text');
+        const rationaleTextEl = document.getElementById('rationale-text');
+        const nextBtn = document.getElementById('next-btn');
+        const finalScoreEl = document.getElementById('final-score');
+        const restartBtn = document.getElementById('restart-btn');
+
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let answered = false;
+
+        function startQuiz() {
+            startScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            currentQuestionIndex = 0;
+            score = 0;
+            scoreEl.textContent = 'Puntuación: 0';
+            showQuestion();
+        }
+
+        function showQuestion() {
+            const currentQuestion = quizData.questions[currentQuestionIndex];
+            questionNumberEl.textContent = `Pregunta ${currentQuestion.questionNumber} de ${quizData.questions.length}`;
+            questionTextEl.textContent = currentQuestion.question;
+            answersContainer.innerHTML = '';
+            feedbackContainer.classList.add('hidden');
+            nextBtn.classList.add('hidden');
+            answered = false;
+
+            currentQuestion.answerOptions.forEach(option => {
+                const button = document.createElement('button');
+                button.textContent = option.text;
+                button.classList.add('bg-gray-100', 'hover:bg-gray-200', 'text-gray-800', 'font-semibold', 'py-3', 'px-4', 'rounded-lg', 'text-left', 'transition', 'duration-300', 'w-full');
+                button.addEventListener('click', () => selectAnswer(button, option));
+                answersContainer.appendChild(button);
+            });
+        }
+
+        function selectAnswer(button, selectedOption) {
+            if (answered) return;
+            answered = true;
+
+            const correctOption = quizData.questions[currentQuestionIndex].answerOptions.find(opt => opt.isCorrect);
+
+            if (selectedOption.isCorrect) {
+                score++;
+                scoreEl.textContent = `Puntuación: ${score}`;
+                button.classList.add('bg-green-200');
+                feedbackTextEl.textContent = '¡Correcto!';
+                feedbackContainer.classList.add('bg-green-100', 'border', 'border-green-400');
+                feedbackContainer.classList.remove('bg-red-100', 'border-red-400');
+            } else {
+                button.classList.add('bg-red-200');
+                const correctButton = Array.from(answersContainer.children).find(btn => btn.textContent === correctOption.text);
+                if (correctButton) {
+                    correctButton.classList.add('bg-green-200');
+                }
+                feedbackTextEl.textContent = 'Incorrecto.';
+                feedbackContainer.classList.add('bg-red-100', 'border', 'border-red-400');
+                feedbackContainer.classList.remove('bg-green-100', 'border-green-400');
+            }
+
+            rationaleTextEl.textContent = selectedOption.rationale;
+            feedbackContainer.classList.remove('hidden');
+            nextBtn.classList.remove('hidden');
+
+            Array.from(answersContainer.children).forEach(btn => {
+                btn.disabled = true;
+            });
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+            if (currentQuestionIndex < quizData.questions.length) {
+                showQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            resultsScreen.classList.remove('hidden');
+            finalScoreEl.textContent = `${score} / ${quizData.questions.length}`;
+        }
+
+        function restartQuiz() {
+            resultsScreen.classList.add('hidden');
+            startScreen.classList.remove('hidden');
+        }
+
+        startBtn.addEventListener('click', startQuiz);
+        nextBtn.addEventListener('click', nextQuestion);
+        restartBtn.addEventListener('click', restartQuiz);
+    </script>
+</body>
+</html>
