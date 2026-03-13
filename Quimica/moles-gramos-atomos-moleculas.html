@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografía Química - Moles, Moléculas y Átomos</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+            animation: slideDown 0.8s ease-out;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .tab-btn {
+            padding: 12px 25px;
+            background: white;
+            border: none;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .tab-btn.active {
+            background: #667eea;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .tab-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.5s ease-out;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+        }
+
+        .card h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .card h3 {
+            color: #764ba2;
+            margin-top: 15px;
+            margin-bottom: 10px;
+        }
+
+        .concept-box {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 15px;
+            border-left: 4px solid #667eea;
+            border-radius: 8px;
+            margin: 15px 0;
+            line-height: 1.6;
+        }
+
+        .formula-box {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            border: 2px dashed #667eea;
+        }
+
+        .interactive-box {
+            background: #f0f4ff;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            border: 2px solid #667eea;
+        }
+
+        .input-group {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        input[type="number"] {
+            padding: 10px 15px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            font-size: 1em;
+            width: 150px;
+        }
+
+        .calc-btn {
+            padding: 10px 25px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .calc-btn:hover {
+            background: #764ba2;
+            transform: scale(1.05);
+        }
+
+        .result {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+
+        .result.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .result p {
+            margin: 8px 0;
+            font-size: 1.1em;
+        }
+
+        .result-value {
+            color: #28a745;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .diagram {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .diagram-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            min-width: 120px;
+            font-weight: bold;
+        }
+
+        .arrow {
+            font-size: 2em;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .quiz-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        .quiz-question {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border-left: 4px solid #667eea;
+        }
+
+        .quiz-question h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .solution {
+            background: #e8f5e9;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 10px;
+            border-left: 4px solid #28a745;
+            display: none;
+        }
+
+        .solution.show {
+            display: block;
+            animation: slideDown 0.3s ease-out;
+        }
+
+        .solution h5 {
+            color: #28a745;
+            margin-bottom: 10px;
+        }
+
+        .solution-step {
+            background: white;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border-left: 3px solid #28a745;
+        }
+
+        .solution-step strong {
+            color: #667eea;
+        }
+
+        .toggle-solution {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .toggle-solution:hover {
+            background: #764ba2;
+        }
+
+        .concept-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .concept-list li {
+            padding: 12px;
+            margin: 8px 0;
+            background: linear-gradient(90deg, #667eea15 0%, #764ba215 100%);
+            border-left: 4px solid #667eea;
+            border-radius: 5px;
+            line-height: 1.5;
+        }
+
+        .highlight {
+            background: #ffd700;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .example-molecule {
+            text-align: center;
+            padding: 15px;
+            background: #f0f4ff;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1em;
+            border: 2px solid #667eea;
+        }
+
+        .note {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+        }
+
+        .note strong {
+            color: #856404;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            padding: 20px;
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tab-btn {
+                width: 100%;
+            }
+
+            .diagram {
+                flex-direction: column;
+            }
+
+            input[type="number"] {
+                width: 100%;
+            }
+
+            .input-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧪 Infografía Química Interactiva</h1>
+            <p>Aprende sobre Moles, Moléculas y Átomos de forma divertida</p>
+        </header>
+
+        <div class="tabs">
+            <button class="tab-btn active" onclick="switchTab('conceptos')">📚 Conceptos</button>
+            <button class="tab-btn" onclick="switchTab('calculadora')">🔢 Calculadora</button>
+            <button class="tab-btn" onclick="switchTab('quiz')">✏️ Quiz</button>
+        </div>
+
+        <!-- TAB 1: CONCEPTOS -->
+        <div id="conceptos" class="tab-content active">
+            <div class="card">
+                <h2>🌟 ¿Qué es el MOL?</h2>
+                <div class="concept-box">
+                    <p>El <span class="highlight">MOL</span> es una unidad de cantidad de sustancia. Es un número muy grande que nos ayuda a contar partículas (átomos, moléculas e iones).</p>
+                    <p style="margin-top: 10px;"><strong>Un mol = 6,023 × 10²³ partículas</strong></p>
+                    <p style="margin-top: 10px; font-size: 0.95em;">Este número especial se llama <strong>Número de Avogadro</strong> en honor al científico italiano Amedeo Avogadro.</p>
+                </div>
+
+                <h3>📊 Conversión de Unidades</h3>
+                <div class="diagram">
+                    <div class="diagram-box">Gramos</div>
+                    <div class="arrow">÷ Pm</div>
+                    <div class="diagram-box">MOL</div>
+                    <div class="arrow">× 6.023×10²³</div>
+                    <div class="diagram-box">Moléculas/Átomos</div>
+                </div>
+
+                <div class="note">
+                    <strong>💡 Recuerda:</strong> Pm es la <strong>Masa Molar</strong>, el peso de 1 mol de sustancia en gramos.
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>⚛️ Estructura de la Materia</h2>
+                <div class="concept-box">
+                    <ul class="concept-list">
+                        <li><strong>ÁTOMOS:</strong> Son las partículas más pequeñas de un elemento químico. No se pueden dividir.</li>
+                        <li><strong>MOLÉCULAS:</strong> Se forman cuando dos o más átomos se unen químicamente.</li>
+                        <li><strong>MOLES:</strong> Es la cantidad que une todo. 1 mol = 6,023 × 10²³ partículas</li>
+                    </ul>
+                </div>
+
+                <h3>📌 Ejemplo: Agua (H₂O)</h3>
+                <div class="example-molecule">
+                    1 molécula de agua = 3 átomos (2 de Hidrógeno + 1 de Oxígeno)<br>
+                    1 mol de agua = 6,023 × 10²³ moléculas<br>
+                    1 mol de agua = 18 gramos
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>🔄 Fórmulas Importantes</h2>
+
+                <h3>1. Moles a partir de gramos:</h3>
+                <div class="formula-box">
+                    Número de moles = gramos ÷ Masa Molar (Pm)
+                </div>
+
+                <h3>2. Moléculas/Átomos a partir de moles:</h3>
+                <div class="formula-box">
+                    N° de partículas = Moles × 6,023 × 10²³
+                </div>
+
+                <h3>3. Átomos de un elemento en una molécula:</h3>
+                <div class="formula-box">
+                    N° de átomos del elemento = N° moles × N° átomos del elemento en la molécula × 6,023 × 10²³
+                </div>
+
+                <div class="note">
+                    <strong>📍 Número de Avogadro:</strong> 6,023 × 10²³ (a veces se aproxima a 6,02 × 10²³)
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>📋 Masas Molares de Elementos Comunes</h2>
+                <div style="overflow-x: auto;">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr style="background: #667eea; color: white;">
+                            <th style="padding: 10px; text-align: left;">Elemento</th>
+                            <th style="padding: 10px; text-align: left;">Símbolo</th>
+                            <th style="padding: 10px; text-align: left;">Masa Molar (g/mol)</th>
+                        </tr>
+                        <tr style="background: #f8f9fa;">
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Hidrógeno</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">H</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">1,008</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Carbono</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">C</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">12,01</td>
+                        </tr>
+                        <tr style="background: #f8f9fa;">
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Nitrógeno</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">N</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">14,01</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Oxígeno</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">O</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">16,00</td>
+                        </tr>
+                        <tr style="background: #f8f9fa;">
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Magnesio</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Mg</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">24,31</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Plata</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">Ag</td>
+                            <td style="padding: 10px; border-bottom: 1px solid #ddd;">107,87</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 2: CALCULADORA INTERACTIVA -->
+        <div id="calculadora" class="tab-content">
+            <div class="card">
+                <h2>🔢 Calculadora Interactiva: Gramos → Moles → Átomos</h2>
+
+                <div class="interactive-box">
+                    <h3>Cálculo 1: De Gramos a Moles</h3>
+                    <div class="input-group">
+                        <div>
+                            <label><strong>Masa en gramos:</strong></label><br>
+                            <input type="number" id="gramos1" placeholder="Ej: 3.0" step="0.01">
+                        </div>
+                        <div>
+                            <label><strong>Masa Molar (g/mol):</strong></label><br>
+                            <input type="number" id="masaMolar1" placeholder="Ej: 4.0" step="0.01">
+                        </div>
+                        <button class="calc-btn" onclick="calcularGramosAMoles()">Calcular Moles</button>
+                    </div>
+                    <div id="resultado1" class="result">
+                        <p><strong>📊 Resultado:</strong></p>
+                        <p>Número de moles = <span class="result-value" id="resultMoles1">0</span> mol</p>
+                        <p style="font-size: 0.9em; color: #666;">Fórmula: gramos ÷ masa molar</p>
+                    </div>
+                </div>
+
+                <div class="interactive-box">
+                    <h3>Cálculo 2: De Moles a Moléculas/Átomos</h3>
+                    <div class="input-group">
+                        <div>
+                            <label><strong>Número de moles:</strong></label><br>
+                            <input type="number" id="moles2" placeholder="Ej: 0.75" step="0.001">
+                        </div>
+                        <button class="calc-btn" onclick="calcularMolesAMoleculas()">Calcular Moléculas</button>
+                    </div>
+                    <div id="resultado2" class="result">
+                        <p><strong>🧬 Resultado:</strong></p>
+                        <p>Número de moléculas/átomos = <span class="result-value" id="resultMoleculas2">0</span></p>
+                        <p style="font-size: 0.9em; color: #666;">Fórmula: moles × 6,023 × 10²³</p>
+                    </div>
+                </div>
+
+                <div class="interactive-box">
+                    <h3>Cálculo 3: Conversión Completa (Gramos → Moles → Moléculas)</h3>
+                    <div class="input-group">
+                        <div>
+                            <label><strong>Masa en gramos:</strong></label><br>
+                            <input type="number" id="gramos3" placeholder="Ej: 18" step="0.01">
+                        </div>
+                        <div>
+                            <label><strong>Masa Molar (g/mol):</strong></label><br>
+                            <input type="number" id="masaMolar3" placeholder="Ej: 18" step="0.01">
+                        </div>
+                        <button class="calc-btn" onclick="calcularConversionCompleta()">Convertir</button>
+                    </div>
+                    <div id="resultado3" class="result">
+                        <p><strong>Paso 1:</strong> Moles = <span class="result-value" id="molesTemp">0</span> mol</p>
+                        <p><strong>Paso 2:</strong> Moléculas = <span class="result-value" id="resultMoleculas3">0</span></p>
+                        <p style="font-size: 0.9em; color: #666;">18 g de H₂O = 1 mol = 6,023 × 10²³ moléculas</p>
+                    </div>
+                </div>
+
+                <div class="interactive-box">
+                    <h3>Cálculo 4: Átomos de un Elemento Específico</h3>
+                    <div class="input-group">
+                        <div>
+                            <label><strong>Moles de compuesto:</strong></label><br>
+                            <input type="number" id="moles4" placeholder="Ej: 0.35" step="0.001">
+                        </div>
+                        <div>
+                            <label><strong>N° átomos del elemento en la molécula:</strong></label><br>
+                            <input type="number" id="numAtomos4" placeholder="Ej: 6 para C en C6H12O6" min="1" step="1">
+                        </div>
+                        <button class="calc-btn" onclick="calcularAtomoEspecifico()">Calcular Átomos</button>
+                    </div>
+                    <div id="resultado4" class="result">
+                        <p><strong>⚛️ Resultado:</strong></p>
+                        <p>Número de átomos del elemento = <span class="result-value" id="resultAtomos4">0</span></p>
+                        <p style="font-size: 0.9em; color: #666;">Fórmula: moles × N° átomos × 6,023 × 10²³</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- TAB 3: QUIZ -->
+        <div id="quiz" class="tab-content">
+            <div class="quiz-container">
+                <h2>✏️ Quiz Educativo - Ejercicios Resueltos</h2>
+
+                <!-- Pregunta 1 -->
+                <div class="quiz-question">
+                    <h4>📌 Ejercicio 1: Acetona (C₃H₆O)</h4>
+                    <p><strong>Pregunta:</strong> ¿Cuántos átomos de hidrógeno hay en un mol de acetona?</p>
+                    <p style="margin-top: 10px;"><strong>Datos:</strong> N° de Avogadro = 6,023 × 10²³</p>
+                    <button class="toggle-solution" onclick="toggleSolution('sol1')">Ver Solución Paso a Paso</button>
+                    <div id="sol1" class="solution">
+                        <h5>✅ Solución Detallada:</h5>
+                        <div class="solution-step">
+                            <strong>Paso 1: Identificar la fórmula</strong><br>
+                            Acetona = C₃H₆O<br>
+                            Tiene 6 átomos de hidrógeno por molécula
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 2: Plantear la fórmula</strong><br>
+                            N° de átomos de H = (1 mol) × (6 átomos H/molécula) × (6,023 × 10²³ moléculas/mol)
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 3: Calcular</strong><br>
+                            N° de átomos de H = 6 × 6,023 × 10²³ = <strong>3,61 × 10²⁴ átomos de H</strong>
+                        </div>
+                        <div class="solution-step">
+                            <strong>💡 Respuesta Final: 3,61 × 10²⁴ átomos de hidrógeno</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 2 -->
+                <div class="quiz-question">
+                    <h4>📌 Ejercicio 2: Helio (He)</h4>
+                    <p><strong>Pregunta:</strong> ¿Cuántos moles hay en 3,0 g de helio? (Masa Molar del He = 4,0 g/mol)</p>
+                    <button class="toggle-solution" onclick="toggleSolution('sol2')">Ver Solución Paso a Paso</button>
+                    <div id="sol2" class="solution">
+                        <h5>✅ Solución Detallada:</h5>
+                        <div class="solution-step">
+                            <strong>Paso 1: Anotar datos</strong><br>
+                            Masa = 3,0 g<br>
+                            Masa Molar (Pm) = 4,0 g/mol
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 2: Usar la fórmula</strong><br>
+                            Número de moles = Masa ÷ Masa Molar
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 3: Sustituir valores</strong><br>
+                            Número de moles = 3,0 g ÷ 4,0 g/mol
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 4: Calcular</strong><br>
+                            Número de moles = <strong>0,75 mol</strong>
+                        </div>
+                        <div class="solution-step">
+                            <strong>💡 Respuesta Final: 0,75 mol de helio</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 3 -->
+                <div class="quiz-question">
+                    <h4>📌 Ejercicio 3: Magnesio (Mg)</h4>
+                    <p><strong>Pregunta:</strong> ¿Cuántos átomos hay en 3,52 g de magnesio? (Masa Molar del Mg = 24,3 g/mol)</p>
+                    <button class="toggle-solution" onclick="toggleSolution('sol3')">Ver Solución Paso a Paso</button>
+                    <div id="sol3" class="solution">
+                        <h5>✅ Solución Detallada:</h5>
+                        <div class="solution-step">
+                            <strong>Paso 1: Anotar datos</strong><br>
+                            Masa = 3,52 g<br>
+                            Masa Molar (Pm) = 24,3 g/mol<br>
+                            N° de Avogadro = 6,023 × 10²³
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 2: Calcular moles primero</strong><br>
+                            Moles = 3,52 g ÷ 24,3 g/mol = 0,145 mol
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 3: Convertir moles a átomos</strong><br>
+                            N° de átomos = 0,145 mol × 6,023 × 10²³ átomos/mol
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 4: Resultado final</strong><br>
+                            N° de átomos = <strong>8,73 × 10²² átomos</strong>
+                        </div>
+                        <div class="solution-step">
+                            <strong>💡 Respuesta Final: 8,73 × 10²² átomos de Mg</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 4 -->
+                <div class="quiz-question">
+                    <h4>📌 Ejercicio 4: Glucosa (C₆H₁₂O₆)</h4>
+                    <p><strong>Pregunta:</strong> ¿Cuántos átomos de carbono hay en 0,350 moles de glucosa?</p>
+                    <button class="toggle-solution" onclick="toggleSolution('sol4')">Ver Solución Paso a Paso</button>
+                    <div id="sol4" class="solution">
+                        <h5>✅ Solución Detallada:</h5>
+                        <div class="solution-step">
+                            <strong>Paso 1: Identificar información</strong><br>
+                            Glucosa = C₆H₁₂O₆ (tiene 6 átomos de carbono)<br>
+                            Moles de glucosa = 0,350 mol
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 2: Usar la fórmula correcta</strong><br>
+                            N° átomos de C = moles × (átomos de C por molécula) × (N° de Avogadro)
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 3: Sustituir valores</strong><br>
+                            N° átomos de C = 0,350 mol × 6 × 6,023 × 10²³ átomos/mol
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 4: Calcular</strong><br>
+                            N° átomos de C = 0,350 × 6 × 6,023 × 10²³<br>
+                            N° átomos de C = 2,1081 × 6,023 × 10²³<br>
+                            N° átomos de C = <strong>1,27 × 10²⁴ átomos</strong>
+                        </div>
+                        <div class="solution-step">
+                            <strong>💡 Respuesta Final: 1,27 × 10²⁴ átomos de carbono</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 5 -->
+                <div class="quiz-question">
+                    <h4>📌 Ejercicio 5: Agua (H₂O)</h4>
+                    <p><strong>Pregunta:</strong> ¿Cuál es la masa en gramos de un átomo de agua? (Masa Molar del H₂O = 18 g/mol)</p>
+                    <button class="toggle-solution" onclick="toggleSolution('sol5')">Ver Solución Paso a Paso</button>
+                    <div id="sol5" class="solution">
+                        <h5>✅ Solución Detallada:</h5>
+                        <div class="solution-step">
+                            <strong>Paso 1: Datos conocidos</strong><br>
+                            Masa Molar del H₂O = 18 g/mol<br>
+                            N° de Avogadro = 6,023 × 10²³ moléculas/mol<br>
+                            1 mol = 6,023 × 10²³ moléculas
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 2: Plantear relación</strong><br>
+                            Si 6,023 × 10²³ moléculas pesan 18 g<br>
+                            Entonces 1 molécula pesa X gramos
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 3: Usar regla de tres</strong><br>
+                            X = 18 g ÷ (6,023 × 10²³)
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 4: Calcular</strong><br>
+                            X = 18 ÷ 6,023 × 10²³<br>
+                            X = 2,99 × 10⁻²³ g<br>
+                            X ≈ <strong>3,0 × 10⁻²³ g</strong>
+                        </div>
+                        <div class="solution-step">
+                            <strong>💡 Respuesta Final: 3,0 × 10⁻²³ gramos por molécula de agua</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pregunta 6 -->
+                <div class="quiz-question">
+                    <h4>📌 Ejercicio 6: Balanceo - Combustión del Metano</h4>
+                    <p><strong>Pregunta:</strong> Balancea la siguiente ecuación: CH₄ + O₂ → CO₂ + H₂O</p>
+                    <p style="margin-top: 10px;"><strong>Encuentra los valores de X, Y y Z:</strong></p>
+                    <p style="background: #f0f4ff; padding: 10px; border-radius: 5px; text-align: center;">
+                        CH₄ + <span style="color: #667eea; font-weight: bold;">X</span> O₂ → <span style="color: #667eea; font-weight: bold;">Y</span> CO₂ + <span style="color: #667eea; font-weight: bold;">Z</span> H₂O
+                    </p>
+                    <button class="toggle-solution" onclick="toggleSolution('sol6')">Ver Solución Paso a Paso</button>
+                    <div id="sol6" class="solution">
+                        <h5>✅ Solución Detallada:</h5>
+                        <div class="solution-step">
+                            <strong>Paso 1: Escribir la ecuación sin balancear</strong><br>
+                            CH₄ + O₂ → CO₂ + H₂O
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 2: Contar átomos de cada elemento (SIN BALANCEAR)</strong><br>
+                            Izquierda: C=1, H=4, O=2<br>
+                            Derecha: C=1, H=2, O=3
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 3: Balancear HIDRÓGENO (H)</strong><br>
+                            Necesitamos 4 H a la derecha, así que: 2 H₂O<br>
+                            CH₄ + O₂ → CO₂ + 2 H₂O
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 4: Contar oxígenos que necesitamos</strong><br>
+                            CO₂ = 2 O, 2 H₂O = 2 O → Total 4 O necesarios<br>
+                            Necesitamos 2 O₂ (que tiene 4 O)<br>
+                            CH₄ + 2 O₂ → CO₂ + 2 H₂O
+                        </div>
+                        <div class="solution-step">
+                            <strong>Paso 5: Verificar balance final</strong><br>
+                            Izquierda: C=1, H=4, O=4 ✓<br>
+                            Derecha: C=1, H=4, O=2+2=4 ✓
+                        </div>
+                        <div class="solution-step">
+                            <strong>💡 Respuesta Final:</strong><br>
+                            X = 2, Y = 1, Z = 2<br>
+                            <strong style="color: #667eea;">CH₄ + 2 O₂ → CO₂ + 2 H₂O</strong>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>🎓 Infografía Educativa - Química Grado 9º | Creada para aprender de manera divertida</p>
+    </footer>
+
+    <script>
+        function switchTab(tabName) {
+            // Ocultar todos los tabs
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+
+            // Remover clase active de todos los botones
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Mostrar el tab seleccionado
+            document.getElementById(tabName).classList.add('active');
+
+            // Marcar el botón como activo
+            event.target.classList.add('active');
+        }
+
+        // Cálculos de la Calculadora Interactiva
+        function calcularGramosAMoles() {
+            const gramos = parseFloat(document.getElementById('gramos1').value);
+            const masaMolar = parseFloat(document.getElementById('masaMolar1').value);
+
+            if (isNaN(gramos) || isNaN(masaMolar) || masaMolar === 0) {
+                alert('Por favor ingresa valores válidos');
+                return;
+            }
+
+            const moles = (gramos / masaMolar).toFixed(4);
+            document.getElementById('resultMoles1').textContent = moles;
+            document.getElementById('resultado1').classList.add('show');
+        }
+
+        function calcularMolesAMoleculas() {
+            const moles = parseFloat(document.getElementById('moles2').value);
+
+            if (isNaN(moles)) {
+                alert('Por favor ingresa un valor válido');
+                return;
+            }
+
+            const NA = 6.023e23;
+            const moleculas = moles * NA;
+            const notacion = moleculas.toExponential(2);
+
+            document.getElementById('resultMoleculas2').textContent = notacion;
+            document.getElementById('resultado2').classList.add('show');
+        }
+
+        function calcularConversionCompleta() {
+            const gramos = parseFloat(document.getElementById('gramos3').value);
+            const masaMolar = parseFloat(document.getElementById('masaMolar3').value);
+
+            if (isNaN(gramos) || isNaN(masaMolar) || masaMolar === 0) {
+                alert('Por favor ingresa valores válidos');
+                return;
+            }
+
+            const moles = gramos / masaMolar;
+            const NA = 6.023e23;
+            const moleculas = moles * NA;
+
+            document.getElementById('molesTemp').textContent = moles.toFixed(4);
+            document.getElementById('resultMoleculas3').textContent = moleculas.toExponential(2);
+            document.getElementById('resultado3').classList.add('show');
+        }
+
+        function calcularAtomoEspecifico() {
+            const moles = parseFloat(document.getElementById('moles4').value);
+            const numAtomos = parseInt(document.getElementById('numAtomos4').value);
+
+            if (isNaN(moles) || isNaN(numAtomos)) {
+                alert('Por favor ingresa valores válidos');
+                return;
+            }
+
+            const NA = 6.023e23;
+            const atomos = moles * numAtomos * NA;
+
+            document.getElementById('resultAtomos4').textContent = atomos.toExponential(2);
+            document.getElementById('resultado4').classList.add('show');
+        }
+
+        // Toggle para mostrar/ocultar soluciones
+        function toggleSolution(solutionId) {
+            const solution = document.getElementById(solutionId);
+            solution.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
