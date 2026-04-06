@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Estudio Ciencias Sociales 9°</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f5f5f7;
+      color: #222;
+    }
+    header {
+      background: linear-gradient(90deg, #ff8a80, #ffeb3b);
+      padding: 1.5rem;
+      text-align: center;
+      color: #111;
+    }
+    header h1 {
+      margin: 0 0 0.3rem;
+      font-size: 1.8rem;
+    }
+    header p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.7rem 1rem;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav button {
+      border: none;
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      background: #e0e0e0;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s, transform 0.1s;
+    }
+    nav button:hover {
+      background: #d0d0d0;
+      transform: translateY(-1px);
+    }
+    nav button.active {
+      background: #ffb74d;
+      font-weight: 600;
+    }
+    main {
+      padding: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+    }
+    section {
+      display: none;
+      background: #fff;
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+      margin-bottom: 1.5rem;
+    }
+    section.active {
+      display: block;
+    }
+    h2 {
+      margin-top: 0;
+      margin-bottom: 0.8rem;
+    }
+    .resumen {
+      background: #fffde7;
+      border-left: 4px solid #ffb300;
+      padding: 0.8rem 1rem;
+      border-radius: 0.4rem;
+      margin-bottom: 1rem;
+      font-size: 0.95rem;
+    }
+    ul {
+      padding-left: 1.2rem;
+    }
+    .mapa {
+      margin: 1rem 0;
+    }
+    .mapa object {
+      width: 100%;
+      height: 520px;
+      border: 1px solid #ccc;
+      border-radius: 0.5rem;
+      background: #fafafa;
+    }
+    .nota-mapa {
+      font-size: 0.8rem;
+      color: #555;
+      margin-top: 0.3rem;
+    }
+    /* Cuestionario */
+    .question {
+      border: 1px solid #e0e0e0;
+      border-radius: 0.6rem;
+      padding: 0.9rem 1rem;
+      margin-bottom: 1rem;
+      background: #fafafa;
+    }
+    .question h3 {
+      margin-top: 0;
+      font-size: 1rem;
+    }
+    .options {
+      margin: 0.4rem 0 0.6rem;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 0.25rem;
+      cursor: pointer;
+      font-size: 0.92rem;
+    }
+    .question button {
+      border: none;
+      background: #42a5f5;
+      color: white;
+      padding: 0.35rem 0.8rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.85rem;
+    }
+    .question button:hover {
+      background: #1e88e5;
+    }
+    .feedback {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      padding: 0.6rem 0.7rem;
+      border-radius: 0.5rem;
+      display: none;
+    }
+    .feedback.correct {
+      background: #e8f5e9;
+      border-left: 4px solid #43a047;
+    }
+    .feedback.incorrect {
+      background: #ffebee;
+      border-left: 4px solid #e53935;
+    }
+    #score {
+      margin-top: 1rem;
+      font-weight: 600;
+    }
+    .btn-primary {
+      border: none;
+      background: #7e57c2;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    .btn-primary:hover {
+      background: #5e35b1;
+    }
+    @media (max-width: 768px) {
+      header h1 { font-size: 1.4rem; }
+      nav { justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Estudio de Ciencias Sociales – Grado 9°</h1>
+    <p>Primera Guerra Mundial · Repartición de África · Capitalismo · Alta Edad Media · Países capitalistas</p>
+  </header>
+
+  <nav>
+    <button class="active" onclick="showSection('ww1', this)">I Guerra Mundial</button>
+    <button onclick="showSection('africa', this)">Repartición de África</button>
+    <button onclick="showSection('capitalismo', this)">Ciclos del capitalismo</button>
+    <button onclick="showSection('alta-edad-media', this)">Alta Edad Media</button>
+    <button onclick="showSection('paises-capitalistas', this)">Países capitalistas</button>
+    <button onclick="showSection('quiz', this)">Cuestionario</button>
+  </nav>
+
+  <main>
+    <!-- Sección I Guerra Mundial -->
+    <section id="ww1" class="active">
+      <h2>I Guerra Mundial (1914–1918)</h2>
+      <div class="resumen">
+        <p>
+          La Primera Guerra Mundial fue un conflicto bélico de gran magnitud entre 1914 y 1918, originado en Europa 
+          pero con alcance mundial debido al sistema de alianzas entre potencias como Francia, Reino Unido, Rusia, 
+          Alemania y Austria-Hungría. Se considera uno de los acontecimientos más devastadores del siglo XX, 
+          transformando el orden político, social y económico mundial.
+        </p>
+      </div>
+      <h3>Causas principales</h3>
+      <ul>
+        <li>Fuerte nacionalismo en Europa y rivalidades económicas, políticas y territoriales entre potencias.</li>
+        <li>Imperialismo y competencia por colonias, especialmente en África y Asia.</li>
+        <li>Sistema de alianzas: Triple Entente (Francia, Reino Unido, Rusia) y Triple Alianza (Alemania, Austria-Hungría, Italia).</li>
+        <li>Detonante inmediato: asesinato del archiduque Francisco Fernando de Austria en Sarajevo (28 de junio de 1914).</li>
+      </ul>
+
+      <h3>Consecuencias generales</h3>
+      <ul>
+        <li>Millones de muertos y destrucción de ciudades e infraestructuras.</li>
+        <li>Desaparición de varios imperios: alemán, austrohúngaro, ruso y otomano.</li>
+        <li>Reconfiguración del mapa europeo y creación de nuevos Estados.</li>
+        <li>Firma del Tratado de Versalles (1919), que impuso duras condiciones a Alemania y preparó el terreno para la Segunda Guerra Mundial.</li>
+      </ul>
+
+      <h3>Mapa de la I Guerra Mundial</h3>
+      <div class="mapa">
+        <!-- Debes tener este PDF en la misma carpeta que el HTML -->
+        <object data="Mapa_de_la_I_Guerra_Mundial-3.pdf" type="application/pdf">
+          Tu navegador no puede mostrar el mapa en PDF. 
+          Abre directamente <a href="Mapa_de_la_I_Guerra_Mundial-3.pdf" target="_blank">Mapa_de_la_I_Guerra_Mundial-3.pdf</a>.
+        </object>
+        <p class="nota-mapa">
+          Mapa con la localización de la Triple Alianza y la Triple Entente en Europa al inicio de la I Guerra Mundial.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección Repartición de África -->
+    <section id="africa">
+      <h2>Repartición de África e Imperialismo moderno</h2>
+      <div class="resumen">
+        <p>
+          La «Carrera por África» (1881–1914) supuso la división casi total del continente africano entre potencias 
+          europeas, pasando de un 10&nbsp;% a un 90&nbsp;% de control colonial, impulsada por la Revolución Industrial, 
+          la búsqueda de materias primas y la Conferencia de Berlín (1884–1885).
+        </p>
+      </div>
+
+      <h3>Potencias y objetivos</h3>
+      <ul>
+        <li>Reino Unido: buscaba un eje norte–sur (El Cairo–Ciudad del Cabo).</li>
+        <li>Francia: aspiraba a un eje este–oeste en el norte y oeste africano.</li>
+        <li>Bélgica: el rey Leopoldo II tomó posesión del Congo como propiedad personal.</li>
+        <li>Alemania: se estableció en Tanzania, Namibia, Camerún y Togo.</li>
+        <li>Italia: controló Libia y Somalia.</li>
+        <li>Portugal: consolidó Mozambique y Angola.</li>
+      </ul>
+
+      <h3>Mapa de la repartición de África</h3>
+      <div class="mapa">
+        <!-- Debes tener este PDF en la misma carpeta que el HTML -->
+        <object data="Mapa_de_la_reparticion_de_Africa._-4.pdf" type="application/pdf">
+          Tu navegador no puede mostrar el mapa en PDF. 
+          Abre directamente <a href="Mapa_de_la_reparticion_de_Africa._-4.pdf" target="_blank">Mapa_de_la_reparticion_de_Africa._-4.pdf</a>.
+        </object>
+        <p class="nota-mapa">
+          Mapa con las colonias de España, Italia, Francia, Reino Unido, Alemania, Portugal y Bélgica en África.
+        </p>
+      </div>
+    </section>
+
+    <!-- Sección Ciclos del capitalismo -->
+    <section id="capitalismo">
+      <h2>Ciclos económicos del capitalismo</h2>
+      <div class="resumen">
+        <p>
+          El capitalismo ha pasado por varias etapas históricas: comercial, industrial y financiera. 
+          Cada una tiene formas distintas de acumular capital y de relacionar producción, comercio y finanzas.
+        </p>
+      </div>
+
+      <h3>Capitalismo comercial (siglos XV–XVIII)</h3>
+      <ul>
+        <li>Basado en el intercambio mercantil, el colonialismo y el mercantilismo.</li>
+        <li>Acumulación de capital gracias a rutas comerciales y llegada de metales preciosos desde América.</li>
+        <li>Ciclos de expansión y crisis por sobreproducción o escasez de mercancías.</li>
+      </ul>
+
+      <h3>Capitalismo industrial (siglos XVIII–XIX)</h3>
+      <ul>
+        <li>Nace con la Primera Revolución Industrial.</li>
+        <li>Producción maquinizada en fábricas y propiedad privada de los medios de producción.</li>
+        <li>Uso de mano de obra asalariada y búsqueda de lucro mediante la libre competencia.</li>
+      </ul>
+
+      <h3>Capitalismo financiero (desde finales del siglo XX)</h3>
+      <ul>
+        <li>Predominio de operaciones bursátiles, especulación y productos financieros (acciones, bonos, derivados).</li>
+        <li>La economía real queda subordinada a los mercados financieros.</li>
+        <li>Las decisiones de inversión y crédito afectan directamente al empleo y a la producción.</li>
+      </ul>
+    </section>
+
+    <!-- Sección Alta Edad Media -->
+    <section id="alta-edad-media">
+      <h2>La Alta Edad Media (siglos V–X)</h2>
+      <div class="resumen">
+        <p>
+          La Alta Edad Media comenzó con la caída del Imperio romano de Occidente en 476 y supuso una profunda 
+          transformación política, social y cultural en Europa, con fragmentación en reinos germánicos y nacimiento del feudalismo.
+        </p>
+      </div>
+
+      <h3>Características principales</h3>
+      <ul>
+        <li>Sociedad principalmente rural, con ciudades en decadencia e importancia central de la agricultura.</li>
+        <li>Desarrollo del feudalismo: señores feudales controlan feudos, campesinos trabajan la tierra a cambio de protección.</li>
+        <li>Sociedad jerarquizada: reyes y nobles, clero y, en la base, campesinos y siervos.</li>
+      </ul>
+
+      <h3>Papel de la Iglesia</h3>
+      <ul>
+        <li>Institución clave en educación y conservación del conocimiento a través de monasterios.</li>
+        <li>Control de la cultura escrita y de la organización de la vida religiosa.</li>
+        <li>Gran influencia política y económica en reinos europeos.</li>
+      </ul>
+    </section>
+
+    <!-- Sección Países capitalistas -->
+    <section id="paises-capitalistas">
+      <h2>Países capitalistas del mundo</h2>
+      <div class="resumen">
+        <p>
+          Muchos países del mundo adoptan el capitalismo como sistema económico, basado en la propiedad privada 
+          de los medios de producción, la libre empresa y el mercado como mecanismo principal de asignación de recursos.
+        </p>
+      </div>
+
+      <h3>Mapa de países capitalistas</h3>
+      <div class="mapa">
+        <!-- Debes tener este PDF en la misma carpeta que el HTML -->
+        <object data="PAISES_CAPITALISTAS-5.pdf" type="application/pdf">
+          Tu navegador no puede mostrar el mapa en PDF. 
+          Abre directamente <a href="PAISES_CAPITALISTAS-5.pdf" target="_blank">PAISES_CAPITALISTAS-5.pdf</a>.
+        </object>
+        <p class="nota-mapa">
+          El mapa resalta en color los países que han desarrollado economías predominantemente capitalistas.
+        </p>
+      </div>
+
+      <h3>Rasgos básicos del capitalismo</h3>
+      <ul>
+        <li>Propiedad privada de empresas, fábricas y tierras productivas.</li>
+        <li>Producción orientada al mercado y a la obtención de beneficios.</li>
+        <li>Competencia entre empresas y libertad relativa de precios y salarios.</li>
+      </ul>
+    </section>
+
+    <!-- Sección Cuestionario -->
+    <section id="quiz">
+      <h2>Cuestionario de repaso (25 preguntas)</h2>
+      <p>
+        Marca una opción en cada pregunta y pulsa <strong>“Revisar pregunta”</strong> para ver la retroalimentación. 
+        Al final puedes usar el botón <strong>“Revisar todo el cuestionario”</strong> para ver tu puntaje total.
+      </p>
+
+      <!-- Preguntas I Guerra Mundial (1–10) -->
+      <div class="question" data-id="q1">
+        <h3>1. ¿En qué año comenzó la I Guerra Mundial?</h3>
+        <div class="options">
+          <label><input type="radio" name="q1" value="A"> A) 1905</label>
+          <label><input type="radio" name="q1" value="B"> B) 1914</label>
+          <label><input type="radio" name="q1" value="C"> C) 1917</label>
+          <label><input type="radio" name="q1" value="D"> D) 1919</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q1')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q1"></div>
+      </div>
+
+      <div class="question" data-id="q2">
+        <h3>2. ¿Cuál fue el detonante inmediato de la I Guerra Mundial?</h3>
+        <div class="options">
+          <label><input type="radio" name="q2" value="A"> A) La invasión de Polonia por Alemania.</label>
+          <label><input type="radio" name="q2" value="B"> B) El hundimiento del Titanic.</label>
+          <label><input type="radio" name="q2" value="C"> C) El asesinato del archiduque Francisco Fernando en Sarajevo.</label>
+          <label><input type="radio" name="q2" value="D"> D) La firma del Tratado de Versalles.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q2')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q2"></div>
+      </div>
+
+      <div class="question" data-id="q3">
+        <h3>3. ¿Qué países formaban originalmente la Triple Entente?</h3>
+        <div class="options">
+          <label><input type="radio" name="q3" value="A"> A) Alemania, Austria-Hungría e Italia.</label>
+          <label><input type="radio" name="q3" value="B"> B) Francia, Reino Unido y Rusia.</label>
+          <label><input type="radio" name="q3" value="C"> C) Estados Unidos, Francia y Rusia.</label>
+          <label><input type="radio" name="q3" value="D"> D) Italia, Japón y Estados Unidos.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q3')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q3"></div>
+      </div>
+
+      <div class="question" data-id="q4">
+        <h3>4. ¿Qué bloque se conocía como la Triple Alianza al inicio del conflicto?</h3>
+        <div class="options">
+          <label><input type="radio" name="q4" value="A"> A) Francia, Reino Unido y Rusia.</label>
+          <label><input type="radio" name="q4" value="B"> B) Alemania, Austria-Hungría e Italia.</label>
+          <label><input type="radio" name="q4" value="C"> C) Estados Unidos, Francia y Reino Unido.</label>
+          <label><input type="radio" name="q4" value="D"> D) Rusia, Japón y Alemania.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q4')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q4"></div>
+      </div>
+
+      <div class="question" data-id="q5">
+        <h3>5. ¿Qué tipo de guerra caracterizó al frente occidental durante la I Guerra Mundial?</h3>
+        <div class="options">
+          <label><input type="radio" name="q5" value="A"> A) Guerra de trincheras.</label>
+          <label><input type="radio" name="q5" value="B"> B) Guerra relámpago.</label>
+          <label><input type="radio" name="q5" value="C"> C) Guerra nuclear.</label>
+          <label><input type="radio" name="q5" value="D"> D) Guerra de guerrillas.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q5')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q5"></div>
+      </div>
+
+      <div class="question" data-id="q6">
+        <h3>6. ¿Cuál de las siguientes fue una nueva tecnología militar utilizada en la I Guerra Mundial?</h3>
+        <div class="options">
+          <label><input type="radio" name="q6" value="A"> A) Bombas atómicas.</label>
+          <label><input type="radio" name="q6" value="B"> B) Ametralladoras y gases tóxicos.</label>
+          <label><input type="radio" name="q6" value="C"> C) Misiles balísticos intercontinentales.</label>
+          <label><input type="radio" name="q6" value="D"> D) Satélites espía.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q6')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q6"></div>
+      </div>
+
+      <div class="question" data-id="q7">
+        <h3>7. ¿Qué país entró en la guerra en 1917 inclinando la balanza a favor de los Aliados?</h3>
+        <div class="options">
+          <label><input type="radio" name="q7" value="A"> A) Italia.</label>
+          <label><input type="radio" name="q7" value="B"> B) Japón.</label>
+          <label><input type="radio" name="q7" value="C"> C) Estados Unidos.</label>
+          <label><input type="radio" name="q7" value="D"> D) España.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q7')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q7"></div>
+      </div>
+
+      <div class="question" data-id="q8">
+        <h3>8. ¿Qué tratado puso oficialmente fin a la I Guerra Mundial?</h3>
+        <div class="options">
+          <label><input type="radio" name="q8" value="A"> A) Tratado de París.</label>
+          <label><input type="radio" name="q8" value="B"> B) Tratado de Versalles.</label>
+          <label><input type="radio" name="q8" value="C"> C) Tratado de Tordesillas.</label>
+          <label><input type="radio" name="q8" value="D"> D) Tratado de Utrecht.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q8')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q8"></div>
+      </div>
+
+      <div class="question" data-id="q9">
+        <h3>9. ¿Cuál de estas fue una consecuencia política importante de la I Guerra Mundial?</h3>
+        <div class="options">
+          <label><input type="radio" name="q9" value="A"> A) Fortalecimiento del Imperio otomano.</label>
+          <label><input type="radio" name="q9" value="B"> B) Desaparición de varios imperios europeos.</label>
+          <label><input type="radio" name="q9" value="C"> C) Unificación de toda Europa en un solo Estado.</label>
+          <label><input type="radio" name="q9" value="D"> D) Fin de la Revolución Industrial.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q9')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q9"></div>
+      </div>
+
+      <div class="question" data-id="q10">
+        <h3>10. ¿En qué año terminó la I Guerra Mundial?</h3>
+        <div class="options">
+          <label><input type="radio" name="q10" value="A"> A) 1918</label>
+          <label><input type="radio" name="q10" value="B"> B) 1929</label>
+          <label><input type="radio" name="q10" value="C"> C) 1939</label>
+          <label><input type="radio" name="q10" value="D"> D) 1945</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q10')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q10"></div>
+      </div>
+
+      <!-- Preguntas Repartición de África (11–15) -->
+      <div class="question" data-id="q11">
+        <h3>11. ¿Cómo se conoce el proceso de división colonial de África entre potencias europeas en el siglo XIX?</h3>
+        <div class="options">
+          <label><input type="radio" name="q11" value="A"> A) Guerra de los Cien Años.</label>
+          <label><input type="radio" name="q11" value="B"> B) Carrera por África.</label>
+          <label><input type="radio" name="q11" value="C"> C) Reconquista africana.</label>
+          <label><input type="radio" name="q11" value="D"> D) Guerra fría africana.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q11')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q11"></div>
+      </div>
+
+      <div class="question" data-id="q12">
+        <h3>12. ¿Qué papel tuvo la Conferencia de Berlín (1884–1885) en la repartición de África?</h3>
+        <div class="options">
+          <label><input type="radio" name="q12" value="A"> A) Prohibió totalmente el colonialismo en África.</label>
+          <label><input type="radio" name="q12" value="B"> B) Estableció la norma de la «ocupación efectiva» para reclamar territorios.</label>
+          <label><input type="radio" name="q12" value="C"> C) Creó un único Estado africano independiente.</label>
+          <label><input type="radio" name="q12" value="D"> D) Devolvió todas las colonias a los pueblos africanos.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q12')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q12"></div>
+      </div>
+
+      <div class="question" data-id="q13">
+        <h3>13. ¿Cuál fue una de las principales causas europeas para repartirse África?</h3>
+        <div class="options">
+          <label><input type="radio" name="q13" value="A"> A) Buscar materias primas y nuevos mercados para la industria.</label>
+          <label><input type="radio" name="q13" value="B"> B) Detener el comercio internacional.</label>
+          <label><input type="radio" name="q13" value="C"> C) Desarrollar exclusivamente la agricultura de subsistencia.</label>
+          <label><input type="radio" name="q13" value="D"> D) Reducir el contacto con otros continentes.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q13')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q13"></div>
+      </div>
+
+      <div class="question" data-id="q14">
+        <h3>14. Aproximadamente, ¿qué porcentaje del territorio africano quedó bajo control colonial europeo hacia 1914?</h3>
+        <div class="options">
+          <label><input type="radio" name="q14" value="A"> A) 10&nbsp;%</label>
+          <label><input type="radio" name="q14" value="B"> B) 30&nbsp;%</label>
+          <label><input type="radio" name="q14" value="C"> C) 60&nbsp;%</label>
+          <label><input type="radio" name="q14" value="D"> D) 90&nbsp;%</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q14')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q14"></div>
+      </div>
+
+      <div class="question" data-id="q15">
+        <h3>15. ¿Cuál de estos países NO fue una potencia colonial protagonista en la repartición de África?</h3>
+        <div class="options">
+          <label><input type="radio" name="q15" value="A"> A) Reino Unido.</label>
+          <label><input type="radio" name="q15" value="B"> B) Francia.</label>
+          <label><input type="radio" name="q15" value="C"> C) Bélgica.</label>
+          <label><input type="radio" name="q15" value="D"> D) México.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q15')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q15"></div>
+      </div>
+
+      <!-- Preguntas Ciclos del capitalismo (16–20) -->
+      <div class="question" data-id="q16">
+        <h3>16. ¿En qué se basaba principalmente el capitalismo comercial?</h3>
+        <div class="options">
+          <label><input type="radio" name="q16" value="A"> A) En la producción en fábricas y la mecanización.</label>
+          <label><input type="radio" name="q16" value="B"> B) En el intercambio mercantil, el colonialismo y el mercantilismo.</label>
+          <label><input type="radio" name="q16" value="C"> C) En la especulación bursátil y los derivados financieros.</label>
+          <label><input type="radio" name="q16" value="D"> D) En la planificación central de la economía.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q16')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q16"></div>
+      </div>
+
+      <div class="question" data-id="q17">
+        <h3>17. ¿Qué caracteriza al capitalismo industrial?</h3>
+        <div class="options">
+          <label><input type="radio" name="q17" value="A"> A) La producción artesana en pequeños talleres familiares.</label>
+          <label><input type="radio" name="q17" value="B"> B) La producción maquinizada en fábricas y el trabajo asalariado.</label>
+          <label><input type="radio" name="q17" value="C"> C) El uso exclusivo de trueque sin dinero.</label>
+          <label><input type="radio" name="q17" value="D"> D) La ausencia total de competencia.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q17')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q17"></div>
+      </div>
+
+      <div class="question" data-id="q18">
+        <h3>18. ¿Cuál es el rasgo central del capitalismo financiero?</h3>
+        <div class="options">
+          <label><input type="radio" name="q18" value="A"> A) Prioriza la producción agrícola.</label>
+          <label><input type="radio" name="q18" value="B"> B) Prioriza las ganancias a través de operaciones bursátiles y productos financieros.</label>
+          <label><input type="radio" name="q18" value="C"> C) Elimina por completo los bancos.</label>
+          <label><input type="radio" name="q18" value="D"> D) Prohíbe la propiedad privada.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q18')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q18"></div>
+      </div>
+
+      <div class="question" data-id="q19">
+        <h3>19. ¿Cuál es el orden histórico correcto de las etapas del capitalismo?</h3>
+        <div class="options">
+          <label><input type="radio" name="q19" value="A"> A) Financiero → Comercial → Industrial.</label>
+          <label><input type="radio" name="q19" value="B"> B) Comercial → Industrial → Financiero.</label>
+          <label><input type="radio" name="q19" value="C"> C) Industrial → Comercial → Financiero.</label>
+          <label><input type="radio" name="q19" value="D"> D) Comercial → Financiero → Industrial.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q19')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q19"></div>
+      </div>
+
+      <div class="question" data-id="q20">
+        <h3>20. ¿Qué relación tiene el capitalismo industrial con la Revolución Industrial?</h3>
+        <div class="options">
+          <label><input type="radio" name="q20" value="A"> A) No tienen ninguna relación entre sí.</label>
+          <label><input type="radio" name="q20" value="B"> B) El capitalismo industrial surge durante la Primera Revolución Industrial.</label>
+          <label><input type="radio" name="q20" value="C"> C) La Revolución Industrial elimina el capitalismo.</label>
+          <label><input type="radio" name="q20" value="D"> D) El capitalismo industrial aparece siglos antes de la Revolución Industrial.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q20')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q20"></div>
+      </div>
+
+      <!-- Preguntas Alta Edad Media y países capitalistas (21–25) -->
+      <div class="question" data-id="q21">
+        <h3>21. ¿Entre qué siglos se sitúa la Alta Edad Media?</h3>
+        <div class="options">
+          <label><input type="radio" name="q21" value="A"> A) Siglos I–III.</label>
+          <label><input type="radio" name="q21" value="B"> B) Siglos V–X.</label>
+          <label><input type="radio" name="q21" value="C"> C) Siglos XI–XV.</label>
+          <label><input type="radio" name="q21" value="D"> D) Siglos XVIII–XIX.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q21')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q21"></div>
+      </div>
+
+      <div class="question" data-id="q22">
+        <h3>22. ¿Qué característica describe mejor al feudalismo en la Alta Edad Media?</h3>
+        <div class="options">
+          <label><input type="radio" name="q22" value="A"> A) Sistema basado en la posesión de tierras y relaciones de dependencia entre señores y campesinos.</label>
+          <label><input type="radio" name="q22" value="B"> B) Sistema igualitario sin diferencias de poder.</label>
+          <label><input type="radio" name="q22" value="C"> C) Economía centrada en grandes fábricas industriales.</label>
+          <label><input type="radio" name="q22" value="D"> D) Dominio total de las ciudades sobre el campo.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q22')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q22"></div>
+      </div>
+
+      <div class="question" data-id="q23">
+        <h3>23. ¿Cuál fue una función principal de la Iglesia durante la Alta Edad Media?</h3>
+        <div class="options">
+          <label><input type="radio" name="q23" value="A"> A) Reemplazar completamente a los reyes en el gobierno.</label>
+          <label><input type="radio" name="q23" value="B"> B) Conservar el conocimiento y controlar la educación en monasterios.</label>
+          <label><input type="radio" name="q23" value="C"> C) Dirigir exclusivamente las actividades comerciales marítimas.</label>
+          <label><input type="radio" name="q23" value="D"> D) Organizar la producción industrial.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q23')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q23"></div>
+      </div>
+
+      <div class="question" data-id="q24">
+        <h3>24. En el mapa de países capitalistas, ¿qué se resalta en color?</h3>
+        <div class="options">
+          <label><input type="radio" name="q24" value="A"> A) Solo los países socialistas.</label>
+          <label><input type="radio" name="q24" value="B"> B) Los países que han adoptado economías predominantemente capitalistas.</label>
+          <label><input type="radio" name="q24" value="C"> C) Únicamente los países productores de petróleo.</label>
+          <label><input type="radio" name="q24" value="D"> D) Únicamente los países europeos.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q24')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q24"></div>
+      </div>
+
+      <div class="question" data-id="q25">
+        <h3>25. ¿Cuál de estas opciones es una característica fundamental del sistema capitalista?</h3>
+        <div class="options">
+          <label><input type="radio" name="q25" value="A"> A) Prohibición de la propiedad privada.</label>
+          <label><input type="radio" name="q25" value="B"> B) Propiedad privada de los medios de producción y búsqueda de lucro.</label>
+          <label><input type="radio" name="q25" value="C"> C) Eliminación del dinero y del mercado.</label>
+          <label><input type="radio" name="q25" value="D"> D) Economía controlada solo por el Estado sin empresas privadas.</label>
+        </div>
+        <button type="button" onclick="checkQuestion('q25')">Revisar pregunta</button>
+        <div class="feedback" id="feedback-q25"></div>
+      </div>
+
+      <button type="button" class="btn-primary" onclick="checkAll()">Revisar todo el cuestionario</button>
+      <div id="score"></div>
+    </section>
+  </main>
+
+  <script>
+    // Navegación de secciones
+    function showSection(id, btn) {
+      document.querySelectorAll('section').forEach(sec => {
+        sec.classList.toggle('active', sec.id === id);
+      });
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+    }
+
+    // Datos de retroalimentación para el cuestionario
+    const feedbackData = {
+      q1: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: 1905 no marca el inicio de la I Guerra Mundial.',
+          B: 'Correcta: la I Guerra Mundial comenzó en 1914.',
+          C: 'Incorrecta: 1917 es el año de entrada de Estados Unidos al conflicto.',
+          D: 'Incorrecta: 1919 es el año del Tratado de Versalles, después del fin de la guerra.'
+        }
+      },
+      q2: {
+        correct: 'C',
+        explanations: {
+          A: 'Incorrecta: la invasión de Polonia es el detonante de la II Guerra Mundial.',
+          B: 'Incorrecta: el hundimiento del Titanic no está relacionado con la guerra.',
+          C: 'Correcta: el asesinato de Francisco Fernando en Sarajevo fue el detonante inmediato.',
+          D: 'Incorrecta: el Tratado de Versalles se firma al final del conflicto.'
+        }
+      },
+      q3: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: esos países formaban la Triple Alianza.',
+          B: 'Correcta: Francia, Reino Unido y Rusia formaban la Triple Entente.',
+          C: 'Incorrecta: Estados Unidos no fue miembro original de la Entente.',
+          D: 'Incorrecta: esta combinación no corresponde a ningún bloque principal.'
+        }
+      },
+      q4: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: esos países son la Triple Entente.',
+          B: 'Correcta: Alemania, Austria-Hungría e Italia formaban la Triple Alianza.',
+          C: 'Incorrecta: Estados Unidos se incorporó más tarde y no a la Alianza.',
+          D: 'Incorrecta: Rusia y Japón no formaban parte de la Triple Alianza.'
+        }
+      },
+      q5: {
+        correct: 'A',
+        explanations: {
+          A: 'Correcta: el frente occidental se caracterizó por la guerra de trincheras.',
+          B: 'Incorrecta: la “guerra relámpago” es una táctica asociada a la II Guerra Mundial.',
+          C: 'Incorrecta: no hubo armas nucleares en la I Guerra Mundial.',
+          D: 'Incorrecta: la guerra de guerrillas no fue la forma principal de combate en el frente occidental.'
+        }
+      },
+      q6: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: las bombas atómicas se usaron en la II Guerra Mundial.',
+          B: 'Correcta: se introdujeron ametralladoras, gases tóxicos y otras armas modernas.',
+          C: 'Incorrecta: los misiles balísticos aparecieron mucho después.',
+          D: 'Incorrecta: los satélites son tecnología de la segunda mitad del siglo XX.'
+        }
+      },
+      q7: {
+        correct: 'C',
+        explanations: {
+          A: 'Incorrecta: Italia estaba en la guerra desde el inicio, aunque cambió de bando.',
+          B: 'Incorrecta: Japón no fue el factor decisivo de 1917 en Europa.',
+          C: 'Correcta: la entrada de Estados Unidos en 1917 fortaleció a los Aliados.',
+          D: 'Incorrecta: España se mantuvo neutral durante la I Guerra Mundial.'
+        }
+      },
+      q8: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: hubo varios tratados de París, pero no ese es el principal de la I Guerra Mundial.',
+          B: 'Correcta: el Tratado de Versalles de 1919 puso fin oficialmente al conflicto con Alemania.',
+          C: 'Incorrecta: el Tratado de Tordesillas es del siglo XV.',
+          D: 'Incorrecta: el Tratado de Utrecht es del siglo XVIII.'
+        }
+      },
+      q9: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: el Imperio otomano se desintegró tras la guerra.',
+          B: 'Correcta: desaparecieron los imperios alemán, austrohúngaro, ruso y otomano.',
+          C: 'Incorrecta: Europa no se unificó en un solo Estado.',
+          D: 'Incorrecta: la Revolución Industrial empezó antes y no terminó por la guerra.'
+        }
+      },
+      q10: {
+        correct: 'A',
+        explanations: {
+          A: 'Correcta: los combates terminaron en 1918 con el armisticio.',
+          B: 'Incorrecta: 1929 marca la crisis económica, no el fin de la guerra.',
+          C: 'Incorrecta: 1939 es el inicio de la II Guerra Mundial.',
+          D: 'Incorrecta: 1945 es el final de la II Guerra Mundial.'
+        }
+      },
+      q11: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: la Guerra de los Cien Años fue un conflicto medieval entre Francia e Inglaterra.',
+          B: 'Correcta: la repartición de África se conoce como la Carrera por África.',
+          C: 'Incorrecta: no es un término histórico usado para este proceso.',
+          D: 'Incorrecta: la “guerra fría” corresponde al siglo XX entre EE. UU. y la URSS.'
+        }
+      },
+      q12: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: la conferencia no prohibió el colonialismo, lo organizó.',
+          B: 'Correcta: fijó la norma de ocupación efectiva para reclamar territorios.',
+          C: 'Incorrecta: no creó un único Estado africano.',
+          D: 'Incorrecta: no devolvió las colonias a los pueblos africanos.'
+        }
+      },
+      q13: {
+        correct: 'A',
+        explanations: {
+          A: 'Correcta: la Revolución Industrial impulsó la búsqueda de materias primas y mercados.',
+          B: 'Incorrecta: el objetivo era expandir, no detener, el comercio.',
+          C: 'Incorrecta: el interés era la explotación colonial, no solo la agricultura de subsistencia.',
+          D: 'Incorrecta: se buscaba precisamente mayor contacto económico con otros continentes.'
+        }
+      },
+      q14: {
+        correct: 'D',
+        explanations: {
+          A: 'Incorrecta: un 10 % corresponde a la situación previa al reparto masivo.',
+          B: 'Incorrecta: 30 % es una cifra demasiado baja para 1914.',
+          C: 'Incorrecta: 60 % sigue siendo menor que el control real.',
+          D: 'Correcta: hacia 1914, cerca del 90 % del territorio estaba bajo dominio europeo.'
+        }
+      },
+      q15: {
+        correct: 'D',
+        explanations: {
+          A: 'Incorrecta: Reino Unido fue una de las mayores potencias coloniales en África.',
+          B: 'Incorrecta: Francia tuvo grandes colonias en el norte y oeste africano.',
+          C: 'Incorrecta: Bélgica controló el Estado Libre del Congo.',
+          D: 'Correcta: México no fue potencia colonial en la repartición de África.'
+        }
+      },
+      q16: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: esto describe el capitalismo industrial.',
+          B: 'Correcta: el capitalismo comercial se basaba en comercio, colonialismo y mercantilismo.',
+          C: 'Incorrecta: eso corresponde al capitalismo financiero.',
+          D: 'Incorrecta: la planificación central se asocia a economías socialistas.'
+        }
+      },
+      q17: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: la producción artesana es previa al capitalismo industrial.',
+          B: 'Correcta: fábricas y trabajo asalariado son rasgos del capitalismo industrial.',
+          C: 'Incorrecta: el trueque no es típico de esta etapa.',
+          D: 'Incorrecta: la competencia es clave en el capitalismo industrial.'
+        }
+      },
+      q18: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: la prioridad no es la agricultura.',
+          B: 'Correcta: el capitalismo financiero privilegia operaciones bursátiles y productos financieros.',
+          C: 'Incorrecta: los bancos son actores centrales en esta etapa.',
+          D: 'Incorrecta: la propiedad privada sigue siendo fundamental.'
+        }
+      },
+      q19: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: el capitalismo financiero es posterior.',
+          B: 'Correcta: primero comercial, luego industrial y finalmente financiero.',
+          C: 'Incorrecta: el capitalismo comercial antecede al industrial.',
+          D: 'Incorrecta: el financiero no se desarrolla antes del industrial.'
+        }
+      },
+      q20: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: sí hay una relación directa.',
+          B: 'Correcta: el capitalismo industrial surge con la Primera Revolución Industrial.',
+          C: 'Incorrecta: la Revolución Industrial no elimina el capitalismo, lo transforma.',
+          D: 'Incorrecta: el capitalismo industrial no es anterior por siglos a la Revolución Industrial.'
+        }
+      },
+      q21: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: esos siglos pertenecen a la Antigüedad.',
+          B: 'Correcta: la Alta Edad Media va aproximadamente del siglo V al X.',
+          C: 'Incorrecta: XI–XV corresponde a la Plena y Baja Edad Media.',
+          D: 'Incorrecta: XVIII–XIX es la Edad Moderna y Contemporánea.'
+        }
+      },
+      q22: {
+        correct: 'A',
+        explanations: {
+          A: 'Correcta: el feudalismo se basa en feudos y relaciones de dependencia.',
+          B: 'Incorrecta: la sociedad era muy desigual.',
+          C: 'Incorrecta: las grandes fábricas son propias de la Edad Contemporánea.',
+          D: 'Incorrecta: en la Alta Edad Media predominó el campo sobre la ciudad.'
+        }
+      },
+      q23: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: aunque influyente, la Iglesia no reemplazó totalmente a los reyes.',
+          B: 'Correcta: la Iglesia conservó conocimiento y controló la educación en monasterios.',
+          C: 'Incorrecta: su función no fue principalmente comercial marítima.',
+          D: 'Incorrecta: la producción industrial no existía como en épocas posteriores.'
+        }
+      },
+      q24: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: el mapa no se centra solo en países socialistas.',
+          B: 'Correcta: resalta los países con economías capitalistas.',
+          C: 'Incorrecta: no se limita a países petroleros.',
+          D: 'Incorrecta: incluye países de varios continentes, no solo Europa.'
+        }
+      },
+      q25: {
+        correct: 'B',
+        explanations: {
+          A: 'Incorrecta: el capitalismo se basa precisamente en la propiedad privada.',
+          B: 'Correcta: propiedad privada y búsqueda de lucro son rasgos centrales del capitalismo.',
+          C: 'Incorrecta: el capitalismo utiliza dinero y mercados.',
+          D: 'Incorrecta: en el capitalismo existen empresas privadas junto al Estado.'
+        }
+      }
+    };
+
+    function checkQuestion(id) {
+      const cfg = feedbackData[id];
+      const selected = document.querySelector('input[name="' + id + '"]:checked');
+      const feedbackDiv = document.getElementById('feedback-' + id);
+
+      if (!selected) {
+        feedbackDiv.style.display = 'block';
+        feedbackDiv.className = 'feedback incorrect';
+        feedbackDiv.innerHTML = 'Primero selecciona una opción para esta pregunta.';
+        return;
+      }
+
+      const chosen = selected.value;
+      const isCorrect = chosen === cfg.correct;
+
+      feedbackDiv.style.display = 'block';
+      feedbackDiv.className = 'feedback ' + (isCorrect ? 'correct' : 'incorrect');
+
+      let html = '<p><strong>Tu respuesta: ' + chosen + ' ' +
+        (isCorrect ? '(correcta)' : '(incorrecta)') + '</strong></p>';
+      html += '<ul>';
+      ['A','B','C','D'].forEach(opt => {
+        const label = (opt === cfg.correct ? ' (correcta)' : ' (incorrecta)');
+        html += '<li><strong>' + opt + label + ':</strong> ' + cfg.explanations[opt] + '</li>';
+      });
+      html += '</ul>';
+      feedbackDiv.innerHTML = html;
+    }
+
+    function checkAll() {
+      let correctCount = 0;
+      let total = 0;
+      for (const id in feedbackData) {
+        total++;
+        const cfg = feedbackData[id];
+        const selected = document.querySelector('input[name="' + id + '"]:checked');
+        if (selected && selected.value === cfg.correct) {
+          correctCount++;
+        }
+        // Mostrar feedback aunque no se haya seleccionado nada
+        checkQuestion(id);
+      }
+      const scoreDiv = document.getElementById('score');
+      scoreDiv.textContent = 'Tu puntaje: ' + correctCount + ' de ' + total + ' preguntas correctas.';
+    }
+  </script>
+</body>
+</html>
