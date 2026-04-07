@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>English Practice - Interactive Page</title>
+  <style>
+    :root {
+      --bg-main: #e5f0ff;
+      --bg-card: #ffffff;
+      --border-card: #d0def5;
+      --header-from: #0f766e;
+      --header-to: #14b8a6;
+      --text-main: #0f172a;
+      --text-muted: #4b5563;
+      --accent: #2563eb;
+      --accent-soft: #dbeafe;
+      --correct: #15803d;
+      --incorrect: #b91c1c;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: radial-gradient(circle at top, #eef2ff 0, var(--bg-main) 40%, #e0f2fe 100%);
+      color: var(--text-main);
+    }
+
+    header {
+      background: linear-gradient(120deg, var(--header-from), var(--header-to));
+      color: #f9fafb;
+      padding: 1.4rem 2.2rem 1.6rem;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.18);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    header p {
+      margin: 0.4rem 0 0;
+      font-size: 0.98rem;
+      color: #e0f2f1;
+      max-width: 720px;
+    }
+
+    main {
+      max-width: 960px;
+      margin: 1.8rem auto 3rem;
+      padding: 0 1rem 2rem;
+    }
+
+    .topic {
+      background: var(--bg-card);
+      border-radius: 0.9rem;
+      margin-bottom: 1.6rem;
+      box-shadow: 0 14px 35px rgba(15, 23, 42, 0.08);
+      border: 1px solid var(--border-card);
+      overflow: hidden;
+    }
+
+    .topic-header {
+      padding: 0.9rem 1.3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+      background: linear-gradient(90deg, rgba(15, 23, 42, 0.95), rgba(30, 64, 175, 0.9));
+      color: #f9fafb;
+    }
+
+    .topic-header h2 {
+      margin: 0;
+      font-size: 1.08rem;
+    }
+
+    .topic-header small {
+      color: #9ca3af;
+      margin-left: 0.5rem;
+    }
+
+    .topic-toggle {
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .topic.open .topic-toggle {
+      transform: rotate(90deg);
+    }
+
+    .topic-content {
+      padding: 1rem 1.3rem 1.2rem;
+      display: none;
+      background: linear-gradient(180deg, #f9fafb, #eef2ff 40%, #e0f2fe 100%);
+    }
+
+    .topic.open .topic-content {
+      display: block;
+    }
+
+    .topic-description {
+      margin-bottom: 0.5rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .examples {
+      background: var(--accent-soft);
+      border-radius: 0.6rem;
+      padding: 0.6rem 0.8rem;
+      margin-bottom: 0.5rem;
+      border: 1px solid #bfdbfe;
+      font-size: 0.9rem;
+      color: #1e3a8a;
+    }
+
+    .examples strong {
+      font-weight: 600;
+    }
+
+    .examples ul {
+      padding-left: 1.1rem;
+      margin: 0.25rem 0 0;
+    }
+
+    .examples li {
+      margin-bottom: 0.15rem;
+    }
+
+    .question-block {
+      margin-top: 0.9rem;
+      padding-top: 0.9rem;
+      border-top: 1px solid #c7d2fe;
+    }
+
+    .question-text {
+      font-weight: 600;
+      margin-bottom: 0.45rem;
+      color: #111827;
+    }
+
+    .options {
+      list-style: none;
+      padding-left: 0;
+      margin: 0.25rem 0 0.75rem;
+    }
+
+    .options li {
+      margin-bottom: 0.25rem;
+    }
+
+    .options label {
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.15rem 0.4rem;
+      border-radius: 999px;
+      transition: background 0.15s ease;
+    }
+
+    .options input[type="radio"] {
+      accent-color: var(--accent);
+    }
+
+    .options label:hover {
+      background: rgba(191, 219, 254, 0.7);
+    }
+
+    .question-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    button.check {
+      background: var(--accent);
+      color: #f9fafb;
+      border: none;
+      border-radius: 999px;
+      padding: 0.3rem 0.95rem;
+      font-size: 0.85rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.45);
+      transition: background 0.15s ease, transform 0.08s ease, box-shadow 0.15s ease;
+    }
+
+    button.check:hover {
+      background: #1d4ed8;
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(30, 64, 175, 0.5);
+    }
+
+    button.check:active {
+      transform: translateY(0);
+      box-shadow: 0 4px 10px rgba(30, 64, 175, 0.4);
+    }
+
+    .feedback {
+      font-size: 0.9rem;
+    }
+
+    .feedback.correct {
+      color: var(--correct);
+    }
+
+    .feedback.incorrect {
+      color: var(--incorrect);
+    }
+
+    .explanation {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 0.15rem;
+    }
+
+    .summary-topic {
+      margin-top: 1rem;
+      padding-top: 0.7rem;
+      border-top: 1px dashed #c7d2fe;
+      font-size: 0.9rem;
+      color: #1f2937;
+    }
+
+    .summary-topic strong {
+      font-weight: 600;
+    }
+
+    .counter {
+      font-size: 0.85rem;
+      color: #e5e7eb;
+      margin-left: auto;
+    }
+
+    @media (max-width: 640px) {
+      .topic-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+      }
+
+      .counter {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>English Practice 9th Grade</h1>
+    <p>
+      Use these short explanations, examples and quizzes to review vocabulary and grammar from your
+      English workshops.
+    </p>
+  </header>
+  <main id="topics-container"></main>
+
+  <script>
+    const quizzes = [
+      {
+        id: 'city',
+        title: 'My city: Bogotá & Medellín',
+        description:
+          'You read a text comparing Bogotá and Medellín: population, places to visit, public transport and weather.',
+        examples: [
+          'Example sentence: "Bogotá is the largest city in Colombia."',
+          'Example sentence: "The weather in Medellín is like spring all year round."'
+        ],
+        questions: [
+          {
+            text: 'Bogotá is the __________ and most important city in Colombia.',
+            options: ['smallest', 'largest', 'second largest'],
+            correctIndex: 1,
+            explanation:
+              'The text says: "Bogotá is the largest and most important city in Colombia."'
+          },
+          {
+            text: 'More than __________ million people live in Bogotá.',
+            options: ['2', '5', '7'],
+            correctIndex: 2,
+            explanation:
+              'According to the reading, more than 7 million people live in Bogotá.'
+          },
+          {
+            text: 'Which means of transport belongs to Bogotá?',
+            options: ['Metro de Medellín', 'TransMilenio', 'Cable cars'],
+            correctIndex: 1,
+            explanation:
+              'The text mentions TransMilenio as Bogotá\'s bus rapid transit system.'
+          },
+          {
+            text: 'The weather in Medellín is __________.',
+            options: ['always very cold', 'like spring all year round', 'extremely hot'],
+            correctIndex: 1,
+            explanation:
+              'Medellín is described as having spring-like weather all year round.'
+          },
+          {
+            text: 'Choose the correct comparative: "Bogotá is _____ than many other cities in Colombia." (about traffic)',
+            options: ['worse', 'bader', 'the worst'],
+            correctIndex: 0,
+            explanation:
+              'For two things we use the comparative form "worse than", not "bader" or "the worst".'
+          }
+        ]
+      },
+      {
+        id: 'family',
+        title: 'My family: Simpsons & your family',
+        description:
+          'This topic reviews basic family vocabulary (mother, father, sister, grandparents, cousin) using the Simpsons family tree.',
+        examples: [
+          'Example sentence: "Homer is Bart\'s father."',
+          'Example sentence: "Lisa and Maggie are Bart\'s sisters."'
+        ],
+        questions: [
+          {
+            text: 'Homer and Marge are Bart\'s __________.',
+            options: ['grandparents', 'parents', 'cousins'],
+            correctIndex: 1,
+            explanation:
+              'In the worksheet, Homer and Marge are presented as Bart\'s parents.'
+          },
+          {
+            text: 'Lisa and Maggie are Bart\'s __________.',
+            options: ['sisters', 'aunts', 'cousins'],
+            correctIndex: 0,
+            explanation:
+              'Lisa and Maggie are Bart\'s sisters.'
+          },
+          {
+            text: 'Abraham and Mona are Bart\'s __________.',
+            options: ['parents', 'grandparents', 'uncle and aunt'],
+            correctIndex: 1,
+            explanation:
+              'Abraham and Mona are Homer\'s parents, so they are Bart\'s grandparents.'
+          },
+          {
+            text: 'If Ling is Selma\'s daughter, Ling is Bart\'s __________.',
+            options: ['cousin', 'aunt', 'niece'],
+            correctIndex: 0,
+            explanation:
+              'The daughter of your aunt is your cousin.'
+          }
+        ]
+      },
+      {
+        id: 'family-members',
+        title: 'Family members: extended family',
+        description:
+          'Here you work with more specific family words: nephew, stepdaughter, godfather, twins, in-laws and grandchildren.',
+        examples: [
+          'Example sentence: "My nephew is my sister\'s son."',
+          'Example sentence: "My godfather promised to take care of me."'
+        ],
+        questions: [
+          {
+            text: 'A nephew is the son of your sibling.',
+            options: ['True', 'False'],
+            correctIndex: 0,
+            explanation:
+              'This definition is correct: your brother\'s or sister\'s son is your nephew.'
+          },
+          {
+            text: 'A stepdaughter is the daughter of your partner from a previous relationship.',
+            options: ['True', 'False'],
+            correctIndex: 0,
+            explanation:
+              'A stepdaughter is the daughter of your husband, wife or partner from a previous relationship.'
+          },
+          {
+            text: 'A godfather is the best friend of your parent.',
+            options: ['True', 'False'],
+            correctIndex: 1,
+            explanation:
+              'A godfather is a man who promises to take care of a child and guide them, especially in religion, not necessarily the parent\'s best friend.'
+          },
+          {
+            text: 'Twins are children born to the same mother on the same occasion.',
+            options: ['True', 'False'],
+            correctIndex: 0,
+            explanation:
+              'This is the correct definition of twins.'
+          }
+        ]
+      },
+      {
+        id: 'description',
+        title: 'Descriptions: physical appearance & personality',
+        description:
+          'You practice adjectives to describe how people look and how they are (personality traits).',
+        examples: [
+          'Example sentence: "She is tall and has curly hair."',
+          'Example sentence: "He is hardworking but sometimes impatient."'
+        ],
+        questions: [
+          {
+            text: 'Someone who works a lot and makes an effort is __________.',
+            options: ['lazy', 'hardworking', 'rude'],
+            correctIndex: 1,
+            explanation:
+              '"Hardworking" describes a person who works a lot and tries hard.'
+          },
+          {
+            text: 'If a person often says "please" and "thank you", they are __________.',
+            options: ['polite', 'selfish', 'arrogant'],
+            correctIndex: 0,
+            explanation:
+              'Using good manners shows that a person is polite.'
+          },
+          {
+            text: 'A person who only thinks about themselves and not about others is __________.',
+            options: ['kind', 'selfish', 'generous'],
+            correctIndex: 1,
+            explanation:
+              '"Selfish" means you only think about yourself.'
+          },
+          {
+            text: 'If someone is always on time, they are __________.',
+            options: ['lazy', 'punctual', 'impatient'],
+            correctIndex: 1,
+            explanation:
+              '"Punctual" means they arrive at the correct time.'
+          }
+        ]
+      },
+      {
+        id: 'introducing',
+        title: 'Introducing myself',
+        description:
+          'This section helps you start, continue and end a basic conversation to introduce yourself.',
+        examples: [
+          'Example sentence: "Good afternoon, my name is Ana and I\'m from Bogotá."',
+          'Example sentence: "It was nice talking to you, see you soon!"'
+        ],
+        questions: [
+          {
+            text: 'Choose the most appropriate way to start a formal introduction.',
+            options: [
+              'Hey, what\'s up? I\'m Carlos.',
+              'Good morning, my name is Carlos.',
+              'Yo, Carlos here.'
+            ],
+            correctIndex: 1,
+            explanation:
+              'In a formal situation we normally say: "Good morning / afternoon, my name is ...".'
+          },
+          {
+            text: 'Which sentence is correct?',
+            options: [
+              'I am 15 years old.',
+              'I have 15 years.',
+              'I am have 15 years.'
+            ],
+            correctIndex: 0,
+            explanation:
+              'To talk about age in English we say "I am 15 years old" or "I\'m 15".'
+          },
+          {
+            text: 'To talk about your hobbies, you can say: "I __________ playing the guitar."',
+            options: ['am', 'hate', 'love'],
+            correctIndex: 2,
+            explanation:
+              'When it is your hobby, you can say "I love playing the guitar."'
+          },
+          {
+            text: 'Choose the best way to end a first conversation.',
+            options: [
+              'It was nice talking to you.',
+              'You are boring.',
+              'Stop talking now.'
+            ],
+            correctIndex: 0,
+            explanation:
+              '"It was nice talking to you" is a polite way to finish a conversation.'
+          }
+        ]
+      },
+      {
+        id: 'comparatives',
+        title: 'Comparatives & superlatives',
+        description:
+          'You compare two or more things using adjectives (cold, big, good, famous) in their comparative and superlative forms.',
+        examples: [
+          'Example sentence: "Bogotá is colder than Girardot."',
+          'Example sentence: "TransMilenio is one of the fastest transport systems in Colombia."'
+        ],
+        questions: [
+          {
+            text: 'Bogotá is __________ than Girardot. (cold)',
+            options: ['colder', 'more cold', 'coldest'],
+            correctIndex: 0,
+            explanation:
+              'For short adjectives like "cold" we use "-er": "colder than".'
+          },
+          {
+            text: 'TransMilenio is __________ transport system in Colombia. (fast)',
+            options: ['faster', 'the fastest', 'fastest than'],
+            correctIndex: 1,
+            explanation:
+              'To compare one with all the others we use the superlative: "the fastest".'
+          },
+          {
+            text: 'Medellín has __________ weather than Bogotá. (good)',
+            options: ['gooder', 'better', 'the best'],
+            correctIndex: 1,
+            explanation:
+              '"Good" is irregular: its comparative is "better".'
+          },
+          {
+            text: 'La Candelaria is __________ part of the city for tourists. (interesting)',
+            options: ['more interesting', 'interestinger', 'the more interesting'],
+            correctIndex: 0,
+            explanation:
+              'For longer adjectives we use "more + adjective": "more interesting than".'
+          }
+        ]
+      }
+    ];
+
+    const container = document.getElementById('topics-container');
+
+    function createTopic(quiz) {
+      const topic = document.createElement('section');
+      topic.className = 'topic';
+      topic.id = quiz.id;
+
+      const header = document.createElement('div');
+      header.className = 'topic-header';
+
+      const title = document.createElement('h2');
+      title.textContent = quiz.title;
+
+      const subtitle = document.createElement('small');
+      subtitle.textContent = `${quiz.questions.length} questions`;
+
+      const counter = document.createElement('div');
+      counter.className = 'counter';
+      counter.textContent = '0 correct';
+
+      const toggle = document.createElement('div');
+      toggle.className = 'topic-toggle';
+      toggle.textContent = '▶';
+
+      header.appendChild(title);
+      header.appendChild(subtitle);
+      header.appendChild(counter);
+      header.appendChild(toggle);
+
+      const content = document.createElement('div');
+      content.className = 'topic-content';
+
+      const description = document.createElement('p');
+      description.className = 'topic-description';
+      description.textContent = quiz.description;
+      content.appendChild(description);
+
+      if (quiz.examples && quiz.examples.length) {
+        const examplesBox = document.createElement('div');
+        examplesBox.className = 'examples';
+
+        const strong = document.createElement('strong');
+        strong.textContent = 'Examples:';
+        examplesBox.appendChild(strong);
+
+        const list = document.createElement('ul');
+        quiz.examples.forEach((ex) => {
+          const li = document.createElement('li');
+          li.textContent = ex;
+          list.appendChild(li);
+        });
+        examplesBox.appendChild(list);
+
+        content.appendChild(examplesBox);
+      }
+
+      quiz.questions.forEach((question, index) => {
+        const block = document.createElement('div');
+        block.className = 'question-block';
+
+        const qText = document.createElement('div');
+        qText.className = 'question-text';
+        qText.textContent = `Question ${index + 1}: ${question.text}`;
+
+        const list = document.createElement('ul');
+        list.className = 'options';
+
+        question.options.forEach((option, i) => {
+          const li = document.createElement('li');
+          const label = document.createElement('label');
+          const input = document.createElement('input');
+          input.type = 'radio';
+          input.name = `${quiz.id}-q-${index}`;
+          input.value = i;
+          label.appendChild(input);
+          label.appendChild(document.createTextNode(option));
+          li.appendChild(label);
+          list.appendChild(li);
+        });
+
+        const actions = document.createElement('div');
+        actions.className = 'question-actions';
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'check';
+        button.textContent = 'Check';
+
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback';
+
+        const explanation = document.createElement('div');
+        explanation.className = 'explanation';
+
+        actions.appendChild(button);
+        actions.appendChild(feedback);
+
+        block.appendChild(qText);
+        block.appendChild(list);
+        block.appendChild(actions);
+        block.appendChild(explanation);
+
+        content.appendChild(block);
+
+        button.addEventListener('click', () => {
+          const selected = content.querySelector(`input[name="${quiz.id}-q-${index}"]:checked`);
+          if (!selected) {
+            feedback.textContent = 'Choose an option before checking.';
+            feedback.className = 'feedback incorrect';
+            explanation.textContent = '';
+            return;
+          }
+          const chosen = parseInt(selected.value, 10);
+          const isCorrect = chosen === question.correctIndex;
+          if (isCorrect) {
+            feedback.textContent = '✔ Correct';
+            feedback.className = 'feedback correct';
+          } else {
+            feedback.textContent = '✖ Incorrect';
+            feedback.className = 'feedback incorrect';
+          }
+          explanation.textContent = question.explanation;
+          updateCounter(topic, quiz);
+        });
+      });
+
+      const summary = document.createElement('div');
+      summary.className = 'summary-topic';
+      summary.innerHTML = '<strong>Tip:</strong> Review your notebook or the PDF for this topic and try again the questions you got wrong.';
+      content.appendChild(summary);
+
+      header.addEventListener('click', (e) => {
+        if (e.target.tagName.toLowerCase() === 'button') return;
+        topic.classList.toggle('open');
+      });
+
+      topic.appendChild(header);
+      topic.appendChild(content);
+      return topic;
+    }
+
+    function updateCounter(topicElement, quiz) {
+      const blocks = topicElement.querySelectorAll('.question-block');
+      let correct = 0;
+      blocks.forEach((block) => {
+        const feedback = block.querySelector('.feedback');
+        if (feedback && feedback.textContent.toLowerCase().includes('correct')) {
+          correct++;
+        }
+      });
+      const counter = topicElement.querySelector('.counter');
+      counter.textContent = `${correct} correct out of ${quiz.questions.length}`;
+    }
+
+    quizzes.forEach((quiz) => {
+      const topic = createTopic(quiz);
+      container.appendChild(topic);
+    });
+  </script>
+</body>
+</html>
