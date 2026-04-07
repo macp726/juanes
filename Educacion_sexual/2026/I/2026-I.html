@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Estudio: Asertividad, Estereotipos y Rumores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --color-bg: #f5f5f5;
+      --color-surface: #ffffff;
+      --color-primary: #01696f;
+      --color-primary-dark: #0c4e54;
+      --color-error: #b3261e;
+      --color-success: #2e7d32;
+      --color-border: #d0d0d0;
+      --space-1: 0.25rem;
+      --space-2: 0.5rem;
+      --space-3: 0.75rem;
+      --space-4: 1rem;
+      --space-6: 1.5rem;
+      --space-8: 2rem;
+      --radius-md: 0.5rem;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--color-bg);
+      color: #222;
+      line-height: 1.5;
+    }
+
+    header {
+      background: var(--color-primary);
+      color: #fff;
+      padding: var(--space-4);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    header h1 {
+      font-size: 1.3rem;
+      margin-bottom: var(--space-2);
+    }
+
+    .topic-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-top: var(--space-2);
+    }
+
+    .topic-button {
+      border: 1px solid rgba(255,255,255,0.6);
+      background: transparent;
+      color: #fff;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .topic-button.active {
+      background: #fff;
+      color: var(--color-primary-dark);
+      border-color: #fff;
+      font-weight: 600;
+    }
+
+    main {
+      max-width: 960px;
+      margin: var(--space-4) auto var(--space-8);
+      padding: 0 var(--space-4);
+    }
+
+    .topic-section {
+      background: var(--color-surface);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      padding: var(--space-4);
+      margin-bottom: var(--space-4);
+      display: none;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .topic-section.active {
+      display: block;
+    }
+
+    .topic-section h2 {
+      font-size: 1.2rem;
+      margin-bottom: var(--space-2);
+      color: var(--color-primary-dark);
+    }
+
+    .topic-section h3 {
+      font-size: 1.05rem;
+      margin-top: var(--space-3);
+      margin-bottom: var(--space-2);
+    }
+
+    .topic-summary {
+      margin-bottom: var(--space-3);
+    }
+
+    .topic-summary p {
+      margin-bottom: var(--space-2);
+    }
+
+    .topic-summary ul {
+      margin-left: 1.2rem;
+      list-style: disc;
+    }
+
+    .topic-summary li {
+      margin-bottom: 0.25rem;
+    }
+
+    .quiz {
+      margin-top: var(--space-2);
+      border-top: 1px solid var(--color-border);
+      padding-top: var(--space-3);
+    }
+
+    .question {
+      margin-bottom: var(--space-3);
+      padding: var(--space-2);
+      border-radius: var(--radius-md);
+      border: 1px solid var(--color-border);
+      background: #fafafa;
+    }
+
+    .question.correct {
+      border-color: var(--color-success);
+      background: #f1faf1;
+    }
+
+    .question.incorrect {
+      border-color: var(--color-error);
+      background: #fff4f2;
+    }
+
+    .question p {
+      font-weight: 600;
+      margin-bottom: var(--space-1);
+    }
+
+    .options {
+      margin-top: var(--space-1);
+    }
+
+    .options label {
+      display: block;
+      font-weight: 400;
+      margin-bottom: 0.25rem;
+      cursor: pointer;
+    }
+
+    .options input {
+      margin-right: 0.35rem;
+    }
+
+    .feedback {
+      margin-top: 0.35rem;
+      font-size: 0.9rem;
+    }
+
+    .feedback.correct-text {
+      color: var(--color-success);
+      font-weight: 500;
+    }
+
+    .feedback.incorrect-text {
+      color: var(--color-error);
+      font-weight: 500;
+    }
+
+    .quiz-actions {
+      margin-top: var(--space-2);
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+    }
+
+    .btn {
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      transition: background 0.15s, color 0.15s, box-shadow 0.15s;
+    }
+
+    .btn-primary {
+      background: var(--color-primary);
+      color: #fff;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+    }
+
+    .btn-primary:hover {
+      background: var(--color-primary-dark);
+    }
+
+    .btn-secondary {
+      background: #e9ecef;
+      color: #222;
+    }
+
+    .btn-secondary:hover {
+      background: #dde1e5;
+    }
+
+    .score {
+      margin-top: var(--space-2);
+      font-weight: 600;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.1rem;
+      }
+      .topic-section {
+        padding: var(--space-3);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Estudio interactivo: Asertividad, estereotipos y rumores</h1>
+    <p>Selecciona un tema y responde el cuestionario para comprobar tu comprensión.</p>
+    <nav class="topic-nav" aria-label="Seleccionar tema">
+      <button class="topic-button active" data-target="assertividad-bases">
+        Conductas asertivas (conceptos)
+      </button>
+      <button class="topic-button" data-target="assertividad-habilidades">
+        Conductas asertivas (habilidades)
+      </button>
+      <button class="topic-button" data-target="estereotipos-prejuicios-rumores">
+        Estereotipos, prejuicios y rumores
+      </button>
+      <button class="topic-button" data-target="falsos-rumores">
+        Principales falsos rumores
+      </button>
+      <button class="topic-button" data-target="inteligencia-sexualidad">
+        Inteligencia emocional y educación sexual
+      </button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Tema 1: Conductas asertivas (conceptos básicos) -->
+    <section id="assertividad-bases" class="topic-section active">
+      <h2>Conductas asertivas: conceptos básicos</h2>
+      <div class="topic-summary">
+        <p>
+          La asertividad es la capacidad de expresar necesidades, deseos y opiniones de forma clara y directa, cuidando al mismo tiempo los derechos de las demás personas. 
+        </p>
+        <ul>
+          <li>Se puede entrenar y mejora la comunicación y la satisfacción de necesidades personales.</li>
+          <li>Implica expresarse con confianza y respeto, evitando tanto la pasividad como la agresividad.</li>
+          <li>Se apoya en el respeto mutuo, la escucha activa y la honestidad empática.</li>
+        </ul>
+      </div>
+
+      <div class="quiz" data-section="assertividad-bases">
+        <h3>Cuestionario: conceptos de asertividad</h3>
+
+        <div class="question" data-question-id="ab1" data-explanation="Ser asertivo significa decir lo que piensas y necesitas de forma clara, respetando tus derechos y los de los demás.">
+          <p>1. ¿Qué describe mejor la asertividad?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="ab1" value="a" />
+              Hablar siempre en voz alta para que las personas obedezcan.
+            </label>
+            <label>
+              <input type="radio" name="ab1" value="b" data-correct="true" />
+              Expresar tus necesidades y opiniones con claridad y respeto hacia los demás.
+            </label>
+            <label>
+              <input type="radio" name="ab1" value="c" />
+              Callar para evitar cualquier conflicto.
+            </label>
+            <label>
+              <input type="radio" name="ab1" value="d" />
+              Hacer todo lo que otros quieren para que no se molesten.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="ab2" data-explanation="La conducta agresiva vulnera los derechos de otras personas, mientras que la asertiva los respeta y busca soluciones cooperativas.">
+          <p>2. ¿Cuál es una diferencia clave entre asertividad y agresividad?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="ab2" value="a" />
+              La agresividad siempre es más eficaz que la asertividad.
+            </label>
+            <label>
+              <input type="radio" name="ab2" value="b" />
+              La asertividad ignora las necesidades de los demás.
+            </label>
+            <label>
+              <input type="radio" name="ab2" value="c" data-correct="true" />
+              La agresividad implica imponer y dañar, mientras que la asertividad respeta los derechos de todas las personas.
+            </label>
+            <label>
+              <input type="radio" name="ab2" value="d" />
+              No hay ninguna diferencia importante entre ambas.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="ab3" data-explanation="Ser asertivo ayuda a obtener lo que necesitas sin dejar de respetar a los demás y favorece el desarrollo personal y social.">
+          <p>3. ¿Por qué es importante ser asertivo?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="ab3" value="a" />
+              Porque permite evitar cualquier conflicto a toda costa.
+            </label>
+            <label>
+              <input type="radio" name="ab3" value="b" data-correct="true" />
+              Porque facilita expresar lo que se quiere y se necesita respetando los derechos de otras personas.
+            </label>
+            <label>
+              <input type="radio" name="ab3" value="c" />
+              Porque ayuda a que los demás siempre hagan lo que yo quiero.
+            </label>
+            <label>
+              <input type="radio" name="ab3" value="d" />
+              Porque permite ocultar emociones y no hablar de ellas.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="ab4" data-explanation="Usar la primera persona, evitar suposiciones y hablar con claridad favorece una comunicación asertiva.">
+          <p>4. ¿Qué conducta favorece una comunicación asertiva?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="ab4" value="a" />
+              Hablar de forma indirecta y ambigua para no comprometerse.
+            </label>
+            <label>
+              <input type="radio" name="ab4" value="b" />
+              Suponer lo que siente la otra persona sin preguntar.
+            </label>
+            <label>
+              <input type="radio" name="ab4" value="c" data-correct="true" />
+              Expresar pensamientos y sentimientos con claridad usando frases en primera persona.
+            </label>
+            <label>
+              <input type="radio" name="ab4" value="d" />
+              Interrumpir constantemente para dejar clara la propia opinión.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-actions">
+          <button class="btn btn-primary" type="button" data-check-section="assertividad-bases">
+            Comprobar respuestas
+          </button>
+          <button class="btn btn-secondary" type="button" data-reset-section="assertividad-bases">
+            Reiniciar cuestionario
+          </button>
+        </div>
+        <div class="score" data-score-for="assertividad-bases"></div>
+      </div>
+    </section>
+
+    <!-- Tema 2: Conductas asertivas (habilidades y situaciones) -->
+    <section id="assertividad-habilidades" class="topic-section">
+      <h2>Conductas asertivas: habilidades y situaciones</h2>
+      <div class="topic-summary">
+        <p>
+          Las conductas asertivas incluyen expresar sentimientos, establecer límites y defender derechos personales en situaciones cotidianas.
+        </p>
+        <ul>
+          <li>Expresar sentimientos positivos y negativos de forma respetuosa y constructiva.</li>
+          <li>Decir “no” sin culpa y proteger tu tiempo, espacio y límites personales.</li>
+          <li>Defender tus derechos, afrontar críticas injustas y manejar presiones o manipulación.</li>
+          <li>Utilizar habilidades de comunicación como la escucha activa, el contacto visual y un lenguaje corporal abierto.</li>
+        </ul>
+      </div>
+
+      <div class="quiz" data-section="assertividad-habilidades">
+        <h3>Cuestionario: habilidades asertivas</h3>
+
+        <div class="question" data-question-id="ah1" data-explanation="Pedir ayuda cuando la necesitas y expresar lo que sientes de forma clara son ejemplos de conductas asertivas.">
+          <p>1. ¿Cuál de las siguientes es una conducta asertiva?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="ah1" value="a" />
+              Guardar todo lo que sientes para que nadie se incomode.
+            </label>
+            <label>
+              <input type="radio" name="ah1" value="b" data-correct="true" />
+              Pedir apoyo cuando lo necesitas, explicando con claridad lo que requieres.
+            </label>
+            <label>
+              <input type="radio" name="ah1" value="c" />
+              Gritar para que te escuchen en cualquier discusión.
+            </label>
+            <label>
+              <input type="radio" name="ah1" value="d" />
+              Aceptar tareas que no puedes hacer por miedo a quedar mal.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="ah2" data-explanation="Decir “no” con respeto y explicar brevemente tus motivos es una forma de proteger tus límites personales.">
+          <p>2. Tu amigo te insiste en ir a una fiesta a la que no quieres ir. ¿Qué respuesta es más asertiva?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="ah2" value="a" />
+              Ir a la fiesta aunque no quieras, para que no se enoje.
+            </label>
+            <label>
+              <input type="radio" name="ah2" value="b" />
+              Ignorar sus mensajes y no decir nada.
+            </label>
+            <label>
+              <input type="radio" name="ah2" value="c" data-correct="true" />
+              Decirle con calma que agradeces la invitación, pero que no deseas ir esta vez.
+            </label>
+            <label>
+              <input type="radio" name="ah2" value="d" />
+              Responderle con enojo para que no vuelva a invitarte.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="ah3" data-explanation="Escuchar activamente, mantener contacto visual y usar un tono firme y calmado refuerzan la comunicación asertiva.">
+          <p>3. ¿Qué combinación favorece una comunicación asertiva?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="ah3" value="a" />
+              Evitar el contacto visual y responder con monosílabos.
+            </label>
+            <label>
+              <input type="radio" name="ah3" value="b" />
+              Escuchar activamente, mirar a los ojos y usar un tono firme y calmado.
+            </label>
+            <label>
+              <input type="radio" name="ah3" value="c" data-correct="true" />
+              Escuchar activamente, mostrar interés y cuidar el lenguaje corporal abierto.
+            </label>
+            <label>
+              <input type="radio" name="ah3" value="d" />
+              Hablar muy rápido sin dejar que el otro responda.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="ah4" data-explanation="Responder a críticas injustas con calma, pidiendo aclaraciones y sin atacar, es una estrategia asertiva.">
+          <p>4. ¿Cómo sería una respuesta asertiva ante una crítica injusta?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="ah4" value="a" />
+              Responder con insultos para que la otra persona se sienta igual.
+            </label>
+            <label>
+              <input type="radio" name="ah4" value="b" data-correct="true" />
+              Mantener la calma, pedir aclaraciones y explicar tu punto de vista sin atacar.
+            </label>
+            <label>
+              <input type="radio" name="ah4" value="c" />
+              Callar y aceptar todo aunque no estés de acuerdo.
+            </label>
+            <label>
+              <input type="radio" name="ah4" value="d" />
+              Ignorar a la persona y hablar mal de ella con otros.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-actions">
+          <button class="btn btn-primary" type="button" data-check-section="assertividad-habilidades">
+            Comprobar respuestas
+          </button>
+          <button class="btn btn-secondary" type="button" data-reset-section="assertividad-habilidades">
+            Reiniciar cuestionario
+          </button>
+        </div>
+        <div class="score" data-score-for="assertividad-habilidades"></div>
+      </div>
+    </section>
+
+    <!-- Tema 3: Estereotipos, prejuicios y rumores -->
+    <section id="estereotipos-prejuicios-rumores" class="topic-section">
+      <h2>Estereotipos, prejuicios y rumores</h2>
+      <div class="topic-summary">
+        <p>
+          Estereotipos, prejuicios y rumores son construcciones sociales que simplifican la realidad, pero pueden generar discriminación y desigualdad.
+        </p>
+        <ul>
+          <li>Los estereotipos son creencias generalizadas sobre grupos (por género, etnia, nacionalidad, etc.).</li>
+          <li>Los prejuicios son juicios u opiniones negativas que se emiten sin un conocimiento adecuado.</li>
+          <li>Los rumores son informaciones no verificadas que se difunden informalmente y pueden ser verdaderas o falsas.</li>
+          <li>Sus consecuencias incluyen discriminación, exclusión social, violencia y justificación de desigualdades.</li>
+        </ul>
+      </div>
+
+      <div class="quiz" data-section="estereotipos-prejuicios-rumores">
+        <h3>Cuestionario: estereotipos, prejuicios y rumores</h3>
+
+        <div class="question" data-question-id="epr1" data-explanation="Un estereotipo es una creencia simplificada y generalizada sobre un grupo de personas.">
+          <p>1. ¿Qué es un estereotipo?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="epr1" value="a" />
+              Un hecho comprobado científicamente sobre un grupo.
+            </label>
+            <label>
+              <input type="radio" name="epr1" value="b" data-correct="true" />
+              Una creencia generalizada y simplificada sobre las características de un grupo.
+            </label>
+            <label>
+              <input type="radio" name="epr1" value="c" />
+              Una ley que protege los derechos de las personas.
+            </label>
+            <label>
+              <input type="radio" name="epr1" value="d" />
+              Una opinión individual basada en datos verificables.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="epr2" data-explanation="Un prejuicio es un juicio u opinión (generalmente negativa) que se forma sin información suficiente ni experiencias reales.">
+          <p>2. ¿Qué caracteriza a un prejuicio?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="epr2" value="a" />
+              Se basa siempre en datos objetivos y completos.
+            </label>
+            <label>
+              <input type="radio" name="epr2" value="b" data-correct="true" />
+              Es un juicio previo, sin suficiente conocimiento, que suele ser negativo hacia un grupo.
+            </label>
+            <label>
+              <input type="radio" name="epr2" value="c" />
+              Es un rumor que se repite muchas veces.
+            </label>
+            <label>
+              <input type="radio" name="epr2" value="d" />
+              Una descripción neutral de la realidad.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="epr3" data-explanation="Un rumor es una información que todavía no ha sido confirmada por fuentes confiables.">
+          <p>3. ¿Cuál es la principal diferencia entre un rumor y un hecho verificado?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="epr3" value="a" />
+              El rumor siempre es verdadero y el hecho verificado siempre es falso.
+            </label>
+            <label>
+              <input type="radio" name="epr3" value="b" />
+              El rumor se basa en opiniones científicas y el hecho, en redes sociales.
+            </label>
+            <label>
+              <input type="radio" name="epr3" value="c" data-correct="true" />
+              El rumor no está confirmado por fuentes confiables, mientras que el hecho ha sido comprobado.
+            </label>
+            <label>
+              <input type="radio" name="epr3" value="d" />
+              No existe ninguna diferencia importante entre ellos.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="epr4" data-explanation="Estereotipos, prejuicios y rumores pueden llevar a la discriminación, exclusión y violencia hacia ciertos grupos.">
+          <p>4. ¿Cuál de las siguientes es una posible consecuencia de los estereotipos y prejuicios?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="epr4" value="a" />
+              Aumentan el respeto y la igualdad entre todos los grupos.
+            </label>
+            <label>
+              <input type="radio" name="epr4" value="b" />
+              Reducen los conflictos y la discriminación.
+            </label>
+            <label>
+              <input type="radio" name="epr4" value="c" data-correct="true" />
+              Generan discriminación, exclusión social y pueden justificar la desigualdad.
+            </label>
+            <label>
+              <input type="radio" name="epr4" value="d" />
+              No tienen impacto en la convivencia.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-actions">
+          <button class="btn btn-primary" type="button" data-check-section="estereotipos-prejuicios-rumores">
+            Comprobar respuestas
+          </button>
+          <button class="btn btn-secondary" type="button" data-reset-section="estereotipos-prejuicios-rumores">
+            Reiniciar cuestionario
+          </button>
+        </div>
+        <div class="score" data-score-for="estereotipos-prejuicios-rumores"></div>
+      </div>
+    </section>
+
+    <!-- Tema 4: Principales falsos rumores -->
+    <section id="falsos-rumores" class="topic-section">
+      <h2>Principales falsos rumores</h2>
+      <div class="topic-summary">
+        <p>
+          Los falsos rumores pueden aparecer en muchos ámbitos y afectar la convivencia y la confianza en la sociedad.
+        </p>
+        <ul>
+          <li>Rumores políticos: desinformación sobre figuras públicas, decisiones de gobierno o teorías de conspiración.</li>
+          <li>Rumores sobre seguridad, salud, economía e inmigración, que generan miedo y desconfianza.</li>
+          <li>Rumores en contextos escolares sobre estudiantes, docentes o rendimiento académico.</li>
+          <li>Sus efectos incluyen difusión de información falsa, conflictos, daño emocional y reputacional.</li>
+        </ul>
+      </div>
+
+      <div class="quiz" data-section="falsos-rumores">
+        <h3>Cuestionario: falsos rumores</h3>
+
+        <div class="question" data-question-id="fr1" data-explanation="Un rumor es falso cuando la información que transmite no corresponde con la realidad, aunque muchas personas lo repitan.">
+          <p>1. ¿Qué es un falso rumor?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="fr1" value="a" />
+              Una noticia confirmada por fuentes oficiales.
+            </label>
+            <label>
+              <input type="radio" name="fr1" value="b" data-correct="true" />
+              Información no verificada que se difunde y resulta ser incorrecta.
+            </label>
+            <label>
+              <input type="radio" name="fr1" value="c" />
+              Una opinión personal que nunca se comparte con nadie.
+            </label>
+            <label>
+              <input type="radio" name="fr1" value="d" />
+              Un comentario positivo sobre otra persona.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="fr2" data-explanation="Los rumores sobre seguridad pueden generar miedo y desconfianza si no se comprueba su veracidad.">
+          <p>2. ¿Cuál de los siguientes ejemplos corresponde a un rumor sobre seguridad?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="fr2" value="a" data-correct="true" />
+              Un mensaje en redes que advierte de una banda peligrosa en el barrio sin ninguna confirmación oficial.
+            </label>
+            <label>
+              <input type="radio" name="fr2" value="b" />
+              Un informe oficial de la policía con estadísticas anuales.
+            </label>
+            <label>
+              <input type="radio" name="fr2" value="c" />
+              Un video educativo sobre primeros auxilios.
+            </label>
+            <label>
+              <input type="radio" name="fr2" value="d" />
+              Un horario publicado por el colegio.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="fr3" data-explanation="En el contexto escolar, los rumores falsos sobre personas pueden afectar su reputación y bienestar emocional.">
+          <p>3. ¿Qué situación muestra un falso rumor escolar?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="fr3" value="a" />
+              Un listado oficial de notas entregado por el profesor.
+            </label>
+            <label>
+              <input type="radio" name="fr3" value="b" />
+              Un comentario informal que asegura que un estudiante fue expulsado sin que sea cierto.
+            </label>
+            <label>
+              <input type="radio" name="fr3" value="c" data-correct="true" />
+              Chismes que afirman que dos estudiantes pelearon y fueron sancionados, cuando en realidad no ocurrió.
+            </label>
+            <label>
+              <input type="radio" name="fr3" value="d" />
+              Una circular oficial sobre las normas de convivencia.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="fr4" data-explanation="Antes de compartir información, es importante verificarla para no contribuir a la desinformación ni dañar a otras personas.">
+          <p>4. ¿Qué acción ayuda a detener la propagación de falsos rumores?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="fr4" value="a" />
+              Compartir rápidamente cualquier mensaje que cause impacto.
+            </label>
+            <label>
+              <input type="radio" name="fr4" value="b" />
+              Creer todo lo que se publica en redes si lo comparten muchas personas.
+            </label>
+            <label>
+              <input type="radio" name="fr4" value="c" data-correct="true" />
+              Verificar la información en fuentes confiables antes de difundirla.
+            </label>
+            <label>
+              <input type="radio" name="fr4" value="d" />
+              Repetir el rumor pero aclarar que quizás no sea verdad.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-actions">
+          <button class="btn btn-primary" type="button" data-check-section="falsos-rumores">
+            Comprobar respuestas
+          </button>
+          <button class="btn btn-secondary" type="button" data-reset-section="falsos-rumores">
+            Reiniciar cuestionario
+          </button>
+        </div>
+        <div class="score" data-score-for="falsos-rumores"></div>
+      </div>
+    </section>
+
+    <!-- Tema 5: Inteligencia emocional y educación sexual -->
+    <section id="inteligencia-sexualidad" class="topic-section">
+      <h2>Inteligencia emocional y educación sexual</h2>
+      <div class="topic-summary">
+        <p>
+          La inteligencia emocional y la educación sexual integral contribuyen al bienestar personal y a relaciones más saludables.
+        </p>
+        <ul>
+          <li>La inteligencia emocional es la capacidad de reconocer, comprender y manejar las propias emociones y las de otras personas.</li>
+          <li>Ayuda a tolerar la presión y la frustración, tomar decisiones más conscientes y mejorar las relaciones interpersonales.</li>
+          <li>La educación sexual integral ofrece información fiel a la edad sobre el cuerpo, la pubertad, la salud y las relaciones respetuosas.</li>
+          <li>Favorece el autocuidado, la protección de la salud y el respeto hacia uno mismo y hacia otras personas.</li>
+        </ul>
+      </div>
+
+      <div class="quiz" data-section="inteligencia-sexualidad">
+        <h3>Cuestionario: inteligencia emocional y educación sexual</h3>
+
+        <div class="question" data-question-id="is1" data-explanation="La inteligencia emocional implica reconocer y manejar las emociones de forma consciente, no ignorarlas.">
+          <p>1. ¿Qué es la inteligencia emocional?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="is1" value="a" />
+              La habilidad de evitar cualquier emoción para ser más racional.
+            </label>
+            <label>
+              <input type="radio" name="is1" value="b" data-correct="true" />
+              La capacidad de reconocer y manejar las emociones de forma consciente en la vida diaria.
+            </label>
+            <label>
+              <input type="radio" name="is1" value="c" />
+              La capacidad de controlar las emociones de los demás.
+            </label>
+            <label>
+              <input type="radio" name="is1" value="d" />
+              La ausencia total de sentimientos en situaciones difíciles.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="is2" data-explanation="Uno de los beneficios centrales de la inteligencia emocional es tomar conciencia de lo que sentimos para gestionarlo mejor.">
+          <p>2. ¿Cuál es un beneficio importante de la inteligencia emocional?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="is2" value="a" />
+              Ignorar los propios sentimientos para no pensar en ellos.
+            </label>
+            <label>
+              <input type="radio" name="is2" value="b" data-correct="true" />
+              Tomar conciencia de las emociones para gestionarlas mejor.
+            </label>
+            <label>
+              <input type="radio" name="is2" value="c" />
+              Aumentar los conflictos con las demás personas.
+            </label>
+            <label>
+              <input type="radio" name="is2" value="d" />
+              Evitar trabajar en equipo y aislarse.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="is3" data-explanation="La educación sexual integral aporta información adecuada a la edad para cuidar la salud y construir relaciones respetuosas.">
+          <p>3. ¿Qué ofrece la educación sexual integral a los y las jóvenes?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="is3" value="a" />
+              Solo datos sobre reproducción, sin contexto.
+            </label>
+            <label>
+              <input type="radio" name="is3" value="b" data-correct="true" />
+              Información precisa y adecuada a la edad sobre el cuerpo, la salud y las relaciones.
+            </label>
+            <label>
+              <input type="radio" name="is3" value="c" />
+              Opiniones sin base sobre la vida afectiva.
+            </label>
+            <label>
+              <input type="radio" name="is3" value="d" />
+              Exclusivamente contenidos académicos, como matemáticas.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="question" data-question-id="is4" data-explanation="La educación sexual busca promover relaciones respetuosas, decisiones informadas y hábitos saludables.">
+          <p>4. ¿Cuál es un objetivo central de la educación sexual?</p>
+          <div class="options">
+            <label>
+              <input type="radio" name="is4" value="a" />
+              Reemplazar todas las demás áreas de estudio.
+            </label>
+            <label>
+              <input type="radio" name="is4" value="b" />
+              Generar miedo para que las personas no hablen de sexualidad.
+            </label>
+            <label>
+              <input type="radio" name="is4" value="c" data-correct="true" />
+              Apoyar la salud y favorecer relaciones respetuosas e informadas.
+            </label>
+            <label>
+              <input type="radio" name="is4" value="d" />
+              Evitar cualquier conversación sobre el cuerpo y las emociones.
+            </label>
+          </div>
+          <div class="feedback"></div>
+        </div>
+
+        <div class="quiz-actions">
+          <button class="btn btn-primary" type="button" data-check-section="inteligencia-sexualidad">
+            Comprobar respuestas
+          </button>
+          <button class="btn btn-secondary" type="button" data-reset-section="inteligencia-sexualidad">
+            Reiniciar cuestionario
+          </button>
+        </div>
+        <div class="score" data-score-for="inteligencia-sexualidad"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Cambio de tema
+    const topicButtons = document.querySelectorAll(".topic-button");
+    const topicSections = document.querySelectorAll(".topic-section");
+
+    topicButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.getAttribute("data-target");
+        topicButtons.forEach((b) => b.classList.remove("active"));
+        btn.classList.add("active");
+        topicSections.forEach((section) => {
+          section.classList.toggle("active", section.id === targetId);
+        });
+      });
+    });
+
+    // Lógica de cuestionarios
+    function checkSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      const questions = section.querySelectorAll(".question");
+      let correctCount = 0;
+      let answeredCount = 0;
+
+      questions.forEach((q) => {
+        const name = q.getAttribute("data-question-id");
+        const selected = section.querySelector(`input[name="${name}"]:checked`);
+        const feedbackEl = q.querySelector(".feedback");
+        const explanation = q.getAttribute("data-explanation") || "";
+        q.classList.remove("correct", "incorrect");
+        feedbackEl.classList.remove("correct-text", "incorrect-text");
+
+        if (!selected) {
+          feedbackEl.textContent = "Selecciona una opción para esta pregunta.";
+          return;
+        }
+
+        answeredCount++;
+        if (selected.hasAttribute("data-correct")) {
+          correctCount++;
+          q.classList.add("correct");
+          feedbackEl.textContent = "Correcto. " + explanation;
+          feedbackEl.classList.add("correct-text");
+        } else {
+          q.classList.add("incorrect");
+          feedbackEl.textContent = "Incorrecto. " + explanation;
+          feedbackEl.classList.add("incorrect-text");
+        }
+      });
+
+      const scoreEl = section.querySelector(`[data-score-for="${sectionId}"]`);
+      if (scoreEl) {
+        if (answeredCount === 0) {
+          scoreEl.textContent = "Responde al menos una pregunta para ver tu puntaje.";
+        } else {
+          scoreEl.textContent = `Puntaje: ${correctCount} de ${questions.length} preguntas correctas.`;
+        }
+      }
+    }
+
+    function resetSection(sectionId) {
+      const section = document.getElementById(sectionId);
+      const questions = section.querySelectorAll(".question");
+      questions.forEach((q) => {
+        const name = q.getAttribute("data-question-id");
+        const inputs = section.querySelectorAll(`input[name="${name}"]`);
+        inputs.forEach((inp) => {
+          inp.checked = false;
+        });
+        q.classList.remove("correct", "incorrect");
+        const feedbackEl = q.querySelector(".feedback");
+        if (feedbackEl) {
+          feedbackEl.textContent = "";
+          feedbackEl.classList.remove("correct-text", "incorrect-text");
+        }
+      });
+      const scoreEl = section.querySelector(`[data-score-for="${sectionId}"]`);
+      if (scoreEl) {
+        scoreEl.textContent = "";
+      }
+    }
+
+    document.querySelectorAll("[data-check-section]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const sectionId = btn.getAttribute("data-check-section");
+        checkSection(sectionId);
+      });
+    });
+
+    document.querySelectorAll("[data-reset-section]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const sectionId = btn.getAttribute("data-reset-section");
+        resetSection(sectionId);
+      });
+    });
+  </script>
+</body>
+</html>
