@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Ética y Valores – Grado Noveno</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #f4f4f9;
+      color: #222;
+    }
+    header {
+      background: linear-gradient(90deg, #ff9a9e, #fad0c4);
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 1.9rem;
+    }
+    nav {
+      background: #333;
+      color: white;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 4px;
+      background: #555;
+      font-size: 0.9rem;
+    }
+    nav a:hover {
+      background: #777;
+    }
+    main {
+      max-width: 960px;
+      margin: 20px auto 40px auto;
+      padding: 0 15px;
+    }
+    section {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+    section h2 {
+      margin-top: 0;
+      color: #333;
+      border-left: 6px solid #ff9a9e;
+      padding-left: 8px;
+    }
+    .resumen {
+      background: #f9f9ff;
+      border-left: 4px solid #8e9aaf;
+      padding: 10px 12px;
+      margin-bottom: 15px;
+      font-size: 0.95rem;
+    }
+    .question {
+      margin-bottom: 15px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      background: #fafafa;
+      border: 1px solid #e0e0e0;
+    }
+    .question p {
+      margin: 0 0 8px 0;
+      font-weight: bold;
+    }
+    .options label {
+      display: block;
+      margin-bottom: 4px;
+      font-weight: normal;
+    }
+    button {
+      margin-top: 6px;
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: none;
+      cursor: pointer;
+      background: #4caf50;
+      color: white;
+      font-size: 0.9rem;
+    }
+    button:hover {
+      background: #43a047;
+    }
+    .feedback {
+      margin-top: 6px;
+      font-size: 0.9rem;
+    }
+    .feedback.correct {
+      color: #1b5e20;
+      font-weight: bold;
+    }
+    .feedback.incorrect {
+      color: #b71c1c;
+      font-weight: bold;
+    }
+    .nota {
+      font-size: 0.85rem;
+      color: #555;
+      margin-top: 10px;
+      font-style: italic;
+    }
+  </style>
+  <script>
+    function checkAnswerDetailed(groupName, correctValue, feedbackId, correctMsg, incorrectMsg) {
+      const selected = document.querySelector('input[name="' + groupName + '"]:checked');
+      const feedback = document.getElementById(feedbackId);
+
+      if (!feedback) return;
+
+      if (!selected) {
+        feedback.textContent = "Selecciona una opción antes de verificar.";
+        feedback.className = "feedback";
+        return;
+      }
+
+      if (selected.value === correctValue) {
+        feedback.textContent = correctMsg;
+        feedback.className = "feedback correct";
+      } else {
+        feedback.textContent = incorrectMsg;
+        feedback.className = "feedback incorrect";
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <h1>Ética y Valores – Grado Noveno</h1>
+    <p>Identidad personal, proyecto de vida, toma de decisiones éticas, libertad y responsabilidad.</p>
+  </header>
+
+  <nav>
+    <a href="#identidad">Identidad personal</a>
+    <a href="#proyecto-vida">Proyecto de vida</a>
+    <a href="#decisiones-eticas">Toma de decisiones éticas</a>
+    <a href="#libertad-responsabilidad">Libertad y responsabilidad</a>
+    <a href="#etica-identidad">Ética e identidad personal</a>
+  </nav>
+
+  <main>
+    <!-- 1. Identidad personal -->
+    <section id="identidad">
+      <h2>Identidad personal</h2>
+      <div class="resumen">
+        La identidad personal es el conjunto de rasgos que te caracterizan como individuo y te diferencian de las demás personas. 
+        Incluye tus capacidades físicas, emocionales y cognitivas, y se enriquece con los valores, tradiciones, familia, comunidad y entorno.
+      </div>
+
+      <div class="question">
+        <p>1. ¿Cuál es la mejor definición de identidad personal?</p>
+        <div class="options">
+          <label><input type="radio" name="id_q1" value="a" /> El grupo de amigos con el que compartes tiempo libre.</label>
+          <label><input type="radio" name="id_q1" value="b" /> El conjunto de rasgos que te caracterizan como individuo y te diferencian de las demás personas.</label>
+          <label><input type="radio" name="id_q1" value="c" /> Los gustos musicales y de ropa que cambian cada año.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'id_q1',
+          'b',
+          'fb-id_q1',
+          'Correcto: la identidad personal son los rasgos que te definen y te distinguen de los demás.',
+          'Incorrecto: la identidad va más allá de solo amigos o gustos, incluye todos los rasgos que te caracterizan.'
+        )">Verificar</button>
+        <div id="fb-id_q1" class="feedback"></div>
+      </div>
+
+      <div class="question">
+        <p>2. ¿Qué aspecto forma parte de tus capacidades personales?</p>
+        <div class="options">
+          <label><input type="radio" name="id_q2" value="a" /> Solo tu fuerza física.</label>
+          <label><input type="radio" name="id_q2" value="b" /> Capacidades físicas, emocionales y cognitivas.</label>
+          <label><input type="radio" name="id_q2" value="c" /> Únicamente tu forma de vestir.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'id_q2',
+          'b',
+          'fb-id_q2',
+          'Correcto: tus capacidades incluyen lo físico, lo emocional y lo cognitivo.',
+          'Incorrecto: recuerda que las capacidades personales no se limitan a lo físico.'
+        )">Verificar</button>
+        <div id="fb-id_q2" class="feedback"></div>
+      </div>
+
+      <div class="question">
+        <p>3. ¿Qué elementos enriquecen tu identidad personal?</p>
+        <div class="options">
+          <label><input type="radio" name="id_q3" value="a" /> Solo la moda del momento.</label>
+          <label><input type="radio" name="id_q3" value="b" /> Los valores, tradiciones, familia, comunidad y entorno.</label>
+          <label><input type="radio" name="id_q3" value="c" /> Únicamente las redes sociales.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'id_q3',
+          'b',
+          'fb-id_q3',
+          'Correcto: tu identidad se enriquece con la familia, los valores, tradiciones y el entorno.',
+          'Incorrecto: la identidad no depende solo de lo exterior o pasajero, sino de valores y contextos más profundos.'
+        )">Verificar</button>
+        <div id="fb-id_q3" class="feedback"></div>
+      </div>
+
+      <p class="nota">Nota: estas ideas se basan en el esquema de “Identidad personal” del material de la clase.</p>
+    </section>
+
+    <!-- 2. Proyecto de vida -->
+    <section id="proyecto-vida">
+      <h2>Proyecto de vida</h2>
+      <div class="resumen">
+        Un proyecto de vida se compone de metas claras y estructuradas (personales, profesionales, familiares y financieras) 
+        que orientan el propósito de una persona a corto, mediano y largo plazo. Requiere autoconocimiento, planificación 
+        y acciones concretas para lograr equilibrio y realización personal.
+      </div>
+
+      <div class="question">
+        <p>1. ¿Qué describe mejor un proyecto de vida?</p>
+        <div class="options">
+          <label><input type="radio" name="pv_q1" value="a" /> Una lista de deseos sin fechas ni planes.</label>
+          <label><input type="radio" name="pv_q1" value="b" /> Objetivos claros y estructurados que guían tu propósito personal a diferentes plazos.</label>
+          <label><input type="radio" name="pv_q1" value="c" /> Solo elegir una profesión sin pensar en otros aspectos de la vida.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'pv_q1',
+          'b',
+          'fb-pv_q1',
+          'Correcto: un proyecto de vida organiza metas claras que orientan tu propósito.',
+          'Incorrecto: un proyecto de vida no es solo una lista vaga ni se reduce a una sola área.'
+        )">Verificar</button>
+        <div id="fb-pv_q1" class="feedback"></div>
+      </div>
+
+      <div class="question">
+        <p>2. ¿Qué elementos son necesarios para construir un proyecto de vida?</p>
+        <div class="options">
+          <label><input type="radio" name="pv_q2" value="a" /> Autoconocimiento, planificación y acciones concretas.</label>
+          <label><input type="radio" name="pv_q2" value="b" /> Dejar todo al azar y esperar lo mejor.</label>
+          <label><input type="radio" name="pv_q2" value="c" /> Hacer solo lo que hagan tus amigos.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'pv_q2',
+          'a',
+          'fb-pv_q2',
+          'Correcto: necesitas conocerte, planear y actuar de forma concreta.',
+          'Incorrecto: el proyecto de vida no se construye con improvisación o imitación.'
+        )">Verificar</button>
+        <div id="fb-pv_q2" class="feedback"></div>
+      </div>
+
+      <div class="question">
+        <p>3. ¿En qué plazos se proyectan normalmente las metas de un proyecto de vida?</p>
+        <div class="options">
+          <label><input type="radio" name="pv_q3" value="a" /> Solo a corto plazo.</label>
+          <label><input type="radio" name="pv_q3" value="b" /> A corto, mediano y largo plazo.</label>
+          <label><input type="radio" name="pv_q3" value="c" /> Únicamente a largo plazo.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'pv_q3',
+          'b',
+          'fb-pv_q3',
+          'Correcto: un buen proyecto de vida incluye metas a corto, mediano y largo plazo.',
+          'Incorrecto: limitarse a un solo plazo hace que el proyecto sea incompleto.'
+        )">Verificar</button>
+        <div id="fb-pv_q3" class="feedback"></div>
+      </div>
+
+      <p class="nota">Basado en la definición y ejemplos de metas de proyecto de vida del material de apoyo.</p>
+    </section>
+
+    <!-- 3. Toma de decisiones éticas -->
+    <section id="decisiones-eticas">
+      <h2>Toma de decisiones éticas</h2>
+      <div class="resumen">
+        La toma de decisiones éticas es el proceso de evaluar y resolver problemas complejos basándose en principios morales, valores y normas,
+        buscando no hacer daño y actuar con justicia, integridad y responsabilidad. Implica identificar el dilema, analizar alternativas y 
+        consecuencias, y elegir la opción que cuide el bien común.
+      </div>
+
+      <div class="question">
+        <p>1. ¿Cuál es el objetivo principal de una decisión ética?</p>
+        <div class="options">
+          <label><input type="radio" name="de_q1" value="a" /> Obtener beneficios personales sin importar a los demás.</label>
+          <label><input type="radio" name="de_q1" value="b" /> Actuar con justicia, integridad y responsabilidad, buscando el bien común.</label>
+          <label><input type="radio" name="de_q1" value="c" /> Evitar pensar demasiado en las consecuencias.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'de_q1',
+          'b',
+          'fb-de_q1',
+          'Correcto: una decisión ética busca el bien común con justicia e integridad.',
+          'Incorrecto: la ética no se centra en el egoísmo ni en ignorar las consecuencias.'
+        )">Verificar</button>
+        <div id="fb-de_q1" class="feedback"></div>
+      </div>
+
+      <div class="question">
+        <p>2. ¿Cuál es un paso importante en la toma de decisiones éticas?</p>
+        <div class="options">
+          <label><input type="radio" name="de_q2" value="a" /> Ignorar el problema para que se resuelva solo.</label>
+          <label><input type="radio" name="de_q2" value="b" /> Identificar el dilema, analizar alternativas y consecuencias.</label>
+          <label><input type="radio" name="de_q2" value="c" /> Hacer lo primero que se te ocurra.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'de_q2',
+          'b',
+          'fb-de_q2',
+          'Correcto: primero se identifica el dilema y luego se analizan opciones y consecuencias.',
+          'Incorrecto: actuar sin analizar no permite una decisión ética responsable.'
+        )">Verificar</button>
+        <div id="fb-de_q2" class="feedback"></div>
+      </div>
+
+      <div class="question">
+        <p>3. Dilema: ves que tu mejor amigo copia en un examen importante y el profesor pregunta si alguien vio algo extraño. ¿Qué opción refleja mejor una decisión ética?</p>
+        <div class="options">
+          <label><input type="radio" name="de_q3" value="a" /> Guardar silencio para que tu amigo no tenga problemas, aunque sea injusto para el resto.</label>
+          <label><input type="radio" name="de_q3" value="b" /> Decir la verdad con respeto, pensando en la honestidad y en la justicia para todos.</label>
+          <label><input type="radio" name="de_q3" value="c" /> Acusar a otro compañero para desviar la atención.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'de_q3',
+          'b',
+          'fb-de_q3',
+          'Correcto: decir la verdad de forma respetuosa respeta la honestidad y la justicia.',
+          'Incorrecto: proteger la deshonestidad o culpar a otros no respeta los principios éticos.'
+        )">Verificar</button>
+        <div id="fb-de_q3" class="feedback"></div>
+      </div>
+
+      <p class="nota">Ejemplos construidos a partir de la definición de toma de decisiones éticas y el dilema del examen del material de clase.</p>
+    </section>
+
+    <!-- 4. Libertad y responsabilidad -->
+    <section id="libertad-responsabilidad">
+      <h2>Libertad y responsabilidad</h2>
+      <div class="resumen">
+        La libertad es la facultad humana de obrar según la propia voluntad y razón, permitiendo decidir y actuar sin coacciones externas, 
+        siempre respetando los derechos de los demás, la ley y la ética. La responsabilidad es el valor que implica cumplir deberes, cuidar lo 
+        que está a cargo y asumir las consecuencias de las propias acciones de forma consciente y honesta.
+      </div>
+
+      <div class="question">
+        <p>1. ¿Qué idea refleja mejor el concepto de libertad?</p>
+        <div class="options">
+          <label><input type="radio" name="lr_q1" value="a" /> Hacer lo que quieras sin límites ni respeto por nadie.</label>
+          <label><input type="radio" name="lr_q1" value="b" /> Obrar según tu voluntad y razón, respetando los derechos de los demás y la ley.</label>
+          <label><input type="radio" name="lr_q1" value="c" /> Dejar que otros decidan siempre por ti.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'lr_q1',
+          'b',
+          'fb-lr_q1',
+          'Correcto: la libertad implica decidir por ti mismo respetando a los demás y las normas.',
+          'Incorrecto: la verdadera libertad no significa dañar ni ignorar a los otros.'
+        )">Verificar</button>
+        <div id="fb-lr_q1" class="feedback"></div>
+      </div>
+
+      <div class="question">
+        <p>2. ¿Qué caracteriza a una persona responsable?</p>
+        <div class="options">
+          <label><input type="radio" name="lr_q2" value="a" /> Evita sus tareas y culpa a los demás.</label>
+          <label><input type="radio" name="lr_q2" value="b" /> Cumple sus deberes y asume las consecuencias de sus actos.</label>
+          <label><input type="radio" name="lr_q2" value="c" /> Solo se preocupa por lo que le gusta.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'lr_q2',
+          'b',
+          'fb-lr_q2',
+          'Correcto: la responsabilidad implica cumplir deberes y asumir consecuencias.',
+          'Incorrecto: evitar las responsabilidades o culpar a otros no es actuar responsablemente.'
+        )">Verificar</button>
+        <div id="fb-lr_q2" class="feedback"></div>
+      </div>
+
+      <div class="question">
+        <p>3. ¿Cómo se relacionan libertad y responsabilidad?</p>
+        <div class="options">
+          <label><input type="radio" name="lr_q3" value="a" /> No tienen relación, se pueden separar completamente.</label>
+          <label><input type="radio" name="lr_q3" value="b" /> La verdadera libertad va unida a la responsabilidad sobre lo que decides y haces.</label>
+          <label><input type="radio" name="lr_q3" value="c" /> La responsabilidad impide que una persona sea libre.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'lr_q3',
+          'b',
+          'fb-lr_q3',
+          'Correcto: ser libre implica responder por las decisiones que tomas.',
+          'Incorrecto: si no asumes responsabilidad, tus decisiones pueden dañar a otros y dejar de ser libres.'
+        )">Verificar</button>
+        <div id="fb-lr_q3" class="feedback"></div>
+      </div>
+
+      <p class="nota">Contenido basado en las definiciones y características de libertad y responsabilidad del material suministrado.</p>
+    </section>
+
+    <!-- 5. Ética e identidad personal (taller) -->
+    <section id="etica-identidad">
+      <h2>Ética e identidad personal</h2>
+      <div class="resumen">
+        La ética es una rama de la filosofía que estudia el comportamiento humano y analiza qué acciones son correctas o incorrectas. 
+        Nos ayuda a reflexionar sobre valores y decisiones para convivir de manera justa y respetuosa. También orienta la construcción 
+        de la identidad personal, que se forma a partir de experiencias, valores, creencias y decisiones a lo largo de la vida.
+      </div>
+
+      <div class="question">
+        <p>1. Según el texto del taller, ¿qué es la ética?</p>
+        <div class="options">
+          <label><input type="radio" name="ei_q1" value="a" /> Un conjunto de reglas sin relación con la vida diaria.</label>
+          <label><input type="radio" name="ei_q1" value="b" /> La rama de la filosofía que estudia el comportamiento humano y analiza qué acciones son correctas o incorrectas.</label>
+          <label><input type="radio" name="ei_q1" value="c" /> Un tema que solo interesa a los adultos.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'ei_q1',
+          'b',
+          'fb-ei_q1',
+          'Correcto: la ética estudia el comportamiento humano y lo que es correcto o incorrecto.',
+          'Incorrecto: la ética no es ajena a la vida diaria ni exclusiva de los adultos.'
+        )">Verificar</button>
+        <div id="fb-ei_q1" class="feedback"></div>
+      </div>
+
+      <div class="question">
+        <p>2. ¿Por qué la ética es importante para la sociedad?</p>
+        <div class="options">
+          <label><input type="radio" name="ei_q2" value="a" /> Porque permite que las personas vivan de manera justa y respetuosa.</label>
+          <label><input type="radio" name="ei_q2" value="b" /> Porque solo sirve para aprobar la materia.</label>
+          <label><input type="radio" name="ei_q2" value="c" /> Porque obliga a todos a pensar igual.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'ei_q2',
+          'a',
+          'fb-ei_q2',
+          'Correcto: la ética orienta la convivencia justa y respetuosa en la sociedad.',
+          'Incorrecto: su función no es solo académica ni busca imponer un pensamiento único.'
+        )">Verificar</button>
+        <div id="fb-ei_q2" class="feedback"></div>
+      </div>
+
+      <div class="question">
+        <p>3. ¿Qué elementos influyen en la construcción de la identidad personal, según el texto del taller?</p>
+        <div class="options">
+          <label><input type="radio" name="ei_q3" value="a" /> Solo la apariencia física.</label>
+          <label><input type="radio" name="ei_q3" value="b" /> Experiencias, valores, creencias y decisiones que se toman a lo largo de la vida.</label>
+          <label><input type="radio" name="ei_q3" value="c" /> Exclusivamente las modas y redes sociales del momento.</label>
+        </div>
+        <button onclick="checkAnswerDetailed(
+          'ei_q3',
+          'b',
+          'fb-ei_q3',
+          'Correcto: la identidad se construye con experiencias, valores, creencias y decisiones.',
+          'Incorrecto: reducir la identidad a la apariencia o a las modas no recoge lo que dice el texto.'
+        )">Verificar</button>
+        <div id="fb-ei_q3" class="feedback"></div>
+      </div>
+
+      <p class="nota">Preguntas tomadas y adaptadas del taller “La definición de la ética” y “La ética en la construcción de la identidad personal”.</p>
+    </section>
+  </main>
+</body>
+</html>
