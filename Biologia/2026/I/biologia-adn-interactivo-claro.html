@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Estudio interactivo: ADN y síntesis de proteínas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #eef2ff;
+      color: #1e293b;
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 280px;
+      background: #ffffff;
+      border-right: 1px solid #c7d2fe;
+      padding: 1rem 0.75rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 2px 0 12px rgba(79,70,229,0.07);
+    }
+    .brand {
+      padding: 0 0.5rem 0.75rem;
+      border-bottom: 2px solid #e0e7ff;
+      margin-bottom: 0.5rem;
+    }
+    .brand h1 {
+      font-size: 1rem;
+      margin: 0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #4338ca;
+    }
+    .brand small {
+      font-size: 0.75rem;
+      color: #6366f1;
+    }
+    .section-title {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: #a5b4fc;
+      margin: 0.75rem 0 0.25rem;
+      padding: 0 0.5rem;
+      font-weight: 600;
+    }
+    .nav-group { list-style: none; margin: 0; padding: 0; }
+    .nav-group li { margin-bottom: 0.25rem; }
+    .nav-button {
+      width: 100%;
+      border: 1px solid transparent;
+      background: transparent;
+      color: #374151;
+      text-align: left;
+      padding: 0.45rem 0.6rem;
+      border-radius: 0.5rem;
+      font-size: 0.85rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.25rem;
+      cursor: pointer;
+      transition: background 0.15s, color 0.15s, border-color 0.15s, transform 0.1s, box-shadow 0.1s;
+    }
+    .nav-button span.label { flex: 1; }
+    .nav-button small { font-size: 0.7rem; color: #a5b4fc; }
+    .nav-button:hover {
+      background: #eef2ff;
+      border-color: #c7d2fe;
+      color: #3730a3;
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(79,70,229,0.1);
+    }
+    .nav-button.active {
+      background: #e0e7ff;
+      color: #3730a3;
+      border-color: #a5b4fc;
+      font-weight: 600;
+      box-shadow: 0 2px 6px rgba(79,70,229,0.15);
+    }
+    .nav-button.active small { color: #6366f1; }
+
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+    header.topbar {
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid #c7d2fe;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: linear-gradient(90deg,#e0e7ff,#eef2ff 60%,#f8faff);
+    }
+    .breadcrumbs {
+      font-size: 0.8rem;
+      color: #4b5563;
+    }
+    .breadcrumbs strong { color: #3730a3; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      border-radius: 999px;
+      padding: 0.2rem 0.75rem;
+      font-size: 0.7rem;
+      background: #4338ca;
+      color: #ffffff;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2.4fr);
+      gap: 1rem;
+      padding: 1rem 1.25rem 1.25rem;
+      min-height: 0;
+      flex: 1;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 1rem;
+      border: 1px solid #c7d2fe;
+      padding: 0.9rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      box-shadow: 0 4px 20px rgba(79,70,229,0.08), 0 1px 4px rgba(79,70,229,0.06);
+      min-height: 0;
+    }
+    .card.secondary {
+      background: #f8faff;
+      border-color: #c7d2fe;
+    }
+    .card header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 0.75rem;
+      border-bottom: 1px solid #e0e7ff;
+      padding-bottom: 0.5rem;
+    }
+    .card h2 {
+      font-size: 1rem;
+      margin: 0;
+      color: #312e81;
+    }
+    .card p.lead {
+      font-size: 0.85rem;
+      color: #6366f1;
+      margin: 0;
+    }
+    .content-scroll {
+      overflow-y: auto;
+      padding-right: 0.25rem;
+      scrollbar-width: thin;
+      scrollbar-color: #a5b4fc #f0f4ff;
+    }
+    .content-scroll::-webkit-scrollbar { width: 6px; }
+    .content-scroll::-webkit-scrollbar-thumb {
+      background: #a5b4fc;
+      border-radius: 999px;
+    }
+    .subheading {
+      font-size: 0.75rem;
+      color: #4f46e5;
+      margin-top: 0.4rem;
+      margin-bottom: 0.2rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+      border-left: 3px solid #6366f1;
+      padding-left: 0.5rem;
+    }
+    .pill-list { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.1rem 0 0.6rem; padding: 0; list-style:none; }
+    .pill-list li {
+      font-size: 0.75rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: #e0e7ff;
+      color: #4338ca;
+      font-weight: 500;
+      border: 1px solid #c7d2fe;
+    }
+    .theory h3 {
+      font-size: 0.95rem;
+      margin: 0.5rem 0 0.2rem;
+      color: #312e81;
+    }
+    .theory p { font-size: 0.82rem; margin: 0.15rem 0 0.3rem; color: #374151; line-height: 1.55; }
+    .theory ul { margin: 0.1rem 0 0.3rem 1.2rem; padding: 0; }
+    .theory li { font-size: 0.8rem; margin-bottom: 0.2rem; color: #374151; line-height: 1.5; }
+
+    .video-player {
+      border-radius: 0.85rem;
+      overflow: hidden;
+      border: 2px solid #6366f1;
+      background: #0f172a;
+      aspect-ratio: 16 / 9;
+      position: relative;
+      box-shadow: 0 4px 20px rgba(79,70,229,0.2);
+    }
+    .video-player iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .video-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.5rem;
+      font-size: 0.78rem;
+      color: #6b7280;
+    }
+    .video-meta strong { color: #312e81; }
+
+    .thumbs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.6rem;
+    }
+    .thumb {
+      border-radius: 0.6rem;
+      border: 1px solid #c7d2fe;
+      padding: 0.35rem 0.45rem;
+      font-size: 0.76rem;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      gap: 0.05rem;
+      cursor: pointer;
+      flex: 1 1 48%;
+      min-width: 0;
+      transition: background 0.15s, border-color 0.15s, transform 0.1s, box-shadow 0.1s;
+    }
+    .thumb-code {
+      font-size: 0.68rem;
+      color: #6366f1;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 700;
+    }
+    .thumb-title { color: #312e81; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-weight: 500; }
+    .thumb-topic { font-size: 0.7rem; color: #6b7280; }
+    .thumb:hover {
+      background: #eef2ff;
+      border-color: #818cf8;
+      transform: translateY(-1px);
+      box-shadow: 0 3px 8px rgba(79,70,229,0.12);
+    }
+    .thumb.active {
+      border-color: #22c55e;
+      background: #ecfdf5;
+      box-shadow: 0 2px 6px rgba(34,197,94,0.15);
+    }
+
+    .quiz {
+      margin-top: 0.35rem;
+      border-top: 2px dashed #c7d2fe;
+      padding-top: 0.6rem;
+    }
+    .quiz h3 {
+      font-size: 0.75rem;
+      margin: 0 0 0.4rem;
+      color: #4338ca;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-weight: 700;
+    }
+    .question {
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px dashed #c7d2fe;
+    }
+    .question:last-child { border-bottom: none; padding-bottom: 0; }
+    .question p {
+      font-size: 0.82rem;
+      margin: 0 0 0.25rem;
+      color: #1e293b;
+      font-weight: 500;
+    }
+    .options { display: grid; gap: 0.25rem; }
+    .option {
+      font-size: 0.78rem;
+      padding: 0.28rem 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid #c7d2fe;
+      cursor: pointer;
+      background: #f8faff;
+      color: #374151;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      transition: background 0.15s, border-color 0.15s, transform 0.08s, box-shadow 0.08s;
+    }
+    .option:hover {
+      background: #eef2ff;
+      border-color: #818cf8;
+      color: #312e81;
+      transform: translateY(-0.5px);
+      box-shadow: 0 2px 4px rgba(79,70,229,0.1);
+    }
+    .option.correct {
+      border-color: #22c55e;
+      background: #ecfdf5;
+      color: #166534;
+      font-weight: 500;
+    }
+    .option.incorrect {
+      border-color: #f97316;
+      background: #fff7ed;
+      color: #9a3412;
+    }
+    .feedback {
+      font-size: 0.76rem;
+      margin-top: 0.15rem;
+    }
+    .feedback.ok { color: #15803d; }
+    .feedback.bad { color: #c2410c; }
+
+    @media (max-width: 900px) {
+      body { flex-direction: column; }
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 0.5rem;
+        padding: 0.5rem 0.5rem 0.7rem;
+      }
+      .brand { display: none; }
+      .section-title { display: none; }
+      .nav-group { display: flex; gap: 0.3rem; }
+      .nav-group li { margin: 0; }
+      .nav-button { white-space: nowrap; }
+      .main { flex: 1; }
+      .layout {
+        grid-template-columns: 1fr;
+        padding: 0.75rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="brand">
+      <h1>Biología 9° · ADN</h1>
+      <small>Mapa interactivo de estudio</small>
+    </div>
+
+    <p class="section-title">Temas de los PDF</p>
+    <ul class="nav-group" id="topicNav">
+      <li><button class="nav-button" data-topic="que-es-adn"><span class="label">¿Qué es el ADN?</span><small>Presentación + taller</small></button></li>
+      <li><button class="nav-button" data-topic="organizacion-adn"><span class="label">Organización del ADN</span><small>Núcleo, cromatina, cromosoma</small></button></li>
+      <li><button class="nav-button" data-topic="adn-proteinas"><span class="label">ADN y proteínas</span><small>Relación gen–proteína</small></button></li>
+      <li><button class="nav-button" data-topic="sintesis-proteinas"><span class="label">Síntesis de proteínas</span><small>Transcripción y traducción</small></button></li>
+    </ul>
+
+    <p class="section-title">Videos</p>
+    <ul class="nav-group" id="videoNav">
+      <li><button class="nav-button" data-video="video-transcripcion"><span class="label">Síntesis de proteínas</span><small>Transcripción y traducción</small></button></li>
+      <li><button class="nav-button" data-video="video-organizacion"><span class="label">Organización del ADN</span><small>Histonas, nucleosoma, cromatina</small></button></li>
+      <li><button class="nav-button" data-video="video-3d"><span class="label">De ADN a proteína 3D</span><small>Animación</small></button></li>
+      <li><button class="nav-button" data-video="video-adn-genes"><span class="label">ADN, cromosomas y genes</span><small>Conceptos básicos</small></button></li>
+      <li><button class="nav-button" data-video="video-acidos"><span class="label">ADN y ARN</span><small>Ácidos nucleicos</small></button></li>
+    </ul>
+  </aside>
+
+  <main class="main">
+    <header class="topbar">
+      <div class="breadcrumbs" id="breadcrumbs">Tema: <strong>¿Qué es el ADN?</strong> · Video: <strong>Síntesis de proteínas</strong></div>
+      <div class="tag">Modo estudio 9°</div>
+    </header>
+
+    <section class="layout">
+      <article class="card">
+        <header>
+          <div>
+            <h2 id="topicTitle">¿Qué es el ADN?</h2>
+            <p class="lead" id="topicSubtitle">Introducción al ADN como "plan de vida" y a su estructura básica.</p>
+          </div>
+        </header>
+        <div class="content-scroll theory" id="topicContent">
+          <!-- Contenido teórico dinámico -->
+        </div>
+        <div class="quiz" id="quizContainer">
+          <!-- Quiz dinámico -->
+        </div>
+      </article>
+
+      <aside class="card secondary">
+        <header>
+          <div>
+            <h2>Visor de videos</h2>
+            <p class="lead">Reproduce los videos de YouTube en orden y responde el quiz del tema.</p>
+          </div>
+        </header>
+        <div class="video-player">
+          <iframe id="videoFrame"
+          src="https://www.youtube-nocookie.com/embed/KPsnmH666cI?rel=0"
+          title="Video educativo"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          loading="lazy"
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        </div>
+        <div class="video-meta" id="videoMeta">
+          <div>
+            <strong>Síntesis de proteínas</strong>
+            <span> · Transcripción y traducción</span>
+          </div>
+          <span>Abre en YouTube &rarr;</span>
+        </div>
+        <div class="thumbs" id="videoThumbs">
+          <!-- Botones de videos rápidos -->
+        </div>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const topics = {
+      "que-es-adn": {
+        title: "¿Qué es el ADN?",
+        subtitle: "Definición, localización en la célula y estructura de doble hélice.",
+        pills: ["Ácido desoxirribonucleico", "Plan de vida", "Doble hélice", "Bases nitrogenadas"],
+        html: `
+          <p class="subheading">Idea clave del taller y la presentación</p>
+          <p>El ADN (ácido desoxirribonucleico) es la molécula que contiene toda la información que un organismo necesita para crecer, desarrollarse y funcionar. Por eso se le llama también el <strong>"plan de vida"</strong>.</p>
+          <h3>¿Dónde se encuentra?</h3>
+          <p>El ADN se localiza <strong>dentro del núcleo</strong> de casi todas las células del cuerpo. En el núcleo el ADN no está suelto, sino compactado en estructuras llamadas <strong>cromosomas</strong>.</p>
+          <h3>Estructura de doble hélice</h3>
+          <p>La molécula de ADN tiene forma de <strong>doble hélice</strong>, parecida a una escalera retorcida. Cada "peldaño" está formado por dos <strong>bases nitrogenadas</strong> unidas por enlaces de hidrógeno y los lados de la escalera están hechos de grupos fosfato y azúcares desoxirribosa.</p>
+          <h3>Pares de bases complementarios</h3>
+          <ul>
+            <li>Existen cuatro bases: adenina (A), timina (T), citosina (C) y guanina (G).</li>
+            <li>Siempre se emparejan de forma específica: <strong>A con T</strong> y <strong>C con G</strong>.</li>
+            <li>Estos pares complementarios mantienen la estructura estable de la doble hélice.</li>
+          </ul>
+        `,
+        quiz: [
+          {
+            q: "¿Por qué se dice que el ADN es el \"plan de vida\"?",
+            options: [
+              "Porque da energía a la célula como combustible",
+              "Porque contiene la información necesaria para formar y mantener un organismo",
+              "Porque se encuentra en el citoplasma de todas las células",
+              "Porque está hecho únicamente de azúcares"],
+            correct: 1,
+            feedbackOk: "Correcto: el ADN guarda la información genética que dirige el desarrollo y funcionamiento del organismo.",
+            feedbackBad: "Recuerda que el ADN no es una fuente de energía, sino el portador de la información genética."
+          },
+          {
+            q: "¿En qué parte de la célula se encuentra principalmente el ADN humano?",
+            options: ["En la membrana plasmática","En el núcleo","En los ribosomas","En la pared celular"],
+            correct: 1,
+            feedbackOk: "Muy bien: el ADN nuclear está compactado en cromosomas dentro del núcleo.",
+            feedbackBad: "El ADN que estás estudiando se encuentra en el núcleo, no en la membrana ni en la pared celular."
+          },
+          {
+            q: "En la doble hélice del ADN, la adenina (A) se empareja siempre con…",
+            options: ["Guanina (G)","Citosina (C)","Timina (T)","Cualquier base"],
+            correct: 2,
+            feedbackOk: "Exacto: A se une con T mediante dos enlaces de hidrógeno.",
+            feedbackBad: "En la regla de emparejamiento, A va con T y C va con G, nunca al azar."
+          }
+        ]
+      },
+      "organizacion-adn": {
+        title: "Organización del ADN en el núcleo",
+        subtitle: "Desde la doble hélice hasta el cromosoma visible en mitosis.",
+        pills: ["Nucleosoma","Cromatina","Solenoide","Cromosoma"],
+        html: `
+          <p class="subheading">Del ADN lineal al cromosoma</p>
+          <p>Dentro del núcleo, el ADN debe empaquetarse para caber en un espacio muy reducido. Para lograrlo se asocia con proteínas llamadas <strong>histonas</strong> formando distintos niveles de organización.</p>
+          <h3>Nucleosoma</h3>
+          <p>Un nucleosoma es el primer nivel de empaquetamiento: alrededor de 150 pares de bases de ADN se enrollan alrededor de un <strong>octámero de histonas</strong>. Muchos nucleosomas seguidos forman una estructura parecida a <strong>"cuentas de collar"</strong>.</p>
+          <h3>Cromatina y solenoide</h3>
+          <p>Las cadenas de nucleosomas pueden enrollarse más formando un <strong>solenoide</strong> y luego fibras más gruesas. A este conjunto de ADN + histonas se le llama <strong>cromatina</strong>, que puede estar más abierta (eucromatina) o más compacta.</p>
+          <h3>Cromosomas</h3>
+          <p>Durante la mitosis la cromatina se condensa al máximo y aparecen los <strong>cromosomas</strong> visibles al microscopio. Cada cromosoma tiene dos cromátidas hermanas unidas por un centrómero y contiene miles de genes.</p>
+        `,
+        quiz: [
+          {
+            q: "¿Cuál es la función principal de las histonas en el núcleo?",
+            options: [
+              "Unir ribosomas para hacer proteínas",
+              "Proteger al ADN de la luz solar",
+              "Permitir el empaquetamiento y organización del ADN",
+              "Fabricar nucleótidos nuevos"],
+            correct: 2,
+            feedbackOk: "Correcto: las histonas actúan como carretes alrededor de los cuales se enrolla el ADN.",
+            feedbackBad: "Las histonas no fabrican ADN ni proteínas; ayudan a empaquetar y regular el ADN."
+          },
+          {
+            q: "El conjunto de ADN asociado a histonas que puede estar más abierto o más compacto se llama…",
+            options: ["Citoplasma","Cromatina","Cariotipo","Cromátida"],
+            correct: 1,
+            feedbackOk: "Bien: cromatina es el nombre que recibe el ADN empaquetado con proteínas en el núcleo.",
+            feedbackBad: "No confundas cromatina (ADN + histonas) con cromátida (cada brazo del cromosoma)."
+          },
+          {
+            q: "¿Cuándo se observan los cromosomas con mayor claridad al microscopio?",
+            options: ["Durante la mitosis, cuando la cromatina se condensa","Durante la interfase, cuando el ADN está muy extendido","Solo en células sin núcleo","Nunca son visibles"],
+            correct: 0,
+            feedbackOk: "Exacto: en mitosis el ADN se supercondensa y los cromosomas se distinguen claramente.",
+            feedbackBad: "En interfase el ADN está más disperso; los cromosomas definidos se ven en mitosis."
+          }
+        ]
+      },
+      "adn-proteinas": {
+        title: "ADN y proteínas",
+        subtitle: "Cómo la secuencia de bases del ADN determina la secuencia de aminoácidos.",
+        pills: ["Genes","Codón","Aminoácidos","Código genético"],
+        html: `
+          <p class="subheading">De gen a característica</p>
+          <p>Un <strong>gen</strong> es un segmento de ADN que contiene la información para fabricar una proteína específica. Esa proteína, a su vez, participa en rasgos y funciones del organismo.</p>
+          <h3>Código genético y codones</h3>
+          <p>La información del ADN está escrita con las cuatro bases (A, T, C y G). Durante la síntesis de proteínas se leen en grupos de <strong>tres bases</strong> llamados <strong>codones</strong> que especifican un aminoácido cada uno.</p>
+          <h3>Relación ADN–proteína</h3>
+          <ul>
+            <li>Una secuencia de codones en el ARNm define el orden de aminoácidos en una proteína.</li>
+            <li>Si cambia la secuencia de ADN (mutación), puede cambiar el aminoácido y, por tanto, la función de la proteína.</li>
+          </ul>
+        `,
+        quiz: [
+          {
+            q: "Un gen es…",
+            options: [
+              "Cualquier fragmento de ARN",
+              "Un segmento de ADN que contiene la información para una proteína",
+              "Una molécula de aminoácido",
+              "Un tipo de cromosoma"],
+            correct: 1,
+            feedbackOk: "Correcto: cada gen codifica la información para fabricar un producto, normalmente una proteína.",
+            feedbackBad: "Un gen no es un aminoácido ni un cromosoma completo; es un tramo de ADN con información específica."
+          },
+          {
+            q: "¿Qué es un codón?",
+            options: [
+              "Un grupo de tres bases en el ARNm que codifica un aminoácido",
+              "Una enzima que rompe el ADN",
+              "Una proteína del núcleo",
+              "Un tipo de cromosoma"],
+            correct: 0,
+            feedbackOk: "Muy bien: cada codón del ARNm corresponde a un aminoácido del polipéptido.",
+            feedbackBad: "Los codones no son proteínas; son tripletes de bases que se leen durante la traducción."
+          },
+          {
+            q: "Si cambia la secuencia de bases de un gen, puede suceder que…",
+            options: [
+              "La proteína resultante cambie de aminoácidos y de función",
+              "El núcleo desaparezca",
+              "Los ribosomas dejen de existir",
+              "No haya ningún efecto posible"],
+            correct: 0,
+            feedbackOk: "Exacto: una mutación puede alterar la secuencia de aminoácidos y modificar la función de la proteína.",
+            feedbackBad: "Las mutaciones actúan sobre la información del ADN, no sobre la existencia física del núcleo o los ribosomas."
+          }
+        ]
+      },
+      "sintesis-proteinas": {
+        title: "Síntesis de proteínas",
+        subtitle: "Pasos principales de transcripción y traducción.",
+        pills: ["ARNm","ARNt","Ribosoma","Transcripción","Traducción"],
+        html: `
+          <p class="subheading">Visión general</p>
+          <p>La síntesis de proteínas es el proceso mediante el cual la información del ADN se usa para construir una <strong>cadena de aminoácidos</strong> (polipéptido) en el ribosoma.</p>
+          <h3>1. Transcripción (en el núcleo)</h3>
+          <ul>
+            <li>La doble hélice de ADN se desenrolla y se expone una hebra como plantilla.</li>
+            <li>Se sintetiza una molécula de <strong>ARN mensajero (ARNm)</strong> complementaria a esa hebra de ADN.</li>
+            <li>El ARNm sale del núcleo hacia el citoplasma.</li>
+          </ul>
+          <h3>2. Traducción (en el ribosoma)</h3>
+          <ul>
+            <li>El ARNm se une a un <strong>ribosoma</strong> en el citoplasma.</li>
+            <li>Moléculas de <strong>ARN de transferencia (ARNt)</strong> llevan aminoácidos específicos y reconocen codones concretos del ARNm.</li>
+            <li>Los aminoácidos se van uniendo en el orden indicado por los codones, formando una nueva cadena polipeptídica.</li>
+          </ul>
+          <h3>Producto final</h3>
+          <p>El resultado es una <strong>proteína</strong> con una secuencia de aminoácidos determinada por el gen original en el ADN.</p>
+        `,
+        quiz: [
+          {
+            q: "¿En qué parte de la célula ocurre principalmente la transcripción?",
+            options: ["En el citoplasma","En el núcleo","En la membrana plasmática","En la mitocondria"],
+            correct: 1,
+            feedbackOk: "Correcto: la transcripción ocurre en el núcleo donde está el ADN.",
+            feedbackBad: "Recuerda: la primera etapa (transcripción) sucede en el núcleo, no en el citoplasma."
+          },
+          {
+            q: "¿Cuál es la función del ARNm en la síntesis de proteínas?",
+            options: [
+              "Actuar como enzima que rompe proteínas",
+              "Transportar información del ADN desde el núcleo hasta el ribosoma",
+              "Llevar aminoácidos individuales al ribosoma",
+              "Formar la membrana del núcleo"],
+            correct: 1,
+            feedbackOk: "Muy bien: el ARNm es el mensaje que copia la información del ADN para ser leída por el ribosoma.",
+            feedbackBad: "No confundas ARNm (mensaje de información) con ARNt (transporta aminoácidos)."
+          },
+          {
+            q: "Durante la traducción, el ARNt…",
+            options: [
+              "Copia la secuencia del ADN",
+              "Lleva aminoácidos específicos y reconoce codones del ARNm",
+              "Se convierte en ADN nuevamente",
+              "Dirige la división celular"],
+            correct: 1,
+            feedbackOk: "Exacto: cada ARNt une un aminoácido y un codón concreto, ayudando a construir la proteína.",
+            feedbackBad: "El ARNt no copia ADN; su tarea es emparejar aminoácidos con los codones indicados por el ARNm."
+          }
+        ]
+      }
+    };
+
+    const videos = {
+      "video-transcripcion": {
+        title: "Síntesis de proteínas",
+        subtitle: "Procesos de transcripción y traducción",
+        url: "https://www.youtube-nocookie.com/embed/KPsnmH666cI?rel=0",
+        tags: ["ARNm","ARNt","Ribosoma"]
+      },
+      "video-organizacion": {
+        title: "Niveles de organización del ADN",
+        subtitle: "Histonas, nucleosoma y condensación de la cromatina",
+        url: "https://www.youtube-nocookie.com/embed/ccfsV9UYaJU?rel=0",
+        tags: ["Histonas","Nucleosoma","Cromatina"]
+      },
+      "video-3d": {
+        title: "De ADN a proteína 3D",
+        subtitle: "Animación del flujo de la información genética",
+        url: "https://www.youtube-nocookie.com/embed/gG7uCskUOrA?rel=0",
+        tags: ["Gen","Traducción","ARNm"]
+      },
+      "video-adn-genes": {
+        title: "ADN, cromosomas y genes",
+        subtitle: "Relaciones entre niveles de organización genética",
+        url: "https://www.youtube-nocookie.com/embed/tfDRCSjqqvQ?rel=0",
+        tags: ["ADN","Cromosoma","Gen"]
+      },
+      "video-acidos": {
+        title: "Ácidos nucleicos: ADN y ARN",
+        subtitle: "Similitudes y diferencias principales",
+        url: "https://www.youtube-nocookie.com/embed/DSUguxKON3U?rel=0",
+        tags: ["ADN","ARN","Bases"]
+      }
+    };
+
+    const topicNav = document.getElementById('topicNav');
+    const videoNav = document.getElementById('videoNav');
+    const topicTitle = document.getElementById('topicTitle');
+    const topicSubtitle = document.getElementById('topicSubtitle');
+    const topicContent = document.getElementById('topicContent');
+    const quizContainer = document.getElementById('quizContainer');
+    const videoFrame = document.getElementById('videoFrame');
+    const videoMeta = document.getElementById('videoMeta');
+    const videoThumbs = document.getElementById('videoThumbs');
+    const breadcrumbs = document.getElementById('breadcrumbs');
+
+    let currentTopicKey = 'que-es-adn';
+    let currentVideoKey = 'video-transcripcion';
+
+    function renderTopic(key) {
+      const t = topics[key];
+      if (!t) return;
+      currentTopicKey = key;
+      topicTitle.textContent = t.title;
+      topicSubtitle.textContent = t.subtitle;
+
+      const pillsHtml = t.pills && t.pills.length
+        ? `<ul class="pill-list">${t.pills.map(p => `<li>${p}</li>`).join('')}</ul>`
+        : '';
+      topicContent.innerHTML = pillsHtml + t.html;
+
+      quizContainer.innerHTML = '';
+      const quizTitle = document.createElement('h3');
+      quizTitle.textContent = 'Cuestionario del tema';
+      quizContainer.appendChild(quizTitle);
+
+      t.quiz.forEach((item, index) => {
+        const qDiv = document.createElement('div');
+        qDiv.className = 'question';
+
+        const p = document.createElement('p');
+        p.textContent = (index + 1) + '. ' + item.q;
+        qDiv.appendChild(p);
+
+        const optDiv = document.createElement('div');
+        optDiv.className = 'options';
+
+        item.options.forEach((text, i) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'option';
+          btn.innerHTML = `<span>${String.fromCharCode(65 + i)}. ${text}</span>`;
+          btn.addEventListener('click', () => {
+            [...optDiv.children].forEach(o => o.classList.remove('correct', 'incorrect'));
+            if (i === item.correct) {
+              btn.classList.add('correct');
+              feedback.textContent = item.feedbackOk;
+              feedback.className = 'feedback ok';
+            } else {
+              btn.classList.add('incorrect');
+              feedback.textContent = item.feedbackBad;
+              feedback.className = 'feedback bad';
+            }
+          });
+          optDiv.appendChild(btn);
+        });
+
+        const feedback = document.createElement('div');
+        feedback.className = 'feedback';
+        qDiv.appendChild(optDiv);
+        qDiv.appendChild(feedback);
+        quizContainer.appendChild(qDiv);
+      });
+
+      [...topicNav.querySelectorAll('.nav-button')].forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.topic === key);
+      });
+
+      updateBreadcrumbs();
+    }
+
+    function renderVideo(key, fromNav) {
+      const v = videos[key];
+      if (!v) return;
+      currentVideoKey = key;
+      videoFrame.src = v.url;
+      const watchUrl = v.url.replace('www.youtube-nocookie.com/embed/', 'www.youtube.com/watch?v=').replace(/\?.*$/, '');
+      videoMeta.innerHTML = `<div><strong>${v.title}</strong> · <span>${v.subtitle}</span></div><a href="${watchUrl}" target="_blank" rel="noopener noreferrer" style="color:#6366f1;text-decoration:none;font-size:0.78rem;font-weight:500;">Ver en YouTube ↗</a>`;
+
+      videoThumbs.innerHTML = '';
+      Object.entries(videos).forEach(([k, info], idx) => {
+        const d = document.createElement('button');
+        d.type = 'button';
+        d.className = 'thumb' + (k === key ? ' active' : '');
+        d.innerHTML = `<span class="thumb-code">V${idx + 1}</span><span class="thumb-title">${info.title}</span><span class="thumb-topic">${info.subtitle}</span>`;
+        d.addEventListener('click', () => renderVideo(k, false));
+        videoThumbs.appendChild(d);
+      });
+
+      if (fromNav) {
+        [...videoNav.querySelectorAll('.nav-button')].forEach(btn => {
+          btn.classList.toggle('active', btn.dataset.video === key);
+        });
+      }
+      updateBreadcrumbs();
+    }
+
+    function updateBreadcrumbs() {
+      const t = topics[currentTopicKey];
+      const v = videos[currentVideoKey];
+      breadcrumbs.innerHTML = `Tema: <strong>${t.title}</strong> · Video: <strong>${v.title}</strong>`;
+    }
+
+    topicNav.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-topic]');
+      if (!btn) return;
+      renderTopic(btn.dataset.topic);
+    });
+
+    videoNav.addEventListener('click', (e) => {
+      const btn = e.target.closest('button[data-video]');
+      if (!btn) return;
+      renderVideo(btn.dataset.video, true);
+    });
+
+    renderTopic(currentTopicKey);
+    renderVideo(currentVideoKey, true);
+  </script>
+</body>
+</html>
