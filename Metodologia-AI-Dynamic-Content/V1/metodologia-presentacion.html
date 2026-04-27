@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Metodología para pedir HTML dinámico a una IA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-5: 1.25rem;
+      --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem;
+      --radius-sm: .375rem; --radius-md: .5rem; --radius-lg: .75rem; --radius-xl: 1rem; --radius-full: 9999px;
+      --color-bg: #f7f6f2; --color-surface: #fbfbf9; --color-surface-2: #f3f0ec; --color-border: #d4d1ca;
+      --color-text: #28251d; --color-text-muted: #6c6a64; --color-text-faint: #a8a59f; --color-text-inverse: #f9f8f4;
+      --color-primary: #01696f; --color-primary-hover: #0c4e54; --color-blue: #006494; --color-gold: #d19900;
+      --color-success: #437a22; --color-warning: #964219; --color-error: #a12c7b;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.06); --shadow-md: 0 10px 30px rgba(0,0,0,.08); --shadow-lg: 0 20px 50px rgba(0,0,0,.12);
+      --font-display: 'Instrument Serif', Georgia, serif; --font-body: 'Inter', sans-serif;
+      --transition: 220ms cubic-bezier(.16,1,.3,1);
+      --slide-max: 1200px;
+    }
+    [data-theme="dark"] {
+      --color-bg: #171614; --color-surface: #1c1b19; --color-surface-2: #23211f; --color-border: #393836;
+      --color-text: #ece8df; --color-text-muted: #b8b1a7; --color-text-faint: #7d766d; --color-text-inverse: #171614;
+      --color-primary: #63b7bf; --color-primary-hover: #90d0d6; --color-blue: #7cb3d9; --color-gold: #efc861;
+      --color-success: #8fc66d; --color-warning: #d69b66; --color-error: #dc7fbd;
+      --shadow-sm: 0 1px 2px rgba(0,0,0,.18); --shadow-md: 0 12px 32px rgba(0,0,0,.26); --shadow-lg: 0 20px 60px rgba(0,0,0,.38);
+    }
+    *,.::before,*::after{box-sizing:border-box}
+    *{margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100dvh; overflow:hidden; background:var(--color-bg); color:var(--color-text);
+      font-family:var(--font-body); font-size:var(--text-base); line-height:1.55;
+    }
+    button,input,select{font:inherit}
+    img,svg{display:block;max-width:100%}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .skip-link{position:absolute;left:var(--space-4);top:-100px;background:var(--color-primary);color:var(--color-text-inverse);padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);z-index:300}
+    .skip-link:focus{top:var(--space-4)}
+
+    .deck{position:relative;height:100dvh;width:100vw;overflow:hidden}
+    .slide{
+      position:absolute; inset:0; opacity:0; pointer-events:none; transform:scale(.98) translateY(16px);
+      transition:opacity .6s ease, transform .6s ease; display:grid; place-items:center; padding:var(--space-8);
+      background:
+        radial-gradient(circle at top right, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 30%),
+        radial-gradient(circle at bottom left, color-mix(in srgb, var(--color-gold) 16%, transparent), transparent 28%),
+        linear-gradient(135deg, color-mix(in srgb, var(--color-bg) 92%, black), var(--color-bg));
+    }
+    .slide.active{opacity:1;pointer-events:auto;transform:scale(1) translateY(0)}
+    .slide::before{
+      content:""; position:absolute; inset:0; pointer-events:none; opacity:.25;
+      background-image: radial-gradient(circle at 20% 20%, rgba(255,255,255,.08) 0 2px, transparent 2px), radial-gradient(circle at 70% 80%, rgba(255,255,255,.04) 0 1px, transparent 1px);
+      background-size: 180px 180px, 120px 120px;
+      mix-blend-mode: soft-light;
+    }
+    .slide-inner{
+      width:min(100%, var(--slide-max)); height:min(84dvh, 780px); position:relative; z-index:2;
+      display:grid; gap:var(--space-6); align-content:center; padding:clamp(1.25rem,3vw,3rem);
+      background:color-mix(in srgb, var(--color-surface) 82%, transparent);
+      border:1px solid color-mix(in srgb, var(--color-border) 85%, transparent);
+      border-radius:calc(var(--radius-xl) + 6px); box-shadow:var(--shadow-lg); backdrop-filter: blur(12px);
+      overflow:hidden;
+    }
+    .slide-inner::after{
+      content:""; position:absolute; inset:auto -15% -35% auto; width:320px; height:320px; border-radius:50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--color-primary) 18%, transparent), transparent 65%);
+      filter:blur(8px); opacity:.7; pointer-events:none;
+    }
+    .kicker{font-size:var(--text-sm); letter-spacing:.16em; text-transform:uppercase; color:var(--color-primary); font-weight:700}
+    h1,h2{font-family:var(--font-display); line-height:1.05; text-wrap:balance}
+    h1{font-size:clamp(2.8rem, 7vw, 5.6rem)}
+    h2{font-size:clamp(2rem, 5vw, 3.8rem)}
+    p{max-width:72ch; color:var(--color-text-muted)}
+    .lead{font-size:var(--text-lg); max-width:58ch; color:var(--color-text)}
+    .grid-2,.grid-3{display:grid; gap:var(--space-4)}
+    .grid-2{grid-template-columns:repeat(2, minmax(0,1fr))}
+    .grid-3{grid-template-columns:repeat(3, minmax(0,1fr))}
+    .card{
+      background:color-mix(in srgb, var(--color-surface-2) 88%, transparent);
+      border:1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+      border-radius:var(--radius-lg); padding:var(--space-5); box-shadow:var(--shadow-sm);
+    }
+    .card h3{font-size:var(--text-lg); margin-bottom:var(--space-2)}
+    .card p,.card li{font-size:var(--text-sm)}
+    .accent{color:var(--color-primary)} .gold{color:var(--color-gold)}
+    .timeline{display:grid; gap:var(--space-3)}
+    .timeline-item{display:grid; grid-template-columns:36px 1fr; gap:var(--space-3); align-items:start}
+    .dot{width:36px; height:36px; border-radius:50%; display:grid; place-items:center; background:var(--color-primary); color:var(--color-text-inverse); font-weight:800}
+    .pill{display:inline-flex; align-items:center; gap:.5rem; padding:.55rem .9rem; border-radius:var(--radius-full); background:color-mix(in srgb, var(--color-primary) 16%, transparent); color:var(--color-text); font-size:var(--text-sm); border:1px solid color-mix(in srgb, var(--color-primary) 30%, transparent)}
+    .nav{
+      position:fixed; left:50%; bottom:var(--space-5); transform:translateX(-50%); z-index:250;
+      display:flex; align-items:center; gap:var(--space-3); padding:var(--space-2) var(--space-4);
+      background:color-mix(in srgb, var(--color-surface) 76%, transparent); border:1px solid color-mix(in srgb, var(--color-border) 76%, transparent);
+      border-radius:var(--radius-full); backdrop-filter:blur(12px); box-shadow:var(--shadow-md);
+    }
+    .nav button, .theme-toggle{
+      min-width:44px; min-height:44px; border-radius:50%; border:none; cursor:pointer;
+      background:color-mix(in srgb, var(--color-primary) 15%, transparent); color:var(--color-text);
+      transition:transform var(--transition), background var(--transition), box-shadow var(--transition);
+    }
+    .nav button:hover,.theme-toggle:hover{transform:translateY(-1px); background:color-mix(in srgb, var(--color-primary) 24%, transparent)}
+    .nav button:focus-visible,.theme-toggle:focus-visible,.jump-list button:focus-visible{outline:3px solid var(--color-primary); outline-offset:3px}
+    .counter{font-size:var(--text-sm); color:var(--color-text-muted); min-width:72px; text-align:center}
+    .dots{display:flex; gap:.45rem}
+    .dots button{width:12px; min-width:12px; height:12px; min-height:12px; padding:0; border-radius:50%; background:color-mix(in srgb, var(--color-border) 80%, transparent)}
+    .dots button.active{background:var(--color-primary); transform:scale(1.18)}
+    .topbar{
+      position:fixed; top:var(--space-4); right:var(--space-4); z-index:250; display:flex; gap:var(--space-3); align-items:center;
+    }
+    .jump-panel{
+      position:fixed; top:calc(var(--space-4) + 56px); right:var(--space-4); z-index:240; width:min(320px, calc(100vw - 2rem));
+      background:color-mix(in srgb, var(--color-surface) 92%, transparent); border:1px solid color-mix(in srgb, var(--color-border) 85%, transparent);
+      border-radius:var(--radius-xl); padding:var(--space-4); box-shadow:var(--shadow-lg); backdrop-filter:blur(12px); display:none;
+    }
+    .jump-panel[open]{display:block}
+    .jump-list{display:grid; gap:var(--space-2); margin-top:var(--space-3)}
+    .jump-list button{
+      text-align:left; border:none; cursor:pointer; border-radius:var(--radius-md); padding:var(--space-3);
+      background:color-mix(in srgb, var(--color-surface-2) 94%, transparent); color:var(--color-text);
+    }
+    .jump-list button span{display:block; font-size:var(--text-xs); color:var(--color-text-muted); margin-top:.2rem}
+    .reveal{opacity:0; transform:translateY(20px); transition:opacity .45s ease, transform .45s ease}
+    .slide.active .reveal.show{opacity:1; transform:translateY(0)}
+    .hero-stat{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:var(--space-4)}
+    .hero-stat strong{font-size:var(--text-xl); font-weight:800; display:block; color:var(--color-text)}
+    .tag-cloud{display:flex; flex-wrap:wrap; gap:var(--space-2)}
+    .tag-cloud span{padding:.5rem .8rem; border-radius:var(--radius-full); background:color-mix(in srgb, var(--color-blue) 14%, transparent); font-size:var(--text-sm)}
+    .progress{height:10px; border-radius:var(--radius-full); background:color-mix(in srgb, var(--color-border) 72%, transparent); overflow:hidden}
+    .progress > span{display:block; height:100%; border-radius:inherit; background:linear-gradient(90deg, var(--color-primary), var(--color-gold)); width:0; transition:width 1.1s cubic-bezier(.16,1,.3,1)}
+    .quote{padding-left:var(--space-4); border-left:4px solid var(--color-primary); font-size:var(--text-lg); color:var(--color-text)}
+    .footer-note{font-size:var(--text-xs); color:var(--color-text-faint)}
+
+    @media (max-width: 900px){
+      .grid-2,.grid-3,.hero-stat{grid-template-columns:1fr}
+      .slide{padding:var(--space-4)}
+      .slide-inner{height:min(86dvh, 860px); align-content:start; overflow:auto}
+      .nav{width:calc(100vw - 1rem); justify-content:center; gap:var(--space-2); bottom:var(--space-3)}
+      .counter{min-width:auto}
+    }
+    @media (prefers-reduced-motion: reduce){
+      *,*::before,*::after{animation-duration:.01ms !important; transition-duration:.01ms !important; scroll-behavior:auto !important}
+      .slide{transform:none}
+      .progress > span,.reveal{transition:none}
+    }
+  </style>
+</head>
+<body>
+  <a href="#contenido" class="skip-link">Saltar al contenido</a>
+
+  <header class="topbar" aria-label="Controles globales">
+    <button class="theme-toggle" type="button" data-theme-toggle aria-label="Cambiar tema" title="Cambiar tema">
+      ☼
+    </button>
+    <button class="theme-toggle" type="button" data-jump-toggle aria-controls="jump-panel" aria-expanded="false" aria-label="Abrir índice de secciones" title="Índice">
+      ≡
+    </button>
+  </header>
+
+  <aside id="jump-panel" class="jump-panel" aria-label="Índice de la presentación">
+    <strong>Índice</strong>
+    <div class="jump-list" id="jump-list"></div>
+  </aside>
+
+  <main id="contenido" class="deck" aria-live="polite">
+    <section class="slide active" data-title="Portada" aria-roledescription="diapositiva" aria-label="Portada">
+      <div class="slide-inner">
+        <span class="kicker reveal">Presentación interactiva</span>
+        <h1 class="reveal">Metodología para pedir a una IA páginas HTML dinámicas con mejores resultados</h1>
+        <p class="lead reveal">El documento adjunto describe cómo estructurar solicitudes técnicas en Markdown, cómo reducir ambigüedad y cómo convertir una idea en una especificación reutilizable. Esta versión lo transforma en una experiencia visual, navegable y lista para exponer.</p>
+        <div class="hero-stat">
+          <div class="card reveal"><strong>11</strong><p>secciones temáticas reorganizadas para explicar el proceso de principio a fin.</p></div>
+          <div class="card reveal"><strong>1</strong><p>plantilla base reutilizable para pedir páginas HTML con contexto, requisitos y formato de salida.</p></div>
+          <div class="card reveal"><strong>3</strong><p>ejes de calidad para exponer: claridad, estructura y control del contexto.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Idea central" aria-roledescription="diapositiva" aria-label="Idea central">
+      <div class="slide-inner">
+        <span class="kicker reveal">Punto 1</span>
+        <h2 class="reveal">La IA no adivina: responde mejor cuando recibe un briefing técnico claro</h2>
+        <div class="grid-2">
+          <div class="card reveal">
+            <h3>Cómo opera realmente</h3>
+            <p>Un LLM trabaja sobre tokens y una ventana de contexto limitada. Si la petición llega difusa, mezclada o excesivamente larga, prioriza patrones probables y aparecen respuestas parciales, redundantes o inconsistentes.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Qué implica para quien diseña prompts</h3>
+            <p>La mejor metáfora no es “chat mágico”, sino “becario literal con memoria corta”. Hay que separar objetivo, restricciones, datos y formato esperado para que el modelo produzca algo integrable.</p>
+          </div>
+        </div>
+        <p class="quote reveal">Cuanto mejor esté redactado el briefing, mejor será el HTML, la UX y la mantenibilidad del resultado.</p>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Procesamiento" aria-roledescription="diapositiva" aria-label="Procesamiento del prompt">
+      <div class="slide-inner">
+        <span class="kicker reveal">Punto 2</span>
+        <h2 class="reveal">El modelo interpreta patrones, no secciones “mágicas”</h2>
+        <div class="timeline">
+          <div class="timeline-item reveal"><div class="dot">1</div><div><strong>Tokeniza</strong><p>Trocea el texto y lo convierte en representaciones internas.</p></div></div>
+          <div class="timeline-item reveal"><div class="dot">2</div><div><strong>Relaciona patrones</strong><p>Busca estructuras similares a documentación, listas, especificaciones o ejemplos de entrenamiento.</p></div></div>
+          <div class="timeline-item reveal"><div class="dot">3</div><div><strong>Genera secuencialmente</strong><p>Responde token por token según probabilidad condicionada por el contexto visible.</p></div></div>
+          <div class="timeline-item reveal"><div class="dot">4</div><div><strong>Amplifica ambigüedades</strong><p>Si se mezclan requisitos, formato y explicación en un solo bloque confuso, la salida también se mezcla.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Importancia del formato" aria-roledescription="diapositiva" aria-label="Importancia del formato del documento">
+      <div class="slide-inner">
+        <span class="kicker reveal">Punto 3</span>
+        <h2 class="reveal">El formato de entrada cambia la calidad del resultado</h2>
+        <div class="grid-3">
+          <article class="card reveal"><h3>PDF</h3><p>Útil para humanos, pero puede arrastrar columnas, encabezados repetidos, saltos raros o texto incrustado como imagen.</p></article>
+          <article class="card reveal"><h3>Word</h3><p>Se extrae razonablemente bien, aunque conserva estilos y metadatos que a veces se convierten en ruido.</p></article>
+          <article class="card reveal"><h3>Markdown</h3><p>Es el formato más estable para prompts técnicos porque explicita jerarquías, listas y bloques de código con pocos tokens.</p></article>
+        </div>
+        <div class="card reveal">
+          <h3>Conclusión práctica</h3>
+          <p>Si controlas el flujo, convierte el conocimiento fuente en Markdown limpio antes de pedir generación de código. Eso mejora la legibilidad para la IA y para tu equipo.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Estrategia general" aria-roledescription="diapositiva" aria-label="Estrategia general para pedir cosas a la IA">
+      <div class="slide-inner">
+        <span class="kicker reveal">Punto 4</span>
+        <h2 class="reveal">Una solicitud fuerte combina rol, tarea, restricciones y salida</h2>
+        <div class="grid-2">
+          <div class="card reveal">
+            <h3>Elementos que deben aparecer</h3>
+            <ul>
+              <li>Rol técnico explícito.</li>
+              <li>Tarea concreta y verificable.</li>
+              <li>Contexto de negocio o sistema.</li>
+              <li>Restricciones reales del stack.</li>
+              <li>Formato de entrega esperado.</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <h3>Errores frecuentes</h3>
+            <ul>
+              <li>Pedir “una página bonita” sin objetivo.</li>
+              <li>No indicar si se permiten dependencias.</li>
+              <li>Mezclar diseño, implementación y teoría en la misma orden.</li>
+              <li>No fijar si se quiere sólo código o también explicación.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Por qué Markdown" aria-roledescription="diapositiva" aria-label="Ventajas de Markdown">
+      <div class="slide-inner">
+        <span class="kicker reveal">Punto 5</span>
+        <h2 class="reveal">Markdown funciona como documento-prompt y como documentación viva</h2>
+        <div class="tag-cloud reveal">
+          <span>Legible por humanos</span><span>Estructura explícita</span><span>Ahorro de tokens</span><span>Fácil versionado</span><span>Portable a HTML/PDF</span><span>Ideal para repositorios</span>
+        </div>
+        <div class="grid-2">
+          <div class="card reveal"><h3>Ventaja de equipo</h3><p>La especificación se puede guardar en el repositorio y evolucionar junto al producto, igual que cualquier documento técnico.</p></div>
+          <div class="card reveal"><h3>Ventaja operativa</h3><p>Al separar encabezados, ejemplos y bloques JSON, la IA detecta mejor qué debe copiar, qué debe interpretar y qué debe implementar.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Documento-prompt" aria-roledescription="diapositiva" aria-label="Diseño del documento prompt">
+      <div class="slide-inner">
+        <span class="kicker reveal">Punto 6</span>
+        <h2 class="reveal">La pieza clave es un documento-prompt reutilizable</h2>
+        <div class="grid-2">
+          <div class="card reveal">
+            <h3>Bloques recomendados</h3>
+            <ul>
+              <li>Solicitud / objetivo.</li>
+              <li>Rol esperado del asistente.</li>
+              <li>Contexto del sistema.</li>
+              <li>Requisitos funcionales.</li>
+              <li>UI/UX y accesibilidad.</li>
+              <li>Requisitos técnicos.</li>
+              <li>Modelo de datos.</li>
+              <li>Formato de salida.</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <h3>Qué se gana</h3>
+            <p>Reutilización, consistencia entre solicitudes, menor ambigüedad, mejores refactors y más facilidad para automatizar el proceso dentro de un flujo de desarrollo real.</p>
+            <div class="progress" aria-label="Nivel de reutilización del enfoque"><span data-width="92"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Datos y dinámica" aria-roledescription="diapositiva" aria-label="Comportamiento dinámico y datos">
+      <div class="slide-inner">
+        <span class="kicker reveal">Punto 7</span>
+        <h2 class="reveal">Si quieres HTML útil, describe la relación entre UI, estado y datos</h2>
+        <div class="grid-3">
+          <div class="card reveal"><h3>Origen</h3><p>Especifica si los datos vienen de API, mocks, `data-*`, JSON embebido o estado inyectado por backend.</p></div>
+          <div class="card reveal"><h3>Operaciones</h3><p>Declara qué puede hacer el usuario: buscar, filtrar, editar, paginar, seleccionar, confirmar o exportar.</p></div>
+          <div class="card reveal"><h3>Alcance</h3><p>Aclara si la interfaz debe ser funcional en frontend o si basta con dejar integraciones señaladas para completar después.</p></div>
+        </div>
+        <p class="lead reveal">La diferencia entre una maqueta y una página integrable suele estar en esa capa de especificación de comportamiento.</p>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Código vs explicación" aria-roledescription="diapositiva" aria-label="Separar diseño y generación">
+      <div class="slide-inner">
+        <span class="kicker reveal">Punto 8</span>
+        <h2 class="reveal">Separar fases mejora la calidad final</h2>
+        <div class="timeline">
+          <div class="timeline-item reveal"><div class="dot">A</div><div><strong>Fase de diseño</strong><p>Validas arquitectura de pantalla, componentes, flujo, estados vacíos y accesibilidad.</p></div></div>
+          <div class="timeline-item reveal"><div class="dot">B</div><div><strong>Fase de código</strong><p>Ya con la especificación cerrada, pides el HTML completo y reduces ruido explicativo.</p></div></div>
+          <div class="timeline-item reveal"><div class="dot">C</div><div><strong>Fase de iteración</strong><p>Pides refactors pequeños: mejorar contraste, modularizar JS, optimizar layout o añadir nuevas capacidades.</p></div></div>
+        </div>
+        <p class="quote reveal">No siempre conviene pedir “explica y programa” al mismo tiempo. Muchas veces conviene pensar primero y generar después.</p>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Contexto largo" aria-roledescription="diapositiva" aria-label="Manejo de contexto largo">
+      <div class="slide-inner">
+        <span class="kicker reveal">Punto 9</span>
+        <h2 class="reveal">Las especificaciones grandes se deben modularizar</h2>
+        <div class="grid-2">
+          <div class="card reveal">
+            <h3>Cuándo fragmentar</h3>
+            <p>Cuando hay muchas vistas, reglas de negocio, estados complejos o varios componentes independientes. Un único prompt gigante suele ser frágil.</p>
+          </div>
+          <div class="card reveal">
+            <h3>Cómo fragmentar</h3>
+            <p>Divide por módulos: listado, detalle, wizard, dashboard, modal crítico. Para cada pieza, manda sólo el contexto necesario.</p>
+          </div>
+        </div>
+        <div class="card reveal">
+          <h3>Beneficio técnico</h3>
+          <p>Esto se parece más a la arquitectura real de software: componentes aislados, contratos más claros y menos retrabajo al integrar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Ejemplo aplicado" aria-roledescription="diapositiva" aria-label="Ejemplo aplicado a relojes IoT">
+      <div class="slide-inner">
+        <span class="kicker reveal">Punto 10</span>
+        <h2 class="reveal">El ejemplo de relojes IoT muestra cómo aterrizar la plantilla</h2>
+        <div class="grid-2">
+          <div class="card reveal">
+            <h3>Qué hace bien el ejemplo</h3>
+            <ul>
+              <li>Define dominio concreto: administración de relojes IoT.</li>
+              <li>Describe backend y alcance del mock.</li>
+              <li>Enumera campos de la tabla y filtros.</li>
+              <li>Fija stack: HTML, CSS y JS vanilla.</li>
+            </ul>
+          </div>
+          <div class="card reveal">
+            <h3>Cómo mejorarlo todavía más</h3>
+            <ul>
+              <li>Añadir estados vacíos y errores.</li>
+              <li>Definir formato de fechas y zona horaria.</li>
+              <li>Precisar si el cambio de estado es optimista o confirmado por API.</li>
+              <li>Indicar comportamiento responsive de la tabla.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Buenas prácticas" aria-roledescription="diapositiva" aria-label="Buenas prácticas adicionales">
+      <div class="slide-inner">
+        <span class="kicker reveal">Punto 11</span>
+        <h2 class="reveal">La generación no termina al recibir el HTML</h2>
+        <div class="grid-3">
+          <div class="card reveal"><h3>Revisión manual</h3><p>Trata el resultado como un PR de un perfil junior talentoso: revisa lógica, semántica y accesibilidad.</p></div>
+          <div class="card reveal"><h3>Iteración pequeña</h3><p>Pide cambios acotados y concretos en lugar de rediseños completos cada vez.</p></div>
+          <div class="card reveal"><h3>Convenciones estables</h3><p>Si ya definiste clases, estructura o naming, recuérdalo en iteraciones posteriores para preservar consistencia.</p></div>
+        </div>
+        <p class="footer-note reveal">En otras palabras: la IA acelera la entrega, pero la calidad final sigue dependiendo de revisión, criterio y buena ingeniería.</p>
+      </div>
+    </section>
+
+    <section class="slide" data-title="Plantilla final" aria-roledescription="diapositiva" aria-label="Plantilla de uso inmediato">
+      <div class="slide-inner">
+        <span class="kicker reveal">Cierre práctico</span>
+        <h2 class="reveal">Plantilla recomendada para volver esto repetible</h2>
+        <div class="card reveal">
+<pre aria-label="Plantilla base de solicitud" style="white-space:pre-wrap; font-size:clamp(.82rem,1.2vw,.98rem); color:var(--color-text); font-family:ui-monospace, SFMono-Regular, Menlo, monospace; line-height:1.5;"># Solicitud: Página HTML dinámica para [caso de uso]
+
+## Rol
+Actúa como [perfil deseado].
+
+## Contexto
+- Aplicación o sistema
+- Tecnologías involucradas
+- Limitaciones relevantes
+
+## Requisitos funcionales
+- [RF1]
+- [RF2]
+- [RF3]
+
+## Requisitos de UI/UX
+- Layout y secciones
+- Comportamientos dinámicos
+- Accesibilidad
+
+## Requisitos técnicos
+- Stack permitido
+- Organización del JavaScript
+- Dependencias autorizadas
+
+## Modelo de datos
+```json
+[ ... ]
+```
+
+## Formato de salida
+- Un único HTML completo
+- Estilos y script incluidos
+- Sin texto fuera del código</pre>
+        </div>
+        <p class="lead reveal">Si esta estructura se vuelve estándar dentro de tu flujo, pedir interfaces dinámicas a una IA deja de ser improvisación y empieza a parecerse a ingeniería de especificación.</p>
+      </div>
+    </section>
+  </main>
+
+  <nav class="nav" aria-label="Controles de la presentación">
+    <button type="button" id="prevBtn" aria-label="Diapositiva anterior">‹</button>
+    <div class="dots" id="dots" aria-label="Indicadores de diapositivas"></div>
+    <div class="counter" id="counter" aria-live="polite">1 / 12</div>
+    <button type="button" id="nextBtn" aria-label="Diapositiva siguiente">›</button>
+  </nav>
+
+  <script>
+    (() => {
+      const slides = [...document.querySelectorAll('.slide')];
+      const dots = document.getElementById('dots');
+      const counter = document.getElementById('counter');
+      const jumpList = document.getElementById('jump-list');
+      const jumpPanel = document.getElementById('jump-panel');
+      const jumpToggle = document.querySelector('[data-jump-toggle]');
+      const prevBtn = document.getElementById('prevBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      let current = 0;
+
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      function animateSlide(slide) {
+        const items = slide.querySelectorAll('.reveal');
+        items.forEach((el, index) => {
+          el.classList.remove('show');
+          if (prefersReduced) {
+            el.classList.add('show');
+            return;
+          }
+          setTimeout(() => el.classList.add('show'), 90 * index);
+        });
+        slide.querySelectorAll('[data-width]').forEach((bar) => {
+          bar.style.width = '0%';
+          requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+              bar.style.width = bar.dataset.width + '%';
+            });
+          });
+        });
+      }
+
+      function update() {
+        slides.forEach((slide, index) => {
+          const active = index === current;
+          slide.classList.toggle('active', active);
+          slide.setAttribute('aria-hidden', String(!active));
+        });
+        [...dots.children].forEach((dot, index) => dot.classList.toggle('active', index === current));
+        counter.textContent = `${current + 1} / ${slides.length}`;
+        animateSlide(slides[current]);
+      }
+
+      function goTo(index) {
+        current = (index + slides.length) % slides.length;
+        update();
+        jumpPanel.removeAttribute('open');
+        jumpToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      slides.forEach((slide, index) => {
+        const dot = document.createElement('button');
+        dot.type = 'button';
+        dot.setAttribute('aria-label', `Ir a la diapositiva ${index + 1}`);
+        dot.addEventListener('click', () => goTo(index));
+        dots.appendChild(dot);
+
+        const jumpBtn = document.createElement('button');
+        jumpBtn.type = 'button';
+        jumpBtn.innerHTML = `<strong>${index + 1}. ${slide.dataset.title}</strong><span>${slide.getAttribute('aria-label')}</span>`;
+        jumpBtn.addEventListener('click', () => goTo(index));
+        jumpList.appendChild(jumpBtn);
+      });
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'PageDown' || e.key === ' ') {
+          e.preventDefault();
+          goTo(current + 1);
+        }
+        if (e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          goTo(current - 1);
+        }
+        if (e.key.toLowerCase() === 'home') goTo(0);
+        if (e.key.toLowerCase() === 'end') goTo(slides.length - 1);
+        if (e.key === 'Escape') {
+          jumpPanel.removeAttribute('open');
+          jumpToggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      let touchStartX = 0;
+      document.addEventListener('touchstart', (e) => { touchStartX = e.changedTouches[0].clientX; }, {passive:true});
+      document.addEventListener('touchend', (e) => {
+        const diff = touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) goTo(current + (diff > 0 ? 1 : -1));
+      }, {passive:true});
+
+      jumpToggle.addEventListener('click', () => {
+        const open = jumpPanel.hasAttribute('open');
+        if (open) {
+          jumpPanel.removeAttribute('open');
+          jumpToggle.setAttribute('aria-expanded', 'false');
+        } else {
+          jumpPanel.setAttribute('open', '');
+          jumpToggle.setAttribute('aria-expanded', 'true');
+        }
+      });
+
+      const themeToggle = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+      themeToggle.textContent = theme === 'dark' ? '☀' : '☾';
+      themeToggle.addEventListener('click', () => {
+        theme = theme === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', theme);
+        themeToggle.textContent = theme === 'dark' ? '☀' : '☾';
+        themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+      });
+      themeToggle.setAttribute('aria-label', theme === 'dark' ? 'Cambiar a tema claro' : 'Cambiar a tema oscuro');
+
+      update();
+    })();
+  </script>
+</body>
+</html>
