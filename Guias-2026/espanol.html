@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📖 Español 9° – Literatura Latinoamericana</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --morado: #6a1b9a;
+      --morado-dark: #4a148c;
+      --morado-light: #f3e5f5;
+      --morado-mid: #ce93d8;
+      --morado-border: #ab47bc;
+      --text: #212121;
+      --muted: #555;
+      --white: #fff;
+      --shadow: 0 2px 8px rgba(106,27,154,0.13);
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #faf5ff;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--morado-dark) 0%, var(--morado) 60%, #8e24aa 100%);
+      color: var(--white);
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(74,20,140,0.35);
+    }
+    header .emoji { font-size: 3rem; display: block; margin-bottom: .4rem; }
+    header h1 { font-size: 1.9rem; font-weight: 800; letter-spacing: .5px; }
+    header h2 { font-size: 1.1rem; font-weight: 400; opacity: .88; margin-top: .3rem; }
+    header .meta {
+      margin-top: 1.1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .6rem 1.5rem;
+      font-size: .92rem;
+      opacity: .93;
+    }
+    header .meta span {
+      background: rgba(255,255,255,.15);
+      border-radius: 20px;
+      padding: .2rem .9rem;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    /* ── OBJETIVO ── */
+    .objetivo {
+      background: var(--morado-light);
+      border-left: 5px solid var(--morado);
+      border-radius: 0 10px 10px 0;
+      padding: 1.1rem 1.4rem;
+      margin-bottom: 2.2rem;
+      font-size: 1rem;
+    }
+    .objetivo strong { color: var(--morado-dark); }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      color: var(--morado-dark);
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 2.4rem 0 1rem;
+      padding-bottom: .4rem;
+      border-bottom: 2px solid var(--morado-mid);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+
+    /* ── ACTIVITY CARD ── */
+    .card {
+      background: var(--white);
+      border-left: 5px solid var(--morado);
+      border-radius: 0 12px 12px 0;
+      padding: 1.3rem 1.5rem 1.4rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--shadow);
+    }
+    .card-header {
+      display: flex;
+      align-items: baseline;
+      gap: .7rem;
+      margin-bottom: .8rem;
+    }
+    .card-num {
+      background: var(--morado);
+      color: var(--white);
+      font-weight: 700;
+      font-size: .8rem;
+      padding: .18rem .7rem;
+      border-radius: 20px;
+      white-space: nowrap;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+    .card-title { font-weight: 700; color: var(--morado-dark); font-size: 1rem; }
+
+    /* ── CLASSIFICATION TABLE ── */
+    .clasif-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: .8rem;
+      font-size: .93rem;
+    }
+    .clasif-table th {
+      background: var(--morado);
+      color: var(--white);
+      padding: .6rem .9rem;
+      text-align: center;
+      font-weight: 700;
+    }
+    .clasif-table td {
+      border: 1px solid #ddd;
+      padding: .5rem .9rem;
+      vertical-align: top;
+      background: var(--white);
+    }
+    .clasif-table tr:nth-child(even) td { background: #faf0ff; }
+    .clasif-table .terminos-cell {
+      background: #f8f8f8;
+      font-size: .88rem;
+      color: var(--muted);
+    }
+
+    /* ── TERMS CLOUD ── */
+    .terms {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      margin: .8rem 0 1rem;
+    }
+    .term-chip {
+      background: var(--morado-light);
+      border: 1px solid var(--morado-border);
+      color: var(--morado-dark);
+      border-radius: 20px;
+      padding: .22rem .75rem;
+      font-size: .86rem;
+      font-weight: 500;
+    }
+
+    /* ── CLASIF GRID ── */
+    .clasif-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .8rem;
+      margin-top: .8rem;
+    }
+    .clasif-col {
+      border: 2px solid var(--morado-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .clasif-col-head {
+      background: var(--morado);
+      color: var(--white);
+      text-align: center;
+      font-weight: 700;
+      font-size: .88rem;
+      padding: .5rem .4rem;
+    }
+    .clasif-col-body {
+      min-height: 100px;
+      background: var(--morado-light);
+      padding: .6rem .5rem;
+      font-size: .8rem;
+      color: var(--muted);
+      font-style: italic;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* ── MCQ OPTIONS ── */
+    .options { list-style: none; margin-top: .7rem; display: flex; flex-direction: column; gap: .45rem; }
+    .options li {
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+      padding: .55rem .9rem;
+      border: 1.5px solid #e0c8f0;
+      border-radius: 8px;
+      background: #faf0ff;
+      font-size: .95rem;
+    }
+    .opt-letter {
+      background: var(--morado);
+      color: var(--white);
+      font-weight: 700;
+      min-width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .82rem;
+      flex-shrink: 0;
+    }
+
+    /* ── BLOCKQUOTE ── */
+    blockquote {
+      border-left: 4px solid var(--morado-border);
+      background: #f9f0ff;
+      padding: .9rem 1.2rem;
+      margin: .8rem 0;
+      font-style: italic;
+      color: #4a148c;
+      border-radius: 0 8px 8px 0;
+      font-size: .97rem;
+    }
+    blockquote cite {
+      display: block;
+      margin-top: .4rem;
+      font-style: normal;
+      font-size: .82rem;
+      color: var(--morado-border);
+      font-weight: 600;
+    }
+
+    /* ── FILL BLANK ── */
+    .fill-blank {
+      display: inline-block;
+      border-bottom: 2px solid var(--morado);
+      min-width: 180px;
+      height: 1.3em;
+      vertical-align: bottom;
+      margin: 0 .3rem;
+    }
+
+    /* ── V/F TABLE ── */
+    .vf-table { width: 100%; border-collapse: collapse; margin-top: .8rem; font-size: .93rem; }
+    .vf-table th {
+      background: var(--morado);
+      color: var(--white);
+      padding: .55rem .9rem;
+      text-align: left;
+    }
+    .vf-table th:last-child { text-align: center; min-width: 100px; }
+    .vf-table td { border: 1px solid #ddd; padding: .55rem .9rem; vertical-align: top; }
+    .vf-table tr:nth-child(even) td { background: #faf0ff; }
+    .vf-table .vf-box {
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+    }
+    .vf-btn {
+      border: 1.5px solid var(--morado-border);
+      background: var(--morado-light);
+      color: var(--morado-dark);
+      border-radius: 6px;
+      padding: .18rem .7rem;
+      font-size: .8rem;
+      font-weight: 700;
+      cursor: default;
+    }
+
+    /* ── TESIS TABLE ── */
+    .tesis-table { width: 100%; border-collapse: collapse; margin-top: .8rem; font-size: .93rem; }
+    .tesis-table th {
+      background: var(--morado);
+      color: var(--white);
+      padding: .55rem .9rem;
+      text-align: left;
+    }
+    .tesis-table td { border: 1px solid #ddd; padding: .55rem .9rem; vertical-align: top; }
+    .tesis-table tr:nth-child(even) td { background: #faf0ff; }
+    .check-box {
+      display: inline-block;
+      width: 1.2rem;
+      height: 1.2rem;
+      border: 2px solid var(--morado);
+      border-radius: 3px;
+      margin-right: .4rem;
+      vertical-align: middle;
+    }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      background: var(--morado-light);
+      border: 2px solid var(--morado);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.5rem 0;
+    }
+    .info-box h3 {
+      color: var(--morado-dark);
+      font-size: 1rem;
+      margin-bottom: .7rem;
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+    .info-box ul { padding-left: 1.3rem; }
+    .info-box li { margin-bottom: .35rem; font-size: .94rem; }
+    .info-box p { font-size: .94rem; margin-bottom: .4rem; }
+
+    /* ── COMPARATIVE TABLE ── */
+    .comp-wrapper { overflow-x: auto; margin: .8rem 0 1rem; }
+    .comp-table { width: 100%; border-collapse: collapse; font-size: .88rem; min-width: 580px; }
+    .comp-table th {
+      background: var(--morado);
+      color: var(--white);
+      padding: .6rem .8rem;
+      text-align: center;
+    }
+    .comp-table th:first-child { text-align: left; background: var(--morado-dark); }
+    .comp-table td { border: 1px solid #d7b8f0; padding: .5rem .8rem; vertical-align: top; }
+    .comp-table td:first-child {
+      background: var(--morado-dark);
+      color: var(--white);
+      font-weight: 700;
+      font-size: .83rem;
+    }
+    .comp-table tr:nth-child(even) td:not(:first-child) { background: #f9f0ff; }
+    .comp-table tr:nth-child(odd) td:not(:first-child) { background: var(--white); }
+
+    /* ── FALACIAS ── */
+    .falacias-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: .8rem;
+      margin-top: .8rem;
+    }
+    .falacia-card {
+      background: var(--white);
+      border: 1.5px solid var(--morado-border);
+      border-radius: 10px;
+      padding: .8rem 1rem;
+    }
+    .falacia-card strong { color: var(--morado-dark); display: block; margin-bottom: .25rem; font-size: .92rem; }
+    .falacia-card p { font-size: .85rem; color: var(--muted); }
+
+    /* ── OPEN QUESTION ── */
+    .open-q {
+      background: #fdf6ff;
+      border: 1.5px dashed var(--morado-border);
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-top: .8rem;
+    }
+    .open-q p { font-size: .95rem; color: var(--text); margin-bottom: .6rem; }
+    .answer-lines {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem;
+      margin-top: .4rem;
+    }
+    .answer-line {
+      border-bottom: 1.5px solid #c9a0dc;
+      height: 1.4em;
+      width: 100%;
+    }
+
+    /* ── FOOTER NAV ── */
+    footer {
+      background: var(--morado-dark);
+      color: var(--white);
+      padding: 1.1rem 1.5rem;
+      margin-top: 3rem;
+    }
+    .footer-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 900px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .footer-nav a {
+      color: var(--morado-mid);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .95rem;
+      padding: .35rem .8rem;
+      border-radius: 8px;
+      border: 1.5px solid var(--morado-mid);
+      transition: background .2s;
+    }
+    .footer-nav a:hover { background: rgba(206,147,216,.18); }
+    .footer-center { color: #ddd; font-size: .85rem; text-align: center; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.4rem; }
+      .clasif-grid { grid-template-columns: 1fr; }
+      .falacias-grid { grid-template-columns: 1fr 1fr; }
+      .footer-nav { justify-content: center; }
+    }
+
+    /* ── INTERACTIVIDAD ── */
+    .resp-textarea {
+      width: 100%; min-height: 80px;
+      border: 1.5px dashed #ce93d8; border-radius: 8px;
+      padding: .6rem .8rem; font-family: inherit; font-size: .92rem;
+      background: #fdf6ff; resize: vertical; margin-top: .5rem;
+      color: #212121; display: block;
+    }
+    .resp-textarea:focus { outline: 2px solid #6a1b9a; border-style: solid; }
+    .hint-btn {
+      display: inline-block; background: none;
+      border: 1.5px solid #6a1b9a; color: #6a1b9a;
+      border-radius: 20px; padding: .22rem .8rem; font-size: .78rem;
+      cursor: pointer; margin-top: .4rem; font-family: inherit;
+      transition: background .15s;
+    }
+    .hint-btn:hover { background: #f3e5f5; }
+    .hint-box {
+      display: none; background: #f3e5f5; border-left: 3px solid #6a1b9a;
+      border-radius: 0 8px 8px 0; padding: .65rem .9rem; font-size: .85rem;
+      margin-top: .4rem; font-style: italic;
+    }
+    .hint-box strong { font-style: normal; display: block; font-size: .8rem; margin-bottom: .25rem; color: #4a148c; }
+    /* MCQ interactivo */
+    .options li { cursor: pointer; transition: background .15s; user-select: none; }
+    .options li:hover { background: #ede4f7 !important; }
+    .options li.mc-correct { background: #e8f5e9 !important; border-color: #2e7d32 !important; }
+    .options li.mc-correct .opt-letter { background: #2e7d32 !important; }
+    .options li.mc-incorrect { background: #ffebee !important; border-color: #c62828 !important; }
+    .options li.mc-incorrect .opt-letter { background: #c62828 !important; }
+    .mc-feedback { display: none; padding: .5rem .8rem; border-radius: 6px; font-size: .85rem; margin-top: .6rem; }
+    .mc-feedback.fb-ok { background: #e8f5e9; color: #1b5e20; border-left: 3px solid #2e7d32; }
+    .mc-feedback.fb-no { background: #ffebee; color: #c62828; border-left: 3px solid #c62828; }
+    /* V/F interactivo */
+    .vf-btn { cursor: pointer; transition: all .15s; }
+    .vf-btn:hover { background: #ce93d8 !important; color: #fff !important; }
+    .vf-btn.vf-correct { background: #2e7d32 !important; color: #fff !important; border-color: #2e7d32 !important; }
+    .vf-btn.vf-incorrect { background: #c62828 !important; color: #fff !important; border-color: #c62828 !important; }
+    .vf-row-feedback {
+      display: none; font-size: .82rem; padding: .45rem .7rem;
+      border-radius: 6px; margin-top: .35rem;
+    }
+    .vf-row-feedback.fb-ok { background: #e8f5e9; color: #1b5e20; border-left: 3px solid #2e7d32; }
+    .vf-row-feedback.fb-no { background: #ffebee; color: #c62828; border-left: 3px solid #c62828; }
+    /* fill-blank interactivo */
+    .fill-input {
+      display: inline-block; border: none; border-bottom: 2px solid #6a1b9a;
+      min-width: 180px; font-size: .95rem; font-family: inherit;
+      background: transparent; outline: none; padding: .1rem .3rem; color: #4a148c;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ HEADER ══════════════ -->
+<header>
+  <span class="emoji">📖</span>
+  <h1>Taller de Español — Grado 9°</h1>
+  <h2>Literatura Latinoamericana · La Reseña Crítica · La Argumentación</h2>
+  <div class="meta">
+    <span>👤 Juan Esteban Herreño</span>
+    <span>🏫 Colegio CEDAP · Bogotá</span>
+    <span>👩‍🏫 Docente: Geraldine Rodriguez</span>
+    <span>📅 2026</span>
+  </div>
+</header>
+
+<!-- ══════════════ MAIN ══════════════ -->
+<main>
+
+  <!-- OBJETIVO -->
+  <div class="objetivo">
+    <strong>Objetivo:</strong> Evaluar la comprensión crítica de los movimientos literarios latinoamericanos
+    (Neoclasicismo, Romanticismo y Criollismo) junto con la estructura de la reseña crítica
+    y las herramientas de la argumentación.
+  </div>
+
+  <!-- ═══ PARTE 1: LITERATURA LATINOAMERICANA ═══ -->
+  <div class="section-title">📚 Parte 1 — Movimientos Literarios Latinoamericanos</div>
+
+  <!-- CUADRO COMPARATIVO -->
+  <div class="info-box">
+    <h3>📊 Cuadro comparativo: Neoclasicismo · Romanticismo · Criollismo</h3>
+    <div class="comp-wrapper">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th>Característica</th>
+            <th>Neoclasicismo</th>
+            <th>Romanticismo</th>
+            <th>Criollismo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Época</td>
+            <td>S. XVIII – inicio XIX</td>
+            <td>S. XIX</td>
+            <td>Fines XIX – inicio XX</td>
+          </tr>
+          <tr>
+            <td>Foco</td>
+            <td>Razón, orden, moral cívica</td>
+            <td>Sentimiento, "Yo", libertad</td>
+            <td>Identidad regional, naturaleza</td>
+          </tr>
+          <tr>
+            <td>Naturaleza</td>
+            <td>Decorativa</td>
+            <td>Reflejo del alma</td>
+            <td>Protagonista y amenaza</td>
+          </tr>
+          <tr>
+            <td>Autores</td>
+            <td>Andrés Bello, Olmedo</td>
+            <td>Jorge Isaacs, José Mármol</td>
+            <td>Rivera, Gallegos, Güiraldes</td>
+          </tr>
+          <tr>
+            <td>Obras clave</td>
+            <td>"La agricultura de la zona tórrida"</td>
+            <td>"María"</td>
+            <td>"La Vorágine", "Doña Bárbara"</td>
+          </tr>
+          <tr>
+            <td>Lenguaje</td>
+            <td>Culto, ordenado</td>
+            <td>Apasionado, lírico</td>
+            <td>Local, dialectal, regionalista</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- ACTIVIDAD 1 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Actividad 1</span>
+      <span class="card-title">Clasifica los términos en el movimiento literario correspondiente</span>
+    </div>
+    <p style="font-size:.92rem;color:var(--muted);margin-bottom:.5rem;">
+      Ubica cada término en la columna del movimiento al que pertenece.
+    </p>
+    <div class="terms">
+      <span class="term-chip">Razón</span>
+      <span class="term-chip">Naturaleza indómita</span>
+      <span class="term-chip">Finalidad didáctica</span>
+      <span class="term-chip">El Gaucho</span>
+      <span class="term-chip">Nacionalismo</span>
+      <span class="term-chip">Imitación de Grecia y Roma</span>
+      <span class="term-chip">Lucha hombre vs. selva</span>
+      <span class="term-chip">Subjetividad</span>
+      <span class="term-chip">José Eustasio Rivera</span>
+      <span class="term-chip">Ilustración</span>
+      <span class="term-chip">Paisajes lúgubres</span>
+      <span class="term-chip">Rómulo Gallegos</span>
+      <span class="term-chip">Jorge Isaacs</span>
+      <span class="term-chip">Andrés Bello</span>
+      <span class="term-chip">Sentimiento sobre la razón</span>
+      <span class="term-chip">Dialecto campesino</span>
+      <span class="term-chip">Orden y equilibrio</span>
+      <span class="term-chip">José Mármol</span>
+      <span class="term-chip">Siglo de las Luces</span>
+      <span class="term-chip">Enfoque en lo local</span>
+      <span class="term-chip">Exaltación del "Yo"</span>
+      <span class="term-chip">Consolidación identitaria</span>
+      <span class="term-chip">José Joaquín de Olmedo</span>
+      <span class="term-chip">Ricardo Güiraldes</span>
+    </div>
+    <div class="clasif-grid">
+      <div class="clasif-col">
+        <div class="clasif-col-head">Neoclasicismo</div>
+        <div class="clasif-col-body">Escribe aquí los términos</div>
+      </div>
+      <div class="clasif-col">
+        <div class="clasif-col-head">Romanticismo</div>
+        <div class="clasif-col-body">Escribe aquí los términos</div>
+      </div>
+      <div class="clasif-col">
+        <div class="clasif-col-head">Criollismo</div>
+        <div class="clasif-col-body">Escribe aquí los términos</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ACTIVIDAD 2 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Actividad 2</span>
+      <span class="card-title">Selección múltiple — Neoclasicismo</span>
+    </div>
+    <p style="font-size:.95rem;">
+      El Neoclasicismo en América Latina se caracterizó por su función <strong>"didáctica"</strong>
+      e institucional. Esto significa que:
+    </p>
+    <ul class="options" id="mcq-act2">
+      <li onclick="mcqEsp(this, false, 'act2', 'Incorrecto. El Neoclasicismo NO buscaba entretener con historias fantásticas — eso es más propio del Romanticismo. Su función era educar y difundir ideales cívicos.')">
+        <span class="opt-letter">A</span>
+        Busca entretener al lector con historias fantásticas.
+      </li>
+      <li onclick="mcqEsp(this, true, 'act2', '¡Correcto! La función &quot;didáctica&quot; del Neoclasicismo significaba enseñar lecciones morales y cívicas para formar ciudadanos de las nuevas repúblicas latinoamericanas, siguiendo los ideales de la Ilustración.')">
+        <span class="opt-letter">B</span>
+        Tiene la intención de enseñar una lección moral, cívica y difundir ideales de libertad
+        para formar nuevas repúblicas.
+      </li>
+      <li onclick="mcqEsp(this, false, 'act2', 'Incorrecto. La descripción de la selva y la pampa es característica del CRIOLLISMO, no del Neoclasicismo. El Neoclasicismo se enfocaba en la razón, el orden y los ideales cívicos.')">
+        <span class="opt-letter">C</span>
+        Se enfocó exclusivamente en la descripción fiel de la selva y la pampa.
+      </li>
+      <li onclick="mcqEsp(this, false, 'act2', 'Incorrecto. El Neoclasicismo NO rechaza los modelos clásicos — al contrario, los imita. Y el lenguaje campesino o dialectal es del Criollismo. El Neoclasicismo usa lenguaje culto y ordenado.')">
+        <span class="opt-letter">D</span>
+        Rechaza los modelos clásicos para imitar el lenguaje campesino de la época.
+      </li>
+    </ul>
+    <div class="mc-feedback" id="fb-act2"></div>
+    <p style="margin-top:.8rem;font-size:.9rem;color:var(--muted);">
+      Respuesta: <input class="fill-input" type="text" placeholder="escribe la letra…" maxlength="3">
+    </p>
+  </div>
+
+  <!-- ACTIVIDAD 3 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Actividad 3</span>
+      <span class="card-title">Análisis de fragmento — <em>La Vorágine</em></span>
+    </div>
+    <p style="font-size:.93rem;color:var(--muted);margin-bottom:.6rem;">Lee el siguiente fragmento y responde:</p>
+    <blockquote>
+      "¡Oh, selva, esposa del silencio, madre de la soledad y de la neblina! ¿Qué hado enemigo
+      me dejó en tu recinto? Tú eres la catedral de la pesadumbre, donde dioses desconocidos
+      hablan en voz baja..."
+      <cite>— José Eustasio Rivera, <em>La Vorágine</em></cite>
+    </blockquote>
+    <p style="font-size:.95rem;margin-bottom:.6rem;">
+      En el Criollismo la naturaleza actúa como un <strong>personaje</strong>.
+      ¿Cómo es la relación del hombre con la selva?
+    </p>
+    <ul class="options" id="mcq-act3">
+      <li onclick="mcqEsp(this, false, 'act3', 'Incorrecto. En La Vorágine NO hay armonía con la selva. Las palabras del fragmento como &quot;pesadumbre&quot;, &quot;soledad&quot; y &quot;dioses desconocidos&quot; muestran una relación de conflicto y miedo.')">
+        <span class="opt-letter">A</span>Armonía, paz y alegría constante.
+      </li>
+      <li onclick="mcqEsp(this, false, 'act3', 'Incorrecto. Rivera no describe la selva científicamente — la personifica y la siente como una fuerza opresora. Las palabras &quot;esposa del silencio&quot; y &quot;catedral de la pesadumbre&quot; son metáforas emocionales, no descripciones biológicas.')">
+        <span class="opt-letter">B</span>Una visión puramente científica, biológica y botánica.
+      </li>
+      <li onclick="mcqEsp(this, true, 'act3', '¡Correcto! En el Criollismo la naturaleza actúa como personaje. Rivera describe la selva como &quot;catedral de la pesadumbre&quot; y &quot;madre de la soledad&quot;, mostrando que el hombre siente soledad profunda y lucha contra una fuerza natural abrumadora e incomprensible.')">
+        <span class="opt-letter">C</span>Una experiencia de soledad profunda y de lucha contra una fuerza abrumadora.
+      </li>
+      <li onclick="mcqEsp(this, false, 'act3', 'Incorrecto. La selva en La Vorágine NO es un lugar ideal para construir ciudades — es amenazante, oscura y devoradora. Ese pensamiento utópico es más del Neoclasicismo ilustrado.')">
+        <span class="opt-letter">D</span>Un escenario ideal para la edificación de ciudades modernas.
+      </li>
+    </ul>
+    <div class="mc-feedback" id="fb-act3"></div>
+    <p style="margin-top:.8rem;font-size:.9rem;color:var(--muted);">
+      Respuesta: <input class="fill-input" type="text" placeholder="escribe la letra…" maxlength="3">
+    </p>
+  </div>
+
+  <!-- ACTIVIDAD 4 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Actividad 4</span>
+      <span class="card-title">Identifica el movimiento y justifica</span>
+    </div>
+    <p style="font-size:.93rem;color:var(--muted);margin-bottom:.6rem;">Lee el fragmento, identifica el movimiento literario y justifica tu respuesta:</p>
+    <blockquote>
+      "¡Oh libertad! ¡Oh patria! El pecho mío se inflama al ver tus campos,
+      pero mi alma llora al recordar las cadenas que rompimos con sangre."
+    </blockquote>
+    <div style="margin-top:.9rem;display:flex;flex-direction:column;gap:.7rem;">
+      <p style="font-size:.95rem;">
+        <strong>Movimiento:</strong>
+        <input class="fill-input" type="text" placeholder="Escribe el movimiento literario…" style="min-width:200px;">
+      </p>
+      <button class="hint-btn" onclick="toggleHintEsp('h-act4-mov')">💡 Ver pista del movimiento</button>
+      <div class="hint-box" id="h-act4-mov"><strong>💡 Pista:</strong> El fragmento habla de "libertad", "patria", "cadenas que rompimos con sangre" y expresa sentimientos intensos. ¿Qué movimiento exalta la emoción, el nacionalismo y la lucha por la independencia? Pista: Jorge Isaacs era de este movimiento.</div>
+      <p style="font-size:.95rem;"><strong>Justificación:</strong></p>
+      <textarea class="resp-textarea" placeholder="Escribe tu justificación…"></textarea>
+      <button class="hint-btn" onclick="toggleHintEsp('h-act4-just')">💡 Ver ejemplo de justificación</button>
+      <div class="hint-box" id="h-act4-just"><strong>💡 Ejemplo:</strong> Este fragmento pertenece al Romanticismo porque: 1) Exalta los sentimientos intensos ("el pecho mío se inflama", "mi alma llora"), 2) Usa el tema de la lucha por la libertad y la patria (muy romántico), 3) La naturaleza refleja el estado emocional del poeta, y 4) Hay una exaltación del "Yo" y el sufrimiento personal ante los dramas históricos.</div>
+    </div>
+  </div>
+
+  <!-- ACTIVIDAD 5 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Actividad 5</span>
+      <span class="card-title">Reflexión abierta</span>
+    </div>
+    <div class="open-q">
+      <p>
+        ¿Por qué a los líderes de la Independencia les interesaba que la literatura fuera
+        <strong>"educativa"</strong> y <strong>"ordenada"</strong> (neoclásica)?
+      </p>
+      <textarea class="resp-textarea" style="min-height:110px;" placeholder="Escribe tu reflexión aquí…"></textarea>
+      <button class="hint-btn" onclick="toggleHintEsp('h-act5')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="h-act5"><strong>💡 Ejemplo:</strong> A los líderes de la Independencia les interesaba la literatura neoclásica educativa porque necesitaban formar ciudadanos capaces de sostener las nuevas repúblicas. Una sociedad ilustrada, con valores morales y cívicos sólidos, podía gobernarse democráticamente. Además, el orden y la razón neoclásica eran contrarios al caos de la guerra y daban legitimidad intelectual al movimiento independentista.</div>
+    </div>
+  </div>
+
+  <!-- ═══ PARTE 2: LA RESEÑA CRÍTICA ═══ -->
+  <div class="section-title">✍️ Parte 2 — La Reseña Crítica</div>
+
+  <!-- INFO RESEÑA -->
+  <div class="info-box">
+    <h3>📋 ¿Qué es una Reseña Crítica?</h3>
+    <p>Una reseña crítica tiene cuatro partes fundamentales:</p>
+    <ul>
+      <li><strong>1) Ficha técnica:</strong> autor, año, editorial, género.</li>
+      <li><strong>2) Resumen breve</strong> SIN spoiler — se describe sin revelar el final.</li>
+      <li><strong>3) Análisis y opinión fundamentada</strong> — con argumentos sólidos y evidencia del texto.</li>
+      <li><strong>4) Recomendación final</strong> — ¿a qué tipo de lector va dirigida?</li>
+    </ul>
+    <p style="margin-top:.6rem;color:var(--morado-dark);font-weight:600;">
+      ⚠️ Una reseña NO es solo resumir — es EVALUAR con argumentos.
+    </p>
+  </div>
+
+  <!-- ACTIVIDAD 6 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Actividad 6</span>
+      <span class="card-title">Verdadero o Falso sobre la Reseña Crítica</span>
+    </div>
+    <p style="font-size:.92rem;color:var(--muted);margin-bottom:.7rem;">
+      Marca V (Verdadero) o F (Falso) según corresponda.
+    </p>
+    <table class="vf-table">
+      <thead>
+        <tr>
+          <th>Afirmación</th>
+          <th style="text-align:center;">V / F</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>La función principal de una reseña crítica es únicamente resumir la trama.</td>
+          <td>
+            <div class="vf-box">
+              <button class="vf-btn" onclick="vfEsp(this,true,false,'FALSO. La función principal de una reseña crítica es EVALUAR con argumentos, no solo resumir. La reseña incluye análisis, opinión fundamentada y recomendación. Resumir sería solo una parte (la ficha técnica + resumen breve).')">V</button>
+              <button class="vf-btn" onclick="vfEsp(this,false,false,'FALSO. La función principal de una reseña crítica es EVALUAR con argumentos, no solo resumir. La reseña incluye análisis, opinión fundamentada y recomendación. Resumir sería solo una parte (la ficha técnica + resumen breve).')">F</button>
+            </div>
+            <div class="vf-row-feedback" id="vf6-1"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>La "ficha técnica" sirve para identificar datos objetivos como autor, año y editorial.</td>
+          <td>
+            <div class="vf-box">
+              <button class="vf-btn" onclick="vfEsp(this,true,true,'VERDADERO. La ficha técnica es la primera parte de una reseña y contiene los datos objetivos de identificación: autor, título, año de publicación, editorial y género literario.')">V</button>
+              <button class="vf-btn" onclick="vfEsp(this,false,true,'VERDADERO. La ficha técnica es la primera parte de una reseña y contiene los datos objetivos de identificación: autor, título, año de publicación, editorial y género literario.')">F</button>
+            </div>
+            <div class="vf-row-feedback" id="vf6-2"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>El "spoiler" es una práctica recomendada en las reseñas de prensa.</td>
+          <td>
+            <div class="vf-box">
+              <button class="vf-btn" onclick="vfEsp(this,true,false,'FALSO. El spoiler (revelar el final o eventos clave) NO es recomendado en las reseñas. El resumen debe presentar la obra sin spoiler para no arruinar la experiencia del lector potencial.')">V</button>
+              <button class="vf-btn" onclick="vfEsp(this,false,false,'FALSO. El spoiler (revelar el final o eventos clave) NO es recomendado en las reseñas. El resumen debe presentar la obra sin spoiler para no arruinar la experiencia del lector potencial.')">F</button>
+            </div>
+            <div class="vf-row-feedback" id="vf6-3"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>La diferencia entre reseña informativa y crítica es que la primera no emite opinión valorativa profunda.</td>
+          <td>
+            <div class="vf-box">
+              <button class="vf-btn" onclick="vfEsp(this,true,true,'VERDADERO. La reseña informativa presenta y describe, pero NO evalúa profundamente. La reseña CRÍTICA en cambio emite juicios de valor fundamentados con argumentos sólidos y evidencia del texto.')">V</button>
+              <button class="vf-btn" onclick="vfEsp(this,false,true,'VERDADERO. La reseña informativa presenta y describe, pero NO evalúa profundamente. La reseña CRÍTICA en cambio emite juicios de valor fundamentados con argumentos sólidos y evidencia del texto.')">F</button>
+            </div>
+            <div class="vf-row-feedback" id="vf6-4"></div>
+          </td>
+        </tr>
+        <tr>
+          <td>El título de una reseña de calidad debe usar opciones creativas que anticipen la opinión.</td>
+          <td>
+            <div class="vf-box">
+              <button class="vf-btn" onclick="vfEsp(this,true,true,'VERDADERO. Un buen título de reseña no es neutro: anticipa la postura del reseñista de forma creativa. Por ejemplo: &quot;Una selva que devora al hombre&quot; (La Vorágine) o &quot;Cuando el amor supera la diferencia de clases&quot; (María).')">V</button>
+              <button class="vf-btn" onclick="vfEsp(this,false,true,'VERDADERO. Un buen título de reseña no es neutro: anticipa la postura del reseñista de forma creativa. Por ejemplo: &quot;Una selva que devora al hombre&quot; (La Vorágine) o &quot;Cuando el amor supera la diferencia de clases&quot; (María).')">F</button>
+            </div>
+            <div class="vf-row-feedback" id="vf6-5"></div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ═══ PARTE 3: LA ARGUMENTACIÓN ═══ -->
+  <div class="section-title">🗣️ Parte 3 — La Argumentación y la Tesis Académica</div>
+
+  <!-- INFO TESIS -->
+  <div class="info-box">
+    <h3>🎯 ¿Qué es una Tesis Académica válida?</h3>
+    <p>Una tesis académica válida debe cumplir tres condiciones:</p>
+    <ul>
+      <li><strong>Específica:</strong> no vaga ni demasiado amplia.</li>
+      <li><strong>Discutible:</strong> no es una verdad obvia ni un hecho irrefutable.</li>
+      <li><strong>Verificable:</strong> se puede sustentar con argumentos y evidencia.</li>
+    </ul>
+    <p style="margin-top:.7rem;">
+      <span style="color:#2e7d32;font-weight:700;">✔ Válida:</span>
+      "El uso excesivo de redes sociales en adolescentes aumenta los niveles de ansiedad social."
+    </p>
+    <p style="margin-top:.3rem;">
+      <span style="color:#c62828;font-weight:700;">✘ Inválida:</span>
+      "Las redes sociales son malas."
+      <span style="color:var(--muted);font-size:.87rem;"> (demasiado vaga, no es discutible académicamente)</span>
+    </p>
+  </div>
+
+  <!-- ACTIVIDAD 7 -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-num">Actividad 7</span>
+      <span class="card-title">Delimitación de Tesis Académicas</span>
+    </div>
+    <p style="font-size:.93rem;margin-bottom:.7rem;">
+      Marca con ✔ las oraciones que sean <strong>tesis válidas</strong> (específicas y discutibles).
+      Justifica brevemente tu decisión.
+    </p>
+    <table class="tesis-table">
+      <thead>
+        <tr>
+          <th>Oración</th>
+          <th style="min-width:70px;text-align:center;">¿Válida?</th>
+          <th>Justificación</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>El color azul es más bonito que el rojo.</td>
+          <td style="text-align:center;"><span class="check-box"></span></td>
+          <td><div class="answer-line" style="margin:0;"></div></td>
+        </tr>
+        <tr>
+          <td>El uso de videojuegos mejora la coordinación motriz y la toma de decisiones en adolescentes.</td>
+          <td style="text-align:center;"><span class="check-box"></span></td>
+          <td><div class="answer-line" style="margin:0;"></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- INFO FALACIAS -->
+  <div class="info-box">
+    <h3>⚠️ Falacias Lógicas — ¡Cuidado con estos errores de argumentación!</h3>
+    <div class="falacias-grid">
+      <div class="falacia-card">
+        <strong>Ad hominem</strong>
+        <p>Atacar a la persona en vez de rebatir su argumento.</p>
+      </div>
+      <div class="falacia-card">
+        <strong>Hombre de paja</strong>
+        <p>Distorsionar el argumento del oponente para atacar una versión falsa.</p>
+      </div>
+      <div class="falacia-card">
+        <strong>Pendiente resbaladiza</strong>
+        <p>"Si X ocurre, inevitablemente Z pasará" — exagerar consecuencias sin evidencia.</p>
+      </div>
+      <div class="falacia-card">
+        <strong>Apelación a la autoridad</strong>
+        <p>Afirmar que algo es verdad porque lo dijo una persona famosa o importante.</p>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer>
+  <nav class="footer-nav">
+    <a href="biologia.html">← Biología</a>
+    <div class="footer-center">
+      📖 Español 9° · CEDAP 2026<br>
+      <span style="font-size:.78rem;opacity:.7;">Docente: Geraldine Rodriguez</span>
+    </div>
+    <a href="index.html">🏠 Inicio</a>
+    <a href="etica.html">Ética →</a>
+  </nav>
+</footer>
+
+<script>
+  function toggleHintEsp(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const btn = el.previousElementSibling;
+    if (el.style.display === 'block') {
+      el.style.display = 'none';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '💡 Ver ejemplo de respuesta';
+    } else {
+      el.style.display = 'block';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '🙈 Ocultar ejemplo';
+    }
+  }
+  function mcqEsp(li, isCorrect, groupId, feedback) {
+    const ul = document.getElementById('mcq-' + groupId);
+    if (ul) ul.querySelectorAll('li').forEach(l => l.classList.remove('mc-correct', 'mc-incorrect'));
+    li.classList.add(isCorrect ? 'mc-correct' : 'mc-incorrect');
+    const fb = document.getElementById('fb-' + groupId);
+    if (fb) {
+      fb.innerHTML = (isCorrect ? '✅ <strong>¡Correcto!</strong> ' : '❌ <strong>Incorrecto.</strong> ') + feedback;
+      fb.className = 'mc-feedback ' + (isCorrect ? 'fb-ok' : 'fb-no');
+      fb.style.display = 'block';
+    }
+  }
+  function vfEsp(btn, answeredV, correctV, explanation) {
+    const row = btn.closest('tr');
+    if (!row) return;
+    row.querySelectorAll('.vf-btn').forEach(b => b.classList.remove('vf-correct', 'vf-incorrect'));
+    const isCorrect = (answeredV === correctV);
+    btn.classList.add(isCorrect ? 'vf-correct' : 'vf-incorrect');
+    const fb = row.querySelector('.vf-row-feedback');
+    if (fb) {
+      fb.innerHTML = (isCorrect ? '✅ <strong>Correcto.</strong> ' : '❌ <strong>Incorrecto.</strong> ') + explanation;
+      fb.className = 'vf-row-feedback ' + (isCorrect ? 'fb-ok' : 'fb-no');
+      fb.style.display = 'block';
+    }
+  }
+</script>
+</body>
+</html>

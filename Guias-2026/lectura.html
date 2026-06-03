@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📚 Lectura – Grado 9° | Juan Esteban Herreño</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --morado: #4527a0;
+      --morado-med: #5e35b1;
+      --morado-light: #7e57c2;
+      --morado-bg: #ede7f6;
+      --morado-pale: #f5f0ff;
+      --texto: #1a1a2e;
+      --gris: #5c5c7a;
+      --blanco: #ffffff;
+      --acento: #d4af37;
+    }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: #f8f6ff;
+      color: var(--texto);
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--morado) 0%, var(--morado-med) 60%, #7b1fa2 100%);
+      color: var(--blanco);
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      top: -40px; right: -40px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.06);
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      bottom: -60px; left: -30px;
+      width: 250px; height: 250px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .header-emoji { font-size: 3.5rem; display: block; margin-bottom: 0.5rem; }
+    header h1 {
+      font-size: clamp(1.6rem, 4vw, 2.4rem);
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      margin-bottom: 0.4rem;
+    }
+    header .subtitulo {
+      font-size: clamp(1rem, 2.5vw, 1.2rem);
+      font-style: italic;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem 1.5rem;
+      font-size: 0.88rem;
+      opacity: 0.85;
+    }
+    .header-meta span::before { content: '▸ '; }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    /* ── SECCIONES ── */
+    section { margin-bottom: 2.8rem; }
+
+    .seccion-titulo {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 1.25rem;
+      font-weight: bold;
+      color: var(--morado);
+      border-bottom: 3px solid var(--morado);
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.2rem;
+      letter-spacing: 0.3px;
+    }
+    .seccion-titulo .num {
+      background: var(--morado);
+      color: var(--blanco);
+      width: 1.9rem; height: 1.9rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    /* ── CAJA INFO ── */
+    .caja {
+      background: var(--morado-bg);
+      border: 1.5px solid var(--morado);
+      border-left: 5px solid var(--morado);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+    .caja p + p { margin-top: 0.6rem; }
+    .caja strong { color: var(--morado); }
+
+    /* ── OBJETIVO ── */
+    .objetivo {
+      background: linear-gradient(135deg, var(--morado-bg), #f3e5f5);
+      border: 2px solid var(--morado-light);
+      border-radius: 10px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    .objetivo::before {
+      content: '🎯';
+      position: absolute;
+      top: -0.9rem; left: 1rem;
+      background: var(--blanco);
+      padding: 0 0.3rem;
+      font-size: 1.2rem;
+    }
+    .objetivo h3 {
+      color: var(--morado);
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── ACTIVIDADES ── */
+    .actividad {
+      background: var(--blanco);
+      border: 1.5px solid #c5b1e8;
+      border-left: 5px solid var(--morado-light);
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 2px 8px rgba(69,39,160,0.07);
+    }
+    .actividad-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.8rem;
+      margin-bottom: 0.8rem;
+    }
+    .act-num {
+      background: var(--morado);
+      color: var(--blanco);
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      white-space: nowrap;
+      margin-top: 0.15rem;
+      flex-shrink: 0;
+    }
+    .actividad-header p {
+      font-size: 0.97rem;
+      color: var(--texto);
+    }
+    .respuesta {
+      background: #faf8ff;
+      border: 1.5px dashed var(--morado-light);
+      border-radius: 6px;
+      padding: 0.9rem 1rem;
+      min-height: 90px;
+      font-size: 0.85rem;
+      color: #9e8fc0;
+      font-style: italic;
+    }
+    .respuesta-label {
+      font-size: 0.75rem;
+      font-weight: bold;
+      color: var(--morado-light);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 0.35rem;
+    }
+
+    /* ── TABLAS ── */
+    .tabla-wrap { overflow-x: auto; margin: 1rem 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+      background: var(--blanco);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(69,39,160,0.1);
+    }
+    thead tr {
+      background: var(--morado);
+      color: var(--blanco);
+    }
+    thead th {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-weight: bold;
+      letter-spacing: 0.4px;
+      font-size: 0.85rem;
+    }
+    tbody tr:nth-child(even) { background: var(--morado-pale); }
+    tbody tr:hover { background: #e8dff8; }
+    tbody td {
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid #e0d6f5;
+      vertical-align: top;
+    }
+    .latin-word {
+      font-style: italic;
+      color: var(--morado);
+      font-weight: bold;
+    }
+    .arrow { color: var(--morado-light); font-size: 0.8rem; }
+
+    /* ── TARJETAS MITOS ── */
+    .mitos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+    }
+    .mito-card {
+      background: var(--blanco);
+      border: 1.5px solid #c5b1e8;
+      border-top: 4px solid var(--morado);
+      border-radius: 10px;
+      padding: 1.2rem;
+      box-shadow: 0 3px 12px rgba(69,39,160,0.09);
+    }
+    .mito-icon { font-size: 2rem; margin-bottom: 0.5rem; display: block; }
+    .mito-card h4 {
+      color: var(--morado);
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .mito-card p { font-size: 0.88rem; color: var(--gris); margin-bottom: 0.7rem; }
+    .mito-reflexion {
+      background: var(--morado-bg);
+      border-left: 3px solid var(--morado-light);
+      padding: 0.5rem 0.7rem;
+      font-size: 0.82rem;
+      border-radius: 0 4px 4px 0;
+      color: var(--morado);
+      font-style: italic;
+    }
+    .mito-reflexion strong { display: block; font-style: normal; margin-bottom: 0.2rem; }
+
+    /* ── GLOSARIO ── */
+    .glosario {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+    }
+    .glosario-item {
+      background: var(--blanco);
+      border: 1px solid #d1c4e9;
+      border-radius: 6px;
+      padding: 0.65rem 0.9rem;
+      display: flex;
+      gap: 0.6rem;
+      align-items: flex-start;
+    }
+    .glosario-item .term {
+      font-weight: bold;
+      color: var(--morado);
+      white-space: nowrap;
+      font-size: 0.92rem;
+    }
+    .glosario-item .def {
+      font-size: 0.88rem;
+      color: var(--gris);
+    }
+    .glosario-item .sep { color: var(--morado-light); font-size: 0.9rem; }
+
+    /* ── PASOS / TIPS ── */
+    .pasos {
+      counter-reset: paso;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.6rem;
+      margin-top: 0.5rem;
+    }
+    .pasos li {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      background: var(--blanco);
+      border: 1px solid #d1c4e9;
+      border-radius: 6px;
+      padding: 0.7rem 1rem;
+      font-size: 0.9rem;
+    }
+    .pasos li::before {
+      counter-increment: paso;
+      content: counter(paso);
+      background: var(--morado);
+      color: var(--blanco);
+      font-size: 0.8rem;
+      font-weight: bold;
+      width: 1.6rem; height: 1.6rem;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* ── EXPRESIONES LATINAS EXTRA ── */
+    .expresion-badge {
+      display: inline-block;
+      background: var(--morado);
+      color: var(--blanco);
+      font-size: 0.78rem;
+      padding: 0.15rem 0.5rem;
+      border-radius: 20px;
+      font-style: italic;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* ── NOTA BENE ── */
+    .nota {
+      background: #fff8e1;
+      border: 1.5px solid #f9a825;
+      border-left: 5px solid #f9a825;
+      border-radius: 8px;
+      padding: 0.9rem 1.2rem;
+      font-size: 0.88rem;
+      color: #5d4037;
+      margin-top: 1.2rem;
+    }
+    .nota strong { color: #e65100; }
+
+    /* ── FOOTER NAV ── */
+    footer {
+      background: var(--morado);
+      color: var(--blanco);
+      padding: 0;
+    }
+    .footer-nav {
+      display: flex;
+      align-items: stretch;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .footer-nav a {
+      color: var(--blanco);
+      text-decoration: none;
+      padding: 1.1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+      flex: 1;
+    }
+    .footer-nav a:hover { background: rgba(255,255,255,0.15); }
+    .footer-nav .nav-prev { justify-content: flex-start; }
+    .footer-nav .nav-home {
+      justify-content: center;
+      border-left: 1px solid rgba(255,255,255,0.2);
+      border-right: 1px solid rgba(255,255,255,0.2);
+      flex: 0 0 auto;
+      padding: 1.1rem 2rem;
+    }
+    .footer-nav .nav-next { justify-content: flex-end; }
+    .footer-copy {
+      text-align: center;
+      font-size: 0.78rem;
+      opacity: 0.65;
+      padding: 0.6rem 1rem;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      main { padding: 1.2rem 0.8rem 2.5rem; }
+      .footer-nav a { padding: 0.9rem 0.8rem; font-size: 0.8rem; }
+      .footer-nav .nav-home { padding: 0.9rem 1rem; }
+      .mitos-grid { grid-template-columns: 1fr; }
+      .glosario { grid-template-columns: 1fr; }
+    }
+    /* ── INTERACTIVIDAD ── */
+    .resp-textarea {
+      width: 100%; min-height: 100px;
+      border: 1.5px dashed var(--morado-light); border-radius: 8px;
+      padding: .7rem .9rem; font-family: inherit; font-size: .88rem;
+      background: var(--morado-pale); resize: vertical; margin-top: .4rem;
+      color: var(--texto); display: block; line-height: 1.6;
+    }
+    .resp-textarea:focus { outline: 2px solid var(--morado); border-style: solid; }
+    .hint-btn {
+      display: inline-block; background: none;
+      border: 1.5px solid var(--morado); color: var(--morado);
+      border-radius: 20px; padding: .22rem .8rem; font-size: .78rem;
+      cursor: pointer; margin-top: .4rem; font-family: inherit;
+      transition: background .15s;
+    }
+    .hint-btn:hover { background: var(--morado-bg); }
+    .hint-box {
+      display: none; background: var(--morado-bg); border-left: 3px solid var(--morado-light);
+      border-radius: 0 8px 8px 0; padding: .65rem .9rem; font-size: .85rem;
+      margin-top: .4rem; font-style: italic; color: var(--texto);
+    }
+    .hint-box strong { font-style: normal; display: block; font-size: .8rem; margin-bottom: .25rem; color: var(--morado); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════ HEADER ═══════════════════════════════ -->
+<header>
+  <span class="header-emoji">📚</span>
+  <h1>Taller de Lectura</h1>
+  <p class="subtitulo">Interpretación Textual – Etimología Latina – El español y sus raíces latinas</p>
+  <div class="header-meta">
+    <span>Grado 9°</span>
+    <span>Juan Esteban Herreño</span>
+    <span>Docente: Geraldine Rodriguez</span>
+    <span>Colegio CEDAP · Bogotá, 2026</span>
+    <span>Capítulos 1–25</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════ MAIN ═══════════════════════════════ -->
+<main>
+
+  <!-- OBJETIVO -->
+  <div class="objetivo">
+    <h3>Objetivo del taller</h3>
+    <p>Desarrollar habilidades de <strong>análisis crítico y producción textual</strong>, centrándose en el contexto socio-cultural y la construcción del personaje a través de la etimología latina y su influencia en el español moderno.</p>
+  </div>
+
+  <!-- ════ SECCIÓN: POR QUÉ EL ESPAÑOL VIENE DEL LATÍN ════ -->
+  <section>
+    <h2 class="seccion-titulo"><span class="num">📖</span> ¿Por qué el español viene del latín?</h2>
+    <div class="caja">
+      <p>El español es una <strong>lengua romance</strong>: evolucionó directamente del <strong>latín vulgar</strong> que hablaban los soldados y colonizadores romanos en <em>Hispania</em> (la actual España y América Latina).</p>
+      <p>El latín dejó de hablarse como lengua viva, pero sobrevive vivo en el español, francés, italiano, portugués y rumano. Cada vez que dices <em>amor</em>, <em>agua</em> o <em>libro</em>, estás hablando latín.</p>
+    </div>
+
+    <h3 style="color:var(--morado); margin-bottom:0.7rem; font-size:1rem;">Palabras latinas → español: ejemplos de evolución</h3>
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Latín</th>
+            <th>Evolución</th>
+            <th>Español actual</th>
+            <th>Significado</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="latin-word">aqua</td><td><span class="arrow">→</span> agua</td><td>agua</td><td>water</td></tr>
+          <tr><td class="latin-word">caballus</td><td><span class="arrow">→</span> cavallo → caballo</td><td>caballo</td><td>horse</td></tr>
+          <tr><td class="latin-word">oculus</td><td><span class="arrow">→</span> oculo → ojo</td><td>ojo</td><td>eye</td></tr>
+          <tr><td class="latin-word">mater</td><td><span class="arrow">→</span> madre</td><td>madre</td><td>mother</td></tr>
+          <tr><td class="latin-word">terra</td><td><span class="arrow">→</span> tierra</td><td>tierra</td><td>earth</td></tr>
+          <tr><td class="latin-word">tempus</td><td><span class="arrow">→</span> tiempo</td><td>tiempo</td><td>time / weather</td></tr>
+          <tr><td class="latin-word">magnus</td><td><span class="arrow">→</span> magno → grande</td><td>grande / magno</td><td>big</td></tr>
+          <tr><td class="latin-word">liber</td><td><span class="arrow">→</span> libro</td><td>libro</td><td>book</td></tr>
+          <tr><td class="latin-word">vita</td><td><span class="arrow">→</span> vida</td><td>vida</td><td>life</td></tr>
+          <tr><td class="latin-word">amor</td><td><span class="arrow">→</span> amor</td><td>amor</td><td>love</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ════ SECCIÓN: EXPRESIONES LATINAS ════ -->
+  <section>
+    <h2 class="seccion-titulo"><span class="num">🗣️</span> Expresiones latinas que usamos hoy</h2>
+    <div class="caja">
+      <p>Muchas expresiones latinas pasaron intactas a nuestro idioma. Las encontramos en el lenguaje académico, periodístico y cotidiano sin modificación alguna.</p>
+    </div>
+    <div class="tabla-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Expresión latina</th>
+            <th>Significado</th>
+            <th>Ejemplo de uso</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="expresion-badge">grosso modo</span></td>
+            <td>Aproximadamente, en términos generales</td>
+            <td><em>"Grosso modo, el proyecto costará $500."</em></td>
+          </tr>
+          <tr>
+            <td><span class="expresion-badge">per se</span></td>
+            <td>Por sí mismo</td>
+            <td><em>"El dinero per se no da la felicidad."</em></td>
+          </tr>
+          <tr>
+            <td><span class="expresion-badge">ex aequo</span></td>
+            <td>En igualdad de condiciones</td>
+            <td><em>"Ganaron ex aequo el primer lugar."</em></td>
+          </tr>
+          <tr>
+            <td><span class="expresion-badge">in situ</span></td>
+            <td>En el lugar</td>
+            <td><em>"El médico lo trató in situ."</em></td>
+          </tr>
+          <tr>
+            <td><span class="expresion-badge">ad hoc</span></td>
+            <td>Para esto (solución específica)</td>
+            <td><em>"Crearon un comité ad hoc."</em></td>
+          </tr>
+          <tr>
+            <td><span class="expresion-badge">de facto</span></td>
+            <td>De hecho, en la práctica</td>
+            <td><em>"Es el líder de facto del grupo."</em></td>
+          </tr>
+          <tr>
+            <td><span class="expresion-badge">vox populi</span></td>
+            <td>La voz del pueblo</td>
+            <td><em>"Vox populi, esa decisión fue injusta."</em></td>
+          </tr>
+          <tr>
+            <td><span class="expresion-badge">status quo</span></td>
+            <td>El estado actual de las cosas</td>
+            <td><em>"Quieren mantener el status quo."</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ════ SECCIÓN: MITOS ROMANOS ════ -->
+  <section>
+    <h2 class="seccion-titulo"><span class="num">⚡</span> Mitos romanos clásicos</h2>
+    <div class="caja">
+      <p>Los mitos romanos (muchos adaptados de la mitología griega) aparecen en la literatura del libro. Úsalos como referencia para la <strong>Actividad 3</strong>.</p>
+    </div>
+    <div class="mitos-grid">
+      <div class="mito-card">
+        <span class="mito-icon">🔥</span>
+        <h4>Prometeo y el fuego</h4>
+        <p>Prometeo robó el fuego de los dioses para dárselo a los humanos. Zeus lo castigó encadenándolo a una roca donde un águila le comía el hígado cada día, que se regeneraba de noche.</p>
+        <div class="mito-reflexion">
+          <strong>💬 Reflexión sugerida</strong>
+          Habla del precio del conocimiento y de desafiar el poder establecido.
+        </div>
+      </div>
+      <div class="mito-card">
+        <span class="mito-icon">🎶</span>
+        <h4>Orfeo y Eurídice</h4>
+        <p>El músico Orfeo bajó al inframundo a rescatar a su amada Eurídice. Consiguió el permiso de Hades con una condición: no mirarla hasta salir. No resistió y la perdió para siempre.</p>
+        <div class="mito-reflexion">
+          <strong>💬 Reflexión sugerida</strong>
+          Sobre la confianza, el amor y la impulsividad como obstáculos.
+        </div>
+      </div>
+      <div class="mito-card">
+        <span class="mito-icon">🐺</span>
+        <h4>Rómulo y Remo</h4>
+        <p>Los gemelos fundadores de Roma, amamantados por una loba. Discutieron sobre quién daría nombre a la ciudad. Rómulo mató a Remo y fundó Roma sobre ese sacrificio.</p>
+        <div class="mito-reflexion">
+          <strong>💬 Reflexión sugerida</strong>
+          El origen de las ciudades y el poder a veces nace de la violencia y la traición.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════ SECCIÓN: CÓMO IDENTIFICAR RAÍCES ════ -->
+  <section>
+    <h2 class="seccion-titulo"><span class="num">🔍</span> Cómo identificar la raíz latina de una palabra</h2>
+    <ul class="pasos">
+      <li>Busca el <strong>núcleo de la palabra</strong>: quita prefijos (pre-, ex-, con-) y sufijos (-ción, -dad, -mente).</li>
+      <li>Compara con palabras similares en <strong>español, italiano o francés</strong>: si se parecen, comparten raíz latina.</li>
+      <li>Consulta el <strong>diccionario etimológico de la RAE</strong> en línea (rae.es) para confirmar el origen.</li>
+    </ul>
+  </section>
+
+  <!-- ════ SECCIÓN: GLOSARIO MODELO ════ -->
+  <section>
+    <h2 class="seccion-titulo"><span class="num">📝</span> Glosario modelo (referencia para la Actividad 6)</h2>
+    <div class="caja">
+      <p>Busca <strong>20 palabras desconocidas</strong> del libro hasta el capítulo 25. A continuación, un modelo de cómo construir tu glosario:</p>
+    </div>
+    <div class="glosario">
+      <div class="glosario-item">
+        <span class="term">Fado</span>
+        <span class="sep">→</span>
+        <span class="def">Destino, hado; suerte inevitable.</span>
+      </div>
+      <div class="glosario-item">
+        <span class="term">Recinto</span>
+        <span class="sep">→</span>
+        <span class="def">Espacio cerrado o delimitado.</span>
+      </div>
+      <div class="glosario-item">
+        <span class="term">Pesadumbre</span>
+        <span class="sep">→</span>
+        <span class="def">Tristeza profunda, pena intensa.</span>
+      </div>
+      <div class="glosario-item">
+        <span class="term">Indómita</span>
+        <span class="sep">→</span>
+        <span class="def">Que no se puede dominar o someter.</span>
+      </div>
+      <div class="glosario-item">
+        <span class="term">Lúgubre</span>
+        <span class="sep">→</span>
+        <span class="def">Oscuro, sombrío, que produce tristeza.</span>
+      </div>
+      <div class="glosario-item">
+        <span class="term">Efímero</span>
+        <span class="sep">→</span>
+        <span class="def">Que dura muy poco tiempo.</span>
+      </div>
+      <div class="glosario-item">
+        <span class="term">Prosaico</span>
+        <span class="sep">→</span>
+        <span class="def">Ordinario, sin poesía ni idealismo.</span>
+      </div>
+      <div class="glosario-item">
+        <span class="term">Vehemente</span>
+        <span class="sep">→</span>
+        <span class="def">Apasionado, intenso, impetuoso.</span>
+      </div>
+      <div class="glosario-item">
+        <span class="term">Exaltación</span>
+        <span class="sep">→</span>
+        <span class="def">Elevación, entusiasmo extremo.</span>
+      </div>
+      <div class="glosario-item">
+        <span class="term">Arcaico</span>
+        <span class="sep">→</span>
+        <span class="def">Muy antiguo, en desuso.</span>
+      </div>
+    </div>
+    <div class="nota">
+      <strong>Nota:</strong> Este es solo el modelo con 10 palabras. Tú debes encontrar y definir <strong>20 palabras</strong> propias del texto leído.
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════════════════════
+       ACTIVIDADES
+  ════════════════════════════════════════════════════════ -->
+  <section>
+    <h2 class="seccion-titulo"><span class="num">✏️</span> Actividades</h2>
+
+    <!-- ACT 1 -->
+    <div class="actividad">
+      <div class="actividad-header">
+        <span class="act-num">Actividad 1</span>
+        <p>Elige <strong>5 palabras en latín</strong> mencionadas entre los capítulos 1 y 25 y rastrea cómo han evolucionado hasta el español actual. Anota los cambios fonéticos y de significado.</p>
+      </div>
+      <div class="respuesta-label">Tu respuesta</div>
+      <textarea class="resp-textarea" style="min-height:140px;" placeholder="Escribe aquí las 5 palabras con su evolución…&#10;&#10;Formato: latín → forma intermedia → español&#10;Ejemplo: aqua → agua&#10;1. _____ → _____ → _____&#10;2. _____ → _____ → _____&#10;3. _____ → _____ → _____&#10;4. _____ → _____ → _____&#10;5. _____ → _____ → _____"></textarea>
+      <button class="hint-btn" onclick="toggleHintLec('hl1')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="hl1"><strong>💡 Ejemplo de 5 palabras:</strong><br>
+      1. <em>aqua</em> → agua (agua, líquido esencial para la vida)<br>
+      2. <em>caballus</em> → cavallo → caballo (animal de montura)<br>
+      3. <em>oculus</em> → oculo → ojo (órgano de la visión; cambio: cl→j, pérdida de -us)<br>
+      4. <em>mater</em> → madre (figura materna; t→d intervocálica)<br>
+      5. <em>vita</em> → vida (existencia; t→d intervocálica, pérdida de -a final en algunos contextos)</div>
+    </div>
+
+    <!-- ACT 2 -->
+    <div class="actividad">
+      <div class="actividad-header">
+        <span class="act-num">Actividad 2</span>
+        <p>Busca en los capítulos <strong>tres expresiones latinas</strong> que sigamos usando hoy en día exactamente igual (por ejemplo, <em>"grosso modo"</em>) y escribe una <strong>frase original</strong> con cada una.</p>
+      </div>
+      <div class="respuesta-label">Tu respuesta</div>
+      <textarea class="resp-textarea" style="min-height:120px;" placeholder="1. Expresión: _________ → Frase original: _________________________&#10;2. Expresión: _________ → Frase original: _________________________&#10;3. Expresión: _________ → Frase original: _________________________"></textarea>
+      <button class="hint-btn" onclick="toggleHintLec('hl2')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="hl2"><strong>💡 Ejemplo de 3 expresiones con frases originales:</strong><br>
+      1. Expresión: <em>grosso modo</em> → Frase: "Grosso modo, el taller tiene seis actividades."<br>
+      2. Expresión: <em>per se</em> → Frase: "El latín per se no es difícil, solo necesita práctica."<br>
+      3. Expresión: <em>in situ</em> → Frase: "El maestro corrigió el error in situ, frente a todos."</div>
+    </div>
+
+    <!-- ACT 3 -->
+    <div class="actividad">
+      <div class="actividad-header">
+        <span class="act-num">Actividad 3</span>
+        <p>Redacta un <strong>breve párrafo (5–8 líneas)</strong> explicando un mito de los romanos del cual escribas tu reflexión propia. Debe incluir: nombre del mito y número de página donde aparece.</p>
+      </div>
+      <div class="respuesta-label">Tu respuesta</div>
+      <div style="display:flex;gap:.6rem;align-items:center;margin-top:.4rem;flex-wrap:wrap;">
+        <label style="font-size:.85rem;font-weight:700;color:var(--morado);">Mito elegido:</label>
+        <input type="text" placeholder="Ej: Prometeo y el fuego" style="border:none;border-bottom:2px solid var(--morado);background:transparent;font-size:.9rem;font-family:inherit;outline:none;padding:.1rem .3rem;min-width:180px;color:var(--texto);">
+        <label style="font-size:.85rem;font-weight:700;color:var(--morado);margin-left:.5rem;">Página:</label>
+        <input type="text" placeholder="___" style="border:none;border-bottom:2px solid var(--morado);background:transparent;font-size:.9rem;font-family:inherit;outline:none;padding:.1rem .3rem;width:50px;color:var(--texto);">
+      </div>
+      <textarea class="resp-textarea" style="min-height:150px;" placeholder="Escribe aquí tu párrafo de 5 a 8 líneas: explica el mito y comparte tu reflexión personal sobre su significado…"></textarea>
+      <button class="hint-btn" onclick="toggleHintLec('hl3')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="hl3"><strong>💡 Ejemplo sobre el mito de Prometeo:</strong><br>
+      El mito de Prometeo narra cómo este titán robó el fuego sagrado de los dioses del Olimpo para entregárselo a los seres humanos. Zeus, furioso por este acto de desafío, lo castigó encadenándolo a una roca en el Cáucaso, donde un águila le comía el hígado cada día, y este se regeneraba en la noche para repetir el suplicio eternamente.<br><br>
+      Mi reflexión: Este mito me enseña que el conocimiento y el progreso siempre tienen un precio. Prometeo sacrificó su libertad para beneficiar a la humanidad. Hoy en día, los científicos y pensadores que desafían las ideas establecidas también pagan un costo social por su valentía. La pregunta que me deja es: ¿vale la pena sufrir por dar conocimiento al mundo?</div>
+    </div>
+
+    <!-- ACT 4 -->
+    <div class="actividad">
+      <div class="actividad-header">
+        <span class="act-num">Actividad 4</span>
+        <p>Crea un <strong>meme</strong> (puedes dibujarlo o describirlo con detalle) que explique de forma <strong>humorística</strong> alguno de los datos curiosos o etimologías que más te hayan llamado la atención del libro.</p>
+      </div>
+      <div class="respuesta-label">Tu meme / descripción</div>
+      <textarea class="resp-textarea" style="min-height:130px;" placeholder="Describe tu meme aquí:&#10;• Imagen o escena propuesta: _______________&#10;• Texto superior (setup): _______________&#10;• Texto inferior (punchline): _______________&#10;• ¿Qué etimología ilustra?: _______________"></textarea>
+      <button class="hint-btn" onclick="toggleHintLec('hl4')">💡 Ver ejemplo de meme</button>
+      <div class="hint-box" id="hl4"><strong>💡 Ejemplo de meme:</strong><br>
+      • Imagen: foto de alguien mirando confundido a una piedra que tiene los ojos marcados<br>
+      • Texto superior: "Cuando dices 'ojo' sin saber que viene del latín OCULUS"<br>
+      • Texto inferior: "Y ahora no puedes dejar de verlo"<br>
+      • Etimología ilustrada: oculus (latín) → oculo → ojo. El cambio cl→j es característico del español.</div>
+    </div>
+
+    <!-- ACT 5 -->
+    <div class="actividad">
+      <div class="actividad-header">
+        <span class="act-num">Actividad 5</span>
+        <p><strong>Sopa de letras y ejercicio visual:</strong> Encuentra en la sopa de letras (imagen del PDF) todas las palabras de origen latino que han pasado al español. Rodéalas y escribe al lado su significado.</p>
+      </div>
+      <div class="respuesta-label">Palabras encontradas</div>
+      <textarea class="resp-textarea" style="min-height:130px;" placeholder="Lista las palabras encontradas y su significado:&#10;1. _______________ : _______________&#10;2. _______________ : _______________&#10;3. _______________ : _______________&#10;4. _______________ : _______________&#10;5. _______________ : _______________&#10;6. _______________ : _______________"></textarea>
+      <button class="hint-btn" onclick="toggleHintLec('hl5')">💡 Ver ejemplos de palabras latinas</button>
+      <div class="hint-box" id="hl5"><strong>💡 Ejemplos de palabras latinas comunes:</strong><br>
+      1. amor : sentimiento profundo de cariño y apego<br>
+      2. aqua : agua, el solvente universal<br>
+      3. terra : tierra, el suelo o el planeta<br>
+      4. vita : vida, existencia de los seres vivos<br>
+      5. liber : libro, objeto que contiene textos escritos<br>
+      6. magnus : grande, de grandes dimensiones o importancia</div>
+    </div>
+
+    <!-- ACT 6 -->
+    <div class="actividad">
+      <div class="actividad-header">
+        <span class="act-num">Actividad 6</span>
+        <p>Busca <strong>20 palabras desconocidas</strong> del libro hasta el capítulo 25 y crea un <strong>glosario personal</strong> con su significado (usa el modelo de arriba como guía).</p>
+      </div>
+      <div class="respuesta-label">Tu glosario (20 palabras)</div>
+      <textarea class="resp-textarea" style="min-height:400px;" placeholder="1.  ___________________: ___________________________________&#10;2.  ___________________: ___________________________________&#10;3.  ___________________: ___________________________________&#10;4.  ___________________: ___________________________________&#10;5.  ___________________: ___________________________________&#10;6.  ___________________: ___________________________________&#10;7.  ___________________: ___________________________________&#10;8.  ___________________: ___________________________________&#10;9.  ___________________: ___________________________________&#10;10. ___________________: ___________________________________&#10;11. ___________________: ___________________________________&#10;12. ___________________: ___________________________________&#10;13. ___________________: ___________________________________&#10;14. ___________________: ___________________________________&#10;15. ___________________: ___________________________________&#10;16. ___________________: ___________________________________&#10;17. ___________________: ___________________________________&#10;18. ___________________: ___________________________________&#10;19. ___________________: ___________________________________&#10;20. ___________________: ___________________________________"></textarea>
+      <button class="hint-btn" onclick="toggleHintLec('hl6')">💡 Ver 5 ejemplos del glosario modelo</button>
+      <div class="hint-box" id="hl6"><strong>💡 Ejemplos del glosario (formato sugerido):</strong><br>
+      1. Fado: destino inevitable, suerte que no se puede cambiar<br>
+      2. Pesadumbre: tristeza profunda, pena intensa que pesa en el alma<br>
+      3. Indómita: que no se puede dominar ni someter, rebelde<br>
+      4. Lúgubre: oscuro, sombrío, que produce tristeza o melancolía<br>
+      5. Efímero: que dura muy poco tiempo, pasajero, transitorio<br>
+      <em>Busca palabras difíciles o desconocidas en los capítulos 1-25 del libro.</em></div>
+    </div>
+
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════ FOOTER ═══════════════════════════════ -->
+<footer>
+  <nav class="footer-nav" aria-label="Navegación entre materias">
+    <a href="ingles.html" class="nav-prev">← Inglés</a>
+    <a href="index.html" class="nav-home">🏠 Inicio</a>
+    <a href="matematicas.html" class="nav-next">Matemáticas →</a>
+  </nav>
+  <p class="footer-copy">📚 Lectura · Grado 9° · Juan Esteban Herreño · Colegio CEDAP · Bogotá 2026</p>
+</footer>
+
+<script>
+  function toggleHintLec(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const btn = el.previousElementSibling;
+    if (el.style.display === 'block') {
+      el.style.display = 'none';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '💡 Ver ejemplo de respuesta';
+    } else {
+      el.style.display = 'block';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '🙈 Ocultar ejemplo';
+    }
+  }
+</script>
+</body>
+</html>

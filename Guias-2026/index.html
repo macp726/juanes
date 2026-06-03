@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Talleres Grado 9° — 2026</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: system-ui, -apple-system, sans-serif; font-size: 18px; background: #f5f5f5; color: #222; }
+    header { background: #37474f; color: white; padding: 2rem 1.5rem; text-align: center; }
+    header h1 { font-size: 2.2rem; margin-bottom: 0.4rem; }
+    header p { font-size: 1rem; opacity: 0.9; }
+    .container { max-width: 860px; margin: auto; padding: 2rem 1rem; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    .card {
+      background: white;
+      border-radius: 10px;
+      border-top: 5px solid var(--color);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+
+    .card-emoji { font-size: 2.4rem; line-height: 1; }
+    .card-materia { font-size: 1.25rem; font-weight: 700; color: var(--color); }
+    .card-docente { font-size: 0.9rem; color: #666; }
+    .card-desc { font-size: 0.95rem; color: #444; flex-grow: 1; margin-top: 0.25rem; }
+
+    .card-btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.55rem 1.1rem;
+      background: var(--color);
+      color: white;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: opacity 0.15s;
+      align-self: flex-start;
+    }
+    .card-btn:hover { opacity: 0.85; }
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.875rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Talleres Grado 9° — 2026</h1>
+  <p>Juan Esteban Herreño &middot; Colegio CEDAP &middot; Bogotá</p>
+</header>
+
+<div class="container">
+  <div class="grid">
+
+    <div class="card" style="--color: #2e7d32">
+      <div class="card-emoji">🧬</div>
+      <div class="card-materia">Biología</div>
+      <div class="card-docente">Jhon Alexander Gallo</div>
+      <div class="card-desc">El origen de la vida — Teoría de Oparin</div>
+      <a href="biologia.html" class="card-btn">Abrir taller →</a>
+    </div>
+
+    <div class="card" style="--color: #6a1b9a">
+      <div class="card-emoji">📖</div>
+      <div class="card-materia">Español</div>
+      <div class="card-docente">Geraldine Rodriguez</div>
+      <div class="card-desc">Literatura Latinoamericana — Reseña crítica</div>
+      <a href="espanol.html" class="card-btn">Abrir taller →</a>
+    </div>
+
+    <div class="card" style="--color: #c2185b">
+      <div class="card-emoji">🤝</div>
+      <div class="card-materia">Ética</div>
+      <div class="card-docente">Iván Felipe Ramírez</div>
+      <div class="card-desc">Axiología y toma de decisiones</div>
+      <a href="etica.html" class="card-btn">Abrir taller →</a>
+    </div>
+
+    <div class="card" style="--color: #1565c0">
+      <div class="card-emoji">🌎</div>
+      <div class="card-materia">Inglés</div>
+      <div class="card-docente">Juan Barrero</div>
+      <div class="card-desc">Modal verbs — Mysteries &amp; Survival</div>
+      <a href="ingles.html" class="card-btn">Abrir taller →</a>
+    </div>
+
+    <div class="card" style="--color: #4527a0">
+      <div class="card-emoji">📚</div>
+      <div class="card-materia">Lectura</div>
+      <div class="card-docente">Geraldine Rodriguez</div>
+      <div class="card-desc">Interpretación textual — Etimología latina</div>
+      <a href="lectura.html" class="card-btn">Abrir taller →</a>
+    </div>
+
+    <div class="card" style="--color: #e65100">
+      <div class="card-emoji">📐</div>
+      <div class="card-materia">Matemáticas</div>
+      <div class="card-docente">Carlos Ernesto Isaza</div>
+      <div class="card-desc">Factorización — Álgebra — Física</div>
+      <a href="matematicas.html" class="card-btn">Abrir taller →</a>
+    </div>
+
+    <div class="card" style="--color: #b71c1c">
+      <div class="card-emoji">⚗️</div>
+      <div class="card-materia">Química</div>
+      <div class="card-docente">Jhon Alexander Gallo</div>
+      <div class="card-desc">Soluciones — Soluto y Solvente</div>
+      <a href="quimica.html" class="card-btn">Abrir taller →</a>
+    </div>
+
+    <div class="card" style="--color: #00695c">
+      <div class="card-emoji">🏛️</div>
+      <div class="card-materia">Sociales</div>
+      <div class="card-docente">Iván Felipe Ramírez</div>
+      <div class="card-desc">Segunda Guerra Mundial</div>
+      <a href="sociales.html" class="card-btn">Abrir taller →</a>
+    </div>
+
+  </div>
+</div>
+
+<footer>Colegio CEDAP &middot; Bogotá D.C. &middot; 2026</footer>
+
+</body>
+</html>

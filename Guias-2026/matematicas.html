@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>📐 Matemáticas – Factorización | Juan Esteban Herreño</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #e65100 0%, #bf360c 100%);
+      color: #fff;
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+    header .emoji { font-size: 3rem; display: block; margin-bottom: .4rem; }
+    header h1 { font-size: 1.8rem; font-weight: 700; letter-spacing: .5px; }
+    header h2 { font-size: 1.1rem; font-weight: 400; opacity: .9; margin-top: .3rem; }
+    .meta-bar {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 1.5rem;
+      margin-top: 1rem; font-size: .85rem; opacity: .85;
+    }
+    .meta-bar span::before { content: '▸ '; }
+
+    /* ── MAIN ── */
+    main { max-width: 860px; margin: 0 auto; padding: 2rem 1rem 3rem; }
+
+    /* ── OBJECTIVE BOX ── */
+    .objetivo {
+      background: #fff3e0;
+      border-left: 5px solid #e65100;
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 2rem;
+      font-size: .97rem;
+    }
+    .objetivo strong { color: #e65100; }
+
+    /* ── SECTION TITLES ── */
+    .section-title {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: 1.4rem; font-weight: 700; color: #e65100;
+      border-bottom: 3px solid #e65100;
+      padding-bottom: .4rem; margin: 2.5rem 0 1.2rem;
+    }
+    .subsection-title {
+      font-size: 1.1rem; font-weight: 700; color: #bf360c;
+      margin: 2rem 0 .8rem; padding-left: .5rem;
+      border-left: 4px solid #ff8a50;
+    }
+
+    /* ── EXPLANATION BOXES ── */
+    .explain-box {
+      background: #fff3e0;
+      border: 1.5px solid #e65100;
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.4rem;
+    }
+    .explain-box h4 {
+      color: #e65100; font-size: 1rem; margin-bottom: .6rem;
+      text-transform: uppercase; letter-spacing: .5px;
+    }
+
+    /* ── FORMULA BLOCK ── */
+    .formula {
+      background: #bf360c;
+      color: #fff;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1.15rem;
+      font-weight: 700;
+      padding: .7rem 1.2rem;
+      border-radius: 6px;
+      text-align: center;
+      margin: .8rem 0;
+      letter-spacing: .5px;
+    }
+    .formula-secondary {
+      background: #ff8a50;
+      color: #fff;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1rem;
+      padding: .5rem 1rem;
+      border-radius: 5px;
+      text-align: center;
+      margin: .5rem 0;
+    }
+
+    /* ── EXERCISE CARDS ── */
+    .exercise {
+      background: #fff;
+      border: 1.5px solid #ffccbc;
+      border-top: 4px solid #e65100;
+      border-radius: 8px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.4rem;
+      box-shadow: 0 1px 4px rgba(230,81,0,.08);
+    }
+    .exercise-num {
+      display: inline-block;
+      background: #e65100;
+      color: #fff;
+      font-weight: 700;
+      font-size: .8rem;
+      padding: .15rem .6rem;
+      border-radius: 20px;
+      margin-bottom: .6rem;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+    }
+    .exercise h3 { font-size: 1rem; margin-bottom: .7rem; color: #212121; }
+
+    /* ── MULTIPLE CHOICE ── */
+    .mc-options { list-style: none; margin-top: .6rem; }
+    .mc-options li {
+      display: flex; align-items: center; gap: .7rem;
+      background: #fff8f5;
+      border: 1px solid #ffccbc;
+      border-radius: 5px;
+      padding: .45rem .9rem;
+      margin-bottom: .4rem;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: .97rem;
+      cursor: default;
+      transition: background .15s;
+    }
+    .mc-options li .letter {
+      background: #e65100; color: #fff;
+      width: 1.6rem; height: 1.6rem;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; font-weight: 700; font-size: .85rem;
+      flex-shrink: 0;
+    }
+
+    /* ── FACTORIZE LIST ── */
+    .factor-list { list-style: none; margin-top: .5rem; }
+    .factor-list li {
+      font-family: 'Courier New', Courier, monospace;
+      font-size: 1rem;
+      padding: .35rem 0 .35rem 1rem;
+      border-left: 3px solid #ffccbc;
+      margin-bottom: .35rem;
+      color: #333;
+    }
+    .factor-list li span.label {
+      color: #e65100; font-weight: 700; margin-right: .5rem;
+    }
+
+    /* ── STEP-BY-STEP ── */
+    .steps { margin-top: .5rem; }
+    .step {
+      display: flex; gap: .8rem; align-items: flex-start;
+      margin-bottom: .5rem;
+    }
+    .step-num {
+      background: #ff8a50; color: #fff;
+      width: 1.5rem; height: 1.5rem; min-width: 1.5rem;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: .8rem; margin-top: .15rem;
+    }
+    .step-text { font-size: .95rem; }
+    .step-text code {
+      font-family: 'Courier New', Courier, monospace;
+      background: #fff3e0; padding: .1rem .35rem;
+      border-radius: 3px; font-size: .95em;
+    }
+
+    /* ── INDICATORS ── */
+    .ok { color: #2e7d32; font-weight: 700; }
+    .no { color: #c62828; font-weight: 700; }
+
+    /* ── EXAMPLE SOLVED ── */
+    .solved-example {
+      background: #fffde7;
+      border: 1px solid #f9a825;
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .solved-example h5 {
+      color: #e65100; margin-bottom: .5rem; font-size: .95rem;
+    }
+
+    /* ── NOT-CASES ── */
+    .not-cases { list-style: none; margin-top: .4rem; }
+    .not-cases li {
+      padding: .3rem 0;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: .93rem;
+    }
+    .not-cases li::before { content: '✗ '; color: #c62828; font-weight: 700; }
+
+    /* ── TABLE ── */
+    .summary-table { width: 100%; border-collapse: collapse; margin-top: .8rem; font-size: .9rem; }
+    .summary-table th {
+      background: #e65100; color: #fff;
+      padding: .55rem .8rem; text-align: left;
+    }
+    .summary-table td {
+      padding: .5rem .8rem;
+      border-bottom: 1px solid #ffe0b2;
+      font-family: 'Courier New', Courier, monospace;
+      font-size: .88rem;
+    }
+    .summary-table tr:nth-child(even) td { background: #fff3e0; }
+    .summary-table td:first-child { font-family: 'Segoe UI', Arial, sans-serif; font-weight: 600; }
+
+    /* ── SVG AREA MODEL ── */
+    .area-model-wrap {
+      display: flex; flex-wrap: wrap; gap: 1.5rem;
+      align-items: center; justify-content: center;
+      margin: 1rem 0;
+    }
+    .area-label { text-align: center; font-size: .85rem; color: #555; margin-top: .4rem; }
+
+    /* ── TCP CHECK ── */
+    .tcp-check { list-style: none; margin-top: .5rem; }
+    .tcp-check li { padding: .25rem 0; font-size: .95rem; }
+    .tcp-check li::before { content: '▶ '; color: #e65100; }
+
+    /* ── WRITE SPACE ── */
+    .write-space {
+      border: 1.5px dashed #e65100;
+      border-radius: 6px;
+      height: 70px;
+      margin-top: .6rem;
+      background: #fff;
+      display: flex; align-items: center; justify-content: center;
+      color: #bbb; font-size: .85rem; font-style: italic;
+    }
+
+    /* ── FOOTER NAV ── */
+    footer {
+      background: #e65100;
+      padding: 1rem 1.5rem;
+    }
+    .nav-footer {
+      max-width: 860px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: .5rem;
+    }
+    .nav-footer a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .9rem;
+      padding: .4rem .9rem;
+      border: 2px solid rgba(255,255,255,.5);
+      border-radius: 20px;
+      transition: background .15s;
+    }
+    .nav-footer a:hover { background: rgba(255,255,255,.2); }
+    .nav-footer .home { background: rgba(255,255,255,.15); }
+
+    /* ── INTERACTIVIDAD ── */
+    .resp-textarea {
+      width: 100%; min-height: 80px;
+      border: 1.5px dashed #ff8a50; border-radius: 6px;
+      padding: .6rem .8rem; font-family: 'Courier New', monospace; font-size: .9rem;
+      background: #fffde7; resize: vertical; margin-top: .5rem;
+      color: #1a1a1a; display: block;
+    }
+    .resp-textarea:focus { outline: 2px solid #e65100; border-style: solid; }
+    .hint-btn {
+      display: inline-block; background: none;
+      border: 1.5px solid #e65100; color: #e65100;
+      border-radius: 20px; padding: .22rem .8rem; font-size: .78rem;
+      cursor: pointer; margin-top: .4rem; font-family: 'Segoe UI', Arial, sans-serif;
+      transition: background .15s;
+    }
+    .hint-btn:hover { background: #fff3e0; }
+    .hint-box {
+      display: none; background: #fff3e0; border-left: 3px solid #e65100;
+      border-radius: 0 8px 8px 0; padding: .65rem .9rem; font-size: .85rem;
+      margin-top: .4rem; font-family: 'Segoe UI', Arial, sans-serif;
+    }
+    .hint-box strong { display: block; font-size: .8rem; margin-bottom: .25rem; color: #bf360c; }
+    .hint-box code { font-family: 'Courier New', monospace; background: #ffe0b2; padding: .1rem .3rem; border-radius: 3px; font-size: .88em; }
+    /* MCQ interactivo */
+    .mc-options li { cursor: pointer; transition: background .15s, border-color .15s; user-select: none; }
+    .mc-options li:hover { background: #fff3e0 !important; }
+    .mc-options li.mc-correct { background: #e8f5e9 !important; border-color: #2e7d32 !important; }
+    .mc-options li.mc-correct .letter { background: #2e7d32 !important; }
+    .mc-options li.mc-incorrect { background: #ffebee !important; border-color: #c62828 !important; }
+    .mc-options li.mc-incorrect .letter { background: #c62828 !important; }
+    .mc-feedback { display: none; padding: .5rem .8rem; border-radius: 6px; font-size: .85rem; margin-top: .6rem; font-family: 'Segoe UI', Arial, sans-serif; }
+    .mc-feedback.fb-ok { background: #e8f5e9; color: #1b5e20; border-left: 3px solid #2e7d32; }
+    .mc-feedback.fb-no { background: #ffebee; color: #c62828; border-left: 3px solid #c62828; }
+
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.35rem; }
+      .formula { font-size: .95rem; }
+      .summary-table { font-size: .78rem; }
+      .summary-table td, .summary-table th { padding: .4rem .5rem; }
+      .area-model-wrap { gap: .8rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════════ -->
+<header>
+  <span class="emoji">📐</span>
+  <h1>Taller de Álgebra – Factorización</h1>
+  <h2>Diferencia de Cuadrados &amp; Trinomio Cuadrado Perfecto</h2>
+  <div class="meta-bar">
+    <span>Juan Esteban Herreño</span>
+    <span>Grado 9°</span>
+    <span>CEDAP – Bogotá, 2026</span>
+    <span>Docente: Carlos Ernesto Isaza Carvajal</span>
+    <span>Álgebra – Física – TI</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════════
+     MAIN
+════════════════════════════════════════════════════ -->
+<main>
+
+  <!-- OBJETIVO -->
+  <div class="objetivo">
+    <strong>Objetivo:</strong> Consolidar las actividades necesarias para que el estudiante
+    alcance los objetivos de aprendizaje en factorización algebraica: diferencia de cuadrados
+    y trinomio cuadrado perfecto.
+  </div>
+
+  <!-- ══════════════════════════════
+       SECCIÓN: ÁLGEBRA
+  ══════════════════════════════ -->
+  <div class="section-title">📐 Álgebra</div>
+
+  <!-- ── ¿QUÉ ES FACTORIZAR? ── -->
+  <div class="explain-box">
+    <h4>¿Qué es factorizar?</h4>
+    <p>
+      Factorizar es <strong>descomponer una expresión algebraica en un producto de factores
+      más simples</strong>. Es como deshacer una multiplicación.
+    </p>
+    <p style="margin-top:.5rem;">
+      Ejemplo numérico: <code style="font-family:monospace;background:#fff3e0;padding:.1rem .3rem;border-radius:3px;">6 = 2 × 3</code>
+      &nbsp;→ factorizamos el número 6 en sus factores primos.
+    </p>
+    <p style="margin-top:.4rem;">
+      En álgebra hacemos lo mismo pero con expresiones que contienen variables y exponentes.
+    </p>
+  </div>
+
+  <!-- ══════════════════════════════
+       DIFERENCIA DE CUADRADOS
+  ══════════════════════════════ -->
+  <div class="subsection-title">Diferencia de Cuadrados</div>
+
+  <!-- TEORÍA DC -->
+  <div class="explain-box">
+    <h4>Fórmula fundamental</h4>
+    <div class="formula">a² − b² = (a + b)(a − b)</div>
+    <p style="margin-top:.7rem;font-size:.93rem;">
+      <strong>¿Por qué funciona?</strong> Verificamos multiplicando el lado derecho:
+    </p>
+    <div class="steps" style="margin-top:.5rem;">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          Aplicamos FOIL: <code>(a+b)(a−b) = a·a − a·b + b·a − b·b</code>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          Simplificamos: <code>= a² − ab + ab − b²</code>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          Los términos medios se cancelan: <code>= a² − b²</code>
+          <span class="ok"> ✓</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- EJERCICIO 1 – Selección múltiple -->
+  <div class="exercise">
+    <span class="exercise-num">Ejercicio 1 – Selección múltiple</span>
+    <h3>
+      Una expresión algebraica <strong>a² − b²</strong> corresponde a una diferencia de
+      cuadrados. Se factoriza como:
+    </h3>
+    <ul class="mc-options" id="mcq-ej1">
+      <li onclick="mcqMat(this, false, '(a + b)² significa que el MISMO binomio se eleva al cuadrado: (a+b)² = a² + 2ab + b². Eso sería un Trinomio Cuadrado Perfecto, NO una diferencia de cuadrados.')">
+        <span class="letter">A</span> (a + b)²
+      </li>
+      <li onclick="mcqMat(this, true, '¡Correcto! a² − b² = (a + b)(a − b). Puedes verificarlo multiplicando: (a+b)(a−b) = a² − ab + ab − b² = a² − b² ✓. Los términos medios se cancelan.')">
+        <span class="letter">B</span> (a + b)(a − b)
+      </li>
+      <li onclick="mcqMat(this, false, '(a − b)² sería un Trinomio Cuadrado Perfecto de resta: (a−b)² = a² − 2ab + b². Tiene 3 términos y el del medio es −2ab, lo cual es diferente a la diferencia de cuadrados que solo tiene 2 términos.')">
+        <span class="letter">C</span> (a − b)²
+      </li>
+      <li onclick="mcqMat(this, false, 'a(a − b) = a² − ab. Eso NO es igual a a² − b², porque quedaría −ab en lugar de −b². Esta factorización saca factor común &quot;a&quot;, que no aplica aquí.')">
+        <span class="letter">D</span> a(a − b)
+      </li>
+    </ul>
+    <div class="mc-feedback" id="fb-ej1"></div>
+    <p style="margin-top:.8rem;font-size:.88rem;color:#555;">
+      Justifica tu respuesta en el espacio siguiente:
+    </p>
+    <textarea class="resp-textarea" placeholder="Justifica por qué elegiste esa opción…"></textarea>
+    <button class="hint-btn" onclick="toggleHintMat('hm-just1')">💡 Ver justificación modelo</button>
+    <div class="hint-box" id="hm-just1"><strong>💡 Justificación de la respuesta B:</strong><br>
+    Elegí B porque <code>(a+b)(a−b)</code> es exactamente la fórmula de la diferencia de cuadrados.<br>
+    Verificación multiplicando FOIL:<br>
+    <code>(a+b)(a−b) = a² − ab + ab − b² = a² − b² ✓</code><br>
+    Los términos medios (+ab y −ab) se cancelan entre sí, dejando solo la diferencia de cuadrados.</div>
+  </div>
+
+  <!-- EJERCICIO 2 – Factorizar -->
+  <div class="exercise">
+    <span class="exercise-num">Ejercicio 2 – Factorizar</span>
+    <h3>Factoriza las siguientes expresiones usando diferencia de cuadrados:</h3>
+    <ul class="factor-list">
+      <li><span class="label">a)</span> x² − 36</li>
+      <li><span class="label">b)</span> 49a² − 64b²</li>
+      <li><span class="label">c)</span> 25m² − 4n²</li>
+    </ul>
+    <textarea class="resp-textarea" style="min-height:110px;" placeholder="Desarrolla aquí:&#10;a) x² − 36 = (___+___)(___−___)&#10;b) 49a² − 64b² = (___+___)(___−___)&#10;c) 25m² − 4n² = (___+___)(___−___)"></textarea>
+    <button class="hint-btn" onclick="toggleHintMat('hm-ej2')">💡 Ver solución paso a paso</button>
+    <div class="hint-box" id="hm-ej2"><strong>💡 Soluciones:</strong><br>
+    a) <code>x² − 36</code>: √x²=x, √36=6 → <code>(x + 6)(x − 6)</code><br>
+    b) <code>49a² − 64b²</code>: √49=7, √64=8 → <code>(7a + 8b)(7a − 8b)</code><br>
+    c) <code>25m² − 4n²</code>: √25=5, √4=2 → <code>(5m + 2n)(5m − 2n)</code><br>
+    <em>Recuerda verificar: multiplica los factores y debes recuperar la expresión original.</em></div>
+  </div>
+
+  <!-- EJEMPLOS RESUELTOS DC -->
+  <div class="explain-box">
+    <h4>Ejemplos resueltos paso a paso</h4>
+
+    <div class="solved-example">
+      <h5>Ejemplo 1: x² − 36</h5>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            Identificar: <code>a² = x²</code> → <code>a = x</code> &nbsp;|&nbsp;
+            <code>b² = 36</code> → <code>b = 6</code>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            Verificar raíces exactas: <span class="ok">✓</span>
+            <code>√x² = x</code>, <code>√36 = 6</code>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">Aplicar fórmula:</div>
+        </div>
+      </div>
+      <div class="formula-secondary">x² − 36 = (x + 6)(x − 6)</div>
+      <p style="font-size:.88rem;margin-top:.4rem;">
+        Verificación: <code>(x+6)(x−6) = x²−6x+6x−36 = x²−36</code>
+        <span class="ok"> ✓</span>
+      </p>
+    </div>
+
+    <div class="solved-example">
+      <h5>Ejemplo 2: 49a² − 64b²</h5>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <code>a² = 49a²</code> → <code>a = 7a</code> &nbsp;|&nbsp;
+            <code>b² = 64b²</code> → <code>b = 8b</code>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            Raíces: <code>√49 = 7</code> <span class="ok">✓</span>&nbsp;
+            <code>√64 = 8</code> <span class="ok">✓</span>
+          </div>
+        </div>
+      </div>
+      <div class="formula-secondary">49a² − 64b² = (7a + 8b)(7a − 8b)</div>
+    </div>
+
+    <div class="solved-example">
+      <h5>Ejemplo 3: 25m² − 4n²</h5>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <code>a = 5m</code> &nbsp;|&nbsp; <code>b = 2n</code>
+          </div>
+        </div>
+      </div>
+      <div class="formula-secondary">25m² − 4n² = (5m + 2n)(5m − 2n)</div>
+    </div>
+  </div>
+
+  <!-- CASOS QUE NO SON DC -->
+  <div class="explain-box">
+    <h4>Casos que NO son diferencia de cuadrados</h4>
+    <ul class="not-cases">
+      <li>x² + 36 &nbsp;→&nbsp; <strong>NO</strong> es suma, no diferencia</li>
+      <li>x² − 7 &nbsp;→&nbsp; <strong>NO</strong> 7 no tiene raíz cuadrada exacta</li>
+      <li>x³ − 9 &nbsp;→&nbsp; <strong>NO</strong> x³ no tiene raíz cuadrada exacta</li>
+    </ul>
+  </div>
+
+  <!-- EJERCICIO 3 – Modelo de áreas -->
+  <div class="exercise">
+    <span class="exercise-num">Ejercicio 3 – Modelo de áreas</span>
+    <h3>
+      La región amarilla de la izquierda se reorganiza para formar la región amarilla
+      de la derecha. Escribe la igualdad de áreas que representa:
+    </h3>
+    <div class="formula" style="margin:1rem 0;">a² − b² = (a + b)(a − b)</div>
+
+    <!-- SVG Area Model -->
+    <div class="area-model-wrap">
+      <!-- Figura izquierda: cuadrado grande menos cuadrado pequeño -->
+      <div>
+        <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Cuadrado grande a×a -->
+          <rect x="5" y="5" width="130" height="130" fill="#ffe082" stroke="#e65100" stroke-width="2.5"/>
+          <!-- Cuadrado pequeño b×b (esquina superior derecha, en blanco) -->
+          <rect x="90" y="5" width="45" height="45" fill="#ef9a9a" stroke="#c62828" stroke-width="2" stroke-dasharray="5,3"/>
+          <!-- Etiquetas -->
+          <text x="70" y="155" text-anchor="middle" font-size="13" fill="#e65100" font-family="Courier New">a</text>
+          <text x="135" y="155" text-anchor="middle" font-size="13" fill="#c62828" font-family="Courier New">b</text>
+          <text x="155" y="70" text-anchor="middle" font-size="13" fill="#e65100" font-family="Courier New">a</text>
+          <text x="155" y="30" text-anchor="middle" font-size="13" fill="#c62828" font-family="Courier New">b</text>
+          <!-- Flecha indicando b² se quita -->
+          <text x="112" y="30" text-anchor="middle" font-size="11" fill="#c62828">b²</text>
+          <text x="55" y="80" text-anchor="middle" font-size="12" fill="#795548">a²−b²</text>
+        </svg>
+        <div class="area-label">Región amarilla = a² − b²</div>
+      </div>
+
+      <div style="font-size:2rem;color:#e65100;">⟹</div>
+
+      <!-- Figura derecha: rectángulo (a+b)×(a−b) -->
+      <div>
+        <svg width="200" height="120" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="10" width="190" height="90" fill="#ffe082" stroke="#e65100" stroke-width="2.5"/>
+          <!-- Etiquetas -->
+          <text x="100" y="115" text-anchor="middle" font-size="13" fill="#e65100" font-family="Courier New">(a + b)</text>
+          <text x="198" y="58" text-anchor="start" font-size="13" fill="#e65100" font-family="Courier New" transform="rotate(90,198,58)" dy="-4">(a − b)</text>
+          <text x="100" y="60" text-anchor="middle" font-size="12" fill="#795548">(a+b)(a−b)</text>
+        </svg>
+        <div class="area-label">Rectángulo = (a+b)(a−b)</div>
+      </div>
+    </div>
+
+    <p style="font-size:.9rem;color:#555;margin-top:.5rem;">
+      <strong>Geométricamente:</strong> un cuadrado grande (a×a) al que le quitamos
+      un cuadrado pequeño (b×b). Esa región puede reorganizarse en un rectángulo de
+      dimensiones (a+b) × (a−b). Por eso la igualdad es geométricamente cierta.
+    </p>
+  </div>
+
+  <!-- EJERCICIO 4 – Representación gráfica -->
+  <div class="exercise">
+    <span class="exercise-num">Ejercicio 4 – Representación gráfica</span>
+    <h3>Representa gráficamente la siguiente factorización:</h3>
+    <div class="formula" style="margin:.8rem 0;">9x² − 4 = (3x + 2)(3x − 2)</div>
+    <p style="font-size:.9rem;margin-bottom:.5rem;">
+      Dibuja o describe el modelo de áreas que muestra esta igualdad. Identifica
+      <code style="font-family:monospace;background:#fff3e0;padding:.1rem .3rem;border-radius:3px;">a = 3x</code>
+      y <code style="font-family:monospace;background:#fff3e0;padding:.1rem .3rem;border-radius:3px;">b = 2</code>.
+    </p>
+    <textarea class="resp-textarea" style="min-height:120px;" placeholder="Describe el modelo de áreas para 9x² − 4 = (3x+2)(3x−2):&#10;&#10;Cuadrado grande: a = 3x, área = 9x²&#10;Cuadrado pequeño: b = 2, área = 4&#10;Región amarilla (diferencia): 9x² − 4&#10;Rectángulo resultado: (3x+2) × (3x−2)"></textarea>
+    <button class="hint-btn" onclick="toggleHintMat('hm-ej4')">💡 Ver explicación del modelo</button>
+    <div class="hint-box" id="hm-ej4"><strong>💡 Modelo de áreas para 9x² − 4:</strong><br>
+    • Identificar: <code>a = 3x</code> (porque √9x² = 3x), <code>b = 2</code> (porque √4 = 2)<br>
+    • Cuadrado grande: lados de 3x, área = 9x²<br>
+    • Cuadrado pequeño: lados de 2, área = 4 (se quita de una esquina)<br>
+    • La región restante (9x²−4) se puede reorganizar en un rectángulo de (3x+2) × (3x−2)<br>
+    • Verificación: <code>(3x+2)(3x−2) = 9x² − 6x + 6x − 4 = 9x² − 4 ✓</code></div>
+  </div>
+
+  <!-- ══════════════════════════════
+       TRINOMIO CUADRADO PERFECTO
+  ══════════════════════════════ -->
+  <div class="subsection-title">Trinomio Cuadrado Perfecto (TCP)</div>
+
+  <!-- TEORÍA TCP -->
+  <div class="explain-box">
+    <h4>Definición y fórmulas</h4>
+    <p style="margin-bottom:.7rem;">
+      Un <strong>Trinomio Cuadrado Perfecto</strong> tiene la forma
+      <strong>a² ± 2ab + b²</strong> y es el resultado de elevar al cuadrado un binomio.
+    </p>
+    <div class="formula">(a + b)² = a² + 2ab + b²</div>
+    <div class="formula">(a − b)² = a² − 2ab + b²</div>
+
+    <p style="margin-top:1rem;font-weight:600;color:#bf360c;">Condiciones para identificarlo:</p>
+    <ul class="tcp-check">
+      <li>El primer término debe tener raíz cuadrada exacta → <strong>a²</strong></li>
+      <li>El tercer término debe tener raíz cuadrada exacta → <strong>b²</strong></li>
+      <li>El término del medio debe ser el doble del producto de esas raíces → <strong>2ab</strong></li>
+    </ul>
+    <p style="margin-top:.8rem;font-size:.9rem;color:#333;">
+      Si las <strong>3 condiciones</strong> se cumplen → <span class="ok">✓ Es TCP</span>
+    </p>
+  </div>
+
+  <!-- CÓMO IDENTIFICAR TCP -->
+  <div class="explain-box">
+    <h4>Pasos para identificar un TCP</h4>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-text">
+          ¿El primer término tiene raíz cuadrada exacta? → identifica <code>a</code>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-text">
+          ¿El tercer término tiene raíz cuadrada exacta? → identifica <code>b</code>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-text">
+          ¿El término del medio es igual a <code>2·a·b</code>?
+        </div>
+      </div>
+    </div>
+    <p style="margin-top:.6rem;font-size:.9rem;">
+      Si <strong>las 3 respuestas son SÍ</strong> → es TCP y puedes factorizar como
+      <code>(a ± b)²</code>.
+    </p>
+  </div>
+
+  <!-- EJEMPLOS RESUELTOS TCP -->
+  <div class="explain-box">
+    <h4>Ejemplos resueltos</h4>
+
+    <div class="solved-example">
+      <h5>Ejemplo 1: x² + 10x + 25</h5>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <code>√x² = x</code> <span class="ok">✓</span> → <code>a = x</code>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <code>√25 = 5</code> <span class="ok">✓</span> → <code>b = 5</code>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text">
+            ¿<code>2·x·5 = 10x</code>? <span class="ok">✓</span>
+          </div>
+        </div>
+      </div>
+      <p style="font-size:.88rem;margin:.4rem 0;">
+        → Es TCP (suma) <span class="ok">✓</span>
+      </p>
+      <div class="formula-secondary">x² + 10x + 25 = (x + 5)²</div>
+    </div>
+
+    <div class="solved-example">
+      <h5>Ejemplo 2: 4x² + 8x + 15</h5>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text">
+            <code>√4x² = 2x</code> <span class="ok">✓</span> → <code>a = 2x</code>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text">
+            <code>√15 = 3.87...</code> <span class="no">✗</span> NO tiene raíz exacta
+          </div>
+        </div>
+      </div>
+      <p style="font-size:.88rem;margin:.4rem 0;">
+        → <span class="no">✗ NO es TCP</span> (el tercer término falla)
+      </p>
+    </div>
+  </div>
+
+  <!-- EJERCICIO TCP – Identificar -->
+  <div class="exercise">
+    <span class="exercise-num">Ejercicio – Identificar TCP</span>
+    <h3>
+      Indica si cada expresión es un Trinomio Cuadrado Perfecto y justifica
+      usando los 3 pasos:
+    </h3>
+    <ul class="factor-list">
+      <li><span class="label">a)</span> x² + 10x + 25</li>
+      <li><span class="label">b)</span> 4x² + 8x + 15</li>
+    </ul>
+    <textarea class="resp-textarea" style="min-height:140px;" placeholder="Analiza cada expresión con los 3 pasos:&#10;&#10;a) x² + 10x + 25:&#10;Paso 1: √x² = x ✓  →  a = ___&#10;Paso 2: √25 = ___ ✓  →  b = ___&#10;Paso 3: 2·a·b = 2·___·___ = ___ ¿es igual al término medio? ___&#10;¿Es TCP? ___&#10;&#10;b) 4x² + 8x + 15:&#10;Paso 1: √4x² = ___ ✓  →  a = ___&#10;Paso 2: √15 = ___ ¿es exacta? ___&#10;¿Es TCP? ___"></textarea>
+    <button class="hint-btn" onclick="toggleHintMat('hm-tcp1')">💡 Ver solución completa</button>
+    <div class="hint-box" id="hm-tcp1"><strong>💡 Solución:</strong><br>
+    <strong>a) x² + 10x + 25 → SÍ es TCP:</strong><br>
+    Paso 1: <code>√x² = x ✓</code> → a = x<br>
+    Paso 2: <code>√25 = 5 ✓</code> → b = 5<br>
+    Paso 3: <code>2·x·5 = 10x ✓</code> (coincide con el término medio)<br>
+    Factorización: <code>(x + 5)²</code><br><br>
+    <strong>b) 4x² + 8x + 15 → NO es TCP:</strong><br>
+    Paso 1: <code>√4x² = 2x ✓</code> → a = 2x<br>
+    Paso 2: <code>√15 ≈ 3.87</code> ✗ NO tiene raíz cuadrada exacta<br>
+    → Falla la condición 2, por lo tanto NO es TCP.</div>
+  </div>
+
+  <!-- EJERCICIO TCP – Factorizar -->
+  <div class="exercise">
+    <span class="exercise-num">Ejercicio – Factorizar TCP</span>
+    <h3>
+      De la lista anterior, factoriza los que correspondan a trinomios cuadrados
+      perfectos. Muestra el procedimiento completo:
+    </h3>
+    <textarea class="resp-textarea" style="min-height:100px;" placeholder="Factoriza solo el que sea TCP:&#10;&#10;x² + 10x + 25 = (___ + ___)² = ___&#10;&#10;4x² + 8x + 15 = NO es TCP (no se puede factorizar como TCP)"></textarea>
+    <button class="hint-btn" onclick="toggleHintMat('hm-tcp2')">💡 Ver factorización resuelta</button>
+    <div class="hint-box" id="hm-tcp2"><strong>💡 Solo el inciso a) es TCP:</strong><br>
+    <code>x² + 10x + 25 = (x + 5)²</code><br>
+    Verificación: <code>(x+5)² = x² + 2(x)(5) + 5² = x² + 10x + 25 ✓</code><br><br>
+    <code>4x² + 8x + 15</code> NO es TCP porque √15 no es exacto. No se puede factorizar como binomio al cuadrado.</div>
+  </div>
+
+  <!-- ══════════════════════════════
+       TABLA RESUMEN
+  ══════════════════════════════ -->
+  <div class="section-title">📋 Tabla Resumen de Factorizaciones</div>
+
+  <div class="explain-box" style="padding:1rem;">
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Identificación</th>
+          <th>Fórmula</th>
+          <th>Ejemplo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Diferencia de cuadrados</td>
+          <td>a² − b²</td>
+          <td>(a+b)(a−b)</td>
+          <td>x²−9 = (x+3)(x−3)</td>
+        </tr>
+        <tr>
+          <td>TCP suma</td>
+          <td>a²+2ab+b²</td>
+          <td>(a+b)²</td>
+          <td>x²+6x+9 = (x+3)²</td>
+        </tr>
+        <tr>
+          <td>TCP resta</td>
+          <td>a²−2ab+b²</td>
+          <td>(a−b)²</td>
+          <td>x²−6x+9 = (x−3)²</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER NAV
+════════════════════════════════════════════════════ -->
+<footer>
+  <nav class="nav-footer">
+    <a href="lectura.html">← Lectura</a>
+    <a href="index.html" class="home">🏠 Inicio</a>
+    <a href="quimica.html">Química →</a>
+  </nav>
+</footer>
+
+<script>
+  function toggleHintMat(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const btn = el.previousElementSibling;
+    if (el.style.display === 'block') {
+      el.style.display = 'none';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '💡 Ver solución paso a paso';
+    } else {
+      el.style.display = 'block';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '🙈 Ocultar solución';
+    }
+  }
+  function mcqMat(li, isCorrect, feedback) {
+    const ul = document.getElementById('mcq-ej1');
+    if (ul) ul.querySelectorAll('li').forEach(l => l.classList.remove('mc-correct', 'mc-incorrect'));
+    li.classList.add(isCorrect ? 'mc-correct' : 'mc-incorrect');
+    const fb = document.getElementById('fb-ej1');
+    if (fb) {
+      fb.innerHTML = (isCorrect ? '✅ <strong>¡Correcto!</strong> ' : '❌ <strong>Incorrecto.</strong> ') + feedback;
+      fb.className = 'mc-feedback ' + (isCorrect ? 'fb-ok' : 'fb-no');
+      fb.style.display = 'block';
+    }
+  }
+</script>
+
+</body>
+</html>

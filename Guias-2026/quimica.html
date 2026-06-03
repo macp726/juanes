@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Química 9° – Soluciones | Juan Esteban Herreño</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fafafa;
+      color: #1a1a1a;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #b71c1c 0%, #d32f2f 60%, #c62828 100%);
+      color: #fff;
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,0.04) 18px,
+        rgba(255,255,255,0.04) 36px
+      );
+    }
+    header .emoji { font-size: 3.2rem; display: block; margin-bottom: .4rem; position: relative; }
+    header h1 { font-size: 1.75rem; font-weight: 800; letter-spacing: .5px; position: relative; }
+    header h2 { font-size: 1.05rem; font-weight: 400; opacity: .9; margin-top: .3rem; position: relative; }
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .6rem 1.8rem;
+      margin-top: 1rem;
+      font-size: .88rem;
+      opacity: .88;
+      position: relative;
+    }
+    .header-meta span { display: flex; align-items: center; gap: .3rem; }
+
+    /* ── LAYOUT ── */
+    main { max-width: 900px; margin: 0 auto; padding: 1.8rem 1.2rem 2.5rem; }
+
+    /* ── SECTION TITLES ── */
+    h3.section-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: #b71c1c;
+      border-left: 4px solid #b71c1c;
+      padding-left: .7rem;
+      margin: 2rem 0 1rem;
+    }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      background: #ffebee;
+      border: 1.5px solid #b71c1c;
+      border-radius: 10px;
+      padding: 1.1rem 1.3rem;
+      margin-bottom: 1.2rem;
+    }
+    .info-box p { margin-top: .4rem; }
+    .info-box strong { color: #b71c1c; }
+
+    /* ── OBJETIVO ── */
+    .objetivo {
+      background: #ffebee;
+      border-left: 5px solid #b71c1c;
+      border-radius: 8px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+    }
+    .objetivo .label {
+      font-weight: 700;
+      color: #b71c1c;
+      text-transform: uppercase;
+      font-size: .8rem;
+      letter-spacing: 1px;
+      display: block;
+      margin-bottom: .3rem;
+    }
+
+    /* ── FÓRMULA ── */
+    .formula-block {
+      background: #1a1a1a;
+      color: #f8f8f8;
+      border-radius: 8px;
+      padding: 1.1rem 1.4rem;
+      font-family: 'Courier New', monospace;
+      font-size: 1.05rem;
+      text-align: center;
+      margin: 1rem 0;
+      letter-spacing: .5px;
+    }
+    .formula-block .highlight { color: #ef9a9a; font-weight: 700; }
+
+    /* ── PROBLEMAS ── */
+    .problema {
+      background: #fff;
+      border: 1.5px solid #e57373;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1rem;
+    }
+    .problema .num {
+      display: inline-block;
+      background: #b71c1c;
+      color: #fff;
+      font-weight: 700;
+      font-size: .82rem;
+      border-radius: 50%;
+      width: 1.6rem;
+      height: 1.6rem;
+      line-height: 1.6rem;
+      text-align: center;
+      margin-right: .5rem;
+      flex-shrink: 0;
+    }
+    .problema-header {
+      display: flex;
+      align-items: flex-start;
+      gap: .4rem;
+      font-weight: 600;
+      color: #b71c1c;
+      margin-bottom: .5rem;
+    }
+    .problema ol { padding-left: 1.6rem; margin-top: .4rem; }
+    .problema li { margin-bottom: .3rem; }
+
+    /* ── EJERCICIO RESUELTO ── */
+    .resuelto {
+      background: #ffebee;
+      border: 1.5px solid #b71c1c;
+      border-radius: 10px;
+      padding: 1rem 1.3rem;
+      margin-bottom: 1rem;
+    }
+    .resuelto .titulo {
+      font-weight: 700;
+      color: #b71c1c;
+      margin-bottom: .5rem;
+    }
+    .resuelto .paso {
+      display: flex;
+      align-items: baseline;
+      gap: .6rem;
+      padding: .25rem 0;
+      border-bottom: 1px dashed #e57373;
+      font-size: .95rem;
+    }
+    .resuelto .paso:last-child { border-bottom: none; }
+    .resuelto .paso code {
+      background: #fff;
+      border: 1px solid #e57373;
+      border-radius: 4px;
+      padding: .1rem .45rem;
+      font-family: 'Courier New', monospace;
+      font-size: .9rem;
+      color: #b71c1c;
+      font-weight: 600;
+    }
+    .resuelto .resultado {
+      margin-top: .6rem;
+      font-weight: 700;
+      color: #b71c1c;
+      font-size: 1rem;
+    }
+
+    /* ── TABLA ── */
+    .tabla-wrap { overflow-x: auto; margin: 1rem 0; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .93rem;
+    }
+    th {
+      background: #b71c1c;
+      color: #fff;
+      padding: .55rem .8rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    td {
+      padding: .5rem .8rem;
+      border-bottom: 1px solid #ffcdd2;
+    }
+    tr:nth-child(even) td { background: #ffebee; }
+    tr:hover td { background: #ffcdd2; }
+
+    /* ── TARJETAS SITUACIONES ── */
+    .situaciones { display: grid; gap: 1rem; }
+    @media (min-width: 640px) { .situaciones { grid-template-columns: repeat(3,1fr); } }
+
+    .situacion-card {
+      background: #fff;
+      border: 1.5px solid #e57373;
+      border-top: 4px solid #b71c1c;
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .situacion-card .sit-label {
+      font-weight: 700;
+      color: #b71c1c;
+      font-size: .88rem;
+      text-transform: uppercase;
+      letter-spacing: .8px;
+      margin-bottom: .5rem;
+    }
+    .situacion-card .sit-desc {
+      font-size: .9rem;
+      color: #444;
+      margin-bottom: .7rem;
+      font-style: italic;
+      border-left: 3px solid #e57373;
+      padding-left: .6rem;
+    }
+    .situacion-card ol { padding-left: 1.3rem; font-size: .92rem; }
+    .situacion-card li { margin-bottom: .35rem; }
+    .sit-blank {
+      display: inline-block;
+      width: 90px;
+      border-bottom: 1.5px solid #b71c1c;
+      margin-left: .3rem;
+      vertical-align: bottom;
+    }
+
+    /* ── TARJETAS FACTORES ── */
+    .factores { display: grid; gap: 1rem; }
+    @media (min-width: 560px) { .factores { grid-template-columns: repeat(3,1fr); } }
+
+    .factor-card {
+      background: #ffebee;
+      border: 1.5px solid #e57373;
+      border-radius: 12px;
+      padding: 1.1rem 1rem;
+      text-align: center;
+    }
+    .factor-card .f-icon { font-size: 2rem; margin-bottom: .4rem; display: block; }
+    .factor-card .f-title {
+      font-weight: 700;
+      color: #b71c1c;
+      font-size: .95rem;
+      margin-bottom: .4rem;
+    }
+    .factor-card p { font-size: .88rem; color: #444; }
+
+    /* ── TIPOS SOLUCIÓN ── */
+    .tipos { display: grid; gap: .8rem; }
+    @media (min-width: 500px) { .tipos { grid-template-columns: repeat(3,1fr); } }
+
+    .tipo-card {
+      border-radius: 10px;
+      padding: .85rem 1rem;
+      text-align: center;
+      border: 1.5px solid;
+    }
+    .tipo-card.insaturada { background: #e8f5e9; border-color: #388e3c; color: #1b5e20; }
+    .tipo-card.saturada   { background: #fff3e0; border-color: #f57c00; color: #e65100; }
+    .tipo-card.sobre      { background: #fce4ec; border-color: #c2185b; color: #880e4f; }
+    .tipo-card .t-name { font-weight: 700; font-size: .95rem; margin-bottom: .3rem; }
+    .tipo-card p { font-size: .85rem; }
+
+    /* ── RELACIONA CONCEPTOS ── */
+    .conceptos-grid {
+      display: grid;
+      gap: .6rem;
+    }
+    .concepto-item {
+      display: flex;
+      align-items: center;
+      gap: .8rem;
+      background: #fff;
+      border: 1px solid #e57373;
+      border-radius: 8px;
+      padding: .55rem .9rem;
+      font-size: .95rem;
+    }
+    .concepto-item .c-num {
+      background: #b71c1c;
+      color: #fff;
+      font-weight: 700;
+      font-size: .8rem;
+      border-radius: 50%;
+      width: 1.5rem;
+      height: 1.5rem;
+      line-height: 1.5rem;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .c-blank {
+      display: inline-block;
+      width: 110px;
+      border-bottom: 1.5px solid #b71c1c;
+      margin-left: .4rem;
+      vertical-align: bottom;
+    }
+
+    .opciones-box {
+      background: #ffebee;
+      border: 1px dashed #b71c1c;
+      border-radius: 8px;
+      padding: .7rem 1rem;
+      font-size: .92rem;
+      margin-bottom: 1rem;
+    }
+    .opciones-box strong { color: #b71c1c; }
+    .opciones-box .opt {
+      display: inline-block;
+      background: #fff;
+      border: 1px solid #e57373;
+      border-radius: 4px;
+      padding: .15rem .55rem;
+      margin: .2rem .25rem;
+      font-weight: 600;
+      color: #b71c1c;
+    }
+
+    /* ── RESPUESTAS ── */
+    .respuestas {
+      background: #fff;
+      border: 1.5px solid #b71c1c;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-top: 1.5rem;
+    }
+    .respuestas summary {
+      cursor: pointer;
+      font-weight: 700;
+      color: #b71c1c;
+      font-size: .95rem;
+      user-select: none;
+    }
+    .respuestas summary:hover { text-decoration: underline; }
+    .respuestas ol { padding-left: 1.5rem; margin-top: .6rem; font-size: .93rem; }
+    .respuestas li { margin-bottom: .3rem; }
+    .resp-value { font-weight: 700; color: #b71c1c; }
+
+    /* ── DIVIDER ── */
+    hr.divider {
+      border: none;
+      border-top: 2px dashed #e57373;
+      margin: 2rem 0;
+    }
+
+    /* ── FOOTER NAV ── */
+    footer {
+      background: #b71c1c;
+      color: #fff;
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+    }
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .footer-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .93rem;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 6px;
+      padding: .4rem .9rem;
+      transition: background .2s;
+    }
+    .footer-nav a:hover { background: rgba(255,255,255,.3); }
+    .footer-nav .home { font-size: 1.1rem; }
+    footer p.copy {
+      font-size: .78rem;
+      opacity: .7;
+      margin-top: .8rem;
+    }
+.resp-textarea { width:100%; min-height:80px; border:1px solid #b71c1c; border-radius:6px; padding:8px; font-size:14px; resize:vertical; box-sizing:border-box; }
+.hint-btn { background:#b71c1c; color:#fff; border:none; border-radius:4px; padding:4px 10px; cursor:pointer; font-size:13px; margin-top:4px; }
+.hint-box { display:none; background:#ffebee; border-left:3px solid #b71c1c; padding:8px; margin-top:4px; border-radius:4px; font-size:13px; }
+.sit-input { border:none; border-bottom:2px solid #b71c1c; min-width:120px; padding:2px 4px; font-size:14px; }
+select.c-blank { border:1px solid #b71c1c; border-radius:4px; padding:2px 4px; font-size:13px; }
+.mc-opt { display:block; padding:6px 10px; margin:4px 0; border:1px solid #b71c1c; border-radius:6px; cursor:pointer; }
+.mc-opt:hover { background:#ffcdd2; }
+.mc-correct { background:#c8e6c9!important; border-color:#388e3c!important; }
+.mc-incorrect { background:#ffcdd2!important; border-color:#d32f2f!important; }
+.mc-feedback { font-size:13px; margin-top:6px; padding:6px; border-radius:4px; display:none; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════ HEADER -->
+<header>
+  <span class="emoji">⚗️</span>
+  <h1>Química – Soluciones</h1>
+  <h2>Soluto, Solvente y Concentración %m/m</h2>
+  <div class="header-meta">
+    <span>👨‍🎓 Juan Esteban Herreño</span>
+    <span>🏫 Colegio CEDAP · Bogotá</span>
+    <span>📚 Grado 9° · 2026</span>
+    <span>👨‍🏫 Docente: Jhon Alexander Gallo Ramírez</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════════════ MAIN -->
+<main>
+
+  <!-- OBJETIVO -->
+  <div class="objetivo">
+    <span class="label">🎯 Objetivo del taller</span>
+    Reconocer el soluto y el solvente en diversas disoluciones presentes en situaciones cotidianas y aplicar el cálculo de concentración porcentual masa/masa (%m/m).
+  </div>
+
+  <!-- ─── ¿QUÉ ES UNA SOLUCIÓN? ─── -->
+  <h3 class="section-title">¿Qué es una solución química?</h3>
+
+  <div class="info-box">
+    <p>Una <strong>solución (o disolución)</strong> es una <strong>mezcla homogénea</strong> de dos o más sustancias. "Homogénea" significa que tiene la misma composición en toda su extensión — no puedes ver los componentes por separado a simple vista.</p>
+  </div>
+
+  <div class="info-box" style="margin-top:0;">
+    <p><strong>Soluto:</strong> La sustancia que se disuelve (está en menor cantidad).<br>
+    <em>Ejemplo:</em> azúcar en agua → el azúcar es el soluto.</p>
+    <p style="margin-top:.6rem;"><strong>Solvente (disolvente):</strong> La sustancia que disuelve (está en mayor cantidad).<br>
+    <em>Ejemplo:</em> azúcar en agua → el agua es el solvente.</p>
+  </div>
+
+  <!-- TABLA -->
+  <h3 class="section-title">Ejemplos cotidianos de soluciones</h3>
+  <div class="tabla-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Solución</th>
+          <th>Soluto</th>
+          <th>Solvente</th>
+          <th>Estado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Agua salada</td><td>Sal (NaCl)</td><td>Agua</td><td>Líquido</td></tr>
+        <tr><td>Gaseosa</td><td>CO₂ + azúcar</td><td>Agua</td><td>Líquido</td></tr>
+        <tr><td>Aire</td><td>O₂, CO₂, etc.</td><td>N₂ (nitrógeno)</td><td>Gas</td></tr>
+        <tr><td>Aleación de bronce</td><td>Estaño</td><td>Cobre</td><td>Sólido</td></tr>
+        <tr><td>Suero fisiológico</td><td>NaCl (0.9%)</td><td>Agua</td><td>Líquido</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ─── CONCENTRACIÓN %m/m ─── -->
+  <h3 class="section-title">Concentración: Porcentaje masa/masa (%m/m)</h3>
+
+  <div class="formula-block">
+    <span class="highlight">% m/m</span> = (masa del soluto / masa de la solución) × 100<br>
+    <span style="font-size:.85rem; color:#ccc;">masa de la solución = masa soluto + masa solvente</span>
+  </div>
+
+  <!-- ─── PROBLEMAS ─── -->
+  <h3 class="section-title">Problemas de cálculo</h3>
+
+  <div class="problema">
+    <div class="problema-header">
+      <span class="num">1</span>
+      <span>Una solución contiene 9 g de glucosa (C₆H₁₂O₆) en 90 g de solución.</span>
+    </div>
+    <ol type="a">
+      <li>Calcula el % m/m</li>
+      <li>Calcula los moles de glucosa</li>
+    </ol>
+    <textarea class="resp-textarea" rows="4" placeholder="Escribe tu respuesta..."></textarea>
+    <button class="hint-btn" onclick="toggleHintQui('hq_1')">💡 Ver ejemplo</button>
+    <div class="hint-box" id="hq_1">a) %m/m = (9 g / 90 g) × 100 = 10%. &nbsp; b) Moles = 9 g ÷ 180 g/mol = 0,05 mol.</div>
+  </div>
+
+  <div class="problema">
+    <div class="problema-header">
+      <span class="num">2</span>
+      <span>¿Cuántos gramos de CaCl₂ se necesitan para preparar 100 g de solución al 18% m/m?</span>
+    </div>
+    <ol type="a" start="2">
+      <li>Calcula los moles de CaCl₂</li>
+    </ol>
+    <textarea class="resp-textarea" rows="4" placeholder="Escribe tu respuesta..."></textarea>
+    <button class="hint-btn" onclick="toggleHintQui('hq_2')">💡 Ver ejemplo</button>
+    <div class="hint-box" id="hq_2">Masa soluto = 18% × 100 g = 18 g de CaCl₂. &nbsp; Moles = 18 g ÷ 111 g/mol ≈ 0,162 mol.</div>
+  </div>
+
+  <div class="problema">
+    <div class="problema-header">
+      <span class="num">3</span>
+      <span>¿Cuántos gramos de NaCl se necesitan para preparar 200 g de solución al 10% m/m?</span>
+    </div>
+    <ol type="a" start="2">
+      <li>Calcula los moles de NaCl</li>
+    </ol>
+    <textarea class="resp-textarea" rows="4" placeholder="Escribe tu respuesta..."></textarea>
+    <button class="hint-btn" onclick="toggleHintQui('hq_3')">💡 Ver ejemplo</button>
+    <div class="hint-box" id="hq_3">Masa soluto = 10% × 200 g = 20 g de NaCl. &nbsp; Moles = 20 g ÷ 58,5 g/mol ≈ 0,342 mol.</div>
+  </div>
+
+  <!-- ─── EJERCICIOS RESUELTOS ─── -->
+  <h3 class="section-title">Ejercicios resueltos paso a paso</h3>
+
+  <div class="resuelto">
+    <div class="titulo">Ejercicio 1 — 9 g de glucosa en 90 g de solución</div>
+    <div class="paso">
+      <span>a)</span>
+      <span>%m/m = (masa soluto / masa solución) × 100 = (9 g / 90 g) × 100 = <code>10 %</code></span>
+    </div>
+    <div class="paso">
+      <span>b)</span>
+      <span>Masa molar C₆H₁₂O₆ = 6(12) + 12(1) + 6(16) = 72 + 12 + 96 = <code>180 g/mol</code></span>
+    </div>
+    <div class="paso">
+      <span></span>
+      <span>Moles = 9 g ÷ 180 g/mol = <code>0.05 mol</code></span>
+    </div>
+  </div>
+
+  <div class="resuelto">
+    <div class="titulo">Ejercicio 2 — CaCl₂ al 18% en 100 g de solución</div>
+    <div class="paso">
+      <span>a)</span>
+      <span>18% = (masa soluto / 100 g) × 100 → masa soluto = <code>18 g de CaCl₂</code></span>
+    </div>
+    <div class="paso">
+      <span>b)</span>
+      <span>Masa molar CaCl₂ = 40 + 2(35.5) = 40 + 71 = <code>111 g/mol</code></span>
+    </div>
+    <div class="paso">
+      <span></span>
+      <span>Moles = 18 g ÷ 111 g/mol = <code>0.162 mol</code></span>
+    </div>
+  </div>
+
+  <div class="resuelto">
+    <div class="titulo">Ejercicio 3 — NaCl al 10% en 200 g de solución</div>
+    <div class="paso">
+      <span>a)</span>
+      <span>10% = (masa soluto / 200 g) × 100 → masa soluto = <code>20 g de NaCl</code></span>
+    </div>
+    <div class="paso">
+      <span>b)</span>
+      <span>Masa molar NaCl = 23 + 35.5 = <code>58.5 g/mol</code></span>
+    </div>
+    <div class="paso">
+      <span></span>
+      <span>Moles = 20 g ÷ 58.5 g/mol = <code>0.342 mol</code></span>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ─── OBSERVACIÓN Y ANÁLISIS ─── -->
+  <h3 class="section-title">Observación y análisis de situaciones</h3>
+
+  <div class="situaciones">
+
+    <div class="situacion-card">
+      <div class="sit-label">⚗️ Situación A</div>
+      <div class="sit-desc">Ana agrega una cucharada de azúcar en agua caliente y observa que se disuelve rápidamente.</div>
+      <ol type="a">
+        <li>¿Cuál es el soluto?<br><input class="sit-input" type="text" placeholder="soluto..."></li>
+        <li>¿Cuál es el solvente?<br><input class="sit-input" type="text" placeholder="solvente..."></li>
+        <li>¿Qué factor favoreció la disolución?<br><input class="sit-input" type="text" placeholder="factor..."></li>
+      </ol>
+    </div>
+
+    <div class="situacion-card">
+      <div class="sit-label">🫧 Situación B</div>
+      <div class="sit-desc">Un estudiante intenta mezclar aceite con agua y nota que no se disuelven.</div>
+      <ol type="a">
+        <li>¿Qué ocurre con la solubilidad?<br><input class="sit-input" type="text" placeholder="respuesta..."></li>
+        <li>¿La mezcla es homogénea o heterogénea?<br><input class="sit-input" type="text" placeholder="tipo de mezcla..."></li>
+        <li>Explica por qué sucede esto.<br><input class="sit-input" type="text" placeholder="explicación..."></li>
+      </ol>
+    </div>
+
+    <div class="situacion-card">
+      <div class="sit-label">🥤 Situación C</div>
+      <div class="sit-desc">En una gaseosa cerrada el CO₂ permanece disuelto, pero al abrirla aparecen burbujas.</div>
+      <ol type="a">
+        <li>¿Qué gas está disuelto?<br><input class="sit-input" type="text" placeholder="gas..."></li>
+        <li>¿Qué factor cambia al abrir la botella?<br><input class="sit-input" type="text" placeholder="factor..."></li>
+        <li>¿Por qué aparecen las burbujas?<br><input class="sit-input" type="text" placeholder="explicación..."></li>
+      </ol>
+    </div>
+
+  </div>
+
+  <hr class="divider">
+
+  <!-- ─── FACTORES DE SOLUBILIDAD ─── -->
+  <h3 class="section-title">Factores que afectan la solubilidad</h3>
+
+  <div class="factores">
+    <div class="factor-card">
+      <span class="f-icon">🌡️</span>
+      <div class="f-title">Temperatura</div>
+      <p>A mayor temperatura, los sólidos se disuelven más fácilmente (el calor da energía a las moléculas). Los <strong>gases</strong> se disuelven <em>menos</em> a mayor temperatura.</p>
+    </div>
+    <div class="factor-card">
+      <span class="f-icon">🫧</span>
+      <div class="f-title">Presión</div>
+      <p>Afecta principalmente a los <strong>gases</strong>. Mayor presión → mayor solubilidad del gas. Por eso la gaseosa cerrada mantiene más CO₂ disuelto.</p>
+    </div>
+    <div class="factor-card">
+      <span class="f-icon">⚗️</span>
+      <div class="f-title">Naturaleza del soluto y solvente</div>
+      <p><em>"Lo semejante disuelve a lo semejante."</em> El agua (polar) disuelve sustancias polares (sal, azúcar). El aceite (no polar) <strong>no</strong> se disuelve en agua.</p>
+    </div>
+  </div>
+
+  <!-- ─── TIPOS DE SOLUCIONES ─── -->
+  <h3 class="section-title">Tipos de soluciones según concentración</h3>
+
+  <div class="tipos">
+    <div class="tipo-card insaturada">
+      <div class="t-name">Insaturada</div>
+      <p>Puede disolver más soluto a esa temperatura.</p>
+    </div>
+    <div class="tipo-card saturada">
+      <div class="t-name">Saturada</div>
+      <p>No puede disolver más soluto a esa temperatura.</p>
+    </div>
+    <div class="tipo-card sobre">
+      <div class="t-name">Sobresaturada</div>
+      <p>Contiene más soluto del normal. Muy inestable.</p>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ─── RELACIONA CONCEPTOS ─── -->
+  <h3 class="section-title">Relaciona conceptos</h3>
+
+  <div class="opciones-box">
+    <strong>Opciones:</strong>
+    <span class="opt">Saturada</span>
+    <span class="opt">Solvente</span>
+    <span class="opt">Soluto</span>
+    <span class="opt">Insoluble</span>
+    <span class="opt">Temperatura</span>
+  </div>
+
+  <div class="conceptos-grid">
+    <div class="concepto-item"><span class="c-num">1</span> Sustancia que se disuelve:<select class="c-blank"><option value="">--</option><option>Saturada</option><option>Solvente</option><option>Soluto</option><option>Insoluble</option><option>Temperatura</option></select></div>
+    <div class="concepto-item"><span class="c-num">2</span> Sustancia que disuelve:<select class="c-blank"><option value="">--</option><option>Saturada</option><option>Solvente</option><option>Soluto</option><option>Insoluble</option><option>Temperatura</option></select></div>
+    <div class="concepto-item"><span class="c-num">3</span> Factor que aumenta la solubilidad en muchos sólidos:<select class="c-blank"><option value="">--</option><option>Saturada</option><option>Solvente</option><option>Soluto</option><option>Insoluble</option><option>Temperatura</option></select></div>
+    <div class="concepto-item"><span class="c-num">4</span> Sustancia que no logra disolverse:<select class="c-blank"><option value="">--</option><option>Saturada</option><option>Solvente</option><option>Soluto</option><option>Insoluble</option><option>Temperatura</option></select></div>
+    <div class="concepto-item"><span class="c-num">5</span> Solución que no puede disolver más soluto:<select class="c-blank"><option value="">--</option><option>Saturada</option><option>Solvente</option><option>Soluto</option><option>Insoluble</option><option>Temperatura</option></select></div>
+  </div>
+
+  <!-- RESPUESTAS DESPLEGABLES -->
+  <details class="respuestas">
+    <summary>Ver respuestas de Relaciona conceptos ▾</summary>
+    <ol>
+      <li><span class="resp-value">Soluto</span></li>
+      <li><span class="resp-value">Solvente</span></li>
+      <li><span class="resp-value">Temperatura</span></li>
+      <li><span class="resp-value">Insoluble</span></li>
+      <li><span class="resp-value">Saturada</span></li>
+    </ol>
+  </details>
+
+</main>
+
+<!-- ══════════════════════════════════════════════════ FOOTER -->
+<footer>
+  <nav class="footer-nav">
+    <a href="matematicas.html">← Matemáticas</a>
+    <a href="index.html" class="home">🏠 Inicio</a>
+    <a href="sociales.html">Sociales →</a>
+  </nav>
+  <p class="copy">Juan Esteban Herreño · Grado 9° · Colegio CEDAP · Bogotá 2026</p>
+</footer>
+
+<script>
+function toggleHintQui(id){var el=document.getElementById(id);var btn=el.previousElementSibling;if(el.style.display==='block'){el.style.display='none';btn.textContent='💡 Ver ejemplo';}else{el.style.display='block';btn.textContent='🙈 Ocultar';}}
+function mcqQui(gid,correct){var opts=document.getElementById(gid).querySelectorAll('.mc-opt');var fb=document.getElementById('fb_'+gid);opts.forEach(function(o){o.onclick=null;var letter=o.getAttribute('data-val');if(letter===correct){o.className='mc-opt mc-correct';}else{o.className='mc-opt mc-incorrect';}});fb.style.display='block';}
+</script>
+</body>
+</html>

@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🌎 Inglés – Modal Verbs | Juan Esteban Herreño</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul:       #1565c0;
+      --azul-light: #e3f2fd;
+      --azul-mid:   #90caf9;
+      --azul-dark:  #0d47a1;
+      --verde:      #2e7d32;
+      --verde-light:#e8f5e9;
+      --naranja:    #e65100;
+      --naranja-light:#fff3e0;
+      --gris:       #f5f5f5;
+      --texto:      #212121;
+    }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fafafa;
+      color: var(--texto);
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--azul-dark) 0%, var(--azul) 60%, #1976d2 100%);
+      color: white;
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+    }
+    header .emoji { font-size: 3rem; display: block; margin-bottom: .4rem; }
+    header h1 { font-size: 1.7rem; font-weight: 800; letter-spacing: .5px; }
+    header h2 { font-size: 1.05rem; font-weight: 400; opacity: .9; margin-top: .3rem; }
+    .header-badges {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem;
+      margin-top: 1rem;
+    }
+    .badge {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 20px;
+      padding: .25rem .85rem;
+      font-size: .82rem;
+      white-space: nowrap;
+    }
+
+    /* ── NOTA PROFESOR ── */
+    .nota-profesor {
+      background: #fff8e1;
+      border-left: 5px solid #f9a825;
+      border-radius: 0 8px 8px 0;
+      padding: 1rem 1.2rem;
+      margin: 1.4rem auto;
+      max-width: 860px;
+      font-size: .93rem;
+    }
+    .nota-profesor strong { color: #e65100; }
+
+    /* ── LAYOUT ── */
+    main { max-width: 860px; margin: 0 auto; padding: 1.2rem 1rem 2rem; }
+
+    /* ── PAGE DIVIDER ── */
+    .page-title {
+      background: var(--azul);
+      color: white;
+      border-radius: 10px;
+      padding: .7rem 1.2rem;
+      margin: 2rem 0 1.2rem;
+      display: flex; align-items: center; gap: .6rem;
+      font-size: 1.05rem; font-weight: 700;
+    }
+    .page-title .pg-num {
+      background: white; color: var(--azul);
+      border-radius: 50%; width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 900; font-size: .9rem; flex-shrink: 0;
+    }
+
+    /* ── BOXES ── */
+    .box {
+      background: var(--azul-light);
+      border: 1.5px solid var(--azul);
+      border-radius: 10px;
+      padding: 1.2rem 1.3rem;
+      margin-bottom: 1.3rem;
+    }
+    .box h3 {
+      color: var(--azul-dark);
+      font-size: 1rem;
+      margin-bottom: .7rem;
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .box-green {
+      background: var(--verde-light);
+      border-color: var(--verde);
+    }
+    .box-green h3 { color: var(--verde); }
+    .box-orange {
+      background: var(--naranja-light);
+      border-color: var(--naranja);
+    }
+    .box-orange h3 { color: var(--naranja); }
+    .box-gray {
+      background: var(--gris);
+      border-color: #bdbdbd;
+    }
+
+    /* ── TABLA MODAL VERBS ── */
+    .modal-table-wrap { overflow-x: auto; margin-top: .5rem; }
+    table {
+      width: 100%; border-collapse: collapse; font-size: .92rem;
+    }
+    thead tr { background: var(--azul); color: white; }
+    thead th { padding: .65rem .9rem; text-align: left; font-weight: 700; }
+    tbody tr:nth-child(even) { background: #bbdefb; }
+    tbody tr:nth-child(odd)  { background: white; }
+    tbody td { padding: .6rem .9rem; border-bottom: 1px solid var(--azul-mid); }
+    .modal-tag {
+      display: inline-block;
+      font-weight: 800; font-size: .95rem;
+      padding: .1rem .55rem;
+      border-radius: 5px;
+      letter-spacing: .5px;
+    }
+    .tag-must  { background: #c62828; color: white; }
+    .tag-might { background: #1565c0; color: white; }
+    .tag-could { background: #2e7d32; color: white; }
+
+    /* ── DIFERENCIAS ── */
+    .diff-list { list-style: none; display: flex; flex-direction: column; gap: .5rem; }
+    .diff-list li {
+      display: flex; align-items: flex-start; gap: .7rem;
+      background: white; border-radius: 7px; padding: .6rem .9rem;
+      border-left: 4px solid var(--azul);
+      font-size: .92rem;
+    }
+    .diff-pct {
+      font-weight: 800; color: var(--azul-dark);
+      white-space: nowrap; font-size: .9rem;
+      min-width: 52px;
+    }
+
+    /* ── VOCABULARIO GRID ── */
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .7rem;
+      margin-top: .6rem;
+    }
+    @media(max-width: 520px){ .vocab-grid { grid-template-columns: 1fr; } }
+    .vocab-card {
+      background: white;
+      border: 1.5px solid var(--azul-mid);
+      border-radius: 8px;
+      padding: .65rem .9rem;
+    }
+    .vocab-word { font-weight: 800; color: var(--azul-dark); font-size: 1rem; }
+    .vocab-pron { color: #546e7a; font-size: .82rem; font-style: italic; }
+    .vocab-es   { color: var(--verde); font-size: .88rem; margin-top: .15rem; }
+
+    /* ── BLOCKQUOTE HISTORIA ── */
+    blockquote.story {
+      background: #e8eaf6;
+      border-left: 5px solid #3949ab;
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.2rem;
+      font-style: italic;
+      font-size: .97rem;
+      color: #1a237e;
+      margin: .7rem 0;
+    }
+    blockquote.story::before {
+      content: '📖 ';
+      font-style: normal;
+    }
+
+    /* ── ACTIVITIES ── */
+    .activity-label {
+      display: inline-block;
+      background: var(--azul);
+      color: white;
+      font-weight: 700;
+      font-size: .8rem;
+      border-radius: 5px;
+      padding: .15rem .6rem;
+      margin-bottom: .6rem;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    /* ── MATCH LIST ── */
+    .match-list { list-style: none; display: flex; flex-direction: column; gap: .4rem; }
+    .match-list li {
+      display: flex; align-items: center; gap: .5rem;
+      background: white; border-radius: 7px;
+      padding: .5rem .9rem;
+      border: 1px solid var(--azul-mid);
+      font-size: .93rem;
+    }
+    .match-arrow { color: var(--azul); font-weight: 900; }
+    .match-answer { color: var(--verde); font-weight: 700; }
+
+    /* ── PREGUNTAS ── */
+    .question-list { list-style: none; display: flex; flex-direction: column; gap: .8rem; }
+    .question-list li {
+      background: white; border-radius: 8px;
+      padding: .7rem 1rem;
+      border-left: 4px solid var(--azul-mid);
+      font-size: .93rem;
+    }
+    .q-num { font-weight: 800; color: var(--azul); margin-right: .3rem; }
+    .answer-line {
+      display: block;
+      border-bottom: 1.5px solid #b0bec5;
+      min-height: 22px;
+      margin-top: .4rem;
+    }
+    .answer-long {
+      display: block;
+      border: 1.5px solid #b0bec5;
+      border-radius: 5px;
+      min-height: 60px;
+      margin-top: .4rem;
+      background: #fafafa;
+      padding: .3rem .5rem;
+    }
+
+    /* ── ESCRIBIR ORACIONES ── */
+    .write-box {
+      background: white; border-radius: 8px;
+      border: 1px solid var(--azul-mid);
+      padding: .8rem 1rem;
+      margin-bottom: .6rem;
+    }
+    .write-label { font-size: .8rem; font-weight: 700; color: var(--azul); margin-bottom: .3rem; }
+    .write-line {
+      display: block; width: 100%;
+      border: none; border-bottom: 1.5px solid #90a4ae;
+      background: transparent;
+      font-size: .95rem; font-family: inherit;
+      padding: .2rem 0; outline: none;
+      color: var(--texto);
+    }
+    .example-sentence {
+      background: #e8f5e9; border-radius: 6px;
+      padding: .45rem .8rem; font-size: .9rem;
+      color: var(--verde); font-style: italic;
+      margin-bottom: .7rem;
+    }
+    .example-sentence strong { font-style: normal; }
+
+    /* ── FÓRMULA ── */
+    .formula {
+      background: #fff3e0; border: 1.5px solid #e65100;
+      border-radius: 8px; padding: .8rem 1rem;
+      font-size: .9rem; margin: .6rem 0;
+    }
+    .formula .f-title { font-weight: 800; color: #e65100; margin-bottom: .3rem; }
+    .formula code {
+      background: #fbe9e7; border-radius: 4px;
+      padding: .15rem .4rem; font-size: .88rem;
+      color: #bf360c; font-family: monospace;
+    }
+
+    /* ── SURVIVAL ITEMS ── */
+    .survival-items {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      margin: .7rem 0;
+    }
+    .item-badge {
+      display: inline-flex; align-items: center; gap: .3rem;
+      background: white; border: 2px solid var(--azul);
+      border-radius: 25px; padding: .3rem .9rem;
+      font-size: .88rem; font-weight: 600; color: var(--azul-dark);
+      cursor: default;
+    }
+    .item-badge:hover { background: var(--azul); color: white; transition: .2s; }
+
+    /* ── EJEMPLOS MODAL ── */
+    .examples-list { list-style: none; display: flex; flex-direction: column; gap: .45rem; }
+    .examples-list li {
+      background: white; border-radius: 7px;
+      padding: .5rem .9rem; font-size: .9rem;
+      border-left: 3px solid var(--azul-mid);
+      display: flex; align-items: flex-start; gap: .5rem;
+    }
+    .ex-tag {
+      font-size: .72rem; font-weight: 700;
+      border-radius: 4px; padding: .1rem .4rem;
+      white-space: nowrap; margin-top: .1rem;
+      flex-shrink: 0;
+    }
+
+    /* ── SURVIVAL GUIDE ── */
+    .survival-guide { display: flex; flex-direction: column; gap: .55rem; margin-top: .5rem; }
+    .sg-item {
+      background: white; border-radius: 8px;
+      padding: .6rem 1rem; font-size: .91rem;
+      border-left: 4px solid var(--naranja);
+      display: flex; align-items: flex-start; gap: .5rem;
+    }
+    .sg-icon { font-size: 1.1rem; flex-shrink: 0; }
+
+    /* ── SURVIVAL WRITE ── */
+    .survival-write { display: flex; flex-direction: column; gap: .8rem; margin-top: .7rem; }
+    .sw-item {
+      background: white; border-radius: 8px;
+      border: 1px solid var(--azul-mid);
+      padding: .8rem 1rem;
+    }
+    .sw-label { font-size: .82rem; font-weight: 700; color: var(--naranja); margin-bottom: .35rem; }
+
+    /* ── FOOTER NAV ── */
+    footer {
+      background: var(--azul);
+      padding: 1rem 1.2rem;
+      margin-top: 2.5rem;
+    }
+    .footer-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 860px; margin: 0 auto;
+      flex-wrap: wrap; gap: .5rem;
+    }
+    .footer-nav a {
+      color: white; text-decoration: none;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 8px;
+      padding: .45rem .9rem;
+      font-size: .88rem; font-weight: 600;
+      transition: background .2s;
+    }
+    .footer-nav a:hover { background: rgba(255,255,255,.3); }
+    .footer-info {
+      text-align: center; color: rgba(255,255,255,.75);
+      font-size: .78rem; margin-top: .6rem;
+      max-width: 860px; margin: .6rem auto 0;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    hr.sec { border: none; border-top: 2px dashed var(--azul-mid); margin: 1.5rem 0; }
+
+    /* ── INTERACTIVIDAD MEJORADA ── */
+    .resp-textarea {
+      width: 100%; min-height: 70px;
+      border: 1.5px dashed #90caf9; border-radius: 8px;
+      padding: .5rem .7rem; font-family: inherit; font-size: .9rem;
+      background: #fafcff; resize: vertical; margin-top: .4rem;
+      color: var(--texto); display: block;
+    }
+    .resp-textarea:focus { outline: 2px solid var(--azul); border-style: solid; }
+    .hint-btn {
+      display: inline-block; background: none;
+      border: 1.5px solid var(--azul); color: var(--azul);
+      border-radius: 20px; padding: .2rem .75rem; font-size: .78rem;
+      cursor: pointer; margin-top: .35rem; font-family: inherit;
+      transition: background .15s;
+    }
+    .hint-btn:hover { background: var(--azul-light); }
+    .hint-box {
+      display: none; background: var(--azul-light); border-left: 3px solid var(--azul);
+      border-radius: 0 8px 8px 0; padding: .6rem .85rem; font-size: .85rem;
+      margin-top: .35rem; font-style: italic;
+    }
+    .hint-box strong { font-style: normal; display: block; font-size: .78rem; margin-bottom: .2rem; color: var(--azul-dark); }
+    .check-ok { color: #2e7d32; font-weight: 700; font-size: .82rem; margin-top: .3rem; display: none; }
+
+    /* ── PRINT ── */
+    @media print {
+      .footer-nav a { border: 1px solid #333; }
+      body { font-size: 11pt; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header>
+  <span class="emoji">🌎</span>
+  <h1>English Workshop — Modal Verbs</h1>
+  <h2>Mysteries &amp; Survival · Verbos Modales: Misterios y Supervivencia</h2>
+  <div class="header-badges">
+    <span class="badge">👦 Juan Esteban Herreño</span>
+    <span class="badge">🏫 CEDAP · Bogotá</span>
+    <span class="badge">📚 Grado 9°</span>
+    <span class="badge">👨‍🏫 Prof. Juan Barrero</span>
+    <span class="badge">📅 2026</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     MAIN
+══════════════════════════════════════════ -->
+<main>
+
+  <!-- NOTA PROFESOR -->
+  <div class="nota-profesor">
+    <strong>📝 Nota del profesor:</strong> Taller adaptado con <strong>flexibilidad</strong> para favorecer el proceso de aprendizaje.
+    <strong>Objetivo:</strong> participación, confianza y progreso gradual. ¡Tú puedes, Juan Esteban! 💪
+  </div>
+
+  <!-- ════════════════════════════════════════
+       GUÍA RÁPIDA – MODAL VERBS
+  ════════════════════════════════════════ -->
+  <div class="box">
+    <h3>📘 Guía rápida — Modal Verbs (Verbos Modales)</h3>
+    <p style="font-size:.9rem;margin-bottom:.8rem;">Los verbos modales expresan <strong>posibilidad</strong> o <strong>certeza</strong>. No cambian con la persona (he/she/it). Siempre van seguidos de un <strong>verbo base</strong>.</p>
+
+    <div class="modal-table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Modal</th>
+            <th>Uso en español</th>
+            <th>Certeza</th>
+            <th>Ejemplo en contexto</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="modal-tag tag-must">MUST</span></td>
+            <td>Certeza / obligación — <em>"estoy seguro"</em></td>
+            <td>~90%</td>
+            <td><em>"The backpack <strong>must</strong> belong to a student."</em></td>
+          </tr>
+          <tr>
+            <td><span class="modal-tag tag-might">MIGHT</span></td>
+            <td>Posibilidad baja — <em>"quizás"</em></td>
+            <td>~30–50%</td>
+            <td><em>"The map <strong>might</strong> show a hidden room."</em></td>
+          </tr>
+          <tr>
+            <td><span class="modal-tag tag-could">COULD</span></td>
+            <td>Posibilidad general — <em>"podría"</em></td>
+            <td>~50%</td>
+            <td><em>"The message <strong>could</strong> be a clue."</em></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <ul class="diff-list" style="margin-top:.9rem;">
+      <li>
+        <span class="modal-tag tag-must" style="font-size:.8rem;">MUST</span>
+        <span><span class="diff-pct">90% seguro</span> → Casi certeza. <em>"It <strong>must</strong> be true."</em> — Debe ser verdad.</span>
+      </li>
+      <li>
+        <span class="modal-tag tag-might" style="font-size:.8rem;">MIGHT</span>
+        <span><span class="diff-pct">30–50%</span> → Tal vez, quizás. <em>"It <strong>might</strong> rain."</em> — Quizás llueva.</span>
+      </li>
+      <li>
+        <span class="modal-tag tag-could" style="font-size:.8rem;">COULD</span>
+        <span><span class="diff-pct">~50%</span> → Es posible. <em>"She <strong>could</strong> be right."</em> — Ella podría tener razón.</span>
+      </li>
+    </ul>
+
+    <div class="formula" style="margin-top:.9rem;">
+      <div class="f-title">📐 Fórmula / Structure</div>
+      <code>Subject + modal verb + base verb + complement</code>
+      <p style="margin-top:.4rem;font-size:.88rem;">
+        Ejemplo: <em>"The student <strong>(subject)</strong> + might <strong>(modal)</strong> + know <strong>(base verb)</strong> + the truth <strong>(complement)</strong>."</em>
+      </p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       VOCABULARIO
+  ════════════════════════════════════════ -->
+  <div class="box box-green">
+    <h3>📗 Vocabulary — Palabras clave del taller</h3>
+    <div class="vocab-grid">
+      <div class="vocab-card">
+        <div class="vocab-word">Evidence</div>
+        <div class="vocab-pron">/ˈevɪdəns/</div>
+        <div class="vocab-es">🇪🇸 Evidencia, prueba</div>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-word">Survival</div>
+        <div class="vocab-pron">/sərˈvaɪvəl/</div>
+        <div class="vocab-es">🇪🇸 Supervivencia</div>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-word">Dangerous</div>
+        <div class="vocab-pron">/ˈdeɪndʒərəs/</div>
+        <div class="vocab-es">🇪🇸 Peligroso</div>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-word">Suspicious</div>
+        <div class="vocab-pron">/səˈspɪʃəs/</div>
+        <div class="vocab-es">🇪🇸 Sospechoso</div>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-word">Flashlight</div>
+        <div class="vocab-pron">/ˈflæʃlaɪt/</div>
+        <div class="vocab-es">🇪🇸 Linterna</div>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-word">Mystery</div>
+        <div class="vocab-pron">/ˈmɪstəri/</div>
+        <div class="vocab-es">🇪🇸 Misterio</div>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-word">Clue</div>
+        <div class="vocab-pron">/kluː/</div>
+        <div class="vocab-es">🇪🇸 Pista</div>
+      </div>
+      <div class="vocab-card">
+        <div class="vocab-word">Backpack</div>
+        <div class="vocab-pron">/ˈbækpæk/</div>
+        <div class="vocab-es">🇪🇸 Mochila</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       PAGE 1
+  ════════════════════════════════════════ -->
+  <div class="page-title">
+    <span class="pg-num">1</span>
+    PAGE 1 — Simple Vocabulary &amp; Reading &nbsp;·&nbsp; <span style="font-weight:400;font-size:.95rem;">Theme: Mysteries and Survival</span>
+  </div>
+
+  <!-- ACTIVITY 1 -->
+  <div class="box">
+    <div class="activity-label">Activity 1 – Match the words / Une las palabras</div>
+    <p style="font-size:.88rem;margin-bottom:.7rem;color:#546e7a;">
+      Une cada palabra de la columna izquierda con su definición en inglés. Las respuestas correctas ya están marcadas en <span style="color:var(--verde);font-weight:700;">verde</span>.
+    </p>
+    <ul class="match-list">
+      <li>
+        <strong>1. Evidence</strong>
+        <span class="match-arrow">→</span>
+        <span>c.</span>
+        <span class="match-answer">Proof</span>
+        <span style="color:#78909c;font-size:.83rem;margin-left:.3rem;">(Prueba)</span>
+      </li>
+      <li>
+        <strong>2. Survival</strong>
+        <span class="match-arrow">→</span>
+        <span>a.</span>
+        <span class="match-answer">To stay alive</span>
+        <span style="color:#78909c;font-size:.83rem;margin-left:.3rem;">(Mantenerse con vida)</span>
+      </li>
+      <li>
+        <strong>3. Dangerous</strong>
+        <span class="match-arrow">→</span>
+        <span>d.</span>
+        <span class="match-answer">Unsafe</span>
+        <span style="color:#78909c;font-size:.83rem;margin-left:.3rem;">(Peligroso / No seguro)</span>
+      </li>
+      <li>
+        <strong>4. Suspicious</strong>
+        <span class="match-arrow">→</span>
+        <span>b.</span>
+        <span class="match-answer">Strange or suspicious</span>
+        <span style="color:#78909c;font-size:.83rem;margin-left:.3rem;">(Extraño / Sospechoso)</span>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ACTIVITY 2 -->
+  <div class="box">
+    <div class="activity-label">Activity 2 – Read and answer / Lee y responde</div>
+
+    <blockquote class="story">
+      A student found a strange backpack in the school library. Inside there was a map, a flashlight, and a secret message.
+      <br><br>
+      <span style="font-size:.85rem;font-style:normal;color:#3949ab;">
+        🇪🇸 <em>Un estudiante encontró una mochila extraña en la biblioteca del colegio. Adentro había un mapa, una linterna y un mensaje secreto.</em>
+      </span>
+    </blockquote>
+
+    <ul class="question-list" style="margin-top:.7rem;">
+      <li>
+        <span class="q-num">1.</span>
+        <strong>Where was the backpack found?</strong>
+        <em style="font-size:.82rem;color:#78909c;"> — ¿Dónde fue encontrada la mochila?</em>
+        <input class="write-line" type="text" placeholder='In the school library / En la biblioteca del colegio'>
+        <button class="hint-btn" onclick="toggleHintIng('hi-a2-1')">💡 Ver respuesta de ejemplo</button>
+        <div class="hint-box" id="hi-a2-1"><strong>💡 Respuesta:</strong> The backpack was found in the school library. (La mochila fue encontrada en la biblioteca del colegio.)</div>
+      </li>
+      <li>
+        <span class="q-num">2.</span>
+        <strong>What objects were inside the backpack?</strong>
+        <em style="font-size:.82rem;color:#78909c;"> — ¿Qué objetos había dentro de la mochila?</em>
+        <input class="write-line" type="text" placeholder='A map, a flashlight, and a secret message...'>
+        <button class="hint-btn" onclick="toggleHintIng('hi-a2-2')">💡 Ver respuesta de ejemplo</button>
+        <div class="hint-box" id="hi-a2-2"><strong>💡 Respuesta:</strong> Inside the backpack there was a map, a flashlight, and a secret message. (Adentro había un mapa, una linterna y un mensaje secreto.)</div>
+      </li>
+      <li>
+        <span class="q-num">3.</span>
+        <strong>Do you think the backpack is dangerous? Why?</strong>
+        <em style="font-size:.82rem;color:#78909c;"> — ¿Crees que la mochila es peligrosa? ¿Por qué? Escribe lo más que puedas.</em>
+        <textarea class="resp-textarea" placeholder='Write your opinion / Escribe tu opinión usando might/could/must...'></textarea>
+        <button class="hint-btn" onclick="toggleHintIng('hi-a2-3')">💡 Ver ejemplo de respuesta</button>
+        <div class="hint-box" id="hi-a2-3"><strong>💡 Ejemplo:</strong> I think the backpack could be dangerous because it might belong to someone suspicious. The secret message must be very important. Someone could be looking for it right now. (Creo que la mochila podría ser peligrosa porque quizás le pertenece a alguien sospechoso. El mensaje secreto debe ser muy importante. Alguien podría estar buscándola ahora mismo.)</div>
+      </li>
+    </ul>
+
+    <!-- Ejemplos modal verbs sobre la historia -->
+    <div style="margin-top:1rem;">
+      <p style="font-size:.85rem;font-weight:700;color:var(--azul-dark);margin-bottom:.5rem;">💡 Ejemplos con Modal Verbs sobre la historia (para inspirarte):</p>
+      <ul class="examples-list">
+        <li>
+          <span class="ex-tag tag-might" style="font-size:.7rem;">MIGHT</span>
+          <span><em>"The backpack <strong>might</strong> belong to a spy."</em> — La mochila quizás pertenece a un espía.</span>
+        </li>
+        <li>
+          <span class="ex-tag tag-could" style="font-size:.7rem;">COULD</span>
+          <span><em>"The map <strong>could</strong> show a secret exit."</em> — El mapa podría mostrar una salida secreta.</span>
+        </li>
+        <li>
+          <span class="ex-tag tag-must" style="font-size:.7rem;">MUST</span>
+          <span><em>"The message <strong>must</strong> be very important."</em> — El mensaje debe ser muy importante.</span>
+        </li>
+        <li>
+          <span class="ex-tag tag-could" style="font-size:.7rem;">COULD</span>
+          <span><em>"The student <strong>could</strong> be in danger."</em> — El estudiante podría estar en peligro.</span>
+        </li>
+        <li>
+          <span class="ex-tag tag-might" style="font-size:.7rem;">MIGHT</span>
+          <span><em>"There <strong>might</strong> be more clues inside the library."</em> — Podría haber más pistas dentro de la biblioteca.</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ACTIVITY 3 -->
+  <div class="box">
+    <div class="activity-label">Activity 3 – Write your own sentences / Escribe tus propias oraciones</div>
+    <p style="font-size:.88rem;margin-bottom:.7rem;">
+      Escribe <strong>3 oraciones propias</strong> usando <span class="modal-tag tag-might" style="font-size:.78rem;">might</span> / <span class="modal-tag tag-could" style="font-size:.78rem;">could</span> / <span class="modal-tag tag-must" style="font-size:.78rem;">must</span>. Puedes usar el tema de la historia u otro tema que prefieras.
+    </p>
+
+    <div class="example-sentence">
+      <strong>Example / Ejemplo:</strong> <em>"The student <strong>might</strong> know the truth."</em>
+      → El estudiante quizás sabe la verdad.
+    </div>
+
+    <div class="write-box">
+      <div class="write-label">Sentence 1 — usa MIGHT (posibilidad baja ~30-50%)</div>
+      <input class="write-line" type="text" placeholder='e.g. "The backpack might..."'>
+    </div>
+    <div class="write-box">
+      <div class="write-label">Sentence 2 — usa COULD (posibilidad general ~50%)</div>
+      <input class="write-line" type="text" placeholder='e.g. "The clue could..."'>
+    </div>
+    <div class="write-box">
+      <div class="write-label">Sentence 3 — usa MUST (certeza ~90%)</div>
+      <input class="write-line" type="text" placeholder='e.g. "The mystery must..."'>
+    </div>
+
+    <div class="formula">
+      <div class="f-title">📐 Recuerda la fórmula</div>
+      <code>Subject + might/could/must + base verb + complement</code>
+      <br>
+      <span style="font-size:.85rem;color:#e65100;">
+        ✔ "The student" + "might" + "know" + "the truth."
+      </span>
+    </div>
+
+    <div style="margin-top:.8rem; padding: .6rem .9rem; background: var(--azul-light); border-radius: 8px; font-size: .85rem; border-left: 3px solid var(--azul);">
+      <strong style="color:var(--azul-dark);">💡 Ideas de oraciones:</strong>
+      <ul style="margin-top:.4rem; padding-left: 1.2rem; display:flex; flex-direction:column; gap:.3rem;">
+        <li><span class="modal-tag tag-might" style="font-size:.72rem;">MIGHT</span> <em>"My friend might come to the party tomorrow."</em> — Mi amigo quizás venga a la fiesta mañana.</li>
+        <li><span class="modal-tag tag-could" style="font-size:.72rem;">COULD</span> <em>"We could go to the park this weekend."</em> — Podríamos ir al parque este fin de semana.</li>
+        <li><span class="modal-tag tag-must" style="font-size:.72rem;">MUST</span> <em>"That must be the new teacher."</em> — Ese debe ser el nuevo profesor.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════
+       PAGE 2
+  ════════════════════════════════════════ -->
+  <div class="page-title">
+    <span class="pg-num">2</span>
+    PAGE 2 — Survival Challenge &nbsp;·&nbsp; <span style="font-weight:400;font-size:.95rem;">Theme: Survive the Apocalypse 🌍</span>
+  </div>
+
+  <div class="box box-orange">
+    <h3>🎯 The Challenge / El desafío</h3>
+    <p style="font-size:.93rem;margin-bottom:.9rem;">
+      <em>Imagine there is a disaster in the world. You can only take <strong>3 items</strong> with you.</em>
+      <br>
+      <span style="font-size:.85rem;color:#78909c;">Imagina que hay un desastre en el mundo. Solo puedes llevar <strong>3 objetos</strong> contigo.</span>
+    </p>
+
+    <p style="font-size:.88rem;font-weight:700;margin-bottom:.5rem;">Available items / Objetos disponibles:</p>
+    <div class="survival-items">
+      <span class="item-badge">💧 Water</span>
+      <span class="item-badge">🪢 Rope</span>
+      <span class="item-badge">📱 Phone</span>
+      <span class="item-badge">💊 Medicine</span>
+      <span class="item-badge">🔦 Flashlight</span>
+      <span class="item-badge">🔥 Lighter</span>
+      <span class="item-badge">⛺ Tent</span>
+    </div>
+
+    <hr class="sec">
+
+    <!-- Guía de justificación -->
+    <p style="font-size:.88rem;font-weight:700;color:var(--naranja);margin-bottom:.5rem;">💡 Cómo justificar tus elecciones con Modal Verbs:</p>
+    <div class="survival-guide">
+      <div class="sg-item">
+        <span class="sg-icon">💧</span>
+        <span>
+          <em>"I choose <strong>water</strong> because we <span class="modal-tag tag-must" style="font-size:.75rem;">must</span> drink to survive."</em>
+          <span style="font-size:.82rem;color:#78909c;"> — Elijo agua porque <strong>debemos</strong> beber para sobrevivir.</span>
+        </span>
+      </div>
+      <div class="sg-item">
+        <span class="sg-icon">💊</span>
+        <span>
+          <em>"I choose <strong>medicine</strong> because we <span class="modal-tag tag-might" style="font-size:.75rem;">might</span> get injured."</em>
+          <span style="font-size:.82rem;color:#78909c;"> — Elijo medicina porque <strong>quizás</strong> nos lesionemos.</span>
+        </span>
+      </div>
+      <div class="sg-item">
+        <span class="sg-icon">🔦</span>
+        <span>
+          <em>"I choose a <strong>flashlight</strong> because it <span class="modal-tag tag-could" style="font-size:.75rem;">could</span> be dark at night."</em>
+          <span style="font-size:.82rem;color:#78909c;"> — Elijo una linterna porque <strong>podría</strong> estar oscuro de noche.</span>
+        </span>
+      </div>
+    </div>
+
+    <hr class="sec">
+
+    <!-- Respuesta del estudiante -->
+    <p style="font-size:.9rem;font-weight:700;color:var(--azul-dark);margin-bottom:.7rem;">✏️ Your answer / Tu respuesta:</p>
+    <div class="survival-write">
+      <div class="sw-item">
+        <div class="sw-label">Item 1 — ¿Qué objeto eliges? / What do you choose?</div>
+        <input class="write-line" type="text" placeholder="Object: ___________" style="margin-bottom:.35rem;">
+        <input class="write-line" type="text" placeholder='Justification: "I choose ___ because we might/could/must ..."'>
+        <button class="hint-btn" onclick="toggleHintIng('hi-surv1')">💡 Ver ejemplo</button>
+        <div class="hint-box" id="hi-surv1"><strong>💡 Ejemplo Item 1:</strong> Object: Water 💧 | Justification: "I choose water because we <strong>must</strong> drink to survive. Without water, we could die in just 3 days."</div>
+      </div>
+      <div class="sw-item">
+        <div class="sw-label">Item 2 — ¿Qué objeto eliges? / What do you choose?</div>
+        <input class="write-line" type="text" placeholder="Object: ___________" style="margin-bottom:.35rem;">
+        <input class="write-line" type="text" placeholder='Justification: "I choose ___ because we might/could/must ..."'>
+        <button class="hint-btn" onclick="toggleHintIng('hi-surv2')">💡 Ver ejemplo</button>
+        <div class="hint-box" id="hi-surv2"><strong>💡 Ejemplo Item 2:</strong> Object: Medicine 💊 | Justification: "I choose medicine because we <strong>might</strong> get injured or sick during the disaster. It could save our lives."</div>
+      </div>
+      <div class="sw-item">
+        <div class="sw-label">Item 3 — ¿Qué objeto eliges? / What do you choose?</div>
+        <input class="write-line" type="text" placeholder="Object: ___________" style="margin-bottom:.35rem;">
+        <input class="write-line" type="text" placeholder='Justification: "I choose ___ because we might/could/must ..."'>
+        <button class="hint-btn" onclick="toggleHintIng('hi-surv3')">💡 Ver ejemplo</button>
+        <div class="hint-box" id="hi-surv3"><strong>💡 Ejemplo Item 3:</strong> Object: Flashlight 🔦 | Justification: "I choose a flashlight because it <strong>could</strong> be very dark at night. We <strong>might</strong> need to find our way in the dark."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RESUMEN FINAL -->
+  <div class="box box-gray" style="margin-top:1.5rem;">
+    <h3 style="color:#424242;">🔑 Key Summary — Resumen clave</h3>
+    <ul style="font-size:.9rem;padding-left:1.2rem;display:flex;flex-direction:column;gap:.35rem;">
+      <li><span class="modal-tag tag-must">MUST</span> → Casi seguro (90%) — <em>"It must be..."</em></li>
+      <li><span class="modal-tag tag-might">MIGHT</span> → Quizás (30–50%) — <em>"It might be..."</em></li>
+      <li><span class="modal-tag tag-could">COULD</span> → Podría (50%) — <em>"It could be..."</em></li>
+      <li style="margin-top:.2rem;">Fórmula: <strong>Subject + modal + base verb + complement</strong></li>
+      <li>Los modales NO llevan <strong>-s</strong>, <strong>-ing</strong> ni <strong>-ed</strong> — son invariables.</li>
+      <li>El verbo que sigue al modal siempre va en <strong>forma base</strong> (infinitivo sin "to").</li>
+    </ul>
+  </div>
+
+</main>
+
+<!-- ══════════════════════════════════════════
+     FOOTER NAV
+══════════════════════════════════════════ -->
+<footer>
+  <nav class="footer-nav">
+    <a href="etica.html">← Ética</a>
+    <a href="index.html">🏠 Inicio</a>
+    <a href="lectura.html">Lectura →</a>
+  </nav>
+  <p class="footer-info">
+    Juan Esteban Herreño · Grado 9° · CEDAP Bogotá · 2026 · Prof. Juan Barrero
+  </p>
+</footer>
+
+<script>
+  function toggleHintIng(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const btn = el.previousElementSibling;
+    if (el.style.display === 'block') {
+      el.style.display = 'none';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '💡 Ver ejemplo de respuesta';
+    } else {
+      el.style.display = 'block';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '🙈 Ocultar ejemplo';
+    }
+  }
+</script>
+
+</body>
+</html>
