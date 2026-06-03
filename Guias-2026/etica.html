@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ética – Axiología y Toma de Decisiones</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #fdf6f9;
+      color: #2d2d2d;
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, #c2185b 0%, #ad1457 60%, #880e4f 100%);
+      color: #fff;
+      text-align: center;
+      padding: 2.5rem 1.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,.05) 18px,
+        rgba(255,255,255,.05) 36px
+      );
+    }
+    .header-emoji { font-size: 3rem; display: block; margin-bottom: .4rem; position: relative; }
+    header h1 { font-size: 1.9rem; font-weight: 800; letter-spacing: .5px; position: relative; }
+    header h2 { font-size: 1.1rem; font-weight: 400; opacity: .9; margin-top: .3rem; position: relative; }
+    .header-meta {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: .6rem 1.8rem;
+      margin-top: 1.1rem;
+      font-size: .88rem;
+      opacity: .85;
+      position: relative;
+    }
+    .header-meta span::before { margin-right: .3rem; }
+
+    /* ── MAIN ── */
+    main { max-width: 860px; margin: 0 auto; padding: 2rem 1.2rem 3rem; }
+
+    /* ── INFO BOX ── */
+    .info-box {
+      background: #fce4ec;
+      border: 2px solid #c2185b;
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.8rem;
+    }
+    .info-box h3 {
+      color: #c2185b;
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .6px;
+      margin-bottom: .5rem;
+    }
+    .info-box p { font-size: .95rem; }
+
+    /* ── OBJETIVO ── */
+    .objetivo {
+      background: linear-gradient(135deg, #fce4ec, #f8bbd0);
+      border-left: 5px solid #c2185b;
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.4rem;
+      margin-bottom: 2rem;
+      font-size: .97rem;
+    }
+    .objetivo strong { color: #880e4f; }
+
+    /* ── SECTION TITLES ── */
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #c2185b;
+      margin: 2.2rem 0 1rem;
+      padding-bottom: .4rem;
+      border-bottom: 2px solid #f48fb1;
+    }
+
+    /* ── QUESTION CARD ── */
+    .question-card {
+      background: #fff;
+      border: 1.5px solid #f48fb1;
+      border-radius: 12px;
+      padding: 1.3rem 1.5rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 2px 8px rgba(194,24,91,.07);
+    }
+    .question-card .q-label {
+      display: inline-block;
+      background: #c2185b;
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .5px;
+      padding: .2rem .7rem;
+      border-radius: 20px;
+      margin-bottom: .7rem;
+    }
+    .question-card h4 {
+      font-size: 1rem;
+      color: #880e4f;
+      font-weight: 700;
+      margin-bottom: .5rem;
+    }
+    .question-card p { font-size: .94rem; margin-bottom: .8rem; }
+    .answer-area {
+      width: 100%;
+      min-height: 90px;
+      border: 1.5px dashed #f06292;
+      border-radius: 8px;
+      padding: .7rem;
+      font-size: .93rem;
+      font-family: inherit;
+      background: #fff9fb;
+      resize: vertical;
+      color: #2d2d2d;
+    }
+    .answer-area:focus { outline: 2px solid #c2185b; }
+
+    /* ── EXPLAINER BOX ── */
+    .explainer {
+      background: #fce4ec;
+      border: 2px solid #c2185b;
+      border-radius: 12px;
+      padding: 1.3rem 1.5rem;
+      margin: 1.4rem 0;
+    }
+    .explainer h4 {
+      color: #880e4f;
+      font-size: 1rem;
+      font-weight: 800;
+      margin-bottom: .7rem;
+    }
+    .explainer ul, .explainer ol { padding-left: 1.3rem; }
+    .explainer li { font-size: .93rem; margin-bottom: .35rem; }
+    .explainer p { font-size: .93rem; margin-bottom: .5rem; }
+
+    /* ── STEPS LIST ── */
+    .steps-list { list-style: none; padding: 0; margin: .5rem 0; }
+    .steps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .8rem;
+      background: #fff;
+      border: 1px solid #f48fb1;
+      border-radius: 9px;
+      padding: .7rem 1rem;
+      margin-bottom: .5rem;
+      font-size: .93rem;
+    }
+    .steps-list li .step-num {
+      background: #c2185b;
+      color: #fff;
+      font-weight: 800;
+      font-size: .85rem;
+      min-width: 1.7rem;
+      height: 1.7rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: .05rem;
+    }
+
+    /* ── EXAMPLES TABLE ── */
+    .examples-grid { display: grid; gap: .8rem; margin: .5rem 0; }
+    .example-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .8rem;
+    }
+    @media (max-width: 540px) { .example-row { grid-template-columns: 1fr; } }
+    .example-cell {
+      background: #fff;
+      border: 1.5px solid #f48fb1;
+      border-radius: 9px;
+      padding: .8rem 1rem;
+      font-size: .88rem;
+    }
+    .example-cell .cell-label {
+      font-weight: 700;
+      color: #c2185b;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      margin-bottom: .3rem;
+    }
+
+    /* ── REDES SOCIALES GRID ── */
+    .redes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .8rem;
+      margin: .5rem 0;
+    }
+    @media (max-width: 540px) { .redes-grid { grid-template-columns: 1fr; } }
+    .redes-card {
+      border-radius: 10px;
+      padding: .9rem 1rem;
+      font-size: .88rem;
+    }
+    .redes-card.positiva {
+      background: #e8f5e9;
+      border: 1.5px solid #66bb6a;
+    }
+    .redes-card.negativa {
+      background: #fce4ec;
+      border: 1.5px solid #c2185b;
+    }
+    .redes-card .card-label {
+      font-weight: 800;
+      font-size: .82rem;
+      text-transform: uppercase;
+      letter-spacing: .4px;
+      margin-bottom: .5rem;
+    }
+    .redes-card.positiva .card-label { color: #2e7d32; }
+    .redes-card.negativa .card-label { color: #880e4f; }
+    .redes-card ul { padding-left: 1.1rem; }
+    .redes-card li { margin-bottom: .25rem; }
+
+    /* ── EMPATIA TIPOS ── */
+    .empatia-tipos {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .8rem;
+      margin: .5rem 0;
+    }
+    @media (max-width: 600px) { .empatia-tipos { grid-template-columns: 1fr; } }
+    .tipo-card {
+      background: #fff;
+      border: 2px solid #c2185b;
+      border-radius: 10px;
+      padding: .9rem 1rem;
+      text-align: center;
+      font-size: .88rem;
+    }
+    .tipo-card .tipo-emoji { font-size: 1.6rem; display: block; margin-bottom: .4rem; }
+    .tipo-card .tipo-name { font-weight: 800; color: #c2185b; margin-bottom: .3rem; font-size: .9rem; }
+
+    /* ── ESCENARIOS GRID ── */
+    .escenarios-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+      margin-top: .6rem;
+    }
+    @media (max-width: 560px) { .escenarios-grid { grid-template-columns: 1fr; } }
+    .escenario-card {
+      background: #fff;
+      border: 2px solid #f48fb1;
+      border-radius: 12px;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .escenario-card .esc-header {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 700;
+      color: #880e4f;
+      font-size: .92rem;
+    }
+    .escenario-card .esc-emoji { font-size: 1.5rem; }
+    .escenario-card textarea {
+      width: 100%;
+      min-height: 75px;
+      border: 1.5px dashed #f06292;
+      border-radius: 8px;
+      padding: .6rem;
+      font-size: .88rem;
+      font-family: inherit;
+      background: #fff9fb;
+      resize: vertical;
+      color: #2d2d2d;
+    }
+    .escenario-card textarea:focus { outline: 2px solid #c2185b; }
+
+    /* ── CONFLICTOS STEPS ── */
+    .conflicto-steps { list-style: none; padding: 0; margin: .5rem 0; }
+    .conflicto-steps li {
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+      padding: .55rem .9rem;
+      border-left: 4px solid #c2185b;
+      background: #fff;
+      margin-bottom: .45rem;
+      border-radius: 0 8px 8px 0;
+      font-size: .92rem;
+    }
+    .conflicto-steps li .cs-emoji { font-size: 1.1rem; flex-shrink: 0; }
+
+    /* ── VERDADERO / FALSO ── */
+    .vf-item {
+      background: #fff;
+      border: 1.5px solid #f48fb1;
+      border-radius: 10px;
+      padding: 1rem 1.2rem;
+      margin-bottom: .8rem;
+      display: flex;
+      flex-direction: column;
+      gap: .7rem;
+    }
+    .vf-statement { font-size: .95rem; font-weight: 500; }
+    .vf-options { display: flex; gap: .8rem; flex-wrap: wrap; }
+    .vf-option {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .9rem;
+      cursor: pointer;
+    }
+    .vf-box {
+      width: 1.5rem;
+      height: 1.5rem;
+      border: 2px solid #c2185b;
+      border-radius: 5px;
+      background: #fce4ec;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .95rem;
+      flex-shrink: 0;
+    }
+
+    /* ── QUOTE BOX ── */
+    .quote-box {
+      border-left: 5px solid #c2185b;
+      background: #fce4ec;
+      border-radius: 0 12px 12px 0;
+      padding: 1rem 1.4rem;
+      margin: 1rem 0;
+      font-style: italic;
+      font-size: 1rem;
+      color: #880e4f;
+    }
+    .quote-box cite {
+      display: block;
+      font-style: normal;
+      font-size: .82rem;
+      color: #c2185b;
+      margin-top: .4rem;
+      font-weight: 600;
+    }
+
+    /* ── BADGE PILL ── */
+    .pill {
+      display: inline-block;
+      background: #c2185b;
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 700;
+      padding: .2rem .8rem;
+      border-radius: 20px;
+      margin-bottom: .6rem;
+    }
+
+    /* ── INTERACTIVIDAD ── */
+    .hint-btn {
+      display: inline-block; background: none;
+      border: 1.5px solid #c2185b; color: #c2185b;
+      border-radius: 20px; padding: .22rem .8rem; font-size: .78rem;
+      cursor: pointer; margin-top: .4rem; font-family: inherit;
+      transition: background .15s;
+    }
+    .hint-btn:hover { background: #fce4ec; }
+    .hint-box {
+      display: none; background: #fce4ec; border-left: 3px solid #c2185b;
+      border-radius: 0 8px 8px 0; padding: .65rem .9rem; font-size: .85rem;
+      margin-top: .4rem; font-style: italic;
+    }
+    .hint-box strong { font-style: normal; display: block; font-size: .8rem; margin-bottom: .25rem; color: #880e4f; }
+    /* V/F interactivo */
+    .vf-box-i { display: flex; gap: .8rem; flex-wrap: wrap; align-items: center; }
+    .vf-radio-btn {
+      display: flex; align-items: center; gap: .5rem;
+      cursor: pointer; font-size: .9rem; user-select: none;
+      padding: .3rem .7rem; border-radius: 8px;
+      border: 1.5px solid #f48fb1; background: #fff9fb;
+      transition: all .15s;
+    }
+    .vf-radio-btn:hover { background: #fce4ec; }
+    .vf-radio-btn .vf-indicator {
+      width: 1.5rem; height: 1.5rem; border: 2px solid #c2185b;
+      border-radius: 5px; background: #fce4ec; display: flex;
+      align-items: center; justify-content: center; font-size: .95rem;
+      flex-shrink: 0; transition: all .15s;
+    }
+    .vf-radio-btn.vf-correct { background: #e8f5e9 !important; border-color: #2e7d32 !important; }
+    .vf-radio-btn.vf-correct .vf-indicator { background: #2e7d32 !important; border-color: #2e7d32 !important; color: #fff; }
+    .vf-radio-btn.vf-incorrect { background: #ffebee !important; border-color: #c62828 !important; }
+    .vf-radio-btn.vf-incorrect .vf-indicator { background: #c62828 !important; border-color: #c62828 !important; color: #fff; }
+    .vf-item-feedback {
+      display: none; font-size: .83rem; padding: .5rem .7rem; border-radius: 6px; margin-top: .4rem;
+    }
+    .vf-item-feedback.fb-ok { background: #e8f5e9; color: #1b5e20; border-left: 3px solid #2e7d32; }
+    .vf-item-feedback.fb-no { background: #ffebee; color: #c62828; border-left: 3px solid #c62828; }
+
+    /* ── FOOTER NAV ── */
+    footer {
+      background: #880e4f;
+      color: #fff;
+      text-align: center;
+      padding: 1.2rem 1rem;
+    }
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .footer-nav a {
+      color: #fff;
+      text-decoration: none;
+      font-size: .95rem;
+      font-weight: 600;
+      padding: .4rem .9rem;
+      border: 2px solid rgba(255,255,255,.5);
+      border-radius: 8px;
+      transition: background .2s;
+    }
+    .footer-nav a:hover { background: rgba(255,255,255,.15); }
+    .footer-nav a.home {
+      background: rgba(255,255,255,.2);
+      border-color: #fff;
+    }
+    footer p { font-size: .8rem; opacity: .7; margin-top: .8rem; }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════ HEADER ══════════════════════════════════════════ -->
+<header>
+  <span class="header-emoji">🤝</span>
+  <h1>Ética &amp; Valores</h1>
+  <h2>Axiología y Toma de Decisiones</h2>
+  <div class="header-meta">
+    <span>👤 Juan Esteban Herreño</span>
+    <span>🏫 Colegio CEDAP – Bogotá</span>
+    <span>📚 Grado 9°</span>
+    <span>👨‍🏫 Docente: Iván Felipe Ramírez</span>
+    <span>📅 2026</span>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════ MAIN ═══════════════════════════════════════════ -->
+<main>
+
+  <!-- OBJETIVO -->
+  <div class="objetivo">
+    <strong>Objetivo:</strong> Reconocer los elementos de la axiología y los efectos de la toma de decisiones en la vida.
+  </div>
+
+  <!-- ────────────────────── BLOQUE TEÓRICO 1: AXIOLOGÍA ────────────────────── -->
+  <div class="section-title">📖 ¿Qué es la Axiología?</div>
+
+  <div class="explainer">
+    <h4>La ciencia de los valores</h4>
+    <p>La <strong>axiología</strong> es la rama de la filosofía que estudia los valores: ¿qué es valioso?, ¿qué debemos preferir?, ¿cómo guiamos nuestras decisiones?</p>
+    <p>Los <strong>valores éticos fundamentales</strong> son:</p>
+    <ul>
+      <li>🤍 <strong>Honestidad</strong> – decir y vivir la verdad</li>
+      <li>⚖️ <strong>Responsabilidad</strong> – asumir las consecuencias de nuestras acciones</li>
+      <li>🙏 <strong>Respeto</strong> – reconocer la dignidad del otro</li>
+      <li>⚡ <strong>Justicia</strong> – dar a cada quien lo que le corresponde</li>
+      <li>🤝 <strong>Empatía</strong> – sentir y comprender al otro</li>
+      <li>🌱 <strong>Solidaridad</strong> – apoyar a quien lo necesita</li>
+    </ul>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 1 ────────────────────── -->
+  <div class="section-title">❓ Preguntas del Taller</div>
+
+  <div class="question-card">
+    <span class="q-label">Pregunta 1</span>
+    <h4>La toma de decisiones responsables</h4>
+    <p>Explica qué significa actuar con responsabilidad en la vida cotidiana y menciona <strong>dos ejemplos</strong> donde una mala decisión pueda afectar a otras personas.</p>
+    <textarea class="answer-area" placeholder="Escribe tu respuesta aquí…"></textarea>
+      <button class="hint-btn" onclick="toggleHintEtica('he1')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="he1"><strong>💡 Ejemplo:</strong> Actuar con responsabilidad significa asumir las consecuencias de nuestras decisiones y pensar en cómo afectan a los demás. Dos ejemplos de malas decisiones: 1) Manejar un vehículo bajo efectos del alcohol — puede causar accidentes y herir a inocentes. 2) No cumplir un compromiso de grupo en el colegio — afecta la calificación de todos los compañeros.</div>
+  </div>
+
+  <!-- BLOQUE TEÓRICO: TOMA DE DECISIONES -->
+  <div class="explainer">
+    <h4>🔍 El proceso de toma de decisiones</h4>
+    <ul class="steps-list">
+      <li><span class="step-num">1</span> <span>🔎 <strong>Identificar</strong> el problema o situación</span></li>
+      <li><span class="step-num">2</span> <span>📋 <strong>Reunir</strong> información relevante</span></li>
+      <li><span class="step-num">3</span> <span>💡 <strong>Evaluar</strong> las alternativas posibles</span></li>
+      <li><span class="step-num">4</span> <span>🤔 <strong>Considerar</strong> las consecuencias para uno mismo y los demás</span></li>
+      <li><span class="step-num">5</span> <span>✅ <strong>Elegir y actuar</strong> con convicción</span></li>
+      <li><span class="step-num">6</span> <span>🔄 <strong>Reflexionar</strong> sobre el resultado</span></li>
+    </ul>
+  </div>
+
+  <div class="explainer">
+    <h4>⚡ Ejemplos de decisiones y consecuencias</h4>
+    <div class="examples-grid">
+      <div class="example-row">
+        <div class="example-cell">
+          <div class="cell-label">Decisión</div>
+          📝 Copiar en un examen
+        </div>
+        <div class="example-cell">
+          <div class="cell-label">Consecuencia</div>
+          Deshonestidad, pérdida de confianza del profesor, no aprender realmente.
+        </div>
+      </div>
+      <div class="example-row">
+        <div class="example-cell">
+          <div class="cell-label">Decisión</div>
+          🦸 Defender a un compañero maltratado
+        </div>
+        <div class="example-cell">
+          <div class="cell-label">Consecuencia</div>
+          Se fortalece la convivencia, se actúa con valentía y empatía.
+        </div>
+      </div>
+      <div class="example-row">
+        <div class="example-cell">
+          <div class="cell-label">Decisión</div>
+          📱 Publicar algo hiriente en redes
+        </div>
+        <div class="example-cell">
+          <div class="cell-label">Consecuencia</div>
+          Daño emocional, posibles consecuencias legales (cyberbullying).
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 2 ────────────────────── -->
+  <div class="question-card">
+    <span class="q-label">Pregunta 2</span>
+    <h4>El respeto por la diferencia</h4>
+    <p>Describe por qué es importante respetar las opiniones, culturas y creencias de los demás dentro de una sociedad.</p>
+    <textarea class="answer-area" placeholder="Escribe tu respuesta aquí…"></textarea>
+      <button class="hint-btn" onclick="toggleHintEtica('he2')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="he2"><strong>💡 Ejemplo:</strong> El respeto por la diferencia es fundamental en una sociedad porque garantiza la convivencia pacífica. Cuando reconocemos la dignidad del otro —sin importar su religión, cultura o forma de pensar— construimos una comunidad más justa. Si todos pensáramos igual, la diversidad de ideas que enriquece a la humanidad desaparecería. El respeto es la base de la democracia.</div>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 3 ────────────────────── -->
+  <div class="question-card">
+    <span class="q-label">Pregunta 3</span>
+    <h4>La honestidad y la convivencia</h4>
+    <p>Redacta una reflexión sobre cómo la honestidad ayuda a fortalecer la confianza entre amigos, compañeros y familiares.</p>
+    <textarea class="answer-area" placeholder="Escribe tu reflexión aquí…" style="min-height:110px;"></textarea>
+      <button class="hint-btn" onclick="toggleHintEtica('he3')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="he3"><strong>💡 Ejemplo:</strong> La honestidad fortalece la confianza porque cuando alguien es transparente y dice la verdad, las personas a su alrededor saben que pueden contar con él. En la amistad, por ejemplo, saber que tu amigo siempre te dirá la verdad —incluso cuando duele— crea un vínculo mucho más sólido que uno basado en mentiras. La confianza, una vez rota por la deshonestidad, es muy difícil de reconstruir.</div>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 4 ────────────────────── -->
+  <div class="question-card">
+    <span class="q-label">Pregunta 4</span>
+    <h4>El uso ético de las redes sociales</h4>
+    <p>Analiza <strong>dos consecuencias positivas</strong> y <strong>dos negativas</strong> del uso de las redes sociales en los jóvenes.</p>
+
+    <div class="redes-grid">
+      <div class="redes-card positiva">
+        <div class="card-label">✅ Consecuencias Positivas</div>
+        <ul>
+          <li>Conexión con amigos y familia</li>
+          <li>Acceso a información educativa</li>
+          <li>Expresión creativa y artística</li>
+          <li>Solidaridad en causas sociales</li>
+        </ul>
+      </div>
+      <div class="redes-card negativa">
+        <div class="card-label">⚠️ Consecuencias Negativas</div>
+        <ul>
+          <li>Cyberbullying y acoso digital</li>
+          <li>Adicción al celular</li>
+          <li>Exposición a contenido nocivo</li>
+          <li>Baja autoestima por comparación</li>
+        </ul>
+      </div>
+    </div>
+
+    <textarea class="answer-area" placeholder="Escribe tu análisis personal aquí…" style="margin-top:.8rem;"></textarea>
+      <button class="hint-btn" onclick="toggleHintEtica('he4')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="he4"><strong>💡 Ejemplo:</strong> Dos consecuencias POSITIVAS: 1) Permiten mantener contacto con amigos y familiares lejanos. 2) Dan acceso a información educativa y cultural. Dos consecuencias NEGATIVAS: 1) El cyberbullying puede causar daño psicológico grave en adolescentes. 2) La adicción al celular reduce la atención y el tiempo de estudio, afectando el rendimiento escolar. Mi análisis: el uso responsable y con límites de tiempo es clave para aprovechar los beneficios y evitar los daños.</div>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 5 ────────────────────── -->
+  <div class="question-card">
+    <span class="q-label">Pregunta 5</span>
+    <h4>La empatía en la resolución de conflictos</h4>
+    <p>Explica cómo la empatía puede ayudar a solucionar problemas entre compañeros en el colegio y propone una solución pacífica para un conflicto escolar.</p>
+
+    <div class="explainer" style="margin-bottom:.8rem;">
+      <h4>🕊️ Pasos para resolver conflictos con empatía</h4>
+      <ul class="conflicto-steps">
+        <li><span class="cs-emoji">👂</span> <span>Escuchar sin interrumpir</span></li>
+        <li><span class="cs-emoji">💛</span> <span>Reconocer los sentimientos del otro</span></li>
+        <li><span class="cs-emoji">🗣️</span> <span>Expresar los propios sentimientos sin atacar ("yo siento que…" en vez de "tú me hiciste…")</span></li>
+        <li><span class="cs-emoji">🤝</span> <span>Buscar un acuerdo que beneficie a ambos</span></li>
+        <li><span class="cs-emoji">🙋</span> <span>Pedir ayuda a un adulto si es necesario</span></li>
+      </ul>
+    </div>
+
+    <textarea class="answer-area" placeholder="Escribe tu respuesta y solución propuesta aquí…" style="min-height:110px;"></textarea>
+      <button class="hint-btn" onclick="toggleHintEtica('he5')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="he5"><strong>💡 Ejemplo:</strong> La empatía ayuda a resolver conflictos porque nos permite entender el punto de vista del otro antes de reaccionar. Por ejemplo, si dos compañeros pelean por un malentendido: primero cada uno escucha al otro sin interrumpir, luego reconocen los sentimientos del otro ("entiendo que te sentiste excluido"), y juntos buscan un acuerdo. Solución pacífica propuesta: crear un espacio de diálogo mediado por el docente donde ambas partes expresen cómo se sintieron usando "yo siento…" en lugar de acusaciones.</div>
+  </div>
+
+  <!-- ════════════════ SECCIÓN: EMPATÍA (del PDF) ════════════════ -->
+  <div class="section-title">🤝 La Empatía como Valor</div>
+
+  <div class="quote-box">
+    "El valor de la empatía es la capacidad que tenemos para aceptar a otra persona de manera plena y total."
+    <cite>— Guía de Ética, CEDAP 2026</cite>
+  </div>
+
+  <div class="explainer">
+    <h4>Tipos de empatía</h4>
+    <div class="empatia-tipos">
+      <div class="tipo-card">
+        <span class="tipo-emoji">🧠</span>
+        <div class="tipo-name">Cognitiva</div>
+        Entender lo que piensa el otro.<br><em>"Me pongo en sus zapatos mentalmente."</em>
+        <br><br><small>Identificarse con los mismos problemas y temas de interés.</small>
+      </div>
+      <div class="tipo-card">
+        <span class="tipo-emoji">❤️</span>
+        <div class="tipo-name">Afectiva</div>
+        Sentir lo que siente el otro.<br><em>"Su dolor me duele a mí también."</em>
+        <br><br><small>Cautivar los sentimientos del otro por gustos, deportes, música, etc.</small>
+      </div>
+      <div class="tipo-card">
+        <span class="tipo-emoji">🌟</span>
+        <div class="tipo-name">Compasiva</div>
+        No solo entender y sentir, sino <strong>querer ayudar</strong> activamente.
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 6.1 ────────────────────── -->
+  <div class="question-card">
+    <span class="q-label">Pregunta 6.1</span>
+    <h4>Definición personal de empatía</h4>
+    <p>Con tus palabras, ¿cómo defines el valor de la empatía?</p>
+    <textarea class="answer-area" placeholder="Escribe tu definición aquí…"></textarea>
+      <button class="hint-btn" onclick="toggleHintEtica('he61')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="he61"><strong>💡 Ejemplo:</strong> Para mí, la empatía es la capacidad de ponernos en el lugar del otro y sentir lo que siente, para entenderlo mejor y actuar con compasión. Es como si pudiéramos "prestar" nuestra sensibilidad a la experiencia de otra persona para acompañarla sin juzgarla.</div>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 6.2 ────────────────────── -->
+  <div class="question-card">
+    <span class="q-label">Pregunta 6.2</span>
+    <h4>Empatía y amistad verdadera</h4>
+    <p>¿Crees que por medio de la empatía se puede construir una verdadera amistad?</p>
+    <textarea class="answer-area" placeholder="Escribe tu respuesta aquí…"></textarea>
+      <button class="hint-btn" onclick="toggleHintEtica('he62')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="he62"><strong>💡 Ejemplo:</strong> Sí, creo que la empatía es fundamental para construir una amistad verdadera. Cuando somos capaces de sentir lo que el otro siente, podemos acompañarlo en los momentos difíciles, celebrar sus logros genuinamente y respetar sus diferencias. Sin empatía, la amistad sería superficial y solo duraría mientras todo vaya bien.</div>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 6.3 ────────────────────── -->
+  <div class="question-card">
+    <span class="q-label">Pregunta 6.3</span>
+    <h4>Tu empatía afectiva</h4>
+    <p>¿Crees que posees esa empatía afectiva que facilita hacer amigos?</p>
+    <textarea class="answer-area" placeholder="Escribe tu reflexión personal aquí…"></textarea>
+      <button class="hint-btn" onclick="toggleHintEtica('he63')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="he63"><strong>💡 Ejemplo:</strong> Creo que sí tengo empatía afectiva porque cuando un amigo está triste, yo también me siento afectado y quiero ayudarle. Me alegra cuando otros están bien y me preocupo cuando veo que alguien sufre. Sin embargo, a veces me cuesta expresarlo con palabras, aunque sí lo siento.</div>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 7: ESCENARIOS ────────────────────── -->
+  <div class="question-card">
+    <span class="q-label">Pregunta 7</span>
+    <h4>Escenarios de empatía</h4>
+    <p>Describe tu empatía en los siguientes escenarios:</p>
+      <p style="font-size:.82rem;color:#c2185b;margin-top:.3rem;">💡 <em>Piensa: ¿cómo te gustaría que te trataran a ti en esa situación?</em></p>
+
+    <div class="escenarios-grid">
+      <div class="escenario-card">
+        <div class="esc-header">
+          <span class="esc-emoji">😢</span>
+          <span>Un amigo triste</span>
+        </div>
+        <textarea placeholder="¿Cómo actuarías?…"></textarea>
+      </div>
+      <div class="escenario-card">
+        <div class="esc-header">
+          <span class="esc-emoji">🚪</span>
+          <span>Un compañero excluido</span>
+        </div>
+        <textarea placeholder="¿Qué harías?…"></textarea>
+      </div>
+      <div class="escenario-card">
+        <div class="esc-header">
+          <span class="esc-emoji">💬</span>
+          <span>Alguien que piensa diferente</span>
+        </div>
+        <textarea placeholder="¿Cómo lo tratas?…"></textarea>
+      </div>
+      <div class="escenario-card">
+        <div class="esc-header">
+          <span class="esc-emoji">❌</span>
+          <span>Alguien que cometió un error</span>
+        </div>
+        <textarea placeholder="¿Cuál sería tu actitud?…"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 8 ────────────────────── -->
+  <div class="question-card">
+    <span class="q-label">Pregunta 8</span>
+    <h4>Cultivar la empatía</h4>
+    <p>¿De qué manera podemos cultivar el valor de la empatía en nuestras vidas?</p>
+    <textarea class="answer-area" placeholder="Escribe tus ideas aquí…"></textarea>
+      <button class="hint-btn" onclick="toggleHintEtica('he8')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="he8"><strong>💡 Ejemplo:</strong> Podemos cultivar la empatía de varias formas: 1) Practicar la escucha activa — prestar atención real a lo que otros dicen sin interrumpir. 2) Leer libros y ver películas que nos ponen en perspectivas de vida diferentes. 3) Hacer voluntariado y ayudar a personas en situaciones distintas a la nuestra. 4) Antes de juzgar a alguien, preguntarnos: ¿qué haría yo en su lugar con sus mismas circunstancias?</div>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 9 ────────────────────── -->
+  <div class="question-card">
+    <span class="q-label">Pregunta 9</span>
+    <h4>Reflexión sobre la empatía</h4>
+
+    <div class="quote-box" style="margin-bottom:.9rem;">
+      "La empatía supera las barreras que dividen a las personas."
+    </div>
+
+    <p>Analiza y escribe el mensaje que te deja esta reflexión.</p>
+    <textarea class="answer-area" placeholder="Escribe tu análisis y reflexión personal aquí…" style="min-height:110px;"></textarea>
+      <button class="hint-btn" onclick="toggleHintEtica('he9')">💡 Ver ejemplo de respuesta</button>
+      <div class="hint-box" id="he9"><strong>💡 Ejemplo:</strong> Esta frase me enseña que la empatía es un puente que une a personas que parecen muy diferentes. Las barreras que nos dividen —opiniones, culturas, apariencias— se derrumban cuando somos capaces de sentir y entender al otro. El mundo sería mucho más pacífico si cultiváramos la empatía en lugar del juicio y el rechazo.</div>
+  </div>
+
+  <!-- ────────────────────── PREGUNTA 10: VERDADERO/FALSO ────────────────────── -->
+  <div class="question-card">
+    <span class="q-label">Pregunta 10</span>
+    <h4>Verdadero o Falso</h4>
+    <p>Marca la opción correcta para cada afirmación:</p>
+
+    <div class="vf-item">
+      <div class="vf-statement">La empatía nos permite construir relaciones armónicas.</div>
+      <div class="vf-box-i">
+        <label class="vf-radio-btn" onclick="vfEtica(this, true, true, 'VERDADERO. La empatía nos permite entender y sentir lo que otros sienten, lo que crea vínculos de comprensión mutua. Esto reduce conflictos y fortalece relaciones de confianza y respeto.')">
+          <div class="vf-indicator">✓</div><span><strong>Verdadero</strong></span>
+        </label>
+        <label class="vf-radio-btn" onclick="vfEtica(this, false, true, 'VERDADERO. La empatía nos permite entender y sentir lo que otros sienten, lo que crea vínculos de comprensión mutua. Esto reduce conflictos y fortalece relaciones de confianza y respeto.')">
+          <div class="vf-indicator"></div><span>Falso</span>
+        </label>
+      </div>
+      <div class="vf-item-feedback"></div>
+    </div>
+
+    <div class="vf-item">
+      <div class="vf-statement">La empatía afectiva consiste únicamente en pensar igual que el otro.</div>
+      <div class="vf-box-i">
+        <label class="vf-radio-btn" onclick="vfEtica(this, true, false, 'FALSO. La empatía AFECTIVA consiste en SENTIR lo que siente el otro (su dolor nos duele), no en pensar igual. Pensar igual sería homogeneidad de opinión, no empatía. La empatía COGNITIVA es la que involucra entender los pensamientos.')">
+          <div class="vf-indicator"></div><span>Verdadero</span>
+        </label>
+        <label class="vf-radio-btn" onclick="vfEtica(this, false, false, 'FALSO. La empatía AFECTIVA consiste en SENTIR lo que siente el otro (su dolor nos duele), no en pensar igual. Pensar igual sería homogeneidad de opinión, no empatía. La empatía COGNITIVA es la que involucra entender los pensamientos.')">
+          <div class="vf-indicator">✗</div><span><strong>Falso</strong></span>
+        </label>
+      </div>
+      <div class="vf-item-feedback"></div>
+    </div>
+
+    <div class="vf-item">
+      <div class="vf-statement">Una decisión irresponsable solo me afecta a mí mismo.</div>
+      <div class="vf-box-i">
+        <label class="vf-radio-btn" onclick="vfEtica(this, true, false, 'FALSO. Las decisiones irresponsables casi siempre afectan a otras personas. Ejemplo: llegar tarde a un trabajo en equipo perjudica a todos los compañeros. Ejemplo: manejar borracho puede afectar a peatones inocentes. Nuestras acciones siempre tienen consecuencias sociales.')">
+          <div class="vf-indicator"></div><span>Verdadero</span>
+        </label>
+        <label class="vf-radio-btn" onclick="vfEtica(this, false, false, 'FALSO. Las decisiones irresponsables casi siempre afectan a otras personas. Ejemplo: llegar tarde a un trabajo en equipo perjudica a todos los compañeros. Ejemplo: manejar borracho puede afectar a peatones inocentes. Nuestras acciones siempre tienen consecuencias sociales.')">
+          <div class="vf-indicator">✗</div><span><strong>Falso</strong></span>
+        </label>
+      </div>
+      <div class="vf-item-feedback"></div>
+    </div>
+
+    <div class="vf-item">
+      <div class="vf-statement">La axiología estudia los valores que guían nuestras decisiones éticas.</div>
+      <div class="vf-box-i">
+        <label class="vf-radio-btn" onclick="vfEtica(this, true, true, 'VERDADERO. La axiología es exactamente la rama de la filosofía que estudia los valores: qué es valioso, qué debemos preferir, cómo los valores guían nuestras decisiones. Axia en griego significa &quot;valor&quot;.')">
+          <div class="vf-indicator">✓</div><span><strong>Verdadero</strong></span>
+        </label>
+        <label class="vf-radio-btn" onclick="vfEtica(this, false, true, 'VERDADERO. La axiología es exactamente la rama de la filosofía que estudia los valores: qué es valioso, qué debemos preferir, cómo los valores guían nuestras decisiones. Axia en griego significa &quot;valor&quot;.')">
+          <div class="vf-indicator"></div><span>Falso</span>
+        </label>
+      </div>
+      <div class="vf-item-feedback"></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ══════════════════════════════════════════ FOOTER ══════════════════════════════════════════ -->
+<footer>
+  <nav class="footer-nav">
+    <a href="espanol.html">← Español</a>
+    <a href="index.html" class="home">🏠 Inicio</a>
+    <a href="ingles.html">Inglés →</a>
+  </nav>
+  <p>Juan Esteban Herreño &nbsp;|&nbsp; Grado 9° &nbsp;|&nbsp; Colegio CEDAP, Bogotá &nbsp;|&nbsp; 2026</p>
+</footer>
+
+<script>
+  function toggleHintEtica(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const btn = el.previousElementSibling;
+    if (el.style.display === 'block') {
+      el.style.display = 'none';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '💡 Ver ejemplo de respuesta';
+    } else {
+      el.style.display = 'block';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '🙈 Ocultar ejemplo';
+    }
+  }
+  function vfEtica(label, answeredV, correctV, explanation) {
+    const item = label.closest('.vf-item');
+    if (!item) return;
+    item.querySelectorAll('.vf-radio-btn').forEach(l => l.classList.remove('vf-correct', 'vf-incorrect'));
+    const isCorrect = (answeredV === correctV);
+    label.classList.add(isCorrect ? 'vf-correct' : 'vf-incorrect');
+    let fb = item.querySelector('.vf-item-feedback');
+    if (!fb) { fb = document.createElement('div'); fb.className = 'vf-item-feedback'; item.appendChild(fb); }
+    fb.innerHTML = (isCorrect ? '✅ <strong>Correcto.</strong> ' : '❌ <strong>Incorrecto.</strong> ') + explanation;
+    fb.className = 'vf-item-feedback ' + (isCorrect ? 'fb-ok' : 'fb-no');
+    fb.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>

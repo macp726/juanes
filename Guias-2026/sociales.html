@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🏛️ Ciencias Sociales – Segunda Guerra Mundial</title>
+  <style>
+    :root {
+      --teal:       #00695c;
+      --teal-light: #e0f2f1;
+      --teal-mid:   #4db6ac;
+      --teal-dark:  #004d40;
+      --accent:     #ff8f00;
+      --text:       #1a1a2e;
+      --white:      #ffffff;
+      --gray:       #f5f5f5;
+      --shadow:     0 2px 8px rgba(0,105,92,.18);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f0faf9;
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 60%, var(--teal-mid) 100%);
+      color: var(--white);
+      padding: 2rem 1.5rem 1.5rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    header::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,.04) 18px,
+        rgba(255,255,255,.04) 36px
+      );
+    }
+    .header-emoji { font-size: 3.5rem; display: block; margin-bottom: .4rem; }
+    header h1 { font-size: 1.85rem; font-weight: 800; letter-spacing: .5px; }
+    header h2 { font-size: 1.15rem; font-weight: 400; opacity: .88; margin-top: .3rem; }
+    .header-meta {
+      display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem 2rem;
+      margin-top: 1rem; font-size: .9rem; opacity: .82;
+    }
+    .header-meta span::before { content: '▸ '; }
+
+    /* ── MAIN CONTAINER ── */
+    main {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 2rem;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      display: flex; align-items: center; gap: .6rem;
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--teal-dark);
+      border-left: 5px solid var(--teal);
+      padding: .4rem .8rem;
+      margin: 2rem 0 1rem;
+      background: var(--teal-light);
+      border-radius: 0 6px 6px 0;
+    }
+
+    /* ── CARD / BOX ── */
+    .card {
+      background: var(--teal-light);
+      border: 1.5px solid var(--teal);
+      border-radius: 10px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.2rem;
+      box-shadow: var(--shadow);
+    }
+    .card h3 {
+      color: var(--teal-dark);
+      font-size: 1.05rem;
+      margin-bottom: .6rem;
+    }
+
+    /* ── OBJETIVO ── */
+    .objetivo {
+      background: var(--teal-dark);
+      color: var(--white);
+      border-radius: 10px;
+      padding: 1rem 1.4rem;
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      box-shadow: var(--shadow);
+    }
+    .objetivo strong { color: var(--teal-mid); }
+
+    /* ── ACTIVIDAD LABEL ── */
+    .act-label {
+      display: inline-block;
+      background: var(--teal);
+      color: #fff;
+      font-weight: 700;
+      font-size: .82rem;
+      padding: .2rem .7rem;
+      border-radius: 20px;
+      margin-bottom: .6rem;
+      letter-spacing: .5px;
+      text-transform: uppercase;
+    }
+
+    /* ── LÍNEA DE TIEMPO ── */
+    .timeline { position: relative; padding-left: 2.5rem; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: .85rem; top: .5rem; bottom: .5rem;
+      width: 3px; background: var(--teal); border-radius: 3px;
+    }
+    .tl-item {
+      position: relative;
+      margin-bottom: 1rem;
+      padding: .7rem 1rem;
+      background: var(--white);
+      border-radius: 8px;
+      border-left: 3px solid var(--teal-mid);
+      box-shadow: 0 1px 5px rgba(0,105,92,.1);
+    }
+    .tl-item::before {
+      content: '';
+      position: absolute; left: -1.75rem; top: 50%;
+      transform: translateY(-50%);
+      width: 14px; height: 14px;
+      background: var(--teal); border-radius: 50%;
+      border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--teal);
+    }
+    .tl-year {
+      font-weight: 800; color: var(--teal-dark);
+      font-size: 1rem; margin-bottom: .15rem;
+    }
+    .tl-desc { font-size: .92rem; color: #333; }
+
+    /* ── TABLAS ── */
+    table { width: 100%; border-collapse: collapse; font-size: .93rem; }
+    th {
+      background: var(--teal);
+      color: #fff;
+      padding: .55rem .8rem;
+      text-align: left;
+    }
+    td {
+      padding: .5rem .8rem;
+      border-bottom: 1px solid #b2dfdb;
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #f0faf9; }
+    tr:hover td { background: #c8e6c4; }
+
+    .bandos-table th:first-child { background: #1565c0; }
+    .bandos-table th:last-child  { background: #b71c1c; }
+    .bandos-table td:first-child { background: #e3f2fd; font-weight: 600; color: #1565c0; }
+    .bandos-table td:last-child  { background: #ffebee; font-weight: 600; color: #b71c1c; }
+
+    /* ── PAÍSES ── */
+    .pais-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1rem;
+    }
+    .pais-card {
+      background: var(--white);
+      border: 1.5px solid var(--teal);
+      border-radius: 10px;
+      padding: .9rem 1rem;
+      box-shadow: var(--shadow);
+    }
+    .pais-card h4 {
+      color: var(--teal-dark); font-size: .98rem;
+      margin-bottom: .35rem;
+      border-bottom: 2px dashed var(--teal-mid);
+      padding-bottom: .25rem;
+    }
+    .pais-card p { font-size: .88rem; color: #444; }
+    .pais-resp { font-size: .8rem; color: #666; margin-top: .4rem; font-style: italic; }
+    .resp-line {
+      border: 1px dashed #aaa;
+      margin: .3rem 0;
+      height: 1.4rem;
+    }
+
+    /* ── CAUSAS / CONSECUENCIAS LISTA ── */
+    .emoji-list { list-style: none; padding: 0; }
+    .emoji-list li {
+      display: flex; align-items: flex-start; gap: .6rem;
+      padding: .45rem 0;
+      border-bottom: 1px solid #b2dfdb;
+      font-size: .93rem;
+    }
+    .emoji-list li:last-child { border-bottom: none; }
+    .emoji-list .ico { font-size: 1.1rem; flex-shrink: 0; margin-top: .05rem; }
+
+    /* ── GLOSARIO ── */
+    .glossary dt {
+      font-weight: 700; color: var(--teal-dark);
+      margin-top: .7rem; font-size: .95rem;
+    }
+    .glossary dd { margin: .1rem 0 0 1rem; font-size: .9rem; color: #444; }
+
+    /* ── ACRÓSTICO ── */
+    .acrostico-table { border-collapse: collapse; width: 100%; }
+    .acrostico-table td {
+      padding: .4rem .6rem;
+      border-bottom: 1px solid #b2dfdb;
+      font-size: .9rem;
+    }
+    .acrostico-table tr:nth-child(even) td { background: #f0faf9; }
+    .letra-destacada {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--white);
+      background: var(--teal);
+      width: 2.4rem; height: 2.4rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      border-radius: 6px;
+      margin-right: .5rem;
+      flex-shrink: 0;
+    }
+    .acro-cell-letter { width: 3rem; text-align: center; }
+    .acro-phrase { color: #333; }
+
+    /* ── MAPA SVG ── */
+    .mapa-container {
+      background: var(--white);
+      border: 2px solid var(--teal);
+      border-radius: 12px;
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    .mapa-leyenda {
+      display: flex; flex-wrap: wrap; gap: .5rem 1rem;
+      margin-top: .8rem; font-size: .82rem;
+    }
+    .leyenda-item { display: flex; align-items: center; gap: .35rem; }
+    .leyenda-dot {
+      width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0;
+    }
+
+    /* ── SOPA DE LETRAS ── */
+    .sopa-grid {
+      display: inline-grid;
+      grid-template-columns: repeat(18, 1.8rem);
+      gap: 2px;
+      font-family: 'Courier New', monospace;
+      font-size: .88rem;
+      background: var(--white);
+      border: 2px solid var(--teal);
+      border-radius: 8px;
+      padding: .6rem;
+      overflow-x: auto;
+    }
+    .sopa-cell {
+      width: 1.8rem; height: 1.8rem;
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700;
+      border-radius: 3px;
+      color: var(--teal-dark);
+      background: var(--teal-light);
+    }
+    .sopa-word { background: #fff9c4; color: #333; }
+    .sopa-palabras {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+      margin-top: .8rem;
+    }
+    .sopa-tag {
+      background: var(--teal-dark); color: #fff;
+      padding: .2rem .6rem; border-radius: 20px;
+      font-size: .82rem; font-weight: 600;
+    }
+    .simbolo-area {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+      gap: .7rem; margin-top: 1rem;
+    }
+    .simbolo-box {
+      border: 1.5px dashed var(--teal);
+      border-radius: 8px; padding: .5rem;
+      text-align: center; font-size: .78rem; color: #555;
+      background: var(--white); min-height: 80px;
+      display: flex; flex-direction: column; align-items: center; gap: .3rem;
+    }
+    .simbolo-box span { font-weight: 700; color: var(--teal-dark); }
+
+    /* ── TEXTO TALLER ── */
+    .taller-text {
+      background: var(--white);
+      border-left: 5px solid var(--teal-mid);
+      padding: 1rem 1.2rem;
+      border-radius: 0 8px 8px 0;
+      font-size: .92rem;
+      color: #333;
+      font-style: italic;
+      margin-bottom: .5rem;
+    }
+
+    /* ── IMAGEN PLACEHOLDER ── */
+    .img-placeholder {
+      background: #cfd8dc;
+      border: 2px dashed #607d8b;
+      border-radius: 8px;
+      height: 180px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      color: #455a64; font-size: .9rem; gap: .4rem;
+    }
+
+    /* ── RESPUESTA LINES ── */
+    .lines-area { margin-top: .6rem; }
+    .answer-line {
+      border: none; border-bottom: 1.5px solid #80cbc4;
+      width: 100%; height: 1.6rem; display: block;
+      margin-bottom: .3rem; background: transparent;
+    }
+
+    /* ── FOOTER NAV ── */
+    footer {
+      background: var(--teal-dark);
+      color: var(--white);
+      padding: 1rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+    .footer-nav {
+      display: flex; justify-content: center; align-items: center;
+      gap: 1rem; flex-wrap: wrap;
+    }
+    .footer-nav a {
+      color: var(--white);
+      text-decoration: none;
+      background: rgba(255,255,255,.15);
+      padding: .45rem 1.1rem;
+      border-radius: 24px;
+      font-size: .92rem;
+      transition: background .2s;
+      border: 1px solid rgba(255,255,255,.3);
+    }
+    .footer-nav a:hover { background: rgba(255,255,255,.3); }
+    .footer-copy { font-size: .78rem; opacity: .6; margin-top: .6rem; }
+
+    .resp-textarea { width:100%; min-height:80px; border:1px solid #00695c; border-radius:6px; padding:8px; font-size:14px; resize:vertical; box-sizing:border-box; }
+    .hint-btn { background:#00695c; color:#fff; border:none; border-radius:4px; padding:4px 10px; cursor:pointer; font-size:13px; margin-top:4px; }
+    .hint-box { display:none; background:#e0f2f1; border-left:3px solid #00695c; padding:8px; margin-top:4px; border-radius:4px; font-size:13px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      header h1 { font-size: 1.3rem; }
+      .sopa-grid { grid-template-columns: repeat(18, 1.4rem); font-size: .72rem; }
+      .sopa-cell { width: 1.4rem; height: 1.4rem; }
+      .pais-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════
+     HEADER
+════════════════════════════════════════ -->
+<header>
+  <span class="header-emoji">🏛️</span>
+  <h1>Segunda Guerra Mundial (1939 – 1945)</h1>
+  <h2>Taller de Ciencias Sociales · Grado 9°</h2>
+  <div class="header-meta">
+    <span>Estudiante: Juan Esteban Herreño</span>
+    <span>Docente: Iván Felipe Ramírez</span>
+    <span>Colegio CEDAP · Bogotá · 2026</span>
+  </div>
+</header>
+
+<!-- ════════════════════════════════════════
+     MAIN
+════════════════════════════════════════ -->
+<main>
+
+  <!-- OBJETIVO -->
+  <div class="objetivo">
+    <strong>Objetivo:</strong> Reconocer las causas y consecuencias de la Segunda Guerra Mundial,
+    identificar los principales países participantes y comprender el impacto geopolítico que transformó
+    el orden mundial a partir de 1945.
+  </div>
+
+  <!-- ── CONTEXTO HISTÓRICO ── -->
+  <div class="section-title">📚 Contexto Histórico</div>
+
+  <div class="card">
+    <h3>¿Por qué estalló la Segunda Guerra Mundial?</h3>
+    <p>
+      La Primera Guerra Mundial (1914–1918) dejó a Europa devastada y al Tratado de Versalles (1919)
+      humilló a Alemania. Las reparaciones impagables, la crisis de 1929 y el auge del fascismo crearon
+      el caldo de cultivo perfecto para un nuevo conflicto. Adolf Hitler prometió restaurar la grandeza
+      alemana y en 1939, al invadir Polonia, encendió la mecha de la guerra más mortífera de la historia.
+    </p>
+  </div>
+
+  <!-- ── LÍNEA DE TIEMPO ── -->
+  <div class="section-title">🕰️ Línea de Tiempo</div>
+
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-year">1933</div>
+      <div class="tl-desc">Hitler llega al poder en Alemania. El Partido Nazi se consolida.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1936 – 1939</div>
+      <div class="tl-desc">⚡ Guerra Civil Española — preludio y laboratorio de la futura guerra.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1938</div>
+      <div class="tl-desc">Anexión de Austria (Anschluss). Acuerdo de Múnich: política de apaciguamiento.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1 sep. 1939</div>
+      <div class="tl-desc">🔫 Alemania invade Polonia → inicio oficial de la guerra. UK y Francia declaran la guerra a Alemania.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1940</div>
+      <div class="tl-desc">Caída de Francia (junio). Batalla de Gran Bretaña (Battle of Britain). El Blitz sobre Londres.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1941</div>
+      <div class="tl-desc">Alemania invade la URSS (Operación Barbarroja). Japón ataca Pearl Harbor (7 dic.). EE.UU. entra en la guerra.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">1942 – 1943</div>
+      <div class="tl-desc">⭐ Batalla de Stalingrado — punto de inflexión. Derrota alemana en el frente oriental.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">6 jun. 1944</div>
+      <div class="tl-desc">🌊 Día D — Desembarco de Normandía. Los Aliados liberan Europa occidental.</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">8 may. 1945</div>
+      <div class="tl-desc">🕊️ Alemania se rinde incondicionalmente. Fin de la guerra en Europa (V-E Day).</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">6 y 9 ago. 1945</div>
+      <div class="tl-desc">☢️ EE.UU. lanza bombas atómicas sobre Hiroshima y Nagasaki (Japón).</div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-year">2 sep. 1945</div>
+      <div class="tl-desc">🎌 Japón se rinde formalmente. Fin de la Segunda Guerra Mundial.</div>
+    </div>
+  </div>
+
+  <!-- ── LOS DOS BANDOS ── -->
+  <div class="section-title">⚔️ Los Dos Bandos</div>
+
+  <div class="card">
+    <table class="bandos-table">
+      <thead>
+        <tr>
+          <th>🔵 Aliados</th>
+          <th>🔴 Potencias del Eje</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>🇬🇧 Reino Unido (Churchill)</td>
+          <td>🇩🇪 Alemania (Adolf Hitler)</td>
+        </tr>
+        <tr>
+          <td>🇫🇷 Francia (De Gaulle)</td>
+          <td>🇮🇹 Italia (Benito Mussolini)</td>
+        </tr>
+        <tr>
+          <td>🇷🇺 URSS — desde 1941 (Stalin)</td>
+          <td>🇯🇵 Japón (Hirohito)</td>
+        </tr>
+        <tr>
+          <td>🇺🇸 Estados Unidos — desde 1941 (Roosevelt)</td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>🇨🇳 China (Chiang Kai-shek)</td>
+          <td></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ════════════════
+       ACTIVIDAD 1
+  ═════════════════ -->
+  <div class="section-title">✏️ Actividades del Taller</div>
+
+  <div class="card">
+    <span class="act-label">Actividad 1</span>
+    <h3>Influencia de los países participantes en la II Guerra Mundial</h3>
+    <p style="margin-bottom:1rem; font-size:.9rem; color:#555;">
+      Define la influencia que tuvo cada nación en el conflicto. Lee el contenido explicativo
+      y completa el espacio de respuesta de cada país.
+    </p>
+
+    <div class="pais-grid">
+
+      <div class="pais-card">
+        <h4>🇩🇪 Alemania — Adolf Hitler</h4>
+        <p>Inició la guerra con la invasión de Polonia (1939). Impulsó el nazismo y el Holocausto,
+        el genocidio de 6 millones de judíos. Su derrota en mayo de 1945 marcó el fin de la guerra en Europa.</p>
+        <p class="pais-resp">Tu respuesta:</p>
+        <textarea class="resp-textarea" rows="4" placeholder="Escribe tu respuesta..."></textarea>
+        <button class="hint-btn" onclick="toggleHintSoc('hs_1')">💡 Ver ejemplo</button><div class="hint-box" id="hs_1">Alemania fue el país agresor que inició la guerra al invadir Polonia en 1939. Bajo el liderazgo de Hitler, impulsó el nazismo, ocupó gran parte de Europa y perpetró el Holocausto. Su rendición incondicional el 8 de mayo de 1945 puso fin a la guerra en Europa.</div>
+      </div>
+
+      <div class="pais-card">
+        <h4>🇺🇸 Estados Unidos</h4>
+        <p>Entró tras el ataque a Pearl Harbor (dic. 1941). Aportó recursos económicos masivos
+        (Lend-Lease), tropas en Europa y el Pacífico, y finalmente las bombas atómicas que
+        forzaron la rendición de Japón.</p>
+        <p class="pais-resp">Tu respuesta:</p>
+        <textarea class="resp-textarea" rows="4" placeholder="Escribe tu respuesta..."></textarea>
+        <button class="hint-btn" onclick="toggleHintSoc('hs_2')">💡 Ver ejemplo</button><div class="hint-box" id="hs_2">EE.UU. entró al conflicto en diciembre de 1941 tras el ataque japonés a Pearl Harbor. Su enorme producción industrial financió a los Aliados con el Lend-Lease. Fue decisivo en los frentes de Europa y el Pacífico, y lanzó las bombas atómicas sobre Japón que aceleraron el fin de la guerra.</div>
+      </div>
+
+      <div class="pais-card">
+        <h4>🇷🇺 Unión Soviética (URSS)</h4>
+        <p>Sufrió las mayores bajas del conflicto (más de 20 millones de muertos). La Batalla de
+        Stalingrado fue el punto de inflexión que detuvo el avance alemán y cambió el rumbo
+        de la guerra.</p>
+        <p class="pais-resp">Tu respuesta:</p>
+        <textarea class="resp-textarea" rows="4" placeholder="Escribe tu respuesta..."></textarea>
+        <button class="hint-btn" onclick="toggleHintSoc('hs_3')">💡 Ver ejemplo</button><div class="hint-box" id="hs_3">La URSS fue el país que más bajas sufrió (más de 20 millones de muertos). La Batalla de Stalingrado (1942-43) fue el punto de inflexión de la guerra: detuvo el avance alemán y marcó el inicio de la contraofensiva soviética que llevó a la caída de Berlín en 1945.</div>
+      </div>
+
+      <div class="pais-card">
+        <h4>🇬🇧 Reino Unido — Churchill</h4>
+        <p>Resistió el Blitz (bombardeos sobre Londres) y fue la base de operaciones aliadas en
+        Europa occidental. La resistencia británica fue fundamental para impedir la caída
+        total de Europa.</p>
+        <p class="pais-resp">Tu respuesta:</p>
+        <textarea class="resp-textarea" rows="4" placeholder="Escribe tu respuesta..."></textarea>
+        <button class="hint-btn" onclick="toggleHintSoc('hs_4')">💡 Ver ejemplo</button><div class="hint-box" id="hs_4">Reino Unido, liderado por Churchill, fue el único gran país aliado que resistió sin ser invadido. Soportó los bombardeos del Blitz (1940-41) y sirvió como base de operaciones para el desembarco de Normandía en 1944. Su resistencia fue crucial para evitar la caída total de Europa ante el nazismo.</div>
+      </div>
+
+      <div class="pais-card">
+        <h4>🇫🇷 Francia</h4>
+        <p>Cayó rápidamente en 1940 bajo la ocupación nazi. El gobierno en el exilio liderado
+        por Charles de Gaulle continuó la resistencia desde Londres hasta la liberación
+        de París en agosto de 1944.</p>
+        <p class="pais-resp">Tu respuesta:</p>
+        <textarea class="resp-textarea" rows="4" placeholder="Escribe tu respuesta..."></textarea>
+        <button class="hint-btn" onclick="toggleHintSoc('hs_5')">💡 Ver ejemplo</button><div class="hint-box" id="hs_5">Francia cayó ante Alemania en junio de 1940. Aunque ocupada, el gobierno libre liderado por De Gaulle continuó la resistencia desde Londres. La liberación de París en agosto de 1944 fue un símbolo del triunfo aliado y la recuperación de la soberanía francesa.</div>
+      </div>
+
+      <div class="pais-card">
+        <h4>🇯🇵 Japón — Hirohito</h4>
+        <p>Expansión imperialista en el Pacífico y Asia. Atacó Pearl Harbor arrastrando a EE.UU.
+        a la guerra. La rendición llegó tras las bombas atómicas en Hiroshima (6 ago.)
+        y Nagasaki (9 ago.) de 1945.</p>
+        <p class="pais-resp">Tu respuesta:</p>
+        <textarea class="resp-textarea" rows="4" placeholder="Escribe tu respuesta..."></textarea>
+        <button class="hint-btn" onclick="toggleHintSoc('hs_6')">💡 Ver ejemplo</button><div class="hint-box" id="hs_6">Japón llevó a cabo una expansión imperialista en Asia y el Pacífico. Su ataque a Pearl Harbor en diciembre de 1941 arrastró a EE.UU. a la guerra. Japón se rindió formalmente el 2 de septiembre de 1945, tras las bombas atómicas lanzadas sobre Hiroshima y Nagasaki.</div>
+      </div>
+
+      <div class="pais-card">
+        <h4>🇮🇹 Italia — Mussolini</h4>
+        <p>Se alió con Hitler formando el Eje. Sin embargo, fue invadida por los Aliados
+        en 1943. Mussolini fue derrocado por su propio gobierno y ejecutado por partisanos
+        en abril de 1945.</p>
+        <p class="pais-resp">Tu respuesta:</p>
+        <textarea class="resp-textarea" rows="4" placeholder="Escribe tu respuesta..."></textarea>
+        <button class="hint-btn" onclick="toggleHintSoc('hs_7')">💡 Ver ejemplo</button><div class="hint-box" id="hs_7">Italia, bajo Mussolini, fue cofundadora del Eje junto con Alemania y Japón. Tras la invasión aliada en 1943, el propio gobierno italiano derrocó a Mussolini. Italia cambió de bando y apoyó a los Aliados. Mussolini fue capturado y ejecutado por partisanos italianos en abril de 1945.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ════════════════
+       ACTIVIDAD 2
+  ═════════════════ -->
+  <div class="card">
+    <span class="act-label">Actividad 2</span>
+    <h3>Contexto histórico previo — La Revolución Industrial</h3>
+    <p style="font-size:.9rem; color:#555; margin-bottom:.8rem;">
+      Observa la imagen y define los elementos característicos de la Revolución Industrial
+      como contexto histórico previo a la Segunda Guerra Mundial.
+    </p>
+
+    <div class="img-placeholder">
+      <span style="font-size:2rem;">🏭</span>
+      <span><em>Imagen de la Revolución Industrial</em></span>
+      <span style="font-size:.8rem;">(imagen del taller)</span>
+    </div>
+
+    <div class="lines-area" style="margin-top:1rem;">
+      <strong style="color:var(--teal-dark); font-size:.9rem;">Elementos característicos que identifies:</strong>
+      <textarea class="resp-textarea" rows="4" placeholder="Escribe tu respuesta..."></textarea>
+      <button class="hint-btn" onclick="toggleHintSoc('hs_8')">💡 Ver ejemplo</button><div class="hint-box" id="hs_8">En la imagen de la Revolución Industrial se pueden identificar: fábricas con chimeneas que expulsan humo, máquinas de vapor, obreros trabajando en cadena, uso del carbón como fuente de energía, ferrocarriles y una producción en masa que transformó la economía artesanal en industrial.</div>
+    </div>
+  </div>
+
+  <!-- ════════════════
+       ACTIVIDAD 3
+  ═════════════════ -->
+  <div class="card">
+    <span class="act-label">Actividad 3</span>
+    <h3>Sopa de Letras — Segunda Guerra Mundial</h3>
+    <p style="font-size:.9rem; color:#555; margin-bottom:.9rem;">
+      Encuentra las palabras relacionadas con la II Guerra Mundial. Luego dibuja en el espacio
+      inferior un símbolo característico de cada vocablo encontrado.
+    </p>
+
+    <div style="overflow-x:auto;">
+      <div class="sopa-grid">
+        <!-- Fila 1 -->
+        <div class="sopa-cell">N</div><div class="sopa-cell">A</div><div class="sopa-cell sopa-word">N</div><div class="sopa-cell sopa-word">A</div><div class="sopa-cell sopa-word">Z</div><div class="sopa-cell sopa-word">I</div><div class="sopa-cell sopa-word">S</div><div class="sopa-cell sopa-word">M</div><div class="sopa-cell sopa-word">O</div><div class="sopa-cell">P</div><div class="sopa-cell">Q</div><div class="sopa-cell">R</div><div class="sopa-cell">S</div><div class="sopa-cell">T</div><div class="sopa-cell">U</div><div class="sopa-cell">V</div><div class="sopa-cell">X</div><div class="sopa-cell">Y</div>
+        <!-- Fila 2 -->
+        <div class="sopa-cell">A</div><div class="sopa-cell">B</div><div class="sopa-cell">C</div><div class="sopa-cell">D</div><div class="sopa-cell">E</div><div class="sopa-cell">F</div><div class="sopa-cell">G</div><div class="sopa-cell">H</div><div class="sopa-cell">I</div><div class="sopa-cell">J</div><div class="sopa-cell sopa-word">A</div><div class="sopa-cell sopa-word">L</div><div class="sopa-cell sopa-word">I</div><div class="sopa-cell sopa-word">A</div><div class="sopa-cell sopa-word">D</div><div class="sopa-cell sopa-word">O</div><div class="sopa-cell sopa-word">S</div><div class="sopa-cell">K</div>
+        <!-- Fila 3 -->
+        <div class="sopa-cell sopa-word">H</div><div class="sopa-cell">L</div><div class="sopa-cell">M</div><div class="sopa-cell">N</div><div class="sopa-cell">O</div><div class="sopa-cell">P</div><div class="sopa-cell">Q</div><div class="sopa-cell">R</div><div class="sopa-cell">S</div><div class="sopa-cell">T</div><div class="sopa-cell">U</div><div class="sopa-cell">V</div><div class="sopa-cell">W</div><div class="sopa-cell">X</div><div class="sopa-cell">Y</div><div class="sopa-cell">Z</div><div class="sopa-cell">A</div><div class="sopa-cell">B</div>
+        <!-- Fila 4 -->
+        <div class="sopa-cell sopa-word">O</div><div class="sopa-cell">C</div><div class="sopa-cell">D</div><div class="sopa-cell">E</div><div class="sopa-cell sopa-word">B</div><div class="sopa-cell sopa-word">O</div><div class="sopa-cell sopa-word">M</div><div class="sopa-cell sopa-word">B</div><div class="sopa-cell sopa-word">A</div><div class="sopa-cell">F</div><div class="sopa-cell">G</div><div class="sopa-cell">H</div><div class="sopa-cell">I</div><div class="sopa-cell">J</div><div class="sopa-cell">K</div><div class="sopa-cell">L</div><div class="sopa-cell">M</div><div class="sopa-cell">N</div>
+        <!-- Fila 5 -->
+        <div class="sopa-cell sopa-word">L</div><div class="sopa-cell">O</div><div class="sopa-cell">P</div><div class="sopa-cell">Q</div><div class="sopa-cell">R</div><div class="sopa-cell">S</div><div class="sopa-cell">T</div><div class="sopa-cell">U</div><div class="sopa-cell">V</div><div class="sopa-cell">W</div><div class="sopa-cell">X</div><div class="sopa-cell">Y</div><div class="sopa-cell">Z</div><div class="sopa-cell sopa-word">O</div><div class="sopa-cell sopa-word">N</div><div class="sopa-cell sopa-word">U</div><div class="sopa-cell">A</div><div class="sopa-cell">B</div>
+        <!-- Fila 6 -->
+        <div class="sopa-cell sopa-word">O</div><div class="sopa-cell">C</div><div class="sopa-cell">D</div><div class="sopa-cell">E</div><div class="sopa-cell">F</div><div class="sopa-cell sopa-word">T</div><div class="sopa-cell sopa-word">R</div><div class="sopa-cell sopa-word">I</div><div class="sopa-cell sopa-word">N</div><div class="sopa-cell sopa-word">C</div><div class="sopa-cell sopa-word">H</div><div class="sopa-cell sopa-word">E</div><div class="sopa-cell sopa-word">R</div><div class="sopa-cell sopa-word">A</div><div class="sopa-cell">G</div><div class="sopa-cell">H</div><div class="sopa-cell">I</div><div class="sopa-cell">J</div>
+        <!-- Fila 7 -->
+        <div class="sopa-cell sopa-word">C</div><div class="sopa-cell">K</div><div class="sopa-cell">L</div><div class="sopa-cell">M</div><div class="sopa-cell">N</div><div class="sopa-cell">O</div><div class="sopa-cell">P</div><div class="sopa-cell">Q</div><div class="sopa-cell">R</div><div class="sopa-cell">S</div><div class="sopa-cell">T</div><div class="sopa-cell">U</div><div class="sopa-cell">V</div><div class="sopa-cell">W</div><div class="sopa-cell">X</div><div class="sopa-cell">Y</div><div class="sopa-cell">Z</div><div class="sopa-cell">A</div>
+        <!-- Fila 8 -->
+        <div class="sopa-cell sopa-word">A</div><div class="sopa-cell">B</div><div class="sopa-cell">C</div><div class="sopa-cell">D</div><div class="sopa-cell">E</div><div class="sopa-cell">F</div><div class="sopa-cell">G</div><div class="sopa-cell">H</div><div class="sopa-cell">I</div><div class="sopa-cell sopa-word">R</div><div class="sopa-cell sopa-word">E</div><div class="sopa-cell sopa-word">N</div><div class="sopa-cell sopa-word">D</div><div class="sopa-cell sopa-word">I</div><div class="sopa-cell sopa-word">C</div><div class="sopa-cell sopa-word">I</div><div class="sopa-cell sopa-word">O</div><div class="sopa-cell sopa-word">N</div>
+        <!-- Fila 9 -->
+        <div class="sopa-cell sopa-word">U</div><div class="sopa-cell">J</div><div class="sopa-cell">K</div><div class="sopa-cell">L</div><div class="sopa-cell">M</div><div class="sopa-cell">N</div><div class="sopa-cell">O</div><div class="sopa-cell">P</div><div class="sopa-cell">Q</div><div class="sopa-cell">R</div><div class="sopa-cell">S</div><div class="sopa-cell">T</div><div class="sopa-cell">U</div><div class="sopa-cell">V</div><div class="sopa-cell">W</div><div class="sopa-cell">X</div><div class="sopa-cell">Y</div><div class="sopa-cell">Z</div>
+        <!-- Fila 10 -->
+        <div class="sopa-cell sopa-word">S</div><div class="sopa-cell">A</div><div class="sopa-cell">B</div><div class="sopa-cell">C</div><div class="sopa-cell">D</div><div class="sopa-cell">E</div><div class="sopa-cell">F</div><div class="sopa-cell">G</div><div class="sopa-cell">H</div><div class="sopa-cell">I</div><div class="sopa-cell">J</div><div class="sopa-cell">K</div><div class="sopa-cell">L</div><div class="sopa-cell">M</div><div class="sopa-cell">N</div><div class="sopa-cell">O</div><div class="sopa-cell">P</div><div class="sopa-cell">Q</div>
+      </div>
+    </div>
+
+    <div class="sopa-palabras">
+      <span class="sopa-tag">NAZISMO</span>
+      <span class="sopa-tag">HOLOCAUSTO</span>
+      <span class="sopa-tag">ALIADOS</span>
+      <span class="sopa-tag">BOMBA</span>
+      <span class="sopa-tag">TRINCHERA</span>
+      <span class="sopa-tag">RENDICION</span>
+      <span class="sopa-tag">ONU</span>
+    </div>
+
+    <p style="margin-top:1rem; font-size:.88rem; color:var(--teal-dark); font-weight:700;">
+      Dibuja en cada recuadro un símbolo característico del vocablo encontrado:
+    </p>
+    <div class="simbolo-area">
+      <div class="simbolo-box"><span>NAZISMO</span><div style="flex:1;"></div></div>
+      <div class="simbolo-box"><span>HOLOCAUSTO</span><div style="flex:1;"></div></div>
+      <div class="simbolo-box"><span>ALIADOS</span><div style="flex:1;"></div></div>
+      <div class="simbolo-box"><span>BOMBA</span><div style="flex:1;"></div></div>
+      <div class="simbolo-box"><span>TRINCHERA</span><div style="flex:1;"></div></div>
+      <div class="simbolo-box"><span>RENDICIÓN</span><div style="flex:1;"></div></div>
+      <div class="simbolo-box"><span>ONU</span><div style="flex:1;"></div></div>
+    </div>
+  </div>
+
+  <!-- ════════════════
+       ACTIVIDAD 4
+  ═════════════════ -->
+  <div class="card">
+    <span class="act-label">Actividad 4</span>
+    <h3>Acróstico — SEGUNDAGUERRAMUNDIAL</h3>
+    <p style="font-size:.9rem; color:#555; margin-bottom:.9rem;">
+      Construye frases coherentes con cada letra. A continuación encontrarás sugerencias
+      para que puedas reescribirlas con tus propias palabras.
+    </p>
+
+    <table class="acrostico-table">
+      <tbody>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">S</span></td>
+          <td class="acro-phrase">Sufrimiento de millones de personas en todo el mundo</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">E</span></td>
+          <td class="acro-phrase">Europa fue el principal escenario de la guerra</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">G</span></td>
+          <td class="acro-phrase">Genocidio del Holocausto marca la historia de la humanidad</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">U</span></td>
+          <td class="acro-phrase">Unión de los países aliados para derrotar al Eje</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">N</span></td>
+          <td class="acro-phrase">Nazismo, ideología que impulsó la guerra</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">D</span></td>
+          <td class="acro-phrase">División del mundo en dos bandos: Aliados y Eje</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">A</span></td>
+          <td class="acro-phrase">Armas nunca antes vistas, incluida la bomba atómica</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">G</span></td>
+          <td class="acro-phrase">Guerra total que involucró a civiles y militares</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">U</span></td>
+          <td class="acro-phrase">URSS sufrió más de 20 millones de bajas en el conflicto</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">E</span></td>
+          <td class="acro-phrase">Estados Unidos entró tras el ataque a Pearl Harbor en 1941</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">R</span></td>
+          <td class="acro-phrase">Rendición de Alemania el 8 de mayo de 1945</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">R</span></td>
+          <td class="acro-phrase">Reino Unido resistió el Blitz sin rendirse jamás</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">A</span></td>
+          <td class="acro-phrase">Alianza entre naciones democráticas y la URSS contra el Eje</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">M</span></td>
+          <td class="acro-phrase">Mussolini, líder fascista de Italia, ejecutado en 1945</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">U</span></td>
+          <td class="acro-phrase">Unidas Naciones creadas en 1945 para mantener la paz</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">N</span></td>
+          <td class="acro-phrase">Normandía: el mayor desembarco anfibio de la historia (1944)</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">D</span></td>
+          <td class="acro-phrase">Derechos Humanos, proclamados en 1948 como respuesta al Holocausto</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">I</span></td>
+          <td class="acro-phrase">Imperialismo japonés en Asia y el Pacífico</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">A</span></td>
+          <td class="acro-phrase">Atómica: bombas sobre Hiroshima y Nagasaki pusieron fin al conflicto</td>
+        </tr>
+        <tr>
+          <td class="acro-cell-letter"><span class="letra-destacada">L</span></td>
+          <td class="acro-phrase">Lecciones de historia que no debemos olvidar</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ════════════════
+       MAPA
+  ═════════════════ -->
+  <div class="card">
+    <span class="act-label">Actividad 4 – Mapa</span>
+    <h3>Mapa de Europa — Hechos históricos de la II Guerra Mundial</h3>
+    <p style="font-size:.9rem; color:#555; margin-bottom:.8rem;">
+      Ubica en el mapa los principales hechos históricos de la II Guerra Mundial en Europa.
+    </p>
+
+    <div class="mapa-container">
+      <!-- SVG simplificado de Europa con países clave -->
+      <svg viewBox="0 0 700 500" width="100%" style="max-width:680px; display:block; margin:0 auto;"
+           aria-label="Mapa simplificado de Europa - II Guerra Mundial">
+
+        <!-- Fondo océano -->
+        <rect width="700" height="500" fill="#b3d9f0" rx="8"/>
+
+        <!-- Tierra general (polígono grande de fondo) -->
+        <polygon points="80,60 620,60 660,200 600,460 100,460 40,200" fill="#c8e6c9" opacity="0.4"/>
+
+        <!-- === REINO UNIDO === -->
+        <g>
+          <ellipse cx="155" cy="155" rx="42" ry="60" fill="#1565c0" opacity=".85"/>
+          <text x="155" y="150" text-anchor="middle" fill="white" font-size="10" font-weight="bold">🇬🇧</text>
+          <text x="155" y="163" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Reino Unido</text>
+          <text x="155" y="174" text-anchor="middle" fill="#bbdefb" font-size="7">Resistió el Blitz</text>
+        </g>
+
+        <!-- === FRANCIA === -->
+        <g>
+          <polygon points="190,200 290,195 300,270 240,300 190,270" fill="#1976d2" opacity=".85"/>
+          <text x="245" y="245" text-anchor="middle" fill="white" font-size="10" font-weight="bold">🇫🇷</text>
+          <text x="245" y="257" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Francia</text>
+          <text x="245" y="267" text-anchor="middle" fill="#bbdefb" font-size="7">Caída 1940</text>
+        </g>
+
+        <!-- Normandía estrella -->
+        <g>
+          <polygon points="220,202 225,190 230,202 243,200 233,208 237,221 225,213 213,221 217,208 207,200"
+                   fill="#ffeb3b" stroke="#f57f17" stroke-width="1"/>
+          <text x="225" y="235" text-anchor="middle" fill="#f57f17" font-size="7" font-weight="bold">Día D 1944</text>
+        </g>
+
+        <!-- === ALEMANIA === -->
+        <g>
+          <polygon points="295,155 380,150 395,215 360,260 290,260 285,210" fill="#b71c1c" opacity=".88"/>
+          <text x="340" y="200" text-anchor="middle" fill="white" font-size="11" font-weight="bold">🇩🇪</text>
+          <text x="340" y="213" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Alemania</text>
+          <text x="340" y="224" text-anchor="middle" fill="#ffcdd2" font-size="7">Tercer Reich</text>
+        </g>
+
+        <!-- === POLONIA === -->
+        <g>
+          <polygon points="395,155 470,150 480,220 400,225 385,210" fill="#c62828" opacity=".82"/>
+          <text x="430" y="185" text-anchor="middle" fill="white" font-size="9" font-weight="bold">🇵🇱</text>
+          <text x="430" y="197" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Polonia</text>
+          <text x="430" y="208" text-anchor="middle" fill="#ffcdd2" font-size="7">Invasión 1939</text>
+        </g>
+
+        <!-- === URSS / Stalingrado === -->
+        <g>
+          <polygon points="475,100 640,90 650,300 560,310 480,260 470,180" fill="#d32f2f" opacity=".78"/>
+          <text x="565" y="180" text-anchor="middle" fill="white" font-size="10" font-weight="bold">🇷🇺</text>
+          <text x="565" y="193" text-anchor="middle" fill="white" font-size="8" font-weight="bold">URSS</text>
+          <text x="565" y="204" text-anchor="middle" fill="#ffcdd2" font-size="7">+20M muertos</text>
+          <!-- Stalingrado -->
+          <circle cx="600" cy="250" r="8" fill="#ff8f00" stroke="white" stroke-width="1.5"/>
+          <text x="600" y="253" text-anchor="middle" fill="white" font-size="6" font-weight="bold">⭐</text>
+          <text x="600" y="268" text-anchor="middle" fill="#ff8f00" font-size="7" font-weight="bold">Stalingrado</text>
+        </g>
+
+        <!-- === ITALIA === -->
+        <g>
+          <polygon points="290,285 330,275 360,340 340,410 310,415 280,360" fill="#e53935" opacity=".82"/>
+          <text x="318" y="350" text-anchor="middle" fill="white" font-size="9" font-weight="bold">🇮🇹</text>
+          <text x="318" y="362" text-anchor="middle" fill="white" font-size="8" font-weight="bold">Italia</text>
+          <text x="318" y="373" text-anchor="middle" fill="#ffcdd2" font-size="7">Eje→Aliados 1943</text>
+        </g>
+
+        <!-- === AUSTRIA === -->
+        <g>
+          <ellipse cx="390" cy="265" rx="38" ry="20" fill="#e57373" opacity=".85"/>
+          <text x="390" y="262" text-anchor="middle" fill="white" font-size="7.5" font-weight="bold">Austria</text>
+          <text x="390" y="272" text-anchor="middle" fill="#ffcdd2" font-size="6.5">Anschluss 1938</text>
+        </g>
+
+        <!-- === CHECOSL. / Múnich === -->
+        <g>
+          <ellipse cx="420" cy="240" rx="32" ry="16" fill="#c62828" opacity=".7"/>
+          <text x="420" y="237" text-anchor="middle" fill="white" font-size="7" font-weight="bold">Checoslov.</text>
+          <text x="420" y="247" text-anchor="middle" fill="#ffcdd2" font-size="6">Munich 1938</text>
+        </g>
+
+        <!-- === Berlín (estrella) === -->
+        <circle cx="345" cy="175" r="7" fill="#ffeb3b" stroke="#333" stroke-width="1.5"/>
+        <text x="345" y="178" text-anchor="middle" font-size="7" font-weight="bold">B</text>
+        <text x="345" y="188" text-anchor="middle" fill="#333" font-size="6.5">Berlín</text>
+
+        <!-- Leyenda -->
+        <rect x="10" y="380" width="140" height="110" fill="white" rx="6" opacity=".92" stroke="#ccc"/>
+        <text x="80" y="396" text-anchor="middle" fill="#333" font-size="9" font-weight="bold">Leyenda</text>
+        <rect x="18" y="402" width="12" height="10" fill="#1565c0" rx="2"/>
+        <text x="35" y="411" fill="#333" font-size="8">Aliados</text>
+        <rect x="18" y="417" width="12" height="10" fill="#b71c1c" rx="2"/>
+        <text x="35" y="426" fill="#333" font-size="8">Potencias del Eje</text>
+        <circle cx="24" cy="438" r="6" fill="#ffeb3b" stroke="#333"/>
+        <text x="35" y="441" fill="#333" font-size="8">Capital clave</text>
+        <polygon points="84,448 88,437 92,448 103,447 95,454 98,465 88,459 78,465 81,454 73,447"
+                 fill="#ffeb3b" stroke="#f57f17" stroke-width=".8"/>
+        <text x="105" y="454" fill="#333" font-size="8">Batalla clave</text>
+        <circle cx="24" cy="468" r="6" fill="#ff8f00" stroke="white"/>
+        <text x="35" y="472" fill="#333" font-size="8">Stalingrado</text>
+      </svg>
+
+      <div class="mapa-leyenda">
+        <div class="leyenda-item"><div class="leyenda-dot" style="background:#1565c0"></div> Aliados occidentales</div>
+        <div class="leyenda-item"><div class="leyenda-dot" style="background:#b71c1c"></div> Potencias del Eje / territorios ocupados</div>
+        <div class="leyenda-item"><div class="leyenda-dot" style="background:#d32f2f; opacity:.7"></div> URSS</div>
+        <div class="leyenda-item"><div class="leyenda-dot" style="background:#ffeb3b; border:1px solid #f57f17"></div> Batallas clave</div>
+        <div class="leyenda-item"><div class="leyenda-dot" style="background:#ff8f00"></div> Punto de inflexión (Stalingrado)</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════
+       CAUSAS
+  ═════════════════ -->
+  <div class="section-title">⚠️ Causas de la Segunda Guerra Mundial</div>
+
+  <div class="card">
+    <ul class="emoji-list">
+      <li>
+        <span class="ico">📜</span>
+        <div><strong>Tratado de Versalles (1919):</strong> Humilló a Alemania con reparaciones de guerra
+        impagables, perdida de territorios y la "cláusula de culpa de guerra", generando resentimiento
+        y deseos de revancha.</div>
+      </li>
+      <li>
+        <span class="ico">📉</span>
+        <div><strong>Crisis económica de 1929:</strong> La Gran Depresión generó pobreza y desempleo
+        masivo en todo el mundo, creando un terreno fértil para el extremismo político.</div>
+      </li>
+      <li>
+        <span class="ico">🏴</span>
+        <div><strong>Auge del nazismo y el fascismo:</strong> Hitler en Alemania y Mussolini en Italia
+        prometieron restaurar la grandeza nacional apelando al nacionalismo extremo y el odio racial.</div>
+      </li>
+      <li>
+        <span class="ico">🕊️</span>
+        <div><strong>Política de apaciguamiento:</strong> Las potencias democráticas cedieron ante Hitler
+        (Acuerdo de Múnich, 1938) creyendo que así evitarían la guerra, pero solo alentaron más expansionismo.</div>
+      </li>
+      <li>
+        <span class="ico">🗺️</span>
+        <div><strong>Expansionismo alemán:</strong> Anexión de Austria (Anschluss, 1938), ocupación de
+        Checoslovaquia y finalmente la invasión de Polonia (1939) que detonó la guerra.</div>
+      </li>
+    </ul>
+  </div>
+
+  <!-- ════════════════
+       CONSECUENCIAS
+  ═════════════════ -->
+  <div class="section-title">🌍 Consecuencias de la Segunda Guerra Mundial</div>
+
+  <div class="taller-text">
+    "Se planteó un nuevo conflicto ideológico: por un lado, los comunistas y, por otro, las democracias
+    occidentales. Las Naciones Unidas: La Sociedad de las Naciones fue reemplazada en 1944 por la ONU,
+    cuyos objetivos fueron redactados en San Francisco, siendo el más importante mantener la paz y la
+    seguridad internacional. La Guerra Fría: Desde 1947 se comienza a utilizar el término para definir
+    el proceso de tensión entre E.E.U.U. y U.R.S.S., representados por la OTAN y el Pacto de Varsovia.
+    Los tratados de paz: En 1955 se firmó el Tratado de Viena que acabó con la ocupación de Austria.
+    El 12 de septiembre de 1990 se firmó el tratado definitivo sobre la reunificación alemana…"
+    <br><br><em>— Texto del taller, Docente: Iván Felipe Ramírez</em>
+  </div>
+
+  <div class="card">
+    <ul class="emoji-list">
+      <li><span class="ico">💀</span><div><strong>70–85 millones de muertos</strong> — la guerra más mortífera de toda la historia de la humanidad.</div></li>
+      <li><span class="ico">✡️</span><div><strong>El Holocausto:</strong> genocidio sistemático de 6 millones de judíos y otros grupos (gitanos, discapacitados, homosexuales) por el régimen nazi.</div></li>
+      <li><span class="ico">🏛️</span><div><strong>Creación de la ONU (1945):</strong> la Organización de las Naciones Unidas reemplazó a la fallida Sociedad de Naciones para garantizar la paz internacional.</div></li>
+      <li><span class="ico">🧊</span><div><strong>Guerra Fría (1947–1991):</strong> tensión política, económica y militar entre EE.UU. (OTAN) y la URSS (Pacto de Varsovia) que dominó la segunda mitad del siglo XX.</div></li>
+      <li><span class="ico">💰</span><div><strong>Plan Marshall:</strong> programa de ayuda económica de EE.UU. para reconstruir Europa occidental devastada por la guerra.</div></li>
+      <li><span class="ico">🌏</span><div><strong>Descolonización:</strong> el debilitamiento de las potencias europeas aceleró la independencia de naciones en Asia y África durante los años 50 y 60.</div></li>
+      <li><span class="ico">🇩🇪</span><div><strong>División de Alemania:</strong> el país fue dividido en Alemania Occidental (RFA) y Oriental (RDA) hasta la reunificación en 1990.</div></li>
+      <li><span class="ico">📜</span><div><strong>Declaración Universal de Derechos Humanos (1948):</strong> respuesta directa a los horrores del Holocausto, proclamada por la ONU.</div></li>
+    </ul>
+  </div>
+
+  <!-- ════════════════
+       VOCABULARIO
+  ═════════════════ -->
+  <div class="section-title">📖 Vocabulario Clave</div>
+
+  <div class="card">
+    <table>
+      <thead>
+        <tr>
+          <th style="width:28%">Término</th>
+          <th>Definición</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Nazismo</strong></td>
+          <td>Ideología de Hitler: racismo, antisemitismo y ultranacionalismo alemán. Propugnaba la supremacía de la "raza aria".</td>
+        </tr>
+        <tr>
+          <td><strong>Holocausto</strong></td>
+          <td>Genocidio sistemático de judíos y otros grupos por los nazis. Murieron 6 millones de judíos en campos de concentración.</td>
+        </tr>
+        <tr>
+          <td><strong>Blitzkrieg</strong></td>
+          <td>"Guerra relámpago": táctica alemana de ataque rápido combinando tanques, infantería motorizada y aviación.</td>
+        </tr>
+        <tr>
+          <td><strong>Aliados</strong></td>
+          <td>Bando que enfrentó al Eje: Reino Unido, URSS, EE.UU., Francia y otros países.</td>
+        </tr>
+        <tr>
+          <td><strong>Eje</strong></td>
+          <td>Alianza militar entre Alemania, Italia y Japón (Pacto Tripartito, 1940).</td>
+        </tr>
+        <tr>
+          <td><strong>ONU</strong></td>
+          <td>Organización de las Naciones Unidas. Fundada en 1945 para mantener la paz y seguridad internacional.</td>
+        </tr>
+        <tr>
+          <td><strong>Guerra Fría</strong></td>
+          <td>Tensión política e ideológica entre EE.UU. y la URSS tras la IIGM. Sin enfrentamiento armado directo.</td>
+        </tr>
+        <tr>
+          <td><strong>Rendición</strong></td>
+          <td>Acto de ceder militarmente y aceptar la derrota. Alemania se rindió el 8 may. 1945; Japón el 2 sep. 1945.</td>
+        </tr>
+        <tr>
+          <td><strong>Anschluss</strong></td>
+          <td>Anexión de Austria por la Alemania nazi en marzo de 1938.</td>
+        </tr>
+        <tr>
+          <td><strong>Lend-Lease</strong></td>
+          <td>Programa de EE.UU. que suministró armas y recursos a los Aliados antes de entrar oficialmente en la guerra.</td>
+        </tr>
+        <tr>
+          <td><strong>Día D</strong></td>
+          <td>6 de junio de 1944: desembarco aliado en Normandía (Francia). La mayor operación anfibia de la historia.</td>
+        </tr>
+        <tr>
+          <td><strong>Fascismo</strong></td>
+          <td>Ideología de Mussolini: ultranacionalismo, estado autoritario, rechazo del comunismo y la democracia liberal.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<!-- ════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer>
+  <nav class="footer-nav" aria-label="Navegación entre guías">
+    <a href="quimica.html">← Química</a>
+    <a href="index.html">🏠 Inicio</a>
+    <a href="index.html">Inicio →</a>
+  </nav>
+  <p class="footer-copy">
+    Juan Esteban Herreño · Grado 9° · Colegio CEDAP · Bogotá 2026
+    · Docente: Iván Felipe Ramírez · Ciencias Sociales
+  </p>
+</footer>
+
+<script>
+function toggleHintSoc(id){var el=document.getElementById(id);var btn=el.previousElementSibling;if(el.style.display==='block'){el.style.display='none';btn.textContent='💡 Ver ejemplo';}else{el.style.display='block';btn.textContent='🙈 Ocultar';}}
+</script>
+
+</body>
+</html>

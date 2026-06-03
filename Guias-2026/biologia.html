@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Biologia - Juan Esteban Herreño - CEDAP 2026</title>
+  <style>
+    /* === RESET & BASE === */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f1f8e9;
+      color: #1b2a1c;
+      line-height: 1.7;
+      min-height: 100vh;
+    }
+
+    /* === HEADER === */
+    header {
+      background: linear-gradient(135deg, #1b5e20 0%, #2e7d32 60%, #388e3c 100%);
+      color: #fff;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .header-emoji {
+      font-size: 3.2rem;
+      display: block;
+      margin-bottom: 0.4rem;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+    }
+
+    header h1 {
+      font-size: clamp(1.5rem, 4vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: 0.5px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+
+    header .subtitle {
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      margin-top: 0.5rem;
+      opacity: 0.9;
+      font-weight: 400;
+    }
+
+    header .meta-info {
+      margin-top: 1.2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      justify-content: center;
+    }
+
+    .meta-badge {
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.35);
+      border-radius: 20px;
+      padding: 0.3rem 0.9rem;
+      font-size: 0.85rem;
+      backdrop-filter: blur(4px);
+    }
+
+    /* === MAIN LAYOUT === */
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.2rem 3rem;
+    }
+
+    /* === OBJETIVO BANNER === */
+    .objetivo-banner {
+      background: linear-gradient(135deg, #2e7d32, #43a047);
+      color: #fff;
+      border-radius: 14px;
+      padding: 1.4rem 1.6rem;
+      margin-bottom: 2.2rem;
+      box-shadow: 0 4px 18px rgba(46,125,50,0.25);
+    }
+
+    .objetivo-banner h2 {
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      opacity: 0.85;
+      margin-bottom: 0.5rem;
+    }
+
+    .objetivo-banner p {
+      font-size: 1.02rem;
+      line-height: 1.65;
+    }
+
+    /* === SECTION === */
+    section {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .section-number {
+      background: #2e7d32;
+      color: #fff;
+      font-weight: 800;
+      font-size: 1rem;
+      width: 2.1rem;
+      height: 2.1rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(46,125,50,0.3);
+    }
+
+    .section-title {
+      font-size: clamp(1.1rem, 3vw, 1.35rem);
+      font-weight: 700;
+      color: #1b5e20;
+    }
+
+    /* === ACTIVITY CARD === */
+    .activity-card {
+      background: #fff;
+      border-left: 5px solid #2e7d32;
+      border-radius: 0 12px 12px 0;
+      padding: 1.4rem 1.5rem;
+      box-shadow: 0 3px 14px rgba(46,125,50,0.10);
+      margin-bottom: 1.2rem;
+    }
+
+    .activity-card h3 {
+      color: #2e7d32;
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* === EXPLICATIVE BOX === */
+    .explain-box {
+      background: #e8f5e9;
+      border-left: 5px solid #2e7d32;
+      border-radius: 0 10px 10px 0;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .explain-box h4 {
+      color: #1b5e20;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+
+    .explain-box p, .explain-box li {
+      font-size: 0.97rem;
+      color: #2d4a2e;
+    }
+
+    .explain-box ul, .explain-box ol {
+      padding-left: 1.3rem;
+      margin-top: 0.4rem;
+    }
+
+    .explain-box li {
+      margin-bottom: 0.3rem;
+    }
+
+    /* === SABIAS QUE === */
+    .sabias-que {
+      background: #c8e6c9;
+      border-left: 5px solid #2e7d32;
+      border-radius: 0 10px 10px 0;
+      padding: 1rem 1.3rem;
+      margin: 1.2rem 0;
+    }
+
+    .sabias-que .sq-label {
+      font-weight: 800;
+      color: #1b5e20;
+      font-size: 0.92rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .sabias-que p {
+      font-size: 0.95rem;
+      color: #2d4a2e;
+    }
+
+    /* === QUESTION LIST === */
+    .question-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .question-list li {
+      background: #f9fbe7;
+      border: 1px solid #c5e1a5;
+      border-radius: 8px;
+      padding: 0.8rem 1rem;
+      margin-bottom: 0.7rem;
+      font-size: 0.97rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .q-num {
+      background: #2e7d32;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      min-width: 1.5rem;
+      height: 1.5rem;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .answer-line {
+      border: none;
+      border-bottom: 1.5px solid #81c784;
+      width: 100%;
+      margin-top: 0.5rem;
+      background: transparent;
+      display: block;
+      height: 1.5rem;
+    }
+
+    /* === TRUE/FALSE TABLE === */
+    .tf-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+
+    .tf-table thead th {
+      background: #2e7d32;
+      color: #fff;
+      padding: 0.7rem 0.8rem;
+      text-align: left;
+      font-weight: 700;
+    }
+
+    .tf-table tbody tr:nth-child(even) {
+      background: #f1f8e9;
+    }
+
+    .tf-table tbody tr:nth-child(odd) {
+      background: #fff;
+    }
+
+    .tf-table td {
+      padding: 0.75rem 0.8rem;
+      vertical-align: middle;
+      border-bottom: 1px solid #dcedc8;
+    }
+
+    .tf-table td.hint {
+      color: #558b2f;
+      font-size: 0.88rem;
+    }
+
+    .tf-box {
+      display: inline-block;
+      border: 1.5px solid #81c784;
+      border-radius: 6px;
+      width: 2rem;
+      height: 1.5rem;
+      margin-right: 0.4rem;
+      vertical-align: middle;
+    }
+
+    /* === TABLA GASES === */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.93rem;
+      margin-top: 0.8rem;
+    }
+
+    .data-table thead th {
+      background: #388e3c;
+      color: #fff;
+      padding: 0.65rem 0.8rem;
+      text-align: left;
+    }
+
+    .data-table tbody tr:nth-child(even) { background: #e8f5e9; }
+    .data-table tbody tr:nth-child(odd)  { background: #fff; }
+    .data-table td {
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid #c8e6c9;
+    }
+
+    /* === ETAPAS TABLE === */
+    .etapas-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.93rem;
+      margin-top: 0.8rem;
+    }
+
+    .etapas-table thead th {
+      background: #1b5e20;
+      color: #fff;
+      padding: 0.65rem 0.8rem;
+    }
+
+    .etapas-table tbody tr:nth-child(even) { background: #f1f8e9; }
+    .etapas-table tbody tr:nth-child(odd)  { background: #fff; }
+    .etapas-table td {
+      padding: 0.6rem 0.8rem;
+      border-bottom: 1px solid #c8e6c9;
+      vertical-align: top;
+    }
+
+    .etapa-num {
+      background: #2e7d32;
+      color: #fff;
+      border-radius: 50%;
+      width: 1.6rem;
+      height: 1.6rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+      margin-right: 0.4rem;
+    }
+
+    /* === MAPA CONCEPTUAL === */
+    .concept-map {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      padding: 1rem 0.5rem;
+      overflow-x: auto;
+    }
+
+    .concept-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.3rem;
+      flex-wrap: wrap;
+    }
+
+    .concept-box {
+      background: #2e7d32;
+      color: #fff;
+      border-radius: 10px;
+      padding: 0.55rem 1rem;
+      font-weight: 700;
+      font-size: 0.88rem;
+      text-align: center;
+      min-width: 130px;
+      box-shadow: 0 2px 8px rgba(46,125,50,0.25);
+    }
+
+    .concept-box.secondary {
+      background: #43a047;
+    }
+
+    .concept-box.tertiary {
+      background: #66bb6a;
+      color: #1b2a1c;
+    }
+
+    .concept-box.final {
+      background: #1b5e20;
+    }
+
+    .arrow-down {
+      color: #2e7d32;
+      font-size: 1.4rem;
+      line-height: 1;
+      text-align: center;
+      display: block;
+      margin: 0.15rem 0;
+    }
+
+    .arrow-right {
+      color: #2e7d32;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
+
+    .cm-label {
+      color: #558b2f;
+      font-size: 0.78rem;
+      font-style: italic;
+      text-align: center;
+      margin: 0.05rem 0;
+    }
+
+    .concept-branch {
+      display: flex;
+      gap: 0.6rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0.3rem 0;
+    }
+
+    /* === MILLER UREY BOX === */
+    .experiment-box {
+      background: #fff;
+      border: 2px solid #2e7d32;
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      margin-top: 1rem;
+    }
+
+    .experiment-box h4 {
+      color: #1b5e20;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+    }
+
+    .experiment-steps {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      align-items: center;
+      margin-top: 0.5rem;
+    }
+
+    .exp-step {
+      background: #e8f5e9;
+      border: 1px solid #a5d6a7;
+      border-radius: 8px;
+      padding: 0.4rem 0.7rem;
+      font-size: 0.85rem;
+      text-align: center;
+      color: #1b5e20;
+    }
+
+    .exp-arrow {
+      color: #2e7d32;
+      font-size: 1.1rem;
+    }
+
+    /* === RESPONSIVE === */
+    @media (max-width: 600px) {
+      .concept-row { flex-direction: column; }
+      .arrow-right { transform: rotate(90deg); }
+      .experiment-steps { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* === FOOTER NAV === */
+    footer {
+      background: #1b5e20;
+      color: #fff;
+      padding: 1.2rem 1.5rem;
+      text-align: center;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-nav a {
+      color: #a5d6a7;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.45rem 1rem;
+      border: 1.5px solid #388e3c;
+      border-radius: 8px;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .footer-nav a:hover {
+      background: #2e7d32;
+      color: #fff;
+    }
+
+    .footer-nav .home-link {
+      background: #2e7d32;
+      color: #fff;
+      border-color: #66bb6a;
+    }
+
+    .footer-copy {
+      margin-top: 0.8rem;
+      font-size: 0.8rem;
+      opacity: 0.7;
+    }
+
+    /* ── INTERACTIVIDAD ── */
+    .resp-textarea {
+      width: 100%; min-height: 80px;
+      border: 1.5px dashed #81c784; border-radius: 8px;
+      padding: .6rem .8rem; font-family: inherit; font-size: .92rem;
+      background: #f9fbe7; resize: vertical; margin-top: .45rem;
+      color: #1b2a1c; display: block;
+    }
+    .resp-textarea:focus { outline: 2px solid #2e7d32; border-style: solid; }
+    .hint-btn {
+      display: inline-block; background: none;
+      border: 1.5px solid #2e7d32; color: #2e7d32;
+      border-radius: 20px; padding: .22rem .8rem; font-size: .78rem;
+      cursor: pointer; margin-top: .4rem; font-family: inherit;
+      transition: background .15s;
+    }
+    .hint-btn:hover { background: #e8f5e9; }
+    .hint-box {
+      display: none; background: #e8f5e9; border-left: 3px solid #2e7d32;
+      border-radius: 0 8px 8px 0; padding: .65rem .9rem; font-size: .85rem;
+      margin-top: .4rem; font-style: italic;
+    }
+    .hint-box strong { font-style: normal; display: block; font-size: .8rem; margin-bottom: .25rem; color: #1b5e20; }
+    .mc-opt { cursor: pointer; transition: background .15s; user-select: none; }
+    .mc-opt.mc-correct { background: #e8f5e9 !important; border-color: #2e7d32 !important; }
+    .mc-opt.mc-incorrect { background: #ffebee !important; border-color: #c62828 !important; }
+    .mc-feedback { display: none; padding: .5rem .8rem; border-radius: 6px; font-size: .85rem; margin-top: .6rem; }
+    .mc-feedback.fb-ok { background: #e8f5e9; color: #1b5e20; border-left: 3px solid #2e7d32; }
+    .mc-feedback.fb-no { background: #ffebee; color: #c62828; border-left: 3px solid #c62828; }
+    .vf-btn-i { cursor: pointer; transition: all .15s; user-select: none; display: inline-block;
+      border: 1.5px solid #81c784; border-radius: 6px; padding: .18rem .7rem;
+      font-size: .85rem; font-weight: 700; background: #f9fbe7; color: #2e7d32; margin-right: .3rem; }
+    .vf-btn-i:hover { background: #c8e6c9; }
+    .vf-btn-i.vf-correct { background: #2e7d32 !important; color: #fff !important; border-color: #2e7d32 !important; }
+    .vf-btn-i.vf-incorrect { background: #c62828 !important; color: #fff !important; border-color: #c62828 !important; }
+    .vf-feedback-i {
+      display: none; font-size: .82rem; padding: .45rem .7rem;
+      border-radius: 6px; margin-top: .4rem; line-height: 1.5;
+    }
+    .vf-feedback-i.fb-ok { background: #e8f5e9; color: #1b5e20; border-left: 3px solid #2e7d32; }
+    .vf-feedback-i.fb-no { background: #ffebee; color: #c62828; border-left: 3px solid #c62828; }
+    .question-list li { flex-direction: column; align-items: stretch; }
+    .question-list li .q-row { display: flex; align-items: flex-start; gap: .6rem; }
+
+    /* === DIVIDER === */
+    .divider {
+      border: none;
+      border-top: 2px solid #c8e6c9;
+      margin: 2rem 0;
+    }
+
+    /* === HIGHLIGHT === */
+    strong.green { color: #1b5e20; }
+
+    code {
+      background: #dcedc8;
+      color: #1b5e20;
+      padding: 0.1rem 0.35rem;
+      border-radius: 4px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <span class="header-emoji">🧬</span>
+  <h1>Biolog&iacute;a &mdash; Taller Acad&eacute;mico</h1>
+  <p class="subtitle">El Origen de la Vida &ndash; Teor&iacute;a de Oparin</p>
+  <div class="meta-info">
+    <span class="meta-badge">&#128100; Juan Esteban Herre&ntilde;o</span>
+    <span class="meta-badge">&#127979; Grado 9&deg; &mdash; CEDAP, Bogot&aacute;</span>
+    <span class="meta-badge">&#128203; Docente: Jhon Alexander Gallo Ram&iacute;rez</span>
+    <span class="meta-badge">&#128197; 2026</span>
+  </div>
+</header>
+
+<!-- ===== MAIN ===== -->
+<main>
+
+  <!-- OBJETIVO -->
+  <div class="objetivo-banner">
+    <h2>&#127919; Objetivo del Taller</h2>
+    <p>Comprender las principales ideas propuestas por Alexandr Oparin sobre el origen de la vida, relacionando la atm&oacute;sfera primitiva, la evoluci&oacute;n qu&iacute;mica y la formaci&oacute;n de las primeras mol&eacute;culas org&aacute;nicas.</p>
+  </div>
+
+  <!-- ===================== SECCIÓN 1 ===================== -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">1</div>
+      <h2 class="section-title">Exploraci&oacute;n de Saberes Previos</h2>
+    </div>
+
+    <!-- Contexto explicativo -->
+    <div class="explain-box">
+      <h4>&#128218; Contexto te&oacute;rico</h4>
+      <p>La <strong>teor&iacute;a de Oparin</strong> (1924) y Haldane propone que la vida surgi&oacute; de forma gradual a partir de reacciones qu&iacute;micas en la Tierra primitiva. No hubo vida de repente: tom&oacute; <strong>millones de a&ntilde;os</strong> de transformaciones. Un ser vivo se diferencia de la materia inerte porque:</p>
+      <ul>
+        <li>&#127807; Crece y se desarrolla</li>
+        <li>&#127807; Se reproduce</li>
+        <li>&#127807; Responde al ambiente (irritabilidad)</li>
+        <li>&#127807; Tiene metabolismo (procesa energ&iacute;a)</li>
+      </ul>
+    </div>
+
+    <div class="sabias-que">
+      <div class="sq-label">&#10024; &iquest;Sab&iacute;as que&hellip;?</div>
+      <p>Alexandr Oparin public&oacute; su teor&iacute;a en 1924 en el libro <em>&ldquo;El Origen de la Vida&rdquo;</em> y fue el primero en proponer una explicaci&oacute;n cient&iacute;fica y materialista sin recurrir a causas sobrenaturales.</p>
+    </div>
+
+    <div class="activity-card">
+      <h3>&#9997;&#65039; Actividad &mdash; Responde en tu cuaderno</h3>
+      <ul class="question-list">
+        <li>
+          <div class="q-row"><span class="q-num">1</span><span>¿Qué entiendes por "origen de la vida"?</span></div>
+          <textarea class="resp-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh1')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh1"><strong>💡 Ejemplo:</strong> El origen de la vida es el proceso mediante el cual surgieron los primeros organismos vivos en la Tierra hace aproximadamente 3.800 millones de años, a partir de moléculas químicas simples presentes en la atmósfera y los océanos primitivos.</div>
+        </li>
+        <li>
+          <div class="q-row"><span class="q-num">2</span><span>¿Crees que la vida apareció de manera inmediata o mediante cambios graduales?</span></div>
+          <textarea class="resp-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh2')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh2"><strong>💡 Ejemplo:</strong> Creo que la vida apareció mediante cambios graduales, porque según Oparin tomó millones de años de reacciones químicas progresivas para que las moléculas simples se organizaran en estructuras cada vez más complejas hasta formar las primeras células.</div>
+        </li>
+        <li>
+          <div class="q-row"><span class="q-num">3</span><span>¿Qué condiciones crees que eran necesarias en la Tierra primitiva para que surgiera vida?</span></div>
+          <textarea class="resp-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh3')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh3"><strong>💡 Ejemplo:</strong> Era necesario: 1) Una atmósfera sin oxígeno libre con gases como metano, amoníaco e hidrógeno. 2) Fuentes de energía como rayos y volcanes. 3) Agua líquida en los océanos. 4) Temperatura adecuada para que ocurrieran reacciones químicas.</div>
+        </li>
+        <li>
+          <div class="q-row"><span class="q-num">4</span><span>¿Cuál es la diferencia entre un ser vivo y una sustancia sin vida?</span></div>
+          <textarea class="resp-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh4')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh4"><strong>💡 Ejemplo:</strong> Un ser vivo crece, se reproduce, responde a estímulos del ambiente (irritabilidad) y tiene metabolismo (procesa energía). Una sustancia sin vida como una piedra o el agua no realiza ninguna de estas funciones biológicas.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== SECCIÓN 2 ===================== -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">2</div>
+      <h2 class="section-title">Lectura y An&aacute;lisis</h2>
+    </div>
+
+    <!-- Fragmento de lectura -->
+    <div class="activity-card">
+      <h3>&#128216; Texto base</h3>
+      <p style="font-style:italic; color:#2d4a2e; border-left:3px solid #66bb6a; padding-left:1rem; margin:0.4rem 0 0.8rem;">
+        &ldquo;Hace millones de a&ntilde;os la Tierra ten&iacute;a condiciones muy diferentes a las actuales. Seg&uacute;n la teor&iacute;a de Oparin, la atm&oacute;sfera primitiva estaba compuesta por gases como metano, amon&iacute;aco, hidr&oacute;geno y vapor de agua. La energ&iacute;a proveniente de rayos, volcanes y radiaci&oacute;n solar permiti&oacute; la formaci&oacute;n de mol&eacute;culas org&aacute;nicas simples que, con el tiempo, dieron origen a estructuras m&aacute;s complejas hasta formar las primeras c&eacute;lulas.&rdquo;
+      </p>
+    </div>
+
+    <!-- Explicación detallada -->
+    <div class="explain-box">
+      <h4>&#128300; Explicaci&oacute;n detallada &mdash; Componentes clave</h4>
+
+      <p><strong class="green">Atm&oacute;sfera primitiva</strong> (hace ~4.000 millones de a&ntilde;os):</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Gas</th>
+            <th>F&oacute;rmula</th>
+            <th>Funci&oacute;n en el origen de la vida</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Metano</td>
+            <td><code>CH&#8324;</code></td>
+            <td>Fuente de carbono para mol&eacute;culas org&aacute;nicas</td>
+          </tr>
+          <tr>
+            <td>Amon&iacute;aco</td>
+            <td><code>NH&#8323;</code></td>
+            <td>Fuente de nitr&oacute;geno (esencial en amino&aacute;cidos)</td>
+          </tr>
+          <tr>
+            <td>Hidr&oacute;geno</td>
+            <td><code>H&#8322;</code></td>
+            <td>Agente reductor; atmosfera sin ox&iacute;geno libre</td>
+          </tr>
+          <tr>
+            <td>Vapor de agua</td>
+            <td><code>H&#8322;O</code></td>
+            <td>Solvente; base para las reacciones qu&iacute;micas</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <p style="margin-top:1rem;"><strong class="green">Fuentes de energ&iacute;a:</strong> Rayos el&eacute;ctricos &bull; Erupciones volc&aacute;nicas &bull; Radiaci&oacute;n ultravioleta solar.</p>
+
+      <p style="margin-top:0.8rem;"><strong class="green">Mol&eacute;culas org&aacute;nicas:</strong> Compuestos que contienen carbono. Ejemplos: amino&aacute;cidos, az&uacute;cares, &aacute;cidos nucleicos. Son los &ldquo;ladrillos&rdquo; de la vida.</p>
+
+      <p style="margin-top:0.8rem;"><strong class="green">Caldo primitivo:</strong> Los oc&eacute;anos acumularon estas mol&eacute;culas org&aacute;nicas formando una &ldquo;sopa qu&iacute;mica&rdquo; donde comenzaron reacciones m&aacute;s complejas.</p>
+
+      <p style="margin-top:0.8rem;"><strong class="green">Coacervados:</strong> Estructuras tipo gotitas que concentraban mol&eacute;culas org&aacute;nicas; son considerados precursores (proto-c&eacute;lulas) de la verdadera c&eacute;lula.</p>
+    </div>
+
+    <!-- Experimento Miller y Urey -->
+    <div class="experiment-box">
+      <h4>&#129514; Experimento de Miller y Urey (1953)</h4>
+      <p>Stanley Miller y Harold Urey simularon en laboratorio las condiciones de la Tierra primitiva y lograron sintetizar amino&aacute;cidos, confirmando la teor&iacute;a de Oparin.</p>
+      <div class="experiment-steps">
+        <div class="exp-step">Gases primitivos<br><small>CH&#8324;, NH&#8323;, H&#8322;, H&#8322;O</small></div>
+        <span class="exp-arrow">&#8594;</span>
+        <div class="exp-step">Descargas el&eacute;ctricas<br><small>(simulan rayos)</small></div>
+        <span class="exp-arrow">&#8594;</span>
+        <div class="exp-step">Condensaci&oacute;n<br><small>(simula lluvia)</small></div>
+        <span class="exp-arrow">&#8594;</span>
+        <div class="exp-step" style="background:#c8e6c9; border-color:#2e7d32;"><strong>&#10003; Amino&aacute;cidos</strong><br><small>¡Confirmado!</small></div>
+      </div>
+    </div>
+
+    <div class="sabias-que">
+      <div class="sq-label">&#10024; &iquest;Sab&iacute;as que&hellip;?</div>
+      <p>El experimento de Miller produjo m&aacute;s de <strong>20 tipos de amino&aacute;cidos</strong> en solo una semana. Hoy sabemos que en meteoritos tambi&eacute;n se han encontrado amino&aacute;cidos, lo que sugiere que la vida podr&iacute;a tener or&iacute;genes c&oacute;smicos.</p>
+    </div>
+
+    <div class="activity-card">
+      <h3>&#9997;&#65039; Preguntas de an&aacute;lisis</h3>
+      <ul class="question-list">
+        <li>
+          <div class="q-row"><span class="q-num">1</span><span>¿Qué gases conformaban la atmósfera primitiva según Oparin?</span></div>
+          <textarea class="resp-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh5')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh5"><strong>💡 Ejemplo:</strong> Según Oparin, la atmósfera primitiva estaba compuesta por: Metano (CH₄), Amoníaco (NH₃), Hidrógeno (H₂) y Vapor de agua (H₂O). Nota importante: NO había oxígeno libre (O₂) en esa atmósfera.</div>
+        </li>
+        <li>
+          <div class="q-row"><span class="q-num">2</span><span>¿Qué fuentes de energía ayudaron a formar moléculas orgánicas en la Tierra primitiva?</span></div>
+          <textarea class="resp-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh6')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh6"><strong>💡 Ejemplo:</strong> Las tres fuentes de energía principales fueron: 1) Rayos eléctricos (tormentas), 2) Erupciones volcánicas, y 3) Radiación ultravioleta solar. Esta energía transformó los gases simples en moléculas orgánicas más complejas.</div>
+        </li>
+        <li>
+          <div class="q-row"><span class="q-num">3</span><span>¿Qué son las moléculas orgánicas? Da al menos dos ejemplos.</span></div>
+          <textarea class="resp-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh7')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh7"><strong>💡 Ejemplo:</strong> Las moléculas orgánicas son compuestos que contienen carbono como elemento principal. Son los "ladrillos" de la vida. Ejemplos: Aminoácidos (forman proteínas), Azúcares (fuente de energía), Ácidos nucleicos (ADN y ARN, portadores de información genética).</div>
+        </li>
+        <li>
+          <div class="q-row"><span class="q-num">4</span><span>¿Por qué el océano primitivo es llamado "caldo primitivo"?</span></div>
+          <textarea class="resp-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh8')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh8"><strong>💡 Ejemplo:</strong> Se llama "caldo primitivo" porque los océanos acumularon gran cantidad de moléculas orgánicas, formando una especie de "sopa química" rica en sustancias. En ese medio concentrado comenzaron a ocurrir reacciones más complejas que llevaron a la formación de los coacervados.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== SECCIÓN 3 ===================== -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">3</div>
+      <h2 class="section-title">Verdadero o Falso</h2>
+    </div>
+
+    <div class="explain-box">
+      <h4>&#128161; C&oacute;mo usar las pistas</h4>
+      <p>Cada afirmaci&oacute;n tiene una pista <strong>&#128161;</strong> para orientarte. Lee la afirmaci&oacute;n, revisa la pista y escribe <strong>V</strong> (verdadero) o <strong>F</strong> (falso) en tu cuaderno. Justifica cada respuesta con una oraci&oacute;n.</p>
+    </div>
+
+    <div class="activity-card">
+      <h3>&#9989; Marca V o F y justifica</h3>
+      <table class="tf-table">
+        <thead>
+          <tr>
+            <th style="width:55%">Afirmaci&oacute;n</th>
+            <th style="width:10%">V / F</th>
+            <th style="width:35%">&#128161; Pista orientadora</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Oparin propuso que la vida apareció por generación espontánea moderna.</td>
+            <td>
+              <button class="vf-btn-i" onclick="vfClick(this,true,false,'Oparin propone EVOLUCIÓN QUÍMICA GRADUAL (millones de años de reacciones). La generación espontánea plantea aparición instantánea de vida, lo cual es lo opuesto a su teoría.')">V</button>
+              <button class="vf-btn-i" onclick="vfClick(this,false,false,'Oparin propone EVOLUCIÓN QUÍMICA GRADUAL (millones de años de reacciones). La generación espontánea plantea aparición instantánea de vida, lo cual es lo opuesto a su teoría.')">F</button>
+              <div class="vf-feedback-i"></div>
+            </td>
+            <td class="hint">💡 Recuerda: Oparin propone <em>evolución química gradual</em>, no aparición instantánea. ¿Son lo mismo?</td>
+          </tr>
+          <tr>
+            <td>La atmósfera primitiva contenía abundante oxígeno.</td>
+            <td>
+              <button class="vf-btn-i" onclick="vfClick(this,true,false,'La atmósfera primitiva NO tenía oxígeno libre (O₂). Estaba compuesta por metano, amoníaco, hidrógeno y vapor de agua. El oxígeno apareció después, producido por los primeros organismos fotosintéticos.')">V</button>
+              <button class="vf-btn-i" onclick="vfClick(this,false,false,'La atmósfera primitiva NO tenía oxígeno libre (O₂). Estaba compuesta por metano, amoníaco, hidrógeno y vapor de agua. El oxígeno apareció después, producido por los primeros organismos fotosintéticos.')">F</button>
+              <div class="vf-feedback-i"></div>
+            </td>
+            <td class="hint">💡 Mira la tabla de gases. ¿Aparece el oxígeno (O₂) entre los componentes primitivos?</td>
+          </tr>
+          <tr>
+            <td>Los rayos y volcanes aportaban energía a la Tierra primitiva.</td>
+            <td>
+              <button class="vf-btn-i" onclick="vfClick(this,true,true,'CORRECTO. Según la teoría de Oparin, los rayos eléctricos, las erupciones volcánicas y la radiación UV solar eran las tres fuentes de energía que permitieron la formación de moléculas orgánicas simples.')">V</button>
+              <button class="vf-btn-i" onclick="vfClick(this,false,true,'CORRECTO. Según la teoría de Oparin, los rayos eléctricos, las erupciones volcánicas y la radiación UV solar eran las tres fuentes de energía que permitieron la formación de moléculas orgánicas simples.')">F</button>
+              <div class="vf-feedback-i"></div>
+            </td>
+            <td class="hint">💡 El texto del taller menciona las fuentes de energía. Vuelve a leerlo.</td>
+          </tr>
+          <tr>
+            <td>Las primeras formas de vida eran simples.</td>
+            <td>
+              <button class="vf-btn-i" onclick="vfClick(this,true,true,'CORRECTO. Las primeras formas de vida eran células muy simples (procariotas primitivas) sin núcleo definido. La complejidad biológica surge gradualmente a lo largo de la evolución, no desde el principio.')">V</button>
+              <button class="vf-btn-i" onclick="vfClick(this,false,true,'CORRECTO. Las primeras formas de vida eran células muy simples (procariotas primitivas) sin núcleo definido. La complejidad biológica surge gradualmente a lo largo de la evolución, no desde el principio.')">F</button>
+              <div class="vf-feedback-i"></div>
+            </td>
+            <td class="hint">💡 Piensa: ¿la complejidad biológica surge al principio o al final de la evolución?</td>
+          </tr>
+          <tr>
+            <td>La teoría de Oparin plantea una evolución química antes de la biológica.</td>
+            <td>
+              <button class="vf-btn-i" onclick="vfClick(this,true,true,'CORRECTO. En la teoría de Oparin primero ocurre la EVOLUCIÓN QUÍMICA (formación de moléculas orgánicas, coacervados) y luego la EVOLUCIÓN BIOLÓGICA (primeras células con reproducción y metabolismo). La química es el fundamento.')">V</button>
+              <button class="vf-btn-i" onclick="vfClick(this,false,true,'CORRECTO. En la teoría de Oparin primero ocurre la EVOLUCIÓN QUÍMICA (formación de moléculas orgánicas, coacervados) y luego la EVOLUCIÓN BIOLÓGICA (primeras células con reproducción y metabolismo). La química es el fundamento.')">F</button>
+              <div class="vf-feedback-i"></div>
+            </td>
+            <td class="hint">💡 Revisa las etapas de la teoría: primero moléculas, luego células. ¿Hay etapas químicas antes?</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== SECCIÓN 4 ===================== -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">4</div>
+      <h2 class="section-title">Mapa Conceptual</h2>
+    </div>
+
+    <div class="explain-box">
+      <h4>&#128203; Etapas de la Teor&iacute;a de Oparin</h4>
+      <table class="etapas-table">
+        <thead>
+          <tr>
+            <th>Etapa</th>
+            <th>Nombre</th>
+            <th>Descripci&oacute;n</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="etapa-num">1</span></td>
+            <td><strong>S&iacute;ntesis</strong></td>
+            <td>Formaci&oacute;n de mol&eacute;culas org&aacute;nicas simples en la atm&oacute;sfera primitiva por acci&oacute;n de la energ&iacute;a.</td>
+          </tr>
+          <tr>
+            <td><span class="etapa-num">2</span></td>
+            <td><strong>Concentraci&oacute;n</strong></td>
+            <td>Las mol&eacute;culas caen al oc&eacute;ano y se acumulan formando el <em>caldo primitivo</em>.</td>
+          </tr>
+          <tr>
+            <td><span class="etapa-num">3</span></td>
+            <td><strong>Coacervados</strong></td>
+            <td>Formaci&oacute;n de estructuras goticulares que agrupan mol&eacute;culas: las proto-c&eacute;lulas.</td>
+          </tr>
+          <tr>
+            <td><span class="etapa-num">4</span></td>
+            <td><strong>Primeras c&eacute;lulas</strong></td>
+            <td>Aparici&oacute;n de las primeras c&eacute;lulas con metabolismo y capacidad de reproducci&oacute;n.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="activity-card">
+      <h3>&#127760; Diagrama &mdash; Mapa Conceptual Visual</h3>
+      <p style="font-size:0.88rem; color:#558b2f; margin-bottom:1rem;">Copia este mapa en tu cuaderno y agrega conectores con las palabras clave en los espacios en blanco.</p>
+
+      <div class="concept-map">
+
+        <!-- Nodo raíz -->
+        <div class="concept-row">
+          <div class="concept-box final">Teor&iacute;a de Oparin</div>
+        </div>
+
+        <span class="arrow-down">&#8595;</span>
+        <span class="cm-label">explica el origen de la vida mediante</span>
+        <span class="arrow-down">&#8595;</span>
+
+        <!-- Nivel 2 -->
+        <div class="concept-row">
+          <div class="concept-box">Atm&oacute;sfera primitiva</div>
+          <span class="arrow-right">&#8594;</span>
+          <div class="concept-box secondary">Energ&iacute;a<br><small>(rayos, volcanes, UV)</small></div>
+        </div>
+
+        <span class="arrow-down">&#8595;</span>
+        <span class="cm-label">produce</span>
+        <span class="arrow-down">&#8595;</span>
+
+        <!-- Nivel 3 -->
+        <div class="concept-row">
+          <div class="concept-box secondary">Mol&eacute;culas org&aacute;nicas</div>
+        </div>
+
+        <span class="arrow-down">&#8595;</span>
+        <span class="cm-label">se acumulan en</span>
+        <span class="arrow-down">&#8595;</span>
+
+        <!-- Nivel 4 -->
+        <div class="concept-row">
+          <div class="concept-box tertiary">Caldo primitivo<br><small>(oc&eacute;ano)</small></div>
+        </div>
+
+        <span class="arrow-down">&#8595;</span>
+        <span class="cm-label">da lugar a</span>
+        <span class="arrow-down">&#8595;</span>
+
+        <!-- Nivel 5 -->
+        <div class="concept-row">
+          <div class="concept-box secondary">Coacervados<br><small>(proto-c&eacute;lulas)</small></div>
+        </div>
+
+        <span class="arrow-down">&#8595;</span>
+        <span class="cm-label">evolucionan hasta</span>
+        <span class="arrow-down">&#8595;</span>
+
+        <!-- Nivel final -->
+        <div class="concept-row">
+          <div class="concept-box final">Primeras C&eacute;lulas &#129514;</div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="sabias-que">
+      <div class="sq-label">&#10024; &iquest;Sab&iacute;as que&hellip;?</div>
+      <p>Los <strong>coacervados</strong> pueden formarse hoy en laboratorio mezclando ciertas prote&iacute;nas y &aacute;cidos nucleicos en agua. Tienen membrana propia y pueden incorporar y expulsar sustancias, como una c&eacute;lula primitiva.</p>
+    </div>
+  </section>
+
+  <hr class="divider">
+
+  <!-- ===================== SECCIÓN 5 ===================== -->
+  <section>
+    <div class="section-header">
+      <div class="section-number">5</div>
+      <h2 class="section-title">Preguntas de An&aacute;lisis</h2>
+    </div>
+
+    <!-- Ampliación explicativa -->
+    <div class="explain-box">
+      <h4>&#128300; Ampliaci&oacute;n te&oacute;rica para tus respuestas</h4>
+
+      <p><strong class="green">Importancia de la teor&iacute;a de Oparin:</strong> Fue la primera explicaci&oacute;n cient&iacute;fica y <em>materialista</em> del origen de la vida, sin recurrir a causas sobrenaturales. Abri&oacute; el campo de la <em>biog&eacute;nesis qu&iacute;mica</em> y permiti&oacute; dise&ntilde;ar experimentos verificables.</p>
+
+      <p style="margin-top:0.8rem;"><strong class="green">Qu&iacute;mica y vida:</strong> Los compuestos de carbono (org&aacute;nicos) son la base de toda la materia viva. La qu&iacute;mica describe c&oacute;mo se forman y combinan; sin qu&iacute;mica no habr&iacute;a biolog&iacute;a. El carbono forma hasta 4 enlaces, lo que permite mol&eacute;culas enormemente complejas como el ADN.</p>
+
+      <p style="margin-top:0.8rem;"><strong class="green">Vida en otros planetas:</strong></p>
+      <ul>
+        <li>Marte tuvo <strong>agua l&iacute;quida</strong> hace millones de a&ntilde;os (evidencia de canalones y minerales hidratados).</li>
+        <li>La NASA busca <strong>biomarcadores</strong> (indicadores qu&iacute;micos de vida) con el rover Perseverance.</li>
+        <li>Exoplanetas en la &ldquo;zona habitable&rdquo; de su estrella podr&iacute;an tener condiciones similares a la Tierra primitiva.</li>
+        <li>Europa (luna de J&uacute;piter) tiene un oc&eacute;ano subsuperficial que podr&iacute;a ser un &ldquo;caldo primitivo&rdquo; moderno.</li>
+      </ul>
+    </div>
+
+    <div class="sabias-que">
+      <div class="sq-label">&#10024; &iquest;Sab&iacute;as que&hellip;?</div>
+      <p>El telescopio espacial <strong>James Webb</strong> (lanzado en 2021) puede analizar la atm&oacute;sfera de exoplanetas buscando gases como vapor de agua, metano y di&oacute;xido de carbono: posibles se&ntilde;ales de vida.</p>
+    </div>
+
+    <div class="activity-card">
+      <h3>&#9997;&#65039; Responde con argumentos</h3>
+      <ul class="question-list">
+        <li>
+          <div class="q-row"><span class="q-num">1</span><span>¿Por qué la teoría de Oparin fue importante para la ciencia?</span></div>
+          <textarea class="resp-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh9')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh9"><strong>💡 Ejemplo:</strong> La teoría de Oparin fue importante porque fue la primera explicación científica y materialista del origen de la vida, sin recurrir a causas sobrenaturales. Abrió el campo de la biogénesis química, permitió diseñar experimentos verificables (como el de Miller y Urey), y cambió la forma en que la ciencia estudia los inicios de la vida.</div>
+        </li>
+        <li>
+          <div class="q-row"><span class="q-num">2</span><span>¿Qué relación existe entre la química y el origen de la vida?</span></div>
+          <textarea class="resp-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh10')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh10"><strong>💡 Ejemplo:</strong> La química es la base del origen de la vida porque todas las moléculas esenciales (aminoácidos, ADN, proteínas) son compuestos químicos de carbono. Sin reacciones químicas entre los gases primitivos, no habrían surgido las moléculas orgánicas necesarias para la vida. La vida ES química organizada.</div>
+        </li>
+        <li>
+          <div class="q-row"><span class="q-num">3</span><span>¿Cómo ayudó el experimento de Miller y Urey a apoyar las ideas de Oparin?</span></div>
+          <textarea class="resp-textarea" placeholder="Escribe tu respuesta aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh11')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh11"><strong>💡 Ejemplo:</strong> Miller y Urey recrearon en laboratorio la atmósfera primitiva (CH₄, NH₃, H₂, H₂O) y aplicaron descargas eléctricas simulando rayos. Después de una semana produjeron más de 20 tipos de aminoácidos. Esto confirmó experimentalmente que la hipótesis de Oparin era posible: las moléculas orgánicas SÍ pueden surgir de reacciones químicas simples.</div>
+        </li>
+        <li>
+          <div class="q-row"><span class="q-num">4</span><span>¿Crees que podría existir vida en otros planetas? Argumenta tu respuesta con datos científicos.</span></div>
+          <textarea class="resp-textarea" style="min-height:110px;" placeholder="Escribe tu argumento aquí…"></textarea>
+          <button class="hint-btn" onclick="toggleHint('bh12')">💡 Ver ejemplo de respuesta</button>
+          <div class="hint-box" id="bh12"><strong>💡 Ejemplo:</strong> Sí creo que podría existir vida en otros planetas. Argumentos: 1) Marte tuvo agua líquida hace millones de años, condición clave según Oparin. 2) Europa (luna de Júpiter) tiene un océano subsuperficial que podría ser un "caldo primitivo" moderno. 3) El telescopio James Webb detecta gases como metano en exoplanetas que podrían indicar actividad biológica. 4) Se han encontrado aminoácidos en meteoritos, lo que sugiere que los "ladrillos de la vida" existen en el universo.</div>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <nav class="footer-nav">
+    <a href="index.html">&#8592; &Iacute;ndice</a>
+    <a href="index.html" class="home-link">&#127968; Inicio</a>
+    <a href="espanol.html">Espa&ntilde;ol &#8594;</a>
+  </nav>
+  <p class="footer-copy">Juan Esteban Herre&ntilde;o &bull; Grado 9&deg; &bull; Colegio CEDAP &bull; Bogot&aacute; 2026</p>
+</footer>
+
+<script>
+  function toggleHint(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const btn = el.previousElementSibling;
+    if (el.style.display === 'block') {
+      el.style.display = 'none';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '💡 Ver ejemplo de respuesta';
+    } else {
+      el.style.display = 'block';
+      if (btn && btn.classList.contains('hint-btn')) btn.textContent = '🙈 Ocultar ejemplo';
+    }
+  }
+  function vfClick(btn, answeredV, correctV, explanation) {
+    const cell = btn.closest('td') || btn.closest('.vf-item');
+    if (!cell) return;
+    cell.querySelectorAll('.vf-btn-i').forEach(b => b.classList.remove('vf-correct', 'vf-incorrect'));
+    const isCorrect = (answeredV === correctV);
+    btn.classList.add(isCorrect ? 'vf-correct' : 'vf-incorrect');
+    let fb = cell.querySelector('.vf-feedback-i');
+    if (!fb) { fb = document.createElement('div'); fb.className = 'vf-feedback-i'; cell.appendChild(fb); }
+    fb.innerHTML = (isCorrect ? '✅ <strong>Correcto.</strong> ' : '❌ <strong>Incorrecto.</strong> ') + explanation;
+    fb.className = 'vf-feedback-i ' + (isCorrect ? 'fb-ok' : 'fb-no');
+    fb.style.display = 'block';
+  }
+</script>
+</body>
+</html>
