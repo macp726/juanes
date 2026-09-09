@@ -1,0 +1,359 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Exploradores de La sensación de poder</title>
+  <style>
+    :root {
+      --ink: #233047;
+      --muted: #65738a;
+      --paper: #fffdf7;
+      --blue: #356ae6;
+      --mint: #dff7ee;
+      --yellow: #fff1b8;
+      --pink: #ffe1e8;
+      --line: #dce4ef;
+      --shadow: 0 12px 30px #23304718;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; color: var(--ink); background: linear-gradient(135deg, #eaf3ff, #fff8df);
+      font: 16px/1.5 system-ui, -apple-system, Segoe UI, sans-serif;
+    }
+    .wrap { max-width: 980px; margin: auto; padding: 24px 16px 48px; }
+    header, .card { background: var(--paper); border: 1px solid var(--line); border-radius: 22px; box-shadow: var(--shadow); }
+    header { padding: 28px; margin-bottom: 18px; }
+    h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 5vw, 3rem); line-height: 1.1; }
+    h2 { margin-top: 0; }
+    .subtitle { color: var(--muted); margin: 0; }
+    .badge { display: inline-block; padding: 5px 10px; border-radius: 99px; background: var(--yellow); font-weight: 700; font-size: .85rem; }
+    .story { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; margin-bottom: 18px; }
+    .card { padding: 22px; }
+    .story .card:first-child { background: #f5f8ff; }
+    .quote { border-left: 4px solid var(--blue); padding-left: 14px; font-style: italic; }
+    .activity { margin-top: 18px; }
+    .activity h2 { display: flex; align-items: center; gap: 10px; }
+    .number { display: grid; place-items: center; width: 34px; height: 34px; color: white; background: var(--blue); border-radius: 50%; font-size: 1rem; }
+    .options { display: grid; gap: 10px; margin: 16px 0; }
+    button, input {
+      font: inherit; border-radius: 12px; border: 2px solid var(--line); padding: 11px 13px;
+    }
+    button { cursor: pointer; color: var(--ink); background: white; text-align: left; transition: .15s ease; }
+    button:hover { border-color: var(--blue); transform: translateY(-1px); }
+    button.primary { background: var(--blue); border-color: var(--blue); color: white; text-align: center; font-weight: 700; }
+    .feedback { display: none; padding: 13px 15px; border-radius: 13px; margin-top: 12px; }
+    .feedback.show { display: block; }
+    .feedback.ok { background: var(--mint); border: 1px solid #9ed8c2; }
+    .feedback.try { background: var(--pink); border: 1px solid #f1aabd; }
+    .math { display: flex; flex-wrap: wrap; align-items: center; gap: 9px; margin: 14px 0; }
+    .math input { width: 110px; }
+    .sequence { display: grid; gap: 8px; }
+    .sequence button { cursor: grab; display: flex; align-items: center; gap: 10px; }
+    .sequence button.selected { border-color: var(--blue); background: #eaf0ff; }
+    .sequence-mark { display: grid; flex: 0 0 30px; place-items: center; width: 30px; height: 30px; color: white; background: var(--muted); border-radius: 50%; font-weight: 800; }
+    .sequence-mark.correct { background: #198754; }
+    .sequence-mark.incorrect { background: #c83252; }
+    .word { color: var(--blue); font-weight: 800; }
+    .progress { height: 12px; overflow: hidden; background: #e8edf5; border-radius: 99px; margin-top: 18px; }
+    .progress > div { width: 0; height: 100%; background: var(--blue); transition: width .3s; }
+    .score { font-weight: 700; color: var(--blue); }
+    .controls { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+    .controls button { text-align: center; }
+    .password-panel { display: none; gap: 8px; align-items: center; flex-wrap: wrap; margin-top: 12px; }
+    .password-panel.show { display: flex; }
+    .password-panel input { width: 180px; }
+    .password-message { color: #b52d4b; font-size: .9rem; margin: 0; }
+    .notice { color: var(--muted); font-size: .9rem; margin: 10px 0 0; }
+    footer { color: var(--muted); font-size: .9rem; text-align: center; margin-top: 24px; }
+    @media (max-width: 700px) { .story { grid-template-columns: 1fr; } header, .card { padding: 18px; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <span class="badge">Misión lectora</span>
+      <h1>Exploradores de “La sensación de poder”</h1>
+      <p class="subtitle">Actividades para comprender el cuento de Isaac Asimov, pensar como Aub y conversar sobre el uso responsable del conocimiento.</p>
+      <div class="progress" aria-label="Progreso"><div id="bar"></div></div>
+      <p><span class="score" id="score">0 de 5 actividades completadas</span></p>
+      <div class="controls">
+        <button class="primary" id="restoreValues">Restaurar valores</button>
+        <button id="restartActivity">Reiniciar actividad</button>
+      </div>
+      <form class="password-panel" id="passwordPanel">
+        <label for="password">Contraseña:</label>
+        <input id="password" type="password" autocomplete="off">
+        <button class="primary" type="submit">Aceptar</button>
+        <button type="button" id="cancelPassword">Cancelar</button>
+        <p class="password-message" id="passwordMessage" aria-live="polite"></p>
+      </form>
+      <p class="notice" id="lockNotice">Las respuestas quedan guardadas y bloqueadas después de responder.</p>
+    </header>
+
+    <section class="story">
+      <article class="card">
+        <h2>Antes de empezar</h2>
+        <p>En el futuro, las personas dependen mucho de las computadoras. Myron Aub descubre que puede hacer cálculos siguiendo reglas escritas en un papel: a ese método le llaman <span class="word">“grafíticos”</span>.</p>
+        <p>Su descubrimiento entusiasma a científicos y gobernantes, pero también provoca una pregunta importante: <strong>¿todo lo que podemos inventar debe usarse?</strong></p>
+      </article>
+      <article class="card">
+        <h2>Personajes clave</h2>
+        <ul>
+          <li><strong>Aub:</strong> técnico curioso e inventor de los grafíticos.</li>
+          <li><strong>Shuman:</strong> programador que reconoce su talento.</li>
+          <li><strong>Brandt:</strong> político que ve una ventaja para el Proyecto Cifra.</li>
+          <li><strong>Weider:</strong> general que piensa principalmente en la guerra.</li>
+        </ul>
+      </article>
+    </section>
+
+    <section class="card activity" data-activity="1">
+      <h2><span class="number">1</span> ¿Quién hizo el descubrimiento?</h2>
+      <p>Elige la respuesta correcta.</p>
+      <div class="options">
+        <button data-answer="no">El general Weider</button>
+        <button data-answer="yes">El técnico Myron Aub</button>
+        <button data-answer="no">El presidente</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="card activity" data-activity="2">
+      <h2><span class="number">2</span> El cálculo de Aub</h2>
+      <p>En la demostración del cuento, Aub multiplica 17 × 23. ¿Cuál es el resultado?</p>
+      <div class="math">
+        <label for="answer">17 × 23 =</label>
+        <input id="answer" type="number" inputmode="numeric" aria-label="Resultado de 17 por 23">
+        <button class="primary" id="checkMath">Comprobar</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="card activity" data-activity="3">
+      <h2><span class="number">3</span> Ordena la historia</h2>
+      <p>Haz clic en las tarjetas en el orden en que suceden. Si te equivocas, puedes volver a empezar.</p>
+      <div class="sequence" id="sequence">
+        <button data-order="3"><span class="sequence-mark" aria-hidden="true"></span>El Proyecto Cifra crece y despierta ambiciones.</button>
+        <button data-order="1"><span class="sequence-mark" aria-hidden="true"></span>Aub muestra que puede calcular sin computadora.</button>
+        <button data-order="4"><span class="sequence-mark" aria-hidden="true"></span>Aub se preocupa por el uso destructivo de su invento.</button>
+        <button data-order="2"><span class="sequence-mark" aria-hidden="true"></span>Los líderes comprueban que el método funciona.</button>
+      </div>
+      <button class="primary" id="resetSequence" style="margin-top:12px;">Empezar de nuevo</button>
+      <div class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="card activity" data-activity="4">
+      <h2><span class="number">4</span> Palabra detective</h2>
+      <p>¿Qué significa <span class="word">“grafíticos”</span> en el cuento?</p>
+      <div class="options">
+        <button data-answer="no">Un tipo de misil</button>
+        <button data-answer="yes">Un método para calcular escribiendo en papel</button>
+        <button data-answer="no">Una computadora muy grande</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="card activity" data-activity="5">
+      <h2><span class="number">5</span> Piensa como un inventor responsable</h2>
+      <p>Elige la idea que mejor refleja el mensaje del cuento.</p>
+      <div class="options">
+        <button data-answer="no">Si algo se puede inventar, siempre hay que usarlo sin preguntar.</button>
+        <button data-answer="yes">El conocimiento puede ayudar, pero debemos pensar en sus consecuencias y elegir usos que cuiden a las personas.</button>
+        <button data-answer="no">Las computadoras son malas y nunca debemos aprender sobre ellas.</button>
+      </div>
+      <div class="feedback" aria-live="polite"></div>
+    </section>
+
+    <section class="card" style="margin-top:18px; background:#fff8df;">
+      <h2>Conversación final</h2>
+      <p class="quote">“La computadora está en mi propia cabeza.”</p>
+      <p>¿Qué crees que siente Shuman al final? ¿La sensación de poder siempre es algo bueno? Conversá con un adulto y da un ejemplo de un invento que pueda usarse para ayudar o para hacer daño.</p>
+    </section>
+    <footer>Actividad adaptada a partir del cuento. Si el final te resulta triste o te deja preguntas, hablalo con un adulto de confianza.</footer>
+  </main>
+  <script>
+    const activities = [...document.querySelectorAll('.activity')];
+    const completed = new Set();
+    const score = document.querySelector('#score');
+    const bar = document.querySelector('#bar');
+    const storageKey = 'sensacion-poder-actividades';
+    let unlocked = false;
+    let savedState = loadState();
+    let passwordAction = '';
+    delete savedState['3'];
+    saveState();
+
+    function loadState() {
+      try {
+        return JSON.parse(localStorage.getItem(storageKey)) || {};
+      } catch (error) {
+        return {};
+      }
+    }
+
+    function saveState() {
+      localStorage.setItem(storageKey, JSON.stringify(savedState));
+    }
+
+    function updateProgress() {
+      score.textContent = `${completed.size} de 5 actividades completadas`;
+      bar.style.width = `${completed.size * 20}%`;
+    }
+    function showFeedback(card, correct, message, value) {
+      const box = card.querySelector('.feedback');
+      box.className = `feedback show ${correct ? 'ok' : 'try'}`;
+      box.textContent = message;
+      const activityId = card.dataset.activity;
+      savedState[activityId] = { correct, message, value };
+      if (correct) completed.add(activityId);
+      else completed.delete(activityId);
+      saveState();
+      lockActivity(card);
+      updateProgress();
+    }
+
+    function lockActivity(card) {
+      if (unlocked) return;
+      card.querySelectorAll('.options button, input, #checkMath').forEach(control => {
+        control.disabled = true;
+      });
+    }
+
+    function restoreActivity(card, state) {
+      const box = card.querySelector('.feedback');
+      box.className = `feedback show ${state.correct ? 'ok' : 'try'}`;
+      box.textContent = state.message;
+      if (state.correct) completed.add(card.dataset.activity);
+      if (card.dataset.activity === '2') {
+        document.querySelector('#answer').value = state.value ?? '';
+      }
+      if (card.dataset.activity === '3' && state.complete) {
+        sequence.querySelectorAll('button').forEach(button => {
+          button.classList.add('selected');
+          button.disabled = true;
+        });
+      }
+      lockActivity(card);
+    }
+
+    document.querySelectorAll('.options button').forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.activity');
+        const correct = button.dataset.answer === 'yes';
+        card.querySelectorAll('.options button').forEach(option => {
+          option.classList.toggle('selected', option === button);
+        });
+        showFeedback(card, correct, correct
+          ? '¡Muy bien! Tu respuesta coincide con lo que sucede en el cuento.'
+          : 'Casi. Volvé al resumen y buscá la pista: ¿quién realiza o explica esa acción?', button.textContent);
+      });
+    });
+
+    document.querySelector('#checkMath').addEventListener('click', () => {
+      const card = document.querySelector('[data-activity="2"]');
+      const value = Number(document.querySelector('#answer').value);
+      showFeedback(card, value === 391, value === 391
+        ? '¡Excelente! 17 × 23 = 391. Aub demuestra el resultado usando pasos escritos.'
+        : 'Todavía no. Podés separar 23 en 20 + 3: 17 × 20 = 340 y 17 × 3 = 51. Luego sumá ambos resultados.', value);
+    });
+
+    const sequence = document.querySelector('#sequence');
+    let nextOrder = 1;
+    sequence.querySelectorAll('button').forEach(button => {
+      button.addEventListener('click', () => {
+        const card = button.closest('.activity');
+        const mark = button.querySelector('.sequence-mark');
+        mark.textContent = nextOrder;
+        if (Number(button.dataset.order) !== nextOrder) {
+          mark.className = 'sequence-mark incorrect';
+          const box = card.querySelector('.feedback');
+          box.className = 'feedback show try';
+          box.textContent = 'Ese hecho va en otro momento. Pensá: primero conocemos el descubrimiento, después lo comprueban y luego aparecen sus consecuencias. Podés seguir intentando.';
+          return;
+        }
+        mark.className = 'sequence-mark correct';
+        button.classList.add('selected');
+        button.disabled = true;
+        nextOrder++;
+        if (nextOrder === 5) {
+          const box = card.querySelector('.feedback');
+          box.className = 'feedback show ok';
+          box.textContent = '¡Orden perfecto! Así se ve cómo una idea pequeña puede crecer y traer decisiones importantes. Podés reorganizarla otra vez cuando quieras.';
+          completed.add(card.dataset.activity);
+          updateProgress();
+        }
+      });
+    });
+    document.querySelector('#resetSequence').addEventListener('click', () => {
+      const card = sequence.closest('.activity');
+      nextOrder = 1;
+      sequence.querySelectorAll('button').forEach(button => {
+        button.disabled = false;
+        button.classList.remove('selected');
+        const mark = button.querySelector('.sequence-mark');
+        mark.textContent = '';
+        mark.className = 'sequence-mark';
+      });
+      const box = sequence.closest('.activity').querySelector('.feedback');
+      box.className = 'feedback';
+      box.textContent = '';
+      completed.delete(card.dataset.activity);
+      updateProgress();
+    });
+
+    function openPasswordPanel(action) {
+      passwordAction = action;
+      document.querySelector('#passwordPanel').classList.add('show');
+      document.querySelector('#password').focus();
+      document.querySelector('#passwordMessage').textContent = '';
+    }
+
+    document.querySelector('#restoreValues').addEventListener('click', () => {
+      if (!unlocked) openPasswordPanel('restore');
+    });
+
+    document.querySelector('#restartActivity').addEventListener('click', () => {
+      openPasswordPanel('restart');
+    });
+
+    document.querySelector('#passwordPanel').addEventListener('submit', event => {
+      event.preventDefault();
+      const password = document.querySelector('#password').value;
+      if (password !== 'pepe123') {
+        document.querySelector('#passwordMessage').textContent = 'Contraseña incorrecta. Los valores siguen protegidos.';
+        return;
+      }
+      document.querySelector('#passwordPanel').classList.remove('show');
+      document.querySelector('#password').value = '';
+      if (passwordAction === 'restart') {
+        localStorage.removeItem(storageKey);
+        window.location.reload();
+        return;
+      }
+      unlocked = true;
+      document.querySelectorAll('.activity').forEach(card => {
+        card.querySelectorAll('.options button, input, #checkMath, #resetSequence').forEach(control => {
+          control.disabled = false;
+        });
+      });
+      document.querySelector('#lockNotice').textContent = 'Valores restaurados: podés editar las respuestas. Al responder, volverán a quedar guardadas.';
+    });
+
+    document.querySelector('#cancelPassword').addEventListener('click', () => {
+      document.querySelector('#passwordPanel').classList.remove('show');
+      document.querySelector('#password').value = '';
+      document.querySelector('#passwordMessage').textContent = '';
+    });
+
+    activities.forEach(card => {
+      const state = savedState[card.dataset.activity];
+      if (!state) return;
+      const selected = [...card.querySelectorAll('.options button')].find(button => button.textContent === state.value);
+      if (selected) selected.classList.add('selected');
+      restoreActivity(card, state);
+    });
+    updateProgress();
+  </script>
+</body>
+</html>
