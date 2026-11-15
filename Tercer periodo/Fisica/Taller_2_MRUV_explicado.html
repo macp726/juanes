@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller 2 · MRUV — Guía explicada paso a paso</title>
+<style>
+:root{
+  --bg:#f4f6fb; --panel:#fff; --ink:#111827; --muted:#5b6675; --line:#e3e8f2;
+  --accent:#4f46e5; --accent-soft:#eef0ff;
+  --green:#0f766e; --green-soft:#e8f8f5;
+  --amber:#b45309; --amber-soft:#fdf4e5;
+  --rose:#be123c; --rose-soft:#fdeef2;
+  --shadow:0 1px 2px rgba(16,24,40,.05), 0 18px 40px -28px rgba(16,24,40,.45);
+  --r:16px;
+}
+[data-theme="dark"]{
+  --bg:#0b1020; --panel:#121a2c; --ink:#e9eefb; --muted:#a3aec5; --line:#243049;
+  --accent:#8b8cf8; --accent-soft:#1b2242; --green:#5ad3c6; --green-soft:#0f2c2a;
+  --amber:#f0b26b; --amber-soft:#2f2413; --rose:#fb7185; --rose-soft:#2f1522;
+  --shadow:0 18px 40px -28px #000;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased;
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+a{color:var(--accent)}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:12px;top:12px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:99}
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;color:#eef2ff;padding:40px 0 34px;border-bottom:1px solid #1e293b;
+  background:radial-gradient(900px 320px at 10% -20%,rgba(99,102,241,.42),transparent 62%),
+             radial-gradient(760px 300px at 96% -10%,rgba(13,148,136,.34),transparent 58%),
+             linear-gradient(180deg,#0e1729,#101a2e)}
+.hero::after{content:"";position:absolute;inset:0;opacity:.45;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1.4px);
+  background-size:26px 26px}
+.kicker{margin:0 0 8px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#a5b4fc;font-weight:700}
+.hero h1{margin:0;font-size:clamp(1.55rem,3.4vw,2.35rem);line-height:1.18;letter-spacing:-.02em}
+.hero p.sub{margin:10px 0 0;max-width:62ch;color:#c7d2fe;font-size:1.02rem}
+.hero .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero .chips span{font-size:.8rem;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#e0e7ff}
+/* ---------- TOPBAR ---------- */
+.topbar{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);backdrop-filter:blur(12px);
+  background:var(--bg);background:color-mix(in srgb,var(--bg) 86%,transparent)}
+.bar{display:flex;align-items:center;gap:14px;padding:9px 20px;flex-wrap:wrap}
+.toc{display:flex;gap:6px;overflow-x:auto;flex:1 1 240px;min-width:0;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;text-decoration:none;font-size:.8rem;font-weight:600;color:var(--muted);
+  padding:5px 10px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--line)}
+.tools{display:flex;align-items:center;gap:8px}
+.pbar{width:92px;height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#0d9488);transition:width .3s}
+.pnum{font-size:.78rem;font-weight:700;color:var(--muted);min-width:32px}
+.tbtn{font:inherit;font-size:.78rem;font-weight:600;padding:6px 10px;border-radius:9px;cursor:pointer;
+  background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.tbtn:hover{border-color:var(--accent);color:var(--accent)}
+/* ---------- CARDS ---------- */
+main{padding:26px 20px 70px;max-width:1040px;margin:0 auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+  padding:24px 24px 20px;margin:0 0 22px;scroll-margin-top:76px}
+.card-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:6px}
+.badge{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;
+  background:var(--accent-soft);color:var(--accent);font-size:1rem}
+.card h2{margin:2px 0 0;font-size:1.16rem;letter-spacing:-.01em;line-height:1.35}
+.lead{margin:4px 0 0;color:var(--muted);font-size:.94rem}
+.done-wrap{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--muted);
+  font-weight:600;cursor:pointer;user-select:none;white-space:nowrap}
+.done-wrap input{width:17px;height:17px;accent-color:#0d9488;cursor:pointer}
+/* ---------- TEXTO ---------- */
+h3{font-size:.98rem;margin:22px 0 8px;letter-spacing:.01em}
+p{margin:.55em 0}
+.small{font-size:.88rem}
+.muted{color:var(--muted)}
+.eq{font-family:"Cambria Math",Cambria,Georgia,"Times New Roman",serif;font-size:1.12rem;
+  background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;
+  padding:10px 14px;text-align:center;margin:12px 0;color:var(--ink);overflow-x:auto}
+.eq b{color:var(--green)}
+ul.clean{margin:.4em 0;padding-left:1.15em}
+ul.clean li{margin:.3em 0}
+/* ---------- CAJAS ---------- */
+.box{border-radius:13px;padding:13px 15px;margin:14px 0;border:1px solid var(--line);font-size:.94rem}
+.box p:first-child{margin-top:0}.box p:last-child{margin-bottom:0}
+.box .t{display:block;font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.tip{background:var(--accent-soft);border-color:transparent}
+.tip .t{color:var(--accent)}
+.warn{background:var(--amber-soft);border-color:transparent}
+.warn .t{color:var(--amber)}
+.answer{background:var(--green-soft);border:1px solid color-mix(in srgb,var(--green) 26%,transparent);border-radius:13px;
+  padding:14px 16px;margin:14px 0}
+.answer .t{display:block;font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green);margin-bottom:6px}
+.res{font-weight:800;color:var(--green)}
+/* ---------- PASOS ---------- */
+.steps{list-style:none;counter-reset:s;margin:12px 0;padding:0}
+.steps>li{counter-increment:s;position:relative;padding-left:38px;margin:11px 0}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:800;font-size:.82rem}
+.steps .lbl{font-weight:700}
+/* ---------- REVEAL ---------- */
+.btn{font:inherit;font-size:.86rem;font-weight:700;cursor:pointer;padding:8px 14px;border-radius:10px;
+  border:1px solid var(--accent);background:transparent;color:var(--accent);margin:6px 0}
+.btn:hover{background:var(--accent-soft)}
+.btn::before{content:"▸ ";font-size:.9em}
+.btn[aria-expanded="true"]::before{content:"▾ "}
+.panel{display:none}
+.panel.show{display:block;animation:fade .28s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+/* ---------- QUIZ ---------- */
+.quiz{display:grid;gap:8px;margin:14px 0 6px}
+.opt{font:inherit;text-align:left;display:flex;gap:11px;align-items:flex-start;cursor:pointer;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 14px;color:var(--ink);
+  transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--accent);background:var(--accent-soft)}
+.opt b{flex:none;width:24px;height:24px;border-radius:8px;background:var(--accent-soft);color:var(--accent);
+  display:grid;place-items:center;font-size:.8rem}
+.opt.correct{border-color:#0d9488;background:var(--green-soft)}
+.opt.correct b{background:#0d9488;color:#fff}
+.opt.wrong{border-color:#e11d48;background:var(--rose-soft)}
+.opt.wrong b{background:#e11d48;color:#fff}
+.fb{margin:10px 0 0;font-size:.9rem;display:none;padding:11px 14px;border-radius:11px;border:1px solid var(--line)}
+.quizblock[data-state="ok"] .fok{display:block;background:var(--green-soft);border-color:#0d9488}
+.quizblock[data-state="no"] .fno{display:block;background:var(--rose-soft);border-color:#e11d48}
+/* ---------- TABLAS ---------- */
+.tablewrap{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:520px}
+th{background:var(--accent-soft);color:var(--accent);text-align:left;font-size:.76rem;letter-spacing:.06em;
+  text-transform:uppercase;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.ans{white-space:nowrap}
+.tf{font:inherit;font-weight:800;font-size:.8rem;width:34px;height:29px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted);margin-right:4px}
+.tf:hover{border-color:var(--accent);color:var(--accent)}
+.tf.ok{background:#0d9488;border-color:#0d9488;color:#fff}
+.tf.bad{background:#e11d48;border-color:#e11d48;color:#fff}
+.whycell{display:none;color:var(--muted);font-size:.87rem;min-width:240px}
+th.whycell-h{display:none}
+table.show-why .whycell{display:table-cell}
+table.show-why th.whycell-h{display:table-cell}
+.tag{display:inline-block;font-weight:800;font-size:.72rem;padding:1px 7px;border-radius:6px;margin-right:6px}
+.tag.v{background:#0d9488;color:#fff}.tag.f{background:#e11d48;color:#fff}
+/* ---------- GRÁFICAS ---------- */
+.figure{margin:16px 0;border:1px solid var(--line);border-radius:13px;padding:12px;background:var(--panel)}
+.plot{width:100%;height:auto;display:block}
+.grid{stroke:var(--line);stroke-width:1}
+.axis{stroke:var(--muted);stroke-width:1.6}
+.helper{stroke:var(--muted);stroke-width:1.3;stroke-dasharray:5 5}
+.tick{font-size:12px;fill:var(--muted);font-family:inherit}
+.lbl{font-size:12.5px;fill:var(--muted);font-family:inherit}
+.ptitle{font-size:13px;font-weight:700;fill:var(--ink);font-family:inherit}
+.dlbl{font-size:12.5px;font-weight:700;fill:var(--ink);font-family:inherit;paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.plot-ctrl{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{font:inherit;font-size:.78rem;font-weight:700;cursor:pointer;padding:5px 11px;border-radius:999px;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.cap{font-size:.82rem;color:var(--muted);margin:6px 0 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+/* ---------- SIMULADOR ---------- */
+.sim{display:grid;gap:12px;margin:14px 0}
+.sim label{display:grid;grid-template-columns:120px 1fr 84px;gap:12px;align-items:center;font-size:.86rem;font-weight:600}
+.sim input[type=range]{width:100%;accent-color:var(--accent)}
+.sim output{font-variant-numeric:tabular-nums;font-weight:800;color:var(--accent);text-align:right}
+.track{position:relative;height:54px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--line);margin-top:6px}
+.track .rail{position:absolute;left:14px;right:14px;top:50%;height:3px;background:var(--line);border-radius:9px;transform:translateY(-50%)}
+.track .dot{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;background:var(--accent);
+  transform:translate(-50%,-50%);transition:left .18s ease;box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 18%,transparent)}
+.track .lblx{position:absolute;bottom:4px;left:14px;font-size:.72rem;color:var(--muted);font-weight:700}
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:22px 20px 40px;color:var(--muted);font-size:.82rem;text-align:center}
+@media (max-width:720px){
+  .card{padding:19px 16px 16px}
+  .card-head{flex-wrap:wrap}
+  .done-wrap{margin-left:0;order:3}
+  .sim label{grid-template-columns:86px 1fr 62px;font-size:.8rem}
+}
+@media print{
+  .topbar,.tools,.btn,.plot-ctrl,.done-wrap,.hero .chips,.skip{display:none!important}
+  .panel{display:block!important}
+  body{background:#fff;color:#000}
+  .card{box-shadow:none;border-color:#bbb;break-inside:avoid}
+  .hero{background:#fff;color:#000;border-bottom:2px solid #000}
+  .hero p.sub,.kicker{color:#333}
+  .hero .chips{display:none}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Física · Grado 9° · Tercer periodo · Taller No. 2</p>
+    <h1>Movimiento Rectilíneo Uniformemente Variado (MRUV)</h1>
+    <p class="sub">Guía interactiva del taller: aceleración, ecuaciones y gráficas explicadas <b>paso a paso</b>, con la razón de cada decisión.</p>
+    <div class="chips">
+      <span>7 ejercicios explicados</span>
+      <span>Las 4 ecuaciones clave</span>
+      <span>Gráficas interactivas</span>
+      <span>Lectura de pendientes y áreas</span>
+    </div>
+  </div>
+</header>
+
+<div class="topbar">
+  <div class="bar">
+    <nav class="toc" aria-label="Contenido">
+      <a href="#guia">Guía rápida</a>
+      <a href="#e1">1 · ¿Cuál es MRUV?</a>
+      <a href="#e2">2 · Afirmaciones</a>
+      <a href="#e3">3 · Cuatro cálculos</a>
+      <a href="#e4">4 · Dos situaciones</a>
+      <a href="#e5">5 · Gráfica v–t</a>
+      <a href="#e6">6 · Gráfica a–t</a>
+      <a href="#e7">7 · Gráficos x–t</a>
+      <a href="#chuleta">Chuleta</a>
+    </nav>
+    <div class="tools">
+      <div class="pbar"><i id="pbar"></i></div>
+      <span class="pnum" id="pnum">0/7</span>
+      <button class="tbtn" id="showAll" type="button">Mostrar todo</button>
+      <button class="tbtn" id="hideAll" type="button">Ocultar</button>
+      <button class="tbtn" id="theme" type="button" title="Cambiar tema" aria-label="Cambiar tema">◐</button>
+    </div>
+  </div>
+</div>
+
+<main id="contenido">
+
+<section class="card" id="guia">
+  <div class="card-head">
+    <span class="badge">0</span>
+    <div>
+      <h2>Antes de empezar: el MRUV en 90 segundos</h2>
+      <p class="lead">La única diferencia con el MRU es una palabra: <b>aceleración</b>. Si la entiendes, todo lo demás encaja.</p>
+    </div>
+  </div>
+
+  <div class="box tip">
+    <span class="t">La idea en una frase</span>
+    <p>En el MRUV el cuerpo se mueve <b>en línea recta</b> y su <b>velocidad cambia siempre al mismo ritmo</b>: cada segundo gana (o pierde) la misma cantidad de m/s.</p>
+  </div>
+
+  <h3>¿Qué es la aceleración?</h3>
+  <p>Es <b>cuánto cambia la velocidad en cada unidad de tiempo</b>. Se mide en <b>m/s²</b> (metros por segundo, cada segundo).</p>
+  <div class="eq">a = Δv / Δt = (v − v<sub>0</sub>) / t</div>
+  <ul class="clean">
+    <li><b>a positiva:</b> la velocidad aumenta → acelera.</li>
+    <li><b>a negativa:</b> la velocidad disminuye → frena. <b>Sigue siendo MRUV.</b></li>
+    <li><b>a = 0:</b> la velocidad no cambia → no es MRUV, es MRU.</li>
+  </ul>
+
+  <h3>Las cuatro ecuaciones (elige según lo que te pidan)</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Ecuación</th><th>Úsala cuando…</th></tr></thead>
+      <tbody>
+        <tr><td><b>v = v<sub>0</sub> + a · t</b></td><td>quieres la velocidad final y conoces el tiempo</td></tr>
+        <tr><td><b>x = x<sub>0</sub> + v<sub>0</sub> · t + ½ · a · t²</b></td><td>quieres la posición y conoces el tiempo</td></tr>
+        <tr><td><b>v² = v<sub>0</sub>² + 2 · a · Δx</b></td><td>no te dan el tiempo (atajo)</td></tr>
+        <tr><td><b>a = (v − v<sub>0</sub>) / t</b></td><td>calculas la aceleración</td></tr>
+        <tr><td><b>t = (v − v<sub>0</sub>) / a</b></td><td>calculas el tiempo</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Las tres gráficas y qué leer en cada una</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Gráfica</th><th>Forma en MRUV</th><th>Qué se lee</th></tr></thead>
+      <tbody>
+        <tr><td>Posición vs. tiempo (x–t)</td><td>Parábola</td><td>La <b>curvatura</b> dice el signo de a</td></tr>
+        <tr><td>Velocidad vs. tiempo (v–t)</td><td>Recta inclinada</td><td><b>Pendiente</b> = aceleración · <b>Área</b> = desplazamiento</td></tr>
+        <tr><td>Aceleración vs. tiempo (a–t)</td><td>Recta horizontal</td><td><b>Área</b> = cambio de velocidad (Δv)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="box warn">
+    <span class="t">Antes de calcular</span>
+    <p>Escribe siempre los datos con su letra: v<sub>0</sub>, v, a, t, x<sub>0</sub>, x. Si el cuerpo <b>parte del reposo</b>, v<sub>0</sub> = 0. Si <b>se detiene</b>, v = 0. Esos dos detalles cambian todo.</p>
+  </div>
+</section>
+<section class="card" id="e1">
+  <div class="card-head">
+    <span class="badge">1</span>
+    <div>
+      <h2>Identificación del MRUV</h2>
+      <p class="lead">Cuatro situaciones. Solo debes quedarte con las que tienen <b>trayectoria recta + velocidad variable + aceleración constante</b>.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e1">Hecho</label>
+  </div>
+
+  <div class="box tip">
+    <span class="t">Las cuatro situaciones</span>
+    <ul class="clean">
+      <li><b>I.</b> Un carro avanza en línea recta y aumenta su velocidad de manera constante.</li>
+      <li><b>II.</b> Una bicicleta avanza en línea recta y frena uniformemente hasta detenerse.</li>
+      <li><b>III.</b> Una pelota cae verticalmente y aumenta su velocidad por acción de la gravedad.</li>
+      <li><b>IV.</b> Un patinador se mueve en línea recta con velocidad constante.</li>
+    </ul>
+  </div>
+
+  <div class="quizblock" data-state="">
+    <div class="quiz" data-quiz="q1">
+      <button class="opt" type="button" data-ok="0"><b>A</b><span>Solo I, porque en el MRUV el objeto siempre debe aumentar su velocidad.</span></button>
+      <button class="opt" type="button" data-ok="1"><b>B</b><span>I, II y III, porque en todos los casos hay trayectoria recta, velocidad variable y aceleración constante.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>C</b><span>II y IV, porque en ambos casos el movimiento ocurre en línea recta.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>D</b><span>I, III y IV, porque todo movimiento en línea recta se considera MRUV.</span></button>
+    </div>
+    <p class="fb fok">¡Correcto! Es la <b>B</b>. En I acelera, en II frena y en III cae: las tres tienen aceleración constante.</p>
+    <p class="fb fno">Todavía no. Pista: la aceleración puede ser <b>negativa</b> (frenar) y el MRUV no exige que la velocidad aumente. Prueba otra vez.</p>
+  </div>
+
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p1" aria-expanded="false" aria-controls="p1">Ver análisis de cada situación y opción</button>
+    <div class="panel" id="p1">
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Situación</th><th>Análisis</th><th>¿MRUV?</th></tr></thead>
+          <tbody>
+            <tr><td><b>I</b></td><td>Línea recta y la velocidad aumenta «de manera constante» → a constante y positiva.</td><td><b>Sí</b></td></tr>
+            <tr><td><b>II</b></td><td>Línea recta y frena «uniformemente» → a constante y negativa.</td><td><b>Sí</b></td></tr>
+            <tr><td><b>III</b></td><td>Cae en línea recta con a = g ≈ 9,8 m/s² constante.</td><td><b>Sí</b></td></tr>
+            <tr><td><b>IV</b></td><td>Línea recta, pero velocidad constante → a = 0. Eso es MRU.</td><td>No</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">B.</span> I, II y III.</p>
+      </div>
+      <p class="small muted">Por qué fallan las otras: <b>A</b> confunde MRUV con «acelerar» (también frena). <b>C</b> mete a IV, que tiene velocidad constante. <b>D</b> cree que toda línea recta es MRUV, y no: si v no cambia, es MRU.</p>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e2">
+  <div class="card-head">
+    <span class="badge">2</span>
+    <div>
+      <h2>Siete afirmaciones sobre el MRUV</h2>
+      <p class="lead">Primero decide V o F en tu cuaderno; luego comprueba con los botones y con la justificación.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e2">Hecho</label>
+  </div>
+
+  <div class="tablewrap">
+    <table id="vf2" class="vf">
+      <thead><tr><th>Afirmación</th><th>Tu respuesta</th><th class="whycell-h">Por qué</th></tr></thead>
+      <tbody>
+        <tr><td>I. En el MRUV, la aceleración permanece constante.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>Es la definición: «uniformemente variado» = aceleración constante.</td></tr>
+        <tr><td>II. En el MRUV, la velocidad cambia con el tiempo.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>Si la velocidad no cambiara, la aceleración sería cero y no habría MRUV.</td></tr>
+        <tr><td>III. En el MRUV, el movimiento ocurre sobre una trayectoria recta.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>«Rectilíneo»: sin curvas ni cambios de dirección.</td></tr>
+        <tr><td>IV. La aceleración solo puede ser positiva; si es negativa, ya no es MRUV.</td>
+          <td class="ans" data-correct="F"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag f">F</span>Una aceleración negativa solo indica que la velocidad disminuye (frena). Sigue siendo MRUV.</td></tr>
+        <tr><td>V. Si un cuerpo frena uniformemente en línea recta, también puede estar en MRUV.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>Exacto: frenar uniformemente es MRUV con a negativa.</td></tr>
+        <tr><td>VI. La aceleración se calcula como el cambio de velocidad dividido entre el tiempo empleado.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>a = (v − v<sub>0</sub>) / t.</td></tr>
+        <tr><td>VII. Si la aceleración es cero, el movimiento necesariamente es MRUV.</td>
+          <td class="ans" data-correct="F"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag f">F</span>Si a = 0 el movimiento es <b>MRU</b> (velocidad constante). El MRUV exige velocidad variable.</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <button class="btn" type="button" data-why="vf2">Mostrar todas las justificaciones</button>
+
+  <div class="quizblock" data-state="" style="margin-top:18px">
+    <p><b>Entonces, ¿cuál combinación es la correcta?</b></p>
+    <div class="quiz" data-quiz="q2">
+      <button class="opt" type="button" data-ok="1"><b>A</b><span>I: V · II: V · III: V · IV: F · V: V · VI: V · VII: F</span></button>
+      <button class="opt" type="button" data-ok="0"><b>B</b><span>I: V · II: F · III: V · IV: F · V: V · VI: F · VII: V</span></button>
+      <button class="opt" type="button" data-ok="0"><b>C</b><span>I: F · II: V · III: F · IV: V · V: F · VI: V · VII: F</span></button>
+      <button class="opt" type="button" data-ok="0"><b>D</b><span>I: V · II: V · III: V · IV: V · V: F · VI: F · VII: F</span></button>
+    </div>
+    <p class="fb fok">¡Correcto! <b>A</b> es la única que coincide en las siete.</p>
+    <p class="fb fno">Aún no. Compara tu tabla con cada opción: la trampa está en IV y VII.</p>
+  </div>
+</section>
+<section class="card" id="e3">
+  <div class="card-head">
+    <span class="badge">3</span>
+    <div>
+      <h2>Cuatro cálculos, una ecuación cada uno</h2>
+      <p class="lead">Antes de resolver, pregúntate: <i>¿qué me dan y qué me piden?</i> Eso te dice qué ecuación usar.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e3">Hecho</label>
+  </div>
+
+  <h3>a) Velocidad final de una patinadora</h3>
+  <p class="small muted">v<sub>0</sub> = 4 m/s · a = 2 m/s² · t = 6 s. Piden <b>v</b> y dan tiempo → primera ecuación.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p3a" aria-expanded="false" aria-controls="p3a">Ver solución paso a paso</button>
+    <div class="panel" id="p3a">
+      <ol class="steps">
+        <li><span class="lbl">Datos:</span> v<sub>0</sub> = 4 m/s · a = 2 m/s² · t = 6 s</li>
+        <li><span class="lbl">Ecuación:</span> v = v<sub>0</sub> + a · t</li>
+        <li><span class="lbl">Reemplazo:</span> v = 4 + 2 · 6</li>
+        <li><span class="lbl">Resuelvo:</span> v = 4 + 12</li>
+      </ol>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">v = 16 m/s</span></p>
+        <p class="small">La patinadora casi cuadruplica su velocidad en 6 s.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>b) Posición final de un ciclista</h3>
+  <p class="small muted">x<sub>0</sub> = 5 m · v<sub>0</sub> = 3 m/s · a = 1 m/s² · t = 4 s. Piden <b>posición</b> → segunda ecuación.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p3b" aria-expanded="false" aria-controls="p3b">Ver solución paso a paso</button>
+    <div class="panel" id="p3b">
+      <p><b>Ecuación:</b></p>
+      <div class="eq">x = x<sub>0</sub> + v<sub>0</sub> · t + ½ · a · t²</div>
+      <ol class="steps">
+        <li><span class="lbl">Reemplazo:</span> x = 5 + 3 · 4 + ½ · 1 · 4²</li>
+        <li><span class="lbl">Calculo la potencia:</span> 4² = 16</li>
+        <li><span class="lbl">Término por término:</span> 5 + 12 + 8</li>
+        <li><span class="lbl">Sumo:</span> x = 25 m</li>
+      </ol>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">x = 25 m</span></p>
+      </div>
+      <div class="box warn">
+        <span class="t">Error típico</span>
+        <p>Olvidar el <b>½</b> o elevar al cuadrado antes de multiplicar. Recuerda: primero <b>t²</b>, después todo lo demás. Y el término ½·a·t² es lo que aporta la aceleración; si a = 0, desaparece y queda el MRU.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>c) Aceleración de un automóvil</h3>
+  <p class="small muted">v<sub>0</sub> = 8 m/s · v = 20 m/s · t = 6 s. Piden <b>a</b> → despeje directo.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p3c" aria-expanded="false" aria-controls="p3c">Ver solución</button>
+    <div class="panel" id="p3c">
+      <div class="eq">a = (v − v<sub>0</sub>) / t = (20 − 8) / 6 = 12 / 6</div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">a = 2 m/s²</span></p>
+        <p class="small">Significa que cada segundo su velocidad aumenta 2 m/s: en el segundo 1 va a 10, en el 2 a 12… y a los 6 s llega a 20 m/s ✔</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>d) Tiempo de una motocicleta</h3>
+  <p class="small muted">v<sub>0</sub> = 5 m/s · v = 25 m/s · a = 4 m/s². Piden <b>t</b>.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p3d" aria-expanded="false" aria-controls="p3d">Ver solución</button>
+    <div class="panel" id="p3d">
+      <div class="eq">t = (v − v<sub>0</sub>) / a = (25 − 5) / 4 = 20 / 4</div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">t = 5 s</span></p>
+        <p class="small">Comprobación: en 5 s a 4 m/s² gana 20 m/s. Partiendo de 5 m/s llega a 25 m/s ✔</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e4">
+  <div class="card-head">
+    <span class="badge">4</span>
+    <div>
+      <h2>Dos situaciones completas</h2>
+      <p class="lead">Aquí no te dicen qué ecuación usar: tienes que decidirlo tú. Fíjate en las palabras clave.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e4">Hecho</label>
+  </div>
+
+  <h3>Situación 1 · El carro que arranca desde el semáforo</h3>
+  <p class="small muted">«Arranca desde el reposo» → <b>v<sub>0</sub> = 0</b>. a = 2 m/s² durante t = 6 s.</p>
+
+  <p><b>a) ¿Qué velocidad alcanza a los 6 s?</b></p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p4a" aria-expanded="false" aria-controls="p4a">Ver solución</button>
+    <div class="panel" id="p4a">
+      <div class="eq">v = v<sub>0</sub> + a · t = 0 + 2 · 6</div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">v = 12 m/s</span></p>
+      </div>
+    </div>
+  </div>
+
+  <p><b>b) ¿Qué distancia recorre en esos 6 s?</b></p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p4b" aria-expanded="false" aria-controls="p4b">Ver solución paso a paso</button>
+    <div class="panel" id="p4b">
+      <p>Como parte del reposo y no dan la posición inicial, tomamos x<sub>0</sub> = 0. La distancia recorrida es la posición final.</p>
+      <div class="eq">x = 0 + 0 · 6 + ½ · 2 · 6²</div>
+      <ol class="steps">
+        <li><span class="lbl">Potencia:</span> 6² = 36</li>
+        <li><span class="lbl">Multiplico:</span> ½ · 2 · 36 = 36</li>
+        <li><span class="lbl">Sumo:</span> x = 36 m</li>
+      </ol>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">d = 36 m</span></p>
+      </div>
+      <div class="box tip">
+        <span class="t">Atajo para revisar</span>
+        <p>Partiendo del reposo la velocidad media es (0 + 12)/2 = 6 m/s. En 6 s recorre 6 · 6 = 36 m ✔. Si te da distinto, hay un error en la cuenta.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Situación 2 · El ciclista que frena</h3>
+  <p class="small muted">v<sub>0</sub> = 12 m/s · después de t = 4 s, v = 4 m/s. Ojo: hay <b>dos tiempos</b> en este ejercicio.</p>
+
+  <p><b>a) ¿Cuál es la aceleración durante el frenado?</b></p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p4c" aria-expanded="false" aria-controls="p4c">Ver solución</button>
+    <div class="panel" id="p4c">
+      <div class="eq">a = (v − v<sub>0</sub>) / t = (4 − 12) / 4 = −8 / 4</div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">a = −2 m/s²</span></p>
+        <p class="small">El signo negativo es correcto y significativo: la aceleración va en contra del movimiento, por eso frena. Pierde 2 m/s cada segundo.</p>
+      </div>
+    </div>
+  </div>
+
+  <p><b>b) Si sigue frenando igual, ¿cuánto tarda en detenerse desde que empezó a frenar?</b></p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p4d" aria-expanded="false" aria-controls="p4d">Ver solución paso a paso</button>
+    <div class="panel" id="p4d">
+      <p>«Detenerse por completo» significa <b>v = 0</b>. Y «desde que comenzó a frenar» significa que el cronómetro arranca con v<sub>0</sub> = 12 m/s.</p>
+      <div class="eq">t = (v − v<sub>0</sub>) / a = (0 − 12) / (−2) = 6 s</div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">t = 6 s</span> desde que empezó a frenar (es decir, 2 s más después de los primeros 4 s).</p>
+      </div>
+      <div class="box tip">
+        <span class="t">Otra forma de verlo</span>
+        <p>En los primeros 4 s ya perdió 8 m/s (de 12 a 4). Le quedan 4 m/s por perder y pierde 2 cada segundo → 2 s más. Total: 4 + 2 = 6 s.</p>
+      </div>
+      <div class="box warn">
+        <span class="t">Error típico</span>
+        <p>Responder «2 s» sin aclarar desde cuándo. Los 2 s son <b>después</b> de los 4 s; desde el inicio del frenado son 6 s. Siempre di desde qué instante cuentas.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="card" id="e5">
+  <div class="card-head">
+    <span class="badge">5</span>
+    <div>
+      <h2>Leer una gráfica velocidad–tiempo</h2>
+      <p class="lead">La gráfica pasa por (0, 2) y (8, 10). Con esos dos puntos se responde todo: la pendiente da la aceleración y el área da el desplazamiento.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e5">Hecho</label>
+  </div>
+
+  <div class="figure">
+    <div id="g5"></div>
+    <p class="cap">Activa los botones para ver el triángulo de la pendiente (aceleración) y el área sombreada (desplazamiento).</p>
+  </div>
+
+  <h3>a) ¿Cuál es la velocidad en t = 5 s?</h3>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p5a" aria-expanded="false" aria-controls="p5a">Ver solución</button>
+    <div class="panel" id="p5a">
+      <p><b>Leyendo la gráfica:</b> en t = 0 la velocidad es 2 m/s y en t = 8 es 10 m/s. Sube 8 m/s en 8 s, o sea <b>1 m/s cada segundo</b>. Entonces:</p>
+      <div class="eq">v(5) = 2 + 1 · 5 = 7 m/s</div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">v = 7 m/s</span></p>
+        <p class="small">En la gráfica: ubica 5 en el eje horizontal y sube hasta la recta; ahí se lee 7 en el eje vertical.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>b) ¿Cuál es la aceleración?</h3>
+  <p class="small muted">En una gráfica v–t, la aceleración es la <b>pendiente</b>: lo que sube dividido entre lo que avanza.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p5b" aria-expanded="false" aria-controls="p5b">Ver solución paso a paso</button>
+    <div class="panel" id="p5b">
+      <div class="eq">a = (v<sub>2</sub> − v<sub>1</sub>) / (t<sub>2</sub> − t<sub>1</sub>) = (10 − 2) / (8 − 0) = 8 / 8</div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">a = 1 m/s²</span></p>
+      </div>
+    </div>
+  </div>
+
+  <h3>c) ¿Cuál es el desplazamiento entre t = 0 s y t = 8 s?</h3>
+  <p class="small muted">En una gráfica v–t, el desplazamiento es el <b>área</b> entre la recta y el eje horizontal. Aquí la figura es un trapecio.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p5c" aria-expanded="false" aria-controls="p5c">Ver solución paso a paso</button>
+    <div class="panel" id="p5c">
+      <p><b>Fórmula del trapecio:</b> área = (base mayor + base menor) ÷ 2 × altura</p>
+      <div class="eq">Δx = (10 + 2) / 2 · 8 = 6 · 8</div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">Δx = 48 m</span></p>
+      </div>
+      <div class="box tip">
+        <span class="t">Comprobación con la ecuación</span>
+        <p>Δx = v<sub>0</sub>·t + ½·a·t² = 2·8 + ½·1·64 = 16 + 32 = 48 m ✔. La gráfica y la ecuación siempre deben coincidir.</p>
+      </div>
+      <p class="small muted">Truco: también puedes partir el trapecio en un rectángulo (2 × 8 = 16) y un triángulo (8 × 8 ÷ 2 = 32). Suma: 48 m.</p>
+    </div>
+  </div>
+
+  <h3>d) Escribe la ecuación de la velocidad</h3>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p5d" aria-expanded="false" aria-controls="p5d">Ver solución</button>
+    <div class="panel" id="p5d">
+      <p>La estructura es v = v<sub>0</sub> + a·t. Ya conoces ambos valores: v<sub>0</sub> = 2 m/s (corte con el eje vertical) y a = 1 m/s².</p>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">v = 2 + 1 · t</span></p>
+        <p class="small">Verificación: v(5) = 2 + 5 = 7 ✔ y v(8) = 2 + 8 = 10 ✔.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e6">
+  <div class="card-head">
+    <span class="badge">6</span>
+    <div>
+      <h2>Leer una gráfica aceleración–tiempo</h2>
+      <p class="lead">Aquí la gráfica es una línea horizontal en a = 1,5 m/s². Es la forma típica del MRUV: la aceleración no cambia.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e6">Hecho</label>
+  </div>
+
+  <div class="figure">
+    <div id="g6"></div>
+    <p class="cap">El área bajo la línea, entre dos instantes, es el <b>cambio de velocidad</b> en ese intervalo.</p>
+  </div>
+
+  <h3>a) ¿Cuál es el valor de la aceleración durante todo el movimiento?</h3>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p6a" aria-expanded="false" aria-controls="p6a">Ver solución</button>
+    <div class="panel" id="p6a">
+      <p>Se lee directamente en el eje vertical: la recta está siempre a la misma altura.</p>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">a = 1,5 m/s²</span> y es constante (por eso es MRUV).</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>b) ¿Cuál es el cambio de velocidad entre t = 2 s y t = 8 s?</h3>
+  <p class="small muted">Δv = a · Δt: es el área de un rectángulo cuya altura es la aceleración y cuya base es el intervalo de tiempo.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p6b" aria-expanded="false" aria-controls="p6b">Ver solución paso a paso</button>
+    <div class="panel" id="p6b">
+      <ol class="steps">
+        <li><span class="lbl">Intervalo:</span> Δt = 8 − 2 = 6 s</li>
+        <li><span class="lbl">Fórmula:</span> Δv = a · Δt</li>
+        <li><span class="lbl">Reemplazo:</span> Δv = 1,5 · 6</li>
+      </ol>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">Δv = 9 m/s</span></p>
+        <p class="small">La velocidad aumentó 9 m/s durante esos 6 segundos.</p>
+      </div>
+      <div class="box warn">
+        <span class="t">Cuidado</span>
+        <p>Te piden el <b>cambio</b> de velocidad, no la velocidad. Sin el dato de v<sub>0</sub> no se puede saber la velocidad exacta; sí se sabe cuánto cambió.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e7">
+  <div class="card-head">
+    <span class="badge">7</span>
+    <div>
+      <h2>Dos parábolas: ¿aceleración positiva o negativa?</h2>
+      <p class="lead">En una gráfica posición–tiempo del MRUV, la <b>curvatura</b> de la parábola revela el signo de la aceleración.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e7">Hecho</label>
+  </div>
+
+  <div class="grid2">
+    <div class="figure">
+      <div id="g7a"></div>
+      <p class="cap">Gráfico A</p>
+    </div>
+    <div class="figure">
+      <div id="g7b"></div>
+      <p class="cap">Gráfico B</p>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p7" aria-expanded="false" aria-controls="p7">Ver respuesta y razonamiento</button>
+    <div class="panel" id="p7">
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><b>Gráfico A → aceleración positiva.</b> La curva se abre hacia arriba (cóncava hacia arriba): la pendiente va aumentando, es decir, la velocidad crece.</p>
+        <p><b>Gráfico B → aceleración negativa.</b> La curva se abre hacia abajo (cóncava hacia abajo): la pendiente va disminuyendo, es decir, el cuerpo frena.</p>
+      </div>
+      <ol class="steps">
+        <li><span class="lbl">Mira la forma:</span> si la parábola «sonríe» (abre hacia arriba) → a &gt; 0. Si «se frunce» (abre hacia abajo) → a &lt; 0.</li>
+        <li><span class="lbl">Piensa en la pendiente:</span> es la velocidad. En A cada vez es más inclinada (acelera); en B cada vez es más plana (frena).</li>
+        <li><span class="lbl">Confirma con valores:</span> A se parece a x = 0,7t² (a = 1,4 m/s²). B se parece a x = 5t − 0,5t² (a = −1 m/s²).</li>
+      </ol>
+      <div class="box tip">
+        <span class="t">Regla de bolsillo</span>
+        <p>En una gráfica <b>x–t</b>: curva que se empina → acelera; curva que se aplana → frena. En una gráfica <b>v–t</b>: recta que sube → a positiva; recta que baja → a negativa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="card" id="chuleta">
+  <div class="card-head">
+    <span class="badge">✓</span>
+    <div>
+      <h2>Chuleta final y autoevaluación</h2>
+      <p class="lead">Si puedes explicar cada línea de esta página, estás listo para el taller.</p>
+    </div>
+  </div>
+
+  <div class="eq">v = v<sub>0</sub> + a · t</div>
+  <div class="eq">x = x<sub>0</sub> + v<sub>0</sub> · t + ½ · a · t²</div>
+  <div class="eq">v² = v<sub>0</sub>² + 2 · a · (x − x<sub>0</sub>)</div>
+
+  <ul class="clean">
+    <li><b>MRUV</b> = recta + aceleración constante (puede ser positiva, negativa o cero; si es cero, es MRU).</li>
+    <li><b>a = Δv/Δt</b> → unidades m/s². Signo negativo = frena, no «error».</li>
+    <li>«Parte del reposo» → v<sub>0</sub> = 0. «Se detiene» → v = 0.</li>
+    <li>Gráfica <b>v–t</b>: pendiente = a, área = Δx.</li>
+    <li>Gráfica <b>a–t</b>: área = Δv.</li>
+    <li>Gráfica <b>x–t</b>: la curvatura indica el signo de a.</li>
+  </ul>
+
+  <div class="box warn">
+    <span class="t">Autoevaluación (marca mentalmente)</span>
+    <ul class="clean">
+      <li>¿Sé distinguir MRU de MRUV en una frase?</li>
+      <li>¿Explico por qué una aceleración negativa sigue siendo MRUV?</li>
+      <li>¿Elijo la ecuación correcta según los datos que me dan?</li>
+      <li>¿Calculo áreas y pendientes en una gráfica?</li>
+      <li>¿Escribo siempre la unidad del resultado?</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><b>Física · 9° · Tercer periodo</b> — Guía de estudio del Taller No. 2 (MRUV). Complementa el taller impreso; no lo reemplaza.</p>
+  <p>Consejo: resuelve primero en el cuaderno y usa esta guía para <i>comparar</i> tu procedimiento, no solo tu respuesta.</p>
+</footer>
+<script>
+(function(){
+  "use strict";
+  var store = {
+    get: function(k, d){ try{ var v = localStorage.getItem(k); return v === null ? d : v; }catch(e){ return d; } },
+    set: function(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  };
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+
+  /* ---------- TEMA ---------- */
+  var root = document.documentElement;
+  var saved = store.get("mruv-theme", null);
+  if(saved){ root.dataset.theme = saved; }
+  else if(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches){ root.dataset.theme = "dark"; }
+  $("#theme").addEventListener("click", function(){
+    var next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    store.set("mruv-theme", next);
+  });
+
+  /* ---------- PANELES ---------- */
+  function setPanel(panel, open){
+    panel.classList.toggle("show", open);
+    var btn = document.querySelector('[data-toggle="'+panel.id+'"]');
+    if(btn){
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      if(!btn.dataset.label) btn.dataset.label = btn.textContent;
+      btn.textContent = open ? "Ocultar" : btn.dataset.label;
+    }
+  }
+  document.addEventListener("click", function(e){
+    var b = e.target.closest("[data-toggle]");
+    if(!b) return;
+    var p = document.getElementById(b.dataset.toggle);
+    if(p) setPanel(p, !p.classList.contains("show"));
+  });
+  document.addEventListener("click", function(e){
+    var b = e.target.closest("[data-why]");
+    if(!b) return;
+    var t = document.getElementById(b.dataset.why);
+    if(!t) return;
+    var open = !t.classList.contains("show-why");
+    t.classList.toggle("show-why", open);
+    if(!b.dataset.label) b.dataset.label = b.textContent;
+    b.textContent = open ? "Ocultar justificaciones" : b.dataset.label;
+  });
+  $("#showAll").addEventListener("click", function(){
+    $$(".panel").forEach(function(p){ setPanel(p, true); });
+    $$("table.vf").forEach(function(t){ t.classList.add("show-why"); });
+    $$("[data-why]").forEach(function(b){ if(!b.dataset.label) b.dataset.label = b.textContent; b.textContent = "Ocultar justificaciones"; });
+  });
+  $("#hideAll").addEventListener("click", function(){
+    $$(".panel").forEach(function(p){ setPanel(p, false); });
+    $$("table.vf").forEach(function(t){ t.classList.remove("show-why"); });
+    $$("[data-why]").forEach(function(b){ b.textContent = b.dataset.label || "Mostrar todas las justificaciones"; });
+  });
+
+  /* ---------- QUIZ ---------- */
+  $$(".quiz").forEach(function(quiz){
+    var block = quiz.closest(".quizblock");
+    quiz.addEventListener("click", function(e){
+      var opt = e.target.closest(".opt");
+      if(!opt) return;
+      var ok = opt.dataset.ok === "1";
+      $$(".opt", quiz).forEach(function(o){
+        o.classList.remove("correct","wrong");
+        if(o.dataset.ok === "1") o.classList.add("correct");
+      });
+      if(!ok) opt.classList.add("wrong");
+      block.dataset.state = ok ? "ok" : "no";
+    });
+  });
+
+  /* ---------- VERDADERO / FALSO ---------- */
+  document.addEventListener("click", function(e){
+    var b = e.target.closest(".tf");
+    if(!b) return;
+    var cell = b.closest(".ans");
+    var ok = b.dataset.v === cell.dataset.correct;
+    $$(".tf", cell).forEach(function(x){ x.classList.remove("ok","bad"); });
+    b.classList.add(ok ? "ok" : "bad");
+  });
+
+  /* ---------- PROGRESO ---------- */
+  var boxes = $$(".done");
+  function updProgress(){
+    var n = boxes.filter(function(b){ return b.checked; }).length;
+    $("#pnum").textContent = n + "/" + boxes.length;
+    $("#pbar").style.width = (boxes.length ? (n / boxes.length * 100) : 0) + "%";
+  }
+  boxes.forEach(function(b){
+    var key = "mruv-prog-" + b.dataset.key;
+    b.checked = store.get(key, "0") === "1";
+    b.addEventListener("change", function(){ store.set(key, b.checked ? "1" : "0"); updProgress(); });
+  });
+  updProgress();
+
+  /* ---------- GRÁFICAS SVG ---------- */
+  var NS = "http://www.w3.org/2000/svg";
+  function tag(name, attrs, parent){
+    var n = document.createElementNS(NS, name);
+    if(attrs){ for(var k in attrs){ if(attrs[k] !== undefined && attrs[k] !== null) n.setAttribute(k, attrs[k]); } }
+    if(parent) parent.appendChild(n);
+    return n;
+  }
+  function fmt(n){ return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100); }
+
+  function drawPlot(host, cfg){
+    var W = cfg.w || 620, H = cfg.h || 380;
+    var pad = Object.assign({ l: 62, r: 34, t: 38, b: 50 }, cfg.pad || {});
+    var xmin = cfg.xmin === undefined ? 0 : cfg.xmin, xmax = cfg.xmax;
+    var ymin = cfg.ymin === undefined ? 0 : cfg.ymin, ymax = cfg.ymax;
+    var iw = W - pad.l - pad.r, ih = H - pad.t - pad.b;
+    var X = function(x){ return pad.l + (x - xmin) / (xmax - xmin) * iw; };
+    var Y = function(y){ return pad.t + ih - (y - ymin) / (ymax - ymin) * ih; };
+
+    var svg = tag("svg", { viewBox: "0 0 " + W + " " + H, "class": "plot", role: "img", "aria-label": cfg.title || "gráfica" }, host);
+
+    (cfg.xticks || []).forEach(function(t){
+      tag("line", { x1: X(t), y1: pad.t, x2: X(t), y2: pad.t + ih, "class": "grid" }, svg);
+      tag("text", { x: X(t), y: pad.t + ih + 19, "class": "tick", "text-anchor": "middle" }, svg).textContent = fmt(t);
+    });
+    (cfg.yticks || []).forEach(function(t){
+      tag("line", { x1: pad.l, y1: Y(t), x2: pad.l + iw, y2: Y(t), "class": "grid" }, svg);
+      tag("text", { x: pad.l - 11, y: Y(t) + 4, "class": "tick", "text-anchor": "end" }, svg).textContent = fmt(t);
+    });
+    tag("line", { x1: pad.l, y1: pad.t + ih, x2: pad.l + iw, y2: pad.t + ih, "class": "axis" }, svg);
+    tag("line", { x1: pad.l, y1: pad.t, x2: pad.l, y2: pad.t + ih, "class": "axis" }, svg);
+    tag("text", { x: pad.l + iw / 2, y: H - 12, "class": "lbl", "text-anchor": "middle" }, svg).textContent = cfg.xlabel || "";
+    var yl = tag("text", { x: 15, y: pad.t + ih / 2, "class": "lbl", "text-anchor": "middle", transform: "rotate(-90 15 " + (pad.t + ih / 2) + ")" }, svg);
+    yl.textContent = cfg.ylabel || "";
+    if(cfg.title){ tag("text", { x: pad.l, y: 22, "class": "ptitle" }, svg).textContent = cfg.title; }
+
+    var layers = {};
+    function layer(name){
+      if(!name) return svg;
+      if(!layers[name]) layers[name] = tag("g", { "data-layer": name }, svg);
+      return layers[name];
+    }
+
+    (cfg.series || []).forEach(function(s){
+      var g = layer(s.layer);
+      if(s.type === "area"){
+        var d = "M" + s.pts.map(function(p){ return X(p[0]) + "," + Y(p[1]); }).join(" L") + " Z";
+        tag("path", { d: d, fill: s.fill || "rgba(99,102,241,.16)", stroke: s.stroke || "none", "stroke-width": 2 }, g);
+      } else if(s.type === "poly"){
+        var dd = "M" + s.pts.map(function(p){ return X(p[0]) + "," + Y(p[1]); }).join(" L");
+        tag("path", { d: dd, fill: "none", stroke: s.color, "stroke-width": s.width || 3, "stroke-linecap": "round" }, g);
+      } else if(s.type === "fn"){
+        var N = s.samples || 120, path = "";
+        for(var i = 0; i <= N; i++){
+          var xx = s.from + (s.to - s.from) * i / N;
+          path += (i ? " L" : "M") + X(xx) + "," + Y(s.f(xx));
+        }
+        tag("path", { d: path, fill: "none", stroke: s.color, "stroke-width": s.width || 3, "stroke-linecap": "round" }, g);
+      } else if(s.type === "dots"){
+        s.pts.forEach(function(p){
+          var px = Array.isArray(p) ? p[0] : p.x;
+          var py = Array.isArray(p) ? p[1] : p.y;
+          tag("circle", { cx: X(px), cy: Y(py), r: s.r || 5.5, fill: s.color || "#6366f1", stroke: "#fff", "stroke-width": 2 }, g);
+          if(p.label){
+            tag("text", { x: X(px) + (p.dx === undefined ? 9 : p.dx), y: Y(py) + (p.dy === undefined ? -11 : p.dy), "class": "dlbl" }, g).textContent = p.label;
+          }
+        });
+      } else if(s.type === "helper"){
+        tag("line", { x1: X(s.x1), y1: Y(s.y1), x2: X(s.x2), y2: Y(s.y2), "class": "helper" }, g);
+      } else if(s.type === "text"){
+        tag("text", { x: X(s.x), y: Y(s.y), "class": "dlbl", "text-anchor": s.anchor || "start" }, g).textContent = s.text;
+      }
+    });
+
+    (cfg.hidden || []).forEach(function(name){ if(layers[name]) layers[name].style.display = "none"; });
+    return { svg: svg, layers: layers };
+  }
+
+  function layerChips(host, plot, defs){
+    var bar = document.createElement("div");
+    bar.className = "plot-ctrl";
+    defs.forEach(function(d){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip" + (d.on ? " on" : "");
+      b.textContent = d.label;
+      b.setAttribute("aria-pressed", d.on ? "true" : "false");
+      b.addEventListener("click", function(){
+        var g = plot.layers[d.layer];
+        if(!g) return;
+        var visible = g.style.display !== "none";
+        g.style.display = visible ? "none" : "";
+        b.classList.toggle("on", !visible);
+        b.setAttribute("aria-pressed", (!visible) ? "true" : "false");
+      });
+      bar.appendChild(b);
+    });
+    host.parentNode.insertBefore(bar, host.nextSibling);
+  }
+
+  /* Gráfica v-t del ejercicio 5 */
+  var g5 = drawPlot($("#g5"), {
+    w: 620, h: 380, xmax: 8, ymax: 12,
+    xticks: [0,1,2,3,4,5,6,7,8],
+    yticks: [0,1,2,3,4,5,6,7,8,9,10,11,12],
+    xlabel: "Tiempo t (s)", ylabel: "Velocidad v (m/s)",
+    title: "Velocidad vs. tiempo",
+    series: [
+      { type: "area", layer: "area", fill: "rgba(20,184,166,.20)", pts: [[0,0],[0,2],[8,10],[8,0]] },
+      { type: "helper", layer: "slope", x1: 0, y1: 2, x2: 8, y2: 2 },
+      { type: "helper", layer: "slope", x1: 8, y1: 2, x2: 8, y2: 10 },
+      { type: "text", layer: "slope", x: 4, y: 1.1, text: "Δt = 8 s", anchor: "middle" },
+      { type: "text", layer: "slope", x: 7.7, y: 6, text: "Δv = 8 m/s", anchor: "end" },
+      { type: "poly", layer: "dat", color: "#6366f1", pts: [[0,2],[8,10]], width: 3 },
+      { type: "dots", layer: "dat", color: "#6366f1", pts: [
+        { x: 0, y: 2, label: "(0, 2)", dy: 20, dx: 4 },
+        { x: 8, y: 10, label: "(8, 10)", dx: -62, dy: -6 }
+      ]}
+    ],
+    hidden: ["slope", "area"]
+  });
+  layerChips($("#g5"), g5, [
+    { layer: "dat", label: "Recta y puntos", on: true },
+    { layer: "slope", label: "Pendiente = aceleración", on: false },
+    { layer: "area", label: "Área = desplazamiento", on: false }
+  ]);
+
+  /* Gráfica a-t del ejercicio 6 */
+  var g6 = drawPlot($("#g6"), {
+    w: 620, h: 320, xmax: 10, ymax: 2.5,
+    xticks: [0,1,2,3,4,5,6,7,8,9,10],
+    yticks: [0,0.5,1,1.5,2,2.5],
+    xlabel: "Tiempo t (s)", ylabel: "Aceleración a (m/s²)",
+    title: "Aceleración vs. tiempo",
+    series: [
+      { type: "area", layer: "area", fill: "rgba(20,184,166,.22)", pts: [[2,0],[2,1.5],[8,1.5],[8,0]] },
+      { type: "poly", layer: "dat", color: "#6366f1", pts: [[0,1.5],[10,1.5]], width: 3 },
+      { type: "dots", layer: "dat", color: "#6366f1", pts: [
+        { x: 0, y: 1.5, label: "(0, 1.5)", dy: 20, dx: 4 },
+        { x: 10, y: 1.5, label: "(10, 1.5)", dx: -68, dy: -8 }
+      ]},
+      { type: "text", layer: "area", x: 5, y: 0.45, text: "Δv = a · Δt", anchor: "middle" }
+    ],
+    hidden: ["area"]
+  });
+  layerChips($("#g6"), g6, [
+    { layer: "dat", label: "a constante", on: true },
+    { layer: "area", label: "Área entre 2 s y 8 s", on: false }
+  ]);
+
+  /* Ejercicio 7: dos parábolas x-t */
+  drawPlot($("#g7a"), {
+    w: 420, h: 320, xmax: 5, ymax: 18,
+    xticks: [0,1,2,3,4,5],
+    yticks: [0,2.5,5,7.5,10,12.5,15,17.5],
+    xlabel: "t (s)", ylabel: "x (m)",
+    title: "Gráfico A",
+    series: [{ type: "fn", color: "#f59e0b", from: 0, to: 5, f: function(x){ return 0.7 * x * x; } }]
+  });
+  drawPlot($("#g7b"), {
+    w: 420, h: 320, xmax: 5, ymax: 14,
+    xticks: [0,1,2,3,4,5],
+    yticks: [0,2,4,6,8,10,12],
+    xlabel: "t (s)", ylabel: "x (m)",
+    title: "Gráfico B",
+    series: [{ type: "fn", color: "#f59e0b", from: 0, to: 5, f: function(x){ return 5 * x - 0.5 * x * x; } }]
+  });
+})();
+</script>
+</body>
+</html>

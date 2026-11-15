@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller 1 · Factorización — Guía explicada paso a paso</title>
+<style>
+:root{
+  --bg:#f4f6fb; --panel:#fff; --ink:#111827; --muted:#5b6675; --line:#e3e8f2;
+  --accent:#4f46e5; --accent-soft:#eef0ff;
+  --green:#0f766e; --green-soft:#e8f8f5;
+  --amber:#b45309; --amber-soft:#fdf4e5;
+  --rose:#be123c; --rose-soft:#fdeef2;
+  --shadow:0 1px 2px rgba(16,24,40,.05), 0 18px 40px -28px rgba(16,24,40,.45);
+  --r:16px;
+}
+[data-theme="dark"]{
+  --bg:#0b1020; --panel:#121a2c; --ink:#e9eefb; --muted:#a3aec5; --line:#243049;
+  --accent:#8b8cf8; --accent-soft:#1b2242; --green:#5ad3c6; --green-soft:#0f2c2a;
+  --amber:#f0b26b; --amber-soft:#2f2413; --rose:#fb7185; --rose-soft:#2f1522;
+  --shadow:0 18px 40px -28px #000;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased;
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+a{color:var(--accent)}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:12px;top:12px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:99}
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;color:#eef2ff;padding:40px 0 34px;border-bottom:1px solid #1e293b;
+  background:radial-gradient(900px 320px at 10% -20%,rgba(99,102,241,.42),transparent 62%),
+             radial-gradient(760px 300px at 96% -10%,rgba(13,148,136,.34),transparent 58%),
+             linear-gradient(180deg,#0e1729,#101a2e)}
+.hero::after{content:"";position:absolute;inset:0;opacity:.45;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1.4px);
+  background-size:26px 26px}
+.kicker{margin:0 0 8px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#a5b4fc;font-weight:700}
+.hero h1{margin:0;font-size:clamp(1.55rem,3.4vw,2.35rem);line-height:1.18;letter-spacing:-.02em}
+.hero p.sub{margin:10px 0 0;max-width:62ch;color:#c7d2fe;font-size:1.02rem}
+.hero .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero .chips span{font-size:.8rem;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#e0e7ff}
+/* ---------- TOPBAR ---------- */
+.topbar{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);backdrop-filter:blur(12px);
+  background:var(--bg);background:color-mix(in srgb,var(--bg) 86%,transparent)}
+.bar{display:flex;align-items:center;gap:14px;padding:9px 20px;flex-wrap:wrap}
+.toc{display:flex;gap:6px;overflow-x:auto;flex:1 1 240px;min-width:0;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;text-decoration:none;font-size:.8rem;font-weight:600;color:var(--muted);
+  padding:5px 10px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--line)}
+.tools{display:flex;align-items:center;gap:8px}
+.pbar{width:92px;height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#0d9488);transition:width .3s}
+.pnum{font-size:.78rem;font-weight:700;color:var(--muted);min-width:32px}
+.tbtn{font:inherit;font-size:.78rem;font-weight:600;padding:6px 10px;border-radius:9px;cursor:pointer;
+  background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.tbtn:hover{border-color:var(--accent);color:var(--accent)}
+/* ---------- CARDS ---------- */
+main{padding:26px 20px 70px;max-width:1040px;margin:0 auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+  padding:24px 24px 20px;margin:0 0 22px;scroll-margin-top:76px}
+.card-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:6px}
+.badge{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;
+  background:var(--accent-soft);color:var(--accent);font-size:1rem}
+.card h2{margin:2px 0 0;font-size:1.16rem;letter-spacing:-.01em;line-height:1.35}
+.lead{margin:4px 0 0;color:var(--muted);font-size:.94rem}
+.done-wrap{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--muted);
+  font-weight:600;cursor:pointer;user-select:none;white-space:nowrap}
+.done-wrap input{width:17px;height:17px;accent-color:#0d9488;cursor:pointer}
+/* ---------- TEXTO ---------- */
+h3{font-size:.98rem;margin:22px 0 8px;letter-spacing:.01em}
+p{margin:.55em 0}
+.small{font-size:.88rem}
+.muted{color:var(--muted)}
+.eq{font-family:"Cambria Math",Cambria,Georgia,"Times New Roman",serif;font-size:1.12rem;
+  background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;
+  padding:10px 14px;text-align:center;margin:12px 0;color:var(--ink);overflow-x:auto}
+.eq b{color:var(--green)}
+ul.clean{margin:.4em 0;padding-left:1.15em}
+ul.clean li{margin:.3em 0}
+/* ---------- CAJAS ---------- */
+.box{border-radius:13px;padding:13px 15px;margin:14px 0;border:1px solid var(--line);font-size:.94rem}
+.box p:first-child{margin-top:0}.box p:last-child{margin-bottom:0}
+.box .t{display:block;font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.tip{background:var(--accent-soft);border-color:transparent}
+.tip .t{color:var(--accent)}
+.warn{background:var(--amber-soft);border-color:transparent}
+.warn .t{color:var(--amber)}
+.answer{background:var(--green-soft);border:1px solid color-mix(in srgb,var(--green) 26%,transparent);border-radius:13px;
+  padding:14px 16px;margin:14px 0}
+.answer .t{display:block;font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green);margin-bottom:6px}
+.res{font-weight:800;color:var(--green)}
+/* ---------- PASOS ---------- */
+.steps{list-style:none;counter-reset:s;margin:12px 0;padding:0}
+.steps>li{counter-increment:s;position:relative;padding-left:38px;margin:11px 0}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:800;font-size:.82rem}
+.steps .lbl{font-weight:700}
+/* ---------- REVEAL ---------- */
+.btn{font:inherit;font-size:.86rem;font-weight:700;cursor:pointer;padding:8px 14px;border-radius:10px;
+  border:1px solid var(--accent);background:transparent;color:var(--accent);margin:6px 0}
+.btn:hover{background:var(--accent-soft)}
+.btn::before{content:"▸ ";font-size:.9em}
+.btn[aria-expanded="true"]::before{content:"▾ "}
+.panel{display:none}
+.panel.show{display:block;animation:fade .28s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+/* ---------- QUIZ ---------- */
+.quiz{display:grid;gap:8px;margin:14px 0 6px}
+.opt{font:inherit;text-align:left;display:flex;gap:11px;align-items:flex-start;cursor:pointer;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 14px;color:var(--ink);
+  transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--accent);background:var(--accent-soft)}
+.opt b{flex:none;width:24px;height:24px;border-radius:8px;background:var(--accent-soft);color:var(--accent);
+  display:grid;place-items:center;font-size:.8rem}
+.opt.correct{border-color:#0d9488;background:var(--green-soft)}
+.opt.correct b{background:#0d9488;color:#fff}
+.opt.wrong{border-color:#e11d48;background:var(--rose-soft)}
+.opt.wrong b{background:#e11d48;color:#fff}
+.fb{margin:10px 0 0;font-size:.9rem;display:none;padding:11px 14px;border-radius:11px;border:1px solid var(--line)}
+.quizblock[data-state="ok"] .fok{display:block;background:var(--green-soft);border-color:#0d9488}
+.quizblock[data-state="no"] .fno{display:block;background:var(--rose-soft);border-color:#e11d48}
+/* ---------- TABLAS ---------- */
+.tablewrap{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:520px}
+th{background:var(--accent-soft);color:var(--accent);text-align:left;font-size:.76rem;letter-spacing:.06em;
+  text-transform:uppercase;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.ans{white-space:nowrap}
+.tf{font:inherit;font-weight:800;font-size:.8rem;width:34px;height:29px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted);margin-right:4px}
+.tf:hover{border-color:var(--accent);color:var(--accent)}
+.tf.ok{background:#0d9488;border-color:#0d9488;color:#fff}
+.tf.bad{background:#e11d48;border-color:#e11d48;color:#fff}
+.whycell{display:none;color:var(--muted);font-size:.87rem;min-width:240px}
+th.whycell-h{display:none}
+table.show-why .whycell{display:table-cell}
+table.show-why th.whycell-h{display:table-cell}
+.tag{display:inline-block;font-weight:800;font-size:.72rem;padding:1px 7px;border-radius:6px;margin-right:6px}
+.tag.v{background:#0d9488;color:#fff}.tag.f{background:#e11d48;color:#fff}
+/* ---------- GRÁFICAS ---------- */
+.figure{margin:16px 0;border:1px solid var(--line);border-radius:13px;padding:12px;background:var(--panel)}
+.plot{width:100%;height:auto;display:block}
+.grid{stroke:var(--line);stroke-width:1}
+.axis{stroke:var(--muted);stroke-width:1.6}
+.helper{stroke:var(--muted);stroke-width:1.3;stroke-dasharray:5 5}
+.tick{font-size:12px;fill:var(--muted);font-family:inherit}
+.lbl{font-size:12.5px;fill:var(--muted);font-family:inherit}
+.ptitle{font-size:13px;font-weight:700;fill:var(--ink);font-family:inherit}
+.dlbl{font-size:12.5px;font-weight:700;fill:var(--ink);font-family:inherit;paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.plot-ctrl{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{font:inherit;font-size:.78rem;font-weight:700;cursor:pointer;padding:5px 11px;border-radius:999px;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.cap{font-size:.82rem;color:var(--muted);margin:6px 0 0}
+/* ---------- SIMULADOR ---------- */
+.sim{display:grid;gap:10px;margin:14px 0}
+.sim label{display:grid;grid-template-columns:96px 1fr 58px;gap:12px;align-items:center;font-size:.85rem;font-weight:700}
+.sim label>span{white-space:nowrap}
+.sim input[type=range]{width:100%;accent-color:var(--accent)}
+.sim output{font-variant-numeric:tabular-nums;font-weight:800;color:var(--accent);text-align:right}
+.track{position:relative;height:54px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--line);margin-top:6px}
+.track .rail{position:absolute;left:14px;right:14px;top:50%;height:3px;background:var(--line);border-radius:9px;transform:translateY(-50%)}
+.track .dot{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;background:var(--accent);
+  transform:translate(-50%,-50%);transition:left .18s ease;box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 18%,transparent)}
+.track .lblx{display:none}
+.track .zero{position:absolute;top:10px;bottom:10px;width:2px;background:var(--muted);opacity:.4;transform:translateX(-50%)}
+.track .zerolbl{position:absolute;bottom:3px;font-size:.7rem;color:var(--muted);font-weight:700;transform:translateX(-50%);white-space:nowrap}
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:22px 20px 40px;color:var(--muted);font-size:.82rem;text-align:center}
+@media (max-width:720px){
+  .card{padding:19px 16px 16px}
+  .card-head{flex-wrap:wrap}
+  .done-wrap{margin-left:0;order:3}
+  .sim label{grid-template-columns:86px 1fr 62px;font-size:.8rem}
+}
+/* ---------- EXTRAS ÁLGEBRA ---------- */
+.casebtns{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.casebtns .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.casebox{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--accent-soft);margin:10px 0}
+.casebox .eq{margin:8px 0;background:var(--panel)}
+.fx{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:1.03rem}
+.sol{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:1.08rem;font-weight:700;color:var(--green)}
+.pick{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}
+.pick button{font:inherit;font-size:.8rem;font-weight:700;cursor:pointer;padding:5px 12px;border-radius:8px;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.pick button:hover{border-color:var(--accent);color:var(--accent)}
+.pick button.ok{background:#0d9488;border-color:#0d9488;color:#fff}
+.pick button.bad{background:#e11d48;border-color:#e11d48;color:#fff}
+.pick-note{font-size:.85rem;font-weight:700;min-height:1.4em;margin:2px 0 0}
+.ok-txt{color:var(--green)}.no-txt{color:var(--rose)}
+.diagram{width:100%;height:auto;display:block}
+.dtitle{font-size:14px;font-weight:700;fill:var(--ink);font-family:inherit}
+.dnode{font-size:15px;fill:var(--ink);font-family:inherit}
+.dleft{font-weight:700;fill:#4f46e5}
+.dright{font-weight:700;fill:#0f766e}
+.darrow{stroke:#8b2fb8;stroke-width:2.2;fill:none}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:760px){.dgrid{grid-template-columns:1fr}}
+.vline{stroke:#e11d48;stroke-width:2;stroke-dasharray:6 5}
+main .sub{padding:9px 0 5px;border-bottom:1px dashed var(--line)}
+main .sub:last-child{border-bottom:0}
+main .sub .q{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:1.08rem;font-weight:700}
+main .sub .btn{margin:4px 0}
+.check{font-size:.87rem;color:var(--muted);margin:6px 0 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+@media print{
+  .topbar,.tools,.btn,.plot-ctrl,.done-wrap,.hero .chips,.skip{display:none!important}
+  .panel{display:block!important}
+  body{background:#fff;color:#000}
+  .card{box-shadow:none;border-color:#bbb;break-inside:avoid}
+  .hero{background:#fff;color:#000;border-bottom:2px solid #000}
+  .hero p.sub,.kicker{color:#333}
+  .hero .chips{display:none}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Álgebra · Grado 9° · Tercer periodo · Taller No. 1</p>
+    <h1>Repaso de factorización</h1>
+    <p class="sub">Guía interactiva del taller: qué significa factorizar, cómo reconocer cada caso y el procedimiento <b>paso a paso</b> de todos los ejercicios.</p>
+    <div class="chips">
+      <span>7 puntos explicados</span>
+      <span>Los 5 casos de factorización</span>
+      <span>Comprobación de cada resultado</span>
+      <span>Errores comunes</span>
+    </div>
+  </div>
+</header>
+
+<div class="topbar">
+  <div class="bar">
+    <nav class="toc" aria-label="Contenido">
+      <a href="#guia">Guía rápida</a>
+      <a href="#e1">1 · Concepto</a>
+      <a href="#e2">2 · Uso actual</a>
+      <a href="#e3">3 · Factor común</a>
+      <a href="#e4">4 · Agrupación</a>
+      <a href="#e5">5 · Dif. de cuadrados</a>
+      <a href="#e6">6 · Cuadrado perfecto</a>
+      <a href="#e7">7 · Trinomio x²+bx+c</a>
+      <a href="#detector">Detector</a>
+      <a href="#chuleta">Chuleta</a>
+    </nav>
+    <div class="tools">
+      <div class="pbar"><i id="pbar"></i></div>
+      <span class="pnum" id="pnum">0/7</span>
+      <button class="tbtn" id="showAll" type="button">Mostrar todo</button>
+      <button class="tbtn" id="hideAll" type="button">Ocultar</button>
+      <button class="tbtn" id="theme" type="button" title="Cambiar tema" aria-label="Cambiar tema">◐</button>
+    </div>
+  </div>
+</div>
+
+<main id="contenido">
+
+<section class="card" id="guia">
+  <div class="card-head">
+    <span class="badge">0</span>
+    <div>
+      <h2>Antes de empezar: ¿qué es factorizar?</h2>
+      <p class="lead">Todo el taller se resume en una idea: convertir una suma en una multiplicación equivalente.</p>
+    </div>
+  </div>
+
+  <div class="box tip">
+    <span class="t">La idea en una frase</span>
+    <p><b>Factorizar</b> es escribir una expresión como un <b>producto</b> de factores más simples, sin cambiar su valor. Es el proceso inverso de multiplicar (distribuir).</p>
+    <div class="eq">x² + 5x + 6 &nbsp;=&nbsp; (x + 2)(x + 3)</div>
+    <p class="small">A la izquierda hay una <b>suma</b> de tres términos; a la derecha, un <b>producto</b> de dos factores. Son la misma expresión escrita de dos formas.</p>
+  </div>
+
+  <h3>Los 5 casos del taller (y cómo reconocerlos)</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Caso</th><th>Se reconoce porque…</th><th>Fórmula / idea</th></tr></thead>
+      <tbody>
+        <tr><td><b>1. Factor común</b></td><td>El mismo factor (número y/o letra) se repite en <b>todos</b> los términos.</td><td>Se saca fuera del paréntesis</td></tr>
+        <tr><td><b>2. Agrupación</b></td><td>Hay 4 o más términos y se pueden formar parejas con algo en común.</td><td>Se agrupa de dos en dos y se repite el paso 1</td></tr>
+        <tr><td><b>3. Diferencia de cuadrados</b></td><td>Son <b>2 términos</b>, ambos cuadrados, separados por una resta.</td><td>a² − b² = (a + b)(a − b)</td></tr>
+        <tr><td><b>4. Trinomio cuadrado perfecto</b></td><td>Son <b>3 términos</b>; el primero y el último son cuadrados y el del medio es el doble producto.</td><td>a² ± 2ab + b² = (a ± b)²</td></tr>
+        <tr><td><b>5. Trinomio x² + bx + c</b></td><td>Son <b>3 términos</b> con coeficiente 1 en x², pero no es cuadrado perfecto.</td><td>Buscar dos números que sumen b y multipliquen c</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>El método de 4 pasos (para cualquier ejercicio)</h3>
+  <ol class="steps">
+    <li><span class="lbl">Identifica el caso.</span> Cuenta los términos y mira los signos.</li>
+    <li><span class="lbl">Aplica la fórmula</span> del caso que reconociste.</li>
+    <li><span class="lbl">Escribe el resultado</span> como producto de factores.</li>
+    <li><span class="lbl">Comprueba multiplicando.</span> Si al desarrollar vuelves a la expresión original, está bien. <b>Este paso es el mejor antierrores.</b></li>
+  </ol>
+
+  <div class="box warn">
+    <span class="t">Dos recordatorios</span>
+    <p><b>Factorizar no es resolver una ecuación:</b> no se busca «el valor de x», no hay signo «= 0».</p>
+    <p>Saca siempre el <b>factor común más grande</b> posible: si dejas un factor común dentro del paréntesis, la factorización está incompleta.</p>
+  </div>
+</section>
+<section class="card" id="e1">
+  <div class="card-head">
+    <span class="badge">1</span>
+    <div>
+      <h2>¿Qué es factorizar una expresión algebraica?</h2>
+      <p class="lead">Pregunta conceptual. Fíjate en que x² + 5x + 6 pasó a ser (x + 2)(x + 3).</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e1">Hecho</label>
+  </div>
+
+  <div class="quizblock" data-state="">
+    <div class="quiz" data-quiz="q1">
+      <button class="opt" type="button" data-ok="0"><b>A</b><span>Se resolvió una ecuación para encontrar el valor de x.</span></button>
+      <button class="opt" type="button" data-ok="1"><b>B</b><span>Se transformó una suma algebraica en un producto equivalente.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>C</b><span>Se eliminaron los términos semejantes de la expresión.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>D</b><span>Se cambió el signo de todos los términos para simplificar.</span></button>
+    </div>
+    <p class="fb fok">¡Correcto! Es la <b>B</b>. Factorizar = escribir la misma expresión como producto.</p>
+    <p class="fb fno">Aún no. Pista: compara las dos formas de la expresión, ¿qué operación aparece a la izquierda y cuál a la derecha?</p>
+  </div>
+
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p1" aria-expanded="false" aria-controls="p1">Ver análisis de cada opción</button>
+    <div class="panel" id="p1">
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Opción</th><th>Por qué</th></tr></thead>
+          <tbody>
+            <tr><td><b>A</b></td><td>Resolver una ecuación daría valores como x = −2 o x = −3. Aquí no hay igualdad ni incógnita por despejar.</td></tr>
+            <tr><td><b>B ✔</b></td><td>x² + 5x + 6 es una <b>suma</b>; (x + 2)(x + 3) es un <b>producto</b>. Al multiplicarlos se obtiene exactamente la misma expresión.</td></tr>
+            <tr><td><b>C</b></td><td>Reducir términos semejantes es <i>simplificar</i>, otra cosa: x², 5x y 6 no son semejantes entre sí.</td></tr>
+            <tr><td><b>D</b></td><td>Cambiar signos no es factorizar y además alteraría el valor de la expresión.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">B.</span> Se transformó una suma algebraica en un producto equivalente.</p>
+      </div>
+      <div class="box tip">
+        <span class="t">Comprobación</span>
+        <p>(x + 2)(x + 3) = x² + 3x + 2x + 6 = x² + 5x + 6 ✔</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e2">
+  <div class="card-head">
+    <span class="badge">2</span>
+    <div>
+      <h2>Un uso actual de la factorización</h2>
+      <p class="lead">La factorización no es solo un tema de clase: está detrás de la seguridad de internet.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e2">Hecho</label>
+  </div>
+
+  <div class="quizblock" data-state="">
+    <div class="quiz" data-quiz="q2">
+      <button class="opt" type="button" data-ok="1"><b>A</b><span>Diseñar sistemas de seguridad digital que protegen información.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>B</b><span>Calcular mentalmente cualquier suma de números pequeños.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>C</b><span>Cambiar automáticamente el brillo de la pantalla de un celular.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>D</b><span>Ordenar una lista de nombres alfabéticamente.</span></button>
+    </div>
+    <p class="fb fok">¡Correcto! Es la <b>A</b>. La criptografía moderna se apoya en lo difícil que es factorizar números enormes.</p>
+    <p class="fb fno">Todavía no. Pista: piensa en algo que sea <b>muy fácil de hacer</b> (multiplicar) pero <b>muy difícil de deshacer</b> (factorizar).</p>
+  </div>
+
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p2" aria-expanded="false" aria-controls="p2">Ver explicación</button>
+    <div class="panel" id="p2">
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">A.</span> Diseñar sistemas de seguridad digital que protegen información.</p>
+      </div>
+      <p>La idea: multiplicar dos números primos grandes es rapidísimo para un computador, pero <b>volver a encontrar esos dos primos</b> a partir del producto (factorizar) puede tardar años. Esa asimetría es la base de sistemas como <b>RSA</b>, que protegen claves, contraseñas, compras en línea y mensajes.</p>
+      <p class="small muted">Las otras opciones son: una suma mental (B), un sensor con regla automática (C) y un ordenamiento alfabético (D). Ninguna requiere descomponer algo en factores.</p>
+    </div>
+  </div>
+</section>
+<section class="card" id="e3">
+  <div class="card-head">
+    <span class="badge">3</span>
+    <div>
+      <h2>Factor común</h2>
+      <p class="lead">Se busca el factor que se repite en <b>todos</b> los términos y se escribe fuera del paréntesis.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e3">Hecho</label>
+  </div>
+
+  <div class="box tip">
+    <span class="t">Cómo encontrarlo</span>
+    <ul class="clean">
+      <li><b>Números:</b> el máximo común divisor de los coeficientes.</li>
+      <li><b>Letras:</b> la que aparece en todos los términos, con el <b>menor exponente</b>.</li>
+      <li>Dentro del paréntesis va lo que queda al dividir cada término entre el factor común.</li>
+    </ul>
+  </div>
+
+  <div class="sub">
+    <p class="q">a) 6x² + 9x</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p3a" aria-expanded="false" aria-controls="p3a">Ver procedimiento</button>
+      <div class="panel" id="p3a">
+        <ol class="steps">
+          <li><span class="lbl">Números:</span> MCD(6, 9) = 3.</li>
+          <li><span class="lbl">Letras:</span> x² y x → menor exponente = x.</li>
+          <li><span class="lbl">Factor común:</span> 3x.</li>
+          <li><span class="lbl">Divido:</span> 6x² ÷ 3x = 2x &nbsp;·&nbsp; 9x ÷ 3x = 3.</li>
+        </ol>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">3x(2x + 3)</p></div>
+        <p class="check">Comprobación: 3x · 2x + 3x · 3 = 6x² + 9x ✔</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <p class="q">b) 12a³b² − 18a²b</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p3b" aria-expanded="false" aria-controls="p3b">Ver procedimiento</button>
+      <div class="panel" id="p3b">
+        <ol class="steps">
+          <li><span class="lbl">Números:</span> MCD(12, 18) = 6.</li>
+          <li><span class="lbl">Letras:</span> a³ y a² → a²; b² y b → b. Factor común: 6a²b.</li>
+          <li><span class="lbl">Divido:</span> 12a³b² ÷ 6a²b = 2ab &nbsp;·&nbsp; 18a²b ÷ 6a²b = 3.</li>
+          <li><span class="lbl">Conservo el signo:</span> el segundo término era negativo.</li>
+        </ol>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">6a²b(2ab − 3)</p></div>
+        <p class="check">Comprobación: 6a²b · 2ab − 6a²b · 3 = 12a³b² − 18a²b ✔</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <p class="q">c) 15m²n − 10mn² + 5mn</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p3c" aria-expanded="false" aria-controls="p3c">Ver procedimiento</button>
+      <div class="panel" id="p3c">
+        <ol class="steps">
+          <li><span class="lbl">Números:</span> MCD(15, 10, 5) = 5.</li>
+          <li><span class="lbl">Letras:</span> m², m, m → m; n, n², n → n. Factor común: 5mn.</li>
+          <li><span class="lbl">Divido:</span> 3m &nbsp;·&nbsp; −2n &nbsp;·&nbsp; <b>+1</b>.</li>
+        </ol>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">5mn(3m − 2n + 1)</p></div>
+        <div class="box warn"><span class="t">Error típico</span><p>Cuando un término es <b>igual</b> al factor común, al dividirlo queda <b>1</b>, no «desaparece». Si escribieras 5mn(3m − 2n), al multiplicar te faltaría + 5mn.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e4">
+  <div class="card-head">
+    <span class="badge">4</span>
+    <div>
+      <h2>Factor común por agrupación de términos</h2>
+      <p class="lead">Se agrupan los términos de dos en dos, se saca factor común en cada grupo y luego se factoriza el factor que queda repetido.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e4">Hecho</label>
+  </div>
+
+  <div class="box tip">
+    <span class="t">La clave</span>
+    <p>Al terminar de agrupar, los dos paréntesis deben quedar <b>idénticos</b>. Si no quedan iguales, hay que reordenar los términos o revisar los signos.</p>
+  </div>
+
+  <div class="sub">
+    <p class="q">a) x²y + 5x² + 3y + 15</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p4a" aria-expanded="false" aria-controls="p4a">Ver procedimiento</button>
+      <div class="panel" id="p4a">
+        <div class="eq">[x²y + 5x²] + [3y + 15] = x²(y + 5) + 3(y + 5)</div>
+        <p>Ahora (y + 5) es el nuevo factor común:</p>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(y + 5)(x² + 3)</p></div>
+        <p class="check">Comprobación: y·x² + 3y + 5x² + 15 = x²y + 5x² + 3y + 15 ✔</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <p class="q">b) 4a²b − 8a² + 5b − 10</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p4b" aria-expanded="false" aria-controls="p4b">Ver procedimiento</button>
+      <div class="panel" id="p4b">
+        <div class="eq">4a²(b − 2) + 5(b − 2)</div>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(b − 2)(4a² + 5)</p></div>
+        <p class="check">Comprobación: 4a²b − 8a² + 5b − 10 ✔</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <p class="q">c) 3m²n² + 6m² + 7n² + 14</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p4c" aria-expanded="false" aria-controls="p4c">Ver procedimiento</button>
+      <div class="panel" id="p4c">
+        <div class="eq">3m²(n² + 2) + 7(n² + 2)</div>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(n² + 2)(3m² + 7)</p></div>
+        <p class="check">Comprobación: 3m²n² + 6m² + 7n² + 14 ✔</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <p class="q">d) 2a²x³ − 4a²y² + 3b³x³ − 6b³y² + 5c²x³ − 10c²y²</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p4d" aria-expanded="false" aria-controls="p4d">Ver procedimiento</button>
+      <div class="panel" id="p4d">
+        <p>Son 6 términos, pero se agrupan en <b>tres parejas</b> por la letra que se repite (a², b³, c²):</p>
+        <div class="eq">2a²(x³ − 2y²) + 3b³(x³ − 2y²) + 5c²(x³ − 2y²)</div>
+        <p>El paréntesis repetido se saca como factor común y los coeficientes forman el otro factor:</p>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(x³ − 2y²)(2a² + 3b³ + 5c²)</p></div>
+        <div class="box tip"><span class="t">Truco</span><p>En ejercicios largos, <b>subraya o colorea</b> las parejas antes de operar. Aquí cada pareja tiene la forma «k·(x³ − 2y²)»; ver esa repetición es todo el trabajo.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="card" id="e5">
+  <div class="card-head">
+    <span class="badge">5</span>
+    <div>
+      <h2>Diferencia de cuadrados</h2>
+      <p class="lead">Tiene la forma a² − b² y se factoriza como (a + b)(a − b).</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e5">Hecho</label>
+  </div>
+
+  <div class="eq">a² − b² = (a + b)(a − b)</div>
+  <div class="box tip">
+    <span class="t">Cómo reconocerla</span>
+    <p>Dos términos, <b>resta</b> entre ellos, y cada uno es un cuadrado exacto. El truco es escribir cada término como «(algo)²» y luego copiar la fórmula con un + y un −.</p>
+  </div>
+
+  <div class="sub">
+    <p class="q">a) x² − 49</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p5a" aria-expanded="false" aria-controls="p5a">Ver procedimiento</button>
+      <div class="panel" id="p5a">
+        <p>49 = 7² → la expresión es x² − 7².</p>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(x + 7)(x − 7)</p></div>
+        <p class="check">Comprobación: x² − 7x + 7x − 49 = x² − 49 ✔ (los términos de en medio se cancelan).</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <p class="q">b) 25a² − 16b²</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p5b" aria-expanded="false" aria-controls="p5b">Ver procedimiento</button>
+      <div class="panel" id="p5b">
+        <p>25a² = (5a)² y 16b² = (4b)² → (5a)² − (4b)².</p>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(5a + 4b)(5a − 4b)</p></div>
+        <p class="check">Comprobación: 25a² − 20ab + 20ab − 16b² = 25a² − 16b² ✔</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <p class="q">c) 64x²y² − 121z²</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p5c" aria-expanded="false" aria-controls="p5c">Ver procedimiento</button>
+      <div class="panel" id="p5c">
+        <p>64x²y² = (8xy)² y 121z² = (11z)² → (8xy)² − (11z)².</p>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(8xy + 11z)(8xy − 11z)</p></div>
+        <div class="box warn"><span class="t">Error típico</span><p>Con varios factores dentro del cuadrado hay que tomar la raíz de <b>todo</b>: √(64x²y²) = 8xy, no 8x²y² ni 8xy².</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e6">
+  <div class="card-head">
+    <span class="badge">6</span>
+    <div>
+      <h2>Trinomio cuadrado perfecto</h2>
+      <p class="lead">Tiene la forma a² ± 2ab + b² y se factoriza como (a ± b)².</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e6">Hecho</label>
+  </div>
+
+  <div class="eq">a² + 2ab + b² = (a + b)² &nbsp;&nbsp;·&nbsp;&nbsp; a² − 2ab + b² = (a − b)²</div>
+  <div class="box tip">
+    <span class="t">La prueba de los 3 pasos</span>
+    <ol class="steps">
+      <li><span class="lbl">Raíz del primero:</span> a = √(primer término).</li>
+      <li><span class="lbl">Raíz del último:</span> b = √(último término).</li>
+      <li><span class="lbl">Verifica el del medio:</span> debe ser exactamente <b>2ab</b>. Si coincide, es cuadrado perfecto.</li>
+    </ol>
+    <p>El signo del término central decide si el binomio lleva + o −.</p>
+  </div>
+
+  <div class="sub">
+    <p class="q">a) x² + 12x + 36</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p6a" aria-expanded="false" aria-controls="p6a">Ver procedimiento</button>
+      <div class="panel" id="p6a">
+        <p>a = x, b = 6 → 2ab = 2·x·6 = 12x ✔ y el signo es +.</p>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(x + 6)²</p></div>
+        <p class="check">Comprobación: (x + 6)(x + 6) = x² + 6x + 6x + 36 = x² + 12x + 36 ✔</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <p class="q">b) 9a² − 24ab + 16b²</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p6b" aria-expanded="false" aria-controls="p6b">Ver procedimiento</button>
+      <div class="panel" id="p6b">
+        <p>a = 3a, b = 4b → 2ab = 2·3a·4b = 24ab ✔ y el signo es −.</p>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(3a − 4b)²</p></div>
+        <p class="check">Comprobación: 9a² − 12ab − 12ab + 16b² = 9a² − 24ab + 16b² ✔</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <p class="q">c) 25m² + 40mn + 16n²</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p6c" aria-expanded="false" aria-controls="p6c">Ver procedimiento</button>
+      <div class="panel" id="p6c">
+        <p>a = 5m, b = 4n → 2ab = 2·5m·4n = 40mn ✔ y el signo es +.</p>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(5m + 4n)²</p></div>
+        <p class="check">Comprobación: 25m² + 20mn + 20mn + 16n² = 25m² + 40mn + 16n² ✔</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e7">
+  <div class="card-head">
+    <span class="badge">7</span>
+    <div>
+      <h2>Trinomio de la forma x² + bx + c</h2>
+      <p class="lead">Se buscan dos números que <b>sumados</b> den b y <b>multiplicados</b> den c.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e7">Hecho</label>
+  </div>
+
+  <div class="eq">x² + bx + c = (x + m)(x + n) &nbsp;con&nbsp; m + n = b &nbsp;y&nbsp; m · n = c</div>
+  <div class="box tip">
+    <span class="t">Truco de los signos</span>
+    <ul class="clean">
+      <li>Si c es <b>positivo</b>, m y n tienen el <b>mismo signo</b> (el de b).</li>
+      <li>Si c es <b>negativo</b>, m y n tienen <b>signos opuestos</b> y el de mayor valor absoluto lleva el signo de b.</li>
+      <li>Empieza siempre listando las <b>parejas de divisores de c</b> y después revisa cuál suma b.</li>
+    </ul>
+  </div>
+
+  <div class="sub">
+    <p class="q">a) x² + 9x + 20</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p7a" aria-expanded="false" aria-controls="p7a">Ver procedimiento</button>
+      <div class="panel" id="p7a">
+        <p>Divisores de 20: (1, 20) suma 21 · (2, 10) suma 12 · <b>(4, 5) suma 9 ✔</b>. Como b = 9 y c = 20, ambos positivos.</p>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(x + 4)(x + 5)</p></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <p class="q">b) x² − 11x + 30</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p7b" aria-expanded="false" aria-controls="p7b">Ver procedimiento</button>
+      <div class="panel" id="p7b">
+        <p>c = 30 positivo y b = −11 negativo → los dos números son <b>negativos</b>. Divisores: (1, 30) → 31 · (2, 15) → 17 · (3, 10) → 13 · <b>(5, 6) → 11 ✔</b>.</p>
+        <p>Entonces m = −5 y n = −6.</p>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(x − 5)(x − 6)</p></div>
+        <p class="check">Comprobación: x² − 6x − 5x + 30 = x² − 11x + 30 ✔</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="sub">
+    <p class="q">c) x² + 2x − 35</p>
+    <div class="reveal">
+      <button class="btn" type="button" data-toggle="p7c" aria-expanded="false" aria-controls="p7c">Ver procedimiento</button>
+      <div class="panel" id="p7c">
+        <p>c = −35 negativo → <b>signos opuestos</b>. Divisores de 35: (1, 35) → diferencia 34 · <b>(5, 7) → diferencia 2 ✔</b>. Como b = +2, el mayor (7) lleva el +: m = +7, n = −5.</p>
+        <div class="answer"><span class="t">Respuesta</span><p class="sol">(x + 7)(x − 5)</p></div>
+        <p class="check">Comprobación: x² − 5x + 7x − 35 = x² + 2x − 35 ✔</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="card" id="detector">
+  <div class="card-head">
+    <span class="badge">★</span>
+    <div>
+      <h2>Detector de casos: elige y repasa</h2>
+      <p class="lead">Haz clic en cada caso para ver su fórmula, cómo reconocerlo y un ejemplo resuelto. Después pon a prueba tu ojo con el reto.</p>
+    </div>
+  </div>
+
+  <div class="casebtns" id="casebtns">
+    <button class="chip on" type="button" data-case="0">1 · Factor común</button>
+    <button class="chip" type="button" data-case="1">2 · Agrupación</button>
+    <button class="chip" type="button" data-case="2">3 · Diferencia de cuadrados</button>
+    <button class="chip" type="button" data-case="3">4 · Cuadrado perfecto</button>
+    <button class="chip" type="button" data-case="4">5 · x² + bx + c</button>
+  </div>
+  <div class="casebox" id="casebox"></div>
+
+  <h3>Reto rápido: ¿qué caso usarías?</h3>
+  <p class="small muted">Elige el caso correcto para cada expresión. No hace falta factorizar, solo reconocer.</p>
+
+  <div class="sub">
+    <p class="q">I. 4x² − 81y²</p>
+    <div class="pick" data-answer="2">
+      <button type="button" data-c="0">Factor común</button><button type="button" data-c="1">Agrupación</button><button type="button" data-c="2">Dif. de cuadrados</button><button type="button" data-c="3">Cuadrado perfecto</button><button type="button" data-c="4">x²+bx+c</button>
+    </div>
+    <p class="pick-note"></p>
+  </div>
+  <div class="sub">
+    <p class="q">II. x² − 8x + 16</p>
+    <div class="pick" data-answer="3">
+      <button type="button" data-c="0">Factor común</button><button type="button" data-c="1">Agrupación</button><button type="button" data-c="2">Dif. de cuadrados</button><button type="button" data-c="3">Cuadrado perfecto</button><button type="button" data-c="4">x²+bx+c</button>
+    </div>
+    <p class="pick-note"></p>
+  </div>
+  <div class="sub">
+    <p class="q">III. 8m³n + 12m²n² − 4mn</p>
+    <div class="pick" data-answer="0">
+      <button type="button" data-c="0">Factor común</button><button type="button" data-c="1">Agrupación</button><button type="button" data-c="2">Dif. de cuadrados</button><button type="button" data-c="3">Cuadrado perfecto</button><button type="button" data-c="4">x²+bx+c</button>
+    </div>
+    <p class="pick-note"></p>
+  </div>
+</section>
+
+<section class="card" id="chuleta">
+  <div class="card-head">
+    <span class="badge">✓</span>
+    <div>
+      <h2>Chuleta final y autoevaluación</h2>
+      <p class="lead">Las cinco fórmulas y la lista de chequeo antes de entregar el taller.</p>
+    </div>
+  </div>
+
+  <div class="eq">factor común → k · a + k · b = k(a + b)</div>
+  <div class="eq">a² − b² = (a + b)(a − b)</div>
+  <div class="eq">a² + 2ab + b² = (a + b)² &nbsp;·&nbsp; a² − 2ab + b² = (a − b)²</div>
+  <div class="eq">x² + bx + c = (x + m)(x + n), &nbsp; m + n = b, &nbsp; m·n = c</div>
+
+  <ul class="clean">
+    <li><b>1.º</b> revisa siempre si hay <b>factor común</b> antes de aplicar cualquier otro caso.</li>
+    <li>Cuenta los términos: 2 → diferencia de cuadrados; 3 → trinomio; 4 o más → agrupación.</li>
+    <li>En agrupación, los paréntesis deben quedar <b>idénticos</b>.</li>
+    <li>En cuadrado perfecto, comprueba que el término central sea <b>2ab</b>.</li>
+    <li><b>Multiplica al final</b> para verificar: debe volver la expresión original.</li>
+  </ul>
+
+  <div class="box warn">
+    <span class="t">Autoevaluación (marca mentalmente)</span>
+    <ul class="clean">
+      <li>¿Puedo explicar con mis palabras qué significa factorizar?</li>
+      <li>¿Diferencio un trinomio cuadrado perfecto de uno de la forma x²+bx+c?</li>
+      <li>¿Encuentro el factor común incluyendo las letras con el menor exponente?</li>
+      <li>¿Recuerdo poner «+1» cuando un término es igual al factor común?</li>
+      <li>¿Compruebo todas mis respuestas multiplicando?</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><b>Álgebra · 9° · Tercer periodo</b> — Guía de estudio del Taller No. 1 (Repaso de factorización). Complementa el taller impreso; no lo reemplaza.</p>
+  <p>Consejo: intenta cada expresión en el cuaderno antes de abrir el procedimiento, y verifícala siempre multiplicando.</p>
+</footer>
+<script>
+(function(){
+  "use strict";
+  var store = {
+    get: function(k, d){ try{ var v = localStorage.getItem(k); return v === null ? d : v; }catch(e){ return d; } },
+    set: function(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  };
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+
+  /* ---------- TEMA ---------- */
+  var root = document.documentElement;
+  var saved = store.get("alg-fact-theme", null);
+  if(saved){ root.dataset.theme = saved; }
+  else if(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches){ root.dataset.theme = "dark"; }
+  $("#theme").addEventListener("click", function(){
+    var next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    store.set("alg-fact-theme", next);
+  });
+
+  /* ---------- PANELES ---------- */
+  function setPanel(panel, open){
+    panel.classList.toggle("show", open);
+    var btn = document.querySelector('[data-toggle="'+panel.id+'"]');
+    if(btn){
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      if(!btn.dataset.label) btn.dataset.label = btn.textContent;
+      btn.textContent = open ? "Ocultar" : btn.dataset.label;
+    }
+  }
+  document.addEventListener("click", function(e){
+    var b = e.target.closest("[data-toggle]");
+    if(!b) return;
+    var p = document.getElementById(b.dataset.toggle);
+    if(p) setPanel(p, !p.classList.contains("show"));
+  });
+  $("#showAll").addEventListener("click", function(){ $$(".panel").forEach(function(p){ setPanel(p, true); }); });
+  $("#hideAll").addEventListener("click", function(){ $$(".panel").forEach(function(p){ setPanel(p, false); }); });
+
+  /* ---------- QUIZ ---------- */
+  $$(".quiz").forEach(function(quiz){
+    var block = quiz.closest(".quizblock");
+    quiz.addEventListener("click", function(e){
+      var opt = e.target.closest(".opt");
+      if(!opt) return;
+      var ok = opt.dataset.ok === "1";
+      $$(".opt", quiz).forEach(function(o){
+        o.classList.remove("correct","wrong");
+        if(o.dataset.ok === "1") o.classList.add("correct");
+      });
+      if(!ok) opt.classList.add("wrong");
+      block.dataset.state = ok ? "ok" : "no";
+    });
+  });
+
+  /* ---------- PROGRESO ---------- */
+  var boxes = $$(".done");
+  function updProgress(){
+    var n = boxes.filter(function(b){ return b.checked; }).length;
+    $("#pnum").textContent = n + "/" + boxes.length;
+    $("#pbar").style.width = (boxes.length ? (n / boxes.length * 100) : 0) + "%";
+  }
+  boxes.forEach(function(b){
+    var key = "alg-fact-prog-" + b.dataset.key;
+    b.checked = store.get(key, "0") === "1";
+    b.addEventListener("change", function(){ store.set(key, b.checked ? "1" : "0"); updProgress(); });
+  });
+  updProgress();
+
+  /* ---------- DETECTOR DE CASOS ---------- */
+  var cases = [
+    {
+      name: "1 · Factor común",
+      formula: "k·a + k·b = k(a + b)",
+      clue: "El mismo número o letra se repite en <b>todos</b> los términos. Es lo primero que debes revisar siempre.",
+      example: "6x² + 9x = 3x(2x + 3)",
+      tip: "Toma el MCD de los coeficientes y la letra con el menor exponente."
+    },
+    {
+      name: "2 · Agrupación",
+      formula: "ax + ay + bx + by = (x + y)(a + b)",
+      clue: "4 o más términos que se pueden emparejar. Al sacar factor común en cada pareja, los paréntesis quedan <b>idénticos</b>.",
+      example: "x²y + 5x² + 3y + 15 = (y + 5)(x² + 3)",
+      tip: "Si los paréntesis no coinciden, reordena los términos o revisa los signos."
+    },
+    {
+      name: "3 · Diferencia de cuadrados",
+      formula: "a² − b² = (a + b)(a − b)",
+      clue: "Exactamente <b>2 términos</b>, separados por una <b>resta</b>, y ambos cuadrados exactos.",
+      example: "25a² − 16b² = (5a + 4b)(5a − 4b)",
+      tip: "Escribe cada término como (algo)² y copia la fórmula con un + y un −."
+    },
+    {
+      name: "4 · Trinomio cuadrado perfecto",
+      formula: "a² ± 2ab + b² = (a ± b)²",
+      clue: "<b>3 términos</b>: primero y último son cuadrados y el central es exactamente el <b>doble producto</b> de sus raíces.",
+      example: "9a² − 24ab + 16b² = (3a − 4b)²",
+      tip: "El signo del término central decide el signo del binomio."
+    },
+    {
+      name: "5 · Trinomio x² + bx + c",
+      formula: "x² + bx + c = (x + m)(x + n)",
+      clue: "<b>3 términos</b> con coeficiente 1 en x², pero el central <b>no</b> es 2ab. Busca m y n con m + n = b y m·n = c.",
+      example: "x² + 2x − 35 = (x + 7)(x − 5)",
+      tip: "Lista primero las parejas de divisores de c y después revisa cuál suma b."
+    }
+  ];
+  function showCase(i){
+    var c = cases[i];
+    $("#casebox").innerHTML =
+      '<p><b>' + c.name + '</b></p>' +
+      '<div class="eq">' + c.formula + '</div>' +
+      '<p><b>Se reconoce porque:</b> ' + c.clue + '</p>' +
+      '<p><b>Ejemplo:</b> <span class="fx">' + c.example + '</span></p>' +
+      '<p class="small muted"><b>Ojo:</b> ' + c.tip + '</p>';
+    $$("#casebtns .chip").forEach(function(b, j){ b.classList.toggle("on", j === i); });
+  }
+  $$("#casebtns .chip").forEach(function(b){
+    b.addEventListener("click", function(){ showCase(parseInt(b.dataset.case, 10)); });
+  });
+  showCase(0);
+
+  /* ---------- RETO ---------- */
+  $$(".pick").forEach(function(pick){
+    var note = pick.nextElementSibling;
+    pick.addEventListener("click", function(e){
+      var b = e.target.closest("button");
+      if(!b) return;
+      var ok = parseInt(b.dataset.c, 10) === parseInt(pick.dataset.answer, 10);
+      $$("button", pick).forEach(function(x){ x.classList.remove("ok","bad"); });
+      b.classList.add(ok ? "ok" : "bad");
+      if(ok){
+        note.className = "pick-note ok-txt";
+        note.textContent = "¡Correcto! " + cases[pick.dataset.answer].tip;
+      } else {
+        note.className = "pick-note no-txt";
+        note.textContent = "No es ese caso. Pista: " + cases[pick.dataset.answer].clue.replace(/<[^>]+>/g, "");
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

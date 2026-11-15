@@ -1,0 +1,964 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller 1 · MRU — Guía explicada paso a paso</title>
+<style>
+:root{
+  --bg:#f4f6fb; --panel:#fff; --ink:#111827; --muted:#5b6675; --line:#e3e8f2;
+  --accent:#4f46e5; --accent-soft:#eef0ff;
+  --green:#0f766e; --green-soft:#e8f8f5;
+  --amber:#b45309; --amber-soft:#fdf4e5;
+  --rose:#be123c; --rose-soft:#fdeef2;
+  --shadow:0 1px 2px rgba(16,24,40,.05), 0 18px 40px -28px rgba(16,24,40,.45);
+  --r:16px;
+}
+[data-theme="dark"]{
+  --bg:#0b1020; --panel:#121a2c; --ink:#e9eefb; --muted:#a3aec5; --line:#243049;
+  --accent:#8b8cf8; --accent-soft:#1b2242; --green:#5ad3c6; --green-soft:#0f2c2a;
+  --amber:#f0b26b; --amber-soft:#2f2413; --rose:#fb7185; --rose-soft:#2f1522;
+  --shadow:0 18px 40px -28px #000;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased;
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+a{color:var(--accent)}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:12px;top:12px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:99}
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;color:#eef2ff;padding:40px 0 34px;border-bottom:1px solid #1e293b;
+  background:radial-gradient(900px 320px at 10% -20%,rgba(99,102,241,.42),transparent 62%),
+             radial-gradient(760px 300px at 96% -10%,rgba(13,148,136,.34),transparent 58%),
+             linear-gradient(180deg,#0e1729,#101a2e)}
+.hero::after{content:"";position:absolute;inset:0;opacity:.45;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1.4px);
+  background-size:26px 26px}
+.kicker{margin:0 0 8px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#a5b4fc;font-weight:700}
+.hero h1{margin:0;font-size:clamp(1.55rem,3.4vw,2.35rem);line-height:1.18;letter-spacing:-.02em}
+.hero p.sub{margin:10px 0 0;max-width:62ch;color:#c7d2fe;font-size:1.02rem}
+.hero .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero .chips span{font-size:.8rem;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#e0e7ff}
+/* ---------- TOPBAR ---------- */
+.topbar{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);backdrop-filter:blur(12px);
+  background:var(--bg);background:color-mix(in srgb,var(--bg) 86%,transparent)}
+.bar{display:flex;align-items:center;gap:14px;padding:9px 20px;flex-wrap:wrap}
+.toc{display:flex;gap:6px;overflow-x:auto;flex:1 1 240px;min-width:0;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;text-decoration:none;font-size:.8rem;font-weight:600;color:var(--muted);
+  padding:5px 10px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--line)}
+.tools{display:flex;align-items:center;gap:8px}
+.pbar{width:92px;height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#0d9488);transition:width .3s}
+.pnum{font-size:.78rem;font-weight:700;color:var(--muted);min-width:32px}
+.tbtn{font:inherit;font-size:.78rem;font-weight:600;padding:6px 10px;border-radius:9px;cursor:pointer;
+  background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.tbtn:hover{border-color:var(--accent);color:var(--accent)}
+/* ---------- CARDS ---------- */
+main{padding:26px 20px 70px;max-width:1040px;margin:0 auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+  padding:24px 24px 20px;margin:0 0 22px;scroll-margin-top:76px}
+.card-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:6px}
+.badge{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;
+  background:var(--accent-soft);color:var(--accent);font-size:1rem}
+.card h2{margin:2px 0 0;font-size:1.16rem;letter-spacing:-.01em;line-height:1.35}
+.lead{margin:4px 0 0;color:var(--muted);font-size:.94rem}
+.done-wrap{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--muted);
+  font-weight:600;cursor:pointer;user-select:none;white-space:nowrap}
+.done-wrap input{width:17px;height:17px;accent-color:#0d9488;cursor:pointer}
+/* ---------- TEXTO ---------- */
+h3{font-size:.98rem;margin:22px 0 8px;letter-spacing:.01em}
+p{margin:.55em 0}
+.small{font-size:.88rem}
+.muted{color:var(--muted)}
+.eq{font-family:"Cambria Math",Cambria,Georgia,"Times New Roman",serif;font-size:1.12rem;
+  background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;
+  padding:10px 14px;text-align:center;margin:12px 0;color:var(--ink);overflow-x:auto}
+.eq b{color:var(--green)}
+ul.clean{margin:.4em 0;padding-left:1.15em}
+ul.clean li{margin:.3em 0}
+/* ---------- CAJAS ---------- */
+.box{border-radius:13px;padding:13px 15px;margin:14px 0;border:1px solid var(--line);font-size:.94rem}
+.box p:first-child{margin-top:0}.box p:last-child{margin-bottom:0}
+.box .t{display:block;font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.tip{background:var(--accent-soft);border-color:transparent}
+.tip .t{color:var(--accent)}
+.warn{background:var(--amber-soft);border-color:transparent}
+.warn .t{color:var(--amber)}
+.answer{background:var(--green-soft);border:1px solid color-mix(in srgb,var(--green) 26%,transparent);border-radius:13px;
+  padding:14px 16px;margin:14px 0}
+.answer .t{display:block;font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green);margin-bottom:6px}
+.res{font-weight:800;color:var(--green)}
+/* ---------- PASOS ---------- */
+.steps{list-style:none;counter-reset:s;margin:12px 0;padding:0}
+.steps>li{counter-increment:s;position:relative;padding-left:38px;margin:11px 0}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:800;font-size:.82rem}
+.steps .lbl{font-weight:700}
+/* ---------- REVEAL ---------- */
+.btn{font:inherit;font-size:.86rem;font-weight:700;cursor:pointer;padding:8px 14px;border-radius:10px;
+  border:1px solid var(--accent);background:transparent;color:var(--accent);margin:6px 0}
+.btn:hover{background:var(--accent-soft)}
+.btn::before{content:"▸ ";font-size:.9em}
+.btn[aria-expanded="true"]::before{content:"▾ "}
+.panel{display:none}
+.panel.show{display:block;animation:fade .28s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+/* ---------- QUIZ ---------- */
+.quiz{display:grid;gap:8px;margin:14px 0 6px}
+.opt{font:inherit;text-align:left;display:flex;gap:11px;align-items:flex-start;cursor:pointer;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 14px;color:var(--ink);
+  transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--accent);background:var(--accent-soft)}
+.opt b{flex:none;width:24px;height:24px;border-radius:8px;background:var(--accent-soft);color:var(--accent);
+  display:grid;place-items:center;font-size:.8rem}
+.opt.correct{border-color:#0d9488;background:var(--green-soft)}
+.opt.correct b{background:#0d9488;color:#fff}
+.opt.wrong{border-color:#e11d48;background:var(--rose-soft)}
+.opt.wrong b{background:#e11d48;color:#fff}
+.fb{margin:10px 0 0;font-size:.9rem;display:none;padding:11px 14px;border-radius:11px;border:1px solid var(--line)}
+.quizblock[data-state="ok"] .fok{display:block;background:var(--green-soft);border-color:#0d9488}
+.quizblock[data-state="no"] .fno{display:block;background:var(--rose-soft);border-color:#e11d48}
+/* ---------- TABLAS ---------- */
+.tablewrap{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:520px}
+th{background:var(--accent-soft);color:var(--accent);text-align:left;font-size:.76rem;letter-spacing:.06em;
+  text-transform:uppercase;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.ans{white-space:nowrap}
+.tf{font:inherit;font-weight:800;font-size:.8rem;width:34px;height:29px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted);margin-right:4px}
+.tf:hover{border-color:var(--accent);color:var(--accent)}
+.tf.ok{background:#0d9488;border-color:#0d9488;color:#fff}
+.tf.bad{background:#e11d48;border-color:#e11d48;color:#fff}
+.whycell{display:none;color:var(--muted);font-size:.87rem;min-width:240px}
+th.whycell-h{display:none}
+table.show-why .whycell{display:table-cell}
+table.show-why th.whycell-h{display:table-cell}
+.tag{display:inline-block;font-weight:800;font-size:.72rem;padding:1px 7px;border-radius:6px;margin-right:6px}
+.tag.v{background:#0d9488;color:#fff}.tag.f{background:#e11d48;color:#fff}
+/* ---------- GRÁFICAS ---------- */
+.figure{margin:16px 0;border:1px solid var(--line);border-radius:13px;padding:12px;background:var(--panel)}
+.plot{width:100%;height:auto;display:block}
+.grid{stroke:var(--line);stroke-width:1}
+.axis{stroke:var(--muted);stroke-width:1.6}
+.helper{stroke:var(--muted);stroke-width:1.3;stroke-dasharray:5 5}
+.tick{font-size:12px;fill:var(--muted);font-family:inherit}
+.lbl{font-size:12.5px;fill:var(--muted);font-family:inherit}
+.ptitle{font-size:13px;font-weight:700;fill:var(--ink);font-family:inherit}
+.dlbl{font-size:12.5px;font-weight:700;fill:var(--ink);font-family:inherit;paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.plot-ctrl{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{font:inherit;font-size:.78rem;font-weight:700;cursor:pointer;padding:5px 11px;border-radius:999px;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.cap{font-size:.82rem;color:var(--muted);margin:6px 0 0}
+/* ---------- SIMULADOR ---------- */
+.sim{display:grid;gap:10px;margin:14px 0}
+.sim label{display:grid;grid-template-columns:96px 1fr 58px;gap:12px;align-items:center;font-size:.85rem;font-weight:700}
+.sim label>span{white-space:nowrap}
+.sim input[type=range]{width:100%;accent-color:var(--accent)}
+.sim output{font-variant-numeric:tabular-nums;font-weight:800;color:var(--accent);text-align:right}
+.track{position:relative;height:54px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--line);margin-top:6px}
+.track .rail{position:absolute;left:14px;right:14px;top:50%;height:3px;background:var(--line);border-radius:9px;transform:translateY(-50%)}
+.track .dot{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;background:var(--accent);
+  transform:translate(-50%,-50%);transition:left .18s ease;box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 18%,transparent)}
+.track .lblx{display:none}
+.track .zero{position:absolute;top:10px;bottom:10px;width:2px;background:var(--muted);opacity:.4;transform:translateX(-50%)}
+.track .zerolbl{position:absolute;bottom:3px;font-size:.7rem;color:var(--muted);font-weight:700;transform:translateX(-50%);white-space:nowrap}
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:22px 20px 40px;color:var(--muted);font-size:.82rem;text-align:center}
+@media (max-width:720px){
+  .card{padding:19px 16px 16px}
+  .card-head{flex-wrap:wrap}
+  .done-wrap{margin-left:0;order:3}
+  .sim label{grid-template-columns:86px 1fr 62px;font-size:.8rem}
+}
+@media print{
+  .topbar,.tools,.btn,.plot-ctrl,.done-wrap,.hero .chips,.skip{display:none!important}
+  .panel{display:block!important}
+  body{background:#fff;color:#000}
+  .card{box-shadow:none;border-color:#bbb;break-inside:avoid}
+  .hero{background:#fff;color:#000;border-bottom:2px solid #000}
+  .hero p.sub,.kicker{color:#333}
+  .hero .chips{display:none}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Física · Grado 9° · Tercer periodo · Taller No. 1</p>
+    <h1>Movimiento Rectilíneo Uniforme (MRU)</h1>
+    <p class="sub">Guía interactiva del taller: qué te pide cada punto, cómo se resuelve <b>paso a paso</b> y por qué se hace así. Ábrela junto al taller impreso.</p>
+    <div class="chips">
+      <span>5 ejercicios explicados</span>
+      <span>Fórmulas esenciales</span>
+      <span>Gráficas interactivas</span>
+      <span>Errores comunes</span>
+    </div>
+  </div>
+</header>
+
+<div class="topbar">
+  <div class="bar">
+    <nav class="toc" aria-label="Contenido">
+      <a href="#guia">Guía rápida</a>
+      <a href="#e1">1 · Opción múltiple</a>
+      <a href="#e2">2 · Verdadero/Falso</a>
+      <a href="#e3">3 · Motociclista</a>
+      <a href="#e4">4 · Ciclista</a>
+      <a href="#e5">5 · Patinador</a>
+      <a href="#lab">Simulador</a>
+      <a href="#chuleta">Chuleta</a>
+    </nav>
+    <div class="tools">
+      <div class="pbar"><i id="pbar"></i></div>
+      <span class="pnum" id="pnum">0/5</span>
+      <button class="tbtn" id="showAll" type="button">Mostrar todo</button>
+      <button class="tbtn" id="hideAll" type="button">Ocultar</button>
+      <button class="tbtn" id="theme" type="button" title="Cambiar tema" aria-label="Cambiar tema">◐</button>
+    </div>
+  </div>
+</div>
+
+<main id="contenido">
+
+<section class="card" id="guia">
+  <div class="card-head">
+    <span class="badge">0</span>
+    <div>
+      <h2>Antes de empezar: el MRU en 60 segundos</h2>
+      <p class="lead">Si entiendes estas tres ideas, los cinco ejercicios salen casi solos.</p>
+    </div>
+  </div>
+
+  <div class="box tip">
+    <span class="t">La idea en una frase</span>
+    <p>En el MRU el cuerpo se mueve <b>en línea recta</b> y <b>siempre a la misma velocidad</b>: no acelera, no frena y no cambia de dirección.</p>
+  </div>
+
+  <h3>Las tres condiciones del MRU</h3>
+  <ul class="clean">
+    <li><b>Trayectoria recta.</b> El cuerpo no gira.</li>
+    <li><b>Velocidad constante.</b> Misma rapidez y mismo sentido → la <b>aceleración es cero</b>.</li>
+    <li><b>Distancias iguales en tiempos iguales.</b> Cada segundo recorre lo mismo.</li>
+  </ul>
+
+  <h3>Las fórmulas que necesitas</h3>
+  <div class="eq">x = x<sub>0</sub> + v · t</div>
+  <p class="small muted">Es la ecuación de la posición: dónde está el cuerpo en cualquier instante <i>t</i>. <b>x<sub>0</sub></b> es la posición inicial (dónde estaba cuando arrancó el cronómetro).</p>
+  <div class="eq">d = v · t &nbsp;&nbsp;|&nbsp;&nbsp; v = d / t &nbsp;&nbsp;|&nbsp;&nbsp; t = d / v</div>
+  <p class="small muted">Sirven cuando el cuerpo parte del origen (x<sub>0</sub> = 0) o cuando solo te interesa la distancia recorrida.</p>
+
+  <h3>Cómo se ve en una gráfica</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Gráfica</th><th>En MRU se ve como</th><th>Qué te dice</th></tr></thead>
+      <tbody>
+        <tr><td>Posición vs. tiempo (x–t)</td><td>Una recta inclinada</td><td>Su <b>pendiente</b> es la velocidad</td></tr>
+        <tr><td>Velocidad vs. tiempo (v–t)</td><td>Una recta horizontal</td><td>El <b>área</b> bajo la recta es la distancia</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>El método de 4 pasos (úsalo en todos los puntos)</h3>
+  <ol class="steps">
+    <li><span class="lbl">Datos.</span> Escribe lo que te dan con sus unidades: v, t, x, x<sub>0</sub>.</li>
+    <li><span class="lbl">Ecuación.</span> Elige la fórmula que relaciona esos datos con lo que te preguntan.</li>
+    <li><span class="lbl">Reemplazo.</span> Sustituye los números (con unidades) y resuelve.</li>
+    <li><span class="lbl">Respuesta con unidad y chequeo.</span> ¿El resultado tiene sentido? ¿Las unidades son correctas?</li>
+  </ol>
+
+  <div class="box warn">
+    <span class="t">Ojo con esto</span>
+    <p>Trabaja siempre en <b>un solo sistema de unidades</b>. Si el tiempo está en minutos y la velocidad en m/s, primero convierte. Y recuerda: <b>1 h = 60 min</b>, <b>1 min = 60 s</b>.</p>
+  </div>
+</section>
+<section class="card" id="e1">
+  <div class="card-head">
+    <span class="badge">1</span>
+    <div>
+      <h2>¿Cuál situación representa mejor un MRU?</h2>
+      <p class="lead">Pregunta de opción múltiple. La clave está en las palabras «línea recta» y «distancias iguales en tiempos iguales».</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e1">Hecho</label>
+  </div>
+
+  <div class="quizblock" data-state="">
+    <div class="quiz" data-quiz="q1">
+      <button class="opt" type="button" data-ok="0"><b>A</b><span>Un automóvil aumenta su velocidad mientras avanza en línea recta.</span></button>
+      <button class="opt" type="button" data-ok="1"><b>B</b><span>Una bicicleta se mueve en línea recta recorriendo distancias iguales en tiempos iguales.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>C</b><span>Una pelota cae verticalmente aumentando su rapidez por acción de la gravedad.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>D</b><span>Un corredor cambia constantemente de dirección durante una carrera.</span></button>
+    </div>
+    <p class="fb fok">¡Correcto! Es la opción <b>B</b>. Recta + distancias iguales en tiempos iguales = velocidad constante.</p>
+    <p class="fb fno">Todavía no. Vuelve a leer las opciones pensando en esto: en el MRU la velocidad <b>no cambia</b>. Inténtalo otra vez.</p>
+  </div>
+
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p1" aria-expanded="false" aria-controls="p1">Ver por qué cada opción es correcta o incorrecta</button>
+    <div class="panel" id="p1">
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Opción</th><th>¿Qué le pasa a la velocidad?</th><th>Veredicto</th></tr></thead>
+          <tbody>
+            <tr><td><b>A</b></td><td>Va aumentando → hay aceleración.</td><td>Es MRUV (acelerado), no MRU.</td></tr>
+            <tr><td><b>B</b></td><td>No cambia: recorre lo mismo en cada intervalo igual de tiempo.</td><td><b>MRU ✔</b></td></tr>
+            <tr><td><b>C</b></td><td>Aumenta por la gravedad (≈ 9,8 m/s²).</td><td>Es caída libre: movimiento acelerado.</td></tr>
+            <tr><td><b>D</b></td><td>Cambia de dirección: la trayectoria no es recta.</td><td>No es rectilíneo.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">B.</span> Una bicicleta que avanza en línea recta recorriendo distancias iguales en tiempos iguales. Es la única descripción con velocidad constante.</p>
+      </div>
+      <div class="box tip">
+        <span class="t">Truco de examen</span>
+        <p>Lee cada opción preguntándote: <i>«¿la velocidad cambia?»</i> y <i>«¿el camino es recto?»</i>. Si la velocidad cambia, ya no es MRU; si el camino se curva, tampoco.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e2">
+  <div class="card-head">
+    <span class="badge">2</span>
+    <div>
+      <h2>Verdadero o falso</h2>
+      <p class="lead">Marca V o F en cada enunciado (los botones te dicen al instante si acertaste) y luego revisa el «por qué».</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e2">Hecho</label>
+  </div>
+
+  <div class="tablewrap">
+    <table id="vf1" class="vf">
+      <thead><tr><th>Enunciado</th><th>Tu respuesta</th><th class="whycell-h">Por qué</th></tr></thead>
+      <tbody>
+        <tr><td>a) En el MRU, el cuerpo se mueve en línea recta.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>Es la primera palabra del nombre: <b>rectilíneo</b>.</td></tr>
+        <tr><td>b) En el MRU, la velocidad permanece constante.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>Es la segunda palabra: <b>uniforme</b> = sin cambios.</td></tr>
+        <tr><td>c) En el MRU, el cuerpo recorre distancias iguales en tiempos iguales.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>Es la consecuencia directa de tener velocidad constante.</td></tr>
+        <tr><td>d) En el MRU, la aceleración es constante y diferente de cero.</td>
+          <td class="ans" data-correct="F"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag f">F</span>En el MRU la aceleración es <b>cero</b>. Si fuera distinta de cero, la velocidad cambiaría y sería MRUV.</td></tr>
+        <tr><td>e) Si un objeto aumenta su velocidad mientras se mueve en línea recta, está en MRU.</td>
+          <td class="ans" data-correct="F"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag f">F</span>Aumentar la velocidad es <b>acelerar</b>: eso es MRUV.</td></tr>
+        <tr><td>f) En el MRU, la gráfica posición–tiempo es una línea recta.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>Como la velocidad (la pendiente) no cambia, la recta no se curva.</td></tr>
+        <tr><td>g) En el MRU, la rapidez cambia a medida que pasa el tiempo.</td>
+          <td class="ans" data-correct="F"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag f">F</span>Contradice la definición: la rapidez es constante.</td></tr>
+        <tr><td>h) La ecuación básica del MRU puede escribirse como d = v · t.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>Es válida cuando se parte del origen (x<sub>0</sub> = 0): la distancia recorrida es velocidad × tiempo.</td></tr>
+        <tr><td>i) En el MRU, si se conoce la velocidad y el tiempo, se puede calcular la distancia recorrida.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>Con d = v · t. Es exactamente lo que pide el ejercicio 3.</td></tr>
+        <tr><td>j) Un cuerpo en reposo también puede considerarse un caso especial de MRU.</td>
+          <td class="ans" data-correct="V"><button class="tf" type="button" data-v="V">V</button><button class="tf" type="button" data-v="F">F</button></td>
+          <td class="whycell"><span class="tag v">V</span>Sí: su velocidad es constante e igual a cero (v = 0).</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <button class="btn" type="button" data-why="vf1">Mostrar todas las justificaciones</button>
+  <div class="box tip">
+    <span class="t">El error más común</span>
+    <p>El literal <b>d)</b>: mucha gente confunde «velocidad constante» con «aceleración constante». Son cosas distintas: velocidad constante significa aceleración <b>nula</b>.</p>
+  </div>
+</section>
+<section class="card" id="e3">
+  <div class="card-head">
+    <span class="badge">3</span>
+    <div>
+      <h2>El motociclista y la Plaza de Bolívar</h2>
+      <p class="lead">La imagen te da un dato escondido: a los 10 s la moto está a 100 m de la plaza y se mueve a 8 m/s. Con eso se arma toda la ecuación.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e3">Hecho</label>
+  </div>
+
+  <div class="box tip">
+    <span class="t">Cómo leer la imagen</span>
+    <p>La Plaza de Bolívar es el punto de referencia (origen). El cronómetro marca <b>t = 10 s</b> y en ese momento la moto está en <b>x = 100 m</b>. La flecha azul indica que la velocidad es <b>v = 8 m/s hacia el este</b> (positiva).</p>
+  </div>
+
+  <p><b>Recuerda la ecuación del MRU:</b></p>
+  <div class="eq">x = x<sub>0</sub> + v · t</div>
+
+  <h3>a) ¿Dónde estaba cuando el cronómetro marcaba t = 0 s?</h3>
+  <p class="small muted">Ese «dónde estaba al inicio» es justamente <b>x<sub>0</sub></b>. Lo despejamos de la ecuación.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p3a" aria-expanded="false" aria-controls="p3a">Ver solución paso a paso</button>
+    <div class="panel" id="p3a">
+      <ol class="steps">
+        <li><span class="lbl">Datos:</span> v = 8 m/s · t = 10 s · x = 100 m</li>
+        <li><span class="lbl">Reemplazo:</span> 100 = x<sub>0</sub> + 8 · 10</li>
+        <li><span class="lbl">Multiplico:</span> 100 = x<sub>0</sub> + <b>80</b></li>
+        <li><span class="lbl">Despejo:</span> x<sub>0</sub> = 100 − 80</li>
+      </ol>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">x<sub>0</sub> = 20 m</span></p>
+        <p class="small">A los 0 s la moto estaba a 20 m al este de la Plaza de Bolívar.</p>
+      </div>
+      <div class="box warn">
+        <span class="t">Error típico</span>
+        <p>Poner 100 m como posición inicial. ¡No! 100 m es dónde está a los 10 s. La posición inicial se <b>calcula</b> y da 20 m.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>b) Escribe la ecuación de la posición en cualquier tiempo</h3>
+  <p class="small muted">Ya tienes los dos números que forman la ecuación: x<sub>0</sub> y v.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p3b" aria-expanded="false" aria-controls="p3b">Ver solución</button>
+    <div class="panel" id="p3b">
+      <p>La estructura es siempre la misma: <b>x = x<sub>0</sub> + v · t</b>. Solo reemplazas los valores fijos (x<sub>0</sub> y v); el tiempo <i>t</i> queda como variable.</p>
+      <div class="eq">x = 20 + 8 · t</div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">x = 20 + 8 · t</span> &nbsp;(x en metros, t en segundos)</p>
+      </div>
+      <p class="small muted">Esta ecuación es una «máquina»: le metes un tiempo y te devuelve la posición. Eso es lo que usas en c) y d).</p>
+    </div>
+  </div>
+
+  <h3>c) ¿A qué distancia de la plaza estaba a t = 5 s?</h3>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p3c" aria-expanded="false" aria-controls="p3c">Ver solución</button>
+    <div class="panel" id="p3c">
+      <div class="eq">x = 20 + 8 · 5 = 20 + 40</div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">x = 60 m</span></p>
+        <p class="small">A los 5 s la moto está a 60 m de la Plaza de Bolívar.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>d) ¿A qué distancia estará a t = 35 s?</h3>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p3d" aria-expanded="false" aria-controls="p3d">Ver solución</button>
+    <div class="panel" id="p3d">
+      <div class="eq">x = 20 + 8 · 35 = 20 + 280</div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">x = 300 m</span></p>
+        <p class="small">A los 35 s la moto está a 300 m de la Plaza de Bolívar.</p>
+      </div>
+      <div class="box tip">
+        <span class="t">Chequeo rápido</span>
+        <p>De t = 5 s a t = 35 s pasan 30 s. En ese tiempo debió avanzar 8 · 30 = 240 m. Y 60 + 240 = 300 m ✔. Si los números no cuadran así, revisa la cuenta.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="card" id="e4">
+  <div class="card-head">
+    <span class="badge">4</span>
+    <div>
+      <h2>El ciclista del parque</h2>
+      <p class="lead">Aquí no te dan la velocidad: te dan dos posiciones en dos tiempos. Con esos dos «puntos» se calcula todo.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e4">Hecho</label>
+  </div>
+
+  <div class="box tip">
+    <span class="t">Datos de la imagen</span>
+    <p>El parque es la referencia (x = 0). A los <b>15 min</b> el ciclista está a <b>1200 m</b>; a los <b>35 min</b> está a <b>2800 m</b>. La velocidad es constante (MRU).</p>
+  </div>
+
+  <h3>a) ¿Cuál es la velocidad del ciclista?</h3>
+  <p class="small muted">Con dos posiciones y dos tiempos usas la fórmula de la pendiente: es la misma de la velocidad media.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p4a" aria-expanded="false" aria-controls="p4a">Ver solución paso a paso</button>
+    <div class="panel" id="p4a">
+      <ol class="steps">
+        <li><span class="lbl">Datos:</span> x<sub>1</sub> = 1200 m, t<sub>1</sub> = 15 min · x<sub>2</sub> = 2800 m, t<sub>2</sub> = 35 min</li>
+        <li><span class="lbl">Fórmula:</span> v = (x<sub>2</sub> − x<sub>1</sub>) / (t<sub>2</sub> − t<sub>1</sub>)</li>
+        <li><span class="lbl">Reemplazo:</span> v = (2800 − 1200) / (35 − 15)</li>
+        <li><span class="lbl">Resuelvo:</span> v = 1600 / 20</li>
+      </ol>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">v = 80 m/min</span></p>
+        <p class="small">Es decir, 80 metros cada minuto. Si lo pasas a otras unidades: 80 m/min ≈ <b>1,33 m/s</b> ≈ <b>4,8 km/h</b>.</p>
+      </div>
+      <div class="box warn">
+        <span class="t">Error típico</span>
+        <p>Dividir 2800 ÷ 35. Eso solo funciona si el ciclista partió del parque en t = 0. Aquí debes usar <b>diferencias</b>: lo que cambió la posición entre lo que cambió el tiempo.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>b) Construye la ecuación de posición</h3>
+  <p class="small muted">Necesitas x<sub>0</sub>. Usa cualquiera de los dos puntos y despeja.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p4b" aria-expanded="false" aria-controls="p4b">Ver solución paso a paso</button>
+    <div class="panel" id="p4b">
+      <ol class="steps">
+        <li><span class="lbl">Elijo un punto:</span> t = 15 min, x = 1200 m</li>
+        <li><span class="lbl">Reemplazo:</span> 1200 = x<sub>0</sub> + 80 · 15</li>
+        <li><span class="lbl">Opero:</span> 1200 = x<sub>0</sub> + 1200</li>
+        <li><span class="lbl">Despejo:</span> x<sub>0</sub> = 0 m</li>
+      </ol>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">x = 0 + 80 · t</span>, es decir <span class="res">x = 80 · t</span></p>
+        <p class="small">x<sub>0</sub> = 0 tiene sentido: las posiciones se miden desde el parque y en el instante inicial el ciclista estaba en el parque.</p>
+      </div>
+      <div class="box tip">
+        <span class="t">Comprobación</span>
+        <p>Con la ecuación: x(15) = 80 · 15 = 1200 ✔ y x(35) = 80 · 35 = 2800 ✔. Coincide con los datos de la imagen, así que la ecuación está bien.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>c) ¿A qué distancia estará después de 0,7 horas?</h3>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p4c" aria-expanded="false" aria-controls="p4c">Ver solución paso a paso</button>
+    <div class="panel" id="p4c">
+      <ol class="steps">
+        <li><span class="lbl">Convierto el tiempo:</span> 0,7 h × 60 min/h = <b>42 min</b> (la velocidad está en m/min, así que el tiempo debe ir en minutos).</li>
+        <li><span class="lbl">Reemplazo:</span> x = 0 + 80 · 42</li>
+        <li><span class="lbl">Calculo:</span> x = 3360 m</li>
+      </ol>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">x = 3360 m</span> (3,36 km del parque)</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>d) ¿Qué representa el valor encontrado en c)?</h3>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p4d" aria-expanded="false" aria-controls="p4d">Ver explicación</button>
+    <div class="panel" id="p4d">
+      <div class="answer">
+        <span class="t">Respuesta modelo</span>
+        <p>«3360 m es la <b>posición del ciclista respecto al parque</b> cuando han pasado 42 minutos (0,7 h) desde que empezó el cronómetro. Significa que ya pasó el punto de los 2800 m (donde estaba a los 35 min) y avanzó 560 m más, porque en 7 minutos extra recorrió 80 · 7 = 560 m.»</p>
+      </div>
+      <p class="small muted">Para redactar este tipo de respuesta usa esta estructura: <b>qué es el número</b> + <b>respecto a qué</b> + <b>en qué instante</b>.</p>
+    </div>
+  </div>
+</section>
+<section class="card" id="e5">
+  <div class="card-head">
+    <span class="badge">5</span>
+    <div>
+      <h2>El patinador: de la tabla a la gráfica y a la ecuación</h2>
+      <p class="lead">Este ejercicio va al revés que los anteriores: te dan los puntos y tú descubres la velocidad y la ecuación.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e5">Hecho</label>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Tiempo t (s)</th><th>Posición x (m)</th></tr></thead>
+      <tbody>
+        <tr><td>2</td><td>6</td></tr>
+        <tr><td>8</td><td>30</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>a) y b) Ubica los puntos y únelos con una recta</h3>
+  <p class="small muted">Activa los botones para ver la construcción: primero los puntos, después la recta que los une.</p>
+  <div class="figure">
+    <div id="g5a"></div>
+    <p class="cap">En el MRU la gráfica posición–tiempo siempre es una <b>línea recta</b>: por eso basta con dos puntos para trazarla.</p>
+  </div>
+  <div class="box tip">
+    <span class="t">Cómo ubicar un punto</span>
+    <p>El primer número es el tiempo (eje horizontal) y el segundo es la posición (eje vertical). El punto (2, 6) se ubica en la columna del 2 y a la altura del 6; el punto (8, 30) en el 8 y a la altura del 30.</p>
+  </div>
+
+  <h3>c) Calcula la velocidad usando la pendiente</h3>
+  <p class="small muted">La pendiente de la recta es «cuánto sube» dividido «cuánto avanza»: eso es exactamente la velocidad.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p5c" aria-expanded="false" aria-controls="p5c">Ver solución paso a paso</button>
+    <div class="panel" id="p5c">
+      <ol class="steps">
+        <li><span class="lbl">Fórmula:</span> v = (x<sub>2</sub> − x<sub>1</sub>) / (t<sub>2</sub> − t<sub>1</sub>)</li>
+        <li><span class="lbl">Reemplazo:</span> v = (30 − 6) / (8 − 2)</li>
+        <li><span class="lbl">Resuelvo:</span> v = 24 / 6</li>
+      </ol>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">v = 4 m/s</span></p>
+      </div>
+    </div>
+  </div>
+
+  <h3>d) Escribe la ecuación de posición</h3>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p5d" aria-expanded="false" aria-controls="p5d">Ver solución paso a paso</button>
+    <div class="panel" id="p5d">
+      <ol class="steps">
+        <li><span class="lbl">Elijo un punto:</span> t = 2 s, x = 6 m</li>
+        <li><span class="lbl">Reemplazo:</span> 6 = x<sub>0</sub> + 4 · 2</li>
+        <li><span class="lbl">Opero:</span> 6 = x<sub>0</sub> + 8</li>
+        <li><span class="lbl">Despejo:</span> x<sub>0</sub> = 6 − 8 = −2 m</li>
+      </ol>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">x = −2 + 4 · t</span></p>
+      </div>
+      <div class="box tip">
+        <span class="t">¿Por qué x<sub>0</sub> es negativo? ¿Está mal?</span>
+        <p>No está mal, tiene significado: al empezar a contar el tiempo el patinador estaba 2 m <b>antes</b> del punto que se tomó como referencia (del lado negativo). Por eso la recta corta el eje vertical en −2.</p>
+        <p class="small">Comprobación: x(2) = −2 + 8 = 6 ✔ y x(8) = −2 + 32 = 30 ✔.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>e) Tabla de velocidad vs. tiempo</h3>
+  <p class="small muted">Como la velocidad es constante, <b>todos</b> los valores de la tabla son el mismo número.</p>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p5e" aria-expanded="false" aria-controls="p5e">Ver tabla completa</button>
+    <div class="panel" id="p5e">
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Tiempo (s)</th><th>0</th><th>2</th><th>4</th><th>6</th><th>8</th></tr></thead>
+          <tbody><tr><td><b>Velocidad (m/s)</b></td><td>4</td><td>4</td><td>4</td><td>4</td><td>4</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <h3>f) Gráfica velocidad vs. tiempo</h3>
+  <div class="figure">
+    <div id="g5f"></div>
+    <p class="cap">Una velocidad constante se dibuja como una <b>línea horizontal</b>. Que esté «plana» no significa que el cuerpo esté quieto: significa que <i>no cambia</i> su velocidad.</p>
+  </div>
+</section>
+<section class="card" id="lab">
+  <div class="card-head">
+    <span class="badge">★</span>
+    <div>
+      <h2>Laboratorio rápido: juega con la ecuación</h2>
+      <p class="lead">Mueve los controles y observa cómo cambia la posición. Sirve para entender de dónde sale cada número del taller.</p>
+    </div>
+  </div>
+
+  <div class="sim" id="sim1">
+    <label for="s-x0"><span>x<sub>0</sub> (m)</span><input type="range" id="s-x0" min="-20" max="100" step="5" value="20"><output id="o-x0" for="s-x0">20</output></label>
+    <label for="s-v"><span>v (m/s)</span><input type="range" id="s-v" min="-10" max="20" step="1" value="8"><output id="o-v" for="s-v">8</output></label>
+    <label for="s-t"><span>t (s)</span><input type="range" id="s-t" min="0" max="40" step="0.5" value="10"><output id="o-t" for="s-t">10</output></label>
+    <div class="track"><div class="rail"></div><div class="dot" id="sim-dot"></div><div class="zero" id="sim-zero"></div><span class="zerolbl" id="sim-zero-lbl">x = 0</span></div>
+    <div class="eq" id="sim-eq">x = 20 + 8 · 10 = 100 m</div>
+  </div>
+
+  <div class="box tip">
+    <span class="t">Retos</span>
+    <ul class="clean">
+      <li>Pon v = 8 y x<sub>0</sub> = 20: ¿coincide con el ejercicio 3? A los 10 s debe dar 100 m.</li>
+      <li>Pon v = 0: la moto se queda quieta (MRU con velocidad cero).</li>
+      <li>Pon v negativa: el cuerpo se mueve hacia el lado contrario (posición cada vez menor).</li>
+    </ul>
+  </div>
+</section>
+
+<section class="card" id="chuleta">
+  <div class="card-head">
+    <span class="badge">✓</span>
+    <div>
+      <h2>Chuleta final y autoevaluación</h2>
+      <p class="lead">Esto es lo que deberías poder decir sin mirar apuntes antes de entregar el taller.</p>
+    </div>
+  </div>
+
+  <div class="eq">x = x<sub>0</sub> + v · t &nbsp;&nbsp;|&nbsp;&nbsp; d = v · t &nbsp;&nbsp;|&nbsp;&nbsp; v = Δx / Δt</div>
+
+  <ul class="clean">
+    <li><b>MRU</b> = línea recta + velocidad constante (a = 0).</li>
+    <li><b>x<sub>0</sub></b> se calcula despejando con cualquier punto conocido: x<sub>0</sub> = x − v · t.</li>
+    <li><b>La pendiente de una gráfica x–t</b> es la velocidad.</li>
+    <li>En una gráfica <b>v–t</b> del MRU, el <b>área</b> bajo la línea es la distancia.</li>
+    <li>Antes de operar, <b>unifica unidades</b> (h → min, min → s).</li>
+    <li>Toda respuesta numérica lleva <b>unidad</b>.</li>
+  </ul>
+
+  <div class="box warn">
+    <span class="t">Autoevaluación (marca mentalmente)</span>
+    <ul class="clean">
+      <li>¿Puedo explicar por qué la aceleración en MRU es cero?</li>
+      <li>¿Sé despejar x<sub>0</sub> sin equivocarme con los signos?</li>
+      <li>¿Distingo una gráfica x–t de una v–t?</li>
+      <li>¿Convierto 0,7 h a minutos sin dudar?</li>
+      <li>¿Mis resultados tienen unidades?</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><b>Física · 9° · Tercer periodo</b> — Guía de estudio del Taller No. 1 (MRU). Complementa el taller impreso; no lo reemplaza.</p>
+  <p>Consejo: intenta cada punto en el cuaderno <i>antes</i> de abrir la solución. Aprenderás mucho más del intento que de la respuesta.</p>
+</footer>
+<script>
+(function(){
+  "use strict";
+  var store = {
+    get: function(k, d){ try{ var v = localStorage.getItem(k); return v === null ? d : v; }catch(e){ return d; } },
+    set: function(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  };
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+
+  /* ---------- TEMA ---------- */
+  var root = document.documentElement;
+  var saved = store.get("mru-theme", null);
+  if(saved){ root.dataset.theme = saved; }
+  else if(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches){ root.dataset.theme = "dark"; }
+  $("#theme").addEventListener("click", function(){
+    var next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    store.set("mru-theme", next);
+  });
+
+  /* ---------- PANELES ---------- */
+  function setPanel(panel, open){
+    panel.classList.toggle("show", open);
+    var btn = document.querySelector('[data-toggle="'+panel.id+'"]');
+    if(btn){
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      if(!btn.dataset.label) btn.dataset.label = btn.textContent;
+      btn.textContent = open ? "Ocultar" : btn.dataset.label;
+    }
+  }
+  document.addEventListener("click", function(e){
+    var b = e.target.closest("[data-toggle]");
+    if(!b) return;
+    var p = document.getElementById(b.dataset.toggle);
+    if(p) setPanel(p, !p.classList.contains("show"));
+  });
+  document.addEventListener("click", function(e){
+    var b = e.target.closest("[data-why]");
+    if(!b) return;
+    var t = document.getElementById(b.dataset.why);
+    if(!t) return;
+    var open = !t.classList.contains("show-why");
+    t.classList.toggle("show-why", open);
+    if(!b.dataset.label) b.dataset.label = b.textContent;
+    b.textContent = open ? "Ocultar justificaciones" : b.dataset.label;
+  });
+  $("#showAll").addEventListener("click", function(){
+    $$(".panel").forEach(function(p){ setPanel(p, true); });
+    $$("table[id]").forEach(function(t){ if(t.classList.contains("vf")){ t.classList.add("show-why"); } });
+    $$("[data-why]").forEach(function(b){ if(!b.dataset.label) b.dataset.label = b.textContent; b.textContent = "Ocultar justificaciones"; });
+  });
+  $("#hideAll").addEventListener("click", function(){
+    $$(".panel").forEach(function(p){ setPanel(p, false); });
+    $$("table.vf").forEach(function(t){ t.classList.remove("show-why"); });
+    $$("[data-why]").forEach(function(b){ b.textContent = b.dataset.label || "Mostrar todas las justificaciones"; });
+  });
+
+  /* ---------- QUIZ ---------- */
+  $$(".quiz").forEach(function(quiz){
+    var block = quiz.closest(".quizblock");
+    quiz.addEventListener("click", function(e){
+      var opt = e.target.closest(".opt");
+      if(!opt) return;
+      var ok = opt.dataset.ok === "1";
+      $$(".opt", quiz).forEach(function(o){
+        o.classList.remove("correct","wrong");
+        if(o.dataset.ok === "1") o.classList.add("correct");
+      });
+      if(!ok) opt.classList.add("wrong");
+      block.dataset.state = ok ? "ok" : "no";
+    });
+  });
+
+  /* ---------- VERDADERO / FALSO ---------- */
+  document.addEventListener("click", function(e){
+    var b = e.target.closest(".tf");
+    if(!b) return;
+    var cell = b.closest(".ans");
+    var ok = b.dataset.v === cell.dataset.correct;
+    $$(".tf", cell).forEach(function(x){ x.classList.remove("ok","bad"); });
+    b.classList.add(ok ? "ok" : "bad");
+  });
+
+  /* ---------- PROGRESO ---------- */
+  var boxes = $$(".done");
+  function updProgress(){
+    var n = boxes.filter(function(b){ return b.checked; }).length;
+    $("#pnum").textContent = n + "/" + boxes.length;
+    $("#pbar").style.width = (boxes.length ? (n / boxes.length * 100) : 0) + "%";
+  }
+  boxes.forEach(function(b){
+    var key = "mru-prog-" + b.dataset.key;
+    b.checked = store.get(key, "0") === "1";
+    b.addEventListener("change", function(){ store.set(key, b.checked ? "1" : "0"); updProgress(); });
+  });
+  updProgress();
+
+  /* ---------- GRÁFICAS SVG ---------- */
+  var NS = "http://www.w3.org/2000/svg";
+  function tag(name, attrs, parent){
+    var n = document.createElementNS(NS, name);
+    if(attrs){ for(var k in attrs){ if(attrs[k] !== undefined && attrs[k] !== null) n.setAttribute(k, attrs[k]); } }
+    if(parent) parent.appendChild(n);
+    return n;
+  }
+  function fmt(n){ return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100); }
+
+  function drawPlot(host, cfg){
+    var W = cfg.w || 620, H = cfg.h || 380;
+    var pad = Object.assign({ l: 62, r: 34, t: 38, b: 50 }, cfg.pad || {});
+    var xmin = cfg.xmin === undefined ? 0 : cfg.xmin, xmax = cfg.xmax;
+    var ymin = cfg.ymin === undefined ? 0 : cfg.ymin, ymax = cfg.ymax;
+    var iw = W - pad.l - pad.r, ih = H - pad.t - pad.b;
+    var X = function(x){ return pad.l + (x - xmin) / (xmax - xmin) * iw; };
+    var Y = function(y){ return pad.t + ih - (y - ymin) / (ymax - ymin) * ih; };
+
+    var svg = tag("svg", { viewBox: "0 0 " + W + " " + H, "class": "plot", role: "img", "aria-label": cfg.title || "gráfica" }, host);
+
+    (cfg.xticks || []).forEach(function(t){
+      tag("line", { x1: X(t), y1: pad.t, x2: X(t), y2: pad.t + ih, "class": "grid" }, svg);
+      tag("text", { x: X(t), y: pad.t + ih + 19, "class": "tick", "text-anchor": "middle" }, svg).textContent = fmt(t);
+    });
+    (cfg.yticks || []).forEach(function(t){
+      tag("line", { x1: pad.l, y1: Y(t), x2: pad.l + iw, y2: Y(t), "class": "grid" }, svg);
+      tag("text", { x: pad.l - 11, y: Y(t) + 4, "class": "tick", "text-anchor": "end" }, svg).textContent = fmt(t);
+    });
+    tag("line", { x1: pad.l, y1: pad.t + ih, x2: pad.l + iw, y2: pad.t + ih, "class": "axis" }, svg);
+    tag("line", { x1: pad.l, y1: pad.t, x2: pad.l, y2: pad.t + ih, "class": "axis" }, svg);
+    tag("text", { x: pad.l + iw / 2, y: H - 12, "class": "lbl", "text-anchor": "middle" }, svg).textContent = cfg.xlabel || "";
+    var yl = tag("text", { x: 15, y: pad.t + ih / 2, "class": "lbl", "text-anchor": "middle", transform: "rotate(-90 15 " + (pad.t + ih / 2) + ")" }, svg);
+    yl.textContent = cfg.ylabel || "";
+    if(cfg.title){ tag("text", { x: pad.l, y: 22, "class": "ptitle" }, svg).textContent = cfg.title; }
+
+    var layers = {};
+    function layer(name){
+      if(!name) return svg;
+      if(!layers[name]) layers[name] = tag("g", { "data-layer": name }, svg);
+      return layers[name];
+    }
+
+    (cfg.series || []).forEach(function(s){
+      var g = layer(s.layer);
+      if(s.type === "area"){
+        var d = "M" + X(s.pts[0][0]) + "," + Y(s.pts[0][1]);
+        s.pts.slice(1).forEach(function(p){ d += " L" + X(p[0]) + "," + Y(p[1]); });
+        d += " Z";
+        tag("path", { d: d, fill: s.fill || "rgba(99,102,241,.16)", stroke: s.stroke || "none", "stroke-width": 2 }, g);
+      } else if(s.type === "poly"){
+        var dd = "M" + s.pts.map(function(p){ return X(p[0]) + "," + Y(p[1]); }).join(" L");
+        tag("path", { d: dd, fill: "none", stroke: s.color, "stroke-width": s.width || 3, "stroke-linecap": "round" }, g);
+      } else if(s.type === "dots"){
+        s.pts.forEach(function(p){
+          var px = Array.isArray(p) ? p[0] : p.x;
+          var py = Array.isArray(p) ? p[1] : p.y;
+          tag("circle", { cx: X(px), cy: Y(py), r: s.r || 5.5, fill: s.color || "#6366f1", stroke: "#fff", "stroke-width": 2 }, g);
+          if(p.label){
+            tag("text", { x: X(px) + (p.dx === undefined ? 9 : p.dx), y: Y(py) + (p.dy === undefined ? -11 : p.dy), "class": "dlbl" }, g).textContent = p.label;
+          }
+        });
+      } else if(s.type === "helper"){
+        tag("line", { x1: X(s.x1), y1: Y(s.y1), x2: X(s.x2), y2: Y(s.y2), "class": "helper" }, g);
+      } else if(s.type === "text"){
+        var t = tag("text", { x: X(s.x), y: Y(s.y), "class": "dlbl", "text-anchor": s.anchor || "start" }, g);
+        t.textContent = s.text;
+      }
+    });
+
+    (cfg.hidden || []).forEach(function(name){ if(layers[name]) layers[name].style.display = "none"; });
+    return { svg: svg, layers: layers };
+  }
+
+  function layerChips(host, plot, defs){
+    var bar = document.createElement("div");
+    bar.className = "plot-ctrl";
+    defs.forEach(function(d){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip" + (d.on ? " on" : "");
+      b.textContent = d.label;
+      b.setAttribute("aria-pressed", d.on ? "true" : "false");
+      b.addEventListener("click", function(){
+        var g = plot.layers[d.layer];
+        if(!g) return;
+        var visible = g.style.display !== "none";
+        g.style.display = visible ? "none" : "";
+        b.classList.toggle("on", !visible);
+        b.setAttribute("aria-pressed", (!visible) ? "true" : "false");
+      });
+      bar.appendChild(b);
+    });
+    host.parentNode.insertBefore(bar, host.nextSibling);
+  }
+
+  var g5a = drawPlot($("#g5a"), {
+    w: 620, h: 380, xmax: 10, ymax: 35,
+    xticks: [0,1,2,3,4,5,6,7,8,9,10],
+    yticks: [0,5,10,15,20,25,30,35],
+    xlabel: "Tiempo t (s)", ylabel: "Posición x (m)",
+    title: "Posición vs. tiempo",
+    series: [
+      { type: "dots", layer: "pt", color: "#6366f1", pts: [
+        { x: 2, y: 6, label: "(2, 6)" },
+        { x: 8, y: 30, label: "(8, 30)", dx: -50, dy: -12 }
+      ]},
+      { type: "poly", layer: "ln", color: "#14b8a6", pts: [[0.4, -0.4], [9.8, 37.2]], width: 3 }
+    ],
+    hidden: ["ln"]
+  });
+  layerChips($("#g5a"), g5a, [
+    { layer: "pt", label: "Mostrar puntos", on: true },
+    { layer: "ln", label: "Mostrar recta", on: false }
+  ]);
+
+  drawPlot($("#g5f"), {
+    w: 620, h: 300, xmax: 10, ymax: 5,
+    xticks: [0,1,2,3,4,5,6,7,8,9,10],
+    yticks: [0,1,2,3,4,5],
+    xlabel: "Tiempo t (s)", ylabel: "Velocidad v (m/s)",
+    title: "Velocidad vs. tiempo",
+    series: [
+      { type: "poly", layer: "dat", color: "#14b8a6", pts: [[0,4],[10,4]], width: 3 },
+      { type: "dots", layer: "dat", color: "#14b8a6", pts: [{x:0,y:4,label:"4 m/s",dy:-12},{x:2,y:4},{x:4,y:4},{x:6,y:4},{x:8,y:4},{x:10,y:4}] }
+    ]
+  });
+
+  /* ---------- SIMULADOR ---------- */
+  var sx0 = $("#s-x0"), sv = $("#s-v"), st = $("#s-t");
+  function sim(){
+    var x0 = parseFloat(sx0.value), v = parseFloat(sv.value), t = parseFloat(st.value);
+    $("#o-x0").textContent = fmt(x0);
+    $("#o-v").textContent = fmt(v);
+    $("#o-t").textContent = fmt(t);
+    var x = x0 + v * t;
+    $("#sim-eq").textContent = "x = " + fmt(x0) + " + " + (v < 0 ? "(" + fmt(v) + ")" : fmt(v)) + " · " + fmt(t) + " = " + fmt(x) + " m";
+    var lo = -40, hi = 340;
+    var pct = (x - lo) / (hi - lo);
+    pct = Math.max(0, Math.min(1, pct));
+    $("#sim-dot").style.left = "calc(14px + (100% - 28px) * " + pct.toFixed(4) + ")";
+    var p0 = (0 - lo) / (hi - lo);
+    var zero = "calc(14px + (100% - 28px) * " + p0.toFixed(4) + ")";
+    $("#sim-zero").style.left = zero;
+    $("#sim-zero-lbl").style.left = zero;
+  }
+  [sx0, sv, st].forEach(function(s){ s.addEventListener("input", sim); });
+  sim();
+})();
+</script>
+</body>
+</html>

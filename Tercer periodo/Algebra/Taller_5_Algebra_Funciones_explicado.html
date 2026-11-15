@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Taller 5 · Funciones — Guía explicada paso a paso</title>
+<style>
+:root{
+  --bg:#f4f6fb; --panel:#fff; --ink:#111827; --muted:#5b6675; --line:#e3e8f2;
+  --accent:#4f46e5; --accent-soft:#eef0ff;
+  --green:#0f766e; --green-soft:#e8f8f5;
+  --amber:#b45309; --amber-soft:#fdf4e5;
+  --rose:#be123c; --rose-soft:#fdeef2;
+  --shadow:0 1px 2px rgba(16,24,40,.05), 0 18px 40px -28px rgba(16,24,40,.45);
+  --r:16px;
+}
+[data-theme="dark"]{
+  --bg:#0b1020; --panel:#121a2c; --ink:#e9eefb; --muted:#a3aec5; --line:#243049;
+  --accent:#8b8cf8; --accent-soft:#1b2242; --green:#5ad3c6; --green-soft:#0f2c2a;
+  --amber:#f0b26b; --amber-soft:#2f2413; --rose:#fb7185; --rose-soft:#2f1522;
+  --shadow:0 18px 40px -28px #000;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);line-height:1.62;-webkit-font-smoothing:antialiased;
+  font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial,sans-serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+a{color:var(--accent)}
+.skip{position:absolute;left:-999px}
+.skip:focus{left:12px;top:12px;background:var(--panel);padding:8px 12px;border-radius:8px;z-index:99}
+/* ---------- HERO ---------- */
+.hero{position:relative;overflow:hidden;color:#eef2ff;padding:40px 0 34px;border-bottom:1px solid #1e293b;
+  background:radial-gradient(900px 320px at 10% -20%,rgba(99,102,241,.42),transparent 62%),
+             radial-gradient(760px 300px at 96% -10%,rgba(13,148,136,.34),transparent 58%),
+             linear-gradient(180deg,#0e1729,#101a2e)}
+.hero::after{content:"";position:absolute;inset:0;opacity:.45;pointer-events:none;
+  background-image:radial-gradient(rgba(255,255,255,.14) 1px,transparent 1.4px);
+  background-size:26px 26px}
+.kicker{margin:0 0 8px;font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:#a5b4fc;font-weight:700}
+.hero h1{margin:0;font-size:clamp(1.55rem,3.4vw,2.35rem);line-height:1.18;letter-spacing:-.02em}
+.hero p.sub{margin:10px 0 0;max-width:62ch;color:#c7d2fe;font-size:1.02rem}
+.hero .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.hero .chips span{font-size:.8rem;padding:5px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);color:#e0e7ff}
+/* ---------- TOPBAR ---------- */
+.topbar{position:sticky;top:0;z-index:30;border-bottom:1px solid var(--line);backdrop-filter:blur(12px);
+  background:var(--bg);background:color-mix(in srgb,var(--bg) 86%,transparent)}
+.bar{display:flex;align-items:center;gap:14px;padding:9px 20px;flex-wrap:wrap}
+.toc{display:flex;gap:6px;overflow-x:auto;flex:1 1 240px;min-width:0;scrollbar-width:none}
+.toc::-webkit-scrollbar{display:none}
+.toc a{flex:none;text-decoration:none;font-size:.8rem;font-weight:600;color:var(--muted);
+  padding:5px 10px;border-radius:999px;border:1px solid transparent;white-space:nowrap}
+.toc a:hover{background:var(--accent-soft);color:var(--accent);border-color:var(--line)}
+.tools{display:flex;align-items:center;gap:8px}
+.pbar{width:92px;height:6px;border-radius:99px;background:var(--line);overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),#0d9488);transition:width .3s}
+.pnum{font-size:.78rem;font-weight:700;color:var(--muted);min-width:32px}
+.tbtn{font:inherit;font-size:.78rem;font-weight:600;padding:6px 10px;border-radius:9px;cursor:pointer;
+  background:var(--panel);color:var(--ink);border:1px solid var(--line)}
+.tbtn:hover{border-color:var(--accent);color:var(--accent)}
+/* ---------- CARDS ---------- */
+main{padding:26px 20px 70px;max-width:1040px;margin:0 auto}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);
+  padding:24px 24px 20px;margin:0 0 22px;scroll-margin-top:76px}
+.card-head{display:flex;gap:14px;align-items:flex-start;margin-bottom:6px}
+.badge{flex:none;width:38px;height:38px;border-radius:12px;display:grid;place-items:center;font-weight:800;
+  background:var(--accent-soft);color:var(--accent);font-size:1rem}
+.card h2{margin:2px 0 0;font-size:1.16rem;letter-spacing:-.01em;line-height:1.35}
+.lead{margin:4px 0 0;color:var(--muted);font-size:.94rem}
+.done-wrap{margin-left:auto;display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--muted);
+  font-weight:600;cursor:pointer;user-select:none;white-space:nowrap}
+.done-wrap input{width:17px;height:17px;accent-color:#0d9488;cursor:pointer}
+/* ---------- TEXTO ---------- */
+h3{font-size:.98rem;margin:22px 0 8px;letter-spacing:.01em}
+p{margin:.55em 0}
+.small{font-size:.88rem}
+.muted{color:var(--muted)}
+.eq{font-family:"Cambria Math",Cambria,Georgia,"Times New Roman",serif;font-size:1.12rem;
+  background:var(--accent-soft);border:1px solid var(--line);border-radius:12px;
+  padding:10px 14px;text-align:center;margin:12px 0;color:var(--ink);overflow-x:auto}
+.eq b{color:var(--green)}
+ul.clean{margin:.4em 0;padding-left:1.15em}
+ul.clean li{margin:.3em 0}
+/* ---------- CAJAS ---------- */
+.box{border-radius:13px;padding:13px 15px;margin:14px 0;border:1px solid var(--line);font-size:.94rem}
+.box p:first-child{margin-top:0}.box p:last-child{margin-bottom:0}
+.box .t{display:block;font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:5px}
+.tip{background:var(--accent-soft);border-color:transparent}
+.tip .t{color:var(--accent)}
+.warn{background:var(--amber-soft);border-color:transparent}
+.warn .t{color:var(--amber)}
+.answer{background:var(--green-soft);border:1px solid color-mix(in srgb,var(--green) 26%,transparent);border-radius:13px;
+  padding:14px 16px;margin:14px 0}
+.answer .t{display:block;font-weight:800;font-size:.76rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--green);margin-bottom:6px}
+.res{font-weight:800;color:var(--green)}
+/* ---------- PASOS ---------- */
+.steps{list-style:none;counter-reset:s;margin:12px 0;padding:0}
+.steps>li{counter-increment:s;position:relative;padding-left:38px;margin:11px 0}
+.steps>li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;
+  background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:800;font-size:.82rem}
+.steps .lbl{font-weight:700}
+/* ---------- REVEAL ---------- */
+.btn{font:inherit;font-size:.86rem;font-weight:700;cursor:pointer;padding:8px 14px;border-radius:10px;
+  border:1px solid var(--accent);background:transparent;color:var(--accent);margin:6px 0}
+.btn:hover{background:var(--accent-soft)}
+.btn::before{content:"▸ ";font-size:.9em}
+.btn[aria-expanded="true"]::before{content:"▾ "}
+.panel{display:none}
+.panel.show{display:block;animation:fade .28s ease}
+@keyframes fade{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+/* ---------- QUIZ ---------- */
+.quiz{display:grid;gap:8px;margin:14px 0 6px}
+.opt{font:inherit;text-align:left;display:flex;gap:11px;align-items:flex-start;cursor:pointer;
+  background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:11px 14px;color:var(--ink);
+  transition:border-color .15s,background .15s}
+.opt:hover{border-color:var(--accent);background:var(--accent-soft)}
+.opt b{flex:none;width:24px;height:24px;border-radius:8px;background:var(--accent-soft);color:var(--accent);
+  display:grid;place-items:center;font-size:.8rem}
+.opt.correct{border-color:#0d9488;background:var(--green-soft)}
+.opt.correct b{background:#0d9488;color:#fff}
+.opt.wrong{border-color:#e11d48;background:var(--rose-soft)}
+.opt.wrong b{background:#e11d48;color:#fff}
+.fb{margin:10px 0 0;font-size:.9rem;display:none;padding:11px 14px;border-radius:11px;border:1px solid var(--line)}
+.quizblock[data-state="ok"] .fok{display:block;background:var(--green-soft);border-color:#0d9488}
+.quizblock[data-state="no"] .fno{display:block;background:var(--rose-soft);border-color:#e11d48}
+/* ---------- TABLAS ---------- */
+.tablewrap{overflow-x:auto;margin:14px 0;border:1px solid var(--line);border-radius:12px}
+table{border-collapse:collapse;width:100%;font-size:.9rem;min-width:520px}
+th{background:var(--accent-soft);color:var(--accent);text-align:left;font-size:.76rem;letter-spacing:.06em;
+  text-transform:uppercase;padding:9px 12px;border-bottom:1px solid var(--line);white-space:nowrap}
+td{padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td.ans{white-space:nowrap}
+.tf{font:inherit;font-weight:800;font-size:.8rem;width:34px;height:29px;border-radius:8px;cursor:pointer;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted);margin-right:4px}
+.tf:hover{border-color:var(--accent);color:var(--accent)}
+.tf.ok{background:#0d9488;border-color:#0d9488;color:#fff}
+.tf.bad{background:#e11d48;border-color:#e11d48;color:#fff}
+.whycell{display:none;color:var(--muted);font-size:.87rem;min-width:240px}
+th.whycell-h{display:none}
+table.show-why .whycell{display:table-cell}
+table.show-why th.whycell-h{display:table-cell}
+.tag{display:inline-block;font-weight:800;font-size:.72rem;padding:1px 7px;border-radius:6px;margin-right:6px}
+.tag.v{background:#0d9488;color:#fff}.tag.f{background:#e11d48;color:#fff}
+/* ---------- GRÁFICAS ---------- */
+.figure{margin:16px 0;border:1px solid var(--line);border-radius:13px;padding:12px;background:var(--panel)}
+.plot{width:100%;height:auto;display:block}
+.grid{stroke:var(--line);stroke-width:1}
+.axis{stroke:var(--muted);stroke-width:1.6}
+.helper{stroke:var(--muted);stroke-width:1.3;stroke-dasharray:5 5}
+.tick{font-size:12px;fill:var(--muted);font-family:inherit}
+.lbl{font-size:12.5px;fill:var(--muted);font-family:inherit}
+.ptitle{font-size:13px;font-weight:700;fill:var(--ink);font-family:inherit}
+.dlbl{font-size:12.5px;font-weight:700;fill:var(--ink);font-family:inherit;paint-order:stroke;stroke:var(--panel);stroke-width:4px}
+.plot-ctrl{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.chip{font:inherit;font-size:.78rem;font-weight:700;cursor:pointer;padding:5px 11px;border-radius:999px;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+.cap{font-size:.82rem;color:var(--muted);margin:6px 0 0}
+/* ---------- SIMULADOR ---------- */
+.sim{display:grid;gap:10px;margin:14px 0}
+.sim label{display:grid;grid-template-columns:96px 1fr 58px;gap:12px;align-items:center;font-size:.85rem;font-weight:700}
+.sim label>span{white-space:nowrap}
+.sim input[type=range]{width:100%;accent-color:var(--accent)}
+.sim output{font-variant-numeric:tabular-nums;font-weight:800;color:var(--accent);text-align:right}
+.track{position:relative;height:54px;border-radius:12px;background:var(--accent-soft);border:1px solid var(--line);margin-top:6px}
+.track .rail{position:absolute;left:14px;right:14px;top:50%;height:3px;background:var(--line);border-radius:9px;transform:translateY(-50%)}
+.track .dot{position:absolute;top:50%;width:20px;height:20px;border-radius:50%;background:var(--accent);
+  transform:translate(-50%,-50%);transition:left .18s ease;box-shadow:0 0 0 5px color-mix(in srgb,var(--accent) 18%,transparent)}
+.track .lblx{display:none}
+.track .zero{position:absolute;top:10px;bottom:10px;width:2px;background:var(--muted);opacity:.4;transform:translateX(-50%)}
+.track .zerolbl{position:absolute;bottom:3px;font-size:.7rem;color:var(--muted);font-weight:700;transform:translateX(-50%);white-space:nowrap}
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line);padding:22px 20px 40px;color:var(--muted);font-size:.82rem;text-align:center}
+@media (max-width:720px){
+  .card{padding:19px 16px 16px}
+  .card-head{flex-wrap:wrap}
+  .done-wrap{margin-left:0;order:3}
+  .sim label{grid-template-columns:86px 1fr 62px;font-size:.8rem}
+}
+/* ---------- EXTRAS ÁLGEBRA ---------- */
+.casebtns{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}
+.casebtns .chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.casebox{border:1px solid var(--line);border-radius:12px;padding:13px 15px;background:var(--accent-soft);margin:10px 0}
+.casebox .eq{margin:8px 0;background:var(--panel)}
+.fx{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:1.03rem}
+.sol{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:1.08rem;font-weight:700;color:var(--green)}
+.pick{display:flex;gap:7px;flex-wrap:wrap;margin:8px 0}
+.pick button{font:inherit;font-size:.8rem;font-weight:700;cursor:pointer;padding:5px 12px;border-radius:8px;
+  border:1px solid var(--line);background:var(--panel);color:var(--muted)}
+.pick button:hover{border-color:var(--accent);color:var(--accent)}
+.pick button.ok{background:#0d9488;border-color:#0d9488;color:#fff}
+.pick button.bad{background:#e11d48;border-color:#e11d48;color:#fff}
+.pick-note{font-size:.85rem;font-weight:700;min-height:1.4em;margin:2px 0 0}
+.ok-txt{color:var(--green)}.no-txt{color:var(--rose)}
+.diagram{width:100%;height:auto;display:block}
+.dtitle{font-size:14px;font-weight:700;fill:var(--ink);font-family:inherit}
+.dnode{font-size:15px;fill:var(--ink);font-family:inherit}
+.dleft{font-weight:700;fill:#4f46e5}
+.dright{font-weight:700;fill:#0f766e}
+.darrow{stroke:#8b2fb8;stroke-width:2.2;fill:none}
+.dgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:760px){.dgrid{grid-template-columns:1fr}}
+.vline{stroke:#e11d48;stroke-width:2;stroke-dasharray:6 5}
+main .sub{padding:9px 0 5px;border-bottom:1px dashed var(--line)}
+main .sub:last-child{border-bottom:0}
+main .sub .q{font-family:"Cambria Math",Cambria,Georgia,serif;font-size:1.08rem;font-weight:700}
+main .sub .btn{margin:4px 0}
+.check{font-size:.87rem;color:var(--muted);margin:6px 0 0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:760px){.grid2{grid-template-columns:1fr}}
+@media print{
+  .topbar,.tools,.btn,.plot-ctrl,.done-wrap,.hero .chips,.skip{display:none!important}
+  .panel{display:block!important}
+  body{background:#fff;color:#000}
+  .card{box-shadow:none;border-color:#bbb;break-inside:avoid}
+  .hero{background:#fff;color:#000;border-bottom:2px solid #000}
+  .hero p.sub,.kicker{color:#333}
+  .hero .chips{display:none}
+  a{color:#000;text-decoration:none}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#contenido">Saltar al contenido</a>
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Álgebra · Grado 9° · Tercer periodo · Taller No. 5</p>
+    <h1>Concepto de función y sus elementos</h1>
+    <p class="sub">Guía interactiva del taller: dominio, codominio, rango, variables y cómo decidir si una relación es función, explicado <b>paso a paso</b>.</p>
+    <div class="chips">
+      <span>6 puntos explicados</span>
+      <span>Diagramas y gráficas interactivas</span>
+      <span>Prueba de la línea vertical</span>
+      <span>Tablas y leyes de asignación</span>
+    </div>
+  </div>
+</header>
+
+<div class="topbar">
+  <div class="bar">
+    <nav class="toc" aria-label="Contenido">
+      <a href="#guia">Guía rápida</a>
+      <a href="#e1">1 · Diagramas</a>
+      <a href="#e2">2 · Pares ordenados</a>
+      <a href="#e3">3 · Gráficas</a>
+      <a href="#e4">4 · Elementos</a>
+      <a href="#e5">5 · Tabla g(x)</a>
+      <a href="#e6">6 · Variables y rectas</a>
+      <a href="#chuleta">Chuleta</a>
+    </nav>
+    <div class="tools">
+      <div class="pbar"><i id="pbar"></i></div>
+      <span class="pnum" id="pnum">0/6</span>
+      <button class="tbtn" id="showAll" type="button">Mostrar todo</button>
+      <button class="tbtn" id="hideAll" type="button">Ocultar</button>
+      <button class="tbtn" id="theme" type="button" title="Cambiar tema" aria-label="Cambiar tema">◐</button>
+    </div>
+  </div>
+</div>
+
+<main id="contenido">
+
+<section class="card" id="guia">
+  <div class="card-head">
+    <span class="badge">0</span>
+    <div>
+      <h2>Antes de empezar: ¿qué es una función?</h2>
+      <p class="lead">Todo el taller se decide con una sola regla. Si la memorizas, los 6 puntos salen solos.</p>
+    </div>
+  </div>
+
+  <div class="box tip">
+    <span class="t">La regla de oro</span>
+    <p>Una <b>función</b> es una relación entre dos conjuntos donde <b>cada elemento del dominio (x) tiene exactamente UNA imagen (y)</b> en el codominio.</p>
+    <div class="eq">1 entrada → 1 salida &nbsp;(ni cero, ni dos)</div>
+  </div>
+
+  <div class="grid2">
+    <div class="box" style="background:var(--green-soft)">
+      <span class="t" style="color:var(--green)">SÍ está permitido</span>
+      <ul class="clean">
+        <li>Que dos entradas distintas lleguen a la <b>misma</b> salida (varios → uno).</li>
+        <li>Que haya elementos del codominio <b>sin usar</b>.</li>
+      </ul>
+    </div>
+    <div class="box" style="background:var(--rose-soft)">
+      <span class="t" style="color:var(--rose)">NO está permitido</span>
+      <ul class="clean">
+        <li>Que una entrada tenga <b>dos o más</b> salidas.</li>
+        <li>Que una entrada del dominio <b>no tenga</b> salida.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>Los 4 elementos que te van a preguntar</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>Elemento</th><th>Qué es</th><th>Pregunta que responde</th></tr></thead>
+      <tbody>
+        <tr><td><b>Dominio</b></td><td>Conjunto de partida: todos los valores de x a los que se aplica la regla.</td><td>¿Con qué valores <b>empiezo</b>?</td></tr>
+        <tr><td><b>Ley de asignación</b></td><td>La regla que produce cada salida (fórmula, tabla o diagrama).</td><td>¿Qué <b>operación</b> le hago a x?</td></tr>
+        <tr><td><b>Codominio</b></td><td>Conjunto de llegada <i>declarado</i>: todos los valores donde podrían caer los resultados.</td><td>¿Dónde <b>podrían</b> caer?</td></tr>
+        <tr><td><b>Rango (imagen)</b></td><td>Subconjunto del codominio: solo los valores que <b>realmente</b> se obtienen.</td><td>¿Dónde <b>cayeron</b> de verdad?</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="box warn">
+    <span class="t">La diferencia que más confunde</span>
+    <p><b>Rango ⊆ Codominio.</b> El codominio es el «recinto completo» que se declara; el rango son solo las casillas que se ocuparon. Puede haber valores en el codominio que no estén en el rango.</p>
+  </div>
+
+  <h3>Prueba de la línea vertical (para gráficas)</h3>
+  <p>Si <b>cualquier</b> línea vertical corta la gráfica en más de un punto, <b>no</b> es función: para ese valor de x habría dos y distintas.</p>
+
+  <h3>Variables independiente y dependiente</h3>
+  <ul class="clean">
+    <li><b>Independiente (x):</b> la elegimos o controlamos; varía libremente.</li>
+    <li><b>Dependiente (y = f(x)):</b> cambia <i>como resultado</i>; su valor depende de x.</li>
+    <li>Ejemplo del taller: x = número de cuadernos, y = costo total → <b>y = 5000x</b>. x es independiente, y dependiente.</li>
+  </ul>
+</section>
+<section class="card" id="e1">
+  <div class="card-head">
+    <span class="badge">1</span>
+    <div>
+      <h2>¿Cuáles diagramas de flechas representan una función?</h2>
+      <p class="lead">Señala en cada uno Sí o No y justifica con una frase. Recuerda: revisa <b>cada</b> elemento de la columna izquierda.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e1">Hecho</label>
+  </div>
+
+  <div class="dgrid">
+    <div class="figure">
+      <div id="d-r1"></div>
+      <div class="pick" data-answer="no" data-okmsg="¡Correcto! β sale hacia q y hacia r: tiene dos imágenes." data-nomsg="Fíjate en β: de él salen dos flechas."><button type="button" data-v="si">Sí, es función</button><button type="button" data-v="no">No es función</button></div>
+      <p class="pick-note"></p>
+    </div>
+    <div class="figure">
+      <div id="d-r2"></div>
+      <div class="pick" data-answer="si" data-okmsg="¡Correcto! Cada entrada tiene una salida; que p no se use no importa." data-nomsg="Cuenta las flechas que salen de a, b y c: una de cada una."><button type="button" data-v="si">Sí, es función</button><button type="button" data-v="no">No es función</button></div>
+      <p class="pick-note"></p>
+    </div>
+    <div class="figure">
+      <div id="d-r3"></div>
+      <div class="pick" data-answer="si" data-okmsg="¡Correcto! Varios pueden llegar al mismo β; eso sí se permite." data-nomsg="Revisa cuántas flechas SALEN de cada letra, no cuántas llegan a β."><button type="button" data-v="si">Sí, es función</button><button type="button" data-v="no">No es función</button></div>
+      <p class="pick-note"></p>
+    </div>
+    <div class="figure">
+      <div id="d-r4"></div>
+      <div class="pick" data-answer="no" data-okmsg="¡Correcto! El 5 no tiene ninguna flecha: le falta su imagen." data-nomsg="Mira el último elemento de la izquierda: el 5."><button type="button" data-v="si">Sí, es función</button><button type="button" data-v="no">No es función</button></div>
+      <p class="pick-note"></p>
+    </div>
+  </div>
+
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p1" aria-expanded="false" aria-controls="p1">Ver la justificación de los cuatro diagramas</button>
+    <div class="panel" id="p1">
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Diagrama</th><th>¿Función?</th><th>Justificación (una frase)</th></tr></thead>
+          <tbody>
+            <tr><td><b>R₁</b></td><td><span class="tag f">No</span></td><td>β tiene <b>dos</b> salidas (q y r): una sola entrada no puede producir dos imágenes.</td></tr>
+            <tr><td><b>R₂</b></td><td><span class="tag v">Sí</span></td><td>a, b y c tienen cada uno una única salida; que <b>p no se use</b> no importa.</td></tr>
+            <tr><td><b>R₃</b></td><td><span class="tag v">Sí</span></td><td>Cada letra de la izquierda tiene una sola flecha; que x, z y v <b>compartan</b> β está permitido.</td></tr>
+            <tr><td><b>R₄</b></td><td><span class="tag f">No</span></td><td>El elemento <b>5</b> del dominio no tiene ninguna flecha: le falta su imagen.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">Funciones: R₂ y R₃. No son funciones: R₁ y R₄.</span></p>
+      </div>
+      <div class="box tip">
+        <span class="t">Método para no equivocarte</span>
+        <p>Recorre la columna <b>izquierda</b> de arriba abajo y cuenta las flechas que salen de cada elemento: debe ser <b>exactamente 1</b>. No mires cuántas llegan a la derecha: eso no decide si es función.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e2">
+  <div class="card-head">
+    <span class="badge">2</span>
+    <div>
+      <h2>Conjuntos de pares ordenados</h2>
+      <p class="lead">Representa cada relación en una tabla y decide cuál es función. Aquí la trampa está en la <b>x repetida</b>.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e2">Hecho</label>
+  </div>
+
+  <p class="small"><b>Rₐ</b> = {(1, 4), (2, 5), (3, 6), (4, 7)} &nbsp;·&nbsp; <b>Rᵦ</b> = {(1, 4), (2, 5), (2, 6), (4, 8)}</p>
+
+  <div class="grid2">
+    <div>
+      <h3>Tabla de Rₐ</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>x</th><th>y</th></tr></thead>
+          <tbody><tr><td>1</td><td>4</td></tr><tr><td>2</td><td>5</td></tr><tr><td>3</td><td>6</td></tr><tr><td>4</td><td>7</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+    <div>
+      <h3>Tabla de Rᵦ</h3>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>x</th><th>y</th></tr></thead>
+          <tbody><tr><td>1</td><td>4</td></tr><tr><td>2</td><td>5</td></tr><tr><td style="color:var(--rose);font-weight:800">2</td><td style="color:var(--rose);font-weight:800">6</td></tr><tr><td>4</td><td>8</td></tr></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="pick" data-answer="ra" data-okmsg="¡Correcto! Rₐ es función y Rᵦ no: en Rᵦ la x = 2 se repite con y = 5 y con y = 6." data-nomsg="Busca si algún valor de x aparece dos veces con y distinta: en Rᵦ, x = 2 aparece con 5 y con 6." style="margin-top:14px">
+    <button type="button" data-v="ra">Rₐ sí, Rᵦ no</button><button type="button" data-v="rb">Rᵦ sí, Rₐ no</button><button type="button" data-v="both">Ambas son función</button><button type="button" data-v="none">Ninguna es función</button>
+  </div>
+  <p class="pick-note"></p>
+
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p2" aria-expanded="false" aria-controls="p2">Ver respuesta y la regla que distingue una función</button>
+    <div class="panel" id="p2">
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><b>Rₐ es función</b>; <b>Rᵦ no lo es</b>.</p>
+      </div>
+      <p><b>La regla:</b> en una función, <b>ningún valor de x puede repetirse con y distinta</b>. En Rₐ cada x (1, 2, 3, 4) aparece una sola vez con una única y. En Rᵦ, la x = 2 aparece dos veces: con y = 5 <b>y</b> con y = 6; por eso no es función.</p>
+      <div class="box tip">
+        <span class="t">Cómo revisarlo rápido</span>
+        <p>Mira solo la <b>columna x</b> de la tabla. Si no hay repetidos, es función. Si hay un repetido, compara sus y: si son iguales sigue siendo función (es el mismo par repetido); si son distintos, no lo es.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="card" id="e3">
+  <div class="card-head">
+    <span class="badge">3</span>
+    <div>
+      <h2>¿Cuál de las dos gráficas representa una función?</h2>
+      <p class="lead">Aplica la <b>prueba de la línea vertical</b>: activa el botón para ver la línea roja y cuenta los cortes.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e3">Hecho</label>
+  </div>
+
+  <div class="grid2">
+    <div class="figure">
+      <div id="g3a"></div>
+      <div class="plot-ctrl"><button class="chip" type="button" data-layer-btn="g3a">Prueba de la línea vertical</button></div>
+      <p class="cap">Gráfica A: una recta inclinada.</p>
+    </div>
+    <div class="figure">
+      <div id="g3b"></div>
+      <div class="plot-ctrl"><button class="chip" type="button" data-layer-btn="g3b">Prueba de la línea vertical</button></div>
+      <p class="cap">Gráfica B: una circunferencia.</p>
+    </div>
+  </div>
+
+  <div class="quizblock" data-state="">
+    <div class="quiz" data-quiz="q3">
+      <button class="opt" type="button" data-ok="1"><b>A</b><span>Solo la Gráfica A es función.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>B</b><span>Solo la Gráfica B es función.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>C</b><span>Ambas son funciones.</span></button>
+      <button class="opt" type="button" data-ok="0"><b>D</b><span>Ninguna es función.</span></button>
+    </div>
+    <p class="fb fok">¡Correcto! La <b>A</b> es función. La circunferencia B falla la prueba: una vertical la corta dos veces.</p>
+    <p class="fb fno">Aún no. Activa «Prueba de la línea vertical» en cada gráfica y cuenta cuántos puntos de corte hay.</p>
+  </div>
+
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p3" aria-expanded="false" aria-controls="p3">Ver explicación detallada</button>
+    <div class="panel" id="p3">
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><span class="res">La Gráfica A es función; la Gráfica B no.</span></p>
+      </div>
+      <ol class="steps">
+        <li><span class="lbl">Gráfica A:</span> cualquier línea vertical corta la recta en <b>un solo punto</b> → cada x tiene una única y. <b>Es función</b> (es y = ½x + 1).</li>
+        <li><span class="lbl">Gráfica B:</span> la línea vertical x = 0 corta la circunferencia en <b>dos puntos</b> (y = 2 e y = −2) → un mismo x tiene dos imágenes. <b>No es función.</b></li>
+      </ol>
+      <div class="box tip">
+        <span class="t">Regla de bolsillo</span>
+        <p>Las rectas <b>no verticales</b> siempre son funciones. Una <b>circunferencia</b>, una elipse o una parábola «acostada» nunca lo son, porque alguna línea vertical las corta dos veces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e4">
+  <div class="card-head">
+    <span class="badge">4</span>
+    <div>
+      <h2>Identifica los elementos de la función</h2>
+      <p class="lead">Observa el diagrama: a la izquierda están las entradas (azul) y a la derecha los posibles valores de llegada (verde).</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e4">Hecho</label>
+  </div>
+
+  <div class="figure">
+    <div id="d-e4"></div>
+    <p class="cap">Diagrama de flechas del taller.</p>
+  </div>
+
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p4" aria-expanded="false" aria-controls="p4">Ver dominio, codominio, rango y ley de asignación</button>
+    <div class="panel" id="p4">
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><b>Dominio:</b> {1, 2, 3, 4}</p>
+        <p><b>Codominio:</b> {1, 4, 9, 16, 0, −5, 8} &nbsp;<span class="small">(todo el conjunto de llegada declarado)</span></p>
+        <p><b>Rango (imagen):</b> {1, 4, 9, 16}</p>
+        <p><b>Ley de asignación:</b> <span class="sol">f(x) = x²</span></p>
+      </div>
+      <ol class="steps">
+        <li><span class="lbl">Dominio:</span> lee la columna izquierda: 1, 2, 3, 4.</li>
+        <li><span class="lbl">Codominio:</span> lee <b>toda</b> la columna derecha, incluso los valores que no recibieron flecha: 0, −5 y 8 también están.</li>
+        <li><span class="lbl">Rango:</span> quédate solo con los valores donde <b>llega</b> una flecha: 1 → 1, 2 → 4, 3 → 9, 4 → 16.</li>
+        <li><span class="lbl">Ley:</span> busca el patrón: 1² = 1, 2² = 4, 3² = 9, 4² = 16 → f(x) = x².</li>
+      </ol>
+      <div class="box warn">
+        <span class="t">El error más común</span>
+        <p>Confundir codominio con rango. Aquí <b>0, −5 y 8 pertenecen al codominio pero NO al rango</b>, porque ninguna flecha llega a ellos. El rango siempre es un subconjunto del codominio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="e5">
+  <div class="card-head">
+    <span class="badge">5</span>
+    <div>
+      <h2>La tabla incompleta de g</h2>
+      <p class="lead">Primero descubre el patrón con las parejas que sí están completas; después todo lo demás se contesta solo.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e5">Hecho</label>
+  </div>
+
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>x</th><th>−3</th><th>−1</th><th>0</th><th>2</th><th>4</th></tr></thead>
+      <tbody><tr><td><b>g(x)</b></td><td>−9</td><td>−3</td><td>0</td><td>6</td><td style="color:var(--accent);font-weight:800">___</td></tr></tbody>
+    </table>
+  </div>
+
+  <h3>a) Completa el valor faltante de g(4)</h3>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p5a" aria-expanded="false" aria-controls="p5a">Ver procedimiento</button>
+    <div class="panel" id="p5a">
+      <p>Compara cada x con su g(x): −3 → −9, −1 → −3, 0 → 0, 2 → 6. En todos los casos <b>g(x) es el triple de x</b>.</p>
+      <div class="eq">g(x) = 3x &nbsp;→&nbsp; g(4) = 3 · 4</div>
+      <div class="answer"><span class="t">Respuesta</span><p class="sol">g(4) = 12</p></div>
+    </div>
+  </div>
+
+  <h3>b) Dominio, codominio, rango y comprobación</h3>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p5b" aria-expanded="false" aria-controls="p5b">Ver respuesta</button>
+    <div class="panel" id="p5b">
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><b>Dominio:</b> {−3, −1, 0, 2, 4}</p>
+        <p><b>Rango (imagen):</b> {−9, −3, 0, 6, 12}</p>
+        <p><b>Codominio:</b> como el taller solo da una tabla y no declara un conjunto de llegada, se toma el conjunto donde viven los resultados, por ejemplo <b>ℝ</b> (o ℤ si se trabaja solo con enteros). El rango queda dentro de él.</p>
+        <p><b>Comprobación:</b> cada x del dominio aparece <b>una sola vez</b> y tiene una única imagen → sí es función.</p>
+      </div>
+      <div class="box tip">
+        <span class="t">Cómo redactarlo</span>
+        <p>«Cada elemento del dominio tiene una única imagen: g(−3) = −9, g(−1) = −3, g(0) = 0, g(2) = 6 y g(4) = 12. Ningún valor de x se repite con dos salidas distintas, por lo tanto g es una función.»</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>c) Ley de asignación explícita</h3>
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p5c" aria-expanded="false" aria-controls="p5c">Ver respuesta</button>
+    <div class="panel" id="p5c">
+      <div class="answer"><span class="t">Respuesta</span><p class="sol">g(x) = 3x</p></div>
+      <p class="small muted">Verificación con todos los datos: 3(−3) = −9 ✔ · 3(−1) = −3 ✔ · 3(0) = 0 ✔ · 3(2) = 6 ✔ · 3(4) = 12 ✔</p>
+    </div>
+  </div>
+</section>
+<section class="card" id="e6">
+  <div class="card-head">
+    <span class="badge">6</span>
+    <div>
+      <h2>Variables independiente y dependiente: completa y grafica</h2>
+      <p class="lead">En cada tabla, la letra que tú «eligues» es la independiente; la que se calcula con la fórmula es la dependiente.</p>
+    </div>
+    <label class="done-wrap"><input type="checkbox" class="done" data-key="e6">Hecho</label>
+  </div>
+
+  <h3>Tabla 1 · y = 12x + 3</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>x (independiente)</th><th>−1</th><th>0</th><th>1,5</th><th>3</th></tr></thead>
+      <tbody><tr><td><b>y (dependiente)</b></td><td style="color:var(--accent);font-weight:800">___</td><td style="color:var(--accent);font-weight:800">___</td><td style="color:var(--accent);font-weight:800">___</td><td style="color:var(--accent);font-weight:800">___</td></tr></tbody>
+    </table>
+  </div>
+
+  <h3>Tabla 2 · p = 4q − 8</h3>
+  <div class="tablewrap">
+    <table>
+      <thead><tr><th>q (independiente)</th><th>−2</th><th>0</th><th>2</th><th>5</th></tr></thead>
+      <tbody><tr><td><b>p (dependiente)</b></td><td style="color:var(--accent);font-weight:800">___</td><td style="color:var(--accent);font-weight:800">___</td><td style="color:var(--accent);font-weight:800">___</td><td style="color:var(--accent);font-weight:800">___</td></tr></tbody>
+    </table>
+  </div>
+
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p6a" aria-expanded="false" aria-controls="p6a">Ver las tablas completas y las variables</button>
+    <div class="panel" id="p6a">
+      <div class="grid2">
+        <div>
+          <p><b>y = 12x + 3</b></p>
+          <div class="tablewrap"><table>
+            <thead><tr><th>x</th><th>−1</th><th>0</th><th>1,5</th><th>3</th></tr></thead>
+            <tbody><tr><td><b>y</b></td><td>−9</td><td>3</td><td>21</td><td>39</td></tr></tbody>
+          </table></div>
+          <p class="small">12(−1)+3 = −9 · 12(0)+3 = 3 · 12(1,5)+3 = 21 · 12(3)+3 = 39</p>
+        </div>
+        <div>
+          <p><b>p = 4q − 8</b></p>
+          <div class="tablewrap"><table>
+            <thead><tr><th>q</th><th>−2</th><th>0</th><th>2</th><th>5</th></tr></thead>
+            <tbody><tr><td><b>p</b></td><td>−16</td><td>−8</td><td>0</td><td>12</td></tr></tbody>
+          </table></div>
+          <p class="small">4(−2)−8 = −16 · 4(0)−8 = −8 · 4(2)−8 = 0 · 4(5)−8 = 12</p>
+        </div>
+      </div>
+      <div class="answer">
+        <span class="t">Respuesta</span>
+        <p><b>Tabla 1:</b> independiente = <b>x</b>, dependiente = <b>y</b> (porque y = 12x + 3).</p>
+        <p><b>Tabla 2:</b> independiente = <b>q</b>, dependiente = <b>p</b> (porque p = 4q − 8).</p>
+      </div>
+      <div class="box warn">
+        <span class="t">Ojo con 1,5</span>
+        <p>12 · 1,5 = 18 (no 12 ni 1,5 · 3). Y al reemplazar un número negativo, ponlo entre paréntesis: 12(−1) + 3, para no confundir signos.</p>
+      </div>
+    </div>
+  </div>
+
+  <h3>Ubica los puntos y traza cada recta</h3>
+  <p class="small muted">Activa los botones para ver primero los puntos calculados y después la recta que los une.</p>
+
+  <div class="figure">
+    <div id="g6a"></div>
+    <p class="cap">y = 12x + 3 · Los cuatro puntos de la tabla están sobre la misma recta.</p>
+  </div>
+  <div class="figure">
+    <div id="g6b"></div>
+    <p class="cap">p = 4q − 8 · La recta corta el eje horizontal en q = 2 (donde p = 0).</p>
+  </div>
+
+  <div class="reveal">
+    <button class="btn" type="button" data-toggle="p6b" aria-expanded="false" aria-controls="p6b">Ver cómo se traza una recta a partir de una tabla</button>
+    <div class="panel" id="p6b">
+      <ol class="steps">
+        <li><span class="lbl">Ubica cada par</span> como un punto (x, y): el primer número va en el eje horizontal y el segundo en el vertical.</li>
+        <li><span class="lbl">Une los puntos</span> con una regla. Como la ley es de la forma y = mx + b, todos quedan alineados: es una <b>recta</b>.</li>
+        <li><span class="lbl">Comprueba:</span> en y = 12x + 3, al aumentar x en 1, y aumenta en 12 (la pendiente). En p = 4q − 8, al aumentar q en 1, p aumenta en 4.</li>
+      </ol>
+      <div class="box tip">
+        <span class="t">Lectura rápida de y = mx + b</span>
+        <p><b>m</b> es la pendiente (qué tanto sube) y <b>b</b> es donde la recta corta el eje vertical (x = 0). En y = 12x + 3: pendiente 12 y corte en 3 ✔. En p = 4q − 8: pendiente 4 y corte en −8 ✔.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="card" id="chuleta">
+  <div class="card-head">
+    <span class="badge">✓</span>
+    <div>
+      <h2>Chuleta final y autoevaluación</h2>
+      <p class="lead">Lo que deberías poder explicar sin mirar apuntes.</p>
+    </div>
+  </div>
+
+  <div class="eq">f: dominio → codominio &nbsp;·&nbsp; y = f(x)</div>
+
+  <ul class="clean">
+    <li><b>Función</b> = cada x del dominio tiene <b>exactamente una</b> imagen y.</li>
+    <li>Se permite: varios x → la misma y, y codominio con elementos sin usar.</li>
+    <li>No se permite: un x con dos salidas, o un x sin salida.</li>
+    <li><b>Dominio</b> = valores de entrada · <b>Ley</b> = la regla · <b>Codominio</b> = llegada declarada · <b>Rango</b> = salidas efectivas (rango ⊆ codominio).</li>
+    <li>En tablas: revisa que <b>no se repita una x con y distinta</b>.</li>
+    <li>En gráficas: <b>prueba de la línea vertical</b> (máximo un corte).</li>
+    <li><b>Independiente</b> = la que eliges (x, q) · <b>Dependiente</b> = la que se calcula (y, p).</li>
+    <li>Para graficar y = mx + b: calcula puntos con la tabla, ubícalos y únelos con una recta.</li>
+  </ul>
+
+  <div class="box warn">
+    <span class="t">Autoevaluación (marca mentalmente)</span>
+    <ul class="clean">
+      <li>¿Justifico un diagrama mirando las flechas que <b>salen</b> de la izquierda?</li>
+      <li>¿Diferencio codominio de rango con un ejemplo?</li>
+      <li>¿Detecto la x repetida en una lista de pares ordenados?</li>
+      <li>¿Aplico la prueba de la línea vertical a una circunferencia?</li>
+      <li>¿Identifico la variable dependiente leyendo la fórmula?</li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><b>Álgebra · 9° · Tercer periodo</b> — Guía de estudio del Taller No. 5 (Concepto de función y sus elementos). Complementa el taller impreso; no lo reemplaza.</p>
+  <p>Consejo: decide primero «¿es función?» en tu cuaderno y usa esta guía para comparar tu justificación, no solo tu respuesta.</p>
+</footer>
+<script>
+(function(){
+  "use strict";
+  var store = {
+    get: function(k, d){ try{ var v = localStorage.getItem(k); return v === null ? d : v; }catch(e){ return d; } },
+    set: function(k, v){ try{ localStorage.setItem(k, v); }catch(e){} }
+  };
+  var $ = function(s, r){ return (r||document).querySelector(s); };
+  var $$ = function(s, r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); };
+
+  /* ---------- TEMA ---------- */
+  var root = document.documentElement;
+  var saved = store.get("alg-fun-theme", null);
+  if(saved){ root.dataset.theme = saved; }
+  else if(window.matchMedia && matchMedia("(prefers-color-scheme: dark)").matches){ root.dataset.theme = "dark"; }
+  $("#theme").addEventListener("click", function(){
+    var next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    store.set("alg-fun-theme", next);
+  });
+
+  /* ---------- PANELES ---------- */
+  function setPanel(panel, open){
+    panel.classList.toggle("show", open);
+    var btn = document.querySelector('[data-toggle="'+panel.id+'"]');
+    if(btn){
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      if(!btn.dataset.label) btn.dataset.label = btn.textContent;
+      btn.textContent = open ? "Ocultar" : btn.dataset.label;
+    }
+  }
+  document.addEventListener("click", function(e){
+    var b = e.target.closest("[data-toggle]");
+    if(!b) return;
+    var p = document.getElementById(b.dataset.toggle);
+    if(p) setPanel(p, !p.classList.contains("show"));
+  });
+  $("#showAll").addEventListener("click", function(){
+    $$(".panel").forEach(function(p){ setPanel(p, true); });
+    Object.keys(plots).forEach(function(k){
+      var g = plots[k].layers.vline;
+      if(g){ g.style.display = ""; }
+    });
+    $$("[data-layer-btn]").forEach(function(b){ b.classList.add("on"); });
+  });
+  $("#hideAll").addEventListener("click", function(){
+    $$(".panel").forEach(function(p){ setPanel(p, false); });
+  });
+
+  /* ---------- QUIZ ---------- */
+  $$(".quiz").forEach(function(quiz){
+    var block = quiz.closest(".quizblock");
+    quiz.addEventListener("click", function(e){
+      var opt = e.target.closest(".opt");
+      if(!opt) return;
+      var ok = opt.dataset.ok === "1";
+      $$(".opt", quiz).forEach(function(o){
+        o.classList.remove("correct","wrong");
+        if(o.dataset.ok === "1") o.classList.add("correct");
+      });
+      if(!ok) opt.classList.add("wrong");
+      block.dataset.state = ok ? "ok" : "no";
+    });
+  });
+
+  /* ---------- BOTONES DE ELECCIÓN ---------- */
+  $$(".pick").forEach(function(pick){
+    var note = pick.nextElementSibling;
+    pick.addEventListener("click", function(e){
+      var b = e.target.closest("button");
+      if(!b) return;
+      var val = b.dataset.v !== undefined ? b.dataset.v : b.dataset.c;
+      var ok = val === pick.dataset.answer;
+      $$("button", pick).forEach(function(x){ x.classList.remove("ok","bad"); });
+      b.classList.add(ok ? "ok" : "bad");
+      note.className = "pick-note " + (ok ? "ok-txt" : "no-txt");
+      note.textContent = ok ? (pick.dataset.okmsg || "¡Correcto!") : (pick.dataset.nomsg || "Todavía no. Vuelve a aplicar la regla de oro.");
+    });
+  });
+
+  /* ---------- PROGRESO ---------- */
+  var boxes = $$(".done");
+  function updProgress(){
+    var n = boxes.filter(function(b){ return b.checked; }).length;
+    $("#pnum").textContent = n + "/" + boxes.length;
+    $("#pbar").style.width = (boxes.length ? (n / boxes.length * 100) : 0) + "%";
+  }
+  boxes.forEach(function(b){
+    var key = "alg-fun-prog-" + b.dataset.key;
+    b.checked = store.get(key, "0") === "1";
+    b.addEventListener("change", function(){ store.set(key, b.checked ? "1" : "0"); updProgress(); });
+  });
+  updProgress();
+
+  /* ---------- SVG ---------- */
+  var NS = "http://www.w3.org/2000/svg";
+  function tag(name, attrs, parent){
+    var n = document.createElementNS(NS, name);
+    if(attrs){ for(var k in attrs){ if(attrs[k] !== undefined && attrs[k] !== null) n.setAttribute(k, attrs[k]); } }
+    if(parent) parent.appendChild(n);
+    return n;
+  }
+  function fmt(n){ return Number.isInteger(n) ? String(n) : String(Math.round(n * 100) / 100); }
+
+  /* ---------- DIAGRAMAS DE FLECHAS ---------- */
+  function arrowDiagram(host, cfg){
+    var W = cfg.w || 420, H = cfg.h || 280;
+    var leftX = 78, rightX = W - 78;
+    var n = Math.max(cfg.left.length, cfg.right.length);
+    var top = 54, bottom = H - 26;
+    var gap = (bottom - top) / Math.max(n - 1, 1);
+    var ly = function(i){ return top + i * gap; };
+    var ry = function(j){ return top + j * gap; };
+    var svg = tag("svg", { viewBox: "0 0 " + W + " " + H, "class": "diagram", role: "img", "aria-label": cfg.title }, host);
+    var id = "arrw-" + cfg.id;
+    var defs = tag("defs", {}, svg);
+    var mk = tag("marker", { id: id, markerWidth: 9, markerHeight: 9, refX: 8, refY: 4.5, orient: "auto" }, defs);
+    tag("path", { d: "M0,0 L9,4.5 L0,9 z", fill: "#8b2fb8" }, mk);
+    tag("text", { x: W / 2, y: 26, "class": "dtitle", "text-anchor": "middle" }, svg).textContent = cfg.title;
+    cfg.left.forEach(function(s, i){
+      tag("text", { x: leftX - 16, y: ly(i) + 5, "class": "dnode dleft", "text-anchor": "end" }, svg).textContent = s;
+    });
+    cfg.right.forEach(function(s, j){
+      tag("text", { x: rightX + 16, y: ry(j) + 5, "class": "dnode dright", "text-anchor": "start" }, svg).textContent = s;
+    });
+    cfg.arrows.forEach(function(a){
+      tag("path", { d: "M" + (leftX + 6) + "," + ly(a[0]) + " L" + (rightX - 18) + "," + ry(a[1]), "class": "darrow", "marker-end": "url(#" + id + ")" }, svg);
+    });
+    return svg;
+  }
+
+  arrowDiagram($("#d-r1"), { id: "r1", title: "R₁", left: ["α","β","γ"], right: ["p","q","r"], arrows: [[0,0],[1,1],[1,2],[2,2]] });
+  arrowDiagram($("#d-r2"), { id: "r2", title: "R₂", left: ["a","b","c"], right: ["m","n","o","p"], arrows: [[0,0],[1,1],[2,2]] });
+  arrowDiagram($("#d-r3"), { id: "r3", title: "R₃", left: ["x","y","z","w","v"], right: ["α","β","γ"], arrows: [[0,1],[1,0],[2,1],[3,2],[4,1]] });
+  arrowDiagram($("#d-r4"), { id: "r4", title: "R₄", left: ["1","2","3","4","5"], right: ["0","3","5","6"], arrows: [[0,0],[1,1],[2,2],[3,3]] });
+  arrowDiagram($("#d-e4"), { id: "e4", w: 500, h: 340, title: "Diagrama de flechas", left: ["1","2","3","4"], right: ["1","4","9","16","0","−5","8"], arrows: [[0,0],[1,1],[2,2],[3,3]] });
+
+  /* ---------- GRÁFICAS ---------- */
+  function drawPlot(host, cfg){
+    var W = cfg.w || 620, H = cfg.h || 380;
+    var pad = Object.assign({ l: 62, r: 34, t: 38, b: 50 }, cfg.pad || {});
+    var xmin = cfg.xmin === undefined ? 0 : cfg.xmin, xmax = cfg.xmax;
+    var ymin = cfg.ymin === undefined ? 0 : cfg.ymin, ymax = cfg.ymax;
+    var iw = W - pad.l - pad.r, ih = H - pad.t - pad.b;
+    var X = function(x){ return pad.l + (x - xmin) / (xmax - xmin) * iw; };
+    var Y = function(y){ return pad.t + ih - (y - ymin) / (ymax - ymin) * ih; };
+
+    var svg = tag("svg", { viewBox: "0 0 " + W + " " + H, "class": "plot", role: "img", "aria-label": cfg.title || "gráfica" }, host);
+    (cfg.xticks || []).forEach(function(t){
+      tag("line", { x1: X(t), y1: pad.t, x2: X(t), y2: pad.t + ih, "class": "grid" }, svg);
+      tag("text", { x: X(t), y: pad.t + ih + 19, "class": "tick", "text-anchor": "middle" }, svg).textContent = fmt(t);
+    });
+    (cfg.yticks || []).forEach(function(t){
+      tag("line", { x1: pad.l, y1: Y(t), x2: pad.l + iw, y2: Y(t), "class": "grid" }, svg);
+      tag("text", { x: pad.l - 11, y: Y(t) + 4, "class": "tick", "text-anchor": "end" }, svg).textContent = fmt(t);
+    });
+    tag("line", { x1: pad.l, y1: pad.t + ih, x2: pad.l + iw, y2: pad.t + ih, "class": "axis" }, svg);
+    tag("line", { x1: pad.l, y1: pad.t, x2: pad.l, y2: pad.t + ih, "class": "axis" }, svg);
+    tag("text", { x: pad.l + iw / 2, y: H - 12, "class": "lbl", "text-anchor": "middle" }, svg).textContent = cfg.xlabel || "";
+    var yl = tag("text", { x: 15, y: pad.t + ih / 2, "class": "lbl", "text-anchor": "middle", transform: "rotate(-90 15 " + (pad.t + ih / 2) + ")" }, svg);
+    yl.textContent = cfg.ylabel || "";
+    if(cfg.title){ tag("text", { x: pad.l, y: 22, "class": "ptitle" }, svg).textContent = cfg.title; }
+
+    var layers = {};
+    function layer(name){
+      if(!name) return svg;
+      if(!layers[name]) layers[name] = tag("g", { "data-layer": name }, svg);
+      return layers[name];
+    }
+    (cfg.series || []).forEach(function(s){
+      var g = layer(s.layer);
+      if(s.type === "fn"){
+        var N = s.samples || 140, d = "";
+        for(var i = 0; i <= N; i++){
+          var xx = s.from + (s.to - s.from) * i / N;
+          d += (i ? " L" : "M") + X(xx) + "," + Y(s.f(xx));
+        }
+        tag("path", { d: d, fill: "none", stroke: s.color, "stroke-width": s.width || 3, "stroke-linecap": "round" }, g);
+      } else if(s.type === "area"){
+        var a = "M" + s.pts.map(function(p){ return X(p[0]) + "," + Y(p[1]); }).join(" L") + " Z";
+        tag("path", { d: a, fill: s.fill || "rgba(99,102,241,.16)", stroke: "none" }, g);
+      } else if(s.type === "poly"){
+        var dd = "M" + s.pts.map(function(p){ return X(p[0]) + "," + Y(p[1]); }).join(" L");
+        tag("path", { d: dd, fill: "none", stroke: s.color, "stroke-width": s.width || 3, "stroke-linecap": "round" }, g);
+      } else if(s.type === "vline"){
+        tag("line", { x1: X(s.x), y1: pad.t, x2: X(s.x), y2: pad.t + ih, "class": "vline" }, g);
+      } else if(s.type === "dots"){
+        s.pts.forEach(function(p){
+          var px = Array.isArray(p) ? p[0] : p.x, py = Array.isArray(p) ? p[1] : p.y;
+          tag("circle", { cx: X(px), cy: Y(py), r: s.r || 5.5, fill: s.color || "#6366f1", stroke: "#fff", "stroke-width": 2 }, g);
+          if(p.label){
+            tag("text", { x: X(px) + (p.dx === undefined ? 9 : p.dx), y: Y(py) + (p.dy === undefined ? -11 : p.dy), "class": "dlbl" }, g).textContent = p.label;
+          }
+        });
+      } else if(s.type === "text"){
+        tag("text", { x: X(s.x), y: Y(s.y), "class": "dlbl", "text-anchor": s.anchor || "start" }, g).textContent = s.text;
+      }
+    });
+    (cfg.hidden || []).forEach(function(name){ if(layers[name]) layers[name].style.display = "none"; });
+    return { svg: svg, layers: layers };
+  }
+
+  function layerChips(host, plot, defs){
+    var bar = document.createElement("div");
+    bar.className = "plot-ctrl";
+    defs.forEach(function(d){
+      var b = document.createElement("button");
+      b.type = "button";
+      b.className = "chip" + (d.on ? " on" : "");
+      b.textContent = d.label;
+      b.setAttribute("aria-pressed", d.on ? "true" : "false");
+      b.addEventListener("click", function(){
+        var g = plot.layers[d.layer];
+        if(!g) return;
+        var visible = g.style.display !== "none";
+        g.style.display = visible ? "none" : "";
+        b.classList.toggle("on", !visible);
+        b.setAttribute("aria-pressed", (!visible) ? "true" : "false");
+      });
+      bar.appendChild(b);
+    });
+    host.parentNode.insertBefore(bar, host.nextSibling);
+  }
+
+  var plots = {};
+
+  plots.g3a = drawPlot($("#g3a"), {
+    w: 420, h: 320, xmin: -5, xmax: 5, ymin: -2, ymax: 4,
+    xticks: [-4,-2,0,2,4], yticks: [-1,0,1,2,3],
+    xlabel: "x", ylabel: "y", title: "Gráfica A",
+    series: [
+      { type: "fn", color: "#f59e0b", from: -5, to: 5, f: function(x){ return 0.5 * x + 1; } },
+      { type: "vline", layer: "vline", x: 0 },
+      { type: "dots", layer: "vline", color: "#e11d48", pts: [{ x: 0, y: 1 }] },
+      { type: "text", layer: "vline", x: 0.25, y: 1.6, text: "1 corte → función" }
+    ],
+    hidden: ["vline"]
+  });
+
+  plots.g3b = drawPlot($("#g3b"), {
+    w: 420, h: 320, xmin: -3.5, xmax: 3.5, ymin: -2.5, ymax: 2.5,
+    xticks: [-3,-2,-1,0,1,2,3], yticks: [-2,-1,0,1,2],
+    xlabel: "x", ylabel: "y", title: "Gráfica B",
+    series: [
+      { type: "fn", color: "#f59e0b", from: -2, to: 2, f: function(x){ return Math.sqrt(Math.max(0, 4 - x * x)); } },
+      { type: "fn", color: "#f59e0b", from: -2, to: 2, f: function(x){ return -Math.sqrt(Math.max(0, 4 - x * x)); } },
+      { type: "vline", layer: "vline", x: 0 },
+      { type: "dots", layer: "vline", color: "#e11d48", pts: [
+        { x: 0, y: 2, label: "y = 2", dx: 9, dy: -9 },
+        { x: 0, y: -2, label: "y = −2", dx: 9, dy: 18 }
+      ]},
+      { type: "text", layer: "vline", x: 0.25, y: 0.2, text: "2 cortes → NO es función" }
+    ],
+    hidden: ["vline"]
+  });
+
+  $$("[data-layer-btn]").forEach(function(b){
+    b.addEventListener("click", function(){
+      var p = plots[b.dataset.layerBtn];
+      if(!p) return;
+      var g = p.layers.vline;
+      if(!g) return;
+      var visible = g.style.display !== "none";
+      g.style.display = visible ? "none" : "";
+      b.classList.toggle("on", !visible);
+      b.setAttribute("aria-pressed", (!visible) ? "true" : "false");
+    });
+  });
+
+  var p6a = drawPlot($("#g6a"), {
+    w: 620, h: 380, xmin: -2, xmax: 4, ymin: -25, ymax: 55,
+    xticks: [-2,-1,0,1,2,3,4], yticks: [-20,-10,0,10,20,30,40,50],
+    xlabel: "x", ylabel: "y", title: "y = 12x + 3",
+    series: [
+      { type: "fn", layer: "ln", color: "#6366f1", from: -2, to: 4, f: function(x){ return 12 * x + 3; } },
+      { type: "dots", layer: "pt", color: "#14b8a6", pts: [
+        { x: -1, y: -9, label: "(−1, −9)" },
+        { x: 0, y: 3, label: "(0, 3)" },
+        { x: 1.5, y: 21, label: "(1,5, 21)", dx: -34, dy: -12 },
+        { x: 3, y: 39, label: "(3, 39)", dx: -52, dy: -12 }
+      ]}
+    ],
+    hidden: ["ln"]
+  });
+  layerChips($("#g6a"), p6a, [
+    { layer: "pt", label: "Mostrar puntos", on: true },
+    { layer: "ln", label: "Mostrar recta", on: false }
+  ]);
+
+  var p6b = drawPlot($("#g6b"), {
+    w: 620, h: 380, xmin: -3, xmax: 6, ymin: -22, ymax: 18,
+    xticks: [-3,-2,-1,0,1,2,3,4,5,6], yticks: [-20,-15,-10,-5,0,5,10,15],
+    xlabel: "q", ylabel: "p", title: "p = 4q − 8",
+    series: [
+      { type: "fn", layer: "ln", color: "#6366f1", from: -3, to: 6, f: function(q){ return 4 * q - 8; } },
+      { type: "dots", layer: "pt", color: "#14b8a6", pts: [
+        { x: -2, y: -16, label: "(−2, −16)" },
+        { x: 0, y: -8, label: "(0, −8)" },
+        { x: 2, y: 0, label: "(2, 0)", dy: -12 },
+        { x: 5, y: 12, label: "(5, 12)", dx: -46, dy: -12 }
+      ]}
+    ],
+    hidden: ["ln"]
+  });
+  layerChips($("#g6b"), p6b, [
+    { layer: "pt", label: "Mostrar puntos", on: true },
+    { layer: "ln", label: "Mostrar recta", on: false }
+  ]);
+})();
+</script>
+</body>
+</html>

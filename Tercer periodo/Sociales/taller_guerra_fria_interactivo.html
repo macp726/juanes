@@ -1,0 +1,714 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taller Interactivo: Guerra Fría (Grado 9°)</title>
+  <style>
+    :root {
+      --bg: #0b1220;
+      --panel: #111a2b;
+      --panel-2: #16223a;
+      --text: #e8edf7;
+      --muted: #b6c0d6;
+      --accent: #59b3ff;
+      --ok: #56d8a1;
+      --warn: #ffd166;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: radial-gradient(circle at 20% 20%, #15213b 0, #0b1220 40%, #060b15 100%);
+      line-height: 1.5;
+    }
+
+    .wrap {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+      padding: 24px 0 48px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, rgba(89,179,255,.25), rgba(86,216,161,.2));
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 18px;
+      padding: 20px;
+      margin-bottom: 18px;
+      animation: fadeIn .7s ease;
+    }
+
+    .hero h1 { margin: 0 0 6px; font-size: clamp(1.4rem, 3vw, 2rem); }
+    .hero p { margin: 0; color: var(--muted); }
+
+    .nav {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+      margin: 14px 0 22px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--text);
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 10px;
+      padding: 10px 12px;
+      text-align: center;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .nav a:hover { transform: translateY(-2px); border-color: var(--accent); }
+
+    .card {
+      background: var(--panel);
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 14px;
+      padding: 16px;
+      margin: 14px 0;
+      animation: fadeInUp .6s ease;
+    }
+
+    h2 { margin-top: 0; font-size: 1.3rem; }
+    h3 { margin-bottom: .3rem; }
+    .muted { color: var(--muted); }
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .pill {
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 6px;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      padding: 5px 10px;
+      background: var(--panel-2);
+      font-size: .9rem;
+    }
+
+    textarea, input[type="text"] {
+      width: 100%;
+      background: #0a1020;
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      padding: 10px;
+      font-size: .95rem;
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    button {
+      background: linear-gradient(90deg, #59b3ff, #4ae0b2);
+      border: 0;
+      color: #041224;
+      font-weight: 700;
+      padding: 9px 14px;
+      border-radius: 9px;
+      cursor: pointer;
+      margin-top: 8px;
+    }
+
+    button:hover { filter: brightness(1.05); }
+
+    .flip-wrap {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .flip {
+      min-height: 140px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .flip-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      transition: transform .55s;
+    }
+    .flip.active .flip-inner { transform: rotateY(180deg); }
+    .face {
+      position: absolute;
+      inset: 0;
+      border-radius: 10px;
+      border: 1px solid rgba(255,255,255,.15);
+      padding: 10px;
+      backface-visibility: hidden;
+      background: #0f1830;
+    }
+    .back {
+      transform: rotateY(180deg);
+      background: #132243;
+    }
+
+    .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px;
+    }
+    .event {
+      border-left: 4px solid var(--accent);
+      background: #0f1830;
+      border-radius: 10px;
+      padding: 10px;
+    }
+    .compare-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 12px;
+    }
+    .compare-card {
+      background: #0f1830;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 10px;
+      padding: 12px;
+    }
+    .compare-card h3 { margin-top: 0; }
+    .korea-actions {
+      margin-top: 10px;
+      display: grid;
+      gap: 8px;
+    }
+    .korea-actions label {
+      display: block;
+      background: #0f1830;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 8px;
+      padding: 8px;
+    }
+    .korea-map-wrap {
+      display: grid;
+      grid-template-columns: minmax(260px, 340px) 1fr;
+      gap: 12px;
+      align-items: start;
+    }
+    .korea-map {
+      background: #0f1830;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 14px;
+      padding: 12px;
+      min-height: 390px;
+      position: relative;
+      overflow: hidden;
+    }
+    .korea-map::before {
+      content: "";
+      position: absolute;
+      inset: 16px auto 16px 50%;
+      width: 2px;
+      background: linear-gradient(to bottom, transparent, rgba(255,255,255,.25), transparent);
+      transform: translateX(-50%);
+      pointer-events: none;
+    }
+    .korea-zone {
+      width: 84%;
+      margin: 0 auto;
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 12px;
+      color: #fff;
+      font-weight: 700;
+      padding: 12px 10px;
+      display: block;
+      cursor: pointer;
+      text-align: center;
+      transition: transform .2s ease, filter .2s ease, box-shadow .2s ease;
+    }
+    .korea-zone:hover { transform: translateY(-2px); filter: brightness(1.07); }
+    .korea-zone.active { box-shadow: 0 0 0 3px rgba(89,179,255,.35); }
+    .zone-north {
+      margin-top: 16px;
+      height: 140px;
+      background: linear-gradient(180deg, #cb3d67, #9f2247);
+    }
+    .zone-dmz {
+      margin-top: 10px;
+      height: 52px;
+      background: repeating-linear-gradient(
+        135deg,
+        #ffd166 0,
+        #ffd166 10px,
+        #e6b84f 10px,
+        #e6b84f 20px
+      );
+      color: #202020;
+    }
+    .zone-south {
+      margin-top: 10px;
+      height: 140px;
+      background: linear-gradient(180deg, #3f82ff, #2b5fb6);
+    }
+    .korea-legend {
+      margin-top: 10px;
+      font-size: .88rem;
+      color: var(--muted);
+      text-align: center;
+    }
+    .korea-panel {
+      background: #0f1830;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 12px;
+      padding: 12px;
+      min-height: 190px;
+    }
+    .korea-panel h4 {
+      margin: 0 0 6px;
+      color: var(--accent);
+    }
+    @media (max-width: 820px) {
+      .korea-map-wrap { grid-template-columns: 1fr; }
+    }
+
+    .acrostic {
+      display: grid;
+      gap: 8px;
+      max-width: 720px;
+    }
+    .row {
+      display: grid;
+      grid-template-columns: 44px 1fr;
+      gap: 8px;
+      align-items: center;
+    }
+    .letter {
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-align: center;
+      padding: 8px 0;
+      border-radius: 8px;
+      background: #10203e;
+      border: 1px solid rgba(255,255,255,.2);
+    }
+
+    .map-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 10px;
+    }
+    .country {
+      background: #0f1830;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 10px;
+      padding: 10px;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+    .country:hover {
+      transform: translateY(-2px);
+      border-color: var(--ok);
+    }
+    .embed {
+      width: 100%;
+      aspect-ratio: 16/9;
+      border: 0;
+      border-radius: 10px;
+    }
+
+    .footer-note {
+      color: var(--muted);
+      font-size: .9rem;
+      margin-top: 18px;
+      text-align: center;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>Taller Interactivo de Ciencias Sociales: Guerra Fría (1946-1991)</h1>
+      <p>
+        Grado 9° · Objetivo: reconocer causas, características, hechos clave y consecuencias de la Guerra Fría de forma dinámica.
+      </p>
+    </section>
+
+    <nav class="nav">
+      <a href="#intro">1. Contexto general</a>
+      <a href="#influencia">2. Influencia política</a>
+      <a href="#elementos">3. Elementos característicos</a>
+      <a href="#sopa">4. Sopa de letras</a>
+      <a href="#acrostico">5. Acróstico</a>
+      <a href="#mapa">6. Mapa de Europa</a>
+      <a href="#korea">7. Corea del Norte y del Sur</a>
+    </nav>
+
+    <section id="intro" class="card">
+      <h2>1) Contexto general: ¿qué fue la Guerra Fría?</h2>
+      <p>
+        Fue un conflicto político, económico, ideológico y tecnológico entre
+        <span class="pill">Estados Unidos (bloque capitalista)</span> y
+        <span class="pill">URSS (bloque socialista)</span>,
+        sin enfrentamiento militar directo entre ambas potencias.
+      </p>
+      <div class="grid-2">
+        <div>
+          <h3>Causas principales</h3>
+          <ul>
+            <li>Choque ideológico: capitalismo vs socialismo.</li>
+            <li>Vacío de poder en Europa tras la Segunda Guerra Mundial.</li>
+            <li>Carrera armamentista y desconfianza mutua.</li>
+            <li>Interés por expandir áreas de influencia.</li>
+          </ul>
+        </div>
+        <div>
+          <h3>Consecuencias principales</h3>
+          <ul>
+            <li>División del mundo en dos bloques.</li>
+            <li>Guerras indirectas (Corea, Vietnam, Afganistán).</li>
+            <li>Carrera espacial y avances tecnológicos.</li>
+            <li>Caída del Muro de Berlín (1989) y fin de la URSS (1991).</li>
+          </ul>
+        </div>
+      </div>
+      <h3>Video sugerido</h3>
+      <iframe
+        class="embed"
+        src="https://www.youtube.com/embed/Pt8_vXC9DEM"
+        title="Video Guerra Fría resumen"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </section>
+
+    <section id="influencia" class="card">
+      <h2>2) Influencia política en la gestación de la Guerra Fría</h2>
+      <p class="muted">
+        En el taller te piden argumentar desde imágenes. Acá tenés una guía para estructurar tu respuesta:
+      </p>
+      <ol>
+        <li><strong>Identificá símbolos</strong> (banderas, líderes, armas, propaganda).</li>
+        <li><strong>Relacioná el símbolo</strong> con un interés político (control, expansión, poder).</li>
+        <li><strong>Conectá</strong> con una consecuencia (tensión, alianzas, miedo nuclear).</li>
+      </ol>
+      <p><strong>Plantilla rápida:</strong> “La imagen muestra ___, lo que representa ___ porque ___; esto influyó en la Guerra Fría al ___”.</p>
+      <label for="argumento">Escribí tu argumento:</label>
+      <textarea id="argumento" placeholder="Ejemplo: La imagen muestra propaganda anticomunista..."></textarea>
+      <button type="button" id="btnGuardar">Guardar respuesta en pantalla</button>
+      <p id="estadoGuardado" class="muted" aria-live="polite"></p>
+      <h3>Video sugerido</h3>
+      <iframe
+        class="embed"
+        src="https://www.youtube.com/embed/EXijvhBQ-u8"
+        title="Video origen Guerra Fría"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </section>
+
+    <section id="elementos" class="card">
+      <h2>3) Elementos característicos (tarjetas interactivas)</h2>
+      <p class="muted">Hacé clic en cada tarjeta para ver la definición.</p>
+      <div class="flip-wrap" id="flipWrap">
+        <div class="flip">
+          <div class="flip-inner">
+            <div class="face">Bipolaridad mundial</div>
+            <div class="face back">División del mundo en dos bloques: EE. UU. y URSS.</div>
+          </div>
+        </div>
+        <div class="flip">
+          <div class="flip-inner">
+            <div class="face">Carrera armamentista</div>
+            <div class="face back">Competencia por acumular armas, especialmente nucleares.</div>
+          </div>
+        </div>
+        <div class="flip">
+          <div class="flip-inner">
+            <div class="face">Carrera espacial</div>
+            <div class="face back">Competencia científica: satélites, viajes espaciales y prestigio global.</div>
+          </div>
+        </div>
+        <div class="flip">
+          <div class="flip-inner">
+            <div class="face">Propaganda ideológica</div>
+            <div class="face back">Mensajes para convencer a la población y desacreditar al bloque rival.</div>
+          </div>
+        </div>
+        <div class="flip">
+          <div class="flip-inner">
+            <div class="face">Guerras indirectas</div>
+            <div class="face back">Conflictos locales apoyados por las superpotencias sin combate directo entre ellas.</div>
+          </div>
+        </div>
+      </div>
+      <h3>Video sugerido</h3>
+      <iframe
+        class="embed"
+        src="https://www.youtube.com/embed/RRAS5tMrV4c"
+        title="Video características Guerra Fría"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </section>
+
+    <section id="sopa" class="card">
+      <h2>4) Sopa de letras: símbolo característico por vocablo</h2>
+      <p>
+        Cuando encuentres una palabra, asociá un símbolo:
+      </p>
+      <p>
+        <span class="pill">OTAN → escudo/alianza militar</span>
+        <span class="pill">URSS → hoz y martillo</span>
+        <span class="pill">EEUU → bandera estadounidense</span>
+        <span class="pill">MURO → muro de Berlín</span>
+        <span class="pill">NUCLEAR → hongo atómico</span>
+      </p>
+      <label for="simboloTexto">Escribí tu símbolo/idea por cada palabra encontrada:</label>
+      <textarea id="simboloTexto" placeholder="OTAN: alianza militar occidental..."></textarea>
+      <h3>Video sugerido</h3>
+      <iframe
+        class="embed"
+        src="https://www.youtube.com/embed/OqNf_GmsERg"
+        title="Video OTAN y Pacto de Varsovia"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </section>
+
+    <section id="acrostico" class="card">
+      <h2>5) Acróstico: “ESTADOS UNIDOS Y LA URSS”</h2>
+      <p class="muted">Completá con frases coherentes relacionadas con la Guerra Fría.</p>
+      <div class="acrostic" id="acrostic"></div>
+      <button type="button" id="btnEjemplo">Autocompletar ejemplo</button>
+      <h3>Video sugerido</h3>
+      <iframe
+        class="embed"
+        src="https://www.youtube.com/embed/sQxT-oKkuko"
+        title="Video EEUU y URSS"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </section>
+
+    <section id="mapa" class="card">
+      <h2>6) Mapa de Europa: ubicar hechos históricos</h2>
+      <p class="muted">Usá esta guía para ubicar eventos en países clave.</p>
+      <div class="map-grid">
+        <article class="country">
+          <h3>Alemania (Berlín)</h3>
+          <p>Muro de Berlín (1961-1989): símbolo de la división ideológica en Europa.</p>
+        </article>
+        <article class="country">
+          <h3>Checoslovaquia</h3>
+          <p>Primavera de Praga (1968): intento de reforma frenado por la URSS.</p>
+        </article>
+        <article class="country">
+          <h3>Hungría</h3>
+          <p>Levantamiento de 1956: protesta contra el control soviético.</p>
+        </article>
+        <article class="country">
+          <h3>Polonia</h3>
+          <p>Movimiento Solidaridad (década de 1980): presión social contra el bloque soviético.</p>
+        </article>
+      </div>
+      <h3>Línea de tiempo mínima</h3>
+      <div class="timeline">
+        <div class="event"><strong>1947</strong><br />Doctrina Truman y Plan Marshall.</div>
+        <div class="event"><strong>1949</strong><br />Creación de la OTAN.</div>
+        <div class="event"><strong>1961</strong><br />Construcción del Muro de Berlín.</div>
+        <div class="event"><strong>1962</strong><br />Crisis de los misiles en Cuba.</div>
+        <div class="event"><strong>1989</strong><br />Caída del Muro de Berlín.</div>
+        <div class="event"><strong>1991</strong><br />Disolución de la URSS.</div>
+      </div>
+      <h3>Video sugerido</h3>
+      <iframe
+        class="embed"
+        src="https://www.youtube.com/embed/9I4_BPeH7vo"
+        title="Video caída del muro de Berlín"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </section>
+
+    <section id="korea" class="card">
+      <h2>7) Corea del Norte y Corea del Sur: expansión del tema</h2>
+      <p>
+        Este caso es uno de los ejemplos más claros de la Guerra Fría en Asia: la península de Corea quedó dividida
+        en dos Estados con modelos opuestos y apoyo de potencias rivales.
+      </p>
+      <div class="compare-grid">
+        <article class="compare-card">
+          <h3>Corea del Norte (RPDC)</h3>
+          <ul>
+            <li>Modelo político: partido único, régimen autoritario.</li>
+            <li>Aliados históricos: URSS y luego fuerte vínculo con China.</li>
+            <li>Economía: planificación centralizada.</li>
+            <li>Enfoque militar alto, con desarrollo nuclear en décadas posteriores.</li>
+            <li>Capital: Pionyang.</li>
+          </ul>
+        </article>
+        <article class="compare-card">
+          <h3>Corea del Sur (República de Corea)</h3>
+          <ul>
+            <li>Modelo político: hoy democracia representativa.</li>
+            <li>Aliado principal: Estados Unidos.</li>
+            <li>Economía: mercado, industrialización acelerada desde los años 60.</li>
+            <li>Integración global en tecnología, comercio y cultura.</li>
+            <li>Capital: Seúl.</li>
+          </ul>
+        </article>
+      </div>
+
+      <h3>Línea de tiempo clave (Corea y Guerra Fría)</h3>
+      <div class="timeline">
+        <div class="event"><strong>1945</strong><br />División en el paralelo 38 tras la Segunda Guerra Mundial.</div>
+        <div class="event"><strong>1948</strong><br />Se crean dos Estados: Corea del Norte y Corea del Sur.</div>
+        <div class="event"><strong>1950-1953</strong><br />Guerra de Corea: conflicto armado entre ambos con apoyo internacional.</div>
+        <div class="event"><strong>1953</strong><br />Armisticio: termina la guerra activa, pero no un tratado de paz definitivo.</div>
+        <div class="event"><strong>Actualidad</strong><br />La frontera (DMZ) sigue siendo una zona de fuerte tensión.</div>
+      </div>
+
+      <h3>Mapa visual de la península de Corea (interactivo)</h3>
+      <p class="muted">Hacé clic sobre cada zona para ver su explicación.</p>
+      <div class="korea-map-wrap">
+        <div class="korea-map" role="img" aria-label="Mapa esquemático de Corea del Norte, DMZ y Corea del Sur">
+          <button class="korea-zone zone-north active" data-zone="north" type="button">COREA DEL NORTE</button>
+          <button class="korea-zone zone-dmz" data-zone="dmz" type="button">DMZ (frontera militarizada)</button>
+          <button class="korea-zone zone-south" data-zone="south" type="button">COREA DEL SUR</button>
+          <p class="korea-legend">Esquema pedagógico (no es un mapa geográfico a escala).</p>
+        </div>
+        <aside class="korea-panel" id="koreaPanel">
+          <h4>Corea del Norte</h4>
+          <p>
+            Se consolidó bajo un modelo socialista de partido único, con apoyo inicial soviético y luego
+            fuerte respaldo chino. Priorizó seguridad, control político interno y gasto militar.
+          </p>
+        </aside>
+      </div>
+
+      <h3>Actividad rápida: verdadero/falso</h3>
+      <div class="korea-actions">
+        <label><input type="checkbox" data-correct="true" /> La Guerra de Corea fue un conflicto indirecto dentro de la lógica de la Guerra Fría.</label>
+        <label><input type="checkbox" data-correct="false" /> Corea del Norte y Corea del Sur firmaron un tratado de paz definitivo en 1953.</label>
+        <label><input type="checkbox" data-correct="true" /> Corea del Sur recibió fuerte apoyo de Estados Unidos.</label>
+        <label><input type="checkbox" data-correct="true" /> La división coreana muestra la tensión entre bloques ideológicos.</label>
+      </div>
+      <button type="button" id="btnCorea">Evaluar respuestas</button>
+      <p id="resultadoCorea" class="muted" aria-live="polite"></p>
+
+      <h3>Video sugerido (corto y didáctico para niños, ~8 min)</h3>
+      <iframe
+        class="embed"
+        src="https://www.youtube.com/embed/1wve7tGKI78"
+        title="Video infantil sobre Corea del Norte y Corea del Sur"
+        referrerpolicy="strict-origin-when-cross-origin"
+        allowfullscreen></iframe>
+    </section>
+
+    <p class="footer-note">
+      Importante: si abrís este archivo como <code>file://</code>, YouTube puede mostrar "Error 153". Abrilo desde un servidor local, por ejemplo:
+      <code>python3 -m http.server 8000</code> y luego entrá a <code>http://localhost:8000/taller_guerra_fria_interactivo.html</code>.
+    </p>
+  </div>
+
+  <script>
+    const flips = document.querySelectorAll(".flip");
+    flips.forEach((card) => {
+      card.addEventListener("click", () => card.classList.toggle("active"));
+    });
+
+    const btnGuardar = document.getElementById("btnGuardar");
+    const estadoGuardado = document.getElementById("estadoGuardado");
+    const argumento = document.getElementById("argumento");
+    btnGuardar.addEventListener("click", () => {
+      localStorage.setItem("respuestaInfluencia", argumento.value.trim());
+      estadoGuardado.textContent = "Respuesta guardada localmente en este navegador.";
+    });
+
+    const saved = localStorage.getItem("respuestaInfluencia");
+    if (saved) {
+      argumento.value = saved;
+      estadoGuardado.textContent = "Se restauró una respuesta guardada previamente.";
+    }
+
+    const phrase = "ESTADOSUNIDOSYLAURSS";
+    const container = document.getElementById("acrostic");
+    const acrosticInputs = [];
+    for (const ch of phrase) {
+      const row = document.createElement("div");
+      row.className = "row";
+      const letter = document.createElement("div");
+      letter.className = "letter";
+      letter.textContent = ch;
+      const input = document.createElement("input");
+      input.type = "text";
+      input.placeholder = `Frase que comience con "${ch}"`;
+      acrosticInputs.push(input);
+      row.append(letter, input);
+      container.appendChild(row);
+    }
+
+    const ejemplo = [
+      "Enfrentamiento ideológico global.",
+      "Sistema de bloques enfrentados.",
+      "Tensión constante entre potencias.",
+      "Avances tecnológicos acelerados.",
+      "Disuasión nuclear como estrategia.",
+      "Organizaciones militares rivales.",
+      "Sospecha política permanente.",
+      "Unidad occidental contra el comunismo.",
+      "Naciones divididas por ideología.",
+      "Intervenciones indirectas en otros países.",
+      "Doctrinas de contención mutua.",
+      "Objetivo: ganar influencia mundial.",
+      "Separación de Alemania en dos.",
+      "Yalta y Potsdam marcaron el inicio.",
+      "Lucha propagandística mundial.",
+      "Alianzas militares opuestas.",
+      "URSS lideró el bloque socialista.",
+      "Riesgo nuclear global.",
+      "Sistema capitalista vs socialista.",
+      "Supremacía geopolítica en disputa."
+    ];
+
+    document.getElementById("btnEjemplo").addEventListener("click", () => {
+      acrosticInputs.forEach((input, i) => {
+        input.value = ejemplo[i] || "";
+      });
+    });
+
+    const btnCorea = document.getElementById("btnCorea");
+    const resultadoCorea = document.getElementById("resultadoCorea");
+    btnCorea.addEventListener("click", () => {
+      const checks = document.querySelectorAll(".korea-actions input[type='checkbox']");
+      let ok = 0;
+      checks.forEach((box) => {
+        const expected = box.dataset.correct === "true";
+        if (box.checked === expected) ok += 1;
+      });
+      resultadoCorea.textContent = `Tu resultado: ${ok}/${checks.length}.`;
+    });
+
+    const koreaPanel = document.getElementById("koreaPanel");
+    const koreaZones = document.querySelectorAll(".korea-zone");
+    const koreaInfo = {
+      north: {
+        title: "Corea del Norte",
+        text: "Se consolidó bajo un modelo socialista de partido único, con apoyo inicial soviético y luego fuerte respaldo chino. Priorizó seguridad, control político interno y gasto militar."
+      },
+      dmz: {
+        title: "DMZ (Zona Desmilitarizada)",
+        text: "Es la franja fronteriza creada tras el armisticio de 1953. Aunque se llama 'desmilitarizada', es una de las fronteras más vigiladas del mundo y símbolo vivo de la Guerra Fría."
+      },
+      south: {
+        title: "Corea del Sur",
+        text: "Quedó alineada con Estados Unidos y evolucionó hacia una economía de mercado altamente industrializada. Con el tiempo se convirtió en una democracia consolidada y actor global."
+      }
+    };
+
+    koreaZones.forEach((zone) => {
+      zone.addEventListener("click", () => {
+        koreaZones.forEach((z) => z.classList.remove("active"));
+        zone.classList.add("active");
+        const data = koreaInfo[zone.dataset.zone];
+        koreaPanel.innerHTML = `<h4>${data.title}</h4><p>${data.text}</p>`;
+      });
+    });
+  </script>
+</body>
+</html>

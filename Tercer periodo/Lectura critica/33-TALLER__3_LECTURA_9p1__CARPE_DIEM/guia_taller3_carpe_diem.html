@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Taller 3 · Cap 33 · Una buena alimentación equilibra tu mente</title>
+<meta name="description" content="Guía interactiva para leer el capítulo 33 de Carpe Diem y resolver el Taller 3 de Lectura crítica de 9°: pistas, modelos de respuesta, emparejamiento, V/F y autoevaluación.">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --max:1120px;
+  --r:18px;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+[data-theme="dark"]{
+  --bg:#070b16; --bg2:#0c1324;
+  --surface:#101a2e; --surface2:#16213a;
+  --line:rgba(230,181,103,.22); --line2:rgba(255,255,255,.09);
+  --ink:#eeebe4; --muted:#a9b0c2; --faint:#7d87a1;
+  --gold:#e6b567; --gold2:#f7d9a0; --teal:#5fd3c4; --rose:#f09595; --violet:#a99cf5;
+  --ok:#63d6a6; --bad:#f08a8a;
+  --shadow:0 30px 70px -42px rgba(0,0,0,.95);
+  --on-gold:#101321;
+  --glow:rgba(230,181,103,.16);
+}
+[data-theme="light"]{
+  --bg:#f7f2e8; --bg2:#efe7d8;
+  --surface:#fffdf7; --surface2:#faf4e8;
+  --line:rgba(150,105,35,.26); --line2:rgba(30,35,50,.11);
+  --ink:#1b2233; --muted:#555d70; --faint:#848a98;
+  --gold:#9d6c1c; --gold2:#b8811f; --teal:#0d7268; --rose:#b4433f; --violet:#5f4fc9;
+  --ok:#0e7a55; --bad:#b0392f;
+  --shadow:0 24px 60px -42px rgba(70,50,20,.34);
+  --on-gold:#fffaf0;
+  --glow:rgba(157,108,28,.14);
+}
+
+/* ============ BASE ============ */
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--sans);color:var(--ink);line-height:1.62;
+  background:
+    radial-gradient(1200px 620px at 82% -12%,var(--glow),transparent 62%),
+    radial-gradient(900px 520px at -8% 22%,rgba(95,211,196,.07),transparent 62%),
+    var(--bg);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%;display:block}
+a{color:var(--gold)}
+::selection{background:var(--gold);color:var(--on-gold)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{width:min(var(--max),100% - 40px);margin-inline:auto}
+section{scroll-margin-top:84px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--on-gold);padding:10px 16px;z-index:999;border-radius:0 0 10px 0}
+.skip:focus{left:0}
+
+/* ============ TOPBAR ============ */
+#scrollLine{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--teal));z-index:200;transition:width .1s linear}
+.topbar{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 86%,transparent);backdrop-filter:blur(16px) saturate(120%);border-bottom:1px solid var(--line2)}
+.tb-in{display:flex;align-items:center;gap:12px;height:60px}
+.brand{font-family:var(--serif);font-size:.98rem;white-space:nowrap;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:9px}
+.brand span.dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(230,181,103,.14)}
+.brand b{color:var(--gold);font-weight:600}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--muted);text-decoration:none;font-size:.79rem;padding:7px 9px;border-radius:8px;white-space:nowrap;transition:.18s}
+.nav a:hover{color:var(--ink);background:var(--surface)}
+.nav a.on{color:var(--gold);background:var(--surface)}
+.ibtn{display:grid;place-items:center;width:36px;height:36px;flex:0 0 auto;border:1px solid var(--line2);background:var(--surface);color:var(--ink);border-radius:9px;cursor:pointer;transition:.18s;font-size:.95rem}
+.ibtn:hover{border-color:var(--gold);color:var(--gold)}
+[data-theme="dark"] .i-sun{display:none}
+[data-theme="light"] .i-moon{display:none}
+.counter{display:flex;align-items:center;gap:7px;font-size:.74rem;color:var(--muted);border:1px solid var(--line2);background:var(--surface);border-radius:99px;padding:6px 11px;white-space:nowrap}
+.counter b{color:var(--gold);font-variant-numeric:tabular-nums}
+.counter .ring{width:7px;height:7px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok)}
+@media (max-width:820px){.nav{display:none}.brand{min-width:0;overflow:hidden;text-overflow:ellipsis}}
+@media (max-width:420px){.counter{display:none}}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:64px 0 34px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(230,181,103,.18) 1px,transparent 0);background-size:26px 26px;opacity:.5;mask-image:radial-gradient(600px 340px at 78% 12%,#000,transparent 72%);pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 14px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--gold)}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5.1vw,3.35rem);line-height:1.07;letter-spacing:-.015em;margin:0 0 16px;max-width:19ch;text-wrap:balance}
+h1 em{font-style:italic;color:var(--gold)}
+.lede{font-size:1.04rem;color:var(--muted);max-width:62ch;margin:0 0 22px}
+.lede b{color:var(--ink);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:26px}
+.chip{font-size:.76rem;color:var(--muted);border:1px solid var(--line2);background:var(--surface);border-radius:99px;padding:6px 12px;display:inline-flex;align-items:center;gap:6px}
+.chip b{color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:34px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:11px;padding:12px 19px;font-size:.9rem;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.18s;font-family:var(--sans)}
+.btn-primary{background:linear-gradient(160deg,var(--gold2),var(--gold));color:var(--on-gold);box-shadow:0 14px 30px -18px rgba(230,181,103,.8)}
+.btn-primary:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.btn-ghost{border-color:var(--line2);background:var(--surface);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-sm{padding:9px 14px;font-size:.82rem;border-radius:9px}
+.obj{position:relative;border:1px solid var(--line);border-left:3px solid var(--gold);background:linear-gradient(120deg,var(--surface2),var(--surface));border-radius:0 14px 14px 0;padding:18px 20px;max-width:78ch}
+.obj h2{margin:0 0 6px;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.obj p{margin:0;font-size:.95rem;color:var(--muted)}
+.obj p b{color:var(--ink)}
+
+/* ============ SECTION HEADS ============ */
+.sec{padding:44px 0}
+.sec-head{margin-bottom:24px}
+.sec-head .n{font-family:var(--mono);font-size:.72rem;color:var(--gold);letter-spacing:.18em}
+.sec-head h2{font-family:var(--serif);font-size:clamp(1.42rem,3vw,2.02rem);line-height:1.2;margin:6px 0 8px;letter-spacing:-.01em;font-weight:600}
+.sec-head p{margin:0;color:var(--muted);font-size:.94rem;max-width:70ch}
+
+/* ============ PANELS / CARDS ============ */
+.card{border:1px solid var(--line2);background:var(--surface);border-radius:var(--r);padding:22px}
+.grid{display:grid;gap:14px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g4{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media (max-width:900px){.g4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.g2,.g4{grid-template-columns:1fr}}
+
+/* tabla idea central / secundaria */
+.tbl{border:1px solid var(--line2);border-radius:12px;overflow:hidden;font-size:.86rem}
+.trow{display:grid;grid-template-columns:1.9fr .7fr 1.5fr;gap:12px;padding:11px 14px;border-top:1px solid var(--line2);align-items:start}
+.trow:first-child{border-top:0}
+.trow.thead{background:var(--surface2);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.trow:nth-child(even){background:color-mix(in srgb,var(--surface2) 45%,transparent)}
+.trow span{color:var(--muted);line-height:1.45}
+.trow span b{color:var(--ink)}
+.pill{font-style:normal;font-size:.68rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-radius:99px;padding:2px 9px;display:inline-block;white-space:nowrap}
+.pill.center{color:var(--on-gold);background:linear-gradient(150deg,var(--gold2),var(--gold))}
+.pill.sec{color:var(--teal);border:1px solid color-mix(in srgb,var(--teal) 45%,transparent)}
+@media (max-width:680px){
+  .trow{grid-template-columns:1fr;gap:4px;padding:12px 13px}
+  .trow.thead{display:none}
+  .trow span:nth-child(2){order:-1}
+  .trow span:nth-child(3){color:var(--faint);font-size:.79rem;border-top:1px dotted var(--line2);padding-top:6px;margin-top:2px}
+}
+
+/* plan 40 min */
+.plan{list-style:none;margin:14px 0 0;padding:0;display:grid;gap:0}
+.plan li{display:grid;grid-template-columns:64px 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--line2);font-size:.84rem;color:var(--muted);align-items:baseline}
+.plan li:first-child{border-top:0}
+.plan .t{font-family:var(--mono);font-size:.72rem;color:var(--gold);white-space:nowrap}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0 0 0 12px;display:grid;gap:0}
+.tl li{position:relative;padding:0 0 20px 34px;border-left:1px solid var(--line2)}
+.tl li:last-child{border-left-color:transparent;padding-bottom:0}
+.tl li::before{content:attr(data-step);position:absolute;left:-14px;top:0;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:.72rem;background:var(--surface2);border:1px solid var(--line);color:var(--gold)}
+.tl h3{margin:2px 0 4px;font-size:.95rem;font-family:var(--sans);letter-spacing:0;color:var(--ink)}
+.tl p{margin:0;font-size:.9rem;color:var(--muted)}
+.tl .tag{font-family:var(--mono);font-size:.68rem;color:var(--faint);text-transform:uppercase;letter-spacing:.1em}
+
+/* filósofos */
+.ph{display:flex;flex-direction:column;gap:10px;transition:.2s}
+.ph:hover{border-color:var(--line);transform:translateY(-2px)}
+.mono{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-family:var(--serif);font-size:1.02rem;font-weight:600;color:var(--on-gold);background:linear-gradient(150deg,var(--gold2),var(--gold));flex:0 0 auto}
+.ph:nth-child(2) .mono{background:linear-gradient(150deg,#8fe3d8,var(--teal));color:#06222a}
+.ph:nth-child(3) .mono{background:linear-gradient(150deg,#c3b8ff,var(--violet));color:#151033}
+.ph:nth-child(4) .mono{background:linear-gradient(150deg,#f8bdbd,var(--rose));color:#3a0f0f}
+.ph h3{margin:0;font-family:var(--serif);font-size:1.06rem;font-weight:600}
+.ph .line{font-size:.88rem;color:var(--muted);margin:0}
+.ph .q{margin:6px 0 0;padding-left:12px;border-left:2px solid var(--line);font-family:var(--serif);font-style:italic;font-size:.86rem;color:var(--muted)}
+.ph .foot{display:flex;flex-wrap:wrap;gap:6px;margin-top:auto;padding-top:6px}
+.src{font-family:var(--mono);font-size:.66rem;letter-spacing:.04em;color:var(--faint);border:1px solid var(--line2);border-radius:6px;padding:2px 7px}
+
+/* glosario */
+.glos{display:grid;grid-template-columns:repeat(auto-fill,minmax(232px,1fr));gap:12px}
+.glos-card{border:1px solid var(--line2);background:linear-gradient(160deg,var(--surface2),var(--surface));border-radius:13px;padding:14px 15px}
+.glos-card h4{margin:0 0 4px;font-size:.88rem;color:var(--gold);font-family:var(--sans);letter-spacing:.01em}
+.glos-card p{margin:0;font-size:.83rem;color:var(--muted);line-height:1.5}
+
+/* citas */
+.quotes{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
+.quote{border:1px solid var(--line2);border-radius:13px;padding:16px 17px;background:var(--surface);display:flex;flex-direction:column;gap:9px}
+.quote p{margin:0;font-family:var(--serif);font-size:.95rem;font-style:italic;line-height:1.5;color:var(--ink)}
+.quote .who{font-size:.76rem;color:var(--gold);font-weight:600}
+.quote .read{margin:0;font-size:.8rem;color:var(--muted);border-top:1px dashed var(--line2);padding-top:8px}
+.quote .read b{color:var(--ink);font-weight:600}
+
+/* ============ TALLER ============ */
+.qtools{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-bottom:20px}
+.mode{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line2);background:var(--surface);border-radius:99px;padding:6px 6px 6px 14px;font-size:.78rem;color:var(--muted)}
+.sw{position:relative;width:42px;height:23px;border-radius:99px;background:var(--surface2);border:1px solid var(--line2);cursor:pointer;transition:.2s;flex:0 0 auto}
+.sw::after{content:"";position:absolute;top:2px;left:2px;width:17px;height:17px;border-radius:50%;background:var(--faint);transition:.2s}
+.sw[aria-checked="true"]{background:color-mix(in srgb,var(--gold) 30%,var(--surface2));border-color:var(--gold)}
+.sw[aria-checked="true"]::after{left:21px;background:var(--gold)}
+body.mode-prueba .help{display:none}
+body.mode-prueba .mode-note{display:block}
+.mode-note{display:none;border:1px dashed var(--line);border-radius:11px;padding:11px 14px;font-size:.83rem;color:var(--muted);background:var(--surface);margin-bottom:18px}
+.mode-note b{color:var(--gold)}
+
+.qnav{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:22px}
+.qnav a{font-family:var(--mono);font-size:.74rem;text-decoration:none;color:var(--muted);border:1px solid var(--line2);background:var(--surface);border-radius:8px;padding:7px 11px;transition:.18s}
+.qnav a:hover{color:var(--gold);border-color:var(--line)}
+.qnav a.done{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,transparent)}
+
+.qcard{border:1px solid var(--line2);background:var(--surface);border-radius:var(--r);padding:0;overflow:hidden;margin-bottom:16px;box-shadow:var(--shadow)}
+.qhead{display:flex;gap:14px;align-items:flex-start;padding:18px 22px;background:linear-gradient(120deg,var(--surface2),var(--surface));border-bottom:1px solid var(--line2)}
+.qnum{font-family:var(--serif);font-size:1.5rem;line-height:1;color:var(--gold);flex:0 0 auto;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center}
+.qhead h3{margin:0 0 3px;font-size:1rem;font-family:var(--sans);font-weight:650;letter-spacing:0}
+.qhead .qmeta{margin:0;font-size:.8rem;color:var(--muted)}
+.qbody{padding:20px 22px 22px;display:grid;gap:16px}
+.qtext{margin:0;font-size:.94rem;color:var(--ink)}
+.qtext + .qtext{margin-top:-6px}
+.qtext em{color:var(--gold);font-style:normal;font-weight:600}
+.block{border:1px solid var(--line2);border-radius:13px;padding:14px 15px;background:color-mix(in srgb,var(--surface2) 60%,transparent)}
+.block > h4{margin:0 0 8px;font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--faint);font-weight:700}
+
+/* matching */
+.match{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:720px){.match{grid-template-columns:1fr}}
+.mcol h4{margin:0 0 8px;font-size:.7rem;letter-spacing:.13em;text-transform:uppercase;color:var(--faint)}
+.mitem{width:100%;text-align:left;display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line2);background:var(--surface2);color:var(--ink);border-radius:11px;padding:11px 13px;font-size:.86rem;line-height:1.4;cursor:pointer;transition:.16s;margin-bottom:8px;font-family:var(--sans)}
+.mitem:hover{border-color:var(--line);transform:translateX(2px)}
+.mitem .k{font-family:var(--mono);font-size:.72rem;color:var(--gold);flex:0 0 auto;padding-top:1px}
+.mitem[aria-pressed="true"]{border-color:var(--gold);background:color-mix(in srgb,var(--gold) 12%,var(--surface2));box-shadow:0 0 0 1px var(--gold) inset}
+.mitem .tie{margin-left:auto;font-size:.68rem;font-family:var(--mono);color:var(--teal);border:1px solid color-mix(in srgb,var(--teal) 40%,transparent);border-radius:99px;padding:1px 7px;flex:0 0 auto}
+.mitem.right{border-color:color-mix(in srgb,var(--ok) 55%,transparent)}
+.mitem.wrong{border-color:color-mix(in srgb,var(--bad) 60%,transparent);background:color-mix(in srgb,var(--bad) 10%,var(--surface2))}
+.mfeed{font-size:.86rem;color:var(--muted);min-height:1.2em}
+.mfeed b{color:var(--ink)}
+.pairline{border-top:1px dashed var(--line2);margin-top:10px;padding-top:9px;font-size:.84rem;color:var(--muted)}
+.pairline b{color:var(--gold)}
+
+/* texto / respuestas */
+label.fl{display:block;font-size:.78rem;font-weight:600;color:var(--muted);margin-bottom:6px;letter-spacing:.02em}
+textarea{width:100%;min-height:92px;resize:vertical;border:1px solid var(--line2);background:var(--bg2);color:var(--ink);border-radius:11px;padding:12px 13px;font-family:var(--sans);font-size:.9rem;line-height:1.6;transition:.16s}
+textarea:focus{border-color:var(--gold);outline:none;box-shadow:0 0 0 3px color-mix(in srgb,var(--gold) 18%,transparent)}
+textarea::placeholder{color:var(--faint)}
+.tfoot{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-top:6px;flex-wrap:wrap}
+.wc{font-family:var(--mono);font-size:.7rem;color:var(--faint)}
+.wc.ok{color:var(--ok)}
+.wc.warn{color:var(--rose)}
+.hintline{font-size:.78rem;color:var(--faint)}
+details{border:1px solid var(--line2);border-radius:11px;background:var(--surface2);overflow:hidden}
+details + details{margin-top:8px}
+summary{cursor:pointer;list-style:none;padding:11px 14px;font-size:.83rem;font-weight:600;color:var(--gold);display:flex;align-items:center;gap:8px}
+summary::-webkit-details-marker{display:none}
+summary::before{content:"▸";font-size:.7rem;transition:.2s;color:var(--faint)}
+details[open] summary::before{transform:rotate(90deg)}
+details .dbody{padding:0 14px 13px;font-size:.86rem;color:var(--muted);line-height:1.62}
+details .dbody p{margin:0 0 8px}
+details .dbody p:last-child{margin-bottom:0}
+details .dbody b{color:var(--ink)}
+details .dbody ol,details .dbody ul{margin:0;padding-left:20px}
+details .dbody li{margin-bottom:6px}
+.model{border-left-color:var(--gold) !important}
+.model .dbody{color:var(--ink)}
+.model .dbody .badge{display:inline-block;font-size:.64rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;color:var(--gold);border:1px solid var(--line);border-radius:5px;padding:1px 6px;margin-bottom:8px}
+
+/* V/F */
+.vfrow{border:1px solid var(--line2);border-radius:13px;padding:14px 15px;background:color-mix(in srgb,var(--surface2) 55%,transparent);margin-bottom:10px}
+.vfstate{display:flex;gap:7px;margin:0 0 9px}
+.vfbtn{border:1px solid var(--line2);background:var(--surface);color:var(--muted);border-radius:8px;padding:6px 13px;font-size:.8rem;font-weight:700;cursor:pointer;font-family:var(--mono);transition:.15s}
+.vfbtn:hover{border-color:var(--line);color:var(--ink)}
+.vfbtn[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--on-gold)}
+.vfbtn[data-v="V"][aria-pressed="true"]{background:var(--ok);border-color:var(--ok);color:#04241a}
+.vfbtn[data-v="F"][aria-pressed="true"]{background:var(--bad);border-color:var(--bad);color:#2a0a08}
+.vfq{font-size:.9rem;margin:0 0 10px}
+.vfq .tagv{font-family:var(--mono);font-size:.7rem;color:var(--gold);margin-right:6px}
+.fb{border-radius:10px;padding:10px 12px;font-size:.84rem;margin-top:8px;display:none}
+.fb.show{display:block}
+.fb.good{background:color-mix(in srgb,var(--ok) 12%,transparent);border:1px solid color-mix(in srgb,var(--ok) 45%,transparent);color:var(--ink)}
+.fb.bad{background:color-mix(in srgb,var(--bad) 10%,transparent);border:1px solid color-mix(in srgb,var(--bad) 45%,transparent);color:var(--ink)}
+.fb b{color:var(--gold)}
+
+/* filósofo picker + starters */
+.picker{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.pick{border:1px solid var(--line2);background:var(--surface);color:var(--muted);border-radius:99px;padding:7px 14px;font-size:.82rem;cursor:pointer;transition:.16s;font-family:var(--sans)}
+.pick:hover{color:var(--ink);border-color:var(--line)}
+.pick[aria-pressed="true"]{background:color-mix(in srgb,var(--gold) 18%,transparent);border-color:var(--gold);color:var(--gold);font-weight:600}
+.starters{display:none}
+.starters.show{display:block}
+.starter{display:block;width:100%;text-align:left;border:1px dashed var(--line);background:transparent;color:var(--muted);border-radius:9px;padding:9px 12px;font-size:.83rem;margin-bottom:7px;cursor:pointer;transition:.16s;font-family:var(--sans);line-height:1.45}
+.starter:hover{border-style:solid;border-color:var(--gold);color:var(--ink);background:color-mix(in srgb,var(--gold) 7%,transparent)}
+.starter b{color:var(--gold);font-weight:600}
+.starter .plus{float:right;color:var(--faint);font-family:var(--mono);font-size:.75rem}
+
+/* checklist */
+.rub{list-style:none;margin:0;padding:0;display:grid;gap:9px}
+.rub li{display:flex;gap:11px;align-items:flex-start;border:1px solid var(--line2);border-radius:11px;padding:11px 13px;background:var(--surface2);font-size:.87rem;color:var(--muted);cursor:pointer;transition:.16s}
+.rub li:hover{border-color:var(--line)}
+.rub li.on{border-color:color-mix(in srgb,var(--ok) 50%,transparent);background:color-mix(in srgb,var(--ok) 8%,var(--surface2));color:var(--ink)}
+.rub .box{width:18px;height:18px;border-radius:5px;border:1px solid var(--line);flex:0 0 auto;display:grid;place-items:center;font-size:.72rem;color:transparent;margin-top:1px;background:var(--surface)}
+.rub li.on .box{background:var(--ok);border-color:var(--ok);color:#04241a}
+.rubtxt{color:var(--ink)}
+.rub b{color:var(--gold)}
+.score{display:flex;align-items:center;gap:14px;margin-top:14px;flex-wrap:wrap}
+.score .big{font-family:var(--serif);font-size:1.9rem;color:var(--gold);line-height:1}
+.score .lbl{font-size:.8rem;color:var(--muted)}
+
+/* galería */
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(126px,1fr));gap:12px}
+.pg{position:relative;border:1px solid var(--line2);border-radius:11px;overflow:hidden;background:var(--surface2);cursor:zoom-in;padding:0;transition:.18s}
+.pg:hover{border-color:var(--gold);transform:translateY(-2px)}
+.pg img{width:100%;height:198px;object-fit:cover;object-position:top center}
+.pg span{position:absolute;left:7px;bottom:7px;font-family:var(--mono);font-size:.66rem;background:rgba(7,11,22,.8);color:#f4efe4;border-radius:5px;padding:2px 6px}
+.lb{position:fixed;inset:0;z-index:300;background:rgba(4,7,14,.94);display:none;place-items:center;padding:22px}
+.lb.open{display:grid}
+.lb img{max-height:86vh;max-width:min(760px,94vw);border-radius:8px;box-shadow:0 40px 90px -30px #000}
+.lb .cap{position:absolute;bottom:16px;left:0;right:0;text-align:center;color:#cfd5e4;font-size:.8rem;font-family:var(--mono)}
+.lb button{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.07);color:#f2ede2;font-size:1.1rem;cursor:pointer}
+.lb button:hover{background:rgba(255,255,255,.16)}
+.lb .prev{left:14px}.lb .next{right:14px}
+.lb .close{top:14px;right:14px;transform:none;width:38px;height:38px}
+
+/* entrega */
+.entregar{border:1px solid var(--line);border-radius:var(--r);background:linear-gradient(150deg,var(--surface2),var(--surface));padding:24px}
+.bar{height:8px;border-radius:99px;background:var(--surface2);border:1px solid var(--line2);overflow:hidden;margin:12px 0 6px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--gold));transition:width .35s}
+.actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.tip{font-size:.78rem;color:var(--faint);margin-top:10px}
+
+footer{border-top:1px solid var(--line2);margin-top:40px;padding:26px 0 46px;font-size:.78rem;color:var(--faint)}
+footer b{color:var(--muted)}
+footer .row{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap}
+
+/* print */
+#printout{display:none}
+@media print{
+  :root{--ink:#111;--muted:#333}
+  body{background:#fff !important;color:#111;font-size:11.5pt}
+  .topbar,.hero,.sec,.entregar,footer,.lb,#scrollLine,.qnav,.qtools{display:none !important}
+  #printout{display:block !important;color:#111}
+  #printout h1{font-size:16pt;margin:0 0 4px;color:#111;max-width:none}
+  #printout .ph{font-size:10pt;color:#444;margin:0 0 14px}
+  #printout .ln{border-bottom:1px solid #999;display:inline-block;min-width:220px}
+  #printout .qq{margin:0 0 5px;font-size:9.5pt;color:#555;font-style:italic}
+  #printout .item{margin:0 0 14px;break-inside:avoid}
+  #printout .item h3{font-size:11pt;margin:0 0 4px;color:#000}
+  #printout .item .a{font-size:11pt;white-space:pre-wrap;border-left:2px solid #bbb;padding-left:9px;color:#111}
+  #printout .lines span{display:block;border-bottom:1px solid #ccc;height:21px}
+  #printout .blank{border-bottom:1px solid #ccc;height:15px}
+  .pagebreak{page-break-before:always}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important;animation:none !important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<a class="skip" href="#taller">Saltar al taller</a>
+<div id="scrollLine" aria-hidden="true"></div>
+
+<!-- ============ TOPBAR ============ -->
+<header class="topbar">
+  <div class="wrap tb-in">
+    <a class="brand" href="#inicio"><span class="dot"></span>Carpe <b>Diem</b> · Cap 33</a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#capitulo">El capítulo</a>
+      <a href="#filosofos">Los 4 filósofos</a>
+      <a href="#glosario">Glosario</a>
+      <a href="#citas">Citas</a>
+      <a href="#taller">Taller</a>
+      <a href="#autoevaluacion">Autoevaluación</a>
+      <a href="#paginas">Páginas</a>
+    </nav>
+    <span class="counter" title="Campos completados del taller"><span class="ring" aria-hidden="true"></span><b id="cnt">0</b>/12</span>
+    <button class="ibtn" id="printBtn" title="Imprimir o guardar en PDF" aria-label="Imprimir o guardar en PDF">🖨</button>
+    <button class="ibtn" id="themeBtn" title="Cambiar tema" aria-label="Cambiar tema claro u oscuro">
+      <span class="i-sun">☀</span><span class="i-moon">☾</span>
+    </button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="eyebrow">Lectura crítica · 9° · Tercer periodo</p>
+    <h1>Una buena alimentación <em>equilibra tu mente</em></h1>
+    <p class="lede">Guía interactiva del <b>capítulo 33 de <em>Carpe Diem</em></b> para resolver el <b>Taller 3</b>: pistas graduales, ideas para empezar, respuestas modelo y autoevaluación. Todo lo que escribas se guarda en tu navegador.</p>
+    <div class="chips">
+      <span class="chip">⏱ <b>40 min</b></span>
+      <span class="chip">✎ <b>6</b> preguntas</span>
+      <span class="chip">📖 págs. <b>280–287</b></span>
+      <span class="chip">🧠 inferencia + lectura crítica</span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-primary" href="#taller">Empezar el taller →</a>
+      <a class="btn btn-ghost" href="#capitulo">Repasar el capítulo</a>
+      <a class="btn btn-ghost" href="#paginas">Ver las páginas escaneadas</a>
+    </div>
+    <div class="obj">
+      <h2>Objetivo del taller</h2>
+      <p>Analizar las <b>ideas centrales y secundarias</b> del texto «Una buena alimentación equilibra tu mente», mediante el contraste entre la <b>filosofía clásica</b> y los <b>hábitos de consumo actuales</b>, para fortalecer la capacidad de <b>inferencia</b> y la <b>lectura crítica</b>.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CAPÍTULO ============ -->
+<section class="sec" id="capitulo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">01 / PANORAMA</span>
+      <h2>El capítulo en 60 segundos</h2>
+      <p>Si entiendes estas seis ideas, puedes responder casi todo el taller sin volver al texto. El resto es redactar con tus palabras.</p>
+    </div>
+
+    <div class="grid g2" style="margin-bottom:22px">
+      <div class="card">
+        <h4 style="margin:0 0 6px;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)">Tesis central</h4>
+        <p style="margin:0;font-size:.95rem;color:var(--muted)">Comer con moderación <b>no es una dieta</b>: es una práctica filosófica. Lo que comemos entrena —o desordena— nuestra <b>claridad mental</b>, nuestro <b>autocontrol</b> y nuestra <b>libertad interior</b>. Las modas de bienestar “descubren” lo que los clásicos dijeron hace más de dos mil años.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin:0 0 6px;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--teal)">Idea secundaria que suele perderse</h4>
+        <p style="margin:0;font-size:.95rem;color:var(--muted)">El problema no es el placer, sino el <b>exceso</b>. El texto no propone prohibirse la comida ni sufrir: propone distinguir <b>lo necesario</b> de lo <b>superfluo</b> (p. 281) y disfrutar más con menos, no menos con todo.</p>
+      </div>
+    </div>
+
+    <div class="card" style="margin-bottom:24px">
+      <h4 style="margin:0 0 10px;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--violet)">Idea central vs. ideas secundarias</h4>
+      <div class="tbl" role="table" aria-label="Diferencia entre idea central e ideas secundarias del capítulo">
+        <div class="trow thead" role="row">
+          <span role="columnheader">Afirmación del texto</span>
+          <span role="columnheader">Tipo</span>
+          <span role="columnheader">Para qué te sirve</span>
+        </div>
+        <div class="trow" role="row">
+          <span role="cell">Comer con moderación es una práctica filosófica que cuida el cuerpo <b>y</b> la mente.</span>
+          <span role="cell"><em class="pill center">Central</em></span>
+          <span role="cell">Es la tesis: úsala como columna vertebral de 2A, 5 y 6.</span>
+        </div>
+        <div class="trow" role="row">
+          <span role="cell">Los clásicos ya lo enseñaban antes que las modas de bienestar.</span>
+          <span role="cell"><em class="pill sec">Secundaria</em></span>
+          <span role="cell">Argumento de autoridad: ideal para 2B.</span>
+        </div>
+        <div class="trow" role="row">
+          <span role="cell">Cada filósofo aporta un matiz: frugalidad, suficiencia, disciplina, justo medio.</span>
+          <span role="cell"><em class="pill sec">Secundaria</em></span>
+          <span role="cell">Desarrollo: base de 1, 3 y 4.</span>
+        </div>
+        <div class="trow" role="row">
+          <span role="cell">Ningún batido ni dieta de moda supera el equilibrio clásico.</span>
+          <span role="cell"><em class="pill sec">Secundaria</em></span>
+          <span role="cell">Cierre polémico: refuerza 2B y 6.</span>
+        </div>
+      </div>
+    </div>
+
+    <ol class="tl">
+      <li data-step="1">
+        <h3>La confesión del frigorífico <span class="src">p. 280</span></h3>
+        <p>El autor llega cansado, dice “solo voy a picar” y termina “saqueando” la nevera. Usa la comida como <b>analgésico emocional</b>: descarga la tensión del día en el frigo “como si fuera el diván de mi psicólogo”. Ese es el punto de partida del capítulo.</p>
+      </li>
+      <li data-step="2">
+        <h3>Los clásicos ya lo habían resuelto <span class="src">p. 280–281</span></h3>
+        <p>Estoicos, peripatéticos y médicos (Hipócrates, Galeno) coincidían: la <b>moderación</b> es la base de la salud del cuerpo y del alma. A los médicos les importaba la salud física; a los filósofos, el <b>bienestar emocional</b>.</p>
+      </li>
+      <li data-step="3">
+        <h3>Séneca: frugalidad y lucidez <span class="src">p. 281–283</span></h3>
+        <p>“Todo cuanto sobrepasa la necesidad es un peso inútil y penoso”. La frugalidad libera; la embriaguez, en cambio, es una <b>“locura voluntaria”</b>: apaga la razón y, con ella, la libertad.</p>
+      </li>
+      <li data-step="4">
+        <h3>Marco Aurelio: la naturaleza ya puso el límite <span class="src">p. 284</span></h3>
+        <p>La naturaleza marcó límites para comer y beber; pasarse es <b>“exceder la medida”</b>. Lo que sobra no alimenta: es <b>“ruido”</b> que entorpece la claridad mental y nos vuelve dependientes.</p>
+      </li>
+      <li data-step="5">
+        <h3>Epicteto: la comida como entrenamiento <span class="src">p. 285</span></h3>
+        <p>Como el atleta decide qué quiere ser y ajusta dieta y entrenamiento a esa meta, nosotros debemos elegir la comida según <b>la persona que queremos ser</b>. Libertad = dominar los deseos, no obedecerlos.</p>
+      </li>
+      <li data-step="6">
+        <h3>Aristóteles: el justo medio <span class="src">p. 286</span></h3>
+        <p>El <b>“justo medio”</b> es el equilibrio entre carencia y exceso. El que come más de lo necesario es un <b>“tragón”</b>: no solo desordena el cuerpo, también el alma. Comer para vivir, no vivir para comer.</p>
+      </li>
+      <li data-step="7">
+        <h3>Cierre: ningún smoothie te salva <span class="src">p. 287</span></h3>
+        <p>“Ningún <i>smoothie</i> de espirulina ni dieta de moda hará nada mejor que el sabio y clásico equilibrio”. La moderación es la clave de la serenidad y de una vida feliz.</p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ FILÓSOFOS ============ -->
+<section class="sec" id="filosofos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">02 / PERSONAJES</span>
+      <h2>Los cuatro filósofos, de un vistazo</h2>
+      <p>Esta sección es la que necesitas para la <b>pregunta 1</b> (emparejar), la <b>4</b> (escribir un consejo) y la <b>5</b> (interpretar citas). Fíjate en la idea que cada uno defiende con una sola palabra.</p>
+    </div>
+    <div class="grid g4">
+      <article class="card ph">
+        <div class="mono">S</div>
+        <h3>Séneca</h3>
+        <p class="line">La <b>frugalidad</b> como libertad interior.</p>
+        <p class="q">“Todo cuanto sobrepasa la necesidad es un peso inútil y penoso.”</p>
+        <div class="foot"><span class="src">p. 281</span><span class="src">Cartas a Lucilio 108</span><span class="src">embriaguez = locura voluntaria</span></div>
+      </article>
+      <article class="card ph">
+        <div class="mono">MA</div>
+        <h3>Marco Aurelio</h3>
+        <p class="line">La <b>suficiencia</b>: lo que pasa del límite natural es “ruido”.</p>
+        <p class="q">“¿No superas la medida, excediéndote más de lo que es suficiente?”</p>
+        <div class="foot"><span class="src">p. 284</span><span class="src">Meditaciones V</span><span class="src">límites de la naturaleza</span></div>
+      </article>
+      <article class="card ph">
+        <div class="mono">E</div>
+        <h3>Epicteto</h3>
+        <p class="line">La comida como <b>entrenamiento de la voluntad</b>.</p>
+        <p class="q">“Tienes que decirte a ti mismo quién quieres ser. Y luego… haz lo que haces.”</p>
+        <div class="foot"><span class="src">p. 285</span><span class="src">Disertaciones III</span><span class="src">ejemplo de los atletas</span></div>
+      </article>
+      <article class="card ph">
+        <div class="mono">A</div>
+        <h3>Aristóteles</h3>
+        <p class="line">El <b>justo medio</b>: ni gula ni carencia.</p>
+        <p class="q">“…esos hombres son llamados tragones, porque llenan su estómago más allá de lo necesario.”</p>
+        <div class="foot"><span class="src">p. 286</span><span class="src">Ética a Nicómaco III</span><span class="src">virtud de la templanza</span></div>
+      </article>
+    </div>
+    <p class="tip" style="margin-top:14px">Truco para la pregunta 1: el concepto clave de cada filósofo aparece casi literalmente en el <b>título de su apartado</b> del capítulo. Si dudas, busca el título en las páginas 281, 284, 285 y 286.</p>
+  </div>
+</section>
+
+<!-- ============ GLOSARIO ============ -->
+<section class="sec" id="glosario">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">03 / VOCABULARIO</span>
+      <h2>Glosario exprés</h2>
+      <p>Diez palabras que aparecen en el capítulo y que conviene usar bien en tus respuestas. Si usas el término correcto, tu respuesta gana precisión (y nota).</p>
+    </div>
+    <div class="glos">
+      <div class="glos-card"><h4>Frugalidad</h4><p>Virtud de vivir con lo necesario. No es tacañería ni sufrimiento: es <b>libertad</b> frente a lo superfluo.</p></div>
+      <div class="glos-card"><h4>Sobriedad</h4><p>Moderación al comer y beber. Séneca habla de “la sobriedad en el comer y la pureza del alma”.</p></div>
+      <div class="glos-card"><h4>Suficiencia</h4><p>(Marco Aurelio) Tomar solo lo que basta para el sustento, sin exceder la medida natural.</p></div>
+      <div class="glos-card"><h4>Justo medio</h4><p>(Aristóteles) El punto de equilibrio entre dos extremos: la carencia y el exceso.</p></div>
+      <div class="glos-card"><h4>Templanza</h4><p>Virtud de moderar los apetitos según la razón. Es la que se opone a la gula.</p></div>
+      <div class="glos-card"><h4>Gula / “tragón”</h4><p>Comer más allá de lo necesario. El texto lo define como “exceder la medida natural”.</p></div>
+      <div class="glos-card"><h4>Locura voluntaria</h4><p>(Séneca) Pérdida de la razón que uno mismo elige al embriagarse. Si la eliges, eres responsable.</p></div>
+      <div class="glos-card"><h4>“Ruido”</h4><p>(Marco Aurelio) El exceso de bienes o placeres: no nutre, solo distrae y nubla la claridad mental.</p></div>
+      <div class="glos-card"><h4>Autonomía</h4><p>Gobernarse por la propia razón. Su contrario es <b>dependencia</b>: que los impulsos o las cosas externas decidan por ti.</p></div>
+      <div class="glos-card"><h4>Peso inútil y penoso</h4><p>(Séneca) Lo que sobrepasa la necesidad: no solo no ayuda, además hay que cargarlo.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CITAS ============ -->
+<section class="sec" id="citas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">04 / TEXTOS CLAVE</span>
+      <h2>Citas que sirven como evidencia</h2>
+      <p>Citar (aunque sea con tus palabras) sube la calidad de cualquier respuesta. Estas son las seis más útiles para el taller.</p>
+    </div>
+    <div class="quotes">
+      <article class="quote">
+        <p>“Todo cuanto sobrepasa la necesidad es un peso inútil y penoso de soportar.”</p>
+        <span class="who">Séneca · Cartas a Lucilio 108 · p. 281</span>
+        <p class="read"><b>Léela así:</b> lo que sobra no es un premio, es una carga que hay que llevar.</p>
+      </article>
+      <article class="quote">
+        <p>“La embriaguez no provoca los vicios, sino que los descubre.”</p>
+        <span class="who">Séneca · Cartas a Lucilio 83 · p. 283</span>
+        <p class="read"><b>Léela así:</b> el alcohol no te hace malo; quita el filtro y deja ver lo que ya eras.</p>
+      </article>
+      <article class="quote">
+        <p>“…la embriaguez no es otra cosa que una locura voluntaria.”</p>
+        <span class="who">Séneca · Cartas a Lucilio 83 · p. 283</span>
+        <p class="read"><b>Léela así:</b> nadie se emborracha por accidente: elegiste apagar la razón, así que respondes por lo que hagas.</p>
+      </article>
+      <article class="quote">
+        <p>“La naturaleza ha marcado límites al reposo… y en la comida y la bebida, ¿no superas la medida, excediéndote más de lo que es suficiente?”</p>
+        <span class="who">Marco Aurelio · Meditaciones V · p. 284</span>
+        <p class="read"><b>Léela así:</b> el límite no lo inventa la dieta: ya está en tu cuerpo.</p>
+      </article>
+      <article class="quote">
+        <p>“Tienes que decirte a ti mismo quién quieres ser. Y luego, de acuerdo con eso, haz lo que haces.”</p>
+        <span class="who">Epicteto · Disertaciones III · p. 285</span>
+        <p class="read"><b>Léela así:</b> primero elige tu meta; después, que hasta el refrigerio sea coherente con ella.</p>
+      </article>
+      <article class="quote">
+        <p>“…esos hombres son llamados tragones, porque llenan su estómago más allá de lo necesario.”</p>
+        <span class="who">Aristóteles · Ética a Nicómaco III · p. 286</span>
+        <p class="read"><b>Léela así:</b> el problema no es el placer de comer, es pasarse del límite.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TALLER ============ -->
+<section class="sec" id="taller">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">05 / MANOS A LA OBRA</span>
+      <h2>El taller, paso a paso</h2>
+      <p>Responde aquí y luego pasa tus respuestas al taller en papel. Cada pregunta tiene <b>pistas</b> (por si te trabas) y una <b>respuesta modelo</b> (para comparar, no para copiar).</p>
+    </div>
+
+    <div class="qtools">
+      <span class="mode">
+        <span id="modeLabel">Ayudas activadas</span>
+        <button class="sw" id="modeSw" role="switch" aria-checked="true" aria-label="Activar o desactivar las ayudas"></button>
+      </span>
+      <button class="btn btn-ghost btn-sm" id="resetAll">Borrar mis respuestas</button>
+      <span class="hintline">Se guarda automáticamente en este navegador.</span>
+    </div>
+    <p class="mode-note" id="modeNote"><b>Modo prueba:</b> las pistas y los modelos están ocultos, como en una evaluación. Puedes volver a activarlos cuando quieras.</p>
+
+    <nav class="qnav" aria-label="Ir a una pregunta">
+      <a href="#q1" data-nav="q1">1 · Emparejar</a>
+      <a href="#q2" data-nav="q2">2 · Preguntas</a>
+      <a href="#q3" data-nav="q3">3 · V / F</a>
+      <a href="#q4" data-nav="q4">4 · Consejo</a>
+      <a href="#q5" data-nav="q5">5 · Cita</a>
+      <a href="#q6" data-nav="q6">6 · “Ruido”</a>
+    </nav>
+
+    <!-- ---------- Q1 ---------- -->
+    <article class="qcard" id="q1">
+      <div class="qhead">
+        <div class="qnum">1</div>
+        <div>
+          <h3>Relaciona cada filósofo con su concepto clave</h3>
+          <p class="qmeta">Emparejamiento · 4 puntos · ≈5 min</p>
+        </div>
+      </div>
+      <div class="qbody">
+        <p class="qtext">“Los filósofos del texto no hablaban solo de comida, hablaban de la vida.” Une cada autor con la idea que defiende en el capítulo.</p>
+        <div class="block">
+          <h4>Cómo funciona</h4>
+          <p class="qtext" style="font-size:.88rem;color:var(--muted)">Toca un <b>filósofo</b> de la izquierda y luego el <b>concepto</b> de la derecha. Puedes cambiar tu elección tocando otro concepto. Cuando tengas las cuatro uniones, pulsa <b>Comprobar</b>.</p>
+        </div>
+        <div class="match">
+          <div class="mcol">
+            <h4>Filósofo</h4>
+            <button class="mitem" data-p="seneca" aria-pressed="false"><span class="k">1</span><span>Séneca</span><span class="tie" hidden></span></button>
+            <button class="mitem" data-p="marco" aria-pressed="false"><span class="k">2</span><span>Marco Aurelio</span><span class="tie" hidden></span></button>
+            <button class="mitem" data-p="epicteto" aria-pressed="false"><span class="k">3</span><span>Epicteto</span><span class="tie" hidden></span></button>
+            <button class="mitem" data-p="aristoteles" aria-pressed="false"><span class="k">4</span><span>Aristóteles</span><span class="tie" hidden></span></button>
+          </div>
+          <div class="mcol">
+            <h4>Concepto clave según el texto</h4>
+            <button class="mitem" data-c="a" aria-pressed="false"><span class="k">A</span><span>El “justo medio” y no caer en la gula o ser un “tragón”.</span><span class="tie" hidden></span></button>
+            <button class="mitem" data-c="b" aria-pressed="false"><span class="k">B</span><span>Entrenar la alimentación como un atleta entrena su autodisciplina.</span><span class="tie" hidden></span></button>
+            <button class="mitem" data-c="c" aria-pressed="false"><span class="k">C</span><span>La frugalidad como libertad interior y la embriaguez como “locura voluntaria”.</span><span class="tie" hidden></span></button>
+            <button class="mitem" data-c="d" aria-pressed="false"><span class="k">D</span><span>Entender la “suficiencia”: lo que pasa del límite natural es solo “ruido” o exceso.</span><span class="tie" hidden></span></button>
+          </div>
+        </div>
+        <div class="tfoot">
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <button class="btn btn-ghost btn-sm" id="mCheck">Comprobar</button>
+            <button class="btn btn-ghost btn-sm" id="mReset">Reiniciar</button>
+          </div>
+          <span class="wc" id="mScore"></span>
+        </div>
+        <p class="mfeed" id="mFeed" aria-live="polite"></p>
+
+        <div class="help">
+          <details>
+            <summary>Pista: dónde está la respuesta en el texto</summary>
+            <div class="dbody">
+              <p>No hace falta adivinar: cada apartado del capítulo tiene un <b>título</b> que ya dice la idea principal.</p>
+              <ul>
+                <li><b>“La filosofía y la alimentación”</b> (p. 281) → Séneca, frugalidad y sobriedad; el alcohol aparece en “O una vida feliz o el alcohol” (p. 282–283).</li>
+                <li><b>“Marco Aurelio y el placer de la frugalidad”</b> (p. 284) → límites de la naturaleza y “ruido”.</li>
+                <li><b>“Epicteto: la comida como ejercicio de autodisciplina”</b> (p. 285) → el ejemplo de los atletas.</li>
+                <li><b>“Aristóteles y el justo medio, también en la alimentación”</b> (p. 286) → justo medio y “tragones”.</li>
+              </ul>
+            </div>
+          </details>
+          <details class="model">
+            <summary>Ver la relación correcta y su explicación</summary>
+            <div class="dbody">
+              <span class="badge">Respuesta</span>
+              <p><b>1 – C</b> · Séneca: la frugalidad libera; emborracharse es una “locura voluntaria” porque apaga la razón.</p>
+              <p><b>2 – D</b> · Marco Aurelio: la naturaleza fijó la medida; lo que la supera es exceso y “ruido”.</p>
+              <p><b>3 – B</b> · Epicteto: como el atleta, entrenamos la voluntad con cada pequeña elección.</p>
+              <p><b>4 – A</b> · Aristóteles: el justo medio entre carencia y exceso; el que se pasa es “tragón”.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- Q2 ---------- -->
+    <article class="qcard" id="q2">
+      <div class="qhead">
+        <div class="qnum">2</div>
+        <div>
+          <h3>Responde con tus propias palabras</h3>
+          <p class="qmeta">Dos preguntas de inferencia · 4 puntos · ≈10 min</p>
+        </div>
+      </div>
+      <div class="qbody">
+
+        <div class="block" style="background:transparent;border-style:dashed">
+          <h4 style="color:var(--gold)">2A · La paradoja del refrigerador</h4>
+          <p class="qtext">Al principio del texto, el autor confiesa que a veces “saquea el frigorífico” al llegar de noche para descargar la tensión. <em>¿Por qué usar la comida como desahogo emocional va en contra de la visión de los filósofos estoicos?</em></p>
+        </div>
+
+        <div>
+          <label class="fl" for="q2a">Tu respuesta</label>
+          <textarea id="q2a" data-key="q2a" placeholder="Empieza nombrando lo que hace el autor (buscar alivio en la comida) y luego explica qué principio estoico se rompe…"></textarea>
+          <div class="tfoot"><span class="wc" data-wc="q2a">0 palabras · mínimo 40</span><span class="hintline">Usa “porque” al menos dos veces.</span></div>
+        </div>
+
+        <div class="help">
+          <details>
+            <summary>Pista 1 · Qué está buscando el autor en la nevera</summary>
+            <div class="dbody"><p>No busca hambre: busca <b>calmar la tensión</b> de un día difícil. La comida cumple la función de un calmante o de un “diván de psicólogo”. Ese es el dato del que debes partir.</p></div>
+          </details>
+          <details>
+            <summary>Pista 2 · El principio estoico que se rompe</summary>
+            <div class="dbody">
+              <p>Para los estoicos, la serenidad depende de <b>lo que pensamos y decidimos</b>, no de las cosas externas. Si necesitas el refrigerador para calmarte, ya no te gobiernas tú: te gobiernan el impulso y la nevera.</p>
+              <p>Palabras que te sirven: <b>libertad interior</b>, <b>autonomía</b>, <b>no ser esclavo de las tentaciones</b>, <b>dependencia</b>.</p>
+            </div>
+          </details>
+          <details>
+            <summary>Pista 3 · El cierre que espera el profesor</summary>
+            <div class="dbody"><p>El alivio es momentáneo y no resuelve la causa (el día complicado). Además, el exceso “nubla la razón” y deja culpa: terminas con un problema más. Para Séneca, ese es el retrato del que confunde <b>placer</b> con <b>bienestar</b>.</p></div>
+          </details>
+          <details>
+            <summary>Ojo: error frecuente</summary>
+            <div class="dbody"><p>Responder “porque engorda” o “porque es insano”. El taller evalúa un argumento <b>ético y filosófico</b>, no nutricional: habla de libertad, razón, dependencia y autodominio.</p></div>
+          </details>
+          <details class="model">
+            <summary>Respuesta modelo (para comparar)</summary>
+            <div class="dbody">
+              <span class="badge">Modelo</span>
+              <p>Porque el autor no come por hambre sino para descargar la tensión: está usando la comida como calmante. Para los estoicos, la tranquilidad debe venir del dominio de los propios juicios, no de algo externo como el refrigerador; si dependo de la nevera para calmarme, dejo de ser libre y me vuelvo esclavo de la tentación. Además, el alivio es momentáneo: el problema sigue ahí y encima el exceso me quita claridad y me deja culpa. Eso es exactamente lo contrario de la serenidad y el autocontrol que propone Séneca.</p>
+            </div>
+          </details>
+        </div>
+
+        <hr style="border:0;border-top:1px solid var(--line2);margin:6px 0">
+
+        <div class="block" style="background:transparent;border-style:dashed">
+          <h4 style="color:var(--gold)">2B · Gurús vs. filósofos</h4>
+          <p class="qtext">El texto menciona términos modernos como <i>mindful eating</i>, <i>smoothie</i> de espirulina o batido verde. <em>¿Cuál es la crítica principal que hace el texto sobre los “creadores de contenido” o “gurús” de la alimentación en comparación con los filósofos clásicos?</em></p>
+        </div>
+
+        <div>
+          <label class="fl" for="q2b">Tu respuesta</label>
+          <textarea id="q2b" data-key="q2b" placeholder="Compara: ¿qué venden los gurús y qué proponían los clásicos? ¿Qué palabra usa el autor para burlarse de la novedad?"></textarea>
+          <div class="tfoot"><span class="wc" data-wc="q2b">0 palabras · mínimo 35</span><span class="hintline">Menciona al menos un ejemplo del texto.</span></div>
+        </div>
+
+        <div class="help">
+          <details>
+            <summary>Pista 1 · Las tres diferencias que debes tocar</summary>
+            <div class="dbody">
+              <ol>
+                <li><b>Novedad falsa:</b> presentan como “último gran descubrimiento” algo que los clásicos dijeron hace más de 2000 años.</li>
+                <li><b>Solución mágica vs. práctica diaria:</b> un batido verde promete “transformar tu vida” en un día; los filósofos hablan de moderación sostenida y de carácter.</li>
+                <li><b>Lo exterior vs. lo interior:</b> el gurú vende un producto; el filósofo entrena la voluntad.</li>
+              </ol>
+            </div>
+          </details>
+          <details>
+            <summary>Pista 2 · La frase exacta que puedes citar</summary>
+            <div class="dbody"><p>p. 280: los clásicos “nos hablan de una relación serena y consciente con la comida que <b>nada tiene que envidiar al último “descubrimiento” de los “creadores de contenido”</b> sobre bienestar”. Y el cierre, p. 287: “ningún <i>smoothie</i> de espirulina ni dieta de moda hará nada mejor que el sabio y clásico equilibrio”.</p></div>
+          </details>
+          <details>
+            <summary>Pista 3 · Cómo cerrar con nota</summary>
+            <div class="dbody"><p>Termina con la consecuencia: las modas prometen resultados rápidos y externos, pero no forman carácter; por eso se agotan cuando aparece la siguiente moda. La filosofía, en cambio, sirve para toda la vida porque cambia la relación con el deseo.</p></div>
+          </details>
+          <details class="model">
+            <summary>Respuesta modelo (para comparar)</summary>
+            <div class="dbody">
+              <span class="badge">Modelo</span>
+              <p>La crítica es que los gurús venden como novedad (“el último gran descubrimiento”, “transformar tu vida”) lo que Séneca, Epicteto, Marco Aurelio y Aristóteles ya enseñaban hace más de dos mil años. Además, ofrecen soluciones mágicas y externas —un <i>smoothie</i> de espirulina, un batido verde, una dieta de moda— que prometen resultados rápidos, mientras los clásicos proponían un trabajo interior y diario: moderación, autodominio y coherencia con la persona que quieres ser. El texto se burla de esa novedad porque el equilibrio no se compra ni se toma en batido: se practica.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- Q3 ---------- -->
+    <article class="qcard" id="q3">
+      <div class="qhead">
+        <div class="qnum">3</div>
+        <div>
+          <h3>Verdadero o falso — y justifica</h3>
+          <p class="qmeta">3 afirmaciones · 3 puntos · ≈8 min</p>
+        </div>
+      </div>
+      <div class="qbody">
+        <p class="qtext">Marca V o F según el texto. <em>Justifica brevemente la que sea falsa.</em> (Puedes justificar todas: suma.)</p>
+
+        <div class="vfrow" data-vf="1">
+          <p class="vfq"><span class="tagv">3.1</span>Para Séneca, beber en exceso es malo <b>únicamente</b> porque destruye el cuerpo físico.</p>
+          <div class="vfstate">
+            <button class="vfbtn" data-v="V" data-for="vf1" aria-pressed="false">V</button>
+            <button class="vfbtn" data-v="F" data-for="vf1" aria-pressed="false">F</button>
+          </div>
+          <label class="fl" for="vf1j">Justificación</label>
+          <textarea id="vf1j" data-key="vf1j" style="min-height:72px" placeholder="¿Qué otros daños menciona Séneca, además del cuerpo?"></textarea>
+          <div class="tfoot">
+            <span class="wc" data-wc="vf1j">0 palabras</span>
+            <button class="btn btn-ghost btn-sm" data-check="vf1">Comprobar</button>
+          </div>
+          <div class="fb" data-fb="vf1"></div>
+        </div>
+
+        <div class="vfrow" data-vf="2">
+          <p class="vfq"><span class="tagv">3.2</span>Aristóteles sostiene que los apetitos naturales (hambre y sed) <b>no tienen un límite claro</b> establecido por la naturaleza.</p>
+          <div class="vfstate">
+            <button class="vfbtn" data-v="V" data-for="vf2" aria-pressed="false">V</button>
+            <button class="vfbtn" data-v="F" data-for="vf2" aria-pressed="false">F</button>
+          </div>
+          <label class="fl" for="vf2j">Justificación</label>
+          <textarea id="vf2j" data-key="vf2j" style="min-height:72px" placeholder="Cita la idea de Aristóteles sobre el límite natural…"></textarea>
+          <div class="tfoot">
+            <span class="wc" data-wc="vf2j">0 palabras</span>
+            <button class="btn btn-ghost btn-sm" data-check="vf2">Comprobar</button>
+          </div>
+          <div class="fb" data-fb="vf2"></div>
+        </div>
+
+        <div class="vfrow" data-vf="3">
+          <p class="vfq"><span class="tagv">3.3</span>Epicteto utiliza el ejemplo de los atletas para explicar que nuestras elecciones de comida deben alinearse con la persona que queremos ser.</p>
+          <div class="vfstate">
+            <button class="vfbtn" data-v="V" data-for="vf3" aria-pressed="false">V</button>
+            <button class="vfbtn" data-v="F" data-for="vf3" aria-pressed="false">F</button>
+          </div>
+          <label class="fl" for="vf3j">Justificación</label>
+          <textarea id="vf3j" data-key="vf3j" style="min-height:72px" placeholder="Explica qué hacen los atletas y cómo se aplica a la vida…"></textarea>
+          <div class="tfoot">
+            <span class="wc" data-wc="vf3j">0 palabras</span>
+            <button class="btn btn-ghost btn-sm" data-check="vf3">Comprobar</button>
+          </div>
+          <div class="fb" data-fb="vf3"></div>
+        </div>
+
+        <div class="help">
+          <details>
+            <summary>Pista general: las trampas del V/F</summary>
+            <div class="dbody"><p>Fíjate en las palabras absolutas: <b>“únicamente”</b>, <b>“no tienen”</b>, <b>“solo”</b>. Las afirmaciones falsas del taller casi siempre exageran o niegan algo que el texto sí afirma. Cuando veas una de esas palabras, vuelve al párrafo y compárala.</p></div>
+          </details>
+          <details class="model">
+            <summary>Ver respuestas y justificaciones modelo</summary>
+            <div class="dbody">
+              <span class="badge">Respuesta</span>
+              <p><b>3.1 → FALSO.</b> Séneca no reduce el daño al cuerpo: “emborracharse es tanto un exceso físico, como un estado que anula la claridad y el buen juicio” (p. 282). La embriaguez es una “locura voluntaria” que ataca la razón, la voluntad y la libertad; además “no provoca los vicios, sino que los descubre” (p. 283).</p>
+              <p><b>3.2 → FALSO.</b> Es lo contrario: “los apetitos naturales, como el hambre y la sed, tienen un límite claro establecido por la naturaleza: satisfacer la necesidad básica de sustento” (p. 286). El problema aparece cuando se sobrepasa ese límite.</p>
+              <p><b>3.3 → VERDADERO.</b> El atleta decide primero quién quiere ser y luego ajusta dieta, entrenamiento y descanso a esa meta; igual nosotros: cada elección de comida debe ser coherente con el ideal de persona que queremos ser (p. 285).</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- Q4 ---------- -->
+    <article class="qcard" id="q4">
+      <div class="qhead">
+        <div class="qnum">4</div>
+        <div>
+          <h3>El consejo del filósofo</h3>
+          <p class="qmeta">Aplicación · 3 puntos · ≈8 min · máximo 4 líneas</p>
+        </div>
+      </div>
+      <div class="qbody">
+        <div class="block">
+          <h4>La situación</h4>
+          <p class="qtext">Un compañero te dice: <i>“Estoy estresado por los exámenes de final de periodo, así que me compré 3 paquetes de papas fritas y una bebida energizante gigante para aguantar la noche estudiando. Además, vi en TikTok que si tomo solo batidos verdes mañana voy a tener supermemoria”</i>.</p>
+          <p class="qtext" style="margin-top:8px">Elige <b>un</b> filósofo (Séneca, Marco Aurelio, Epicteto o Aristóteles) y escríbele un consejo directo, de <b>máximo 4 líneas</b>, desde su perspectiva.</p>
+        </div>
+
+        <div>
+          <label class="fl">1) Elige tu filósofo</label>
+          <div class="picker" id="picker">
+            <button class="pick" data-ph="seneca" aria-pressed="false">Séneca</button>
+            <button class="pick" data-ph="marco" aria-pressed="false">Marco Aurelio</button>
+            <button class="pick" data-ph="epicteto" aria-pressed="false">Epicteto</button>
+            <button class="pick" data-ph="aristoteles" aria-pressed="false">Aristóteles</button>
+          </div>
+          <label class="fl" for="ta-q4">2) Escribe el consejo (máx. 4 líneas)</label>
+          <textarea id="ta-q4" data-key="q4" style="min-height:118px" placeholder="Elige un filósofo arriba para ver frases de arranque…"></textarea>
+          <div class="tfoot">
+            <span class="wc" id="lineCount">≈ 0 líneas · máx. 4</span>
+            <span class="hintline">Habla de tú a tu compañero, no escribas un ensayo.</span>
+          </div>
+        </div>
+
+        <div class="starters" id="starters"></div>
+
+        <div class="help">
+          <details>
+            <summary>Pista · La receta de un buen consejo (4 líneas)</summary>
+            <div class="dbody">
+              <ol>
+                <li><b>Línea 1 — Empatiza:</b> reconoce el estrés sin aprobar la solución (“entiendo que estés cansado, pero…”).</li>
+                <li><b>Línea 2 — Nombra el error</b> usando la idea del filósofo (exceso, ruido, falta de límite, incoherencia).</li>
+                <li><b>Línea 3 — Explica la consecuencia</b> (más cansancio, menos claridad, dependencia).</li>
+                <li><b>Línea 4 — Propón una acción concreta</b> (agua, fruta, dormir 20 minutos, estudiar por bloques).</li>
+              </ol>
+              <p>Ojo: el consejo debe sonar a <b>ese</b> filósofo. Si lo puede decir cualquiera, no está bien.</p>
+            </div>
+          </details>
+          <details class="model">
+            <summary>Ver un consejo modelo de cada filósofo</summary>
+            <div class="dbody">
+              <span class="badge">Modelos</span>
+              <p><b>Séneca:</b> “Entiendo el estrés, pero lo que compraste no es energía, es una ‘locura voluntaria’ en dosis nocturnas. Beber para aguantar apaga justo la razón que necesitas para estudiar. Come algo sencillo, bebe agua y duerme: mañana verás con claridad lo que hoy ves borroso.”</p>
+              <p><b>Marco Aurelio:</b> “La naturaleza ya te puso un límite: se come hasta quedar satisfecho, no hasta reventar. Tres paquetes de papas no son combustible, son ‘ruido’ que te quita claridad. Toma lo suficiente, apaga la pantalla y descansa: lo que sobra siempre pesa.”</p>
+              <p><b>Epicteto:</b> “Dijiste que quieres ser buen estudiante. El atleta decide quién quiere ser y ajusta su dieta a eso; tú estás haciendo lo contrario. Si tu meta es rendir, come como alguien que rinde. Y ningún batido hace en una noche lo que no hiciste en el periodo.”</p>
+              <p><b>Aristóteles:</b> “El problema no es la papa, es el atracón: eso es exceder la medida natural. Y pasar de tres paquetes a solo batidos es el otro extremo, la carencia. Busca el justo medio: come, bebe agua y duerme tus horas; la memoria no se compra en TikTok.”</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- Q5 ---------- -->
+    <article class="qcard" id="q5">
+      <div class="qhead">
+        <div class="qnum">5</div>
+        <div>
+          <h3>Descodifica al filósofo · “locura voluntaria”</h3>
+          <p class="qmeta">Interpretación · 3 puntos · ≈4 min</p>
+        </div>
+      </div>
+      <div class="qbody">
+        <div class="block">
+          <h4>Cita</h4>
+          <p class="qtext" style="font-family:var(--serif);font-style:italic;font-size:1.02rem">“La embriaguez es una locura voluntaria.” <span style="font-family:var(--mono);font-size:.68rem;color:var(--faint);font-style:normal">— Séneca, p. 282–283</span></p>
+          <p class="qtext" style="margin-top:8px">¿Qué quiere decir el autor?</p>
+        </div>
+        <div>
+          <label class="fl" for="ta-q5">Tu interpretación</label>
+          <textarea id="ta-q5" data-key="q5" placeholder="Explica las dos palabras clave de la frase: ‘locura’ y ‘voluntaria’…"></textarea>
+          <div class="tfoot"><span class="wc" data-wc="q5">0 palabras · mínimo 25</span><span class="hintline">No repitas la cita: tradúcela.</span></div>
+        </div>
+        <div class="help">
+          <details>
+            <summary>Pista 1 · Desarma la frase</summary>
+            <div class="dbody"><p><b>Locura</b> = perder la razón, no saber lo que se hace. <b>Voluntaria</b> = la elegiste tú, no te la provocaron. Si unes las dos, ya tienes el 60% de la respuesta.</p></div>
+          </details>
+          <details>
+            <summary>Pista 2 · ¿Quién responde por lo que pasa?</summary>
+            <div class="dbody"><p>El texto dice que “los actos que surgen de esa embriaguez también son responsabilidad del bebedor”. Ahí está la clave ética: si la locura es voluntaria, no sirve como excusa.</p></div>
+          </details>
+          <details>
+            <summary>Pista 3 · Conéctalo con la libertad</summary>
+            <div class="dbody"><p>Séneca no solo habla de resaca: dice que la embriaguez “anula la claridad y el buen juicio”, que son lo que nos hace libres. El borracho no disfruta más: deja de decidir. Y “la embriaguez no provoca los vicios, sino que los descubre”: quita el filtro.</p></div>
+          </details>
+          <details class="model">
+            <summary>Respuesta modelo (para comparar)</summary>
+            <div class="dbody">
+              <span class="badge">Modelo</span>
+              <p>Quiere decir que emborracharse no es una desgracia que te ocurre, sino una pérdida de la razón que uno mismo decide. Nadie pierde el juicio por accidente: se elige beber de más y, por eso, lo que se hace en ese estado sigue siendo responsabilidad de quien bebió. Para Séneca es grave porque la lucidez es lo que nos permite ser libres y felices; al apagarla, el exceso nos vuelve esclavos del impulso y deja a la vista los defectos que normalmente controlamos.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+    <!-- ---------- Q6 ---------- -->
+    <article class="qcard" id="q6">
+      <div class="qhead">
+        <div class="qnum">6</div>
+        <div>
+          <h3>Descodifica al filósofo · “ruido”</h3>
+          <p class="qmeta">Interpretación · 3 puntos · ≈4 min</p>
+        </div>
+      </div>
+      <div class="qbody">
+        <div class="block">
+          <h4>Cita</h4>
+          <p class="qtext" style="font-family:var(--serif);font-style:italic;font-size:1.02rem">“El exceso de bienes o placeres es solo ruido en nuestra vida.” <span style="font-family:var(--mono);font-size:.68rem;color:var(--faint);font-style:normal">— Marco Aurelio, p. 284</span></p>
+          <p class="qtext" style="margin-top:8px">¿A qué se refiere con la palabra “ruido”?</p>
+        </div>
+        <div>
+          <label class="fl" for="ta-q6">Tu interpretación</label>
+          <textarea id="ta-q6" data-key="q6" placeholder="Piensa en la diferencia entre lo que suena y lo que importa…"></textarea>
+          <div class="tfoot"><span class="wc" data-wc="q6">0 palabras · mínimo 25</span><span class="hintline">Contrasta ‘ruido’ con ‘silencio’ o con ‘lo necesario’.</span></div>
+        </div>
+        <div class="help">
+          <details>
+            <summary>Pista 1 · ¿Ruido comparado con qué?</summary>
+            <div class="dbody"><p>El ruido solo tiene sentido frente al <b>silencio</b>. En el texto, el silencio es <b>lo necesario</b>; el ruido es todo lo que se le suma y no deja escuchar lo importante.</p></div>
+          </details>
+          <details>
+            <summary>Pista 2 · Los efectos del ruido</summary>
+            <div class="dbody"><p>El exceso, dice Marco Aurelio, “entorpece la claridad mental y el autocontrol” y crea “una dependencia que nos hace perder autonomía sobre nuestros impulsos”. Eso es lo que hace el ruido: no te deja pensar ni decidir bien.</p></div>
+          </details>
+          <details>
+            <summary>Pista 3 · Un ejemplo cotidiano</summary>
+            <div class="dbody"><p>Comer de más no te alimenta más: te deja pesado y sin energía. Comprar de más no te hace más feliz: te ata a mantenerlo. Eso es “ruido”: ocupa espacio y atención sin aportar nada.</p></div>
+          </details>
+          <details class="model">
+            <summary>Respuesta modelo (para comparar)</summary>
+            <div class="dbody">
+              <span class="badge">Modelo</span>
+              <p>Se refiere a todo lo que excede lo necesario: bienes y placeres de más que no nos nutren, solo hacen bulla. Como el ruido, no se puede “escuchar” nada útil en medio de ellos: entorpecen la claridad mental, el autocontrol y la paz interior. Marco Aurelio contrapone ese exceso a la <b>suficiencia</b>, que es quedarse con lo justo. Por eso dice que lo que sobra no es una ganancia sino estorbo: nos vuelve dependientes y nos quita autonomía sobre nuestros propios impulsos.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ AUTOEVALUACIÓN ============ -->
+<section class="sec" id="autoevaluacion">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">06 / ANTES DE ENTREGAR</span>
+      <h2>Autoevaluación</h2>
+      <p>Marca cada punto que ya cumpliste. Si algo queda sin marcar, vuelve a esa pregunta: es exactamente lo que revisa el profesor.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <ul class="rub" id="rub">
+          <li data-r="1"><span class="box">✓</span><span class="rubtxt">Respondí <b>con mis palabras</b>: no copié frases del libro ni de un modelo.</span></li>
+          <li data-r="2"><span class="box">✓</span><span class="rubtxt">Usé al menos <b>una idea o cita</b> del capítulo en cada respuesta.</span></li>
+          <li data-r="3"><span class="box">✓</span><span class="rubtxt">En las preguntas de opinión expliqué <b>por qué</b>, no solo qué siento.</span></li>
+          <li data-r="4"><span class="box">✓</span><span class="rubtxt">En el V/F <b>justifiqué</b> la afirmación falsa (y dije qué dice el texto en realidad).</span></li>
+          <li data-r="5"><span class="box">✓</span><span class="rubtxt">Mi consejo de la pregunta 4 tiene <b>4 líneas o menos</b> y se nota de qué filósofo viene.</span></li>
+          <li data-r="6"><span class="box">✓</span><span class="rubtxt">Diferencié la <b>idea central</b> (la tesis) de las <b>ideas secundarias</b> (argumentos y ejemplos).</span></li>
+          <li data-r="7"><span class="box">✓</span><span class="rubtxt">Revisé ortografía, tildes y puntuación; usé puntos donde tocaba.</span></li>
+          <li data-r="8"><span class="box">✓</span><span class="rubtxt">Escribí mi nombre y la fecha en el taller.</span></li>
+        </ul>
+        <div class="score">
+          <span class="big" id="rubScore">0/8</span>
+          <span class="lbl" id="rubMsg">Empieza marcando lo que ya tienes.</span>
+        </div>
+      </div>
+      <div class="card">
+        <h4 style="margin:0 0 10px;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)">Cómo se lee tu respuesta</h4>
+        <p style="margin:0 0 12px;font-size:.9rem;color:var(--muted)">El taller no premia escribir mucho, sino <b>pensar con el texto</b>. Esta es la escala que puedes usar para revisarte:</p>
+        <div class="block" style="background:transparent">
+          <p class="qtext" style="font-size:.86rem;margin:0 0 8px"><b style="color:var(--ok)">Nivel alto:</b> explica la idea del filósofo, la aplica al caso concreto y saca una conclusión propia.</p>
+          <p class="qtext" style="font-size:.86rem;margin:0 0 8px"><b style="color:var(--gold)">Nivel medio:</b> menciona al filósofo o el concepto, pero se queda en lo general o repite el texto.</p>
+          <p class="qtext" style="font-size:.86rem;margin:0"><b style="color:var(--rose)">Nivel bajo:</b> opina sin apoyarse en el capítulo (“porque hace daño”, “porque sí”).</p>
+        </div>
+        <p class="tip" style="margin-top:12px">Consejo: si tu respuesta sirve para cualquier texto, no sirve para este. Ancla cada idea en el capítulo 33.</p>
+        <h4 style="margin:20px 0 0;font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;color:var(--teal)">Plan de 40 minutos</h4>
+        <ul class="plan">
+          <li><span class="t">0–6 min</span><span>Lee el panorama y la sección de los filósofos (o el capítulo, págs. 280–287).</span></li>
+          <li><span class="t">6–11 min</span><span>Pregunta 1: empareja y comprueba.</span></li>
+          <li><span class="t">11–21 min</span><span>Preguntas 2A y 2B: escribe sin mirar los modelos.</span></li>
+          <li><span class="t">21–29 min</span><span>Pregunta 3: marca V/F y justifica.</span></li>
+          <li><span class="t">29–36 min</span><span>Pregunta 4: elige filósofo y escribe 4 líneas.</span></li>
+          <li><span class="t">36–40 min</span><span>Preguntas 5 y 6 + repaso con la autoevaluación.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PÁGINAS ============ -->
+<section class="sec" id="paginas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">07 / FUENTE</span>
+      <h2>El capítulo, página por página</h2>
+      <p>Páginas 280 a 287 de <i>Carpe Diem</i>. Toca una miniatura para leerla en grande; usa ← y → para pasar de página.</p>
+    </div>
+    <div class="gal" id="gal">
+      <button class="pg" data-i="0"><img src="assets/cap33/p280.jpg" alt="Capítulo 33, página 280: inicio del capítulo y confesión del frigorífico" loading="lazy"><span>p. 280</span></button>
+      <button class="pg" data-i="1"><img src="assets/cap33/p281.jpg" alt="Página 281: Hipócrates, Galeno y el inicio de La filosofía y la alimentación" loading="lazy"><span>p. 281</span></button>
+      <button class="pg" data-i="2"><img src="assets/cap33/p282.jpg" alt="Página 282: O una vida feliz o el alcohol" loading="lazy"><span>p. 282</span></button>
+      <button class="pg" data-i="3"><img src="assets/cap33/p283.jpg" alt="Página 283: la locura voluntaria y la moderación" loading="lazy"><span>p. 283</span></button>
+      <button class="pg" data-i="4"><img src="assets/cap33/p284.jpg" alt="Página 284: Marco Aurelio y el placer de la frugalidad" loading="lazy"><span>p. 284</span></button>
+      <button class="pg" data-i="5"><img src="assets/cap33/p285.jpg" alt="Página 285: Epicteto, la comida como ejercicio de autodisciplina" loading="lazy"><span>p. 285</span></button>
+      <button class="pg" data-i="6"><img src="assets/cap33/p286.jpg" alt="Página 286: Aristóteles y el justo medio" loading="lazy"><span>p. 286</span></button>
+      <button class="pg" data-i="7"><img src="assets/cap33/p287.jpg" alt="Página 287: Equilibrio en la alimentación, cierre del capítulo" loading="lazy"><span>p. 287</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ENTREGA ============ -->
+<section class="sec" id="entregar">
+  <div class="wrap">
+    <div class="entregar">
+      <span class="n" style="font-family:var(--mono);font-size:.72rem;color:var(--gold);letter-spacing:.18em">08 / CIERRE</span>
+      <h2 style="font-family:var(--serif);font-size:1.6rem;margin:8px 0 4px">Tus respuestas</h2>
+      <p style="margin:0;color:var(--muted);font-size:.92rem">Descarga, copia o imprime lo que escribiste y págalo al taller. Nada se envía a internet: todo vive en tu navegador.</p>
+      <div class="bar"><i id="barFill"></i></div>
+      <p style="margin:0;font-size:.8rem;color:var(--muted)"><b id="barTxt" style="color:var(--gold)">0 de 12</b> campos completados</p>
+      <div class="actions">
+        <button class="btn btn-primary btn-sm" id="downloadBtn">⤓ Descargar mis respuestas</button>
+        <button class="btn btn-ghost btn-sm" id="copyBtn">⧉ Copiar</button>
+        <button class="btn btn-ghost btn-sm" id="printBtn2">🖨 Imprimir / PDF</button>
+      </div>
+      <p class="tip">El archivo se descarga como texto (.md) y se abre en cualquier editor o en Google Docs.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div><b>Taller 3 · Lectura crítica 9°</b> — Capítulo 33, «Una buena alimentación equilibra tu mente», <i>Carpe Diem</i>.<br>Guía de estudio interactiva · Colegio CEDAP · Docente: Geraldine Rodríguez.</div>
+    <div>Datos: se guardan solo en este navegador · Sin conexión a internet.</div>
+  </div>
+</footer>
+
+<!-- lightbox -->
+<div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Visor de páginas del capítulo">
+  <button class="close" id="lbClose" aria-label="Cerrar">✕</button>
+  <button class="prev" id="lbPrev" aria-label="Página anterior">‹</button>
+  <img id="lbImg" alt="">
+  <button class="next" id="lbNext" aria-label="Página siguiente">›</button>
+  <div class="cap" id="lbCap"></div>
+</div>
+
+<!-- print view -->
+<div id="printout"></div>
+
+<script>
+(function(){
+"use strict";
+const $  = (s,r=document)=>r.querySelector(s);
+const $$ = (s,r=document)=>Array.from(r.querySelectorAll(s));
+const NS = "t3carpe.";
+const store = {
+  get(k,d){ try{ const v=localStorage.getItem(NS+k); return v===null?d:JSON.parse(v); }catch(e){ return d; } },
+  set(k,v){ try{ localStorage.setItem(NS+k,JSON.stringify(v)); }catch(e){} },
+  del(k){ try{ localStorage.removeItem(NS+k); }catch(e){} }
+};
+
+/* ---------- tema ---------- */
+const html = document.documentElement;
+function setTheme(t){ html.setAttribute("data-theme",t); store.set("theme",t); }
+setTheme(store.get("theme","dark"));
+$("#themeBtn").addEventListener("click",()=>setTheme(html.getAttribute("data-theme")==="dark"?"light":"dark"));
+
+/* ---------- barra de scroll + nav activa ---------- */
+const line = $("#scrollLine");
+addEventListener("scroll",()=>{
+  const h = document.documentElement;
+  const p = h.scrollTop / Math.max(1,h.scrollHeight - h.clientHeight);
+  line.style.width = (p*100).toFixed(2)+"%";
+},{passive:true});
+
+const navLinks = $$(".nav a");
+const secs = navLinks.map(a=>document.querySelector(a.getAttribute("href"))).filter(Boolean);
+const io = new IntersectionObserver(es=>{
+  es.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(a=>a.classList.toggle("on",a.getAttribute("href")==="#"+e.target.id));
+    }
+  });
+},{rootMargin:"-45% 0px -50% 0px"});
+secs.forEach(s=>io.observe(s));
+
+/* ---------- modo ayudas ---------- */
+const modeSw = $("#modeSw");
+function setMode(help){
+  document.body.classList.toggle("mode-prueba",!help);
+  modeSw.setAttribute("aria-checked",String(help));
+  $("#modeLabel").textContent = help ? "Ayudas activadas" : "Modo prueba";
+  store.set("help",help);
+}
+setMode(store.get("help",true));
+modeSw.addEventListener("click",()=>setMode(modeSw.getAttribute("aria-checked")!=="true"));
+
+/* ---------- progreso ---------- */
+const FIELDS = [
+  {key:"q2a",min:40},{key:"q2b",min:35},
+  {key:"vf1j",min:10},{key:"vf2j",min:10},{key:"vf3j",min:10},
+  {key:"q4",min:20},{key:"q5",min:25},{key:"q6",min:25}
+];
+const words = s => s.trim() ? s.trim().split(/\s+/).length : 0;
+
+function progress(){
+  let done = 0;
+  FIELDS.forEach(f=>{ if(words(store.get(f.key,""))>=f.min) done++; });
+  if(store.get("matchdone",false)) done++;
+  ["vf1","vf2","vf3"].forEach(k=>{ if(store.get(k,null)) done++; });
+  const pct = Math.round(done/12*100);
+  $("#cnt").textContent = done;
+  $("#barFill").style.width = pct+"%";
+  $("#barTxt").textContent = done+" de 12";
+  $$(".qnav a").forEach(a=>{
+    const id = a.dataset.nav;
+    let ok = false;
+    if(id==="q1") ok = store.get("matchdone",false);
+    if(id==="q2") ok = words(store.get("q2a",""))>=40 && words(store.get("q2b",""))>=35;
+    if(id==="q3") ok = ["vf1","vf2","vf3"].every(k=>store.get(k,null)) && ["vf1j","vf2j","vf3j"].every(k=>words(store.get(k,""))>=10);
+    if(id==="q4") ok = words(store.get("q4",""))>=20 && store.get("pick",null);
+    if(id==="q5") ok = words(store.get("q5",""))>=25;
+    if(id==="q6") ok = words(store.get("q6",""))>=25;
+    a.classList.toggle("done",!!ok);
+  });
+  return done;
+}
+
+/* ---------- textareas: autosave + contador ---------- */
+$$("textarea[data-key]").forEach(ta=>{
+  const key = ta.dataset.key;
+  const min = (FIELDS.find(f=>f.key===key)||{}).min || 0;
+  const wc  = document.querySelector('[data-wc="'+key+'"]');
+  const paint = ()=>{
+    if(!wc) return;
+    const n = words(ta.value);
+    wc.textContent = n+" palabras"+(min? " · mínimo "+min : "");
+    wc.classList.toggle("ok",min>0 && n>=min);
+    wc.classList.toggle("warn",n>0 && n<Math.ceil(min*0.5));
+  };
+  ta.value = store.get(key,"");
+  paint();
+  ta.addEventListener("input",()=>{
+    store.set(key,ta.value);
+    paint(); progress();
+    if(key==="q4") countLines();
+  });
+});
+
+/* ---------- Q4: líneas + filósofos ---------- */
+function countLines(){
+  const ta = $('textarea[data-key="q4"]'), el = $("#lineCount");
+  if(!ta||!el) return;
+  const txt = ta.value;
+  if(!txt.trim()){ el.textContent = "≈ 0 líneas · máx. 4"; el.className="wc"; return; }
+  const hard = txt.split("\n").length;
+  const soft = Math.ceil(txt.length/72);
+  const n = Math.max(hard,soft);
+  el.textContent = "≈ "+n+" línea"+(n===1?"":"s")+" · máx. 4";
+  el.className = "wc " + (n>4 ? "warn" : n>=3 ? "ok" : "");
+}
+
+const STARTERS = {
+  seneca:[
+    {t:'Entiendo el estrés, pero lo que compraste no es energía: es una <b>“locura voluntaria”</b> en dosis nocturnas.',i:'Entiendo que estés estresado, pero '},
+    {t:'Beber para aguantar apaga justo la razón que necesitas para estudiar: eso es <b>exceso</b>, no fuerza.',i:'Además, '},
+    {t:'Prueba con agua, una fruta y dormir: la claridad que ganas vale más que la energía prestada.',i:'Yo te propongo que '}
+  ],
+  marco:[
+    {t:'La naturaleza ya te puso un límite: se come hasta quedar satisfecho, no hasta reventar.',i:'Mira, '},
+    {t:'Tres paquetes de papas no son combustible: son <b>“ruido”</b> que te quita claridad mental.',i:'Además, '},
+    {t:'Toma solo lo suficiente, apaga la pantalla y descansa; lo que sobra siempre pesa.',i:'Yo te propongo que '}
+  ],
+  epicteto:[
+    {t:'Dijiste que quieres ser buen estudiante; entonces come como alguien que quiere serlo.',i:'Piensa esto: '},
+    {t:'El atleta elige su meta y ajusta su dieta a ella; tú estás haciendo lo contrario: la comida decide por ti.',i:'Como dice el ejemplo de los atletas, '},
+    {t:'Y ningún batido hace en una noche lo que no hiciste en el periodo: entrena la voluntad, no la excusa.',i:'Por eso, '}
+  ],
+  aristoteles:[
+    {t:'El problema no es la papa, es el atracón: eso es <b>exceder la medida natural</b>.',i:'Ojo: '},
+    {t:'Y pasar de tres paquetes a solo batidos es el otro extremo: la carencia.',i:'Además, '},
+    {t:'Busca el <b>justo medio</b>: come algo, bebe agua y duerme tus horas; la memoria no se compra en TikTok.',i:'Te sugiero que '}
+  ]
+};
+const picker = $("#picker"), startersBox = $("#starters");
+function paintStarters(ph){
+  if(!ph){ startersBox.classList.remove("show"); startersBox.innerHTML=""; return; }
+  const list = STARTERS[ph]||[];
+  startersBox.innerHTML = '<p class="hintline" style="margin:0 0 8px">Toca una frase para insertarla y luego ajústala a tu manera:</p>' +
+    list.map(s=>`<button class="starter" data-insert="${s.i.replace(/"/g,'&quot;')}">${s.t}<span class="plus">+ insertar</span></button>`).join("");
+  startersBox.classList.add("show");
+  $$(".starter",startersBox).forEach(b=>{
+    b.addEventListener("click",()=>{
+      const ta = $('textarea[data-key="q4"]');
+      const ins = b.dataset.insert;
+      ta.value = (ta.value.trim()? ta.value.replace(/\s*$/," ")+ins : ins);
+      ta.focus();
+      ta.setSelectionRange(ta.value.length,ta.value.length);
+      store.set("q4",ta.value); countLines(); progress();
+    });
+  });
+}
+const savedPick = store.get("pick",null);
+if(savedPick){
+  $$(".pick",picker).forEach(b=>b.setAttribute("aria-pressed",String(b.dataset.ph===savedPick)));
+}
+paintStarters(savedPick);
+$$(".pick",picker).forEach(b=>{
+  b.addEventListener("click",()=>{
+    const ph = b.dataset.ph;
+    const already = b.getAttribute("aria-pressed")==="true";
+    $$(".pick",picker).forEach(x=>x.setAttribute("aria-pressed","false"));
+    if(already){ store.set("pick",null); paintStarters(null); }
+    else { b.setAttribute("aria-pressed","true"); store.set("pick",ph); paintStarters(ph); }
+    progress();
+  });
+});
+countLines();
+
+/* ---------- Q1: emparejamiento ---------- */
+const PAIRS = {seneca:"c",marco:"d",epicteto:"b",aristoteles:"a"};
+const NAMES = {seneca:"Séneca",marco:"Marco Aurelio",epicteto:"Epicteto",aristoteles:"Aristóteles"};
+const CONC  = {a:"Justo medio / gula",b:"Atletas / autodisciplina",c:"Frugalidad / locura voluntaria",d:"Suficiencia / ruido"};
+const CONC_SHORT = {a:"A",b:"B",c:"C",d:"D"};
+let assign = store.get("massign",{seneca:null,marco:null,epicteto:null,aristoteles:null});
+let selP = null;
+
+function paintMatch(){
+  $$('.mitem[data-p]').forEach(btn=>{
+    const p = btn.dataset.p;
+    btn.setAttribute("aria-pressed",String(selP===p));
+    const tie = btn.querySelector(".tie");
+    const c = assign[p];
+    if(c){ tie.hidden=false; tie.textContent=CONC_SHORT[c]; } else { tie.hidden=true; tie.textContent=""; }
+    btn.classList.remove("right","wrong");
+  });
+  $$('.mitem[data-c]').forEach(btn=>{
+    const c = btn.dataset.c;
+    const owner = Object.keys(assign).find(p=>assign[p]===c);
+    const tie = btn.querySelector(".tie");
+    if(owner){ tie.hidden=false; tie.textContent=NAMES[owner].split(" ")[0]; } else { tie.hidden=true; tie.textContent=""; }
+    btn.classList.remove("right","wrong");
+  });
+  store.set("massign",assign);
+}
+paintMatch();
+
+$$('.mitem[data-p]').forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    selP = (selP===btn.dataset.p) ? null : btn.dataset.p;
+    paintMatch();
+    if(selP) $("#mFeed").textContent = "Elegiste a "+NAMES[selP]+". Ahora toca un concepto de la derecha.";
+  });
+});
+$$('.mitem[data-c]').forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const c = btn.dataset.c;
+    if(!selP){
+      $("#mFeed").innerHTML = "<b>Primero elige un filósofo</b> de la columna izquierda.";
+      return;
+    }
+    // quitar el concepto de cualquier otro filósofo
+    Object.keys(assign).forEach(p=>{ if(assign[p]===c) assign[p]=null; });
+    assign[selP] = (assign[selP]===c) ? null : c;
+    paintMatch();
+    $("#mFeed").textContent = "";
+    store.set("matchdone",false);
+    $("#mScore").textContent = "";
+    progress();
+  });
+});
+
+$("#mReset").addEventListener("click",()=>{
+  assign = {seneca:null,marco:null,epicteto:null,aristoteles:null};
+  selP = null; paintMatch();
+  $("#mScore").textContent=""; $("#mFeed").textContent="";
+  store.set("matchdone",false);
+  $$('.mitem').forEach(b=>b.classList.remove("right","wrong"));
+  progress();
+});
+
+$("#mCheck").addEventListener("click",()=>{
+  let hit = 0;
+  const missing = [];
+  $$('.mitem[data-p]').forEach(btn=>{
+    const p = btn.dataset.p;
+    if(!assign[p]){ missing.push(NAMES[p]); return; }
+    const ok = assign[p]===PAIRS[p];
+    btn.classList.add(ok?"right":"wrong");
+    if(ok) hit++;
+  });
+  $$('.mitem[data-c]').forEach(btn=>{
+    const c = btn.dataset.c;
+    const owner = Object.keys(assign).find(p=>assign[p]===c);
+    if(owner) btn.classList.add(owner && PAIRS[owner]===c ? "right" : "wrong");
+  });
+  $("#mScore").textContent = hit+" / 4 correctas";
+  $("#mScore").className = "wc " + (hit===4?"ok":"warn");
+  if(missing.length){
+    $("#mFeed").innerHTML = "Te falta unir: <b>"+missing.join(", ")+"</b>.";
+  } else if(hit===4){
+    $("#mFeed").innerHTML = "<b>¡Perfecto!</b> Ahora copia las cuatro parejas al taller en papel.";
+    store.set("matchdone",true);
+  } else {
+    const first = Object.keys(PAIRS).find(p=>assign[p]!==PAIRS[p]);
+    $("#mFeed").innerHTML = "Revisa a <b>"+NAMES[first]+"</b>: su idea clave está en el título de su apartado del capítulo.";
+    store.set("matchdone",false);
+  }
+  progress();
+});
+if(store.get("matchdone",false)){ $("#mScore").textContent="4 / 4 correctas"; $("#mScore").className="wc ok"; }
+
+/* ---------- Q3: V/F ---------- */
+const VF_CORRECT = {vf1:"F",vf2:"F",vf3:"V"};
+const VF_FB = {
+  vf1:{good:'Correcto: es <b>falso</b>. Séneca dice que emborracharse “es tanto un exceso físico, como un estado que anula la claridad y el buen juicio” (p. 282). La embriaguez es una “locura voluntaria” que ataca la razón, la voluntad y la libertad; y “no provoca los vicios, sino que los descubre” (p. 283).',
+        bad:'Cuidado: la afirmación es <b>falsa</b> por la palabra “únicamente”. Séneca no habla solo del cuerpo: la embriaguez anula la claridad y el buen juicio y es una “locura voluntaria” (p. 282–283).'},
+  vf2:{good:'Correcto: es <b>falso</b>. Aristóteles sostiene justo lo contrario: “los apetitos naturales, como el hambre y la sed, tienen un límite claro establecido por la naturaleza: satisfacer la necesidad básica” (p. 286). El error es sobrepasarlo.',
+        bad:'Revisa: la afirmación es <b>falsa</b>. El texto dice que la naturaleza <b>sí</b> puso un límite claro: satisfacer la necesidad. Llamamos “tragón” al que lo supera (p. 286).'},
+  vf3:{good:'Correcto: es <b>verdadero</b>. El atleta decide primero quién quiere ser y luego ajusta dieta, entrenamiento y descanso; igual nosotros, cada elección debe ser “coherente con la meta y el ideal de quién deseamos ser” (p. 285).',
+        bad:'Revisa: la afirmación es <b>verdadera</b>. Epicteto usa a los atletas precisamente para mostrar que la alimentación se ajusta al ideal de persona que queremos ser (p. 285).'}
+};
+$$(".vfbtn").forEach(b=>{
+  const id = b.dataset.for, v = b.dataset.v;
+  if(store.get(id,null)===v) b.setAttribute("aria-pressed","true");
+  b.addEventListener("click",()=>{
+    $$('.vfbtn[data-for="'+id+'"]').forEach(x=>x.setAttribute("aria-pressed","false"));
+    b.setAttribute("aria-pressed","true");
+    store.set(id,v);
+    const fb = document.querySelector('[data-fb="'+id+'"]');
+    fb.classList.remove("show","good","bad");
+    progress();
+  });
+});
+$$("[data-check]").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    const id = btn.dataset.check;
+    const chosen = store.get(id,null);
+    const fb = document.querySelector('[data-fb="'+id+'"]');
+    if(!chosen){
+      fb.className="fb show bad";
+      fb.innerHTML = "Elige primero <b>V</b> o <b>F</b>, y luego comprueba.";
+      return;
+    }
+    const ok = chosen===VF_CORRECT[id];
+    fb.className = "fb show "+(ok?"good":"bad");
+    fb.innerHTML = (ok?"✔ ":"✘ ") + VF_FB[id][ok?"good":"bad"];
+  });
+});
+
+/* ---------- autoevaluación ---------- */
+const rub = $("#rub");
+$$("li",rub).forEach(li=>{
+  if(store.get("rub."+li.dataset.r,false)) li.classList.add("on");
+  li.addEventListener("click",()=>{
+    li.classList.toggle("on");
+    store.set("rub."+li.dataset.r,li.classList.contains("on"));
+    rubScore();
+  });
+});
+function rubScore(){
+  const n = $$("li.on",rub).length;
+  $("#rubScore").textContent = n+"/8";
+  $("#rubMsg").textContent = n===8 ? "Listo para entregar." : n>=5 ? "Vas bien: revisa lo que falta." : n>=1 ? "Sigue marcando: aún falta repasar." : "Empieza marcando lo que ya tienes.";
+}
+rubScore();
+
+/* ---------- lightbox ---------- */
+const pages = [
+  ["assets/cap33/p280.jpg","p. 280 · Inicio del capítulo: la confesión del frigorífico"],
+  ["assets/cap33/p281.jpg","p. 281 · Hipócrates, Galeno y “La filosofía y la alimentación”"],
+  ["assets/cap33/p282.jpg","p. 282 · “O una vida feliz o el alcohol”"],
+  ["assets/cap33/p283.jpg","p. 283 · La “locura voluntaria” y la moderación"],
+  ["assets/cap33/p284.jpg","p. 284 · “Marco Aurelio y el placer de la frugalidad”"],
+  ["assets/cap33/p285.jpg","p. 285 · “Epicteto: la comida como ejercicio de autodisciplina”"],
+  ["assets/cap33/p286.jpg","p. 286 · “Aristóteles y el justo medio”"],
+  ["assets/cap33/p287.jpg","p. 287 · “Equilibrio en la alimentación”: cierre"]
+];
+const lb = $("#lb"), lbImg = $("#lbImg"), lbCap = $("#lbCap");
+let lbI = 0, lastFocus = null;
+function openLb(i){
+  lbI = (i+pages.length)%pages.length;
+  lbImg.src = pages[lbI][0];
+  lbImg.alt = pages[lbI][1];
+  lbCap.textContent = pages[lbI][1];
+  lb.classList.add("open");
+  lastFocus = document.activeElement;
+  $("#lbClose").focus();
+}
+function closeLb(){ lb.classList.remove("open"); if(lastFocus) lastFocus.focus(); }
+$$(".pg").forEach(b=>b.addEventListener("click",()=>openLb(+b.dataset.i)));
+$("#lbClose").addEventListener("click",closeLb);
+$("#lbPrev").addEventListener("click",()=>openLb(lbI-1));
+$("#lbNext").addEventListener("click",()=>openLb(lbI+1));
+lb.addEventListener("click",e=>{ if(e.target===lb) closeLb(); });
+addEventListener("keydown",e=>{
+  if(!lb.classList.contains("open")) return;
+  if(e.key==="Escape") closeLb();
+  if(e.key==="ArrowRight") openLb(lbI+1);
+  if(e.key==="ArrowLeft") openLb(lbI-1);
+});
+
+/* ---------- construir texto de respuestas ---------- */
+function buildText(){
+  const pick = store.get("pick",null);
+  const L = [];
+  const pad = s => s && s.trim() ? s.trim() : "(sin responder)";
+  L.push("TALLER 3 · LECTURA CRÍTICA 9°");
+  L.push("Capítulo 33 — «Una buena alimentación equilibra tu mente» (Carpe Diem)");
+  L.push("Fecha: "+new Date().toLocaleDateString("es-CO"));
+  L.push("");
+  L.push("1. EMPAREJAMIENTO");
+  L.push("   Séneca → C. La frugalidad como libertad interior y la embriaguez como “locura voluntaria”.");
+  L.push("   Marco Aurelio → D. La “suficiencia”: lo que pasa del límite natural es solo “ruido” o exceso.");
+  L.push("   Epicteto → B. Entrenar la alimentación como un atleta entrena su autodisciplina.");
+  L.push("   Aristóteles → A. El “justo medio” y no caer en la gula o ser un “tragón”.");
+  L.push("");
+  L.push("2A. LA PARADOJA DEL REFRIGERADOR");
+  L.push(pad(store.get("q2a","")));
+  L.push("");
+  L.push("2B. GURÚS VS. FILÓSOFOS");
+  L.push(pad(store.get("q2b","")));
+  L.push("");
+  L.push("3. VERDADERO O FALSO");
+  L.push("   3.1  "+pad(store.get("vf1",""))+"  —  "+pad(store.get("vf1j","")));
+  L.push("   3.2  "+pad(store.get("vf2",""))+"  —  "+pad(store.get("vf2j","")));
+  L.push("   3.3  "+pad(store.get("vf3",""))+"  —  "+pad(store.get("vf3j","")));
+  L.push("");
+  L.push("4. CONSEJO DEL FILÓSOFO" + (pick ? " ("+NAMES[pick]+")" : ""));
+  L.push(pad(store.get("q4","")));
+  L.push("");
+  L.push("5. «LA EMBRIAGUEZ ES UNA LOCURA VOLUNTARIA»");
+  L.push(pad(store.get("q5","")));
+  L.push("");
+  L.push("6. «EL EXCESO… ES SOLO RUIDO»");
+  L.push(pad(store.get("q6","")));
+  L.push("");
+  L.push("— Generado con la guía interactiva del Taller 3 —");
+  return L.join("\n");
+}
+
+$("#copyBtn").addEventListener("click",async()=>{
+  const txt = buildText();
+  try{
+    await navigator.clipboard.writeText(txt);
+    $("#copyBtn").textContent = "✓ Copiado";
+  }catch(e){
+    const ta = document.createElement("textarea");
+    ta.value = txt; document.body.appendChild(ta); ta.select();
+    document.execCommand("copy"); ta.remove();
+    $("#copyBtn").textContent = "✓ Copiado";
+  }
+  setTimeout(()=>{ $("#copyBtn").textContent = "⧉ Copiar"; },1800);
+});
+
+$("#downloadBtn").addEventListener("click",()=>{
+  const blob = new Blob([buildText()],{type:"text/markdown;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "taller3_carpe_diem_respuestas.md";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(()=>URL.revokeObjectURL(a.href),1500);
+});
+
+/* ---------- impresión ---------- */
+function esc(t){ return t.replace(/[<>&]/g,c=>({"<":"&lt;",">":"&gt;","&":"&amp;"}[c])); }
+function buildPrint(){
+  const pick = store.get("pick",null);
+  const items = [
+    ["1. Emparejamiento", "Une cada autor con su concepto clave del capítulo.", "Séneca → C · Marco Aurelio → D · Epicteto → B · Aristóteles → A"],
+    ["2A. La paradoja del refrigerador", "¿Por qué usar la comida como desahogo emocional va en contra de la visión de los filósofos estoicos?", store.get("q2a","")],
+    ["2B. Gurús vs. filósofos", "¿Cuál es la crítica principal del texto a los “creadores de contenido” frente a los clásicos?", store.get("q2b","")],
+    ["3.1 Verdadero o falso + justificación", "Para Séneca, beber en exceso es malo únicamente porque destruye el cuerpo físico.", (store.get("vf1","___"))+"  —  "+store.get("vf1j","")],
+    ["3.2 Verdadero o falso + justificación", "Aristóteles: los apetitos naturales no tienen un límite claro establecido por la naturaleza.", (store.get("vf2","___"))+"  —  "+store.get("vf2j","")],
+    ["3.3 Verdadero o falso + justificación", "Epicteto usa el ejemplo de los atletas para explicar que la comida debe alinearse con quien queremos ser.", (store.get("vf3","___"))+"  —  "+store.get("vf3j","")],
+    ["4. Consejo del filósofo"+(pick?" ("+NAMES[pick]+")":""), "Consejo directo a tu compañero, máximo 4 líneas.", store.get("q4","")],
+    ["5. «La embriaguez es una locura voluntaria»", "¿Qué quiere decir el autor?", store.get("q5","")],
+    ["6. «El exceso… es solo ruido»", "¿A qué se refiere Marco Aurelio con “ruido”?", store.get("q6","")]
+  ];
+  $("#printout").innerHTML =
+    "<h1>Taller 3 · Lectura crítica 9°</h1>"+
+    "<p class='ph'>Capítulo 33 — «Una buena alimentación equilibra tu mente» (Carpe Diem, págs. 280–287)</p>"+
+    "<p class='ph'>Nombre: <span class='ln' style='min-width:300px'></span></p>"+
+    "<p class='ph'>Fecha: <span class='ln' style='min-width:180px'></span></p>"+
+    items.map(([h,q,a])=>"<div class='item'><h3>"+h+"</h3><p class='qq'>"+q+"</p><div class='a'>"+
+      (a && a.trim() ? esc(a) : "<div class='lines'><span></span><span></span><span></span></div>")+
+      "</div></div>").join("");
+}
+function doPrint(){ buildPrint(); setTimeout(()=>window.print(),60); }
+addEventListener("beforeprint",buildPrint);
+$("#printBtn").addEventListener("click",doPrint);
+$("#printBtn2").addEventListener("click",doPrint);
+
+/* ---------- borrar todo ---------- */
+$("#resetAll").addEventListener("click",()=>{
+  if(!confirm("¿Borrar todas tus respuestas guardadas en este navegador? Esta acción no se puede deshacer.")) return;
+  FIELDS.forEach(f=>{ store.del(f.key); const ta=document.querySelector('textarea[data-key="'+f.key+'"]'); if(ta){ta.value="";} });
+  ["vf1","vf2","vf3","pick","matchdone","massign","help"].forEach(k=>store.del(k));
+  $$('li',rub).forEach(li=>store.del("rub."+li.dataset.r));
+  location.reload();
+});
+
+/* ---------- init ---------- */
+progress();
+})();
+</script>
+</body>
+</html>
