@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de estudio - Inglés 9° - Cuarto Periodo</title>
+<script>try{var t=localStorage.getItem("guiaIngles9P4theme");if(t==="light"||t==="dark")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<style>
+:root{--bg:#fbf7f0;--surface:#fffdf9;--surface-2:#f3ece0;--text:#2b2420;--text-muted:#5e5046;--border:#e3d9c9;--accent:#a3441d;--on-accent:#ffffff;--accent-soft:#f8e7dc;--ok:#1d6644;--ok-bg:#e3f1e6;--bad:#a1281c;--bad-bg:#f9e3de;--warn:#77500a;--warn-bg:#fdf0d5;--info:#1b6158;--info-bg:#ddefea;--code-bg:#f3ece0;--focus:#1f7a6d;--ill-1:#c8683a;--ill-2:#2f8f82;--ill-3:#dca84a;--ill-4:#8aa04a;--ill-5:#e9dcc3;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ill-1:#e58a5c;--ill-2:#4fb3a4;--ill-3:#e8bd63;--ill-4:#a6bf6a;--ill-5:#4a4239;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ill-1:#e58a5c;--ill-2:#4fb3a4;--ill-3:#e8bd63;--ill-4:#a6bf6a;--ill-5:#4a4239;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:var(--accent);text-decoration:underline}
+a:visited{color:var(--info)}
+a:hover{color:var(--text)}
+code{background:var(--code-bg);color:var(--text);padding:1px 5px;border-radius:4px}
+.katex{color:inherit}
+header{background:var(--accent);color:var(--on-accent);padding:18px 16px}
+header .top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+header h1{margin:0 0 8px;font-size:1.4rem;line-height:1.3}
+header .meta{display:flex;flex-wrap:wrap;gap:8px;font-size:.95rem}
+header .meta span{border:1px solid var(--on-accent);padding:2px 10px;border-radius:99px}
+#theme{margin:0;background:var(--surface);color:var(--text);border:2px solid var(--on-accent);white-space:nowrap}
+#theme:hover{background:var(--surface-2)}
+nav{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;gap:6px;overflow-x:auto}
+nav a,nav a:visited{white-space:nowrap;padding:6px 12px;border:1px solid var(--text-muted);border-radius:99px;color:var(--text);text-decoration:none;font-size:1rem}
+nav a:hover,nav a:focus,nav a.active{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+main{max-width:860px;margin:0 auto;padding:16px}
+.prog{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 16px;margin-bottom:16px}
+.bar{height:12px;background:var(--surface-2);border:1px solid var(--text-muted);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+details.sec{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin:14px 0;padding:0;scroll-margin-top:64px}
+details.sec>summary{cursor:pointer;padding:14px 16px;font-weight:700;font-size:1.1rem;list-style:none;color:var(--text);border-radius:12px}
+details.sec>summary:hover{background:var(--surface-2)}
+details.sec>summary::before{content:"▸ ";color:var(--accent)}
+details.sec[open]>summary::before{content:"▾ "}
+.body{padding:0 16px 16px}
+h3{margin:18px 0 6px;font-size:1.05rem}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:1rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:6px 9px;text-align:left;color:var(--text)}
+th{background:var(--surface-2);font-weight:700}
+tr:nth-child(even) td{background:var(--surface-2)}
+.en{font-style:italic}
+.note{background:var(--info-bg);color:var(--text);border-left:4px solid var(--info);padding:8px 12px;border-radius:6px;margin:10px 0}
+button{font:inherit;cursor:pointer;border:2px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:8px;padding:5px 12px;margin:3px 3px 3px 0}
+button:hover{background:var(--accent-soft);color:var(--text)}
+button.pri{background:var(--accent);color:var(--on-accent)}
+button.pri:hover{background:var(--info);color:var(--on-accent);border-color:var(--info)}
+button:disabled{background:var(--surface-2);color:var(--text-muted);border-color:var(--border);cursor:not-allowed}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.say{padding:1px 7px;font-size:.9rem}
+.tog{display:none;margin-top:6px;padding:8px 12px;background:var(--info-bg);color:var(--text);border-left:4px solid var(--info);border-radius:6px}
+.tog.show{display:block}
+.card{border:1px solid var(--border);border-radius:10px;padding:12px;margin:10px 0;background:var(--surface)}
+.card.done{border:2px solid var(--ok)}
+.card.done::before{content:"✔ Resuelto";display:inline-block;background:var(--ok-bg);color:var(--ok);font-weight:700;font-size:.9rem;padding:1px 8px;border-radius:99px;margin-bottom:6px}
+.opt{display:block;width:100%;text-align:left;margin:4px 0}
+.opt.sel{background:var(--accent);color:var(--on-accent)}
+.fb{margin-top:8px;padding:8px 12px;border-radius:6px;display:none;border:1px solid var(--border)}
+.fb.ok{display:block;background:var(--ok-bg);color:var(--ok);border-color:var(--ok)}
+.fb.bad{display:block;background:var(--bad-bg);color:var(--bad);border-color:var(--bad)}
+.fb.hint{display:block;background:var(--warn-bg);color:var(--warn);border-color:var(--warn)}
+input.f,input[type=text],textarea{font:inherit;width:9em;max-width:100%;padding:3px 6px;border:2px solid var(--text-muted);border-radius:6px;background:var(--surface);color:var(--text)}
+textarea{width:100%}
+input::placeholder,textarea::placeholder{color:var(--text-muted);opacity:1}
+input[type=checkbox]{accent-color:var(--accent);width:1.1em;height:1.1em}
+select{font:inherit;padding:3px;background:var(--surface);color:var(--text);border:2px solid var(--text-muted);border-radius:6px;max-width:100%}
+.tok{background:var(--surface-2);color:var(--text);border-color:var(--text-muted)}
+.ans{min-height:44px;border:2px dashed var(--text-muted);border-radius:8px;padding:6px;margin:6px 0}
+.mrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:5px 0}
+.passage{background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 14px}
+.map td:first-child{font-weight:700;white-space:nowrap}
+ul.tight,ol.tight{margin:4px 0;padding-left:20px}
+.chip{display:inline-block;background:var(--accent-soft);color:var(--text);border:1px solid var(--accent);border-radius:99px;padding:0 10px;font-size:.9rem}
+footer{text-align:center;color:var(--text-muted);padding:20px;font-size:.9rem}
+label.chk{display:block;margin:4px 0}
+.cmap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:8px}
+.cmap svg{width:100%;height:auto;display:block}
+.cmap .node{cursor:pointer}
+.cmap .node rect{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2}
+.cmap .node text{fill:var(--text);font:700 14px system-ui,Segoe UI,Roboto,sans-serif;text-anchor:middle;dominant-baseline:central}
+.cmap .badge circle{fill:var(--surface);stroke:var(--accent);stroke-width:2}
+.cmap .badge use{color:var(--accent);fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.cmap .node:hover rect,.cmap .node:focus rect,.cmap .node.on rect{fill:var(--accent)}
+.cmap .node:hover text,.cmap .node:focus text,.cmap .node.on text{fill:var(--on-accent)}
+.cmap .edge{cursor:pointer}
+.cmap .edge .ln{fill:none;stroke:var(--text-muted);stroke-width:2}
+.cmap .edge .hit{fill:none;stroke:var(--text);stroke-width:18;opacity:0;pointer-events:stroke}
+.cmap .edge:hover .ln,.cmap .edge:focus .ln,.cmap .edge.on .ln{stroke:var(--accent);stroke-width:3.5}
+.cmap .edge text{fill:var(--text);font:600 13px system-ui,Segoe UI,Roboto,sans-serif;text-anchor:middle;dominant-baseline:central;paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round}
+.cmap .edge:hover text,.cmap .edge:focus text,.cmap .edge.on text{fill:var(--accent)}
+.cmap marker polygon{fill:var(--text-muted)}
+.cmap-list{display:none;margin:0;padding-left:0;list-style:none}
+.cmap-list li{border-bottom:1px solid var(--border);padding:8px 0}
+.cmap-list li:last-child{border-bottom:0}
+.cmap-list .rels{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.cmap-list .rels button{font-size:.95rem;margin:0}
+@media (max-width:640px){.cmap svg{display:none}.cmap-list{display:block}}
+.cpanel{margin-top:10px;background:var(--info-bg);color:var(--text);border-left:4px solid var(--info);padding:10px 14px;border-radius:6px;min-height:3.2em}
+.cpanel p{margin:6px 0}
+.from{background:var(--surface-2);color:var(--text);border-left:4px solid var(--accent);padding:8px 12px;border-radius:6px;margin:0 0 12px}
+details.bridge{margin-top:18px;border:2px solid var(--info);background:var(--info-bg);border-radius:10px}
+details.bridge>summary{padding:10px 14px;font-weight:700;cursor:pointer;color:var(--text);border-radius:10px}
+details.bridge[open]>.bb{animation:fadein .25s ease}
+details.bridge .bb{padding:0 14px 12px}
+@keyframes fadein{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+ol.route{padding-left:0;list-style:none;margin:6px 0}
+ol.route li{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border:1px solid var(--border);border-radius:8px;margin:6px 0;background:var(--surface)}
+ol.route li .n{font-weight:700;color:var(--accent);min-width:1.4em}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.ico{width:1.25em;height:1.25em;flex:none;vertical-align:-.25em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+details.sec>summary .ico{color:var(--accent);margin-right:6px}
+nav a .ico{width:1em;height:1em;margin-right:5px;vertical-align:-.15em}
+.banner{display:flex;gap:12px;align-items:center;background:var(--accent-soft);border-left:6px solid var(--accent);border-radius:10px;padding:12px 14px;margin:4px 0 12px}
+.banner .ico{width:32px;height:32px;color:var(--accent)}
+.banner h2{margin:0;font-size:1.15rem;line-height:1.3;color:var(--text)}
+.banner p{margin:2px 0 0;color:var(--text);font-style:italic}
+.introgrid{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:14px;align-items:center;margin:0 0 12px}
+@media (max-width:700px){.introgrid{grid-template-columns:minmax(0,1fr)}}
+.hero{margin:0;text-align:center}
+.hero svg{width:100%;max-width:420px;height:auto;display:block;margin:0 auto;border-radius:14px}
+.t10{background:var(--info-bg);border:1px solid var(--info);border-radius:10px;padding:8px 14px;margin:0 0 10px;color:var(--text)}
+.t10 .h{display:block;font-weight:700;color:var(--text)}
+.t10 ul{margin:4px 0 2px;padding-left:20px}
+.fun{background:var(--warn-bg);border-left:4px solid var(--warn);border-radius:6px;padding:8px 12px;margin:0;color:var(--text)}
+.fun .h{font-weight:700;color:var(--warn)}
+.banner,.t10,.fun,.card{transition:transform .2s ease,box-shadow .2s ease}
+.banner:hover,.t10:hover,.fun:hover,.card:hover{transform:translateY(-2px);box-shadow:0 4px 12px color-mix(in srgb,var(--text) 18%,transparent)}
+.js .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal.in{opacity:1;transform:none}
+.bgr{fill:var(--surface-2)}
+.pap{fill:var(--surface);stroke:var(--text-muted);stroke-width:1.5}
+.pap2{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2}
+.f1{fill:var(--ill-1)}.f2{fill:var(--ill-2)}.f3{fill:var(--ill-3)}.f4{fill:var(--ill-4)}.f5{fill:var(--ill-5)}
+.g1{fill:url(#gA)}.g2{fill:url(#gB)}.g3{fill:url(#gC)}
+.gs1{stop-color:var(--ill-1)}.gs2{stop-color:var(--ill-2)}.gs3{stop-color:var(--ill-3)}.gs4{stop-color:var(--ill-4)}.gs5{stop-color:var(--ill-5)}
+.k{fill:none;stroke:var(--text);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.km{fill:none;stroke:var(--text-muted);stroke-width:2;stroke-linecap:round}
+.s1,.s2,.s3,.s4{fill:none;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.s1{stroke:var(--ill-1)}.s2{stroke:var(--ill-2)}.s3{stroke:var(--ill-3)}.s4{stroke:var(--ill-4)}
+.sa{fill:none;stroke:var(--accent);stroke-width:3;stroke-linecap:round}
+.t{font:700 12px system-ui,Segoe UI,Roboto,sans-serif;fill:var(--text);text-anchor:middle}
+.tm{font:600 10.5px system-ui,Segoe UI,Roboto,sans-serif;fill:var(--text-muted);text-anchor:middle}
+.tb{font-size:18px}
+.hl{opacity:.6}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-6px)}}
+@keyframes fall{0%{transform:translateY(-6px);opacity:0}30%{opacity:1}100%{transform:translateY(12px);opacity:0}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
+@keyframes flow{to{stroke-dashoffset:-12}}
+@keyframes slide{from{transform:translateX(0)}to{transform:translateX(-34px)}}
+.a-bob{animation:bob 2.6s ease-in-out infinite alternate}
+.a-fall{animation:fall 1.5s linear infinite}
+.a-pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.2s ease-in-out infinite}
+.a-flow{stroke-dasharray:6 6;animation:flow 1s linear infinite}
+.a-slide{animation:slide 2.6s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1!important;transform:none!important}.banner:hover,.t10:hover,.fun:hover,.card:hover{transform:none}html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false"><defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="gs3"/><stop offset="1" class="gs1"/></linearGradient><linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="gs4"/><stop offset="1" class="gs2"/></linearGradient><linearGradient id="gC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="gs3"/><stop offset="1" class="gs4"/></linearGradient><symbol id="i-read" viewBox="0 0 24 24"><path d="M3 5h7a2 2 0 0 1 2 2v13a2 2 0 0 0-2-2H3z M21 5h-7a2 2 0 0 0-2 2v13a2 2 0 0 1 2-2h7z"/></symbol><symbol id="i-cond" viewBox="0 0 24 24"><path d="M12 3v6 M12 9L6 15v6 M12 9l6 6v6"/></symbol><symbol id="i-pp" viewBox="0 0 24 24"><path d="M4 5h4v14H4z M10 5h4v14h-4z M16 5h4v14h-4z"/></symbol><symbol id="i-ger" viewBox="0 0 24 24"><path d="M4 12a8 8 0 0 1 14-5 M20 4v4h-4 M20 12a8 8 0 0 1-14 5 M4 20v-4h4"/></symbol><symbol id="i-pas" viewBox="0 0 24 24"><path d="M4 8h14 M14 4l4 4-4 4 M20 16H6 M10 12l-4 4 4 4"/></symbol><symbol id="i-rel" viewBox="0 0 24 24"><path d="M10 14a4 4 0 0 0 6 0l3-3a4 4 0 0 0-6-6l-1 1 M14 10a4 4 0 0 0-6 0l-3 3a4 4 0 0 0 6 6l1-1"/></symbol><symbol id="i-writ" viewBox="0 0 24 24"><path d="M4 20l1-5L16 4l4 4L9 19z M14 6l4 4"/></symbol><symbol id="i-quiz" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18z M8 12l3 3 5-6"/></symbol><symbol id="i-map" viewBox="0 0 24 24"><path d="M4 6l5-2 6 2 5-2v14l-5 2-6-2-5 2z M9 4v14 M15 6v14"/></symbol><symbol id="i-route" viewBox="0 0 24 24"><path d="M5 21V4 M5 4h11l-2 4 2 4H5"/></symbol><symbol id="i-nodes" viewBox="0 0 24 24"><path d="M4 4h6v5H4z M14 15h6v5h-6z M14 4h6v5h-6z M7 9v4a2 2 0 0 0 2 2h5"/></symbol></defs></svg>
+<header>
+<div class="top"><div><h1>Guía de estudio: Evaluación bimestral de Inglés</h1>
+<div class="meta"><span>Materia: English (Inglés)</span><span>Grado 9°</span><span>Cuarto Periodo</span></div></div>
+<button type="button" id="theme" aria-pressed="false">🌓 Cambiar tema</button></div>
+</header>
+<nav aria-label="Temas">
+<a href="#conceptos"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-nodes"/></svg>Conceptos</a><a href="#ruta"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-route"/></svg>Ruta</a><a href="#mapa"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-map"/></svg>Mapa examen</a><a href="#reading"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-read"/></svg>Reading</a><a href="#cond"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-cond"/></svg>1st Conditional</a><a href="#pp"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-pp"/></svg>Past Participle</a><a href="#ger"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-ger"/></svg>Gerunds/Infinitives</a><a href="#pas"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-pas"/></svg>Passive</a><a href="#rel"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-rel"/></svg>Relative Clauses</a><a href="#writ"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-writ"/></svg>Written</a><a href="#quiz"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-quiz"/></svg>Autoevaluación</a>
+</nav>
+<main>
+<div class="prog" aria-live="polite"><strong>Tu progreso:</strong> <span id="ptxt">0 / 0</span> ejercicios resueltos
+<div class="bar"><i id="pbar"></i></div>
+<button id="reset" type="button">Reiniciar progreso</button></div>
+
+<details class="sec" id="conceptos" open><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-nodes"/></svg>Mapa de conceptos: cómo se conectan los temas</summary><div class="body">
+<p>Cada caja es un tema; cada flecha dice cómo se relaciona con otro. Toca (o pasa el cursor sobre) una flecha para leer la explicación; toca una caja para ir a su sección.</p>
+<div class="cmap"><div id="cmapsvg"></div><ul class="cmap-list" id="cmaplist" aria-label="Temas y relaciones"></ul>
+<div class="cpanel" id="cpanel" role="status" aria-live="polite">Elige una flecha o un tema para ver la relación. Ejemplo: Past Participle → Passive Voice, porque la pasiva se forma con be + participio.</div></div>
+</div></details>
+
+<details class="sec" id="ruta" open><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-route"/></svg>Ruta de estudio sugerida</summary><div class="body">
+<p>Orden recomendado: primero lo que sirve de base para lo demás. Marca cada paso cuando lo termines (cuenta en tu progreso).</p>
+<ol class="route" id="route"></ol>
+</div></details>
+
+<details class="sec" id="mapa" open><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-map"/></svg>Mapa: pregunta del examen → sección de la guía</summary><div class="body">
+<p>El examen tiene 20 preguntas: 1-6 lectura, 7-19 gramática, 20 escritura. Usa este mapa para saber qué estudiar.</p>
+<table class="map"><tr><th>Pregunta(s)</th><th>Tema</th><th>Sección</th></tr>
+<tr><td>1, 2, 3, 4, 5, 6</td><td>Reading comprehension</td><td><a href="#reading">Lectura</a></td></tr>
+<tr><td>7, 8</td><td>First Conditional</td><td><a href="#cond">Primer condicional</a></td></tr>
+<tr><td>9, 10, 11</td><td>Past Participle</td><td><a href="#pp">Participio pasado</a></td></tr>
+<tr><td>12, 13, 18</td><td>Gerunds and Infinitives</td><td><a href="#ger">Gerundios e infinitivos</a></td></tr>
+<tr><td>14, 15, 19</td><td>Passive Voice</td><td><a href="#pas">Voz pasiva</a></td></tr>
+<tr><td>16, 17</td><td>Relative Clauses</td><td><a href="#rel">Oraciones relativas</a></td></tr>
+<tr><td>20</td><td>Written response</td><td><a href="#writ">Respuesta escrita</a></td></tr></table>
+<p class="note">Esta guía no contiene las respuestas del examen: explica la teoría y te hace practicar con ejemplos distintos.</p>
+</div></details>
+
+<details class="sec" id="reading"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-read"/></svg>1. Reading Comprehension (preguntas 1-6)</summary><div class="body"><div class="banner reveal"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-read"/></svg><div><h2>1. Reading</h2><p>¿Sabías que puedes encontrar la respuesta a casi cualquier pregunta de lectura sin leer todo dos veces?</p></div></div><div class="introgrid intro"><div class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Un libro abierto con una frase resaltada y una lupa que la examina"><title>Un libro abierto con una frase resaltada y una lupa que la examina</title><rect class="bgr" width="320" height="180" rx="14"/><ellipse class="f5" cx="160" cy="160" rx="110" ry="8"/><path class="pap" d="M60,50 Q110,38 158,58 L158,150 Q110,134 60,146 Z"/><path class="pap" d="M162,58 Q210,38 260,50 L260,146 Q210,134 162,150 Z"/><path class="km" d="M72,76H146M72,90H146M72,104H140M72,118H146M72,132H130"/><rect class="f3 hl" x="170" y="82" width="82" height="12" rx="3"/><path class="km" d="M172,70H252M172,88H252M172,106H250M172,120H252M172,134H236"/><rect class="pap" x="14" y="12" width="110" height="26" rx="13"/><text class="t" x="69" y="29">main idea</text><g class="a-bob"><circle class="s1" cx="212" cy="92" r="22"/><path class="s1" d="M228,108L246,128"/></g></svg></div><div><div class="t10 reveal"><span class="h">⚡ En 10 segundos</span><ul><li>Antes de leer: mira el título y predice el tema.</li><li>Idea principal = lo que dice TODO el texto, no un detalle.</li><li>Para <span class='en'>Why...?</span> busca <span class='en'>because, so, as a result</span>.</li></ul></div><div class="fun reveal"><span class="h">🔎 Dato curioso:</span> Inferir viene del latín <i>inferre</i>, “llevar a”: inferir es llevar las pistas del texto hasta una conclusión.</div></div></div>
+<h3>Estrategias</h3>
+<ul class="tight">
+<li><b>Antes de leer:</b> mira el título y las primeras líneas de cada párrafo; predice el tema.</li>
+<li><b>Idea principal (main idea):</b> es lo que dice TODO el texto, no un detalle. Pregúntate: "¿de qué trata el texto en una frase?". Suele aparecer en la introducción y se repite en la conclusión. Descarta opciones demasiado específicas o que dicen lo contrario.</li>
+<li><b>Pregunta "Why...?" (causa):</b> busca palabras como <span class="en">because, since, so, in order to, as a result</span>. La respuesta está en el texto, con otras palabras (paráfrasis).</li>
+<li><b>Propósito del autor:</b> <span class="en">to inform</span> (explicar datos), <span class="en">to persuade</span> (convencer de hacer algo), <span class="en">to entertain</span> (divertir), <span class="en">to describe</span>. Cuidado con opciones extremas ("always", "never", "must stop").</li>
+<li><b>Actitud/opinión del autor:</b> fíjate en adjetivos y verbos valorativos (<span class="en">harmful, useful, worrying, helpful</span>) y en consejos (<span class="en">we should...</span>). Neutral = solo datos, sin opinión.</li>
+<li><b>Inferencia:</b> la respuesta no está escrita palabra por palabra; la deduces de varias pistas. Pregunta "Based on the reading...". Pregúntate qué beneficio tiene alguien según lo que el texto describe.</li>
+<li><b>Elimina:</b> opciones que no se mencionan, que contradicen el texto o que son verdad en la vida real pero el texto no las dice.</li>
+</ul>
+<h3>Vocabulario útil de conectores</h3>
+<table><tr><th>Conector</th><th>Significado</th><th>Ejemplo</th></tr>
+<tr><td>in order to</td><td>para (propósito)</td><td class="en">We saved money in order to buy a tent.</td></tr>
+<tr><td>instead of</td><td>en lugar de</td><td class="en">Instead of complaining, she helped us.</td></tr>
+<tr><td>according to</td><td>según</td><td class="en">According to the guide, the museum opens at nine.</td></tr>
+<tr><td>as a result</td><td>como resultado</td><td class="en">It rained; as a result, the match was cancelled.</td></tr>
+<tr><td>more likely to</td><td>más probable que</td><td class="en">Rested people are more likely to feel calm.</td></tr></table>
+<h3>Práctica con un texto DIFERENTE</h3>
+<div class="passage en"><b>Sleep: the teenager's superpower</b><br>
+<p>(1) Many teenagers stay up late to chat with friends, play games, or finish homework. As a result, most of them sleep less than the eight to ten hours that doctors recommend.</p>
+<p>(2) Lack of sleep affects the brain. Tired students forget information more easily and find it harder to concentrate. They may also feel irritable and sad for no clear reason.</p>
+<p>(3) Fortunately, small changes can help. Going to bed at the same time every night makes it easier to fall asleep. Turning off screens an hour before bed is also useful because bright light tells the brain to stay awake.</p>
+<p>(4) Sleep is not a waste of time; it is the body's way of recharging. If you protect your sleep, your grades and your mood will thank you.</p></div>
+<button type="button" class="say" data-speak-id="sleeptxt">🔊 Escuchar texto</button>
+<div id="ex-read"></div>
+</div></details>
+
+<details class="sec" id="cond"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-cond"/></svg>2. First Conditional (preguntas 7-8)</summary><div class="body"><div class="banner reveal"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-cond"/></svg><div><h2>2. First Conditional</h2><p>¿Qué pasará si llueve mañana? Este tema sirve justo para predecir el futuro.</p></div></div><div class="introgrid intro"><div class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Una nube con lluvia que lleva a una casa con techo: si pasa una cosa, ocurre otra"><title>Una nube con lluvia que lleva a una casa con techo: si pasa una cosa, ocurre otra</title><rect class="bgr" width="320" height="180" rx="14"/><g class="a-bob"><circle class="g2" cx="52" cy="52" r="17"/><circle class="g2" cx="76" cy="44" r="21"/><circle class="g2" cx="102" cy="54" r="16"/><rect class="g2" x="40" y="52" width="76" height="16" rx="8"/></g><path class="s2 a-fall" d="M56,80V90"/><path class="s2 a-fall" style="animation-delay:.5s" d="M78,80V90"/><path class="s2 a-fall" style="animation-delay:1s" d="M100,80V90"/><rect class="pap" x="14" y="112" width="112" height="30" rx="10"/><text class="t" x="70" y="131">If it rains,</text><path class="sa a-flow" d="M132,127H176"/><path class="f1" d="M176,119L188,127L176,135Z"/><rect class="g1" x="216" y="62" width="64" height="46"/><path class="f1" d="M208,64L248,28L288,64Z"/><rect class="f5" x="238" y="80" width="20" height="28" rx="2"/><rect class="f2" x="222" y="74" width="12" height="12" rx="2"/><rect class="pap" x="190" y="112" width="118" height="30" rx="10"/><text class="t" x="249" y="131">we will stay in</text><rect class="pap" x="100" y="150" width="120" height="22" rx="11"/><text class="t" x="160" y="165">if + will</text></svg></div><div><div class="t10 reveal"><span class="h">⚡ En 10 segundos</span><ul><li><span class='en'>If + present simple, will + verbo base</span>.</li><li>Nunca pongas <i>will</i> justo después de <i>if</i>.</li><li>Con he/she/it el verbo de la condición lleva -s.</li></ul></div><div class="fun reveal"><span class="h">🔎 Dato curioso:</span> Existe también el <i>zero conditional</i>, para hechos que siempre son verdad: <span class='en'>If you heat ice, it melts.</span> Usa presente en las dos partes.</div></div></div>
+<p>Se usa para hablar de situaciones <b>posibles o probables en el futuro</b> y su resultado.</p>
+<table><tr><th>If-clause (condición)</th><th>Main clause (resultado)</th></tr>
+<tr><td>If + <b>present simple</b></td><td><b>will</b> + verbo base</td></tr>
+<tr><td class="en">If it rains tomorrow,</td><td class="en">we will cancel the picnic.</td></tr>
+<tr><td class="en">If she studies,</td><td class="en">she will pass.</td></tr></table>
+<ul class="tight">
+<li><b>Regla clave:</b> NUNCA pongas <i>will</i> justo después de <i>if</i> (en la condición va presente simple, incluso si hablas del futuro). Con he/she/it el verbo lleva <b>-s</b>.</li>
+<li>El orden se puede invertir; si la oración empieza con <i>if</i>, lleva coma: <span class="en">We will cancel the picnic if it rains.</span></li>
+<li>Negativo: <span class="en">If he doesn't hurry, he will miss the train.</span> También <span class="en">unless</span> (= if not): <span class="en">She will be sad unless you call.</span></li>
+<li>Otros resultados posibles: imperativo o can/may: <span class="en">If you see him, tell him the news.</span></li>
+<li><b>Trampa:</b> <span class="en">If + past simple, would + base</span> es el <i>segundo</i> condicional (situaciones hipotéticas). No lo mezcles con el primero.</li>
+</ul>
+<button type="button" class="say" data-say="If we hurry, we will catch the bus.">🔊 If we hurry, we will catch the bus.</button>
+<div id="ex-cond"></div>
+</div></details>
+
+<details class="sec" id="pp"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-pp"/></svg>3. Past Participle (preguntas 9-11)</summary><div class="body"><div class="banner reveal"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-pp"/></svg><div><h2>3. Past Participle</h2><p>¿Por qué <span class='en'>go</span> se convierte en <span class='en'>gone</span> y no en <span class='en'>goed</span>?</p></div></div><div class="introgrid intro"><div class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Tres tarjetas con las tres formas de un verbo; la tercera columna resaltada"><title>Tres tarjetas con las tres formas de un verbo; la tercera columna resaltada</title><rect class="bgr" width="320" height="180" rx="14"/><rect class="pap" x="22" y="26" width="84" height="76" rx="10"/><text class="t tb" x="64" y="64">go</text><text class="tm" x="64" y="88">1. base</text><rect class="pap" x="118" y="26" width="84" height="76" rx="10"/><text class="t tb" x="160" y="64">went</text><text class="tm" x="160" y="88">2. past</text><g class="a-pulse"><rect class="pap2" x="214" y="26" width="84" height="76" rx="10"/><text class="t tb" x="256" y="64">gone</text><text class="tm" x="256" y="88">3. participle</text></g><path class="km" d="M108,64H116M204,64H212"/><rect class="pap" x="34" y="124" width="252" height="30" rx="15"/><text class="t" x="160" y="143">have / has / had + 3rd column</text></svg></div><div><div class="t10 reveal"><span class="h">⚡ En 10 segundos</span><ul><li>Es la 3ª columna del verbo.</li><li>Va después de <i>have / has / had</i>.</li><li>Los regulares terminan en -ed; los irregulares se memorizan.</li></ul></div><div class="fun reveal"><span class="h">🔎 Dato curioso:</span> Los verbos más usados del inglés (<span class='en'>be, have, do, go</span>) son justamente irregulares; en total hay unos 200 de uso común, según la lista que se consulte.</div></div></div>
+<p>El participio pasado (<i>past participle</i>, tercera columna de los verbos) se usa después de <b>have/has/had</b> (tiempos perfectos) y en la voz pasiva.</p>
+<table><tr><th>Uso</th><th>Estructura</th><th>Ejemplo</th></tr>
+<tr><td>Present perfect (experiencia)</td><td>have/has + participio</td><td class="en">Have you ever eaten octopus?</td></tr>
+<tr><td>Present perfect (acción reciente)</td><td>have/has + participio</td><td class="en">She has just taken a call.</td></tr>
+<tr><td>Past perfect (antes de otro momento pasado)</td><td>had + participio</td><td class="en">They had left before I arrived.</td></tr></table>
+<ul class="tight"><li>Palabras frecuentes: <span class="en">ever, never, already, yet, just, since, for</span>.</li>
+<li><b>Regulares:</b> verbo + <i>-ed</i> (<span class="en">walk - walked - walked</span>). <b>Irregulares:</b> hay que memorizarlos.</li>
+<li>Error típico: usar la forma de <i>past simple</i> (2ª columna) en lugar de la 3ª, o la forma base.</li></ul>
+<h3>Irregulares para repasar (la tabla es parcial a propósito)</h3>
+<table><tr><th>Base</th><th>Past simple</th><th>Past participle</th></tr>
+<tr><td>eat</td><td>ate</td><td>eaten</td></tr><tr><td>take</td><td>took</td><td>taken</td></tr>
+<tr><td>give</td><td>gave</td><td>given</td></tr><tr><td>speak</td><td>spoke</td><td>spoken</td></tr>
+<tr><td>drive</td><td>drove</td><td>driven</td></tr><tr><td>choose</td><td>chose</td><td>chosen</td></tr>
+<tr><td>steal</td><td>stole</td><td>stolen</td></tr><tr><td>forget</td><td>forgot</td><td>forgotten</td></tr>
+<tr><td>swim</td><td>swam</td><td>swum</td></tr><tr><td>fly</td><td>flew</td><td>flown</td></tr>
+<tr><td>go</td><td>went</td><td>gone / been</td></tr><tr><td>do</td><td>did</td><td>done</td></tr>
+<tr><td>buy</td><td>bought</td><td>bought</td></tr><tr><td>send</td><td>sent</td><td>sent</td></tr></table>
+<p class="note">Los verbos que aparecen en el examen no están en esta tabla a propósito: búscalos tú en la lista de verbos irregulares de tu cuaderno y escribe sus tres columnas. Es la mejor práctica.</p>
+<button type="button" class="say" data-say="Have you ever flown in a helicopter?">🔊 Have you ever flown in a helicopter?</button>
+<div id="ex-pp"></div>
+</div></details>
+
+<details class="sec" id="ger"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-ger"/></svg>4. Gerunds and Infinitives (preguntas 12, 13, 18)</summary><div class="body"><div class="banner reveal"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-ger"/></svg><div><h2>4. Gerunds and Infinitives</h2><p>¿<span class='en'>enjoy swimming</span> o <span class='en'>enjoy to swim</span>? El primer verbo decide.</p></div></div><div class="introgrid intro"><div class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Dos escenas: nadar con gerundio (enjoy swimming) y una bandera lejana con infinitivo (want to swim)"><title>Dos escenas: nadar con gerundio (enjoy swimming) y una bandera lejana con infinitivo (want to swim)</title><rect class="bgr" width="320" height="180" rx="14"/><rect class="pap" x="16" y="18" width="128" height="90" rx="10"/><rect class="pap" x="176" y="18" width="128" height="90" rx="10"/><g class="a-bob"><path class="s2" d="M26,86q10,-10 20,0t20,0t20,0t20,0t10,-4"/><path class="s4" d="M26,98q10,-10 20,0t20,0t20,0t20,0t10,-4"/></g><circle class="f1" cx="62" cy="62" r="9"/><path class="s1" d="M62,72q12,-14 28,-6"/><path class="s3" d="M104,36l4,8 8,2-6,6 1,9-7,-4-7,4 1,-9-6,-6 8,-2z"/><path class="s3 a-flow" d="M190,92Q215,52 262,84"/><circle class="f4" cx="262" cy="84" r="8"/><path class="k" d="M190,96V40"/><path class="f1" d="M190,40L222,50L190,60Z"/><rect class="pap2" x="16" y="122" width="128" height="30" rx="15"/><text class="t" x="80" y="141">enjoy + swimming</text><rect class="pap2" x="176" y="122" width="128" height="30" rx="15"/><text class="t" x="240" y="141">want + to swim</text></svg></div><div><div class="t10 reveal"><span class="h">⚡ En 10 segundos</span><ul><li>Verbo + -ing: enjoy, finish, keep, mind.</li><li>Verbo + to + base: want, hope, need, agree.</li><li>Después de una preposición, siempre -ing.</li></ul></div><div class="fun reveal"><span class="h">🔎 Dato curioso:</span> Truco para <span class='en'>look forward to</span>: si puedes poner un sustantivo después (<span class='en'>look forward to the party</span>), ese <i>to</i> es preposición y exige -ing.</div></div></div>
+<p>Cuando dos verbos van juntos, el segundo toma una de estas formas: <b>gerundio (verb + -ing)</b> o <b>infinitivo (to + verbo)</b>. Depende del primer verbo.</p>
+<table><tr><th>Patrón</th><th>Verbos / contextos</th><th>Ejemplo</th></tr>
+<tr><td>Verbo + <b>-ing</b></td><td>enjoy, finish, keep, mind, practice, suggest, recommend, consider, imagine, risk, quit</td><td class="en">I enjoy listening to music.</td></tr>
+<tr><td>Verbo + <b>to + base</b></td><td>want, hope, need, agree, refuse, promise, learn, manage, afford, expect, offer, choose</td><td class="en">She hopes to become a pilot.</td></tr>
+<tr><td><b>Preposición</b> + <b>-ing</b></td><td>interested in, good at, think about, insist on, look forward to, tired of</td><td class="en">He is good at drawing.</td></tr>
+<tr><td><b>to</b> de propósito</td><td>"para" + verbo</td><td class="en">I went out to buy bread.</td></tr></table>
+<ul class="tight">
+<li><b>Regla de oro:</b> después de una <b>preposición</b> siempre va gerundio. Mira si el verbo viene con preposición (<i>think about</i>, <i>insist on</i>...) antes de elegir.</li>
+<li><b>Verbos con objeto:</b> algunos verbos de consejo cambian de patrón según haya una persona después: <span class="en">She suggested going early</span> (sin persona: -ing) vs. <span class="en">She told us to go early</span> (con persona: to). Repasa en tu cuaderno cómo funciona cada verbo de consejo y evitar/negar acciones.</li>
+<li><b>Gerundio como sujeto:</b> <span class="en">Swimming is healthy.</span></li>
+<li>Ortografía de -ing: <span class="en">make → making, run → running, lie → lying</span>.</li>
+<li>Repasa en tus apuntes la lista completa de tu profesora: esta tabla es una guía parcial y no incluye todos los verbos que ves en clase.</li>
+</ul>
+<button type="button" class="say" data-say="I'm looking forward to meeting you.">🔊 I'm looking forward to meeting you.</button>
+<div id="ex-ger"></div>
+</div></details>
+
+<details class="sec" id="pas"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-pas"/></svg>5. Passive Voice (preguntas 14, 15, 19)</summary><div class="body"><div class="banner reveal"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-pas"/></svg><div><h2>5. Passive Voice</h2><p>¿Y si lo importante no es quién hace la acción, sino quién la recibe?</p></div></div><div class="introgrid intro"><div class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Una oración activa y su versión pasiva unidas por una flecha que intercambia sujeto y objeto"><title>Una oración activa y su versión pasiva unidas por una flecha que intercambia sujeto y objeto</title><rect class="bgr" width="320" height="180" rx="14"/><rect class="pap" x="20" y="14" width="280" height="44" rx="12"/><text class="t" x="160" y="40">A student drew the picture.</text><circle class="f3" cx="42" cy="42" r="5"/><circle class="f3" cx="56" cy="39" r="5"/><path class="s3" d="M47,42V28L61,25V39"/><path class="sa a-flow" d="M160,64V102"/><path class="f1" d="M150,100L160,114L170,100Z"/><rect class="pap" x="178" y="72" width="108" height="24" rx="12"/><text class="t" x="232" y="88">be + participle</text><rect class="pap2" x="20" y="118" width="280" height="44" rx="12"/><text class="t" x="160" y="144">The picture was drawn by a student.</text></svg></div><div><div class="t10 reveal"><span class="h">⚡ En 10 segundos</span><ul><li>Estructura: <i>be</i> + participio pasado.</li><li>El tiempo se marca con <i>be</i> (is, was, will be, has been).</li><li><span class='en'>by + quien hace la acción</span> es opcional.</li></ul></div><div class="fun reveal"><span class="h">🔎 Dato curioso:</span> En textos científicos se usa mucho la pasiva (<span class='en'>The samples were heated</span>) porque importa lo que se hizo, no quién lo hizo.</div></div></div>
+<p>Se usa cuando importa más <b>lo que recibe la acción</b> que quien la hace. Transformación: el objeto de la oración activa pasa a ser el sujeto; el verbo se convierte en <b>be + participio pasado</b>; el que hace la acción va (opcional) con <b>by</b>.</p>
+<table><tr><th>Tiempo</th><th>Estructura pasiva</th><th>Activa → Pasiva</th></tr>
+<tr><td>Present simple</td><td>am / is / are + participio</td><td class="en">They grow coffee here. → Coffee is grown here.</td></tr>
+<tr><td>Past simple</td><td>was / were + participio</td><td class="en">A student drew the picture. → The picture was drawn by a student.</td></tr>
+<tr><td>Future (will)</td><td>will be + participio</td><td class="en">They will open the shop. → The shop will be opened.</td></tr>
+<tr><td>Present perfect</td><td>has / have been + participio</td><td class="en">Someone has cleaned the room. → The room has been cleaned.</td></tr></table>
+<h3>Pasos</h3>
+<ol class="tight"><li>Identifica el tiempo del verbo activo (¿presente, pasado, futuro?).</li><li>Usa ese mismo tiempo en <b>be</b>.</li><li>Concuerda <i>be</i> con el nuevo sujeto (singular/plural).</li><li>Agrega el participio pasado del verbo principal.</li></ol>
+<p class="note">Pistas de tiempo: <i>every day, usually</i> = presente; <i>yesterday, last night, in 1999</i> = pasado; <i>tomorrow, next week</i> = futuro.</p>
+<button type="button" class="say" data-say="The museum was opened in nineteen fifty.">🔊 The museum was opened in 1950.</button>
+<div id="ex-pas"></div>
+</div></details>
+
+<details class="sec" id="rel"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-rel"/></svg>6. Relative Clauses (preguntas 16, 17)</summary><div class="body"><div class="banner reveal"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-rel"/></svg><div><h2>6. Relative Clauses</h2><p>¿Cómo unir dos ideas en una sola oración sin repetir palabras?</p></div></div><div class="introgrid intro"><div class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Cuatro tarjetas con iconos de persona, cosa, lugar y tiempo para who, which, where y when"><title>Cuatro tarjetas con iconos de persona, cosa, lugar y tiempo para who, which, where y when</title><rect class="bgr" width="320" height="180" rx="14"/><g class="a-bob"><rect class="pap" x="14" y="20" width="66" height="84" rx="10"/><circle class="f1" cx="47" cy="44" r="9"/><path class="g1" d="M31,72a16,16 0 0 1 32,0z"/><text class="t" x="47" y="90">who</text></g><g class="a-bob" style="animation-delay:.3s"><rect class="pap" x="92" y="20" width="66" height="84" rx="10"/><rect class="g2" x="111" y="38" width="28" height="28" rx="4"/><path class="k" d="M111,46H139"/><text class="t" x="125" y="90">which</text></g><g class="a-bob" style="animation-delay:.6s"><rect class="pap" x="170" y="20" width="66" height="84" rx="10"/><path class="g3" d="M203,38a11,11 0 0 1 11,11c0,9-11,19-11,19s-11,-10-11,-19a11,11 0 0 1 11,-11z"/><circle class="pap" cx="203" cy="49" r="4"/><text class="t" x="203" y="90">where</text></g><g class="a-bob" style="animation-delay:.9s"><rect class="pap" x="248" y="20" width="58" height="84" rx="10"/><circle class="pap" cx="277" cy="50" r="16"/><path class="s4" d="M277,50V40M277,50L285,54"/><text class="t" x="277" y="90">when</text></g><rect class="pap2" x="40" y="122" width="240" height="32" rx="16"/><text class="t" x="160" y="142">the café where we met</text></svg></div><div><div class="t10 reveal"><span class="h">⚡ En 10 segundos</span><ul><li><span class='en'>who</span> = personas; <span class='en'>which</span> = cosas.</li><li><span class='en'>where</span> = lugares; <span class='en'>when</span> = tiempos.</li><li><span class='en'>whose</span> = posesión.</li></ul></div><div class="fun reveal"><span class="h">🔎 Dato curioso:</span> <span class='en'>Whose</span> es el relativo de posesión y sirve para personas y cosas: <span class='en'>a house whose roof is red</span>.</div></div></div>
+<p>Una oración relativa da más información sobre un sustantivo o sobre una idea. Empieza con un <b>pronombre/adverbio relativo</b>.</p>
+<table><tr><th>Palabra</th><th>Se refiere a</th><th>Ejemplo</th></tr>
+<tr><td><b>who</b></td><td>personas</td><td class="en">The woman who lives next door is a nurse.</td></tr>
+<tr><td><b>which</b></td><td>cosas / animales / ideas</td><td class="en">I bought a laptop which has a great battery.</td></tr>
+<tr><td><b>that</b></td><td>personas o cosas (solo en oraciones "defining", sin comas)</td><td class="en">The book that I borrowed was long.</td></tr>
+<tr><td><b>where</b></td><td>lugares</td><td class="en">This is the café where we met.</td></tr>
+<tr><td><b>when</b></td><td>tiempos / momentos</td><td class="en">Friday is the day when we relax.</td></tr>
+<tr><td><b>whose</b></td><td>posesión</td><td class="en">The man whose car was stolen called the police.</td></tr></table>
+<ul class="tight">
+<li>La palabra que eliges depende de <b>qué sustantivo describes</b> (persona, cosa, lugar, tiempo).</li>
+<li><b>Verbo:</b> después de who/which/that el verbo tiene sujeto "incluido": no repitas el sujeto (<span class="en">The girl who she sings...</span> es incorrecto). Después de <i>where/when</i> sí suele haber un sujeto nuevo: <span class="en">the town where I grew up</span>.</li>
+<li><b>Tiempo verbal:</b> debe ser lógico con la historia: si el hecho ocurrió en el pasado, el verbo de la cláusula relativa va en pasado.</li>
+<li><b>Non-defining (con comas):</b> añade información extra: <span class="en">My cousin, who lives in Lima, is a chef.</span> Aquí NO se usa <i>that</i>.</li>
+<li><b>which con toda una idea:</b> <span class="en">which</span> también puede referirse a la oración completa anterior, no solo a una palabra: <span class="en">He passed the test, which surprised everyone.</span></li>
+</ul>
+<button type="button" class="say" data-say="The teacher who helped me is very kind.">🔊 The teacher who helped me is very kind.</button>
+<div id="ex-rel"></div>
+</div></details>
+
+<details class="sec" id="writ"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-writ"/></svg>7. Written Response (pregunta 20)</summary><div class="body"><div class="banner reveal"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-writ"/></svg><div><h2>7. Written Response</h2><p>¿Cuál es la fórmula de un párrafo corto que siempre convence?</p></div></div><div class="introgrid intro"><div class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Una hoja con un párrafo en cuatro partes y un lápiz que escribe"><title>Una hoja con un párrafo en cuatro partes y un lápiz que escribe</title><rect class="bgr" width="320" height="180" rx="14"/><rect class="pap" x="90" y="12" width="140" height="156" rx="8"/><rect class="g1" x="104" y="24" width="60" height="8" rx="4"/><path class="km" d="M104,48H216M104,58H206M104,68H216"/><path class="km" d="M104,84H216M104,94H200"/><path class="km" d="M104,110H216M104,120H208M104,130H196"/><path class="km" d="M104,146H190"/><g class="a-slide"><path class="g3" d="M222,118L246,94L258,106L234,130Z"/><path class="f1" d="M222,118L216,136L234,130Z"/></g><rect class="pap" x="238" y="34" width="72" height="24" rx="12"/><text class="t" x="274" y="50">because</text><rect class="pap" x="236" y="64" width="80" height="24" rx="12"/><text class="t" x="276" y="80">as a result</text><rect class="pap" x="10" y="114" width="72" height="24" rx="12"/><text class="t" x="46" y="130">in short</text><rect class="pap" x="10" y="30" width="72" height="24" rx="12"/><text class="t" x="46" y="46">for example</text></svg></div><div><div class="t10 reveal"><span class="h">⚡ En 10 segundos</span><ul><li>Idea principal → cómo → por qué → cierre.</li><li>Usa conectores: <span class='en'>because, as a result, in short</span>.</li><li>Escribe con tus palabras, no copies del texto.</li></ul></div><div class="fun reveal"><span class="h">🔎 Dato curioso:</span> Esta fórmula se parece a la estructura llamada PEEL (<i>Point, Evidence, Explain, Link</i>) que se enseña en muchos colegios de habla inglesa.</div></div></div>
+<p>En esta pregunta debes escribir un párrafo corto que (a) responda directamente, (b) se base en la lectura y (c) justifique con una razón.</p>
+<h3>Estructura de un párrafo de 5-7 líneas</h3>
+<table><tr><th>Parte</th><th>Qué hacer</th><th>Frases útiles</th></tr>
+<tr><td>1. Idea principal</td><td>Responde la pregunta en una oración</td><td class="en">One practical strategy is to... / I would...</td></tr>
+<tr><td>2. Cómo</td><td>Explica cómo lo harías (concreto)</td><td class="en">For example, I can... / I will set a timer to...</td></tr>
+<tr><td>3. Por qué</td><td>Da la razón</td><td class="en">This is important because... / As a result, I feel...</td></tr>
+<tr><td>4. Cierre</td><td>Termina con una conclusión</td><td class="en">In short, ... / That is why...</td></tr></table>
+<h3>Ejemplo sobre OTRO tema (cómo leer más libros)</h3>
+<div class="passage en">One practical way to read more books is to read for fifteen minutes before bed. I can leave a book on my pillow so I do not forget it. This habit is important because it helps my mind relax, and I learn new words. As a result, I feel calmer and more creative. That is why I think a small routine can change a big habit.</div>
+<h3>Lista de revisión (marca lo que ya cumples)</h3>
+<div id="chk"></div>
+<h3>Practica</h3>
+<div id="ex-writ"></div>
+<p class="note">Consejo: usa vocabulario de la lectura, pero con tus palabras (no copies frases). Usa condicionales y gerundios que repasaste, así muestras tu dominio de la gramática.</p>
+</div></details>
+
+<details class="sec" id="quiz"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-quiz"/></svg>8. Autoevaluación final (ejercicios similares, no idénticos)</summary><div class="body"><div class="banner reveal"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-quiz"/></svg><div><h2>8. Autoevaluación</h2><p>¿Cuánto recuerdas sin mirar tus apuntes? Ponte a prueba.</p></div></div><div class="introgrid intro"><div class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Una diana con una flecha y una lista de verificación con dos casillas marcadas"><title>Una diana con una flecha y una lista de verificación con dos casillas marcadas</title><rect class="bgr" width="320" height="180" rx="14"/><circle class="f1" cx="92" cy="90" r="64"/><circle class="pap" cx="92" cy="90" r="50"/><circle class="f2" cx="92" cy="90" r="36"/><circle class="pap" cx="92" cy="90" r="22"/><circle class="f3 a-pulse" cx="92" cy="90" r="10"/><path class="k" d="M92,90L146,38"/><path class="k" d="M146,38l-2,-12M146,38l12,-2"/><rect class="pap" x="188" y="22" width="112" height="24" rx="12"/><text class="t" x="244" y="38">self-check</text><rect class="pap" x="188" y="62" width="22" height="22" rx="5"/><path class="s2" d="M193,73l4,5 8,-10"/><path class="km" d="M222,73H296"/><rect class="pap" x="188" y="96" width="22" height="22" rx="5"/><path class="s2 a-pulse" d="M193,107l4,5 8,-10"/><path class="km" d="M222,107H290"/><rect class="pap" x="188" y="130" width="22" height="22" rx="5"/><path class="km" d="M222,141H282"/></svg></div><div><div class="t10 reveal"><span class="h">⚡ En 10 segundos</span><ul><li>Responde todo y calcula tu puntaje.</li><li>Revisa qué tema salió más bajo.</li><li>Vuelve a la sección y reintenta.</li></ul></div><div class="fun reveal"><span class="h">🔎 Dato curioso:</span> Hacerte preguntas a ti mismo fija mejor lo aprendido que solo releer; en psicología se llama <i>efecto de práctica de recuperación</i> (testing effect).</div></div></div>
+<p>Responde todas y presiona "Calcular puntaje". Obtendrás tu nota y repaso por tema.</p>
+<div class="passage en"><b>Plastic and the ocean</b><br>Every year, millions of tons of plastic enter the sea. Fish and birds often eat it by mistake, which makes them sick. Scientists say the problem could be reduced if people used fewer plastic bags and recycled bottles.</div>
+<div id="quizbox"></div>
+<button type="button" class="pri" id="qcalc">Calcular puntaje</button> <button type="button" id="qreset">Reintentar</button>
+<div id="qres" class="fb" role="status"></div>
+</div></details>
+</main>
+<footer>Guía de estudio hecha para repasar. ¡Éxitos en tu evaluación!</footer>
+
+<script>
+(function(){
+"use strict";
+var READTXT="Many teenagers stay up late to chat with friends, play games, or finish homework. As a result, most of them sleep less than the eight to ten hours that doctors recommend. Lack of sleep affects the brain. Tired students forget information more easily and find it harder to concentrate. Fortunately, small changes can help. Going to bed at the same time every night makes it easier to fall asleep. Sleep is not a waste of time; it is the body's way of recharging.";
+var KEY="guiaIngles9P4";
+var store={done:{},quiz:null};
+try{var s=localStorage.getItem(KEY);if(s)store=JSON.parse(s)||store;}catch(e){}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(store));}catch(e){}}
+function norm(t){return String(t).toLowerCase().replace(/[’‘]/g,"'").replace(/\s+/g," ").trim();}
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!==undefined)e.innerHTML=html;return e;}
+function speak(t){try{if(!("speechSynthesis" in window))return;window.speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang="en-US";u.rate=.9;window.speechSynthesis.speak(u);}catch(e){}}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),t=a[i];a[i]=a[j];a[j]=t;}return a;}
+
+/* ---------- Exercise data ---------- */
+var EX={
+read:[
+{t:"mc",q:"What is the main idea of the sleep text?",o:["Teenagers should play fewer games.","Sleep matters for teens, and simple habits can improve it.","Doctors are always right.","Homework should be banned."],a:1,h:"Piensa en TODO el texto: problema, efectos y soluciones.",f:"La idea principal resume todos los párrafos: el problema (poco sueño), sus efectos y las soluciones. Las otras opciones son detalles o ideas que el texto no dice."},
+{t:"mc",q:"According to the text, why should screens be turned off before bed?",o:["They are expensive.","Bright light tells the brain to stay awake.","They make homework harder.","Doctors forbid them."],a:1,h:"Busca la palabra because en el párrafo 3.",f:"Pregunta de causa: busca 'because' en el párrafo 3 y compara con las opciones."},
+{t:"mc",q:"What is the author's purpose?",o:["To entertain with a funny story","To sell a mobile phone","To inform readers and give gentle advice","To criticize all teenagers"],a:2,h:"El texto explica datos y sugiere cambios pequeños.",f:"Hay datos (inform) y consejos suaves. No hay humor, ventas ni crítica dura."},
+{t:"mc",q:"How does the author feel about sleep?",o:["It is a waste of time.","It is valuable and worth protecting.","It is not important.","It is only for children."],a:1,h:"Mira la última oración del texto: valoración directa.",f:"Actitud: los verbos y expresiones valorativas del último párrafo muestran que el autor le da importancia."},
+{t:"mc",q:"What can we infer about a student who sleeps only five hours?",o:["He will probably find it hard to concentrate.","He will get perfect grades.","He is following the doctors' advice.","He never feels sad."],a:0,h:"Relaciona la cifra con las recomendaciones y los efectos.",f:"Inferencia: combina la cifra recomendada con los efectos descritos en el párrafo 2."},
+{t:"mc",q:"In the text, 'irritable' is closest to:",o:["easily annoyed","very happy","sleepy","hungry"],a:0,h:"Mira las palabras alrededor: 'sad for no clear reason'.",f:"Vocabulario en contexto: el contexto habla de emociones negativas."}
+],
+cond:[
+{t:"mc",q:"If it ____ tomorrow, we will stay inside.",o:["rain","rains","will rain","rained"],a:1,h:"¿Qué tiempo va en la cláusula con if?",f:"En la cláusula if va present simple; con 'it' el verbo lleva -s."},
+{t:"mc",q:"If you study hard, you ____ the exam.",o:["would pass","pass","will pass","passed"],a:2,h:"Resultado futuro posible: will + base.",f:"Primer condicional: will + verbo base en la cláusula de resultado."},
+{t:"mc",q:"She will be angry unless you ____ her.",o:["call","will call","called","calling"],a:0,h:"unless = if not; la regla de 'if' aplica igual.",f:"Después de 'unless' también va presente simple, nunca 'will'."},
+{t:"fill",q:"If we ___ (miss) the bus, we ___ (walk) to school.",a:[["miss"],["will walk","'ll walk"]],h:"Presente simple + will + base.",f:"Estructura: If + present simple, will + verbo base."},
+{t:"fill",q:"If Tom ___ (not hurry), he ___ (be) late.",a:[["doesn't hurry","does not hurry"],["will be","'ll be"]],h:"Con Tom (he) el negativo usa doesn't.",f:"Negativo del presente con he/she/it: doesn't + base."},
+{t:"order",w:["If","the","weather","is","nice,","we","will","play","outside."],a:"If the weather is nice, we will play outside.",h:"Empieza con la condición y termina con el resultado.",f:"If-clause primero (con coma), luego la cláusula con will."},
+{t:"match",l:["If I find your keys,","If it snows tonight,","If she practices every day,"],r:["I will call you.","school will close.","she will improve."],a:[0,1,2],h:"Une por sentido lógico.",f:"Cada condición tiene un resultado lógico en futuro."}
+],
+pp:[
+{t:"mc",q:"We have never ____ sushi.",o:["eat","ate","eaten","eating"],a:2,h:"have + ¿qué columna del verbo?",f:"have/has + participio pasado (3ª columna)."},
+{t:"mc",q:"By the time I arrived, they had already ____ home.",o:["go","went","going","gone"],a:3,h:"had + participio.",f:"Past perfect: had + participio pasado."},
+{t:"mc",q:"She has ____ three emails this morning.",o:["send","sent","sended","sending"],a:1,h:"send es irregular; no termina en -ed.",f:"El participio de 'send' es irregular; 'sended' no existe."},
+{t:"fill",q:"He has just ___ (take) a shower.",a:[["taken"]],h:"take - took - ...",f:"3ª columna de take."},
+{t:"fill",q:"I have never ___ (speak) to a famous person.",a:[["spoken"]],h:"speak - spoke - ...",f:"3ª columna de speak."},
+{t:"fill",q:"They had ___ (drive) all night.",a:[["driven"]],h:"drive - drove - ...",f:"3ª columna de drive."},
+{t:"order",w:["Have","you","ever","flown","in","a","helicopter?"],a:"Have you ever flown in a helicopter?",h:"Pregunta: Have + sujeto + ever + participio.",f:"Orden de la pregunta en present perfect."},
+{t:"match",l:["choose","steal","forget","swim"],r:["swum","forgotten","chosen","stolen"],a:[2,3,1,0],h:"Es la tercera columna.",f:"Estudia las tres columnas de cada verbo."}
+],
+ger:[
+{t:"mc",q:"I enjoy ____ to music at night.",o:["listen","to listen","listening","listened"],a:2,h:"enjoy + ¿gerundio o infinitivo?",f:"enjoy va seguido de gerundio."},
+{t:"mc",q:"She hopes ____ a doctor.",o:["becoming","to become","become","became"],a:1,h:"hope + ...",f:"hope va seguido de infinitivo con to."},
+{t:"mc",q:"He is interested in ____ a new language.",o:["learn","to learn","learning","learned"],a:2,h:"Mira la preposición 'in'.",f:"Después de preposición siempre gerundio."},
+{t:"mc",q:"We can't afford ____ a new car.",o:["buying","buy","bought","to buy"],a:3,h:"afford pertenece al grupo de to + base.",f:"afford + infinitivo con to."},
+{t:"fill",q:"They finished ___ (clean) the kitchen.",a:[["cleaning"]],h:"finish + gerundio.",f:"finish va con -ing."},
+{t:"fill",q:"I want ___ (visit) Cartagena next year.",a:[["to visit"]],h:"want + to + base.",f:"want va con infinitivo."},
+{t:"fill",q:"She is thinking about ___ (change) her job.",a:[["changing"]],h:"about es una preposición.",f:"preposición + gerundio."},
+{t:"order",w:["I","look","forward","to","meeting","you."],a:"I look forward to meeting you.",h:"look forward to + -ing.",f:"En 'look forward to', 'to' es preposición."},
+{t:"match",l:["enjoy","hope","mind","manage"],r:["+ gerund","+ to infinitive","+ gerund","+ to infinitive"],a:[0,1,0,1],h:"Recuerda los grupos de la tabla.",f:"Memoriza los verbos por grupos."}
+],
+pas:[
+{t:"mc",q:"The roof ____ by the storm last night.",o:["is damaged","was damaged","will be damaged","has damage"],a:1,h:"last night = pasado.",f:"Pasado simple pasivo: was/were + participio."},
+{t:"mc",q:"English ____ in many countries.",o:["is spoken","was spoken","will be spoken","speak"],a:0,h:"Hecho general = presente.",f:"Presente simple pasivo: am/is/are + participio."},
+{t:"mc",q:"The bridge ____ next year.",o:["is built","was built","will be built","built"],a:2,h:"next year = futuro.",f:"Futuro pasivo: will be + participio."},
+{t:"fill",q:"The letters ___ (deliver) every day.",a:[["are delivered"]],h:"Sujeto plural, presente.",f:"are + participio."},
+{t:"fill",q:"The cake ___ (bake) yesterday by my aunt.",a:[["was baked"]],h:"yesterday = pasado.",f:"was + participio."},
+{t:"fill",q:"The film ___ (release) in December.",a:[["will be released"]],h:"Futuro.",f:"will be + participio."},
+{t:"order",w:["The","museum","was","opened","in","1950."],a:"The museum was opened in 1950.",h:"Sujeto + be + participio + complemento.",f:"Estructura típica de pasiva en pasado."},
+{t:"match",l:["They build houses.","Someone stole my bike.","They will announce the winner."],r:["The winner will be announced.","Houses are built.","My bike was stolen."],a:[1,2,0],h:"Identifica el tiempo de la activa.",f:"Se mantiene el tiempo del verbo en be."}
+],
+rel:[
+{t:"mc",q:"The woman ____ lives next door is a nurse.",o:["who","which","where","when"],a:0,h:"¿Persona, cosa, lugar o tiempo?",f:"who para personas."},
+{t:"mc",q:"This is the restaurant ____ we met.",o:["who","where","when","whose"],a:1,h:"restaurant es un lugar.",f:"where para lugares."},
+{t:"mc",q:"I bought a laptop ____ has a great battery.",o:["who","where","which","whose"],a:2,h:"laptop es una cosa.",f:"which para cosas."},
+{t:"mc",q:"The man ____ car was stolen called the police.",o:["who","which","whose","when"],a:2,h:"El coche le pertenece al hombre.",f:"whose indica posesión."},
+{t:"fill",q:"The city ___ I was born is small.",a:[["where"]],h:"Lugar.",f:"where."},
+{t:"fill",q:"The students ___ study hard get good grades.",a:[["who","that"]],h:"Personas.",f:"who / that."},
+{t:"fill",q:"Cali, ___ is famous for salsa, is in Valle del Cauca.",a:[["which"]],h:"Información extra, entre comas.",f:"which (con coma no se usa that)."},
+{t:"order",w:["The","book","that","I","borrowed","was","great."],a:"The book that I borrowed was great.",h:"sustantivo + relativo + cláusula.",f:"La cláusula relativa va justo después del sustantivo."},
+{t:"match",l:["a person","a thing","a place","a time","possession"],r:["which","when","whose","where","who"],a:[4,0,3,1,2],h:"Une según lo que describe.",f:"who/which/where/when/whose."}
+],
+writ:[
+{t:"fill",q:"One practical strategy ___ to set a timer. This is important ___ it helps me relax.",a:[["is"],["because"]],h:"Verbo to be y conector de causa.",f:"Usa 'because' para dar razón."},
+{t:"order",w:["That","is","why","a","small","habit","can","help","a","lot."],a:"That is why a small habit can help a lot.",h:"Frase de cierre.",f:"Conclusión: That is why..."},
+{t:"mc",q:"Which sentence is the best 'reason' sentence?",o:["I like it.","This is important because it helps me sleep better.","Maybe.","Phones."],a:1,h:"Debe tener razón y conector.",f:"Una buena razón es completa y específica."}
+]
+};
+var CHK=["Respondí directamente la pregunta","Mencioné una estrategia concreta (no vaga)","Expliqué por qué es importante (because / so / as a result)","Usé mis propias palabras, no copié del texto","Revisé ortografía, mayúsculas y puntuación","Escribí entre 5 y 7 líneas"];
+
+var QUIZ=[
+{s:"Reading",q:"What is the main idea of the 'Plastic and the ocean' text?",o:["Plastic is a harmless material.","Plastic in the sea harms animals, and people can help reduce it.","Fish are the best food.","Scientists dislike recycling."],a:1},
+{s:"Reading",q:"Why do fish and birds get sick, according to the text?",o:["They eat plastic by mistake.","They swim too much.","They lack sunlight.","They drink fresh water."],a:0},
+{s:"Conditional",q:"If it ____ this weekend, we will go to the beach.",o:["is sunny","will be sunny","were sunny","being sunny"],a:0},
+{s:"Conditional",q:"If you ____ the milk in the sun, it will go bad.",o:["leave","will leave","left","leaving"],a:0},
+{s:"Participle",q:"Have you ever ____ a horse?",o:["ride","rode","ridden","riding"],a:2},
+{s:"Participle",q:"The thief had already ____ the wallet.",o:["steal","stole","stolen","stealing"],a:2},
+{s:"Gerunds",q:"My parents agreed ____ me a phone.",o:["buying","to buy","buy","bought"],a:1},
+{s:"Gerunds",q:"Are you good at ____ pictures?",o:["draw","to draw","drawing","drew"],a:2},
+{s:"Gerunds",q:"He keeps ____ about the same problem.",o:["to talk","talk","talked","talking"],a:3},
+{s:"Passive",q:"These shirts ____ in Colombia every week.",o:["are made","were made","will be made","make"],a:0},
+{s:"Passive",q:"The road ____ last month by workers.",o:["is repaired","was repaired","will be repaired","repairs"],a:1},
+{s:"Passive",q:"The results ____ on Monday.",o:["are announced","were announced","will be announced","announce"],a:2},
+{s:"Relative",q:"The girl ____ won the race is my cousin.",o:["which","who","where","whose"],a:1},
+{s:"Relative",q:"That is the school ____ my mother teaches.",o:["who","which","where","when"],a:2},
+{s:"Relative",q:"The boy ____ bike is red lives here.",o:["who","whose","which","when"],a:1}
+];
+
+/* ---------- Renderers ---------- */
+var allIds=[];
+function cardShell(id,hint,expl){
+ var c=el("div","card");c.id="c-"+id;
+ return c;
+}
+function addHelp(c,ex){
+ var b=el("button","","Ver pista");var t=el("div","tog","💡 Pista: "+(ex.h||""));b.type="button";
+ b.onclick=function(){t.classList.toggle("show");};
+ c.appendChild(b);c.appendChild(t);
+}
+function finish(c,id,ok,ex,fb){
+ fb.className="fb "+(ok?"ok":"bad");
+ fb.innerHTML=(ok?"✔ Correcto. ":"✘ Incorrecto. Revisa y reintenta. ")+"<br><b>Explicación:</b> "+ex.f;
+ if(ok){c.classList.add("done");store.done[id]=1;save();updProg();}
+}
+function renderMC(c,id,ex){
+ c.appendChild(el("p","en",ex.q));var sel=-1;var btns=[];
+ ex.o.forEach(function(o,i){var b=el("button","opt",String.fromCharCode(97+i)+") "+o);b.type="button";b.onclick=function(){sel=i;btns.forEach(function(x){x.classList.remove("sel");});b.classList.add("sel");};btns.push(b);c.appendChild(b);});
+ var fb=el("div","fb");var ck=el("button","pri","Comprobar");ck.type="button";
+ ck.onclick=function(){if(sel<0){fb.className="fb bad";fb.textContent="✘ Elige una opción.";return;}finish(c,id,sel===ex.a,ex,fb);};
+ c.appendChild(ck);addHelp(c,ex);c.appendChild(fb);
+}
+function renderFill(c,id,ex){
+ var parts=ex.q.split("___");var p=el("p","en");var inputs=[];
+ parts.forEach(function(t,i){p.appendChild(document.createTextNode(t));if(i<parts.length-1){var inp=el("input","f");inp.type="text";inp.setAttribute("aria-label","respuesta "+(i+1));inp.autocomplete="off";inp.autocapitalize="none";inp.spellcheck=false;inputs.push(inp);p.appendChild(inp);}});
+ c.appendChild(p);var fb=el("div","fb");var ck=el("button","pri","Comprobar");ck.type="button";
+ ck.onclick=function(){var ok=inputs.every(function(inp,i){var v=norm(inp.value);return ex.a[i].some(function(a){return norm(a)===v;});});finish(c,id,ok,ex,fb);};
+ c.appendChild(ck);addHelp(c,ex);c.appendChild(fb);
+}
+function renderOrder(c,id,ex){
+ c.appendChild(el("p","","Ordena las palabras tocándolas (toca una palabra de tu respuesta para quitarla):"));
+ var pool=el("div"),ans=el("div","ans");ans.setAttribute("aria-label","tu respuesta");var chosen=[];
+ function draw(){pool.innerHTML="";ans.innerHTML="";
+  shuffled.forEach(function(w,i){if(chosen.indexOf(i)>-1)return;var b=el("button","tok",w);b.type="button";b.onclick=function(){chosen.push(i);draw();};pool.appendChild(b);});
+  chosen.forEach(function(i,k){var b=el("button","tok",shuffled[i]);b.type="button";b.onclick=function(){chosen.splice(k,1);draw();};ans.appendChild(b);});}
+ var shuffled=shuffle(ex.w);
+ c.appendChild(pool);c.appendChild(ans);draw();
+ var fb=el("div","fb");var ck=el("button","pri","Comprobar");ck.type="button";
+ ck.onclick=function(){var s=chosen.map(function(i){return shuffled[i];}).join(" ");finish(c,id,s===ex.a,ex,fb);};
+ var rs=el("button","","Borrar");rs.type="button";rs.onclick=function(){chosen=[];draw();};
+ c.appendChild(ck);c.appendChild(rs);addHelp(c,ex);c.appendChild(fb);
+}
+function renderMatch(c,id,ex){
+ c.appendChild(el("p","","Une cada elemento con su pareja:"));var sels=[];
+ ex.l.forEach(function(l,i){var row=el("div","mrow");row.appendChild(el("span","en",l));var s=document.createElement("select");s.setAttribute("aria-label",l);
+  var o0=el("option","","— elige —");o0.value="-1";s.appendChild(o0);ex.r.forEach(function(r,j){var o=el("option","",r);o.value=j;s.appendChild(o);});sels.push(s);row.appendChild(s);c.appendChild(row);});
+ var fb=el("div","fb");var ck=el("button","pri","Comprobar");ck.type="button";
+ ck.onclick=function(){var ok=sels.every(function(s,i){return parseInt(s.value,10)===ex.a[i]||(ex.r[ex.a[i]]===ex.r[parseInt(s.value,10)]);});finish(c,id,ok,ex,fb);};
+ c.appendChild(ck);addHelp(c,ex);c.appendChild(fb);
+}
+var R={mc:renderMC,fill:renderFill,order:renderOrder,match:renderMatch};
+Object.keys(EX).forEach(function(k){
+ var box=document.getElementById("ex-"+k);if(!box)return;
+ box.appendChild(el("h3","","Práctica interactiva"));
+ EX[k].forEach(function(ex,i){var id=k+i;allIds.push(id);var c=el("div","card"+(store.done[id]?" done":""));R[ex.t](c,id,ex);box.appendChild(c);});
+});
+
+/* checklist */
+(function(){var b=document.getElementById("chk");CHK.forEach(function(t,i){var id="chk"+i;allIds.push(id);var l=el("label","chk");var cb=document.createElement("input");cb.type="checkbox";cb.checked=!!store.done[id];cb.onchange=function(){if(cb.checked)store.done[id]=1;else delete store.done[id];save();updProg();};l.appendChild(cb);l.appendChild(document.createTextNode(" "+t));b.appendChild(l);});})();
+
+/* quiz */
+var qsel={};
+function drawQuiz(){var box=document.getElementById("quizbox");box.innerHTML="";qsel={};
+ QUIZ.forEach(function(q,i){var c=el("div","card");c.appendChild(el("p","en","<b>"+(i+1)+".</b> "+q.q));
+  var btns=[];q.o.forEach(function(o,j){var b=el("button","opt",String.fromCharCode(97+j)+") "+o);b.type="button";b.onclick=function(){qsel[i]=j;btns.forEach(function(x){x.classList.remove("sel");});b.classList.add("sel");};btns.push(b);c.appendChild(b);});
+  box.appendChild(c);});
+ var r=document.getElementById("qres");r.className="fb";r.innerHTML="";}
+document.getElementById("qcalc").onclick=function(){
+ var score=0,by={};QUIZ.forEach(function(q,i){by[q.s]=by[q.s]||[0,0];by[q.s][1]++;if(qsel[i]===q.a){score++;by[q.s][0]++;}});
+ var answered=Object.keys(qsel).length;var h=(score>=QUIZ.length*0.7?"✔ ":"✘ ")+"<b>Puntaje: "+score+" / "+QUIZ.length+"</b> ("+(score/QUIZ.length*5).toFixed(1)+" / 5.0)"+(answered<QUIZ.length?" — te faltan "+(QUIZ.length-answered)+" por responder.":"")+"<ul class='tight'>";
+ var weak=[];Object.keys(by).forEach(function(k){h+="<li>"+k+": "+by[k][0]+"/"+by[k][1]+"</li>";if(by[k][0]<by[k][1])weak.push(k);});
+ h+="</ul>"+(weak.length?"Repasa: "+weak.join(", ")+".":"Excelente, dominas todos los temas.");
+ var r=document.getElementById("qres");r.className="fb "+(score>=QUIZ.length*0.7?"ok":"bad");r.innerHTML=h;
+ store.quiz=score;save();};
+document.getElementById("qreset").onclick=drawQuiz;
+drawQuiz();
+
+/* ---------- Topic connections ---------- */
+var RM=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+function goTo(id){var d=document.getElementById(id);if(!d)return;if(d.tagName==="DETAILS")d.open=true;
+ try{d.scrollIntoView({behavior:RM?"auto":"smooth",block:"start"});}catch(e){d.scrollIntoView();}
+ var s=d.querySelector("summary");if(s&&s.focus)s.focus({preventScroll:true});}
+var NODES=[
+{id:"reading",n:"Reading",x:90,y:60,s:"Entender un texto: idea principal, causa, propósito, actitud e inferencia."},
+{id:"cond",n:"1st Conditional",x:330,y:60,s:"If + presente simple, will + verbo base: situaciones posibles en el futuro."},
+{id:"writ",n:"Written Response",x:570,y:60,s:"Escribir un párrafo corto con idea, ejemplo, razón y cierre."},
+{id:"pp",n:"Past Participle",x:90,y:190,s:"La tercera columna del verbo: base de los tiempos perfectos y de la pasiva."},
+{id:"pas",n:"Passive Voice",x:330,y:190,s:"be + participio pasado: importa lo que recibe la acción."},
+{id:"rel",n:"Relative Clauses",x:570,y:190,s:"who, which, that, where, when, whose: dan información extra sobre un sustantivo."},
+{id:"ger",n:"Gerunds/Infinitives",x:90,y:320,s:"El primer verbo decide si el segundo va en -ing o en to + base."}
+];
+var EDGES=[
+{a:"reading",b:"cond",l:"usa",t:"Los textos de consejos y de causas usan if + presente, will + base para decir qué pasa si haces algo. Reconocer ese patrón te ayuda a entender causa y efecto en la lectura.",e:"If you protect your sleep, your grades will thank you."},
+{a:"cond",b:"writ",l:"se usa en",t:"En tu párrafo explicas resultados y razones. El primer condicional es una forma natural de decir qué pasaría si aplicas tu estrategia.",e:"If I read every night, I will learn new words."},
+{a:"reading",b:"writ",l:"es la base de",arc:1,t:"La respuesta escrita se apoya en lo que dice el texto: usas sus ideas con tus propias palabras, sin copiarlas.",e:"The text says tired students forget information, so I would sleep earlier."},
+{a:"cond",b:"pp",l:"se amplía con",t:"Los dos temas fijan la forma exacta del verbo. Además, la cláusula con if puede llevar un present perfect (have/has + participio) cuando la condición es una acción ya terminada.",e:"If you have finished your homework, we will go out."},
+{a:"cond",b:"pas",l:"se combina con",t:"Una condición o un resultado pueden ir en pasiva cuando importa más lo que recibe la acción que quién la hace.",e:"If the letter is sent today, it will arrive on Friday."},
+{a:"pp",b:"pas",l:"base de",t:"El participio pasado es la pieza central de la pasiva: be + participio. Si no conoces la 3ª columna del verbo, no puedes formar la pasiva.",e:"draw - drew - drawn  →  The picture was drawn by a student."},
+{a:"pp",b:"ger",l:"igual que",t:"Los dos temas responden a la misma pregunta: ¿qué forma toma el verbo que viene después de una palabra clave? Después de have/has/had va participio; después de enjoy va -ing; después de want va to + base.",e:"I have finished. / I enjoy swimming. / I want to swim."},
+{a:"ger",b:"pas",l:"se combina con",t:"Se mezclan: be puede tomar forma de infinitivo (to be) o de gerundio (being), y después va el participio.",e:"She wants to be chosen. He enjoys being invited."},
+{a:"pas",b:"rel",l:"aparece en",t:"Una oración relativa puede contener un verbo en pasiva. Primero eliges who/which/that según el sustantivo; luego conjugas la pasiva con el tiempo correcto.",e:"The picture that was drawn by a student won a prize."},
+{a:"rel",b:"writ",l:"da detalle a",t:"Las relativas dan detalles dentro de la misma oración y hacen que tu párrafo suene más completo y conectado.",e:"I read a book that helped me relax."}
+];
+var NICO={reading:"i-read",cond:"i-cond",writ:"i-writ",pp:"i-pp",pas:"i-pas",rel:"i-rel",ger:"i-ger"};
+var NMAP={};NODES.forEach(function(n){NMAP[n.id]=n;});
+var panel=document.getElementById("cpanel");
+function wireGo(){panel.querySelectorAll("[data-go]").forEach(function(b){b.onclick=function(){goTo(b.getAttribute("data-go"));};});}
+function clearOn(){document.querySelectorAll(".cmap .on").forEach(function(x){x.classList.remove("on");});}
+function showEdge(ed,node){clearOn();if(node)node.classList.add("on");var A=NMAP[ed.a],B=NMAP[ed.b];
+ panel.innerHTML="<p><b>"+A.n+" → "+B.n+"</b> <span class='chip'>"+ed.l+"</span></p><p>"+ed.t+"</p><p class='en'>"+ed.e+"</p><button type='button' data-go='"+ed.a+"'>Ir a "+A.n+"</button><button type='button' data-go='"+ed.b+"'>Ir a "+B.n+"</button>";wireGo();}
+function showNode(n,node){clearOn();if(node)node.classList.add("on");
+ var h="<p><b>"+n.n+"</b>: "+n.s+"</p><p>Relaciones:</p><ul class='tight'>";
+ EDGES.forEach(function(ed,i){if(ed.a===n.id)h+="<li>"+ed.l+" → "+NMAP[ed.b].n+"</li>";else if(ed.b===n.id)h+="<li>"+NMAP[ed.a].n+" → "+ed.l+" este tema</li>";});
+ panel.innerHTML=h+"</ul><button type='button' data-go='"+n.id+"'>Ir a la sección</button>";wireGo();}
+(function(){
+ var NS="http://www.w3.org/2000/svg",host=document.getElementById("cmapsvg");
+ function mk(tag,at,par){var e=document.createElementNS(NS,tag);for(var k in at)e.setAttribute(k,at[k]);if(par)par.appendChild(e);return e;}
+ function clip(A,B){var dx=B.x-A.x,dy=B.y-A.y,t=Math.min(dx?75/Math.abs(dx):1e9,dy?22/Math.abs(dy):1e9);return{x:A.x+dx*t,y:A.y+dy*t};}
+ var svg=mk("svg",{viewBox:"0 -20 660 380",role:"group","aria-label":"Mapa de conceptos: temas y sus relaciones"},host);
+ var defs=mk("defs",{},svg),mr=mk("marker",{id:"arr",markerWidth:"9",markerHeight:"9",refX:"8",refY:"4.5",orient:"auto"},defs);mk("polygon",{points:"0,0 9,4.5 0,9"},mr);
+ EDGES.forEach(function(ed){var A=NMAP[ed.a],B=NMAP[ed.b],d,lx,ly;
+  if(ed.arc){d="M"+A.x+",38 C"+A.x+",-16 "+B.x+",-16 "+B.x+",36";lx=(A.x+B.x)/2;ly=-3;}
+  else{var p=clip(A,B),q=clip(B,A);d="M"+p.x+","+p.y+" L"+q.x+","+q.y;lx=(p.x+q.x)/2;ly=(p.y+q.y)/2;}
+  var g=mk("g",{"class":"edge",tabindex:"0",role:"button","aria-label":NMAP[ed.a].n+" "+ed.l+" "+NMAP[ed.b].n},svg);
+  mk("path",{d:d,"class":"ln","marker-end":"url(#arr)"},g);mk("path",{d:d,"class":"hit"},g);
+  var t=mk("text",{x:lx,y:ly},g);t.textContent=ed.l;
+  g.addEventListener("click",function(){showEdge(ed,g);});
+  g.addEventListener("mouseenter",function(){showEdge(ed,g);});
+  g.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();showEdge(ed,g);}});
+ });
+ NODES.forEach(function(n){var g=mk("g",{"class":"node",tabindex:"0",role:"link","aria-label":"Ir a "+n.n},svg);
+  mk("rect",{x:n.x-75,y:n.y-22,width:"150",height:"44",rx:"10"},g);var t=mk("text",{x:n.x,y:n.y},g);t.textContent=n.n;
+  var bd=mk("g",{"class":"badge"},g);mk("circle",{cx:n.x-75,cy:n.y-22,r:"14"},bd);var u=mk("use",{x:n.x-83,y:n.y-30,width:"16",height:"16"},bd);u.setAttribute("href","#"+NICO[n.id]);
+  g.addEventListener("click",function(){showNode(n,g);goTo(n.id);});
+  g.addEventListener("mouseenter",function(){showNode(n,g);});
+  g.addEventListener("focus",function(){showNode(n,g);});
+  g.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();goTo(n.id);}});
+ });
+ var ul=document.getElementById("cmaplist");
+ NODES.forEach(function(n){var li=el("li","");var a=el("a","",n.n);a.href="#"+n.id;li.appendChild(a);li.appendChild(el("div","",n.s));var r=el("div","rels");
+  EDGES.forEach(function(ed){if(ed.a===n.id){var b=el("button","",ed.l+" → "+NMAP[ed.b].n);b.type="button";b.onclick=function(){showEdge(ed);};r.appendChild(b);}});
+  li.appendChild(r);ul.appendChild(li);});
+})();
+
+/* study route (checkboxes tied to progress) */
+var ROUTE=[
+{id:"pp",w:"Es la base: lo usan los tiempos perfectos y la voz pasiva."},
+{id:"pas",w:"Aplica el participio: be + participio pasado."},
+{id:"cond",w:"Patrón fijo (if + presente, will + base) que se mezcla con lo anterior."},
+{id:"ger",w:"Decide la forma del segundo verbo; completa tus herramientas con verbos."},
+{id:"rel",w:"Une ideas y puede contener pasivas."},
+{id:"reading",w:"Aplicas todo en textos reales y practicas las estrategias de lectura."},
+{id:"writ",w:"Usas la gramática y las ideas del texto para escribir tu párrafo."},
+{id:"quiz",w:"Compruebas qué tema reforzar."}
+];
+(function(){var ol=document.getElementById("route");
+ ROUTE.forEach(function(r,i){var id="route"+i;allIds.push(id);var li=el("li","");li.appendChild(el("span","n",(i+1)+"."));
+  var cb=document.createElement("input");cb.type="checkbox";cb.id=id;cb.checked=!!store.done[id];cb.setAttribute("aria-label","Marcar paso "+(i+1)+" como estudiado");
+  cb.onchange=function(){if(cb.checked)store.done[id]=1;else delete store.done[id];save();updProg();};
+  var d=el("div","");var a=el("a","",NMAP[r.id]?NMAP[r.id].n:"Autoevaluación final");a.href="#"+r.id;d.appendChild(a);d.appendChild(document.createTextNode(" — "+r.w));
+  li.appendChild(cb);li.appendChild(d);ol.appendChild(li);});})();
+
+/* bridges between sections */
+var BR=[
+{id:"reading",from:"Punto de partida: el examen empieza con un texto y casi toda la gramática aparece dentro de textos. Si entiendes cómo se arma una lectura, luego reconoces mejor cada estructura.",
+ next:"Un texto de consejos, como el de <i>Sleep</i>, usa estructuras <span class='en'>if + presente, will + base</span> para decir qué pasa si haces algo. Reconocerlas te ayuda a entender causa y efecto; la gramática del primer condicional te da la regla exacta.",
+ q:"¿Cómo se relacionan la lectura y el primer condicional?",o:["Los textos de consejos usan if + presente, will + base para mostrar causa y resultado.","El condicional solo sirve para las preguntas de vocabulario.","No tienen ninguna relación."],a:0,f:"Cuando lees un consejo con if, estás viendo el primer condicional en acción: la condición va en presente y el resultado con will."},
+{id:"cond",from:"Viene de <a href='#reading'>Reading</a>: en los textos viste consejos y consecuencias; ahora aprendes la estructura que las expresa.",
+ next:"El condicional te enseñó que cada parte de la oración pide una forma exacta del verbo (presente simple, will + base). El siguiente paso es otra forma: el participio pasado (3ª columna), que incluso puede aparecer en la condición: <span class='en'>If you have finished, we will start.</span>",
+ q:"¿Qué tienen en común el primer condicional y el participio pasado?",o:["Los dos fijan la forma exacta del verbo que va después de una palabra clave (if/will, have/has).","El participio reemplaza a will.","El participio solo se usa en el pasado simple."],a:0,f:"En ambos casos, una palabra clave decide la forma del verbo: if + presente, will + base, have + participio."},
+{id:"pp",from:"Viene de <a href='#cond'>1st Conditional</a>: ya sabes que cada estructura pide una forma exacta del verbo. Ahora aprendes la forma de la 3ª columna.",
+ next:"El participio va después de have/has/had y de be. Los gerundios e infinitivos siguen una lógica parecida: el primer verbo decide la forma del segundo (<span class='en'>enjoy + -ing, want + to</span>). Guarda bien el participio: lo reutilizarás en la <a href='#pas'>voz pasiva</a> (be + participio).",
+ q:"¿Qué tienen en común <i>have + participio</i> y <i>enjoy + -ing</i>?",o:["El primer verbo determina la forma del segundo verbo.","Los dos se usan solo en preguntas.","Los dos van siempre con will."],a:0,f:"Es el mismo mecanismo: una palabra o verbo fija la forma que sigue (participio, gerundio o to + base)."},
+{id:"ger",from:"Viene de <a href='#pp'>Past Participle</a>: allí viste que el verbo cambia de forma según la palabra anterior; aquí ocurre igual con -ing y to + base.",
+ next:"En la voz pasiva se combinan formas: <i>be</i> puede ir en infinitivo (<span class='en'>to be</span>) o en gerundio (<span class='en'>being</span>) y después va el participio. Así, gerundios, infinitivos y participios trabajan juntos: <span class='en'>She wants to be chosen. He enjoys being invited.</span>",
+ q:"En <span class='en'>He enjoys being invited</span>, ¿qué formas se combinan?",o:["Infinitivo + gerundio","Gerundio (being) + participio pasado (invited)","Presente simple + will"],a:1,f:"enjoy pide gerundio (being) y la pasiva exige el participio (invited): be + participio."},
+{id:"pas",from:"Viene de <a href='#pp'>Past Participle</a> y de <a href='#ger'>Gerunds/Infinitives</a>: usas el participio como pieza central y puedes poner <i>be</i> en infinitivo o gerundio.",
+ next:"Una oración relativa puede contener una pasiva: <span class='en'>The picture that was drawn by a student won a prize.</span> Primero eliges <i>who/which/that</i> según el sustantivo; luego conjugas la pasiva con el tiempo correcto.",
+ q:"En <span class='en'>The house which was built in 1990 is old</span>, ¿qué hace <i>which</i>?",o:["Indica futuro.","Reemplaza al participio.","Conecta house con la información sobre ella; was built es la pasiva."],a:2,f:"which se refiere a una cosa (house) y abre una cláusula cuyo verbo (was built) está en pasiva."},
+{id:"rel",from:"Viene de <a href='#pas'>Passive Voice</a>: las cláusulas relativas pueden contener verbos en pasiva, y ya sabes formarlos.",
+ next:"Las relativas sirven para dar detalles dentro de una misma oración, y eso mejora tu párrafo escrito: <span class='en'>I read a book that helped me relax.</span> Junto con condicionales y conectores (<i>because, as a result</i>) muestran dominio de la gramática.",
+ q:"¿Para qué te sirven las relativas en tu párrafo?",o:["Para añadir detalles sin escribir oraciones separadas.","Para escribir solo en pasado.","Para evitar usar verbos."],a:0,f:"Una relativa agrega información sobre un sustantivo dentro de la misma oración, lo que hace tu texto más fluido."},
+{id:"writ",from:"Viene de <a href='#rel'>Relative Clauses</a> y de todo lo anterior: en el párrafo combinas condicionales, gerundios, pasivas y relativas con las ideas del texto.",
+ next:"En la autoevaluación practicas todo junto. Si fallas un tema, regresa a su sección (usa el mapa de conceptos arriba) y refuerza esa gramática; luego vuelve a escribir y mejora tu párrafo.",
+ q:"¿Cómo se relacionan tu párrafo y la autoevaluación?",o:["La autoevaluación te muestra qué gramática reforzar antes de escribir mejor.","Son independientes: no se usan entre sí.","La autoevaluación reemplaza al párrafo."],a:0,f:"El puntaje por tema indica qué sección repasar; esa gramática es la que usarás después en el párrafo."},
+{id:"quiz",from:"Viene de <a href='#writ'>Written Response</a>: aquí compruebas la gramática y la lectura con ejercicios nuevos, tema por tema.",next:null}
+];
+BR.forEach(function(b){var sec=document.getElementById(b.id);if(!sec)return;var body=sec.querySelector(".body");
+ var fr=el("div","from","<b>⬅ Viene de…</b> "+b.from),ib=body.querySelector(".intro");body.insertBefore(fr,ib?ib.nextSibling:body.firstChild);
+ if(!b.next)return;
+ var d=el("details","bridge");d.appendChild(el("summary","","🔗 Conexión con el siguiente tema"));
+ var bb=el("div","bb");bb.appendChild(el("p","",b.next));
+ bb.appendChild(el("p","","<b>"+b.q+"</b>"));var fb=el("div","fb");fb.setAttribute("role","status");
+ b.o.forEach(function(o,i){var x=el("button","opt",String.fromCharCode(97+i)+") "+o);x.type="button";
+  x.onclick=function(){fb.className="fb "+(i===b.a?"ok":"bad");fb.innerHTML=(i===b.a?"✔ Correcto. ":"✘ Incorrecto. Piensa en qué comparten ambos temas. ")+"<br>"+b.f;};bb.appendChild(x);});
+ bb.appendChild(fb);d.appendChild(bb);body.appendChild(d);});
+
+/* progress */
+function updProg(){var n=allIds.filter(function(i){return store.done[i];}).length;var tot=allIds.length;
+ document.getElementById("ptxt").textContent=n+" / "+tot+(store.quiz!=null?" · último quiz: "+store.quiz+"/"+QUIZ.length:"");
+ document.getElementById("pbar").style.width=(tot?n/tot*100:0)+"%";}
+document.getElementById("reset").onclick=function(){store={done:{},quiz:null};save();location.reload();};
+updProg();
+
+/* speak buttons */
+document.querySelectorAll("[data-say]").forEach(function(b){b.onclick=function(){speak(b.getAttribute("data-say"));};});
+document.querySelectorAll("[data-speak-id]").forEach(function(b){b.onclick=function(){speak(READTXT);};});
+if(!("speechSynthesis" in window)){document.querySelectorAll(".say").forEach(function(b){b.style.display="none";});}
+
+/* theme toggle */
+(function(){var b=document.getElementById("theme"),root=document.documentElement;
+ function cur(){var t=root.getAttribute("data-theme");if(t)return t;return(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";}
+ function sync(){b.setAttribute("aria-pressed",cur()==="dark"?"true":"false");b.textContent=cur()==="dark"?"☀ Tema claro":"🌙 Tema oscuro";}
+ b.onclick=function(){var n=cur()==="dark"?"light":"dark";root.setAttribute("data-theme",n);try{localStorage.setItem(KEY+"theme",n);}catch(e){}sync();};sync();})();
+
+/* reveal on scroll */
+(function(){var els=document.querySelectorAll(".reveal");document.documentElement.classList.add("js");
+ if(RM||!("IntersectionObserver" in window)){els.forEach(function(e){e.classList.add("in");});return;}
+ var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target);}});},{threshold:.15});
+ els.forEach(function(e){io.observe(e);});})();
+
+/* open section from nav */
+function openHash(){var id=location.hash.slice(1);var d=id&&document.getElementById(id);if(d&&d.tagName==="DETAILS")d.open=true;}
+window.addEventListener("hashchange",openHash);openHash();
+})();
+</script>
+</body>
+</html>

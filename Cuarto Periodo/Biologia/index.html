@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de estudio Biología 9 - Cuarto Periodo</title>
+<style>
+:root{--bg:#fbf7f0;--surface:#fffdf9;--surface-2:#f3ece0;--text:#2b2420;--text-muted:#5e5046;--border:#e3d9c9;--accent:#a3441d;--on-accent:#ffffff;--accent-soft:#f8e7dc;--ok:#1d6644;--ok-bg:#e3f1e6;--bad:#a1281c;--bad-bg:#f9e3de;--warn:#77500a;--warn-bg:#fdf0d5;--info:#1b6158;--info-bg:#ddefea;--code-bg:#f3ece0;--focus:#1f7a6d;--ill-1:#c8643a;--ill-2:#2c8a7c;--ill-3:#d9a032;--ill-4:#7a8f3a;--ill-5:#e9cbb5;--ill-6:#2f2740;--ill-7:#fff1d0;--shadow:#2b242026}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ill-1:#e58a62;--ill-2:#5fbfae;--ill-3:#e8bf63;--ill-4:#a9c15c;--ill-5:#6a5240;--ill-6:#120f0d;--ill-7:#f6e7c1;--shadow:#00000066}}
+:root[data-theme="dark"]{--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ill-1:#e58a62;--ill-2:#5fbfae;--ill-3:#e8bf63;--ill-4:#a9c15c;--ill-5:#6a5240;--ill-6:#120f0d;--ill-7:#f6e7c1;--shadow:#00000066}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:var(--accent);text-decoration:underline}a:visited{color:var(--info)}a:hover{text-decoration-thickness:3px}
+code{background:var(--code-bg);color:var(--text);padding:1px 6px;border-radius:6px;border:1px solid var(--border);font-size:.95em}
+.katex{color:inherit}
+header{background:var(--accent);color:var(--on-accent);padding:14px 16px}
+header h1{margin:0;font-size:1.35rem;line-height:1.3}
+header .tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+header .tag{background:var(--accent-soft);color:var(--text);border-radius:99px;padding:2px 12px;font-size:.9rem;font-weight:600}
+.layout{display:flex;align-items:flex-start}
+nav{width:250px;flex:none;position:sticky;top:0;max-height:100vh;overflow:auto;background:var(--surface-2);padding:14px;border-right:1px solid var(--border)}
+nav a{display:block;padding:8px 10px;border-radius:8px;color:var(--text);text-decoration:none;font-size:.95rem;border-left:4px solid transparent}
+nav a:visited{color:var(--text)}
+nav a:hover{background:var(--surface);outline:1px solid var(--text-muted)}
+nav a.on{background:var(--accent-soft);border-left-color:var(--accent);font-weight:700}
+.prog{margin:8px 0 14px}.bar{height:12px;background:var(--surface);border:1px solid var(--text-muted);border-radius:9px;overflow:hidden}.bar i{display:block;height:100%;background:var(--accent);width:0;transition:width .3s}
+.prog small{color:var(--text-muted);font-size:.9rem}
+main{flex:1;min-width:0;padding:16px;max-width:900px;margin:0 auto}
+section.topic{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:6px 16px 16px;margin-bottom:18px;scroll-margin-top:10px}
+h2{color:var(--accent);margin:.8rem 0 .4rem}h3{margin:1rem 0 .3rem;color:var(--text)}
+details{border:1px solid var(--text-muted);border-radius:10px;margin:10px 0;padding:0 12px;background:var(--bg);color:var(--text)}
+details>summary{cursor:pointer;font-weight:700;padding:10px 0;color:var(--text)}
+details>summary:hover{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}
+.vocab div{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:.95rem}
+.vocab b{color:var(--accent)}
+.ex{background:var(--warn-bg);color:var(--text);border-left:5px solid var(--warn);padding:8px 12px;border-radius:8px;margin:10px 0}
+.ex strong:first-child{color:var(--warn)}
+.note{background:var(--info-bg);color:var(--text);border-left:5px solid var(--info);padding:8px 12px;border-radius:8px;margin:10px 0}
+.from{background:var(--accent-soft);color:var(--text);border-left:5px solid var(--accent);padding:6px 12px;border-radius:8px;margin:8px 0;font-size:.95rem}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:.95rem}th,td{border:1px solid var(--text-muted);padding:6px 8px;text-align:left;vertical-align:top;color:var(--text)}
+th{background:var(--accent-soft);color:var(--text)}tr:nth-child(even) td{background:var(--surface-2)}
+.tw{overflow-x:auto}
+.card{border:1px solid var(--text-muted);border-radius:10px;padding:10px 12px;margin:10px 0;background:var(--surface);color:var(--text)}
+.card.done{border-color:var(--ok);border-left-width:6px}
+.q{font-weight:600;margin:0 0 6px}
+.opts{display:grid;gap:6px}
+.opt,.btn{font:inherit;color:var(--text);background:var(--surface-2);border:1px solid var(--text-muted);border-radius:8px;padding:8px 10px;cursor:pointer;text-align:left}
+.opt:hover:not(:disabled){background:var(--accent-soft);border-color:var(--accent)}
+.btn{background:var(--accent);color:var(--on-accent);border-color:var(--accent);font-weight:600}
+.btn:hover:not(:disabled){background:var(--info);border-color:var(--info);color:var(--on-accent)}
+.btn.sec{background:var(--surface-2);color:var(--text);border-color:var(--text-muted)}
+.btn.sec:hover:not(:disabled){background:var(--accent-soft);color:var(--text);border-color:var(--accent)}
+.opt:disabled,.btn:disabled{cursor:not-allowed;background:var(--surface-2);color:var(--text-muted);border-color:var(--border);border-style:dashed}
+.opt.ok,.opt.ok:disabled{background:var(--ok-bg);border:2px solid var(--ok);border-style:solid;color:var(--ok);font-weight:700}
+.opt.ok::after{content:" ✔"}
+.opt.bad,.opt.bad:disabled{background:var(--bad-bg);border:2px solid var(--bad);border-style:solid;color:var(--bad);text-decoration:line-through}
+.opt.bad::after{content:" ✘"}
+.fb{margin-top:8px;padding:8px 10px;border-radius:8px;display:none;color:var(--text)}.fb.show{display:block}
+.fb.ok{background:var(--ok-bg);border-left:5px solid var(--ok)}.fb.ok strong{color:var(--ok)}
+.fb.bad{background:var(--bad-bg);border-left:5px solid var(--bad)}.fb.bad strong{color:var(--bad)}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;align-items:center}
+.hintbox{display:none;background:var(--warn-bg);color:var(--text);border-left:5px solid var(--warn);padding:6px 10px;border-radius:8px;margin-top:6px}.hintbox.show{display:block}
+.hintbox strong{color:var(--warn)}
+input[type=text],select{font:inherit;padding:6px 8px;border:1px solid var(--text-muted);border-radius:8px;background:var(--surface);color:var(--text);max-width:100%}
+input::placeholder,textarea::placeholder{color:var(--text-muted);opacity:1}
+textarea{font:inherit;background:var(--surface);color:var(--text);border:1px solid var(--text-muted);border-radius:8px}
+select option{background:var(--surface);color:var(--text)}
+.mrow{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0}.mrow span{flex:1 1 180px}
+svg{max-width:100%;height:auto;display:block;margin:8px auto;color:var(--text)}
+svg text{fill:var(--text);font-family:system-ui,sans-serif}
+.sv-w,.sv-i,.sv-b,.sv-o{stroke:var(--text);stroke-width:1.5}
+.sv-w{fill:var(--warn-bg)}.sv-i{fill:var(--info-bg)}.sv-b{fill:var(--bad-bg)}.sv-o{fill:var(--ok-bg)}
+.st-b{stroke:var(--bad);fill:none}
+.mapt td:first-child{white-space:nowrap;font-weight:700}
+.themebtn{float:right}
+.mt{margin-top:10px}
+/* concept map */
+.cmap svg{margin:8px auto}
+.cn rect{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2}
+.cn text{font-size:13px;font-weight:700;fill:var(--text)}
+.cbadge{fill:var(--surface);stroke:var(--accent);stroke-width:2}svg.cico{overflow:visible;margin:0;color:var(--accent);fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}.cn{cursor:pointer}.cn:hover rect,.cn:focus rect{fill:var(--surface);stroke-width:4}
+.ep{fill:none;stroke:var(--text-muted);stroke-width:2}
+.arrow{fill:var(--text-muted)}
+.ce{cursor:pointer}.ce rect{fill:var(--surface);stroke:var(--text-muted);stroke-width:1.5}.ce text{font-size:12px}
+.ce:hover rect,.ce:focus rect,.ce.sel rect{fill:var(--warn-bg);stroke:var(--warn);stroke-width:3}
+.clist{display:none;list-style:none;margin:8px 0;padding:0}
+.clist li{margin:6px 0}
+.clist .btn{width:100%}
+.cpanel{min-height:4.5em}
+.cpanel a{font-weight:700}
+.route{list-style:none;margin:8px 0;padding:0}
+.route li{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--text-muted);border-radius:10px;padding:8px 12px;margin:6px 0;background:var(--surface)}
+.route .st{flex:none;font-weight:700;min-width:7.5em;color:var(--text-muted)}
+.route li.fin{background:var(--ok-bg);border-color:var(--ok)}.route li.fin .st{color:var(--ok)}
+.route li.nxt{background:var(--warn-bg);border-color:var(--warn);border-width:2px}.route li.nxt .st{color:var(--warn)}
+.bridge{background:var(--accent-soft);border:2px solid var(--accent)}
+.bridge[open]>.bbody{animation:rev .3s ease-out}
+@keyframes rev{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.bq{border-top:1px dashed var(--text-muted);margin:8px 0 10px;padding-top:8px}
+.bq .opt{background:var(--surface)}
+@media (max-width:800px){.layout{display:block}nav{position:static;width:auto;max-height:none;border-right:0;border-bottom:1px solid var(--border);display:flex;flex-wrap:wrap;gap:4px}nav a{padding:6px 9px;font-size:.9rem}.prog{flex-basis:100%}main{padding:12px}}
+@media (max-width:700px){.cmap svg{display:none}.clist{display:block}.route .st{min-width:6em}}
+/* visual enhancements */
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+svg.ico{width:32px;height:32px;flex:none;margin:0;display:block;color:var(--bt,var(--accent));fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+svg.nico{display:inline-block;width:18px;height:18px;margin:0 7px 0 0;vertical-align:-3px;color:var(--accent);fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.banner{--bt:var(--accent);--bb:var(--accent-soft);display:flex;gap:12px;align-items:center;background:var(--bb);border-left:6px solid var(--bt);border-radius:10px;padding:10px 14px;margin:10px 0 8px}
+.banner.b2{--bt:var(--info);--bb:var(--info-bg)}.banner.b3{--bt:var(--ok);--bb:var(--ok-bg)}.banner.b4{--bt:var(--warn);--bb:var(--warn-bg)}
+.banner h2{margin:0;color:var(--bt);font-size:1.3rem;line-height:1.25}
+.banner .hook{margin:2px 0 0;color:var(--text);font-size:.98rem;font-style:italic}
+.topfold{display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);gap:14px;align-items:start;margin:10px 0}
+.hero{margin:0}.hero svg{width:100%;max-width:420px;height:auto;margin:0 auto;border-radius:12px;border:1px solid var(--border)}
+.ten,.dato{border-radius:10px;padding:8px 12px;margin:0 0 10px;color:var(--text);transition:transform .2s,box-shadow .2s}
+.ten{background:var(--info-bg);border-left:5px solid var(--info)}
+.ten>strong,.dato>strong{display:block}
+.ten>strong{color:var(--info)}
+.ten ul{margin:4px 0 0;padding-left:20px}
+.dato{background:var(--warn-bg);border-left:5px solid var(--warn)}
+.dato>strong{color:var(--warn)}
+.dato p{margin:2px 0 0}
+.ten:hover,.dato:hover,.card:hover,.vocab div:hover,.ex:hover,.note:hover{transform:translateY(-2px);box-shadow:0 6px 14px var(--shadow)}
+.vocab div,.ex,.note,.card{transition:transform .2s,box-shadow .2s}
+.rv-pre{opacity:0;transform:translateY(14px)}
+.rv-in{opacity:1;transform:none;transition:opacity .6s ease-out,transform .6s ease-out}
+.ib{fill:var(--surface-2)}.nightbg{fill:var(--ill-6)}
+.f1{fill:var(--ill-1)}.f2{fill:var(--ill-2)}.f3{fill:var(--ill-3)}.f4{fill:var(--ill-4)}.f5{fill:var(--ill-5)}.f7{fill:var(--ill-7)}.f6{fill:var(--ill-6)}
+.k1{stroke:var(--ill-1);fill:none}.k2{stroke:var(--ill-2);fill:none}.k3{stroke:var(--ill-3);fill:none}.k4{stroke:var(--ill-4);fill:none}.k5{stroke:var(--ill-5);fill:none}.k7{stroke:var(--ill-7);fill:none}.km{stroke:var(--text-muted);fill:none}
+.s1{stop-color:var(--ill-1)}.s2{stop-color:var(--ill-2)}.s3{stop-color:var(--ill-3)}.s5{stop-color:var(--ill-5)}.s6{stop-color:var(--ill-6)}.s7{stop-color:var(--ill-7)}
+svg text.tl{fill:var(--ill-7);font-size:11px;font-weight:600}
+svg text.td{font-size:11px;font-weight:600}
+.an{transform-box:fill-box;transform-origin:center}
+.pulse{animation:pulse 2.4s ease-in-out infinite}
+.flow{stroke-dasharray:2 14;stroke-linecap:round;animation:flow 2s linear infinite}
+.expand{animation:expand 4s ease-out infinite}
+.rise{animation:rise 4s ease-in infinite}
+.flash{animation:flash 5s linear infinite}
+.sway{transform-box:view-box;transform-origin:160px 168px;animation:sway 5s ease-in-out infinite}
+.orb{transform-box:view-box;transform-origin:160px 95px;animation:spin 18s linear infinite}
+.bob{animation:bob 3s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+@keyframes flow{to{stroke-dashoffset:-32}}
+@keyframes expand{0%{transform:scale(.25);opacity:.9}100%{transform:scale(1.1);opacity:0}}
+@keyframes rise{0%{transform:translateY(0);opacity:0}20%{opacity:.9}100%{transform:translateY(-60px);opacity:0}}
+@keyframes flash{0%,84%,100%{opacity:0}86%,90%{opacity:1}92%{opacity:.2}94%{opacity:1}}
+@keyframes sway{0%,100%{transform:rotate(-1.2deg)}50%{transform:rotate(1.2deg)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@media (max-width:700px){.topfold{grid-template-columns:minmax(0,1fr)}.banner h2{font-size:1.15rem}}
+@media (prefers-reduced-motion:reduce){.rv-pre{opacity:1;transform:none}.ten:hover,.dato:hover,.card:hover,.vocab div:hover,.ex:hover,.note:hover{transform:none}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+<script>try{var _t=localStorage.getItem("bio9p4_theme");if(_t==="dark"||_t==="light")document.documentElement.setAttribute("data-theme",_t);}catch(e){}</script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0"><defs>
+<symbol id="i-dna" viewBox="0 0 32 32"><path d="M10 3c0 9 12 9 12 13s-12 4-12 13"/><path d="M22 3c0 9-12 9-12 13s12 4 12 13"/><path d="M12 8h8M12 24h8"/></symbol>
+<symbol id="i-star" viewBox="0 0 32 32"><circle cx="16" cy="16" r="6"/><ellipse cx="16" cy="16" rx="13" ry="4.5" transform="rotate(-20 16 16)"/><path d="M27 4v4M25 6h4"/></symbol>
+<symbol id="i-flask" viewBox="0 0 32 32"><path d="M12 4h8M13 4v8l-7 13a2 2 0 0 0 2 3h16a2 2 0 0 0 2-3l-7-13V4"/><circle cx="15" cy="21" r="1.5"/><circle cx="20" cy="24" r="1"/></symbol>
+<symbol id="i-tree" viewBox="0 0 32 32"><path d="M16 29V15M16 21l-7-6M16 18l7-7M9 15V9M23 11V5"/><circle cx="9" cy="7" r="2"/><circle cx="23" cy="3.5" r="1.8"/><circle cx="16" cy="12" r="2"/></symbol>
+<symbol id="i-branch" viewBox="0 0 32 32"><circle cx="16" cy="6" r="3"/><path d="M16 9v4M16 13H7v4M16 13h9v4"/><rect x="3" y="17" width="8" height="7" rx="1.5"/><rect x="21" y="17" width="8" height="7" rx="1.5"/><path d="M7 24v3M25 24v3"/></symbol>
+<symbol id="i-book" viewBox="0 0 32 32"><path d="M4 7c4-2 8-2 12 1v19c-4-3-8-3-12-1zM28 7c-4-2-8-2-12 1v19c4-3 8-3 12-1z"/></symbol>
+<symbol id="i-net" viewBox="0 0 32 32"><circle cx="6" cy="8" r="3.5"/><circle cx="26" cy="8" r="3.5"/><circle cx="16" cy="25" r="3.5"/><path d="M9.5 8h13M8 11l6.5 11M24 11l-6.5 11"/></symbol>
+<symbol id="i-target" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><circle cx="16" cy="16" r="7"/><circle cx="16" cy="16" r="2"/></symbol>
+</defs></svg>
+<header>
+<button class="btn sec themebtn" id="themeBtn" type="button" aria-label="Cambiar modo claro u oscuro">Modo claro/oscuro</button>
+<h1>Guía de estudio: Biología</h1>
+<div class="tags"><span class="tag">Biología</span><span class="tag">Grado 9</span><span class="tag">Cuarto Periodo</span><span class="tag">Evaluación bimestral tipo ICFES</span></div>
+</header>
+<div class="layout">
+<nav aria-label="Temas">
+<div class="prog"><strong>Tu progreso</strong><div class="bar"><i id="barFill"></i></div><small id="progTxt">0 de 0</small></div>
+<a href="#mapa"><svg class="nico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-book"/></svg>Mapa del examen</a>
+<a href="#conceptos"><svg class="nico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-net"/></svg>Mapa de conceptos y ruta</a>
+<a href="#t1"><svg class="nico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-dna"/></svg>1. ADN, proteínas y código genético</a>
+<a href="#t2"><svg class="nico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-star"/></svg>2. Origen del universo</a>
+<a href="#t3"><svg class="nico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-flask"/></svg>3. Origen de la vida</a>
+<a href="#t4"><svg class="nico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-tree"/></svg>4. Evolución: Lamarck y Darwin</a>
+<a href="#t5"><svg class="nico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-branch"/></svg>5. Taxonomía y clasificación</a>
+<a href="#quiz"><svg class="nico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-target"/></svg>Autoevaluación final</a>
+<button class="btn sec mt" id="resetBtn" type="button">Reiniciar progreso</button>
+</nav>
+<main>
+
+<section class="topic" id="mapa">
+<div class="banner b1"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-book"/></svg><div><h2>Cómo usar esta guía</h2><p class="hook">¿Cuál es la mejor forma de estudiar para que lo aprendido se quede?</p></div></div>
+<p>La evaluación tiene 20 preguntas de selección múltiple con única respuesta (tipo ICFES). Esta guía <strong>no contiene las respuestas del examen</strong>: te explica los conceptos, te muestra ejemplos parecidos resueltos y te deja practicar con ejercicios distintos. Tú aplicas lo aprendido al examen.</p>
+<div class="note"><strong>Estrategia ICFES:</strong> (1) lee el enunciado completo; (2) piensa tu respuesta antes de mirar las opciones; (3) descarta las opciones claramente falsas; (4) fíjate en palabras como <em>NO</em>, <em>principalmente</em>, <em>mejor</em>; (5) no cambies tu respuesta sin una razón.</div>
+<h3>Mapa: pregunta del examen &rarr; sección de la guía</h3>
+<div class="tw"><table class="mapt">
+<tr><th>Pregunta(s)</th><th>Tema general</th><th>Dónde estudiar</th></tr>
+<tr><td>1, 2</td><td>Proteínas y aminoácidos</td><td><a href="#t1">Sección 1.2</a></td></tr>
+<tr><td>3, 4, 5</td><td>ADN, nucleótidos, bases y codones</td><td><a href="#t1">Secciones 1.1 y 1.3</a></td></tr>
+<tr><td>6, 7</td><td>Big Bang, elementos y radiación</td><td><a href="#t2">Sección 2.1</a></td></tr>
+<tr><td>8</td><td>Exploración espacial (cronología)</td><td><a href="#t2">Sección 2.2</a></td></tr>
+<tr><td>9</td><td>Teorías sobre el origen de la vida (panspermia)</td><td><a href="#t3">Sección 3.1</a></td></tr>
+<tr><td>10</td><td>Teoría de Oparin, atmósfera primitiva</td><td><a href="#t3">Sección 3.2</a></td></tr>
+<tr><td>11</td><td>Teoría endosimbiótica</td><td><a href="#t3">Sección 3.3</a></td></tr>
+<tr><td>12, 15</td><td>Lamarck: uso/desuso y herencia</td><td><a href="#t4">Sección 4.1</a></td></tr>
+<tr><td>13, 14</td><td>Darwin, selección natural, Galápagos, fósiles</td><td><a href="#t4">Secciones 4.2 y 4.3</a></td></tr>
+<tr><td>16, 17</td><td>Categorías taxonómicas y nomenclatura binomial</td><td><a href="#t5">Secciones 5.1 y 5.2</a></td></tr>
+<tr><td>18</td><td>Célula procariota y eucariota</td><td><a href="#t5">Sección 5.3</a></td></tr>
+<tr><td>19, 20</td><td>Dominios y reinos</td><td><a href="#t5">Secciones 5.4 y 5.5</a></td></tr>
+</table></div>
+</section>
+
+<section class="topic" id="conceptos">
+<div class="banner b2"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-net"/></svg><div><h2>Mapa de conceptos: cómo se conectan los temas</h2><p class="hook">¿Y si los cinco temas fueran en realidad una sola historia?</p></div></div>
+<p>Los cinco temas no son islas: cada uno explica algo que el siguiente necesita. Pasa el cursor, toca o usa el teclado sobre una <strong>relación</strong> (cajita con texto) o sobre un <strong>tema</strong> para leer cómo se conectan. Al hacer clic en un tema irás a su sección.</p>
+<div class="cmap" id="cmap"></div>
+<div class="note cpanel" id="cpanel" aria-live="polite"><strong>Relación seleccionada:</strong> ninguna todavía. Elige una relación del mapa o de la lista.</div>
+<h3>Ruta de estudio sugerida</h3>
+<p>Este orden aprovecha lo que cada tema aporta al siguiente. Tu avance se marca solo a medida que completas los ejercicios de cada tema.</p>
+<ol class="route" id="route"></ol>
+</section>
+
+<!-- ================= TEMA 1 ================= -->
+<section class="topic" id="t1">
+<div class="banner b1"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-dna"/></svg><div><h2>1. ADN, proteínas y código genético</h2><p class="hook">¿Sabías que casi todo lo que eres está escrito con solo cuatro &ldquo;letras&rdquo;?</p></div></div>
+<p class="from"><strong>⬅ Viene de…</strong> es el punto de partida de la guía. Aquí aprendes el vocabulario (ADN, proteína, codón) que se reutiliza en todos los demás temas.</p>
+<div class="topfold"><figure class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Ilustración de la doble hélice del ADN: dos cadenas enrolladas unidas por peldaños"><title>Ilustración de la doble hélice del ADN: dos cadenas enrolladas unidas por peldaños</title><defs><linearGradient id="gh1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="s5" stop-opacity=".55"/><stop offset="1" class="s5" stop-opacity="0"/></linearGradient></defs><rect class="ib" width="320" height="180" rx="12"/><rect width="320" height="180" rx="12" fill="url(#gh1)"/><line x1="36" y1="101.1" x2="36" y2="78.9" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.0s"/><line x1="46" y1="116.8" x2="46" y2="63.2" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.3s"/><line x1="56" y1="125.2" x2="56" y2="54.8" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.6s"/><line x1="66" y1="124.2" x2="66" y2="55.8" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.9s"/><line x1="76" y1="114.1" x2="76" y2="65.9" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:1.2s"/><line x1="86" y1="97.5" x2="86" y2="82.5" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:1.5s"/><line x1="96" y1="78.9" x2="96" y2="101.1" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.0s"/><line x1="106" y1="63.2" x2="106" y2="116.8" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.3s"/><line x1="116" y1="54.8" x2="116" y2="125.2" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.6s"/><line x1="126" y1="55.8" x2="126" y2="124.2" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.9s"/><line x1="136" y1="65.9" x2="136" y2="114.1" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:1.2s"/><line x1="146" y1="82.5" x2="146" y2="97.5" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:1.5s"/><line x1="156" y1="101.1" x2="156" y2="78.9" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.0s"/><line x1="166" y1="116.8" x2="166" y2="63.2" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.3s"/><line x1="176" y1="125.2" x2="176" y2="54.8" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.6s"/><line x1="186" y1="124.2" x2="186" y2="55.8" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.9s"/><line x1="196" y1="114.1" x2="196" y2="65.9" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:1.2s"/><line x1="206" y1="97.5" x2="206" y2="82.5" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:1.5s"/><line x1="216" y1="78.9" x2="216" y2="101.1" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.0s"/><line x1="226" y1="63.2" x2="226" y2="116.8" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.3s"/><line x1="236" y1="54.8" x2="236" y2="125.2" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.6s"/><line x1="246" y1="55.8" x2="246" y2="124.2" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.9s"/><line x1="256" y1="65.9" x2="256" y2="114.1" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:1.2s"/><line x1="266" y1="82.5" x2="266" y2="97.5" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:1.5s"/><line x1="276" y1="101.1" x2="276" y2="78.9" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.0s"/><line x1="286" y1="116.8" x2="286" y2="63.2" class="k3 pulse" stroke-width="3" stroke-linecap="round" style="animation-delay:0.3s"/><polyline points="30.0,90.0 34.0,97.5 38.0,104.6 42.0,111.2 46.0,116.8 50.0,121.2 54.0,124.2 58.0,125.8 62.0,125.8 66.0,124.2 70.0,121.2 74.0,116.8 78.0,111.2 82.0,104.6 86.0,97.5 90.0,90.0 94.0,82.5 98.0,75.4 102.0,68.8 106.0,63.2 110.0,58.8 114.0,55.8 118.0,54.2 122.0,54.2 126.0,55.8 130.0,58.8 134.0,63.2 138.0,68.8 142.0,75.4 146.0,82.5 150.0,90.0 154.0,97.5 158.0,104.6 162.0,111.2 166.0,116.8 170.0,121.2 174.0,124.2 178.0,125.8 182.0,125.8 186.0,124.2 190.0,121.2 194.0,116.8 198.0,111.2 202.0,104.6 206.0,97.5 210.0,90.0 214.0,82.5 218.0,75.4 222.0,68.8 226.0,63.2 230.0,58.8 234.0,55.8 238.0,54.2 242.0,54.2 246.0,55.8 250.0,58.8 254.0,63.2 258.0,68.8 262.0,75.4 266.0,82.5 270.0,90.0 274.0,97.5 278.0,104.6 282.0,111.2 286.0,116.8 290.0,121.2" class="k1" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><polyline points="30.0,90.0 34.0,82.5 38.0,75.4 42.0,68.8 46.0,63.2 50.0,58.8 54.0,55.8 58.0,54.2 62.0,54.2 66.0,55.8 70.0,58.8 74.0,63.2 78.0,68.8 82.0,75.4 86.0,82.5 90.0,90.0 94.0,97.5 98.0,104.6 102.0,111.2 106.0,116.8 110.0,121.2 114.0,124.2 118.0,125.8 122.0,125.8 126.0,124.2 130.0,121.2 134.0,116.8 138.0,111.2 142.0,104.6 146.0,97.5 150.0,90.0 154.0,82.5 158.0,75.4 162.0,68.8 166.0,63.2 170.0,58.8 174.0,55.8 178.0,54.2 182.0,54.2 186.0,55.8 190.0,58.8 194.0,63.2 198.0,68.8 202.0,75.4 206.0,82.5 210.0,90.0 214.0,97.5 218.0,104.6 222.0,111.2 226.0,116.8 230.0,121.2 234.0,124.2 238.0,125.8 242.0,125.8 246.0,124.2 250.0,121.2 254.0,116.8 258.0,111.2 262.0,104.6 266.0,97.5 270.0,90.0 274.0,82.5 278.0,75.4 282.0,68.8 286.0,63.2 290.0,58.8" class="k2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><polyline points="30.0,90.0 34.0,97.5 38.0,104.6 42.0,111.2 46.0,116.8 50.0,121.2 54.0,124.2 58.0,125.8 62.0,125.8 66.0,124.2 70.0,121.2 74.0,116.8 78.0,111.2 82.0,104.6 86.0,97.5 90.0,90.0 94.0,82.5 98.0,75.4 102.0,68.8 106.0,63.2 110.0,58.8 114.0,55.8 118.0,54.2 122.0,54.2 126.0,55.8 130.0,58.8 134.0,63.2 138.0,68.8 142.0,75.4 146.0,82.5 150.0,90.0 154.0,97.5 158.0,104.6 162.0,111.2 166.0,116.8 170.0,121.2 174.0,124.2 178.0,125.8 182.0,125.8 186.0,124.2 190.0,121.2 194.0,116.8 198.0,111.2 202.0,104.6 206.0,97.5 210.0,90.0 214.0,82.5 218.0,75.4 222.0,68.8 226.0,63.2 230.0,58.8 234.0,55.8 238.0,54.2 242.0,54.2 246.0,55.8 250.0,58.8 254.0,63.2 258.0,68.8 262.0,75.4 266.0,82.5 270.0,90.0 274.0,97.5 278.0,104.6 282.0,111.2 286.0,116.8 290.0,121.2" class="k7 flow" stroke-width="3" opacity=".8"/><text x="14" y="22" class="td" font-size="11">Doble hélice de ADN</text><text x="14" y="168" class="td" font-size="11">Dos cadenas + peldaños</text></svg></figure><div class="reveal"><div class="ten"><strong>En 10 segundos</strong><ul><li>El ADN guarda la información genética en la célula.</li><li>Las proteínas hacen gran parte del trabajo del cuerpo: enzimas, hormonas, defensas.</li><li>Del gen a la proteína: primero se transcribe, luego se traduce.</li></ul></div><div class="dato"><strong>Dato curioso</strong><p>Si estiraras el ADN de una sola célula humana, mediría cerca de 2 metros; cabe en un núcleo microscópico porque está muy enrollado.</p></div></div></div>
+
+<details open><summary>1.1 El ADN y los nucleótidos</summary>
+<p>El <strong>ADN</strong> (ácido desoxirribonucleico) guarda la información genética. Es un polímero: una cadena larga de unidades pequeñas repetidas llamadas <strong>nucleótidos</strong>. Cada nucleótido tiene <em>tres partes</em> unidas entre sí (míralas en el dibujo). Dos cadenas se enrollan formando la doble hélice, unidas por enlaces de hidrógeno entre bases.</p>
+<svg viewBox="0 0 520 170" role="img" aria-label="Esquema de un nucleótido con tres partes unidas en fila">
+<circle cx="80" cy="85" r="40" class="sv-w" stroke="currentColor"/><text x="80" y="90" text-anchor="middle" font-size="14">Parte 1</text>
+<polygon points="260,40 305,72 288,125 232,125 215,72" class="sv-i" stroke="currentColor"/><text x="260" y="90" text-anchor="middle" font-size="14">Parte 2</text>
+<rect x="390" y="55" width="100" height="60" rx="8" class="sv-b" stroke="currentColor"/><text x="440" y="90" text-anchor="middle" font-size="14">Parte 3</text>
+<line x1="120" y1="85" x2="215" y2="85" stroke="currentColor" stroke-width="3"/><line x1="305" y1="85" x2="390" y2="85" stroke="currentColor" stroke-width="3"/>
+<text x="260" y="155" text-anchor="middle" font-size="13">Un nucleótido = 3 componentes. Complétalos con tus apuntes.</text></svg>
+<div class="vocab">
+<div><b>Nucleótido:</b> unidad básica de los ácidos nucleicos.</div>
+<div><b>Bases nitrogenadas del ADN:</b> adenina (A), timina (T), citosina (C), guanina (G).</div>
+<div><b>Complementariedad:</b> cada base se une siempre a una pareja fija de la otra cadena.</div>
+<div><b>ARN:</b> molécula parecida al ADN, de una sola hebra; usa uracilo (U) en lugar de timina.</div>
+</div>
+<div class="ex"><strong>Ejemplo resuelto (parecido, no igual):</strong> Imagina que la hebra de ADN de una bacteria dice <code>G-G-A-T</code>. Cada base se empareja con su pareja fija en la hebra opuesta (usa la regla de tus apuntes). Si la hebra se copiara a ARN, la timina no existe: en su lugar aparece uracilo (U).</div>
+</details>
+
+<details open><summary>1.2 Proteínas y aminoácidos</summary>
+<p>Las <strong>proteínas</strong> son biomoléculas formadas por <strong>aminoácidos</strong> unidos en secuencia (enlaces peptídicos). Hay 20 aminoácidos distintos; el orden en que se unen determina la forma y la función de la proteína (enzimas, hormonas como la insulina, hemoglobina, anticuerpos, colágeno...). Algunos aminoácidos el cuerpo humano los fabrica y otros hay que obtenerlos de la comida. Anota en tus apuntes cómo se llama cada grupo y por qué.</p>
+<div class="vocab"><div><b>Aminoácido:</b> unidad que forma las proteínas.</div><div><b>Esencial / no esencial:</b> completa con tus apuntes qué significa cada término.</div><div><b>Enzima:</b> proteína que acelera reacciones químicas.</div><div><b>Péptido:</b> cadena corta de aminoácidos.</div></div>
+<div class="ex"><strong>Ejemplo resuelto:</strong> La queratina del cabello es una cadena de aminoácidos plegada. Si cambia el orden de los aminoácidos, cambia la forma y la proteína puede dejar de funcionar. Una persona que no come ninguna fuente de proteína no recibe todos los aminoácidos que su cuerpo necesita.</div>
+</details>
+
+<details open><summary>1.3 Del gen a la proteína: el código genético</summary>
+<p>La información del ADN se <strong>transcribe</strong> a ARN mensajero y luego se <strong>traduce</strong> en los ribosomas para armar una proteína. Las bases se leen de <strong>en grupos de tres consecutivas</strong>; cada grupo se llama <strong>codón</strong> y especifica un aminoácido (o una señal de inicio/parada).</p>
+<div class="ex"><strong>Ejemplo resuelto:</strong> Un ARNm con 9 bases se lee en grupos de 3: <code>AUG | GCU | UUA</code>. Son 3 codones, así que codifica como máximo 3 aminoácidos.</div>
+<p>Tu tarea: relaciona estos términos con tus apuntes y practica.</p>
+<div class="practice" data-topic="t1"></div>
+</details>
+<details class="bridge"><summary>🔗 Conexión con el siguiente tema</summary><div class="bbody"><p>Las proteínas y el ADN están hechos sobre todo de carbono, hidrógeno, oxígeno, nitrógeno y (en el ADN) fósforo. Esos átomos no siempre existieron: el hidrógeno viene de los primeros momentos del universo y los más pesados se formaron después en las estrellas. Por eso, para entender de qué está hecha la vida hay que mirar el origen del universo (<a href="#t2">Tema 2</a>).</p><div class="bq" data-b="t1"></div></div></details>
+</section>
+
+<!-- ================= TEMA 2 ================= -->
+<section class="topic" id="t2">
+<div class="banner b2"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-star"/></svg><div><h2>2. Origen del universo y exploración espacial</h2><p class="hook">¿Cómo sabemos cuándo empezó todo, si nadie estuvo ahí para verlo?</p></div></div>
+<p class="from"><strong>⬅ Viene de…</strong> el <a href="#t1">Tema 1</a>: los átomos que forman el ADN y las proteínas se originaron en el universo que estudiarás aquí.</p>
+<div class="topfold"><figure class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Ilustración del universo en expansión: un núcleo brillante, anillos que se expanden y galaxias alejándose"><title>Ilustración del universo en expansión: un núcleo brillante, anillos que se expanden y galaxias alejándose</title><defs><linearGradient id="gh2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="s1" stop-opacity=".0"/><stop offset="1" class="s1" stop-opacity=".35"/></linearGradient><radialGradient id="gc2"><stop offset="0" class="s7"/><stop offset="1" class="s3" stop-opacity="0"/></radialGradient></defs><rect class="nightbg" width="320" height="180" rx="12"/><rect width="320" height="180" rx="12" fill="url(#gh2)"/><circle cx="24" cy="20" r="1.2" class="f7"/><circle cx="60" cy="48" r="1.7" class="f7"/><circle cx="95" cy="15" r="2.2" class="f7"/><circle cx="250" cy="22" r="1.2" class="f7"/><circle cx="290" cy="50" r="1.7" class="f7"/><circle cx="40" cy="140" r="2.2" class="f7"/><circle cx="75" cy="165" r="1.2" class="f7"/><circle cx="270" cy="150" r="1.7" class="f7"/><circle cx="300" cy="120" r="2.2" class="f7"/><circle cx="215" cy="165" r="1.2" class="f7"/><circle cx="130" cy="160" r="1.7" class="f7"/><circle cx="190" cy="18" r="2.2" class="f7"/><circle cx="160" cy="95" r="80" class="k3 an expand" stroke-width="2" style="animation-delay:0s"/><circle cx="160" cy="95" r="80" class="k3 an expand" stroke-width="2" style="animation-delay:1.33s"/><circle cx="160" cy="95" r="80" class="k3 an expand" stroke-width="2" style="animation-delay:2.66s"/><g class="orb"><circle cx="160" cy="25" r="5" class="f2"/><circle cx="160" cy="25" r="2" class="f7"/><circle cx="160" cy="95" r="70" class="k7" stroke-width="1" stroke-dasharray="3 6" opacity=".4"/></g><ellipse cx="105" cy="60" rx="12" ry="4" class="f3" opacity=".85" transform="rotate(-25 105 60)"/><circle cx="105" cy="60" r="2" class="f7"/><ellipse cx="220" cy="70" rx="12" ry="4" class="f3" opacity=".85" transform="rotate(20 220 70)"/><circle cx="220" cy="70" r="2" class="f7"/><ellipse cx="95" cy="125" rx="12" ry="4" class="f3" opacity=".85" transform="rotate(15 95 125)"/><circle cx="95" cy="125" r="2" class="f7"/><ellipse cx="235" cy="125" rx="12" ry="4" class="f3" opacity=".85" transform="rotate(-30 235 125)"/><circle cx="235" cy="125" r="2" class="f7"/><ellipse cx="160" cy="40" rx="12" ry="4" class="f3" opacity=".85" transform="rotate(0 160 40)"/><circle cx="160" cy="40" r="2" class="f7"/><ellipse cx="160" cy="150" rx="12" ry="4" class="f3" opacity=".85" transform="rotate(0 160 150)"/><circle cx="160" cy="150" r="2" class="f7"/><circle cx="160" cy="95" r="22" fill="url(#gc2)"/><circle cx="160" cy="95" r="7" class="f7"/><text x="12" y="170" class="tl">El universo se expande</text></svg></figure><div class="reveal"><div class="ten"><strong>En 10 segundos</strong><ul><li>El universo comenzó muy caliente y denso, y desde entonces se expande.</li><li>Las evidencias vienen de la luz y la radiación que llegan del cielo.</li><li>La exploración espacial se estudia con una línea de tiempo.</li></ul></div><div class="dato"><strong>Dato curioso</strong><p>El Big Bang no fue una explosión en un punto del espacio: fue el propio espacio el que se expandió, y lo sigue haciendo.</p></div></div></div>
+<details open><summary>2.1 Big Bang: evidencias y elementos</summary>
+<p>La teoría del <strong>Big Bang</strong> propone que el universo comenzó hace unos 13.800 millones de años a partir de un estado extremadamente caliente y denso, y que desde entonces se expande y se enfría. Durante los primeros minutos las condiciones permitieron formar solo los núcleos de los <strong>elementos más ligeros y simples</strong>; los elementos más pesados (como el hierro) se fabricaron mucho después dentro de las estrellas y en sus explosiones.</p>
+<svg viewBox="0 0 540 120" role="img" aria-label="Línea de tiempo del universo en cuatro etapas">
+<line x1="30" y1="60" x2="510" y2="60" stroke="currentColor" stroke-width="3"/>
+<circle cx="50" cy="60" r="9" class="sv-b"/><circle cx="190" cy="60" r="9" class="sv-w"/><circle cx="340" cy="60" r="9" class="sv-i"/><circle cx="490" cy="60" r="9" class="sv-o"/>
+<text x="50" y="35" text-anchor="middle" font-size="12">Inicio</text><text x="190" y="35" text-anchor="middle" font-size="12">Primeros núcleos</text><text x="340" y="35" text-anchor="middle" font-size="12">Primeras estrellas</text><text x="490" y="35" text-anchor="middle" font-size="12">Hoy</text>
+<text x="270" y="105" text-anchor="middle" font-size="12">El universo se expande y se enfría con el tiempo</text></svg>
+<h3>Evidencias que apoyan el Big Bang</h3>
+<ul><li><strong>Corrimiento al rojo:</strong> la luz de galaxias lejanas se desplaza hacia el rojo porque se alejan de nosotros (como la sirena de una ambulancia que se aleja suena más grave: efecto Doppler).</li>
+<li><strong>Radiación cósmica de fondo (CMB):</strong> una radiación de microondas que llega de todas las direcciones del cielo, descubierta en 1965. Estudia en tus apuntes de dónde viene y por qué se enfrió hasta microondas.</li>
+<li><strong>Abundancia de elementos ligeros</strong> medida en el universo.</li></ul>
+<div class="ex"><strong>Ejemplo resuelto (otra evidencia):</strong> Si todas las galaxias se alejan unas de otras, al "rebobinar" la película estuvieron más juntas en el pasado. Un globo con puntos dibujados: al inflarlo, los puntos se separan entre sí sin que ninguno sea el centro.</div>
+<div class="practice" data-topic="t2"></div>
+</details>
+<details open><summary>2.2 Exploración espacial: cronología</summary>
+<p>Las preguntas de "¿cuál fue el primero...?" se resuelven con memoria y orden cronológico. Haz una línea de tiempo en tu cuaderno con los hitos vistos en clase (primeros satélites, vuelos tripulados, llegada a la Luna, sondas, telescopios espaciales y estaciones). <strong>Revisa en tus apuntes</strong> cuál fue el primer satélite artificial y el contexto de la carrera espacial entre EE. UU. y la URSS.</p>
+<div class="ex"><strong>Truco de memoria:</strong> asocia cada hito con un nombre + año + país. Ej.: Laika (1957, URSS) fue el primer animal en órbita; Valentina Tereshkova (1963, URSS) fue la primera mujer en el espacio. Practica con hitos como estos.</div>
+<div class="practice" data-topic="t2b"></div>
+</details>
+<details class="bridge"><summary>🔗 Conexión con el siguiente tema</summary><div class="bbody"><p>El Big Bang y las estrellas dieron los elementos; con el tiempo se formó la Tierra con ese material. Sobre la Tierra primitiva, con una atmósfera distinta de la actual y mucha energía, ocurrieron las reacciones químicas que propone la teoría de Oparin (<a href="#t3">Tema 3</a>). Así pasamos de «de qué está hecho todo» a «cómo pudo aparecer la vida».</p><div class="bq" data-b="t2"></div></div></details>
+</section>
+
+<!-- ================= TEMA 3 ================= -->
+<section class="topic" id="t3">
+<div class="banner b3"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-flask"/></svg><div><h2>3. Origen de la vida</h2><p class="hook">¿Cómo pasó la materia sin vida a convertirse en una célula viva?</p></div></div>
+<p class="from"><strong>⬅ Viene de…</strong> el <a href="#t2">Tema 2</a> (la Tierra se formó con material cósmico) y del <a href="#t1">Tema 1</a> (las moléculas de la vida: aminoácidos y ácidos nucleicos).</p>
+<div class="topfold"><figure class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Ilustración de la Tierra primitiva: volcán, rayos sobre el mar y burbujas que suben de las aguas"><title>Ilustración de la Tierra primitiva: volcán, rayos sobre el mar y burbujas que suben de las aguas</title><defs><linearGradient id="gk3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="s6"/><stop offset=".45" class="s6"/><stop offset=".56" class="s1"/><stop offset=".56" class="s2"/><stop offset="1" class="s6"/></linearGradient><linearGradient id="gs3" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="s2"/><stop offset="1" class="s6" stop-opacity=".85"/></linearGradient></defs><rect width="320" height="180" rx="12" fill="url(#gk3)"/><polygon points="22,100 60,45 98,100" class="f1"/><polygon points="50,60 60,45 70,60 62,66 56,64" class="f3"/><circle cx="60" cy="38" r="7" class="f3 pulse"/><polygon points="200,8 188,48 202,46 190,86 220,38 205,40 214,8" class="f3 flash"/><path d="M0 100q20-8 40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0V180H0z" fill="url(#gs3)"/><path d="M0 112q20-6 40 0t40 0t40 0t40 0t40 0t40 0t40 0t40 0" class="k5" stroke-width="2" opacity=".6"/><circle cx="70" cy="150" r="4" class="k5 an rise" stroke-width="2" style="animation-delay:0s"/><circle cx="110" cy="150" r="6" class="k5 an rise" stroke-width="2" style="animation-delay:1.2s"/><circle cx="210" cy="150" r="5" class="k5 an rise" stroke-width="2" style="animation-delay:0.6s"/><circle cx="250" cy="150" r="4" class="k5 an rise" stroke-width="2" style="animation-delay:2.2s"/><circle cx="180" cy="150" r="3" class="k5 an rise" stroke-width="2" style="animation-delay:3s"/><g class="bob"><circle cx="150" cy="140" r="17" class="f4" opacity=".9"/><circle cx="150" cy="140" r="17" class="k5" stroke-width="3"/><circle cx="144" cy="136" r="3" class="f5"/><circle cx="155" cy="144" r="2.5" class="f7"/><circle cx="153" cy="133" r="2" class="f5"/></g><text x="84" y="22" class="tl">Tierra primitiva</text></svg></figure><div class="reveal"><div class="ten"><strong>En 10 segundos</strong><ul><li>Hay varias teorías sobre el origen de la vida; cada una propone una explicación distinta.</li><li>La Tierra primitiva era muy diferente de la actual.</li><li>Compara las teorías en la tabla y busca qué las diferencia.</li></ul></div><div class="dato"><strong>Dato curioso</strong><p>Los fósiles de microbios más antiguos aceptados tienen más de 3.000 millones de años, y la Tierra tiene unos 4.500 millones.</p></div></div></div>
+<details open><summary>3.1 Teorías sobre el origen de la vida</summary>
+<div class="tw"><table>
+<tr><th>Teoría</th><th>Idea central</th></tr>
+<tr><td>Creacionismo</td><td>La vida es obra de un acto creador.</td></tr>
+<tr><td>Generación espontánea</td><td>Los seres vivos surgen de materia sin vida (ej.: gusanos de la carne). Refutada por Redi y Pasteur.</td></tr>
+<tr><td>Biogénesis</td><td>Todo ser vivo procede de otro ser vivo.</td></tr>
+<tr><td>Quimiosintética (Oparin-Haldane)</td><td>La vida surgió de reacciones químicas en la Tierra primitiva (ver 3.2).</td></tr>
+<tr><td>Panspermia</td><td>Completa tú esta fila con tus apuntes. Pista: <em>pan</em> = todo y <em>sperma</em> = semilla. Pregúntate: ¿de dónde vendrían las "semillas"?</td></tr>
+</table></div>
+<div class="ex"><strong>Ejemplo resuelto:</strong> Pasteur hirvió caldo nutritivo en un frasco de cuello de cisne. El caldo no se llenó de microbios mientras el cuello estuvo intacto: los microbios del aire quedaban atrapados en la curva. Esto apoya la biogénesis y contradice la generación espontánea.</div>
+<div class="practice" data-topic="t3a"></div>
+</details>
+
+<details open><summary>3.2 Teoría de Oparin-Haldane (quimiosintética)</summary>
+<p>Oparin propuso que la vida se originó en la Tierra por una larga evolución química. La atmósfera de la Tierra primitiva era muy distinta de la actual: tenía otros gases, estaba muy poco oxigenada y recibía mucha energía (rayos, radiación ultravioleta, calor volcánico). Los gases reaccionaban y formaban moléculas orgánicas sencillas que se acumulaban en los océanos ("caldo primitivo") y luego se agrupaban en estructuras más complejas (coacervados). Miller y Urey (1953) imitaron esas condiciones en un laboratorio y obtuvieron aminoácidos.</p>
+<div class="note">Anota en tu cuaderno la <strong>lista de gases</strong> de la atmósfera primitiva que dio tu profesor y compárala con la atmósfera actual (¿qué gas abundante hoy no estaba?).</div>
+<div class="practice" data-topic="t3b"></div>
+</details>
+
+<details open><summary>3.3 Teoría endosimbiótica (Lynn Margulis)</summary>
+<p>Propone que algunos orgánulos de las células eucariotas fueron antes bacterias independientes que una célula más grande envolvió y no digirió; se estableció una relación en la que ambas ganaron. <strong>Regla clave:</strong> el orgánulo hace hoy el mismo trabajo que hacía la bacteria original. Por eso la clave para resolver estas preguntas es identificar <em>qué función</em> cumplía la bacteria incorporada.</p>
+<svg viewBox="0 0 540 170" role="img" aria-label="Una célula grande engulle una bacteria y esta se vuelve orgánulo">
+<ellipse cx="110" cy="85" rx="75" ry="55" fill="none" stroke="currentColor" stroke-width="2"/><ellipse cx="100" cy="85" rx="16" ry="9" class="sv-b" stroke="currentColor"/>
+<text x="110" y="25" text-anchor="middle" font-size="12">Célula grande</text><text x="80" y="140" font-size="11">bacteria entrando</text>
+<path d="M200 85 H270" stroke="currentColor" stroke-width="3"/><polygon points="270,78 285,85 270,92" fill="currentColor"/>
+<ellipse cx="400" cy="85" rx="95" ry="60" fill="none" stroke="currentColor" stroke-width="2"/><ellipse cx="400" cy="85" rx="30" ry="18" class="sv-w" stroke="currentColor"/><ellipse cx="400" cy="85" rx="20" ry="9" fill="none" stroke="currentColor"/>
+<text x="400" y="25" text-anchor="middle" font-size="12">Célula eucariota con orgánulo</text></svg>
+<p><strong>Evidencias:</strong> estos orgánulos tienen doble membrana, ADN circular propio, ribosomas parecidos a los bacterianos y se reproducen por su cuenta.</p>
+<div class="ex"><strong>Ejemplo resuelto (distinto al del examen):</strong> Una célula primitiva engulle una bacteria que usa oxígeno para liberar energía de los alimentos. Con el tiempo, la bacteria queda dentro y pasa a ser la <strong>mitocondria</strong>, que sigue haciendo respiración celular. Razonamiento: función de la bacteria &rarr; mismo trabajo del orgánulo.</div>
+<div class="practice" data-topic="t3c"></div>
+</details>
+<details class="bridge"><summary>🔗 Conexión con el siguiente tema</summary><div class="bbody"><p>Oparin y Miller-Urey explican cómo pudieron aparecer moléculas como los aminoácidos, ladrillos de las proteínas (vuelve al <a href="#t1">Tema 1</a>). La endosimbiosis explica un paso posterior: cómo surgieron las células eucariotas. Una vez que hay vida, aparece la pregunta del <a href="#t4">Tema 4</a>: ¿cómo cambia y se diversifica con el tiempo?</p><div class="bq" data-b="t3"></div></div></details>
+</section>
+
+<!-- ================= TEMA 4 ================= -->
+<section class="topic" id="t4">
+<div class="banner b4"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-tree"/></svg><div><h2>4. Evolución: Lamarck y Darwin</h2><p class="hook">¿Por qué los seres vivos cambian con el tiempo, y qué explicación convenció a la ciencia?</p></div></div>
+<p class="from"><strong>⬅ Viene de…</strong> el <a href="#t3">Tema 3</a> (la vida ya existe y se diversifica) y del <a href="#t1">Tema 1</a> (la herencia y las mutaciones están en el ADN).</p>
+<div class="topfold"><figure class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Ilustración de un árbol con muchas ramas que se separan: la descendencia con modificación a lo largo del tiempo"><title>Ilustración de un árbol con muchas ramas que se separan: la descendencia con modificación a lo largo del tiempo</title><defs><linearGradient id="gh4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="s3" stop-opacity=".3"/><stop offset="1" class="s3" stop-opacity="0"/></linearGradient><radialGradient id="gs4"><stop offset="0" class="s7"/><stop offset="1" class="s3"/></radialGradient></defs><rect class="ib" width="320" height="180" rx="12"/><rect width="320" height="180" rx="12" fill="url(#gh4)"/><circle cx="286" cy="26" r="14" fill="url(#gs4)"/><ellipse cx="160" cy="172" rx="130" ry="10" class="f4" opacity=".6"/><g class="sway"><path d="M160 168V110 M160 110L110 75 M160 110L210 70 M160 110L160 52 M110 75L80 45 M110 75L130 40 M110 75L60 85 M210 70L185 38 M210 70L245 45 M210 70L262 82" class="km" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="160" cy="110" r="4" class="f5"/><circle cx="110" cy="75" r="4" class="f5"/><circle cx="210" cy="70" r="4" class="f5"/><circle cx="80" cy="45" r="10" class="f1"/><circle cx="130" cy="40" r="10" class="f3"/><circle cx="185" cy="38" r="10" class="f2"/><circle cx="245" cy="45" r="10" class="f1"/><circle cx="160" cy="52" r="10" class="f3"/><circle cx="60" cy="85" r="10" class="f2"/><circle cx="262" cy="82" r="10" class="f3"/></g><text x="14" y="20" class="td">Descendencia con modificación</text></svg></figure><div class="reveal"><div class="ten"><strong>En 10 segundos</strong><ul><li>Lamarck y Darwin ofrecieron dos explicaciones distintas del cambio de las especies.</li><li>Darwin apoyó sus ideas en observaciones de viaje y en fósiles.</li><li>Compara ambas explicaciones lado a lado.</li></ul></div><div class="dato"><strong>Dato curioso</strong><p>Darwin volvió de su viaje en el Beagle en 1836 y publicó <em>El origen de las especies</em> en 1859, más de 20 años después.</p></div></div></div>
+<details open><summary>4.1 Lamarck: uso y desuso, y herencia de lo adquirido</summary>
+<p>Jean-Baptiste Lamarck (1809) propuso que las especies cambian gradualmente con el tiempo y que el ambiente influye en esos cambios. Su explicación tenía dos leyes:</p>
+<ol><li><strong>Uso y desuso:</strong> los órganos que se usan mucho se desarrollan y los que se dejan de usar se atrofian.</li>
+<li><strong>Herencia de caracteres adquiridos:</strong> los cambios logrados durante la vida se transmitirían a los hijos.</li></ol>
+<div class="ex"><strong>Ejemplo resuelto (uso):</strong> Un herrero desarrolla brazos fuertes por trabajar a diario con el martillo. Según Lamarck, eso muestra el principio de uso y que sus hijos nacerían con brazos fuertes.</div>
+<p><strong>Visión actual:</strong> hoy sabemos que la herencia se transmite mediante genes (ADN) en las células reproductoras, y que los cambios genéticos aparecen por mutaciones. Piensa cuáles de las dos leyes de Lamarck se pueden verificar con la genética moderna.</p>
+<div class="practice" data-topic="t4a"></div>
+</details>
+
+<details open><summary>4.2 Darwin y la selección natural</summary>
+<p>Charles Darwin viajó en el HMS Beagle (1831-1836) y publicó <em>El origen de las especies</em> (1859). Propone que los organismos varían, que no todos sobreviven, y que los individuos con variaciones favorables en su ambiente dejan más descendientes. Esa diferencia se acumula durante muchas generaciones.</p>
+<svg viewBox="0 0 540 150" role="img" aria-label="Cuatro pasos de la selección natural">
+<g font-size="12" text-anchor="middle">
+<rect x="10" y="40" width="115" height="60" rx="8" class="sv-i" stroke="currentColor"/><text x="67" y="65">1. Variación</text><text x="67" y="82">en la población</text>
+<rect x="145" y="40" width="115" height="60" rx="8" class="sv-w" stroke="currentColor"/><text x="202" y="65">2. Lucha por</text><text x="202" y="82">recursos</text>
+<rect x="280" y="40" width="115" height="60" rx="8" class="sv-b" stroke="currentColor"/><text x="337" y="65">3. Sobreviven</text><text x="337" y="82">los mejor adaptados</text>
+<rect x="415" y="40" width="115" height="60" rx="8" class="sv-o" stroke="currentColor"/><text x="472" y="65">4. Heredan</text><text x="472" y="82">sus rasgos</text></g></svg>
+<div class="ex"><strong>Ejemplo resuelto:</strong> En un bosque con troncos oscuros hay polillas claras y oscuras. Las aves ven y comen más fácilmente las claras. Las oscuras sobreviven más, se reproducen más y heredan su color. Tras muchas generaciones predominan las oscuras. Nadie "quiso" cambiar: el <em>ambiente</em> seleccionó una variación que ya existía.</div>
+<div class="practice" data-topic="t4b"></div>
+</details>
+
+<details open><summary>4.3 Evidencias de Darwin y las Galápagos</summary>
+<p>Darwin recogió observaciones de tres tipos: <strong>fósiles</strong> (restos de seres de otras épocas), <strong>distribución geográfica</strong> (especies parecidas pero distintas en islas o regiones cercanas) y <strong>anatomía comparada</strong>. En las Islas Galápagos notó que animales emparentados (pinzones, tortugas gigantes) variaban entre islas. Anota en tus apuntes <strong>a qué atribuyó Darwin esas diferencias</strong> y <strong>qué encontró en las rocas de la cordillera de los Andes</strong> y por qué le llamó la atención.</p>
+<div class="ex"><strong>Ejemplo resuelto (otro lugar):</strong> En las pampas de Sudamérica Darwin encontró fósiles gigantes de glyptodontes, parecidos a los armadillos actuales. Esto sugirió un parentesco entre especies extintas y actuales de la misma región.</div>
+<div class="practice" data-topic="t4c"></div>
+</details>
+<details class="bridge"><summary>🔗 Conexión con el siguiente tema</summary><div class="bbody"><p>La selección natural necesita variación, y la variación nace de cambios en el ADN, es decir, mutaciones (vuelve al <a href="#t1">Tema 1</a>). Si los seres vivos descienden de ancestros comunes, los más emparentados se parecen más. Esa idea es la base lógica de agruparlos en categorías (<a href="#t5">Tema 5</a>).</p><div class="bq" data-b="t4"></div></div></details>
+</section>
+
+<!-- ================= TEMA 5 ================= -->
+<section class="topic" id="t5">
+<div class="banner b1"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-branch"/></svg><div><h2>5. Taxonomía y clasificación de los seres vivos</h2><p class="hook">¿Cómo ordenarías millones de especies para encontrar cualquiera en segundos?</p></div></div>
+<p class="from"><strong>⬅ Viene de…</strong> el <a href="#t4">Tema 4</a> (el parentesco entre especies por evolución) y del <a href="#t3">Tema 3</a> (el origen de la célula eucariota).</p>
+<div class="topfold"><figure class="hero reveal"><svg viewBox="0 0 320 180" role="img" aria-label="Ilustración de un esquema de clasificación: un grupo general que se divide en grupos cada vez más específicos"><title>Ilustración de un esquema de clasificación: un grupo general que se divide en grupos cada vez más específicos</title><defs><linearGradient id="gh5" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="s5" stop-opacity=".5"/><stop offset="1" class="s5" stop-opacity="0"/></linearGradient></defs><rect class="ib" width="320" height="180" rx="12"/><rect width="320" height="180" rx="12" fill="url(#gh5)"/><line x1="160" y1="40" x2="95" y2="85" class="km" stroke-width="3" stroke-linecap="round"/><line x1="160" y1="40" x2="225" y2="85" class="km" stroke-width="3" stroke-linecap="round"/><line x1="95" y1="85" x2="55" y2="125" class="km" stroke-width="3" stroke-linecap="round"/><line x1="95" y1="85" x2="135" y2="125" class="km" stroke-width="3" stroke-linecap="round"/><line x1="225" y1="85" x2="185" y2="125" class="km" stroke-width="3" stroke-linecap="round"/><line x1="225" y1="85" x2="265" y2="125" class="km" stroke-width="3" stroke-linecap="round"/><circle cx="160" cy="34" r="20" class="f1"/><circle cx="160" cy="34" r="20" class="k5" stroke-width="3"/><circle cx="95" cy="85" r="15" class="f3"/><circle cx="225" cy="85" r="15" class="f2"/><g class="bob"><circle cx="55" cy="132" r="11" class="f4"/></g><g class="bob" style="animation-delay:.5s"><rect x="124" y="121" width="22" height="22" rx="4" class="f1"/></g><g class="bob" style="animation-delay:1s"><polygon points="185,120 197,143 173,143" class="f3"/></g><g class="bob" style="animation-delay:1.5s"><polygon points="265,120 277,127 277,139 265,146 253,139 253,127" class="f2"/></g><text x="160" y="170" text-anchor="middle" class="td">Grupos dentro de grupos</text></svg></figure><div class="reveal"><div class="ten"><strong>En 10 segundos</strong><ul><li>Clasificar es ordenar los seres vivos en niveles anidados.</li><li>Se va de lo más general a lo más específico.</li><li>Cada especie lleva un nombre científico de dos palabras.</li></ul></div><div class="dato"><strong>Dato curioso</strong><p>El sistema de nombre científico de dos palabras lo popularizó Carlos Linneo en el siglo XVIII; los humanos somos <em>Homo sapiens</em>.</p></div></div></div>
+<details open><summary>5.1 Jerarquía taxonómica</summary>
+<p>La taxonomía agrupa a los organismos en <strong>categorías anidadas</strong>, como muñecas rusas: cada nivel contiene grupos más pequeños. Cuanto más arriba, más organismos abarca y más diferencias hay entre ellos; cuanto más abajo, más parecidos son. La categoría más general es el <em>dominio</em> y la más específica es la <em>especie</em>. Aprende en tu cuaderno la lista completa de 8 niveles con una frase mnemotécnica inventada por ti.</p>
+<svg viewBox="0 0 400 220" role="img" aria-label="Círculos anidados de más general a más específico">
+<circle cx="200" cy="110" r="105" class="sv-i" stroke="currentColor"/><circle cx="200" cy="130" r="80" class="sv-w" stroke="currentColor"/><circle cx="200" cy="150" r="55" class="sv-b" stroke="currentColor"/><circle cx="200" cy="170" r="28" class="sv-o" stroke="currentColor"/>
+<text x="200" y="18" text-anchor="middle" font-size="12">Más general</text><text x="200" y="176" text-anchor="middle" font-size="11">Más específico</text></svg>
+<div class="ex"><strong>Analogía:</strong> una dirección va de lo general a lo específico: país &rarr; departamento &rarr; ciudad &rarr; barrio &rarr; calle &rarr; casa. Con la taxonomía pasa igual.</div>
+<div class="practice" data-topic="t5a"></div>
+</details>
+
+<details open><summary>5.2 Nomenclatura binomial (Linneo)</summary>
+<p>Carlos Linneo propuso que cada especie tenga un nombre científico de <strong>dos palabras</strong> en latín (bi = dos, nomen = nombre): la primera palabra indica el grupo mayor y la segunda distingue a la especie dentro de él (anota en tus apuntes cómo se llama cada una). Se escribe en cursiva; la primera palabra con mayúscula inicial y la segunda en minúscula. Sirve para que científicos de todos los idiomas se entiendan.</p>
+<div class="ex"><strong>Ejemplo resuelto:</strong> El oso andino se llama <em>Tremarctos ornatus</em>. <em>Tremarctos</em> es el género y <em>ornatus</em> es el epíteto específico. "Oso de anteojos" es un nombre común y cambia según la región.</div>
+<div class="practice" data-topic="t5b"></div>
+</details>
+
+<details open><summary>5.3 Célula procariota y eucariota</summary>
+<svg viewBox="0 0 540 190" role="img" aria-label="Comparación de una célula sin núcleo definido y una con núcleo">
+<rect x="20" y="30" width="200" height="120" rx="45" fill="none" stroke="currentColor" stroke-width="2"/><path d="M80 85 q20 -25 40 0 t40 0 q-10 30 -40 25 t-40 -25" fill="none" class="st-b" stroke-width="3"/>
+<text x="120" y="20" text-anchor="middle" font-size="13">Célula A</text><text x="120" y="172" text-anchor="middle" font-size="11">ADN libre en el citoplasma</text>
+<ellipse cx="400" cy="90" rx="120" ry="65" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="400" cy="90" r="30" class="sv-i" stroke="currentColor"/><path d="M385 90 q15 -15 30 0" fill="none" class="st-b" stroke-width="3"/>
+<text x="400" y="20" text-anchor="middle" font-size="13">Célula B</text><text x="400" y="172" text-anchor="middle" font-size="11">ADN dentro de un núcleo con membrana</text></svg>
+<p>Las <strong>procariotas</strong> no tienen núcleo con membrana (el ADN está libre en el citoplasma) y son siempre unicelulares y más sencillas. Las <strong>eucariotas</strong> tienen un núcleo definido y orgánulos con membrana. Mira el dibujo: decide cuál es A y cuál es B según esa definición. Una clave taxonómica te pregunta primero cosas como "&iquest;tiene o no núcleo definido?" para separar grandes grupos.</p>
+<div class="practice" data-topic="t5c"></div>
+</details>
+
+<details open><summary>5.4 Los tres dominios</summary>
+<div class="tw"><table>
+<tr><th>Dominio</th><th>Tipo de célula</th><th>Ejemplos / notas</th></tr>
+<tr><td>Bacteria</td><td>Procariota, unicelular</td><td>E. coli, lactobacilos, el agente de la tuberculosis.</td></tr>
+<tr><td>Archaea</td><td>Procariota, unicelular</td><td>Suelen vivir en ambientes extremos (alta temperatura, mucha sal).</td></tr>
+<tr><td>Eukarya</td><td>Eucariota</td><td>Reinos Protista, Fungi, Plantae y Animalia.</td></tr>
+</table></div>
+<div class="ex"><strong>Ejemplo resuelto:</strong> Un organismo unicelular que vive en una fuente termal a 90 &deg;C y no tiene núcleo: procariota que habita un lugar extremo, así que es un buen candidato a Archaea. (En el examen usa los datos del enunciado: tipo de célula, ambiente y efecto sobre otros seres vivos.)</div>
+<div class="practice" data-topic="t5d"></div>
+</details>
+
+<details open><summary>5.5 Los reinos de Eukarya</summary>
+<div class="tw"><table>
+<tr><th>Reino</th><th>Células / cuerpo</th><th>Nutrición</th><th>Rasgos clave</th></tr>
+<tr><td>Protista</td><td>Eucariotas, casi siempre unicelulares</td><td>Autótrofa o heterótrofa</td><td>Ameba, euglena, algas unicelulares.</td></tr>
+<tr><td>Fungi</td><td>Eucariotas, uni o pluricelulares</td><td>Heterótrofa por absorción</td><td>Pared celular de quitina.</td></tr>
+<tr><td>Plantae</td><td>Pluricelulares eucariotas</td><td>Autótrofa (fotosíntesis)</td><td>Pared de celulosa, cloroplastos.</td></tr>
+<tr><td>Animalia</td><td>Pluricelulares eucariotas</td><td>Heterótrofa por ingestión</td><td>Sin pared celular, suelen moverse.</td></tr>
+</table></div>
+<div class="ex"><strong>Ejemplo resuelto (comparación distinta):</strong> Un champiñón y una margarita son ambos eucariotas con pared celular. Se diferencian en que la margarita hace fotosíntesis con cloroplastos (autótrofa) y el champiñón absorbe alimento de materia orgánica (heterótrofo, pared de quitina). La clave para comparar dos reinos es buscar <em>el rasgo que uno tiene y el otro no</em> y descartar rasgos que comparten.</div>
+<div class="practice" data-topic="t5e"></div>
+</details>
+<details class="bridge"><summary>🔗 Conexión con el siguiente tema</summary><div class="bbody"><p>La taxonomía ordena la diversidad que produjo la evolución. Los grupos más grandes, como los dominios, se separan por rasgos básicos de la célula (procariota o eucariota), y la endosimbiosis (<a href="#t3">Tema 3</a>) explica cómo apareció la célula eucariota. Así se cierra el recorrido: universo, vida, evolución y clasificación, con el ADN como hilo conductor. Ahora pon todo a prueba en la <a href="#quiz">autoevaluación final</a>.</p><div class="bq" data-b="t5"></div></div></details>
+</section>
+
+<section class="topic" id="quiz">
+<div class="banner b3"><svg class="ico" viewBox="0 0 32 32" aria-hidden="true" focusable="false"><use href="#i-target"/></svg><div><h2>Autoevaluación final</h2><p class="hook">¿Cuánto recuerdas ya? Ponte a prueba.</p></div></div>
+<p>15 preguntas parecidas (no idénticas) al estilo del examen. Responde y al final verás tu puntaje y los temas por repasar.</p>
+<div id="quizBox"></div>
+</section>
+
+</main></div>
+
+<script>
+(function(){
+"use strict";
+var KEY="bio9p4_progress";
+var state={done:{},best:null};
+function load(){try{var s=localStorage.getItem(KEY);if(s){var o=JSON.parse(s);if(o&&typeof o==="object"){state.done=o.done||{};state.best=o.best;}}}catch(e){}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+load();
+
+// ---- theme ----
+document.getElementById("themeBtn").addEventListener("click",function(){
+ var r=document.documentElement,cur=r.getAttribute("data-theme");
+ var dark=cur?cur==="dark":window.matchMedia("(prefers-color-scheme: dark)").matches;
+ var n=dark?"light":"dark";r.setAttribute("data-theme",n);
+ try{localStorage.setItem("bio9p4_theme",n);}catch(e){}
+});
+
+// ---- exercises ----
+var EX={
+t1:[
+{t:"mc",q:"Una hebra de ADN tiene la secuencia A-A-G-C. ¿Cuál es la secuencia de la hebra complementaria?",o:["T-T-C-G","T-T-G-C","U-U-C-G","C-C-A-T"],c:0,h:"Aplica la pareja fija de cada base y recuerda que en el ADN no hay uracilo.",e:"Aplica la regla de complementariedad de tus apuntes base por base. La opción con U es de ARN."},
+{t:"mc",q:"Una persona vegetariana combina legumbres con cereales en su dieta. ¿Para qué sirve esta combinación?",o:["Obtener todos los aminoácidos necesarios a través de los alimentos","Reemplazar el ADN de sus células","Producir más codones","Evitar tener proteínas en el cuerpo"],c:0,h:"Piensa de dónde sale lo que el cuerpo no produce.",e:"Combinar fuentes vegetales asegura el conjunto completo de aminoácidos que se necesitan."},
+{t:"fill",q:"Un ARN mensajero tiene 18 bases. ¿Cuántos codones tiene? (escribe el número)",a:["6","seis"],h:"Divide el total de bases entre 3.",e:"18 ÷ 3 = 6 codones (grupos de 3 bases)."},
+{t:"mc",q:"¿Qué base nitrogenada aparece en el ARN pero NO en el ADN?",o:["Uracilo","Timina","Guanina","Citosina"],c:0,h:"Es la que sustituye a la timina.",e:"El ARN usa uracilo (U) en lugar de timina."},
+{t:"match",q:"Relaciona cada término con su descripción:",p:[["Gen","Fragmento de ADN que contiene la información para una proteína"],["Ribosoma","Lugar donde se arman las proteínas"],["ARN mensajero","Copia del gen que sale del núcleo"],["Mutación","Cambio en la secuencia del ADN"]]}
+],
+t2:[
+{t:"mc",q:"Los astrónomos observan que la luz de casi todas las galaxias lejanas está desplazada hacia el rojo. Esto indica que...",o:["las galaxias se alejan unas de otras","las galaxias se acercan a la Vía Láctea","las galaxias están quietas","las galaxias son más frías que el Sol"],c:0,h:"Recuerda la sirena de la ambulancia.",e:"El corrimiento al rojo es la evidencia de la expansión del universo."},
+{t:"mc",q:"¿Dónde se formó la mayor parte de los elementos pesados como el hierro y el oro?",o:["En el interior de estrellas y en explosiones estelares","En los primeros minutos tras el Big Bang","En el núcleo de la Tierra","En los océanos primitivos"],c:0,h:"Las estrellas son 'fábricas' de elementos.",e:"La fusión estelar y las supernovas crean los elementos más pesados."},
+{t:"mc",q:"Con globos dibujados con puntos, ¿qué idea del universo representa inflar el globo?",o:["La expansión: todo se aleja de todo, sin centro","El colapso del universo","Un universo de tamaño fijo","La formación de un agujero negro"],c:0,h:"Los puntos se separan entre sí.",e:"Modelo clásico de la expansión del espacio."}
+],
+t2b:[
+{t:"mc",q:"¿Quién fue la primera mujer en viajar al espacio?",o:["Valentina Tereshkova","Sally Ride","Mae Jemison","Laika"],c:0,h:"Fue en 1963 en una nave soviética.",e:"Valentina Tereshkova viajó en la Vostok 6 en 1963."},
+{t:"mc",q:"Ordena de más antiguo a más reciente: (I) Laika en órbita, (II) Tereshkova en el espacio, (III) primer módulo de la Estación Espacial Internacional.",o:["I, II, III","II, I, III","III, II, I","I, III, II"],c:0,h:"Años aproximados: 1957, 1963, 1998.",e:"1957 → 1963 → 1998."}
+],
+t3a:[
+{t:"match",q:"Relaciona la teoría con la idea:",p:[["Generación espontánea","Los seres vivos surgen de materia sin vida"],["Biogénesis","Todo ser vivo viene de otro ser vivo"],["Experimento de Redi","Cubrió carne con gasa y no aparecieron gusanos"],["Creacionismo","La vida es obra de un acto creador"]]},
+{t:"mc",q:"El experimento del frasco de cuello de cisne fue importante porque mostró que...",o:["los microbios vienen del aire y no surgen solos","la vida surgió en el espacio","el oxígeno no existía","la carne produce gusanos"],c:0,h:"Los microbios quedaban atrapados en la curva.",e:"Pasteur apoyó la biogénesis."}
+],
+t3b:[
+{t:"mc",q:"¿Cuál NO era una fuente de energía en la Tierra primitiva según la teoría quimiosintética?",o:["La fotosíntesis de las plantas actuales","Los rayos de tormentas","La radiación ultravioleta","El calor de los volcanes"],c:0,h:"Las plantas aparecieron mucho después.",e:"No había plantas aún; las otras eran fuentes de energía disponibles."},
+{t:"mc",q:"El experimento de Miller y Urey (1953) obtuvo, a partir de gases y descargas eléctricas, ...",o:["aminoácidos","células completas","organismos pluricelulares","fósiles"],c:0,h:"Eran los 'ladrillos' de las proteínas.",e:"Produjo moléculas orgánicas sencillas como aminoácidos."}
+],
+t3c:[
+{t:"mc",q:"Una bacteria aerobia que libera energía de los nutrientes usando oxígeno fue engullida por una célula primitiva. Según la endosimbiosis, ¿qué orgánulo se originó?",o:["Mitocondria","Ribosoma","Aparato de Golgi","Pared celular"],c:0,h:"Función de la bacteria = función del orgánulo.",e:"La mitocondria realiza la respiración celular."},
+{t:"fill",q:"Una evidencia de la endosimbiosis es que esos orgánulos tienen su propio ADN de forma... (una palabra: lineal / circular)",a:["circular"],h:"Como el ADN de las bacterias.",e:"Tienen ADN circular, igual que las bacterias."}
+],
+t4a:[
+{t:"mc",q:"Los topos viven bajo tierra y tienen ojos muy pequeños. ¿Cómo lo explicaría Lamarck?",o:["Por el desuso de los ojos durante generaciones","Por una mutación al azar que fue seleccionada","Por una enfermedad","Porque comen lombrices"],c:0,h:"Usa la ley de uso y desuso.",e:"Lamarck diría que el órgano que no se usa se atrofia."},
+{t:"mc",q:"Según la genética moderna, ¿cuál es el origen de nuevas variaciones que sí pueden heredarse?",o:["Cambios (mutaciones) en el ADN de las células reproductoras","El ejercicio que hace el individuo","El deseo del organismo de cambiar","El uso o desuso de un órgano"],c:0,h:"¿Dónde se guarda la información que se hereda?",e:"La información hereditaria está en el ADN de los gametos; sus cambios son las mutaciones."},
+{t:"match",q:"Clasifica cada afirmación:",p:[["Un animal cambia su cuerpo por el uso de un órgano","Principio de uso y desuso"],["Las variaciones útiles se acumulan por selección","Darwin"],["El ambiente influye en el cambio de las especies","Idea compartida por ambos"]]}
+],
+t4b:[
+{t:"mc",q:"En una isla hay lagartos de patas cortas y de patas largas. Un nuevo depredador cazaba más a los lentos (patas cortas). Con el tiempo predominan los de patas largas. ¿Qué proceso explica esto?",o:["Selección natural","Uso y desuso","Generación espontánea","Panspermia"],c:0,h:"Variación + supervivencia diferencial.",e:"Los de patas largas sobrevivieron más y dejaron más descendientes."},
+{t:"mc",q:"¿Cuál es el orden lógico de la selección natural?",o:["Variación, lucha por recursos, supervivencia diferencial, herencia","Herencia, variación, uso, desuso","Mutación voluntaria, cambio, herencia","Uso, desuso, herencia"],c:0,h:"Mira el diagrama de arriba.",e:"Los 4 pasos del esquema."}
+],
+t4c:[
+{t:"mc",q:"Encontrar un fósil gigante parecido a un animal actual de la misma región sugiere...",o:["un parentesco entre especies extintas y actuales","que los fósiles son falsos","que no hay cambios en las especies","que el animal actual llegó del espacio"],c:0,h:"¿Qué tipo de evidencia es un fósil?",e:"Los fósiles muestran seres del pasado emparentados con los actuales."},
+{t:"mc",q:"Los animales de una isla volcánica se parecen mucho a los de la costa continental más cercana, aunque no son idénticos. ¿Qué sugiere esto?",o:["que descienden de antepasados que llegaron desde el continente y luego cambiaron","que fueron creados idénticos a los del continente","que viajaron desde otro planeta","que no tienen relación con ninguna otra especie"],c:0,h:"Piensa en distribución geográfica y ancestros comunes.",e:"Especies parecidas en regiones cercanas sugieren ancestros comunes y cambios posteriores."}
+],
+t5a:[
+{t:"mc",q:"¿Qué categoría agrupa MÁS organismos?",o:["Orden","Familia","Género","Especie"],c:0,h:"Más arriba en la jerarquía = más organismos.",e:"Orden es más general que familia, género y especie."},
+{t:"mc",q:"¿Qué categoría es más específica?",o:["Género","Clase","Filo","Reino"],c:0,h:"Va de general a específico.",e:"El género contiene menos organismos."},
+{t:"mc",q:"Se sabe que en taxonomía el Filo es más general que la Clase. Entonces una Clase está contenida dentro de...",o:["un Filo","una Especie","un Género","una Familia"],c:0,h:"Muñecas rusas.",e:"Las categorías están anidadas: cada clase es parte de un filo."}
+],
+t5b:[
+{t:"mc",q:"En <em>Quercus humboldtii</em> (roble andino), ¿cuál palabra es el género?",o:["Quercus","humboldtii","Roble","Andino"],c:0,h:"La que lleva mayúscula inicial.",e:"Quercus es el género (la primera palabra); la segunda palabra completa el nombre."},
+{t:"mc",q:"¿Cuál es la forma correcta de escribir un nombre científico?",o:["<em>Felis catus</em>","Felis Catus","felis catus","FELIS CATUS"],c:0,h:"Mayúscula en la primera y minúscula en la segunda, cursiva.",e:"Género con mayúscula, epíteto en minúscula y cursiva."}
+],
+t5c:[
+{t:"mc",q:"Una bacteria como Escherichia coli es...",o:["procariota","eucariota","un virus","pluricelular"],c:0,h:"¿Tiene núcleo definido?",e:"Las bacterias son procariotas."},
+{t:"mc",q:"Una levadura (hongo unicelular) tiene núcleo definido. Es...",o:["eucariota","procariota","bacteria","arquea"],c:0,h:"Núcleo con membrana.",e:"Tener núcleo definido indica célula eucariota."}
+],
+t5d:[
+{t:"mc",q:"Un organismo unicelular procariota vive en un lago hipersalino (muy salado). ¿A qué dominio pertenece con más probabilidad?",o:["Archaea","Eukarya","Plantae","Animalia"],c:0,h:"Procariota en ambiente extremo.",e:"Las arqueas suelen vivir en ambientes extremos."},
+{t:"mc",q:"Un organismo con núcleo definido pertenece al dominio...",o:["Eukarya","Bacteria","Archaea","ninguno"],c:0,h:"Núcleo = eucariota.",e:"Eukarya agrupa a los seres eucariotas."}
+],
+t5e:[
+{t:"mc",q:"Una seta absorbe nutrientes del suelo y su pared celular es de quitina. ¿A qué reino pertenece?",o:["Fungi","Plantae","Animalia","Bacteria"],c:0,h:"Heterótrofo por absorción con quitina.",e:"Es característico del reino Fungi."},
+{t:"mc",q:"Una ameba es un organismo unicelular con núcleo. ¿Cuál es su reino?",o:["Protista","Fungi","Plantae","Animalia"],c:0,h:"Eucariota unicelular.",e:"Las amebas son protistas."}
+]
+};
+
+var QUIZ=[
+{tp:"t1",q:"La hemoglobina transporta oxígeno en la sangre y la insulina regula la glucosa. Ambas son ejemplos de...",o:["proteínas","moléculas de ADN","células","hormonas de ARN"],c:0,e:"Son proteínas con funciones distintas en el cuerpo."},
+{tp:"t1",q:"Una enzima digestiva necesita aminoácidos para fabricarse. Los que el cuerpo no puede producir se obtienen...",o:["de los alimentos","de la luz solar","de las bacterias de la piel","del aire"],c:0,e:"Revisa en tus apuntes cómo se llaman esos aminoácidos."},
+{tp:"t1",q:"Un segmento de ARNm tiene 15 bases. ¿Cuántos codones contiene?",o:["5","3","15","45"],c:0,e:"15 ÷ 3 = 5."},
+{tp:"t1",q:"Si la hebra molde de ADN es T-A-C, ¿qué hebra complementaria de ADN se forma?",o:["A-T-G","U-A-G","A-U-G","T-A-C"],c:0,e:"Aplica la regla de complementariedad de tus apuntes base por base."},
+{tp:"t2",q:"El telescopio detecta una radiación débil que llega de todas partes del cielo. Eso apoya...",o:["el Big Bang","la generación espontánea","la panspermia","el uso y desuso"],c:0,e:"Es una evidencia de una etapa caliente y densa del universo."},
+{tp:"t2",q:"Los elementos más pesados que el helio se produjeron principalmente...",o:["en las estrellas","en el núcleo de la Luna","en los océanos","en la capa de ozono"],c:0,e:"Nucleosíntesis estelar."},
+{tp:"t3",q:"Redi cubrió un frasco con gasa para que las moscas no entraran. No aparecieron gusanos. Esto apoya...",o:["la biogénesis","la generación espontánea","la endosimbiosis","el lamarckismo"],c:0,e:"Los gusanos vienen de huevos de moscas."},
+{tp:"t3",q:"Los cloroplastos y mitocondrias tienen doble membrana y ADN circular. Esto apoya a la teoría...",o:["endosimbiótica","de la generación espontánea","del fijismo","de la herencia adquirida"],c:0,e:"Se parecen a bacterias."},
+{tp:"t3",q:"¿Qué diferencia principal hay entre la atmósfera primitiva de Oparin y la actual?",o:["Casi no tenía oxígeno libre","Tenía mucho oxígeno y ozono","Era idéntica a la actual","No tenía ningún gas"],c:0,e:"Era una atmósfera reductora."},
+{tp:"t4",q:"Una jirafa de cuello corto estira el cuello y lo alarga. Según Lamarck, su cría...",o:["lo heredaría alargado","nacería igual que ella","moriría","perdería el cuello"],c:0,e:"Herencia de caracteres adquiridos."},
+{tp:"t4",q:"Un rasgo útil se vuelve más común en una población porque...",o:["los individuos con ese rasgo dejan más descendientes","los individuos lo desean","se usa más","aparece solo en adultos"],c:0,e:"Selección natural."},
+{tp:"t5",q:"El nombre científico <em>Panthera onca</em> (jaguar) tiene como género a...",o:["Panthera","onca","jaguar","felino"],c:0,e:"El género va primero."},
+{tp:"t5",q:"Un organismo pluricelular, autótrofo, con cloroplastos y pared de celulosa pertenece al reino...",o:["Plantae","Fungi","Animalia","Protista"],c:0,e:"Rasgos de plantas."},
+{tp:"t5",q:"La bacteria que causa la tuberculosis es unicelular y procariota. Su dominio es...",o:["Bacteria","Eukarya","Archaea","Plantae"],c:0,e:"Procariota del dominio Bacteria."},
+{tp:"t5",q:"¿Cuál es el rasgo que diferencia a un hongo de una planta?",o:["El hongo no hace fotosíntesis y es heterótrofo","El hongo es procariota","La planta es unicelular siempre","El hongo no tiene núcleo"],c:0,e:"Nutrición."}
+];
+var TN={t1:"ADN y proteínas",t2:"Origen del universo",t3:"Origen de la vida",t4:"Evolución",t5:"Taxonomía"};
+
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t;}return a;}
+function el(tag,cls,html){var e=document.createElement(tag);if(cls)e.className=cls;if(html!==undefined)e.innerHTML=html;return e;}
+function mark(id){if(!state.done[id]){state.done[id]=1;save();updateProg();}}
+
+var total=0,TT={};
+function mc(item,id,onAns){
+ var card=el("div","card"+(state.done[id]?" done":""));
+ card.appendChild(el("p","q",item.q));
+ var box=el("div","opts");var ord=shuffle(item.o.map(function(t,i){return{t:t,i:i};}));
+ var fb=el("div","fb");var answered=false;
+ ord.forEach(function(x){var b=el("button","opt",x.t);b.type="button";b.addEventListener("click",function(){
+  if(answered)return;
+  if(x.i===item.c){b.classList.add("ok");fb.className="fb show ok";fb.innerHTML="<strong>✔ Correcto.</strong> "+(item.e||"");answered=true;
+   Array.prototype.forEach.call(box.children,function(c){c.disabled=true;});mark(id);card.classList.add("done");if(onAns)onAns(true);}
+  else{b.classList.add("bad");b.disabled=true;fb.className="fb show bad";fb.innerHTML="<strong>✘ Incorrecto.</strong> Todavía no. Revisa la pista y vuelve a intentarlo.";}
+ });box.appendChild(b);});
+ card.appendChild(box);
+ if(item.h){var hb=el("div","hintbox","<strong>💡 Pista:</strong> "+item.h);var row=el("div","row");var hbtn=el("button","btn sec","Ver pista");hbtn.type="button";hbtn.setAttribute("aria-expanded","false");hbtn.addEventListener("click",function(){var s=hb.classList.toggle("show");hbtn.setAttribute("aria-expanded",s);hbtn.textContent=s?"Ocultar pista":"Ver pista";});row.appendChild(hbtn);card.appendChild(row);card.appendChild(hb);}
+ card.appendChild(fb);return card;
+}
+function fill(item,id){
+ var card=el("div","card"+(state.done[id]?" done":""));card.appendChild(el("p","q",item.q));
+ var inp=el("input");inp.type="text";inp.setAttribute("aria-label","Tu respuesta");var row=el("div","row");row.appendChild(inp);
+ var chk=el("button","btn","Comprobar");chk.type="button";row.appendChild(chk);
+ var hbtn=el("button","btn sec","Ver pista");hbtn.type="button";row.appendChild(hbtn);card.appendChild(row);
+ var hb=el("div","hintbox","<strong>💡 Pista:</strong> "+item.h);card.appendChild(hb);
+ hbtn.addEventListener("click",function(){var s=hb.classList.toggle("show");hbtn.textContent=s?"Ocultar pista":"Ver pista";});
+ var fb=el("div","fb");card.appendChild(fb);
+ function go(){var v=inp.value.trim().toLowerCase();if(item.a.indexOf(v)>-1){fb.className="fb show ok";fb.innerHTML="<strong>✔ Correcto.</strong> "+item.e;mark(id);card.classList.add("done");}else{fb.className="fb show bad";fb.innerHTML="<strong>✘ Incorrecto.</strong> Todavía no. Usa la pista y vuelve a intentar.";}}
+ chk.addEventListener("click",go);inp.addEventListener("keydown",function(e){if(e.key==="Enter")go();});
+ return card;
+}
+function match(item,id){
+ var card=el("div","card"+(state.done[id]?" done":""));card.appendChild(el("p","q",item.q));
+ var defs=shuffle(item.p.map(function(x){return x[1];}));var sels=[];
+ item.p.forEach(function(x,i){var r=el("div","mrow");r.appendChild(el("span","",x[0]));var s=el("select");s.setAttribute("aria-label","Opción para "+x[0]);s.appendChild(new Option("Elige...",""));defs.forEach(function(d){s.appendChild(new Option(d,d));});r.appendChild(s);sels.push(s);card.appendChild(r);});
+ var row=el("div","row");var chk=el("button","btn","Comprobar");chk.type="button";row.appendChild(chk);card.appendChild(row);
+ var fb=el("div","fb");card.appendChild(fb);
+ chk.addEventListener("click",function(){var ok=0;sels.forEach(function(s,i){var g=s.value===item.p[i][1];if(g)ok++;s.style.borderColor=g?"var(--ok)":"var(--bad)";});
+  if(ok===item.p.length){fb.className="fb show ok";fb.innerHTML="<strong>✔ Correcto.</strong> Todas las parejas están bien.";mark(id);card.classList.add("done");}
+  else{fb.className="fb show bad";fb.innerHTML="<strong>✘ Incorrecto.</strong> Acertaste "+ok+" de "+item.p.length+". Corrige las marcadas en rojo.";}});
+ return card;
+}
+Array.prototype.forEach.call(document.querySelectorAll(".practice"),function(box){
+ var key=box.getAttribute("data-topic");var arr=EX[key]||[];
+ box.appendChild(el("h3","","Practica"));
+ var tk=key.slice(0,2);arr.forEach(function(it,i){var id=key+"_"+i;total++;TT[tk]=(TT[tk]||0)+1;
+  box.appendChild(it.t==="mc"?mc(it,id):it.t==="fill"?fill(it,id):match(it,id));});
+});
+total+=1; // quiz completion counts as one
+function updateProg(){var n=0;for(var k in state.done){if(state.done.hasOwnProperty(k))n++;}
+ var pct=Math.min(100,Math.round(n/total*100));document.getElementById("barFill").style.width=pct+"%";
+ document.getElementById("progTxt").textContent=n+" de "+total+" completados ("+pct+"%)"+(state.best!==null&&state.best!==undefined?" · mejor puntaje: "+state.best+"/"+QUIZ.length:"");
+ if(window._route)window._route();}
+
+// ---- quiz ----
+var qi=0,score=0,miss={};
+function renderQuiz(){
+ var box=document.getElementById("quizBox");box.innerHTML="";
+ if(qi>=QUIZ.length){
+  var pct=Math.round(score/QUIZ.length*100);
+  if(state.best===null||state.best===undefined||score>state.best){state.best=score;}
+  state.done["quiz"]=1;save();updateProg();
+  var h="<div class='note'><h3>Puntaje: "+score+" de "+QUIZ.length+" ("+pct+"%)</h3>";
+  var arr=Object.keys(miss);
+  h+=arr.length?"<p>Repasa estos temas:</p><ul>"+arr.map(function(k){return "<li><a href='#"+k+"'>"+TN[k]+"</a> ("+miss[k]+" fallo(s))</li>";}).join("")+"</ul>":"<p>Excelente, sin fallos en el primer intento.</p>";
+  h+="</div>";box.innerHTML=h;var b=el("button","btn","Repetir autoevaluación");b.type="button";b.addEventListener("click",function(){qi=0;score=0;miss={};QUIZ=shuffle(QUIZ);renderQuiz();});box.appendChild(b);return;}
+ var it=QUIZ[qi];var first=true;
+ box.appendChild(el("p","",""+"<strong>Pregunta "+(qi+1)+" de "+QUIZ.length+"</strong>"));
+ var c=el("div","card");c.appendChild(el("p","q",it.q));
+ var ob=el("div","opts"),fb=el("div","fb"),done=false;
+ shuffle(it.o.map(function(t,i){return{t:t,i:i};})).forEach(function(x){var b=el("button","opt",x.t);b.type="button";b.addEventListener("click",function(){
+  if(done)return;
+  if(x.i===it.c){done=true;b.classList.add("ok");if(first)score++;fb.className="fb show ok";fb.innerHTML="<strong>✔ Correcto.</strong> "+it.e;Array.prototype.forEach.call(ob.children,function(k){k.disabled=true;});nx.style.display="";}
+  else{if(first){miss[it.tp]=(miss[it.tp]||0)+1;first=false;}b.classList.add("bad");b.disabled=true;fb.className="fb show bad";fb.innerHTML="<strong>✘ Incorrecto.</strong> No es esa. Inténtalo otra vez (ya no suma punto).";}
+ });ob.appendChild(b);});
+ c.appendChild(ob);c.appendChild(fb);
+ var nx=el("button","btn",qi===QUIZ.length-1?"Ver resultado":"Siguiente");nx.type="button";nx.style.display="none";nx.style.marginTop="8px";
+ nx.addEventListener("click",function(){qi++;renderQuiz();});
+ c.appendChild(nx);box.appendChild(c);
+}
+QUIZ=shuffle(QUIZ);renderQuiz();
+
+// ---- concept map, route, bridges ----
+var NODES={t2:{x:70,y:90,l:["2. Origen del","universo"],n:"Origen del universo"},t3:{x:320,y:90,l:["3. Origen de","la vida"],n:"Origen de la vida"},t4:{x:570,y:90,l:["4. Evolución"],n:"Evolución: Lamarck y Darwin"},t1:{x:195,y:260,l:["1. ADN y","proteínas"],n:"ADN, proteínas y código genético"},t5:{x:445,y:260,l:["5. Taxonomía"],n:"Taxonomía y clasificación"}};
+var EDGES=[
+{f:"t2",t:"t3",l:"da el escenario a",d:"M130,90 L258,90",x:180,y:64,e:"La Tierra se formó con material cósmico. Sobre ese planeta primitivo, con una atmósfera distinta de la actual y mucha energía, ocurrieron las reacciones químicas que plantea la teoría de Oparin."},
+{f:"t2",t:"t1",l:"aporta átomos a",d:"M85,117 L168,230",x:123,y:169,e:"Los átomos de hidrógeno, carbono, oxígeno, nitrógeno y fósforo que forman el ADN y las proteínas se originaron en el universo: el hidrógeno en sus primeros momentos y los más pesados dentro de las estrellas."},
+{f:"t3",t:"t1",l:"forma moléculas de",d:"M300,117 L217,230",x:266,y:163,e:"Los experimentos tipo Miller y Urey obtuvieron aminoácidos, las unidades de las proteínas. Las moléculas de la vida (proteínas y ácidos nucleicos) son las que estudias en el Tema 1."},
+{f:"t3",t:"t5",l:"origina células de",d:"M340,117 L423,230",x:395,y:192,e:"La teoría endosimbiótica explica cómo surgió la célula eucariota a partir de bacterias. La clasificación en procariotas y eucariotas (y en dominios) parte de esa diferencia."},
+{f:"t4",t:"t5",l:"explica parentescos",d:"M550,117 L467,230",x:524,y:152,e:"Si las especies descienden de ancestros comunes, las más emparentadas se parecen más. La taxonomía agrupa a los seres vivos justamente por sus parecidos y su parentesco."},
+{f:"t1",t:"t4",l:"da variación a",d:"M257,246 L528,120",x:310,y:220,e:"La herencia viaja en el ADN y los cambios en el ADN (mutaciones) crean la variación entre individuos. Sobre esa variación actúa la selección natural de Darwin."}
+];
+var cpanel=document.getElementById("cpanel");
+function showEdge(i){var g=EDGES[i];cpanel.innerHTML="<strong>"+NODES[g.f].n+" &rarr; <em>"+g.l+"</em> &rarr; "+NODES[g.t].n+"</strong><br>"+g.e+"<br><a href='#"+g.f+"'>Ir a: "+NODES[g.f].n+"</a> · <a href='#"+g.t+"'>Ir a: "+NODES[g.t].n+"</a>";
+ Array.prototype.forEach.call(document.querySelectorAll(".ce"),function(c){c.classList.toggle("sel",c.getAttribute("data-i")==String(i));});}
+function showNode(t){var h="<strong>"+NODES[t].n+"</strong><ul>";EDGES.forEach(function(g){if(g.f===t)h+="<li>Este tema <em>"+g.l+"</em> &rarr; "+NODES[g.t].n+"</li>";if(g.t===t)h+="<li>"+NODES[g.f].n+" <em>"+g.l+"</em> &rarr; este tema</li>";});cpanel.innerHTML=h+"</ul><a href='#"+t+"'>Ir a la sección</a>";}
+(function(){
+ var ICO={t1:'i-dna',t2:'i-star',t3:'i-flask',t4:'i-tree',t5:'i-branch'};var w=120,hh=54,h="<svg viewBox='0 40 640 260' role='group' aria-label='Mapa de conceptos con cinco temas y sus relaciones'><defs><marker id='arr' viewBox='0 0 10 10' refX='9' refY='5' markerWidth='8' markerHeight='8' orient='auto'><path class='arrow' d='M0,0 L10,5 L0,10z'></path></marker></defs>";
+ EDGES.forEach(function(g){h+="<path class='ep' d='"+g.d+"' marker-end='url(#arr)'></path>";});
+ Object.keys(NODES).forEach(function(k){var n=NODES[k];h+="<a class='cn' href='#"+k+"' data-t='"+k+"' aria-label='Ir al tema: "+n.n+"'><rect x='"+(n.x-w/2)+"' y='"+(n.y-hh/2)+"' width='"+w+"' height='"+hh+"' rx='10'></rect>";
+  n.l.forEach(function(t,i){h+="<text x='"+n.x+"' y='"+(n.l.length===1?n.y+5:n.y-4+i*17)+"' text-anchor='middle'>"+t+"</text>";});h+="<circle cx='"+(n.x-w/2)+"' cy='"+(n.y-hh/2)+"' r='13' class='cbadge'></circle><svg x='"+(n.x-w/2-8)+"' y='"+(n.y-hh/2-8)+"' width='16' height='16' viewBox='0 0 32 32' class='cico'><use href='#"+(ICO[k]||"i-dna")+"'></use></svg>";h+="</a>";});
+ EDGES.forEach(function(g,i){var rw=g.l.length*6.6+16;h+="<g class='ce' data-i='"+i+"' tabindex='0' role='button' aria-label='Relación: "+NODES[g.f].n+" "+g.l+" "+NODES[g.t].n+"'><rect x='"+(g.x-rw/2)+"' y='"+(g.y-12)+"' width='"+rw+"' height='24' rx='6'></rect><text x='"+g.x+"' y='"+(g.y+4)+"' text-anchor='middle'>"+g.l+"</text></g>";});
+ h+="</svg><ul class='clist' aria-label='Lista de relaciones entre temas'>";
+ EDGES.forEach(function(g,i){h+="<li><button type='button' class='btn sec' data-i='"+i+"'>"+NODES[g.f].n+" &rarr; "+g.l+" &rarr; "+NODES[g.t].n+"</button></li>";});
+ h+="</ul>";
+ var box=document.getElementById("cmap");box.innerHTML=h;
+ box.addEventListener("click",function(e){var c=e.target.closest?e.target.closest("[data-i]"):null;if(c)showEdge(+c.getAttribute("data-i"));});
+ box.addEventListener("mouseover",function(e){var c=e.target.closest?e.target.closest("[data-i],[data-t]"):null;if(!c)return;if(c.hasAttribute("data-i")&&c.tagName.toLowerCase()==="g")showEdge(+c.getAttribute("data-i"));else if(c.hasAttribute("data-t"))showNode(c.getAttribute("data-t"));});
+ box.addEventListener("focusin",function(e){var c=e.target.closest?e.target.closest("[data-i],[data-t]"):null;if(!c)return;if(c.hasAttribute("data-t"))showNode(c.getAttribute("data-t"));else if(c.tagName.toLowerCase()==="g")showEdge(+c.getAttribute("data-i"));});
+ box.addEventListener("keydown",function(e){if((e.key==="Enter"||e.key===" ")&&e.target.getAttribute&&e.target.getAttribute("role")==="button"&&e.target.hasAttribute("data-i")&&e.target.tagName.toLowerCase()==="g"){e.preventDefault();showEdge(+e.target.getAttribute("data-i"));}});
+})();
+
+var ROUTE=[
+{t:"t1",why:"Es la base: el vocabulario de ADN, proteína y codón reaparece en todos los temas."},
+{t:"t2",why:"Explica de dónde salen los átomos de la vida y el planeta donde apareció."},
+{t:"t3",why:"Con el escenario listo, estudia cómo pudo surgir la vida y la primera célula eucariota."},
+{t:"t4",why:"Una vez que hay vida, aprende cómo cambia por selección natural (usa lo de ADN y mutaciones)."},
+{t:"t5",why:"Cierra con el orden: cómo se clasifica la diversidad que dejó la evolución."},
+{t:"quiz",why:"Pon a prueba todo, con ejemplos nuevos."}
+];
+function topicDone(t){var n=0;for(var k in state.done){if(state.done.hasOwnProperty(k)&&k.slice(0,2)===t&&k.charAt(2)!=="i")n++;}return n;}
+window._route=function(){var ol=document.getElementById("route");if(!ol)return;var nxt=false,h="";
+ ROUTE.forEach(function(r,i){var isQ=r.t==="quiz",d=isQ?(state.done.quiz?1:0):topicDone(r.t),tot=isQ?1:(TT[r.t]||0);var fin=tot>0&&d>=tot;var cls=fin?"fin":(!nxt?"nxt":"");if(!fin&&!nxt)nxt=true;
+  var st=fin?"☑ Completado":(cls==="nxt"?"☐ Sigue aquí ("+d+"/"+tot+")":"☐ Pendiente ("+d+"/"+tot+")");
+  var name=isQ?"Autoevaluación final":NODES[r.t].n;
+  h+="<li class='"+cls+"'><span class='st'>"+st+"</span><span><strong>"+(i+1)+". <a href='#"+r.t+"'>"+name+"</a></strong><br>"+r.why+"</span></li>";});
+ ol.innerHTML=h;};
+
+var BQ={
+t1:{q:"¿Cómo se relacionan el ADN y el origen del universo?",o:["Los átomos que forman el ADN vienen de elementos creados en el universo (el hidrógeno al inicio y los demás en estrellas)","El ADN fue lo primero que existió y de él nació el universo","El Big Bang fabricó directamente moléculas de ADN"],c:0,e:"Los átomos de la vida se originaron en el universo; las moléculas se armaron mucho después."},
+t2:{q:"¿Cómo se relacionan el Tema 2 y la teoría de Oparin?",o:["Oparin supone que la vida llegó junto con el Big Bang","La Tierra se formó con material cósmico y sobre ella ocurrió la evolución química que plantea Oparin","Las estrellas son seres vivos que dieron origen a la vida"],c:1,e:"El universo da los elementos y el planeta; Oparin explica cómo, sobre ese planeta, la química pudo dar origen a la vida."},
+t3:{q:"¿Cómo se relacionan el origen de la vida y la evolución?",o:["El origen explica cómo apareció la primera vida; la evolución, cómo esa vida cambia y se diversifica","Son exactamente lo mismo","La evolución explica cómo se formaron los aminoácidos en la atmósfera"],c:0,e:"Son dos preguntas seguidas: primero cómo empezó la vida, luego cómo cambió con el tiempo."},
+t4:{q:"¿Por qué la evolución se relaciona con la clasificación de los seres vivos?",o:["Porque los organismos con un ancestro común reciente comparten más rasgos, y se agrupan por esos parecidos","Porque la clasificación demuestra la herencia de caracteres adquiridos","Porque la selección natural clasifica a los individuos en categorías"],c:0,e:"El parentesco por ancestros comunes explica los parecidos que usa la taxonomía."},
+t5:{q:"¿Qué une la endosimbiosis (3.3) con la diferencia entre células procariotas y eucariotas (5.3)?",o:["La endosimbiosis propone cómo las células eucariotas incorporaron orgánulos que antes eran bacterias","La endosimbiosis dice que las procariotas descienden de las eucariotas","No tienen ninguna relación"],c:0,e:"Explica el origen de parte de la complejidad eucariota, uno de los grandes cortes de la clasificación."}
+};
+Array.prototype.forEach.call(document.querySelectorAll(".bq"),function(box){
+ var it=BQ[box.getAttribute("data-b")];if(!it)return;
+ box.appendChild(el("p","q","Mini pregunta: "+it.q));
+ var ob=el("div","opts"),fb=el("div","fb"),done=false;
+ shuffle(it.o.map(function(t,i){return{t:t,i:i};})).forEach(function(x){var b=el("button","opt",x.t);b.type="button";b.addEventListener("click",function(){
+  if(done)return;
+  if(x.i===it.c){done=true;b.classList.add("ok");fb.className="fb show ok";fb.innerHTML="<strong>✔ Correcto.</strong> "+it.e;Array.prototype.forEach.call(ob.children,function(k){k.disabled=true;});}
+  else{b.classList.add("bad");b.disabled=true;fb.className="fb show bad";fb.innerHTML="<strong>✘ Incorrecto.</strong> Piensa qué aporta un tema al otro y prueba de nuevo.";}
+ });ob.appendChild(b);});
+ box.appendChild(ob);box.appendChild(fb);
+});
+
+// ---- reset & nav ----
+document.getElementById("resetBtn").addEventListener("click",function(){if(confirm("¿Borrar tu progreso guardado?")){state={done:{},best:null};save();location.reload();}});
+var links=document.querySelectorAll("nav a");
+function onScroll(){var cur="";Array.prototype.forEach.call(document.querySelectorAll("main section"),function(s){if(s.getBoundingClientRect().top<120)cur=s.id;});Array.prototype.forEach.call(links,function(a){a.classList.toggle("on",a.getAttribute("href")==="#"+cur);});}
+window.addEventListener("scroll",onScroll);onScroll();updateProg();
+// ---- reveal on scroll ----
+(function(){var els=document.querySelectorAll(".reveal");
+ var rm=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+ if(rm||!("IntersectionObserver" in window))return;
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("rv-in");e.target.classList.remove("rv-pre");io.unobserve(e.target);}});},{threshold:.15});
+ Array.prototype.forEach.call(els,function(el){el.classList.add("rv-pre");io.observe(el);});
+})();
+})();
+</script>
+</body>
+</html>

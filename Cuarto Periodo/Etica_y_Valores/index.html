@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de estudio - Ética y Valores 9</title>
+<script>document.documentElement.className+=" js";try{var t=localStorage.getItem("etica9_theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<style>
+:root{--bg:#fbf7f0;--surface:#fffdf9;--surface-2:#f3ece0;--text:#2b2420;--text-muted:#5e5046;--border:#e3d9c9;--accent:#a3441d;--on-accent:#ffffff;--accent-soft:#f8e7dc;--ok:#1d6644;--ok-bg:#e3f1e6;--bad:#a1281c;--bad-bg:#f9e3de;--warn:#77500a;--warn-bg:#fdf0d5;--info:#1b6158;--info-bg:#ddefea;--code-bg:#f3ece0;--focus:#1f7a6d;--ill-1:#c8643a;--ill-2:#2a8077;--ill-3:#d29b2e;--ill-4:#7a8a3a;--ill-5:#ecd3b4;--fig-bg:#fdfdfb;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ill-1:#e58a60;--ill-2:#5fb8aa;--ill-3:#e8bc5a;--ill-4:#a9b86a;--ill-5:#6b5848;--fig-bg:#f4f1ea;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ill-1:#e58a60;--ill-2:#5fb8aa;--ill-3:#e8bc5a;--ill-4:#a9b86a;--ill-5:#6b5848;--fig-bg:#f4f1ea;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,Segoe UI,Roboto,sans-serif}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:var(--accent);text-decoration:underline}
+a:visited{color:var(--info)}
+a:hover{color:var(--text)}
+code{background:var(--code-bg);color:var(--text);padding:1px 5px;border-radius:4px}
+.katex{color:inherit}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+header{background:var(--accent);color:var(--on-accent);padding:18px 16px}
+header h1{margin:0 0 8px;font-size:1.4rem;line-height:1.3}
+header .chips{display:flex;flex-wrap:wrap;gap:8px;font-size:.95rem;margin-bottom:10px}
+header .chips span{border:1px solid var(--on-accent);padding:2px 10px;border-radius:99px}
+#theme{background:var(--surface);color:var(--text);border:2px solid var(--on-accent);white-space:nowrap}
+#theme:hover{background:var(--surface-2)}
+.prog{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:12px;padding:10px 14px;margin-top:10px}
+.bar{height:12px;background:var(--surface-2);border:1px solid var(--text-muted);border-radius:9px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--ok);width:0;transition:width .3s}
+.small{font-size:.92rem;color:var(--text-muted)}
+nav{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--border);padding:8px 16px;display:flex;gap:6px;overflow-x:auto}
+nav a,nav a:visited{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;padding:6px 12px;border:1px solid var(--text-muted);border-radius:99px;color:var(--text);text-decoration:none;font-size:1rem}
+nav a:hover,nav a:focus,nav a.on,nav a.active{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+nav a.done:not(.on)::after{content:"\2713";color:var(--ok);font-weight:700}
+.nico{width:18px;height:18px;flex:none}
+main{max-width:860px;margin:0 auto;padding:16px}
+main>section{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin:18px 0;padding:16px 18px 18px;scroll-margin-top:64px}
+h2{margin:0;font-size:1.3rem;line-height:1.25}
+h3{margin:18px 0 6px;font-size:1.05rem}
+p,li{max-width:75ch}
+.tag{display:inline-block;background:var(--accent-soft);color:var(--text);border:1px solid var(--accent);border-radius:99px;padding:0 12px;font-size:.9rem;margin:0 0 10px}
+.banner{display:flex;gap:14px;align-items:center;background:linear-gradient(90deg,var(--accent-soft),var(--surface));border:1px solid var(--border);border-left:6px solid var(--accent);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.ico{display:inline-flex;align-items:center;justify-content:center;flex:none;width:48px;height:48px;border-radius:12px;background:var(--surface);color:var(--accent);border:1px solid var(--accent)}
+.ico svg{width:32px;height:32px}
+.hook{margin:2px 0 0;color:var(--text-muted);font-size:1rem}
+.lead{display:grid;grid-template-columns:1fr;gap:14px;margin:12px 0 14px;align-items:center}
+@media (min-width:720px){.lead{grid-template-columns:minmax(0,420px) 1fr}}
+.hero{margin:0}
+.hero svg{width:100%;max-width:420px;height:auto;display:block;border-radius:14px;border:1px solid var(--border)}
+.side{display:grid;gap:10px}
+.ten,.dato{border-radius:10px;padding:10px 14px;color:var(--text)}
+.ten{background:var(--info-bg);border-left:5px solid var(--info)}
+.dato{background:var(--warn-bg);border-left:5px solid var(--warn)}
+.ten b.lbl,.dato b.lbl{display:block;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase}
+.ten b.lbl{color:var(--info)}
+.dato b.lbl{color:var(--warn)}
+.ten ul{margin:4px 0 0;padding-left:20px}
+.dato p{margin:4px 0 0}
+.lift{transition:transform .2s ease,box-shadow .2s ease}
+.lift:hover{transform:translateY(-3px);box-shadow:0 6px 16px color-mix(in srgb,var(--text) 18%,transparent)}
+.box{background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-radius:10px;padding:10px 14px;margin:12px 0}
+.note{background:var(--info-bg);color:var(--text);border-left:4px solid var(--info);padding:8px 12px;border-radius:6px;margin:10px 0}
+.en{font-style:italic}
+.tablewrap{overflow-x:auto;margin:8px 0}
+table{border-collapse:collapse;width:100%;font-size:1rem}
+th,td{border:1px solid var(--border);padding:6px 9px;text-align:left;vertical-align:top;color:var(--text)}
+th{background:var(--surface-2);font-weight:700}
+tr:nth-child(even) td{background:var(--surface-2)}
+details{border:1px solid var(--border);border-radius:10px;padding:8px 12px;margin:10px 0;background:var(--surface)}
+details>summary{cursor:pointer;font-weight:600;color:var(--text)}
+details[open]>summary{margin-bottom:6px}
+details.bridge{margin-top:18px;border:2px solid var(--info);background:var(--info-bg);border-radius:10px}
+details.bridge>summary{font-weight:700}
+details.bridge[open]{animation:fadein .25s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+button{font:inherit;cursor:pointer;border:2px solid var(--accent);background:var(--surface);color:var(--accent);border-radius:8px;padding:5px 12px;margin:3px 3px 3px 0}
+button:hover{background:var(--accent-soft);color:var(--text)}
+button:disabled{background:var(--surface-2);color:var(--text-muted);border-color:var(--border);cursor:not-allowed}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.q,.match,.path{border:1px solid var(--border);border-radius:10px;padding:12px;margin:10px 0;background:var(--surface)}
+.opt{display:block;width:100%;text-align:left;margin:4px 0;color:var(--text);border-color:var(--text-muted)}
+.opt:hover{border-color:var(--accent)}
+.opt.sel{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.opt.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--text)}
+.opt.no{background:var(--bad-bg);border-color:var(--bad);color:var(--text)}
+.fb{margin-top:8px;padding:8px 12px;border-radius:6px;border:1px solid var(--border);color:var(--text)}
+.fb.ok{background:var(--ok-bg);border-color:var(--ok)}
+.fb.no{background:var(--bad-bg);border-color:var(--bad)}
+.fb.hint{background:var(--warn-bg);border-color:var(--warn)}
+.reveal{display:none;margin:6px 0;padding:8px 12px;border-radius:8px;color:var(--text)}
+.reveal.show{display:block}
+.reveal.hint{background:var(--warn-bg);border-left:4px solid var(--warn)}
+.reveal.expl{background:var(--info-bg);border-left:4px solid var(--info)}
+.reveal div{margin:3px 0}
+.mrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:6px 0}
+.mrow .t{flex:1 1 220px}
+select{font:inherit;padding:3px;background:var(--surface);color:var(--text);border:2px solid var(--text-muted);border-radius:6px;max-width:100%}
+.mk.ok{color:var(--ok);font-weight:700}
+.mk.no{color:var(--bad);font-weight:700}
+.from{background:var(--surface-2);color:var(--text);border-left:4px solid var(--accent);padding:8px 12px;border-radius:6px;margin:0 0 12px}
+ul.tight,ol.tight{margin:4px 0;padding-left:20px}
+.chip{display:inline-block;background:var(--accent-soft);color:var(--text);border:1px solid var(--accent);border-radius:99px;padding:0 10px;font-size:.9rem}
+footer{text-align:center;color:var(--text-muted);padding:20px;font-size:.9rem}
+#score{font-weight:700}
+.cm-svgwrap{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:8px}
+svg.cm{width:100%;height:auto;display:block}
+.cm-node{cursor:pointer}
+.cm-node rect{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2}
+.cm-node text{fill:var(--text);font:700 14px system-ui,Segoe UI,Roboto,sans-serif;text-anchor:middle}
+.cm-node:hover rect,.cm-node:focus rect{fill:var(--accent)}
+.cm-node:hover text,.cm-node:focus text{fill:var(--on-accent)}
+.cm-badge circle{fill:var(--surface);stroke:var(--accent);stroke-width:1.5}
+.cm-badge{color:var(--accent)}
+.cm-edge{cursor:pointer}
+.cm-edge .vis{fill:none;stroke:var(--text-muted);stroke-width:2}
+.cm-edge .hit{fill:none;stroke:var(--text);stroke-width:18;opacity:0;pointer-events:stroke}
+.cm-edge:hover .vis,.cm-edge:focus .vis,.cm-edge.act .vis{stroke:var(--accent);stroke-width:3.5}
+.cm-edge text{fill:var(--text);font:600 13px system-ui,Segoe UI,Roboto,sans-serif;text-anchor:middle;paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round}
+.cm-edge:hover text,.cm-edge:focus text,.cm-edge.act text{fill:var(--accent)}
+.cm-arrow{fill:var(--text-muted)}
+.cm-list{display:none;margin:0;padding-left:0;list-style:none}
+.cm-list li{border-bottom:1px solid var(--border);padding:8px 0}
+.cm-list li:last-child{border-bottom:0}
+@media (max-width:640px){.cm-svgwrap{display:none}.cm-list{display:block}}
+.cm-panel{margin-top:10px;background:var(--info-bg);color:var(--text);border-left:4px solid var(--info);padding:10px 14px;border-radius:6px;min-height:3.2em}
+ol.rt{padding-left:0;list-style:none;margin:6px 0}
+ol.rt li{padding:8px 10px;border:1px solid var(--border);border-radius:8px;margin:6px 0;background:var(--surface)}
+ol.rt label{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+ol.rt .nico{color:var(--accent)}
+input[type=checkbox]{accent-color:var(--accent);width:1.1em;height:1.1em}
+/* ilustraciones */
+.bg{fill:url(#gSky)}
+.f-1{fill:var(--ill-1)}.f-2{fill:var(--ill-2)}.f-3{fill:var(--ill-3)}.f-4{fill:var(--ill-4)}.f-5{fill:var(--ill-5)}
+.f-a{fill:var(--accent)}.f-i{fill:var(--info)}.f-o{fill:var(--ok)}.f-w{fill:var(--warn)}.f-b{fill:var(--bad)}
+.f-s{fill:var(--surface)}.f-s2{fill:var(--surface-2)}.f-t{fill:var(--text)}.f-m{fill:var(--text-muted)}.f-d{fill:var(--border)}
+.f-as{fill:var(--accent-soft)}.f-is{fill:var(--info-bg)}.f-ws{fill:var(--warn-bg)}
+.k-1{stroke:var(--ill-1)}.k-2{stroke:var(--ill-2)}.k-3{stroke:var(--ill-3)}.k-4{stroke:var(--ill-4)}
+.k-a{stroke:var(--accent)}.k-i{stroke:var(--info)}.k-o{stroke:var(--ok)}.k-w{stroke:var(--warn)}.k-b{stroke:var(--bad)}
+.k-s{stroke:var(--surface)}.k-t{stroke:var(--text)}.k-m{stroke:var(--text-muted)}.k-d{stroke:var(--border)}
+.nf{fill:none}
+.rc{stroke-linecap:round;stroke-linejoin:round}
+.hl{font:700 15px system-ui,Segoe UI,Roboto,sans-serif;fill:var(--text);text-anchor:middle}
+.gs1{stop-color:var(--ill-5);stop-opacity:.6}.gs2{stop-color:var(--surface-2)}
+.gw1{stop-color:var(--ill-2)}.gw2{stop-color:var(--info)}
+.gt1{stop-color:var(--ill-4)}.gt2{stop-color:var(--ok)}
+.gm1{stop-color:var(--ill-3)}.gm2{stop-color:var(--ill-1)}
+.fx{opacity:1}
+.js .fx{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.js .fx.in{opacity:1;transform:none}
+.an-float{animation:float 4s ease-in-out infinite alternate}
+@keyframes float{to{transform:translateY(-6px)}}
+.an-spin{animation:spin 80s linear infinite;transform-origin:160px 90px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.an-rock{animation:rock 5s ease-in-out infinite alternate;transform-origin:160px 42px}
+@keyframes rock{from{transform:rotate(-5deg)}to{transform:rotate(5deg)}}
+.an-scan{animation:scan 4s ease-in-out infinite alternate}
+@keyframes scan{from{transform:translate(0,0)}to{transform:translate(-26px,34px)}}
+.an-dash{stroke-dasharray:6 6;animation:dash 1.5s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-12}}
+.an-blink{animation:blink 1.4s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:.25}50%{opacity:1}}
+.an-pulse{animation:pulse 3s ease-in-out infinite;transform-origin:262px 40px}
+@keyframes pulse{50%{transform:scale(1.12)}}
+.an-write{animation:write 1.6s ease-in-out infinite alternate;transform-origin:262px 110px}
+@keyframes write{from{transform:rotate(-4deg)}to{transform:rotate(3deg) translate(-4px,5px)}}
+.an-sway{animation:sway 4s ease-in-out infinite alternate;transform-origin:262px 100px}
+@keyframes sway{from{transform:rotate(-3deg)}to{transform:rotate(3deg)}}
+.an-tick{stroke-dasharray:24;stroke-dashoffset:24;animation:tick 3.6s ease-out infinite}
+@keyframes tick{0%{stroke-dashoffset:24}25%,80%{stroke-dashoffset:0}100%{stroke-dashoffset:24}}
+.an-ripple{animation:ripple 3s ease-in-out infinite alternate;transform-origin:110px 150px}
+@keyframes ripple{to{transform:scale(1.08,1.15)}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .fx{opacity:1!important;transform:none!important}.an-tick{stroke-dasharray:none!important;stroke-dashoffset:0!important}}
+.exam-fig{background:var(--surface);color:var(--text);border:1px solid var(--text-muted);border-radius:12px;padding:10px;margin:14px 0;max-width:100%}
+.exam-fig img{max-width:100%;height:auto;display:block;margin:auto;border-radius:8px;background:var(--fig-bg);cursor:zoom-in}
+.exam-fig .eg{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:8px}
+.exam-fig .eg img{margin:0;width:100%}
+.exam-fig figcaption{margin-top:8px;font-size:.95rem;color:var(--text)}
+.exam-fig figcaption span{display:block;color:var(--text-muted);margin-top:4px}
+#lb{border:2px solid var(--accent);border-radius:12px;background:var(--surface);color:var(--text);padding:12px;max-width:min(96vw,900px);max-height:94vh}
+#lb::backdrop{background:color-mix(in srgb,var(--text) 55%,transparent)}
+#lb img{max-width:100%;max-height:80vh;height:auto;display:block;margin:0 auto 10px;background:var(--fig-bg);border-radius:8px}
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="gSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="gs1"/><stop offset="1" class="gs2"/></linearGradient>
+<linearGradient id="gWater" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="gw1"/><stop offset="1" class="gw2"/></linearGradient>
+<linearGradient id="gTree" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="gt1"/><stop offset="1" class="gt2"/></linearGradient>
+<linearGradient id="gWarm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="gm1"/><stop offset="1" class="gm2"/></linearGradient>
+</defs>
+<symbol id="ic-inicio" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 5h7a2 2 0 0 1 2 2v12a2 2 0 0 0-2-2H3z"/><path d="M21 5h-7a2 2 0 0 0-2 2v12a2 2 0 0 1 2-2h7z"/></g></symbol>
+<symbol id="ic-mapa" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.5"/><circle cx="19" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M7.5 6h9M6.3 8.2l4.4 7.6M17.7 8.2l-4.4 7.6"/></g></symbol>
+<symbol id="ic-t0" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="6"/><path d="M15 15l6 6M7.5 10h5M10 7.5v5"/></g></symbol>
+<symbol id="ic-t1" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19C5 10 10 5 20 4c0 10-5 15-14 15z"/><path d="M5 19l8-8"/></g></symbol>
+<symbol id="ic-t2" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18"/></g></symbol>
+<symbol id="ic-t3" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="12" r="5.5"/><circle cx="15" cy="12" r="5.5"/></g></symbol>
+<symbol id="ic-t4" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v10h-9l-4 4v-4H4z"/><path d="M8 9h8M8 12h5"/></g></symbol>
+<symbol id="ic-t5" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-5 9 5z"/><path d="M6 11v7M10 11v7M14 11v7M18 11v7M3 20h18"/></g></symbol>
+<symbol id="ic-t6" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20l1-4L16 5l3 3L8 19z"/><path d="M14 7l3 3"/></g></symbol>
+<symbol id="ic-t7" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v16M5 7h14M8 20h8"/><path d="M5 7l-3 7h6zM19 7l-3 7h6z"/></g></symbol>
+<symbol id="ic-t8" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v17H7z"/><path d="M10 3h4v3h-4zM9.5 12l2 2 3.5-4M9.5 18h5"/></g></symbol>
+</svg>
+<header>
+ <h1>Guía de estudio · Ética y Valores</h1>
+ <div class="chips"><span>Grado 9</span><span>Cuarto Periodo</span><span>Evaluación bimestral</span></div>
+ <button id="theme" class="ghost" type="button">Tema</button>
+ <div class="prog"><div class="bar" aria-label="Progreso"><i id="pbar"></i></div><div id="ptxt" class="small">Progreso: 0%</div></div>
+</header>
+<nav id="nav" aria-label="Temas"></nav>
+<main>
+
+<section id="inicio">
+ <div class="banner"><span class="ico" aria-hidden="true"><svg><use href="#ic-inicio"/></svg></span><div><h2>Cómo usar esta guía</h2><p class="hook">¿Listo para razonar en vez de memorizar?</p></div></div>
+ <p>Esta guía te enseña a <b>razonar</b> los temas que se evalúan: ética ambiental, ODS, relaciones internacionales, SIMONU y diplomacia, ONU y derechos humanos. No contiene las respuestas de la evaluación: aquí practicas con casos <b>parecidos pero distintos</b> para que tú mismo llegues a tus propias respuestas.</p>
+ <ol><li>Lee la explicación de cada tema.</li><li>Estudia el ejemplo resuelto paso a paso (es otro caso).</li><li>Haz las prácticas; usa "ver pista" antes de rendirte.</li><li>Marca el tema como estudiado y al final haz la autoevaluación.</li></ol>
+ <h3>Mapa: pregunta del examen → sección de la guía</h3>
+ <div class="tablewrap"><table>
+ <tr><th>Preguntas</th><th>Tipo</th><th>Sección</th></tr>
+ <tr><td>1, 2, 3</td><td>Lectura + concepto ético</td><td><a href="#t1">1. Ética ambiental</a></td></tr>
+ <tr><td>4, 15, 16, 17, 18</td><td>Símbolos y aplicación de ODS / Agenda 2030</td><td><a href="#t2">2. ODS y Agenda 2030</a></td></tr>
+ <tr><td>5</td><td>Principio de relaciones internacionales</td><td><a href="#t3">3. Cooperación internacional</a></td></tr>
+ <tr><td>6, 7, 8, 9</td><td>SIMONU, discurso y diplomacia</td><td><a href="#t4">4. SIMONU y diplomacia</a></td></tr>
+ <tr><td>10, 11, 12, 13, 14</td><td>ONU, órganos, símbolos, derechos humanos</td><td><a href="#t5">5. La ONU y los derechos humanos</a></td></tr>
+ <tr><td>19, 20</td><td>Preguntas abiertas (resumen y afiche)</td><td><a href="#t6">6. Preguntas abiertas</a></td></tr>
+ <tr><td>Todas</td><td>Técnicas para tipo ICFES</td><td><a href="#t0">Estrategias ICFES</a></td></tr>
+ </table></div>
+</section>
+
+<section id="mapa">
+ <div class="banner"><span class="ico" aria-hidden="true"><svg><use href="#ic-mapa"/></svg></span><div><h2>Mapa de conceptos: cómo se conectan los temas</h2><p class="hook">¿Y si todos los temas fueran piezas del mismo rompecabezas?</p></div></div>
+ <p>Los temas de esta guía no están aislados: cada uno explica o aplica a otro. Pasa el cursor (o enfoca con el teclado) una flecha o un tema para leer cómo se relacionan; haz clic en un tema para ir a su sección. En el celular verás la misma información como lista.</p>
+ <div class="cm-wrap">
+  <div class="cm-svgwrap"><svg id="cmsvg" class="cm" viewBox="0 0 760 460" role="group" aria-label="Mapa de conceptos con siete temas y sus relaciones"></svg></div>
+  <ul id="cmlist" class="cm-list"></ul>
+  <div id="cmpanel" class="cm-panel" role="status" aria-live="polite"><b class="ttl">Relación:</b> elige una flecha o un tema para ver la explicación.</div>
+ </div>
+ <h3>Ruta de estudio sugerida</h3>
+ <p class="small">Sigue este orden: cada paso prepara el siguiente. Marcar una casilla actualiza tu progreso.</p>
+ <ol id="route" class="rt"></ol>
+</section>
+
+<section id="t0">
+ <div class="banner"><span class="ico" aria-hidden="true"><svg><use href="#ic-t0"/></svg></span><div><h2>Estrategias para preguntas tipo ICFES</h2><p class="hook">¿Y si pudieras eliminar dos opciones antes de elegir?</p></div></div>
+ <div class="lead"><figure class="hero fx"><svg viewBox="0 0 320 180" role="img" aria-labelledby="hi-t0" aria-label="Lupa que revisa un texto y cuatro opciones de respuesta, dos de ellas tachadas, que ilustra el método de leer y descartar" xmlns="http://www.w3.org/2000/svg"><title id="hi-t0">Lupa que revisa un texto y cuatro opciones de respuesta, dos de ellas tachadas, que ilustra el método de leer y descartar</title><rect class="bg" width="320" height="180" rx="14"/><rect class="f-s k-d" stroke-width="2" x="58" y="18" width="150" height="146" rx="8"/><rect class="f-d" x="72" y="34" width="118" height="6" rx="3"/><rect class="f-d" x="72" y="46" width="104" height="6" rx="3"/><rect class="f-d" x="72" y="58" width="112" height="6" rx="3"/><g class="rc nf"><circle class="f-s2 k-m" stroke-width="1.5" cx="80" cy="104" r="7"/><rect class="f-d" x="94" y="101" width="90" height="6" rx="3"/><circle class="f-s2 k-m" stroke-width="1.5" cx="80" cy="124" r="7"/><rect class="f-d" x="94" y="121" width="76" height="6" rx="3"/><circle class="f-s2 k-m" stroke-width="1.5" cx="80" cy="144" r="7"/><rect class="f-d" x="94" y="141" width="84" height="6" rx="3"/><circle class="f-s2 k-m" stroke-width="1.5" cx="80" cy="84" r="7"/><rect class="f-d" x="94" y="81" width="96" height="6" rx="3"/><path class="k-b nf" stroke-width="3" d="M90 124h98M90 84h104"/></g><g class="an-scan"><circle class="f-is k-2" fill-opacity=".55" stroke-width="6" cx="205" cy="62" r="30"/><path class="k-1 nf rc" stroke-width="9" d="M227 85l28 30"/><path class="k-s nf rc" stroke-width="3" d="M192 50a16 16 0 0 1 12-9"/></g></svg></figure><div class="side"><div class="ten lift"><b class="lbl">En 10 segundos</b><ul><li>Lee primero la pregunta y luego el texto.</li><li>Descarta absolutos: «única», «todos», «siempre».</li><li>Elige la opción que responde lo que se pregunta.</li></ul></div><div class="dato lift"><b class="lbl">Dato curioso</b><p>En las pruebas Saber de selección múltiple con única respuesta, cada pregunta trae cuatro opciones y solo una es válida; las otras se llaman distractores.</p></div></div></div>
+ <div class="box"><b>Método LEE-PREGUNTA-DESCARTA</b>
+ <ol><li><b>Lee primero la pregunta</b> (la última frase) para saber qué buscar.</li><li><b>Lee el texto</b> subrayando la idea principal y las palabras clave.</li><li><b>Descarta</b> opciones con palabras absolutas: "únicamente", "exclusivamente", "siempre", "todos", "ninguno", "cualquier".</li><li>Descarta las que <b>contradicen el texto</b> o que <b>no responden</b> lo que se pregunta aunque suenen bonitas.</li><li>Elige la que <b>responde a la pregunta</b> y es coherente con el texto y con el concepto.</li></ol></div>
+ <details><summary>Trampas comunes de las opciones</summary>
+ <ul><li><b>Verdadera pero irrelevante:</b> dice algo cierto, pero no contesta lo que se pregunta.</li><li><b>Extremista:</b> lleva la idea al límite ("nunca", "todo").</li><li><b>Opuesta:</b> dice lo contrario del concepto.</li><li><b>Repite palabras del texto</b> pero cambia el sentido.</li></ul></details>
+ <div class="q" data-mc='{"q":"Práctica: en un texto sobre el reciclaje, ¿cuál opción tiene más probabilidad de ser una trampa?","o":["Reciclar contribuye a reducir residuos cuando hay participación de la comunidad.","Reciclar es la única solución posible a todos los problemas ambientales.","El reciclaje requiere separar los materiales desde el origen.","Las autoridades y los ciudadanos comparten responsabilidades."],"a":1,"f":["Es una afirmación moderada y razonable; no tiene alarmas.","Correcto: \"la única\" y \"todos\" son absolutos. Suelen indicar opciones extremas.","Es una idea concreta y compatible con el tema.","Es equilibrada y no usa absolutos."],"h":"Busca palabras como única, todos, siempre.","id":"c0"}'></div>
+ <p class="small">Tomar 1 minuto para clasificar las opciones en "posible / dudosa / descartada" mejora mucho la precisión.</p>
+ <button class="ghost" data-done="t0">Marcar como estudiado</button>
+</section>
+
+<section id="t1">
+ <div class="banner"><span class="ico" aria-hidden="true"><svg><use href="#ic-t1"/></svg></span><div><h2>1. Ética ambiental</h2><p class="hook">¿Vale un río solo porque nos sirve, o también por sí mismo?</p></div></div>
+ <span class="tag">Preguntas 1, 2, 3</span>
+ <div class="lead"><figure class="hero fx"><svg viewBox="0 0 320 180" role="img" aria-labelledby="hi-t1" aria-label="Laguna con aves, un árbol y el sol en el horizonte: la naturaleza que la ética ambiental nos pide cuidar" xmlns="http://www.w3.org/2000/svg"><title id="hi-t1">Laguna con aves, un árbol y el sol en el horizonte: la naturaleza que la ética ambiental nos pide cuidar</title><rect class="bg" width="320" height="180" rx="14"/><g class="an-pulse"><circle class="f-3" cx="262" cy="40" r="17"/><path class="k-3 nf rc" stroke-width="3" d="M262 12v8M262 60v8M234 40h8M282 40h8M242 20l6 6M276 54l6 6M282 20l-6 6M248 54l-6 6"/></g><path class="f-4" d="M0 138Q70 108 150 132T320 122V180H0z"/><path class="f-o" fill-opacity=".55" d="M0 160Q90 138 190 158T320 150V180H0z"/><ellipse class="f-2 an-ripple" cx="110" cy="152" rx="70" ry="15"/><path class="k-s nf rc" stroke-width="2" d="M70 150h30M118 156h36M92 146h14"/><rect class="f-1" x="238" y="96" width="10" height="46" rx="3"/><circle fill="url(#gTree)" cx="243" cy="86" r="26"/><circle class="f-4" fill-opacity=".8" cx="226" cy="100" r="16"/><circle class="f-2" fill-opacity=".7" cx="262" cy="98" r="14"/><rect class="f-1" x="40" y="104" width="6" height="26" rx="2"/><circle class="f-4" cx="43" cy="98" r="15"/><g class="an-float"><path class="k-t nf rc" stroke-width="2.5" d="M120 48q7-9 14 0q7-9 14 0M160 66q5-7 10 0q5-7 10 0"/></g></svg></figure><div class="side"><div class="ten lift"><b class="lbl">En 10 segundos</b><ul><li>Antropocentrismo: vale el ser humano.</li><li>Biocentrismo: vale todo ser vivo.</li><li>Ecocentrismo: vale el ecosistema completo.</li></ul></div><div class="dato lift"><b class="lbl">Dato curioso</b><p>La palabra «ecología» fue propuesta por el biólogo alemán Ernst Haeckel en 1866.</p></div></div></div>
+ <p>La <b>ética ambiental</b> pregunta: ¿qué obligaciones tenemos con la naturaleza y con quienes vivirán después de nosotros? Existen varias posturas sobre quién o qué tiene valor moral.</p>
+ <div class="tablewrap"><table>
+ <tr><th>Postura</th><th>¿Qué tiene valor moral?</th><th>Idea clave</th></tr>
+ <tr><td>Antropocentrismo</td><td>El ser humano</td><td>La naturaleza vale por lo que sirve (valor instrumental). Hay versiones <i>moderadas</i> (cuidar porque lo necesitamos) y <i>extremas</i> (todo vale si beneficia al humano).</td></tr>
+ <tr><td>Biocentrismo</td><td>Todo ser vivo</td><td>La vida tiene valor propio (valor intrínseco).</td></tr>
+ <tr><td>Ecocentrismo</td><td>Ecosistemas completos</td><td>Importan las relaciones y el equilibrio del conjunto.</td></tr>
+ <tr><td>Ética de la responsabilidad</td><td>Quienes resultan afectados por nuestras acciones</td><td>Nuestras acciones tienen consecuencias que debemos asumir.</td></tr>
+ </table></div>
+ <h3>Vocabulario</h3>
+ <ul><li><b>Valor intrínseco:</b> vale por sí mismo.</li><li><b>Valor instrumental:</b> vale como medio para otro fin.</li><li><b>Equilibrio ecológico:</b> relación estable entre seres vivos y su entorno.</li><li><b>Generaciones futuras:</b> personas que aún no han nacido pero serán afectadas por lo que hoy hacemos.</li><li><b>Obligación moral:</b> deber que nace de lo que consideramos correcto, no solo de una ley o un negocio.</li></ul>
+ <details><summary>Ejemplo resuelto (otro caso): "La laguna de Villa Aurora"</summary>
+ <p><b>Texto inventado:</b> Un municipio planea secar una laguna donde habitan aves migratorias para construir un centro comercial. Los defensores dicen que traerá empleo; los opositores, que la laguna regula las lluvias y alberga especies únicas.</p>
+ <ol>
+ <li><b>Identifica los actores:</b> empresarios, habitantes, aves, futuras generaciones.</li>
+ <li><b>Pregúntate quién tiene valor para cada postura:</b> antropocentrismo extremo → solo cuenta el empleo; antropocentrismo moderado → cuenta el bienestar humano a largo plazo (agua, lluvias); biocentrismo → las aves y plantas tienen valor propio.</li>
+ <li><b>Evalúa consecuencias:</b> ¿qué pasa si en 20 años hay inundaciones? ¿Quién las sufre?</li>
+ <li><b>Concluye con argumento:</b> "Una decisión éticamente responsable debe considerar las consecuencias a largo plazo y el valor de otras formas de vida, buscando alternativas (otro terreno, compensación)".</li>
+ </ol>
+ <p class="small">Fíjate: no elegí por intuición; usé las posturas como lentes y verifiqué consecuencias.</p></details>
+ <h3>Estrategia para preguntas de concepto en un texto</h3>
+ <ul><li>Subraya en el texto qué <b>criterio</b> usa para dar valor a la naturaleza (¿utilidad? ¿vida? ¿equilibrio?).</li><li>En la pregunta de "limitación" o "crítica", piensa: ¿qué <b>deja por fuera</b> esa postura?</li><li>En la pregunta de "fundamento", busca la opción que <b>justifica con una razón moral</b> y no solo con un beneficio.</li></ul>
+ <h3>Práctica</h3>
+ <div class="q" data-mc='{"q":"Un texto dice: \"Un río merece protección porque permite la vida de miles de peces, aunque nadie lo use para pescar\". ¿Qué postura refleja mejor?","o":["Antropocentrismo extremo","Biocentrismo / ecocentrismo","Indiferencia moral","Utilitarismo económico"],"a":1,"f":["No: el antropocentrismo extremo valoraría el río solo si sirve a las personas, y aquí se dice que se protege aunque nadie lo use.","Correcto: da valor a la vida y al ecosistema por sí mismos, sin depender de la utilidad humana.","No: hay un juicio moral claro a favor del río.","No: el criterio no es el dinero ni el beneficio."],"h":"Fíjate en la frase \"aunque nadie lo use\".","id":"c1a"}'></div>
+ <div class="q" data-mc='{"q":"Un alcalde dice: \"Cuidaremos el bosque solo mientras sea rentable\". ¿Qué debilidad ética tiene esta idea?","o":["Que defiende la economía local","Que condiciona el cuidado a la ganancia y puede destruir lo que no genere dinero","Que propone un plan de largo plazo","Que respeta a las generaciones futuras"],"a":1,"f":["Defender la economía no es el problema; el problema es el límite que pone.","Correcto: si deja de ser rentable, el bosque queda sin protección moral.","Más bien lo contrario: depende de la rentabilidad actual.","Si el bosque se pierde, las futuras generaciones no lo tendrán."],"h":"¿Qué pasa con el bosque el día que deje de dar dinero?","id":"c1b"}'></div>
+ <div class="q" data-mc='{"q":"¿Cuál enunciado expresa mejor un fundamento ÉTICO (no solo económico) para cuidar el agua?","o":["Cuidarla ahorra dinero en la factura.","Las empresas la necesitan para producir.","Cuidarla es un deber moral hacia los demás, más allá de lo que cueste o ahorre.","Es obligatorio por una circular del colegio."],"a":2,"f":["Es una razón económica, válida pero no ética en sentido profundo.","Es instrumental: depende de la empresa.","Correcto: apela a un deber moral, no a un beneficio.","Es una razón de norma, no de convicción moral."],"h":"El fundamento ético apela a deberes, no solo a beneficios.","id":"c1c"}'></div>
+ <h3>Clasifica los conceptos</h3>
+ <div class="match" data-match='{"id":"m1","cats":["Antropocentrismo","Biocentrismo","Ecocentrismo"],"items":[["\"Importa el equilibrio de todo el ecosistema como conjunto\"",2],["\"La naturaleza es un almacén de recursos para las personas\"",0],["\"Un árbol merece respeto porque está vivo\"",1],["\"Lo que cuenta son las relaciones entre especies, suelo y agua\"",2],["\"Si no genera beneficio humano, no tiene valor\"",0]]}'></div>
+ <button class="ghost" data-done="t1">Marcar como estudiado</button>
+</section>
+
+<section id="t2">
+ <div class="banner"><span class="ico" aria-hidden="true"><svg><use href="#ic-t2"/></svg></span><div><h2>2. ODS y Agenda 2030</h2><p class="hook">¿Sabías que 17 metas buscan cambiar el mundo para el año 2030?</p></div></div>
+ <span class="tag">Preguntas 4, 15, 16, 17, 18</span>
+ <div class="lead"><figure class="hero fx"><svg viewBox="0 0 320 180" role="img" aria-labelledby="hi-t2" aria-label="Globo dividido en diecisiete sectores de colores alrededor de un brote verde y el año 2030, que representa los diecisiete objetivos de la Agenda 2030" xmlns="http://www.w3.org/2000/svg"><title id="hi-t2">Globo dividido en diecisiete sectores de colores alrededor de un brote verde y el año 2030, que representa los diecisiete objetivos de la Agenda 2030</title><rect class="bg" width="320" height="180" rx="14"/><circle class="f-s2 k-d" stroke-width="2" cx="160" cy="90" r="82"/><g class="an-spin"><path class="f-1 k-s" stroke-width="2" d="M160.0 18.0A72 72 0 0 1 186.0 22.9L173.7 54.6A38 38 0 0 0 160.0 52.0Z"/><path class="f-2 k-s" stroke-width="2" d="M186.0 22.9A72 72 0 0 1 208.5 36.8L185.6 61.9A38 38 0 0 0 173.7 54.6Z"/><path class="f-3 k-s" stroke-width="2" d="M208.5 36.8A72 72 0 0 1 224.5 57.9L194.0 73.1A38 38 0 0 0 185.6 61.9Z"/><path class="f-4 k-s" stroke-width="2" d="M224.5 57.9A72 72 0 0 1 231.7 83.4L197.8 86.5A38 38 0 0 0 194.0 73.1Z"/><path class="f-5 k-s" stroke-width="2" d="M231.7 83.4A72 72 0 0 1 229.3 109.7L196.5 100.4A38 38 0 0 0 197.8 86.5Z"/><path class="f-1 k-s" stroke-width="2" d="M229.3 109.7A72 72 0 0 1 217.5 133.4L190.3 112.9A38 38 0 0 0 196.5 100.4Z"/><path class="f-2 k-s" stroke-width="2" d="M217.5 133.4A72 72 0 0 1 197.9 151.2L180.0 122.3A38 38 0 0 0 190.3 112.9Z"/><path class="f-3 k-s" stroke-width="2" d="M197.9 151.2A72 72 0 0 1 173.2 160.8L167.0 127.4A38 38 0 0 0 180.0 122.3Z"/><path class="f-4 k-s" stroke-width="2" d="M173.2 160.8A72 72 0 0 1 146.8 160.8L153.0 127.4A38 38 0 0 0 167.0 127.4Z"/><path class="f-5 k-s" stroke-width="2" d="M146.8 160.8A72 72 0 0 1 122.1 151.2L140.0 122.3A38 38 0 0 0 153.0 127.4Z"/><path class="f-1 k-s" stroke-width="2" d="M122.1 151.2A72 72 0 0 1 102.5 133.4L129.7 112.9A38 38 0 0 0 140.0 122.3Z"/><path class="f-2 k-s" stroke-width="2" d="M102.5 133.4A72 72 0 0 1 90.7 109.7L123.5 100.4A38 38 0 0 0 129.7 112.9Z"/><path class="f-3 k-s" stroke-width="2" d="M90.7 109.7A72 72 0 0 1 88.3 83.4L122.2 86.5A38 38 0 0 0 123.5 100.4Z"/><path class="f-4 k-s" stroke-width="2" d="M88.3 83.4A72 72 0 0 1 95.5 57.9L126.0 73.1A38 38 0 0 0 122.2 86.5Z"/><path class="f-5 k-s" stroke-width="2" d="M95.5 57.9A72 72 0 0 1 111.5 36.8L134.4 61.9A38 38 0 0 0 126.0 73.1Z"/><path class="f-1 k-s" stroke-width="2" d="M111.5 36.8A72 72 0 0 1 134.0 22.9L146.3 54.6A38 38 0 0 0 134.4 61.9Z"/><path class="f-2 k-s" stroke-width="2" d="M134.0 22.9A72 72 0 0 1 160.0 18.0L160.0 52.0A38 38 0 0 0 146.3 54.6Z"/></g><circle class="f-s k-d" stroke-width="2" cx="160" cy="90" r="34"/><path class="k-o nf rc" stroke-width="3" d="M160 84v-16"/><path class="f-4" d="M160 74c-12 0-17-8-17-14 10 0 17 5 17 14z"/><path class="f-2" d="M160 72c12 0 17-8 17-14-10 0-17 5-17 14z"/><text class="hl" x="160" y="104">2030</text><circle class="f-3" cx="40" cy="30" r="6"/><circle class="f-1" cx="284" cy="150" r="7"/><circle class="f-2" cx="288" cy="34" r="4"/><circle class="f-4" cx="34" cy="148" r="5"/></svg></figure><div class="side"><div class="ten lift"><b class="lbl">En 10 segundos</b><ul><li>17 objetivos con una meta: el desarrollo sostenible.</li><li>Investiga qué dimensiones del desarrollo busca unir la Agenda.</li><li>La política más coherente responde al propósito del ODS sin dejar a nadie atrás.</li></ul></div><div class="dato lift"><b class="lbl">Dato curioso</b><p>Los 17 ODS fueron adoptados en septiembre de 2015 por los 193 Estados miembros de la ONU.</p></div></div></div>
+ <p>Los <b>Objetivos de Desarrollo Sostenible (ODS)</b> son 17 metas globales de la Agenda 2030 de la ONU. Buscan que el desarrollo sea <b>sostenible</b>: que satisfaga las necesidades de hoy sin comprometer las de mañana. Averigua qué dimensiones del desarrollo busca conectar.</p>
+ <details open><summary>Lista de los 17 ODS</summary>
+ <div class="tablewrap"><table>
+ <tr><td>1 Fin de la pobreza</td><td>10 Reducción de desigualdades</td></tr>
+ <tr><td>2 Hambre cero</td><td>11 Ciudades y comunidades sostenibles</td></tr>
+ <tr><td>3 Salud y bienestar</td><td>12 Producción y consumo responsables</td></tr>
+ <tr><td>4 Educación de calidad</td><td>13 Acción por el clima</td></tr>
+ <tr><td>5 Igualdad de género</td><td>14 Vida submarina</td></tr>
+ <tr><td>6 Agua limpia y saneamiento</td><td>15 Vida de ecosistemas terrestres</td></tr>
+ <tr><td>7 Energía asequible y no contaminante</td><td>16 Paz, justicia e instituciones sólidas</td></tr>
+ <tr><td>8 Trabajo decente y crecimiento económico</td><td>17 Alianzas para lograr los objetivos</td></tr>
+ <tr><td>9 Industria, innovación e infraestructura</td><td></td></tr>
+ </table></div></details>
+ <h3>Cómo relacionar un ODS con su símbolo</h3>
+<figure class="exam-fig">
+  <div class="eg"><img src="img/pregunta-4-1.png" alt="Ícono cuadrado de color con un dibujo (1 de 6)" loading="lazy"><img src="img/pregunta-4-2.png" alt="Ícono cuadrado de color con un dibujo (2 de 6)" loading="lazy"><img src="img/pregunta-4-3.png" alt="Ícono cuadrado de color con un dibujo (3 de 6)" loading="lazy"><img src="img/pregunta-4-4.png" alt="Ícono cuadrado de color con un dibujo (4 de 6)" loading="lazy"><img src="img/pregunta-4-5.png" alt="Ícono cuadrado de color con un dibujo (5 de 6)" loading="lazy"><img src="img/pregunta-4-6.png" alt="Ícono cuadrado de color con un dibujo (6 de 6)" loading="lazy"></div>
+  <figcaption>📄 Imagen de tu evaluación — pregunta 4. <span>Observa: de cada ícono fíjate en el color de fondo, en el dibujo y en qué problema o necesidad del mundo simboliza ese dibujo. Luego repasa la sección de los ODS de esta guía y practica el método con otros objetivos. Haz clic en una imagen para ampliarla.</span></figcaption>
+</figure>
+
+ <div class="box">Cada ODS tiene un <b>número, un título, un color y un pictograma</b>. Para aprender el pictograma: (1) lee el título, (2) imagina el dibujo más sencillo que lo represente, (3) asocia con una frase. Cuando completes un cuadro con símbolos, puedes <b>dibujar el ícono o describirlo con claridad</b> junto con el número y el título.</div>
+ <p class="small">Para no darte la respuesta de tu evaluación, aquí practicamos el método con <b>otros</b> ODS. Aplícalo luego a los que te piden.</p>
+ <ul><li><b>ODS 6 (agua):</b> una gota de agua con flechas (agua que circula y se limpia).</li><li><b>ODS 5 (género):</b> símbolo de género con un signo igual.</li><li><b>ODS 16 (paz):</b> una paloma con una rama.</li><li><b>ODS 17 (alianzas):</b> círculos entrelazados (trabajo conjunto).</li><li><b>ODS 11 (ciudades):</b> edificios de una ciudad.</li></ul>
+ <h3>Une el ODS con una idea de símbolo</h3>
+ <div class="match" data-match='{"id":"m2","cats":["Gota con flechas","Paloma con rama","Círculos entrelazados","Edificios de ciudad"],"items":[["ODS 6 Agua limpia",0],["ODS 16 Paz y justicia",1],["ODS 17 Alianzas",2],["ODS 11 Ciudades sostenibles",3]]}'></div>
+ <details><summary>Ejemplo resuelto (otro caso): aplicar el ODS 7 a una política</summary>
+ <p><b>Situación inventada:</b> Un municipio rural sin electricidad estable debe elegir un plan.</p>
+ <ol><li>Identifica el problema: acceso a energía.</li><li>Recuerda el ODS 7: energía asequible y no contaminante para todos.</li><li>Revisa tres tests: ¿Llega a <b>todos</b> (inclusión)? ¿Es <b>sostenible</b> (no daña el ambiente)? ¿Es <b>asequible</b> (cobro justo)?</li><li>Una política coherente: paneles solares comunitarios con tarifa social. Una incoherente: concentrar la energía solo en zonas ricas o usar carbón sin evaluar el impacto.</li></ol></details>
+ <h3>Estrategia para "¿cuál política aplica el ODS X?"</h3>
+ <ol><li>Recuerda el <b>propósito</b> del ODS en una frase.</li><li>Descarta opciones que <b>contradigan</b> el propósito (excluir, contaminar, desentenderse).</li><li>Descarta opciones <b>parciales</b> (solo una parte de la responsabilidad o solo propaganda).</li><li>Elige la <b>integral</b>: combina varias acciones, incluye a los más vulnerables y a varios actores.</li></ol>
+ <h3>Práctica</h3>
+ <div class="q" data-mc='{"q":"ODS 6 (agua limpia y saneamiento). ¿Qué política es más coherente?","o":["Cobrar el agua solo a hogares pobres","Ampliar redes de agua potable y tratamiento de aguas residuales, priorizando zonas sin acceso","Permitir vertidos industriales si pagan una multa pequeña","Dejar que cada familia busque su fuente de agua"],"a":1,"f":["Invierte la lógica de inclusión del ODS.","Correcto: garantiza acceso, calidad y cuidado del recurso, con enfoque en quienes más lo necesitan.","Contamina las fuentes y contradice el objetivo.","Delegar totalmente en cada familia ignora la responsabilidad colectiva."],"h":"Busca la que combine acceso y protección.","id":"c2a"}'></div>
+ <div class="q" data-mc='{"q":"¿Cuántos Objetivos de Desarrollo Sostenible tiene la Agenda 2030?","o":["Siete","Diecisiete","Treinta"],"a":1,"f":["No: son más.","Correcto: son 17 objetivos.","No: son menos."],"h":"Está en el título de una sección de la guía.","id":"c2b"}'></div>
+ <div class="q" data-mc='{"q":"ODS 8 (trabajo decente). Una acción coherente sería:","o":["Pagar salarios por debajo del mínimo para atraer inversión","Promover empleos formales con derechos y seguridad social","Eliminar descansos laborales","Prohibir el trabajo a las mujeres"],"a":1,"f":["Contradice \"decente\".","Correcto: empleo digno y con derechos.","Afecta la dignidad del trabajador.","Contradice igualdad (ODS 5)."],"h":"\"Decente\" implica derechos y dignidad.","id":"c2c"}'></div>
+ <button class="ghost" data-done="t2">Marcar como estudiado</button>
+</section>
+
+<section id="t3">
+ <div class="banner"><span class="ico" aria-hidden="true"><svg><use href="#ic-t3"/></svg></span><div><h2>3. Relaciones internacionales y cooperación</h2><p class="hook">¿Puede un solo país detener una pandemia o limpiar un río compartido?</p></div></div>
+ <span class="tag">Pregunta 5</span>
+ <div class="lead"><figure class="hero fx"><svg viewBox="0 0 320 180" role="img" aria-labelledby="hi-t3" aria-label="Tres territorios separados por fronteras punteadas, un río que los cruza y personas de cada uno unidas por puentes: un problema compartido se resuelve en conjunto" xmlns="http://www.w3.org/2000/svg"><title id="hi-t3">Tres territorios separados por fronteras punteadas, un río que los cruza y personas de cada uno unidas por puentes: un problema compartido se resuelve en conjunto</title><rect class="bg" width="320" height="180" rx="14"/><rect class="f-4" fill-opacity=".5" x="0" y="112" width="320" height="68"/><path class="k-t nf" stroke-width="2" stroke-dasharray="5 4" d="M107 106v74M213 106v74"/><path class="k-2 nf rc" stroke-width="15" d="M0 150C60 128 110 172 160 150S262 130 320 150"/><path class="k-s nf rc" stroke-width="2" d="M20 150c20-8 30 6 50 0M200 150c20-8 30 6 50 0"/><path class="k-m nf an-dash" stroke-width="3" d="M70 60Q115 30 160 56M160 56Q205 30 250 60"/><g><circle class="f-1" cx="55" cy="68" r="22"/><circle class="f-s" cx="55" cy="62" r="7"/><path class="f-s" d="M42 80a13 11 0 0 1 26 0z"/></g><g><circle class="f-3" cx="160" cy="68" r="22"/><circle class="f-s" cx="160" cy="62" r="7"/><path class="f-s" d="M147 80a13 11 0 0 1 26 0z"/></g><g><circle class="f-4" cx="265" cy="68" r="22"/><circle class="f-s" cx="265" cy="62" r="7"/><path class="f-s" d="M252 80a13 11 0 0 1 26 0z"/></g></svg></figure><div class="side"><div class="ten lift"><b class="lbl">En 10 segundos</b><ul><li>Pregunta clave: ¿puede un solo país resolverlo?</li><li>Si no, ¿qué tipo de respuesta necesita el problema?</li><li>Multilateral = varios Estados con reglas comunes.</li></ul></div><div class="dato lift"><b class="lbl">Dato curioso</b><p>En 1980 la Organización Mundial de la Salud declaró erradicada la viruela, un logro de la cooperación internacional en vacunación.</p></div></div></div>
+ <p>Las <b>relaciones internacionales</b> estudian cómo se vinculan los Estados y organizaciones. Algunos problemas (clima, pandemias, migración, hambre) <b>cruzan fronteras</b> y ningún país puede resolverlos solo.</p>
+ <ul><li><b>Soberanía:</b> autoridad de un Estado sobre su territorio.</li><li><b>Cooperación:</b> trabajar juntos por un objetivo común.</li><li><b>Multilateralismo:</b> varios Estados actúan coordinadamente, con reglas comunes.</li><li><b>Bilateral:</b> entre dos Estados.</li><li><b>Problemas globales:</b> afectan a muchos países a la vez.</li></ul>
+ <details><summary>Ejemplo resuelto (otro caso): la pandemia de una gripe nueva</summary>
+ <ol><li><b>Problema:</b> un virus se propaga por vuelos entre países.</li><li><b>¿Puede un país solo?</b> Si cierra fronteras pero otros no vigilan, el virus vuelve. Falta información compartida.</li><li><b>Mecanismo:</b> intercambiar datos, repartir vacunas, coordinar normas sanitarias.</li><li><b>Principio:</b> redáctalo tú: ¿qué tipo de respuesta necesita un problema que ningún país puede resolver solo?</li></ol></details>
+ <h3>Estrategia</h3>
+ <p>Pregunta clave: <b>¿puede un solo país resolverlo?</b> Si la respuesta es no, piensa qué tipo de respuesta necesita el problema. Desconfía de las opciones que proponen aislamiento total, dominio de uno sobre todos o competencia como único camino.</p>
+ <div class="q" data-mc='{"q":"¿Cuál de estos es un problema global, que cruza fronteras?","o":["Un partido de fútbol en el barrio","Una pandemia que se propaga entre países","Una fiesta de cumpleaños","Un cambio de horario escolar"],"a":1,"f":["Es un hecho local.","Correcto: afecta a muchos países a la vez.","Es un hecho privado.","Es un asunto local."],"h":"Piensa en algo que no se detiene en la frontera.","id":"c3a"}'></div>
+ <div class="q" data-mc='{"q":"¿Cuál es un ejemplo de cooperación multilateral?","o":["Dos vecinos que discuten por un límite","Un grupo de países que acuerda un fondo común para prevenir desastres","Una empresa que abre una sucursal","Un país que cierra su comercio"],"a":1,"f":["Es conflicto, no cooperación.","Correcto: varios Estados, objetivo común y acuerdo.","Es una acción privada.","Es aislamiento."],"h":"Multi = varios.","id":"c3b"}'></div>
+ <button class="ghost" data-done="t3">Marcar como estudiado</button>
+</section>
+
+<section id="t4">
+ <div class="banner"><span class="ico" aria-hidden="true"><svg><use href="#ic-t4"/></svg></span><div><h2>4. SIMONU y diplomacia</h2><p class="hook">¿Te imaginas representar a otro país y negociar como un diplomático?</p></div></div>
+ <span class="tag">Preguntas 6, 7, 8, 9 · apoyo para 19</span>
+ <div class="lead"><figure class="hero fx"><svg viewBox="0 0 320 180" role="img" aria-labelledby="hi-t4" aria-label="Delegado de pie en un atril con un globo de diálogo, otro globo que responde y cuatro carteles de delegaciones en la mesa: un debate diplomático" xmlns="http://www.w3.org/2000/svg"><title id="hi-t4">Delegado de pie en un atril con un globo de diálogo, otro globo que responde y cuatro carteles de delegaciones en la mesa: un debate diplomático</title><rect class="bg" width="320" height="180" rx="14"/><path class="f-as k-a rc" stroke-width="2" d="M96 18h128a10 10 0 0 1 10 10v34a10 10 0 0 1-10 10h-92l-22 18v-18H96a10 10 0 0 1-10-10V28a10 10 0 0 1 10-10z"/><rect class="f-m" x="100" y="30" width="110" height="7" rx="3"/><rect class="f-m" x="100" y="44" width="92" height="7" rx="3"/><rect class="f-m" x="100" y="58" width="72" height="7" rx="3"/><path class="f-is k-i rc" stroke-width="2" d="M248 84h42a8 8 0 0 1 8 8v20a8 8 0 0 1-8 8h-4v12l-14-12h-24a8 8 0 0 1-8-8V92a8 8 0 0 1 8-8z"/><circle class="f-i an-blink" cx="258" cy="102" r="4"/><circle class="f-i an-blink" style="animation-delay:.25s" cx="272" cy="102" r="4"/><circle class="f-i an-blink" style="animation-delay:.5s" cx="286" cy="102" r="4"/><circle class="f-1" cx="58" cy="92" r="14"/><path class="f-a" d="M32 140q0-30 26-30t26 30z"/><rect class="f-3 k-w" stroke-width="2" x="34" y="126" width="48" height="34" rx="4"/><rect class="f-s" x="44" y="136" width="28" height="5" rx="2"/><rect class="f-s2 k-d" stroke-width="2" x="100" y="150" width="212" height="16" rx="5"/><g class="rc"><path class="f-1" d="M112 148h40l-4-22h-32z"/><path class="f-2" d="M158 148h40l-4-22h-32z"/><path class="f-3" d="M204 148h40l-4-22h-32z"/><path class="f-4" d="M250 148h40l-4-22h-32z"/></g></svg></figure><div class="side"><div class="ten lift"><b class="lbl">En 10 segundos</b><ul><li>SIMONU: representas a un país y debates.</li><li>Discurso: saludo, contexto, postura, propuesta y cierre.</li><li>Diplomacia = representar bien a un país ante otros.</li></ul></div><div class="dato lift"><b class="lbl">Dato curioso</b><p>La ONU tiene seis idiomas oficiales (árabe, chino, español, francés, inglés y ruso) y sus reuniones cuentan con interpretación simultánea.</p></div></div></div>
+ <p>SIMONU es un <b>simulacro de Naciones Unidas</b>: tú representas a un país, investigas su política y debates con otras delegaciones. Se aprende argumentar, negociar y respetar.</p>
+ <h3>Vocabulario</h3>
+ <ul><li><b>Delegación / delegado:</b> equipo o persona que representa a un país.</li><li><b>Portafolio:</b> investigación previa sobre el país y el tema.</li><li><b>Discurso de apertura:</b> primera intervención con la postura oficial.</li><li><b>Política exterior:</b> la forma como un país se relaciona con otros.</li><li><b>Presidencia:</b> quien modera la sesión.</li><li><b>Consenso:</b> acuerdo que la mayoría puede aceptar tras negociar.</li><li><b>Coherencia:</b> que lo que dices no se contradiga con tu posición.</li></ul>
+ <h3>Estructura de un buen discurso</h3>
+ <ol><li>Saludo protocolario y presentación.</li><li>Contexto del problema.</li><li>Postura del país (con evidencia).</li><li>Preocupaciones y compromisos.</li><li>Propuestas de solución.</li><li>Cierre con disposición al diálogo.</li></ol>
+ <details><summary>Ejemplo resuelto (otro caso): análisis de una delegación de "Chile" sobre ciberseguridad infantil (caso inventado)</summary>
+ <p><b>Mini discurso:</b> "Honorable presidencia, honorables delegados: la delegación de Chile saluda a la comisión. Cada vez más menores sufren acoso en línea. Chile cuenta con leyes de protección de datos y desea que se amplíen. Nos preocupa la falta de reglas comunes. Proponemos un protocolo de cooperación entre plataformas y Estados, y expresamos nuestra disposición para negociar con todas las delegaciones."</p>
+ <ol><li><b>Saludo:</b> presente.</li><li><b>Contexto:</b> acoso en línea.</li><li><b>Postura:</b> leyes de protección de datos.</li><li><b>Propuesta:</b> protocolo de cooperación.</li><li><b>Cierre:</b> disposición al diálogo.</li></ol>
+ <p>Revisión de coherencia: ¿la propuesta contradice algo de la política del país? Para saberlo hay que haber investigado.</p></details>
+ <h3>Técnicas para las preguntas</h3>
+ <ul><li><b>Propósito de un discurso:</b> pregúntate "¿qué quiere lograr el delegado ante los demás en esta primera intervención?".</li><li><b>Fallas de una intervención:</b> compara lo que dice con lo que se espera (¿hay contradicciones? ¿faltan datos? ¿es irrespetuoso?).</li><li><b>Lenguaje diplomático:</b> piensa qué tono y qué tipo de argumentos conviene usar cuando tu objetivo es negociar.</li><li><b>Habilidades:</b> haz en tu cuaderno una lista de las habilidades que necesita un diplomático.</li></ul>
+ <h3>Práctica</h3>
+ <div class="q" data-mc='{"q":"¿Con qué suele abrirse un discurso diplomático en SIMONU?","o":["Con un saludo protocolario a la presidencia y a las delegaciones","Con una crítica a otro país","Con las conclusiones finales","Con un chiste"],"a":0,"f":["Correcto: es la fórmula de cortesía inicial.","No es la forma de abrir.","Las conclusiones van después del debate.","No corresponde al protocolo."],"h":"Piensa en el protocolo.","id":"c4a"}'></div>
+ <div class="q" data-mc='{"q":"En SIMONU, ¿qué es el portafolio de una delegación?","o":["La investigación previa sobre el país y el tema","Un trofeo para el mejor delegado","La lista de asistentes","El discurso de cierre"],"a":0,"f":["Correcto: es la preparación previa.","No es un premio.","No es una lista.","No es un discurso."],"h":"Se prepara antes de la sesión.","id":"c4b"}'></div>
+ <div class="q" data-mc='{"q":"¿Qué función cumple la presidencia en una comisión de SIMONU?","o":["Modera la sesión","Vota por todos los países","Redacta el portafolio de cada delegación","Decide qué país tiene la razón"],"a":0,"f":["Correcto: dirige y modera el debate.","Cada delegación vota por su país.","Cada delegación prepara el suyo.","No juzga quién tiene la razón."],"h":"Presidencia: quien modera la sesión.","id":"c4c"}'></div>
+ <h3>Clasifica los elementos del discurso</h3>
+ <div class="match" data-match='{"id":"m4","cats":["Apertura","Desarrollo","Cierre"],"items":[["Saludo protocolario a la presidencia",0],["Datos y contexto del problema",1],["Postura del país y propuestas",1],["Invitación a dialogar y cooperar",2],["Presentación de la delegación",0]]}'></div>
+ <button class="ghost" data-done="t4">Marcar como estudiado</button>
+</section>
+
+<section id="t5">
+ <div class="banner"><span class="ico" aria-hidden="true"><svg><use href="#ic-t5"/></svg></span><div><h2>5. La ONU y los derechos humanos</h2><p class="hook">¿Sabías que hay derechos que valen para todas las personas, sin excepción?</p></div></div>
+ <span class="tag">Preguntas 10, 11, 12, 13, 14</span>
+ <div class="lead"><figure class="hero fx"><svg viewBox="0 0 320 180" role="img" aria-labelledby="hi-t5" aria-label="Edificio con frontón y cinco columnas junto a un pergamino de derechos y tres personas de igual tamaño al frente: instituciones y derechos para todos" xmlns="http://www.w3.org/2000/svg"><title id="hi-t5">Edificio con frontón y cinco columnas junto a un pergamino de derechos y tres personas de igual tamaño al frente: instituciones y derechos para todos</title><rect class="bg" width="320" height="180" rx="14"/><path class="f-5 k-m rc" stroke-width="2" d="M30 70L120 28l90 42z"/><g class="f-s k-m" stroke-width="2"><rect x="40" y="76" width="16" height="58" rx="3"/><rect x="68" y="76" width="16" height="58" rx="3"/><rect x="96" y="76" width="16" height="58" rx="3"/><rect x="124" y="76" width="16" height="58" rx="3"/><rect x="152" y="76" width="16" height="58" rx="3"/><rect x="180" y="76" width="16" height="58" rx="3"/></g><rect class="f-s2 k-m" stroke-width="2" x="26" y="134" width="188" height="10" rx="3"/><rect class="f-d k-m" stroke-width="2" x="18" y="144" width="204" height="10" rx="3"/><circle class="f-3" cx="120" cy="52" r="7"/><g class="an-sway"><rect class="f-ws k-w" stroke-width="2" x="238" y="62" width="48" height="76" rx="5"/><ellipse class="f-3" cx="262" cy="62" rx="27" ry="6"/><ellipse class="f-3" cx="262" cy="138" rx="27" ry="6"/><rect class="f-m" x="248" y="80" width="28" height="5" rx="3"/><rect class="f-m" x="248" y="92" width="22" height="5" rx="3"/><rect class="f-m" x="248" y="104" width="28" height="5" rx="3"/><rect class="f-m" x="248" y="116" width="18" height="5" rx="3"/></g><g><circle class="f-1" cx="110" cy="168" r="6"/><circle class="f-2" cx="130" cy="168" r="6"/><circle class="f-4" cx="150" cy="168" r="6"/></g></svg></figure><div class="side"><div class="ten lift"><b class="lbl">En 10 segundos</b><ul><li>Los órganos de la ONU tienen funciones distintas.</li><li>Vinculante obliga; la recomendación solo orienta.</li><li>Analiza una institución: propósito, miembros, poder y críticas.</li></ul></div><div class="dato lift"><b class="lbl">Dato curioso</b><p>La Declaración Universal de Derechos Humanos, proclamada en 1948, está traducida a más de 500 idiomas.</p></div></div></div>
+ <h3>Conceptos clave</h3>
+ <ul><li>La ONU se creó en 1945: investiga en qué contexto histórico surgió y para qué.</li><li>Tiene varios <b>órganos principales</b>: Asamblea General, Consejo de Seguridad, Secretaría, Corte Internacional de Justicia, Consejo Económico y Social.</li><li><b>Resolución vinculante:</b> obliga jurídicamente. <b>Recomendación:</b> orienta pero no obliga.</li><li><b>Igualdad soberana:</b> todos los Estados son iguales en derechos como Estados.</li><li><b>Veto:</b> poder de bloquear una decisión.</li><li><b>Declaración Universal de Derechos Humanos:</b> documento de 1948 que fija derechos para toda persona.</li></ul>
+ <h3>Cómo analizar una institución (método de 4 preguntas)</h3>
+ <ol><li>¿Para qué existe? (propósito)</li><li>¿Quién participa y cómo? (membresía)</li><li>¿Qué puede decidir? (poder y alcance)</li><li>¿Qué críticas se le hacen? (límites)</li></ol>
+ <details><summary>Ejemplo resuelto (otro caso): el "Consejo Estudiantil" de un colegio inventado</summary>
+ <ol><li><b>Propósito:</b> representar a los estudiantes.</li><li><b>Membresía:</b> un representante por curso.</li><li><b>Poder:</b> hace propuestas; el rector decide.</li><li><b>Críticas posibles:</b> anótalas tú: ¿qué desigualdades de poder podrían aparecer entre los miembros?</li></ol>
+ <p>Con este método puedes analizar cualquier organismo (también los de la ONU) sin memorizar frases.</p></details>
+ <h3>Cómo identificar el símbolo de una organización</h3>
+ <ul><li>Observa <b>color de fondo</b>, <b>figura central</b> y <b>textos o siglas</b>.</li><li>Estudia las banderas/logos de organizaciones regionales: p. ej. la UE (fondo azul con estrellas en círculo), la Cruz Roja (cruz roja sobre fondo blanco), la OMS (símbolo con una serpiente en una vara).</li><li>Une cada <b>sigla</b> con su campo: MERCOSUR (comercio regional), OEA (países de América), OMS (salud), MEN (educación nacional). Cuando veas una imagen, pregúntate: ¿qué campo representa?</li></ul>
+<figure class="exam-fig">
+  <img src="img/pregunta-13.png" alt="Bandera rectangular de fondo azul claro con un emblema blanco circular en el centro, rodeado de ramas" loading="lazy">
+  <figcaption>📄 Imagen de tu evaluación — pregunta 13. <span>Observa: el color del fondo, la figura central y si hay textos o siglas. Pregúntate qué campo (comercio, países de un continente, paz mundial, educación) podría representar y compara con las siglas de las opciones.</span></figcaption>
+</figure>
+ <h3>Práctica</h3>
+ <div class="q" data-mc='{"q":"Una recomendación de un órgano internacional se diferencia de una decisión vinculante en que la recomendación…","o":["Orienta pero no obliga jurídicamente","Obliga a todos los Estados","Solo la puede emitir el Consejo de Seguridad","Es una sanción"],"a":0,"f":["Correcto: orienta sin obligar.","Eso lo hace la decisión vinculante.","No es exclusiva de ese órgano.","Una sanción es otra cosa."],"h":"Vinculante obliga; recomendación orienta.","id":"c5a"}'></div>
+ <div class="q" data-mc='{"q":"En un órgano internacional, tener «derecho de veto» significa…","o":["Poder bloquear una decisión","Poder proponer reformas","Estar obligado a votar","Hablar más tiempo que los demás"],"a":0,"f":["Correcto: el veto bloquea.","No es eso.","No es una obligación.","No se refiere al tiempo."],"h":"Veto: poder de bloquear una decisión.","id":"c5b"}'></div>
+ <div class="q" data-mc='{"q":"Un texto dice que un documento reconoce derechos \"sin discriminación\". ¿Qué significa?","o":["Que solo aplican a algunos grupos","Que se reconocen a todas las personas por igual","Que dependen del país de origen","Que se pueden quitar a voluntad"],"a":1,"f":["Eso sería discriminar.","Correcto: universal = para todos.","Se aplican sin importar la nacionalidad.","Los derechos humanos son inherentes."],"h":"\"Sin\" cambia el sentido.","id":"c5c"}'></div>
+ <h3>Une el órgano con su función general</h3>
+ <div class="match" data-match='{"id":"m5","cats":["Debate y recomienda","Mantiene la paz","Resuelve disputas jurídicas","Administra y ejecuta"],"items":[["Asamblea General",0],["Consejo de Seguridad",1],["Corte Internacional de Justicia",2],["Secretaría",3]]}'></div>
+ <button class="ghost" data-done="t5">Marcar como estudiado</button>
+</section>
+
+<section id="t6">
+ <div class="banner"><span class="ico" aria-hidden="true"><svg><use href="#ic-t6"/></svg></span><div><h2>6. Preguntas abiertas</h2><p class="hook">¿Cabe una gran idea en un eslogan de ocho palabras?</p></div></div>
+ <span class="tag">Preguntas 19 y 20</span>
+ <div class="lead"><figure class="hero fx"><svg viewBox="0 0 320 180" role="img" aria-labelledby="hi-t6" aria-label="Hoja con un resumen de líneas ordenadas, un afiche con eslogan, una gota de agua y un botón de llamado a la acción, y un lápiz que escribe" xmlns="http://www.w3.org/2000/svg"><title id="hi-t6">Hoja con un resumen de líneas ordenadas, un afiche con eslogan, una gota de agua y un botón de llamado a la acción, y un lápiz que escribe</title><rect class="bg" width="320" height="180" rx="14"/><rect class="f-s k-d" stroke-width="2" x="14" y="38" width="72" height="104" rx="6"/><rect class="f-3" x="22" y="48" width="30" height="7" rx="3"/><rect class="f-d" x="22" y="66" width="54" height="5" rx="3"/><rect class="f-d" x="22" y="78" width="46" height="5" rx="3"/><rect class="f-d" x="22" y="90" width="54" height="5" rx="3"/><rect class="f-d" x="22" y="102" width="40" height="5" rx="3"/><rect class="f-d" x="22" y="114" width="50" height="5" rx="3"/><rect class="f-s k-a" stroke-width="2.5" x="104" y="14" width="112" height="152" rx="6"/><rect class="f-1" x="116" y="26" width="88" height="9" rx="4"/><rect class="f-3" x="128" y="42" width="64" height="7" rx="3"/><path fill="url(#gWater)" d="M160 62C146 84 141 94 141 104a19 19 0 0 0 38 0c0-10-5-20-19-42z"/><path class="k-s nf rc" stroke-width="3" d="M150 106a10 10 0 0 0 7 9"/><rect class="f-d" x="122" y="132" width="76" height="5" rx="3"/><rect class="f-d" x="122" y="142" width="56" height="5" rx="3"/><rect class="f-a" x="130" y="148" width="60" height="12" rx="6"/><g class="an-write"><g transform="rotate(35 262 110)"><rect class="f-3" x="256" y="52" width="12" height="62" rx="2"/><rect class="f-1" x="256" y="46" width="12" height="9" rx="3"/><path class="f-5" d="M256 114h12l-6 16z"/><path class="f-t" d="M260 125h4l-2 5z"/></g></g><path class="k-2 nf rc an-dash" stroke-width="3" d="M228 150q14-10 28 0t28 0"/></svg></figure><div class="side"><div class="ten lift"><b class="lbl">En 10 segundos</b><ul><li>Resumen: quién, qué, por qué, propone y cierre.</li><li>Afiche: eslogan, imagen, dato y llamado a la acción.</li><li>Con tus palabras, breve y ordenado.</li></ul></div><div class="dato lift"><b class="lbl">Dato curioso</b><p>El Día Mundial del Medio Ambiente se celebra cada 5 de junio desde 1974 y suele inspirar campañas de afiches en todo el mundo.</p></div></div></div>
+ <h3>Pregunta 19: resumir un discurso</h3>
+ <p>Resumir no es copiar: es decir lo esencial con tus palabras en pocas líneas. Usa la plantilla <b>QUIÉN - QUÉ - POR QUÉ - PROPONE - CIERRE</b>.</p>
+ <div class="box"><ol><li><b>Quién habla:</b> país o delegación, comisión y tema.</li><li><b>Contexto:</b> cómo describe el problema.</li><li><b>Postura:</b> qué opina y con qué apoyo (datos, leyes).</li><li><b>Propone o se compromete:</b> acciones.</li><li><b>Cierre:</b> tono y disposición al diálogo.</li></ol></div>
+<figure class="exam-fig">
+  <img src="img/pregunta-19.png" alt="Documento impreso con un título, dos banderas rectangulares en la parte superior y varios párrafos de texto" loading="lazy">
+  <figcaption>📄 Imagen de tu evaluación — pregunta 19. <span>Observa: el encabezado (quién habla, en qué comisión, sobre qué tema), las partes del discurso (saludo, contexto, postura, propuesta, cierre) y las palabras clave. Subraya mentalmente cada parte antes de escribir tu resumen con tus palabras.</span></figcaption>
+</figure>
+
+ <details><summary>Modelo sobre OTRO tema: discurso sobre ciberseguridad infantil</summary>
+ <p><b>Discurso original (inventado, 4 líneas):</b> "Honorable presidencia: Chile saluda a esta comisión. Los menores en línea enfrentan acoso y robo de datos. Nuestro país ha aprobado leyes de protección de datos. Proponemos un protocolo de cooperación entre Estados y plataformas. Quedamos abiertos al diálogo."</p>
+ <p><b>Resumen modelo:</b> "La delegación de Chile expone el riesgo de acoso y robo de datos que sufren los menores en internet. Explica que su país ya protege los datos con leyes nacionales y propone un protocolo de cooperación entre Estados y plataformas. Cierra mostrando disposición al diálogo con las demás delegaciones."</p>
+ <p class="small">Observa: 3 frases, sin copiar, con las partes de la plantilla.</p></details>
+ <details><summary>Revisa tu resumen (lista de verificación)</summary>
+ <ul><li>¿Aparece quién habla y el tema?</li><li>¿Incluye la postura y las propuestas?</li><li>¿Usé mis palabras?</li><li>¿Es breve y ordenado?</li></ul></details>
+ <h3>Pregunta 20: afiche publicitario ambiental de un país</h3>
+ <p>Un afiche comunica una idea rápido. Estructura sugerida:</p>
+ <ul><li><b>Eslogan</b> corto y memorable (máx. 8 palabras).</li><li><b>Imagen principal</b> que represente el mensaje.</li><li><b>Dato o argumento</b> (una cifra o una razón).</li><li><b>Llamado a la acción</b> (verbo en imperativo: Cuida, Recicla, Ahorra).</li><li><b>Identificación del país</b> (bandera, símbolos naturales) y, si puedes, el ODS relacionado.</li></ul>
+ <details><summary>Modelo sobre OTRO tema: afiche "Cuida el agua del colegio"</summary>
+ <ul><li><b>Eslogan:</b> "Una gota cuenta."</li><li><b>Imagen:</b> grifo con una gota que forma un mundo.</li><li><b>Dato:</b> "Un grifo que gotea desperdicia litros al día."</li><li><b>Llamado:</b> "Cierra bien la llave."</li><li><b>Firma:</b> logo del colegio y ODS 6.</li></ul>
+ <p class="small">Recuerda la composición: título arriba, imagen al centro, llamado abajo; pocos colores, letras grandes.</p></details>
+ <details><summary>Ver pista: cómo conectar tu afiche con lo ambiental</summary>
+ <p>Elige un problema ambiental que tu país enfrente, una acción que cualquiera pueda hacer y relaciona el mensaje con una idea de la sección 1.</p></details>
+ <div class="q" data-mc='{"q":"Práctica: ¿cuál es el MEJOR eslogan para un afiche?","o":["Es importante que todos los ciudadanos, en la medida de sus posibilidades, consideren eventualmente reducir el consumo energético.","Apaga hoy, ilumina mañana.","Energía.","Afiche sobre energía."],"a":1,"f":["Es demasiado largo y vago.","Correcto: corto, claro y con llamado a la acción.","Es una sola palabra sin mensaje.","Describe el afiche, no comunica."],"h":"Corto, claro, con acción.","id":"c6a"}'></div>
+ <button class="ghost" data-done="t6">Marcar como estudiado</button>
+</section>
+
+<section id="t7">
+ <div class="banner"><span class="ico" aria-hidden="true"><svg><use href="#ic-t7"/></svg></span><div><h2>Explorador de dilemas</h2><p class="hook">¿Qué harías si dos cosas buenas chocan y solo puedes elegir una?</p></div></div>
+ <div class="lead"><figure class="hero fx"><svg viewBox="0 0 320 180" role="img" aria-labelledby="hi-t7" aria-label="Balanza en movimiento: en un platillo un árbol y en el otro un balón, dos valores en tensión entre los que hay que decidir" xmlns="http://www.w3.org/2000/svg"><title id="hi-t7">Balanza en movimiento: en un platillo un árbol y en el otro un balón, dos valores en tensión entre los que hay que decidir</title><rect class="bg" width="320" height="180" rx="14"/><rect class="f-m" x="157" y="42" width="6" height="108" rx="3"/><path class="f-m" d="M120 164h80l-14-16h-52z"/><circle class="f-a" cx="160" cy="40" r="7"/><g class="an-rock"><path class="k-t nf rc" stroke-width="5" d="M50 42H270"/><path class="k-m nf" stroke-width="2" d="M50 42L28 112M50 42L72 112M270 42L248 112M270 42L292 112"/><path class="f-s2 k-t rc" stroke-width="3" d="M22 112h56a28 22 0 0 1-56 0z"/><path class="f-s2 k-t rc" stroke-width="3" d="M242 112h56a28 22 0 0 1-56 0z"/><rect class="f-1" x="47" y="86" width="6" height="26" rx="2"/><circle class="f-4" cx="50" cy="76" r="16"/><circle class="f-2" fill-opacity=".75" cx="60" cy="82" r="9"/><circle class="f-s k-t" stroke-width="3" cx="270" cy="96" r="16"/><path class="f-t" d="M270 88l8 6-3 9h-10l-3-9z"/><path class="k-t nf" stroke-width="2" d="M270 88v-8M278 94l8-4M275 103l5 8M265 103l-5 8M262 94l-8-4"/></g></svg></figure><div class="side"><div class="ten lift"><b class="lbl">En 10 segundos</b><ul><li>Un dilema enfrenta valores en tensión.</li><li>Mira las perspectivas y las consecuencias de cada camino.</li><li>Argumenta: elijo..., porque... y reconozco que...</li></ul></div><div class="dato lift"><b class="lbl">Dato curioso</b><p>El famoso «dilema del tranvía» fue formulado por la filósofa Philippa Foot en 1967.</p></div></div></div>
+ <p>Un dilema ético exige elegir entre opciones con valores en tensión. Elige un camino y mira perspectivas y consecuencias. No hay una única "respuesta del examen": lo importante es argumentar.</p>
+ <div class="box"><b>Dilema inventado:</b> Tu colegio tiene un patio con árboles viejos. Quieren talarlos para construir una cancha que más estudiantes usarán.</div>
+ <div id="dil"></div>
+ <button class="ghost" data-done="t7">Marcar como estudiado</button>
+</section>
+
+<section id="t8">
+ <div class="banner"><span class="ico" aria-hidden="true"><svg><use href="#ic-t8"/></svg></span><div><h2>Autoevaluación final</h2><p class="hook">¿Cuánto recuerdas sin mirar tus apuntes? Compruébalo.</p></div></div>
+ <div class="lead"><figure class="hero fx"><svg viewBox="0 0 320 180" role="img" aria-labelledby="hi-t8" aria-label="Tabla con una lista de diez ejercicios marcados como hechos, un anillo de progreso y una estrella: la autoevaluación final" xmlns="http://www.w3.org/2000/svg"><title id="hi-t8">Tabla con una lista de diez ejercicios marcados como hechos, un anillo de progreso y una estrella: la autoevaluación final</title><rect class="bg" width="320" height="180" rx="14"/><rect class="f-s k-d" stroke-width="2.5" x="96" y="22" width="128" height="146" rx="10"/><rect class="f-1" x="130" y="12" width="60" height="18" rx="6"/><g class="rc nf" stroke-width="3.5"><circle class="f-s2 k-d" stroke-width="2" cx="116" cy="56" r="9"/><path class="k-o an-tick" d="M111 56l4 4 7-8"/><rect class="f-d" x="134" y="53" width="70" height="6" rx="3"/><circle class="f-s2 k-d" stroke-width="2" cx="116" cy="86" r="9"/><path class="k-o an-tick" style="animation-delay:.4s" d="M111 86l4 4 7-8"/><rect class="f-d" x="134" y="83" width="58" height="6" rx="3"/><circle class="f-s2 k-d" stroke-width="2" cx="116" cy="116" r="9"/><path class="k-o an-tick" style="animation-delay:.8s" d="M111 116l4 4 7-8"/><rect class="f-d" x="134" y="113" width="66" height="6" rx="3"/><circle class="f-s2 k-d" stroke-width="2" cx="116" cy="146" r="9"/><path class="k-o an-tick" style="animation-delay:1.2s" d="M111 146l4 4 7-8"/><rect class="f-d" x="134" y="143" width="54" height="6" rx="3"/></g><circle class="nf k-d" stroke-width="9" cx="266" cy="64" r="24"/><circle class="nf k-o rc" stroke-width="9" stroke-dasharray="118 151" transform="rotate(-90 266 64)" cx="266" cy="64" r="24"/><path class="f-3" d="M60 52l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1z"/><g class="an-float"><circle class="f-2" cx="52" cy="120" r="5"/><circle class="f-1" cx="272" cy="134" r="6"/></g></svg></figure><div class="side"><div class="ten lift"><b class="lbl">En 10 segundos</b><ul><li>Diez preguntas parecidas, no iguales, a las del examen.</li><li>Responde todas y luego presiona «Calificar».</li><li>Si fallas, vuelve al tema y revisa el criterio.</li></ul></div><div class="dato lift"><b class="lbl">Dato curioso</b><p>Intentar recordar lo estudiado, en vez de solo releerlo, mejora la memoria a largo plazo: se llama «efecto de la evaluación» y fue estudiado por Roediger y Karpicke en 2006.</p></div></div></div>
+ <p>Diez preguntas parecidas (no iguales) a las de tu examen. Responde todas y presiona "Calificar".</p>
+ <div id="final"></div>
+ <button id="grade">Calificar</button><button class="ghost" id="reset">Reiniciar</button>
+ <div id="score" class="box" style="display:none"></div>
+ <p class="small" id="best"></p>
+</section>
+
+</main>
+<footer>Guía de estudio · Ética y Valores · Grado 9 · Cuarto Periodo</footer>
+
+<dialog id="lb" aria-label="Imagen ampliada"><img id="lbi" alt=""><button type="button" id="lbx">Cerrar</button></dialog>
+<script>
+(function(){
+var secs=[["inicio","Inicio"],["mapa","Conexiones"],["t0","Estrategias"],["t1","Ética ambiental"],["t2","ODS"],["t3","Cooperación"],["t4","SIMONU"],["t5","ONU y DDHH"],["t6","Abiertas"],["t7","Dilemas"],["t8","Autoevaluación"]];
+var store={done:{},mc:{}};
+var NS="http://www.w3.org/2000/svg";
+function ico(id,cls){var s=document.createElementNS(NS,"svg");s.setAttribute("class",cls||"nico");s.setAttribute("aria-hidden","true");var u=document.createElementNS(NS,"use");u.setAttribute("href","#ic-"+id);s.appendChild(u);return s;}
+try{var s=localStorage.getItem("etica9");if(s)store=JSON.parse(s);store.done=store.done||{};store.mc=store.mc||{};}catch(e){}
+function save(){try{localStorage.setItem("etica9",JSON.stringify(store));}catch(e){}}
+var nav=document.getElementById("nav");
+secs.forEach(function(x){var a=document.createElement("a");a.href="#"+x[0];a.appendChild(ico(x[0]));a.appendChild(document.createTextNode(x[1]));a.id="n_"+x[0];nav.appendChild(a);});
+var trackable=["t0","t1","t2","t3","t4","t5","t6","t7"];
+function updateProg(){
+ var d=0;trackable.forEach(function(k){var n=document.getElementById("n_"+k);if(store.done[k]){d++;n.classList.add("done");}else n.classList.remove("done");});
+ var p=Math.round(d/trackable.length*100);
+ document.querySelectorAll("input[data-rt]").forEach(function(c){c.checked=!!store.done[c.dataset.rt];});
+ document.getElementById("pbar").style.width=p+"%";
+ document.getElementById("ptxt").textContent="Progreso: "+p+"% ("+d+" de "+trackable.length+" temas)";
+ document.querySelectorAll("button[data-done]").forEach(function(b){b.textContent=store.done[b.dataset.done]?"Estudiado ✓ (clic para desmarcar)":"Marcar como estudiado";});
+}
+document.querySelectorAll("button[data-done]").forEach(function(b){b.addEventListener("click",function(){var k=b.dataset.done;store.done[k]=!store.done[k];save();updateProg();});});
+
+function reveal(btn,txt,cls){
+ var d=document.createElement("div");d.className="reveal "+cls;d.textContent=(cls==="hint"?"💡 Pista: ":"")+txt;
+ btn.addEventListener("click",function(){d.classList.toggle("show");});
+ btn.insertAdjacentElement("afterend",d);
+}
+function buildMC(el,data,final){
+ var h=document.createElement("p");h.innerHTML="<b></b>";h.firstChild.textContent=data.q;el.appendChild(h);
+ var fbs=[];var locked=false;
+ data.o.forEach(function(t,i){
+  var b=document.createElement("button");b.className="opt";b.textContent=String.fromCharCode(65+i)+". "+t;
+  var fb=document.createElement("div");fb.className="fb";fb.style.display="none";fb.setAttribute("role","status");
+  b.addEventListener("click",function(){
+   if(final){return;}
+   var ok=i===data.a;
+   b.classList.add(ok?"ok":"no");
+   fb.style.display="block";fb.className="fb "+(ok?"ok":"no");fb.textContent=ok?(/^Correcto/.test(data.f[i])?"✔ ":"✔ Correcto. ")+data.f[i]:"✘ Incorrecto. "+data.f[i];
+   if(data.id){store.mc[data.id]=ok||store.mc[data.id]?1:0;save();}
+  });
+  el.appendChild(b);el.appendChild(fb);
+ });
+ if(!final){
+  var hb=document.createElement("button");hb.className="ghost";hb.textContent="Ver pista";el.appendChild(hb);reveal(hb,data.h,"hint");
+  var eb=document.createElement("button");eb.className="ghost";eb.textContent="Ver explicación de todas las opciones";el.appendChild(eb);
+  var ex=document.createElement("div");ex.className="reveal expl";
+  ex.innerHTML=data.f.map(function(t,i){return "<div></div>";}).join("");
+  ex.querySelectorAll("div").forEach(function(d,i){d.textContent=String.fromCharCode(65+i)+": "+data.f[i];});
+  eb.addEventListener("click",function(){ex.classList.toggle("show");});
+  el.appendChild(ex);
+ }
+}
+document.querySelectorAll("[data-mc]").forEach(function(el){buildMC(el,JSON.parse(el.getAttribute("data-mc")),false);});
+
+document.querySelectorAll("[data-match]").forEach(function(el){
+ var d=JSON.parse(el.getAttribute("data-match"));
+ var title=document.createElement("p");title.innerHTML="<b>Practica: clasifica o une cada elemento.</b>";el.appendChild(title);
+ var sels=[];
+ d.items.forEach(function(it,idx){
+  var r=document.createElement("div");r.className="mrow";
+  var t=document.createElement("span");t.className="t";t.textContent=it[0];
+  var s=document.createElement("select");s.setAttribute("aria-label","Categoría para: "+it[0]);
+  var o0=document.createElement("option");o0.value="";o0.textContent="Elige...";s.appendChild(o0);
+  d.cats.forEach(function(c,ci){var o=document.createElement("option");o.value=ci;o.textContent=c;s.appendChild(o);});
+  var m=document.createElement("span");m.setAttribute("role","status");
+  r.appendChild(t);r.appendChild(s);r.appendChild(m);el.appendChild(r);sels.push([s,m,it[1]]);
+ });
+ var b=document.createElement("button");b.textContent="Comprobar";el.appendChild(b);
+ var res=document.createElement("span");el.appendChild(res);
+ b.addEventListener("click",function(){
+  var c=0;sels.forEach(function(x){
+   if(x[0].value===""){x[1].textContent="";x[1].className="";return;}
+   if(+x[0].value===x[2]){c++;x[1].textContent="✔ Bien";x[1].className="mk ok";}
+   else{x[1].textContent="✘ Revisa la teoría";x[1].className="mk no";}
+  });
+  res.textContent=" "+c+" de "+sels.length+" correctas";
+  store.mc[d.id]=c===sels.length?1:0;save();
+ });
+});
+
+// Dilemas
+var dils=[
+{t:"A. Talar los árboles y construir la cancha",p:["Perspectiva antropocéntrica: más estudiantes tendrían un espacio para hacer deporte.","Perspectiva biocéntrica: se destruye la vida de árboles y de los animales que dependen de ellos.","Perspectiva de futuras generaciones: se pierde sombra y aire limpio."],c:"Beneficio inmediato en recreación, pero pérdida irreversible. Se puede mitigar sembrando nuevos árboles, aunque tardarán años."},
+{t:"B. Mantener los árboles y no construir",p:["Antropocéntrica: se pierde una oportunidad deportiva.","Biocéntrica: se respeta la vida existente.","Diplomática: puede generar conflicto con quienes querían la cancha."],c:"Se conserva el ecosistema, pero parte de la comunidad puede sentirse ignorada. Conviene explicar y ofrecer otra alternativa."},
+{t:"C. Buscar un acuerdo: construir en otro espacio y proteger los árboles",p:["Antropocéntrica: se atiende la necesidad deportiva.","Biocéntrica: se conserva la vida.","Diplomática: se construye consenso, escuchando a todos."],c:"Requiere tiempo, presupuesto y diálogo, pero busca equilibrar valores en tensión."}
+];
+var dd=document.getElementById("dil");
+dils.forEach(function(x){
+ var d=document.createElement("div");d.className="path";
+ var b=document.createElement("button");b.textContent=x.t;d.appendChild(b);
+ var r=document.createElement("div");r.className="reveal expl";
+ r.innerHTML="<b>Perspectivas</b><ul></ul><b>Consecuencias</b><p></p><p class='small'>Ahora escribe tu argumento: elijo..., porque..., y reconozco que...</p>";
+ x.p.forEach(function(t){var li=document.createElement("li");li.textContent=t;r.querySelector("ul").appendChild(li);});
+ r.querySelector("p").textContent=x.c;
+ b.addEventListener("click",function(){r.classList.toggle("show");});
+ d.appendChild(r);dd.appendChild(d);
+});
+
+// Final
+var fin=[
+{q:"Decir que algo tiene valor instrumental significa que vale…",o:["Como medio para otro fin","Por sí mismo","Solo para los animales","Solo en el pasado"],a:0},
+{q:"¿Qué órgano de la ONU se ocupa de resolver disputas jurídicas entre Estados?",o:["Corte Internacional de Justicia","Asamblea General","Secretaría","Consejo Económico y Social"],a:0},
+{q:"¿Cuál política es más coherente con el ODS 7 (energía asequible y no contaminante)?",o:["Subsidiar energía limpia para comunidades sin acceso","Aumentar el uso del carbón sin controles","Cobrar más a los hogares pobres","Limitar la energía a las ciudades"],a:0},
+{q:"Un acuerdo entre solo dos Estados se llama…",o:["Bilateral","Multilateral","Universal","Regional"],a:0},
+{q:"¿Quién modera una sesión de SIMONU?",o:["La presidencia","Cualquier delegado","El público","La delegación más grande"],a:0},
+{q:"En SIMONU, el «consenso» es…",o:["Un acuerdo que la mayoría puede aceptar tras negociar","El voto de un solo país","Una sanción","Un discurso de cierre"],a:0},
+{q:"Una resolución «vinculante» es aquella que…",o:["Obliga jurídicamente","Solo orienta","No tiene efectos","Solo aplica a un país"],a:0},
+{q:"¿Qué significa que un documento de derechos sea \"universal\"?",o:["Reconoce derechos a todas las personas","Solo a los ciudadanos de un país","Solo a los adultos","Solo a los fundadores de una organización"],a:0},
+{q:"ODS 11 (ciudades sostenibles). ¿Qué acción es coherente?",o:["Mejorar el transporte público y los espacios verdes","Eliminar parques para construir más","Ignorar a los barrios pobres","Aumentar la contaminación"],a:0},
+{q:"Un buen resumen de un discurso debe:",o:["Decir lo esencial con palabras propias","Copiar todo el texto","Agregar opiniones sin relación","Omitir la postura del país"],a:0}
+];
+var fe=document.getElementById("final");
+fin.forEach(function(x,n){
+ // shuffle options keeping the answer
+ var idx=x.o.map(function(_,i){return i;});
+ for(var i=idx.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=idx[i];idx[i]=idx[j];idx[j]=t;}
+ var o=idx.map(function(i){return x.o[i];});var a=idx.indexOf(x.a);
+ var q=document.createElement("div");q.className="q";q.dataset.a=a;
+ var h=document.createElement("p");h.innerHTML="<b></b>";h.firstChild.textContent=(n+1)+". "+x.q;q.appendChild(h);
+ o.forEach(function(t,i){
+  var b=document.createElement("button");b.className="opt";b.textContent=String.fromCharCode(65+i)+". "+t;
+  b.addEventListener("click",function(){q.dataset.sel=i;q.querySelectorAll(".opt").forEach(function(y){y.classList.remove("sel");y.setAttribute("aria-pressed","false");});b.classList.add("sel");b.setAttribute("aria-pressed","true");});
+  q.appendChild(b);
+ });
+ var f=document.createElement("div");f.className="fb";f.style.display="none";q.appendChild(f);fe.appendChild(q);
+});
+document.getElementById("grade").addEventListener("click",function(){
+ var c=0,tot=fin.length,un=0;
+ fe.querySelectorAll(".q").forEach(function(q){
+  var f=q.querySelector(".fb");f.style.display="block";
+  if(q.dataset.sel===undefined){un++;f.className="fb hint";f.textContent="💡 Sin responder.";return;}
+  if(+q.dataset.sel===+q.dataset.a){c++;f.className="fb ok";f.textContent="✔ Correcto.";}
+  else{f.className="fb no";f.textContent="✘ Incorrecto. Repasa el tema y vuelve a intentarlo: ¿qué palabra clave o criterio te faltó?";}
+ });
+ var sc=document.getElementById("score");sc.style.display="block";
+ var pct=Math.round(c/tot*100);
+ sc.textContent="Puntaje: "+c+" de "+tot+" ("+pct+"%). "+(pct>=80?"Muy bien. Estás listo.":pct>=60?"Vas bien; repasa los temas donde fallaste.":"Necesitas repasar: vuelve a las secciones 1 a 5 y practica de nuevo.")+(un?" Preguntas sin responder: "+un+".":"");
+ try{var b=store.best||0;if(c>b){store.best=c;save();}}catch(e){}
+ showBest();
+});
+document.getElementById("reset").addEventListener("click",function(){
+ fe.querySelectorAll(".q").forEach(function(q){delete q.dataset.sel;q.querySelectorAll(".opt").forEach(function(y){y.classList.remove("sel");y.setAttribute("aria-pressed","false");});q.querySelector(".fb").style.display="none";});
+ document.getElementById("score").style.display="none";
+});
+function showBest(){document.getElementById("best").textContent=store.best!==undefined?"Mejor puntaje guardado: "+store.best+" de "+fin.length:"";}
+showBest();
+
+// Tema claro/oscuro
+var tb=document.getElementById("theme");
+function curTheme(){return document.documentElement.getAttribute("data-theme")||(window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light");}
+function paintTheme(){var d=curTheme()==="dark";tb.textContent=d?"☀ Claro":"🌙 Oscuro";tb.setAttribute("aria-label",d?"Cambiar a tema claro":"Cambiar a tema oscuro");}
+tb.addEventListener("click",function(){var n=curTheme()==="dark"?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("etica9_theme",n);}catch(e){}paintTheme();});
+paintTheme();
+var reduce=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+function goTo(id){var el=document.getElementById(id);if(el){el.scrollIntoView({behavior:reduce?"auto":"smooth",block:"start"});}}
+function lab(id){for(var i=0;i<secs.length;i++){if(secs[i][0]===id)return secs[i][1];}return id;}
+
+// Mapa de conceptos
+var nodes={t1:[120,60,"Ética ambiental"],t2:[380,60,"ODS y Agenda 2030"],t3:[640,60,"Cooperación"],t6:[120,230,"Preguntas abiertas"],t4:[380,230,"SIMONU"],t5:[640,230,"ONU y DDHH"],t7:[120,400,"Dilemas"]};
+var edges=[
+["t1","t2","se concreta en","La ética ambiental plantea qué obligaciones tenemos con la naturaleza. Los ODS (por ejemplo los de clima, agua, ecosistemas y consumo responsable) convierten esa responsabilidad en metas concretas."],
+["t2","t3","requiere","Los ODS son retos globales: ningún país los logra solo. Por eso el ODS 17 habla de alianzas, y la cooperación internacional es el principio que lo hace posible."],
+["t3","t5","se organiza en","La cooperación multilateral se institucionaliza en organizaciones como la ONU, donde los Estados dialogan y acuerdan reglas comunes."],
+["t5","t2","impulsa","La ONU promueve la Agenda 2030 y sus ODS y acompaña su avance; así los objetivos tienen un foro común."],
+["t5","t4","se simula en","SIMONU simula el trabajo de la ONU: representas a un país y debates como se hace en sus comisiones. Conocer la ONU real hace más creíble tu simulación."],
+["t4","t6","alimenta","Lo que practicas en SIMONU (postura, argumentos, propuestas, cierre) es justo lo que debes identificar al resumir un discurso."],
+["t1","t6","inspira","Un afiche ambiental parte de una idea de la ética ambiental que tú eliges como mensaje."],
+["t6","t7","se practica en","Resumir, hacer un afiche y analizar un dilema usan la misma habilidad: elegir una postura y justificarla con razones, reconociendo las consecuencias."]
+];
+var panel=document.getElementById("cmpanel");
+function say(title,txt,ids){
+ panel.textContent="";var b=document.createElement("b");b.className="ttl";b.textContent=title+" ";panel.appendChild(b);
+ panel.appendChild(document.createTextNode(txt));
+ (ids||[]).forEach(function(id){panel.appendChild(document.createTextNode(" "));var a=document.createElement("a");a.href="#"+id;a.textContent="Ir a "+lab(id)+" →";panel.appendChild(a);});
+}
+function edgeSay(e){say(nodes[e[0]][2]+" "+e[2]+" "+nodes[e[1]][2]+".",e[3],[e[0],e[1]]);}
+function nodeSay(id){
+ var rel=edges.filter(function(e){return e[0]===id||e[1]===id;});
+ say(nodes[id][2]+" se conecta con:",rel.map(function(e){return e[0]===id?"→ "+nodes[e[1]][2]+" ("+e[2]+")":"← "+nodes[e[0]][2]+" ("+e[2]+")";}).join("; ")+".",[id]);
+}
+(function(){
+ var svg=document.getElementById("cmsvg");
+ var W=160,H=56;
+ var defs=document.createElementNS(NS,"defs");
+ defs.innerHTML='<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="cm-arrow" d="M0,0 L10,5 L0,10 z"/></marker>';
+ svg.appendChild(defs);
+ function clip(c,dx,dy){var t=Math.min(dx?(W/2)/Math.abs(dx):1e9,dy?(H/2)/Math.abs(dy):1e9);return t;}
+ edges.forEach(function(e){
+  var a=nodes[e[0]],b=nodes[e[1]];var dx=b[0]-a[0],dy=b[1]-a[1];var len=Math.sqrt(dx*dx+dy*dy);
+  var t=clip(0,dx,dy);var s=(t*len+6)/len,en=1-(t*len+10)/len;
+  var x1=a[0]+dx*s,y1=a[1]+dy*s,x2=a[0]+dx*en,y2=a[1]+dy*en;
+  var g=document.createElementNS(NS,"g");g.setAttribute("class","cm-edge");g.setAttribute("tabindex","0");g.setAttribute("role","button");
+  g.setAttribute("aria-label",nodes[e[0]][2]+" "+e[2]+" "+nodes[e[1]][2]);
+  [["hit",null],["vis","url(#ah)"]].forEach(function(k){var l=document.createElementNS(NS,"line");l.setAttribute("class",k[0]);l.setAttribute("x1",x1);l.setAttribute("y1",y1);l.setAttribute("x2",x2);l.setAttribute("y2",y2);if(k[1])l.setAttribute("marker-end",k[1]);g.appendChild(l);});
+  var tx=document.createElementNS(NS,"text");tx.setAttribute("x",(x1+x2)/2);tx.setAttribute("y",(y1+y2)/2-8);tx.textContent=e[2];g.appendChild(tx);
+  function on(){svg.querySelectorAll(".cm-edge").forEach(function(z){z.classList.remove("act");});g.classList.add("act");edgeSay(e);}
+  g.addEventListener("mouseenter",on);g.addEventListener("focus",on);g.addEventListener("click",on);
+  svg.appendChild(g);
+ });
+ Object.keys(nodes).forEach(function(id){
+  var n=nodes[id];var g=document.createElementNS(NS,"g");g.setAttribute("class","cm-node");g.setAttribute("tabindex","0");g.setAttribute("role","link");g.setAttribute("aria-label","Ir a la sección: "+n[2]);
+  var r=document.createElementNS(NS,"rect");r.setAttribute("x",n[0]-W/2);r.setAttribute("y",n[1]-H/2);r.setAttribute("width",W);r.setAttribute("height",H);r.setAttribute("rx",12);g.appendChild(r);
+  var bg=document.createElementNS(NS,"g");bg.setAttribute("class","cm-badge");var bc=document.createElementNS(NS,"circle");bc.setAttribute("cx",n[0]-W/2+4);bc.setAttribute("cy",n[1]-H/2+4);bc.setAttribute("r",14);bg.appendChild(bc);var bi=ico(id,"");bi.setAttribute("x",n[0]-W/2-6);bi.setAttribute("y",n[1]-H/2-6);bi.setAttribute("width",20);bi.setAttribute("height",20);bg.appendChild(bi);g.appendChild(bg);
+  var t=document.createElementNS(NS,"text");t.setAttribute("x",n[0]);t.setAttribute("y",n[1]+5);t.textContent=n[2];g.appendChild(t);
+  g.addEventListener("mouseenter",function(){nodeSay(id);});g.addEventListener("focus",function(){nodeSay(id);});
+  g.addEventListener("click",function(){nodeSay(id);goTo(id);});
+  g.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();goTo(id);}});
+  svg.appendChild(g);
+ });
+ var ul=document.getElementById("cmlist");
+ edges.forEach(function(e){
+  var li=document.createElement("li");
+  var a1=document.createElement("a");a1.href="#"+e[0];a1.textContent=nodes[e[0]][2];
+  var a2=document.createElement("a");a2.href="#"+e[1];a2.textContent=nodes[e[1]][2];
+  var m=document.createElement("b");m.textContent=" "+e[2]+" ";
+  li.appendChild(a1);li.appendChild(m);li.appendChild(a2);li.appendChild(document.createTextNode(" "));
+  var bt=document.createElement("button");bt.className="ghost";bt.textContent="¿Cómo se relacionan?";bt.addEventListener("click",function(){edgeSay(e);});li.appendChild(bt);
+  ul.appendChild(li);
+ });
+})();
+
+// Ruta de estudio
+var route=[["t0","Estrategias ICFES","primero, porque la técnica de lectura y descarte sirve en todas las preguntas."],["t1","Ética ambiental","da el “por qué” (valores y responsabilidad) que sostiene los demás temas."],["t2","ODS","convierten esos valores en metas concretas."],["t3","Cooperación","explica por qué esas metas globales exigen trabajar juntos."],["t4","SIMONU","practica el diálogo y la diplomacia que la cooperación necesita."],["t5","ONU y DDHH","conoce la organización real y los derechos que defiende."],["t6","Preguntas abiertas","aplica todo al resumir un discurso y diseñar un afiche."],["t7","Dilemas","entrena el argumento cuando varios valores chocan."]];
+var rl=document.getElementById("route");
+route.forEach(function(r){
+ var li=document.createElement("li");var lb=document.createElement("label");
+ var cb=document.createElement("input");cb.type="checkbox";cb.dataset.rt=r[0];
+ cb.addEventListener("change",function(){store.done[r[0]]=cb.checked;save();updateProg();});
+ lb.appendChild(cb);lb.appendChild(ico(r[0]));var a=document.createElement("a");a.href="#"+r[0];a.textContent=r[1];lb.appendChild(a);
+ lb.appendChild(document.createTextNode(" — "+r[2]));li.appendChild(lb);rl.appendChild(li);
+});
+var lastli=document.createElement("li");lastli.innerHTML='Al final: <a href="#t8">Autoevaluación</a> para comprobar lo aprendido.';rl.appendChild(lastli);
+
+// Puentes entre temas
+var FROM={t0:["inicio","ya sabes cómo usar la guía; ahora aprendes la técnica que usarás en todas las preguntas."],t1:["t0","las estrategias de lectura se aplican aquí para encontrar el criterio ético que usa un texto."],t2:["t1","la ética ambiental explica por qué cuidar el planeta; los ODS son metas concretas para lograrlo."],t3:["t2","los ODS necesitan alianzas (ODS 17); aquí ves el principio que las sostiene: la cooperación."],t4:["t3","la cooperación se logra dialogando y negociando; SIMONU te entrena para eso."],t5:["t4","SIMONU simula la ONU; ahora estudias la organización real y los derechos que defiende."],t6:["t5","con la ONU, los derechos y los ODS ya tienes el contenido para resumir discursos y diseñar un afiche."],t7:["t6","ya argumentas por escrito; ahora argumentas ante un dilema."],t8:["t7","ya practicaste cada tema; ahora compruebas lo que recuerdas."]};
+var NEXT={
+t0:{to:"t1",txt:"Las estrategias son un método, no un tema: se vuelven útiles cuando las aplicas a contenido. La ética ambiental es el primer lugar donde lo haces: lees un texto, identificas qué criterio usa para dar valor a la naturaleza y descartas las opciones extremas o que no responden.",q:{q:"¿Cómo se relacionan el método LEE-PREGUNTA-DESCARTA y la ética ambiental?",o:["El método solo sirve para matemáticas","El método te ayuda a hallar el criterio ético del texto y a descartar opciones extremas","La ética ambiental reemplaza la lectura del texto"],a:1,f:["Se usa en lectura de cualquier área.","Correcto: el método es la herramienta; la ética ambiental, el contenido.","Siempre debes leer el texto."],h:"Uno es el método; el otro, el contenido."}},
+t1:{to:"t2",txt:"La ética ambiental responde al “por qué” cuidar la naturaleza. Los ODS responden al “cómo”: son metas concretas (clima, agua, ecosistemas, consumo responsable) para cumplir esa responsabilidad. La definición de desarrollo sostenible repite la misma idea: atender las necesidades de hoy sin comprometer las de mañana.",q:{q:"¿Qué idea de la ética ambiental se parece más a la definición de desarrollo sostenible?",o:["Valorar la naturaleza solo por su utilidad inmediata","Responsabilidad hacia las generaciones futuras","Que cada quien haga lo que quiera con los recursos"],a:1,f:["Eso es una visión instrumental, no sostenible.","Correcto: sostenible = pensar en el mañana.","Ignora las consecuencias sobre otros."],h:"Piensa en la palabra “mañana”."}},
+t2:{to:"t3",txt:"Los 17 ODS son retos que cruzan fronteras: el clima, el agua o la pobreza no se detienen en la frontera de un país. Por eso el ODS 17 (alianzas) es el que sostiene a los demás. Y para que haya alianzas se necesita cooperación internacional, el tema que sigue.",q:{q:"¿Qué ODS se ocupa de las alianzas?",o:["ODS 17","ODS 4","ODS 12"],a:0,f:["Correcto: «Alianzas para lograr los objetivos».","El ODS 4 es educación de calidad.","El ODS 12 es producción y consumo responsables."],h:"Es el último de la lista."}},
+t3:{to:"t4",txt:"Cooperar no ocurre por sí solo: requiere conversar, negociar y respetar a los demás. Esa habilidad se llama diplomacia. SIMONU es el entrenamiento: en la simulación practicas defender tu postura y construir acuerdos con otras delegaciones.",q:{q:"¿Qué relación hay entre cooperación internacional y diplomacia?",o:["Son opuestas: donde hay diplomacia no hay cooperación","La diplomacia es una herramienta para negociar y lograr acuerdos de cooperación","La diplomacia sustituye cualquier norma o ley"],a:1,f:["Al contrario: se complementan.","Correcto: la cooperación se construye con diálogo y respeto.","La diplomacia busca acuerdos; no reemplaza las normas."],h:"¿Cómo se logra un acuerdo entre países?"}},
+t4:{to:"t5",txt:"SIMONU copia el funcionamiento de la ONU. Para representar bien a un país necesitas saber cómo está organizada la ONU real: sus órganos, cómo se decide y qué límites tiene. También debes conocer los derechos humanos, porque tu postura debe ser coherente con ellos.",q:{q:"¿Por qué conviene conocer la ONU real para participar en SIMONU?",o:["Para no tener que investigar al país que representas","Para que la simulación sea realista y tus propuestas respeten órganos y reglas","Porque la simulación no usa reglas"],a:1,f:["La investigación del país sigue siendo necesaria.","Correcto: la simulación imita a la institución real.","Tiene reglas y protocolo."],h:"Una simulación imita algo real."}},
+t5:{to:"t6",txt:"Lo que aprendiste de la ONU, los derechos humanos y los ODS es el contenido sobre el que se hablan los discursos y se diseñan los afiches. Para resumir un discurso identificas quién habla, qué postura tiene y qué propone. Para un afiche eliges un mensaje apoyado en un valor o un ODS.",q:{q:"¿Cómo te ayuda conocer la ONU y los derechos humanos al resumir un discurso?",o:["Te permite copiar frases textuales sin entenderlas","Te ayuda a entender las referencias y a identificar la postura y las propuestas","No te ayuda en nada"],a:1,f:["Resumir no es copiar.","Correcto: entender el contexto mejora el resumen.","El conocimiento del tema sí influye."],h:"Entender el contexto ayuda a resumir."}},
+t6:{to:"t7",txt:"Resumir un discurso y diseñar un afiche te obligan a elegir una idea y justificarla. Un dilema pide exactamente eso, pero con valores en tensión: eliges, argumentas y reconoces lo que pierdes. Es la misma habilidad, con más exigencia.",q:{q:"¿Qué tienen en común las preguntas abiertas y un dilema ético?",o:["Ambos tienen una sola respuesta memorizada","Ambos exigen argumentar con razones, considerando a otros","Ninguno necesita razones"],a:1,f:["En ambos se evalúa la calidad del argumento.","Correcto: elegir y justificar.","Sin razones no hay argumento."],h:"¿Qué se evalúa: memoria o argumento?"}},
+t7:{to:"t8",txt:"En el dilema usaste varias perspectivas: la antropocéntrica, la biocéntrica y la de la diplomacia. En la autoevaluación aparecerán esas mismas ideas mezcladas con ODS, cooperación y ONU. Si fallas una pregunta, vuelve al tema y usa el mapa de conceptos para ubicar con qué otro tema se relaciona.",q:{q:"Si fallas una pregunta de la autoevaluación, ¿qué conviene hacer primero?",o:["Ignorarla","Volver al tema relacionado y revisar el criterio que te faltó","Memorizar solo la letra de la respuesta"],a:1,f:["Ignorarla no te ayuda a aprender.","Correcto: revisa el criterio, no solo el resultado.","Memorizar la letra no sirve con preguntas nuevas."],h:"Entender el criterio sirve para preguntas distintas."}}
+};
+secs.forEach(function(x){
+ var id=x[0];var sec=document.getElementById(id);var f=FROM[id];
+ if(f){
+  var d=document.createElement("div");d.className="from";
+  var a=document.createElement("a");a.href="#"+f[0];a.textContent=lab(f[0]);
+  var b=document.createElement("b");b.textContent="⬅ Viene de ";d.appendChild(b);d.appendChild(a);d.appendChild(document.createTextNode(": "+f[1]));
+  var h2=sec.querySelector("h2");var tag=sec.querySelector(".tag");(tag||h2).insertAdjacentElement("afterend",d);
+ }
+ var n=NEXT[id];
+ if(n){
+  var det=document.createElement("details");det.className="bridge";
+  var sm=document.createElement("summary");sm.textContent="🔗 Conexión con el siguiente tema: "+lab(id)+" → "+lab(n.to);det.appendChild(sm);
+  var p=document.createElement("p");p.textContent=n.txt;det.appendChild(p);
+  var qd=document.createElement("div");qd.className="q";det.appendChild(qd);buildMC(qd,n.q,false);
+  var go=document.createElement("a");go.href="#"+n.to;go.textContent="Seguir con "+lab(n.to)+" →";det.appendChild(go);
+  var btn=sec.querySelector("button[data-done]");
+  if(btn)sec.insertBefore(det,btn);else sec.appendChild(det);
+ }
+});
+
+// nav highlight
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){secs.forEach(function(x){document.getElementById("n_"+x[0]).classList.remove("on");});document.getElementById("n_"+e.target.id).classList.add("on");}});},{rootMargin:"-30% 0px -60% 0px"});
+secs.forEach(function(x){io.observe(document.getElementById(x[0]));});
+// aparicion de ilustraciones
+var fx=document.querySelectorAll(".fx");
+if(!("IntersectionObserver" in window)||reduce){fx.forEach(function(e){e.classList.add("in");});}
+else{var io2=new IntersectionObserver(function(es,o){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");o.unobserve(e.target);}});},{threshold:.15});fx.forEach(function(e){io2.observe(e);});}
+var lb=document.getElementById("lb"),lbi=document.getElementById("lbi");
+document.querySelectorAll(".exam-fig img").forEach(function(im){im.tabIndex=0;im.setAttribute("role","button");
+function op(){lbi.src=im.src;lbi.alt=im.alt;if(lb.showModal){lb.showModal();}else{lb.setAttribute("open","");}document.getElementById("lbx").focus();}
+im.addEventListener("click",op);im.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();op();}});});
+document.getElementById("lbx").addEventListener("click",function(){if(lb.close){lb.close();}else{lb.removeAttribute("open");}});
+lb.addEventListener("click",function(e){if(e.target===lb&&lb.close){lb.close();}});
+updateProg();
+})();
+</script>
+</body>
+</html>

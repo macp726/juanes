@@ -1,0 +1,954 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de estudio Competencias Ciudadanas 9°</title>
+<script>try{var t=localStorage.getItem("cc9_theme");if(t==="dark"||t==="light")document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+<style>
+:root{color-scheme:light;--bg:#fbf7f0;--surface:#fffdf9;--surface-2:#f3ece0;--text:#2b2420;--text-muted:#5e5046;--border:#e3d9c9;--accent:#a3441d;--on-accent:#ffffff;--accent-soft:#f8e7dc;--ok:#1d6644;--ok-bg:#e3f1e6;--bad:#a1281c;--bad-bg:#f9e3de;--warn:#77500a;--warn-bg:#fdf0d5;--info:#1b6158;--info-bg:#ddefea;--code-bg:#f3ece0;--focus:#1f7a6d;--ill-1:#d98560;--ill-2:#4aa597;--ill-3:#e0aa45;--ill-4:#86a355;--ill-5:#ecdcc3}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ill-1:#e79a76;--ill-2:#5fc0b2;--ill-3:#e8bd62;--ill-4:#a3bf72;--ill-5:#4a4036}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ill-1:#e79a76;--ill-2:#5fc0b2;--ill-3:#e8bd62;--ill-4:#a3bf72;--ill-5:#4a4036}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:var(--accent);text-underline-offset:2px}
+a:visited{color:var(--accent)}
+a:hover{text-decoration-thickness:3px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.katex{color:inherit}
+code,kbd{background:var(--code-bg);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:.95em}
+input,select,textarea{background:var(--surface);color:var(--text);border:1px solid var(--text-muted);border-radius:6px;padding:6px 8px;font:inherit}
+input::placeholder,textarea::placeholder{color:var(--text-muted);opacity:1}
+input[type=checkbox]{accent-color:var(--accent);width:1.15rem;height:1.15rem;vertical-align:middle}
+header{background:var(--surface-2);color:var(--text);border-bottom:4px solid var(--accent);padding:18px 16px}
+header .in{max-width:900px;margin:auto}
+header .top{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;flex-wrap:wrap}
+header h1{margin:0 0 6px;font-size:1.5rem;line-height:1.25}
+.chips span{display:inline-block;background:var(--accent-soft);color:var(--text);border:1px solid var(--accent);border-radius:99px;padding:2px 12px;margin:2px 6px 2px 0;font-size:.95rem;font-weight:600}
+.pbar{height:12px;background:var(--border);border-radius:9px;margin-top:12px;overflow:hidden}
+.pbar i{display:block;height:100%;width:0;background:var(--accent);transition:width .3s}
+#ptxt{font-size:.95rem;margin-top:4px;color:var(--text)}
+nav{position:sticky;top:0;z-index:5;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap;padding:6px 8px}
+nav a{display:inline-block;margin:2px;padding:6px 12px;border-radius:99px;text-decoration:none;color:var(--text);background:var(--surface);border:1px solid var(--text-muted);font-size:.95rem}
+nav a:visited{color:var(--text)}
+nav a:hover{background:var(--accent-soft);border-color:var(--accent)}
+nav a[aria-current="true"]{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+nav a.done{border-color:var(--ok);border-width:2px}
+nav a.done::after{content:" ✔"}
+main{max-width:900px;margin:auto;padding:16px}
+section{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;margin:16px 0}
+h2{margin:0 0 8px;font-size:1.35rem;color:var(--text)}
+h3{margin:14px 0 6px;font-size:1.1rem;color:var(--text)}
+details{border:1px solid var(--border);border-radius:10px;margin:10px 0;background:var(--surface);color:var(--text)}
+details>summary{cursor:pointer;padding:10px 12px;font-weight:700;list-style-position:inside;color:var(--text);border-radius:10px}
+details>summary:hover{background:var(--surface-2)}
+details>div.body{padding:2px 14px 12px}
+details.ex{background:var(--info-bg);border-color:var(--info)}
+details.ex>summary:hover{background:var(--accent-soft)}
+details.hint{background:var(--warn-bg);border-color:var(--warn);margin:6px 0}
+details.hint>summary{font-weight:600;font-size:.95rem}
+details.hint>summary:hover{background:var(--surface-2)}
+details.bridge{background:var(--accent-soft);border:1px solid var(--accent);border-left-width:6px;margin:18px 0 6px}
+details.bridge>summary:hover{background:var(--surface-2)}
+details.bridge[open]>div.body{animation:reveal .3s ease}
+@keyframes reveal{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.from{background:var(--surface-2);border:1px solid var(--border);border-left:5px solid var(--accent);border-radius:8px;padding:8px 12px;margin:6px 0 12px;font-size:.95rem;color:var(--text)}
+.tip{background:var(--accent-soft);color:var(--text);border-left:5px solid var(--accent);padding:8px 12px;border-radius:6px;margin:10px 0}
+table{border-collapse:collapse;width:100%;font-size:.95rem;margin:8px 0;color:var(--text)}
+th,td{border:1px solid var(--border);padding:6px 8px;text-align:left;vertical-align:top}
+th{background:var(--accent-soft);color:var(--text)}
+tr:nth-child(even) td{background:var(--surface-2)}
+.scroll{overflow-x:auto}
+dl dt{font-weight:700;margin-top:8px}dl dd{margin:0 0 0 12px;color:var(--text-muted)}
+.q{border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin:12px 0;background:var(--surface)}
+.q p.t{margin:0 0 8px;font-weight:600}
+.opt{display:block;width:100%;text-align:left;margin:5px 0;padding:8px 10px;border:1px solid var(--text-muted);border-radius:8px;background:var(--surface);color:var(--text);font:inherit;cursor:pointer}
+.opt:hover:not(:disabled){background:var(--accent-soft);border-color:var(--accent)}
+.opt:disabled{color:var(--text);cursor:default;opacity:1}
+.opt.sel-ok{background:var(--ok-bg);border:2px solid var(--ok)}
+.opt.sel-ok::before{content:"✔ ";color:var(--ok);font-weight:700}
+.opt.picked{background:var(--accent-soft);border:2px solid var(--accent)}
+.opt.sel-bad{background:var(--bad-bg);border:2px solid var(--bad)}
+.opt.sel-bad::before{content:"✘ ";color:var(--bad);font-weight:700}
+.fb{font-size:.95rem;margin:2px 0 6px 10px;padding:4px 10px;border-radius:6px;color:var(--text)}
+.fb:empty{display:none}
+.fb.ok{background:var(--ok-bg);border-left:4px solid var(--ok)}
+.fb.bad{background:var(--bad-bg);border-left:4px solid var(--bad)}
+.fb b.ok{color:var(--ok)}.fb b.bad{color:var(--bad)}
+.btn{background:var(--accent);color:var(--on-accent);border:2px solid var(--accent);border-radius:8px;padding:8px 14px;font:inherit;font-weight:600;cursor:pointer;margin:4px 4px 4px 0}
+.btn:hover:not(:disabled){background:var(--text);border-color:var(--text);color:var(--bg)}
+.btn:disabled{background:var(--surface-2);border-color:var(--text-muted);color:var(--text-muted);cursor:not-allowed}
+.btn.ghost{background:var(--surface);color:var(--text);border:2px solid var(--text-muted)}
+.btn.ghost:hover:not(:disabled){background:var(--accent-soft);border-color:var(--accent);color:var(--text)}
+.row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:8px 0;border-bottom:1px dashed var(--border)}
+.row .tx{flex:1 1 260px}
+.cat{border:1px solid var(--text-muted);background:var(--surface);color:var(--text);border-radius:99px;padding:4px 10px;font:inherit;font-size:.9rem;cursor:pointer}
+.cat:hover:not(:disabled){background:var(--accent-soft);border-color:var(--accent)}
+.cat:disabled{color:var(--text);cursor:default;opacity:1}
+.cat.sel-ok{background:var(--ok-bg);border:2px solid var(--ok)}
+.cat.sel-ok::before{content:"✔ ";color:var(--ok);font-weight:700}
+.cat.sel-bad{background:var(--bad-bg);border:2px solid var(--bad)}
+.cat.sel-bad::before{content:"✘ ";color:var(--bad);font-weight:700}
+.res{padding:10px;border-radius:8px;background:var(--accent-soft);color:var(--text);border-left:5px solid var(--accent);margin-top:10px;font-weight:600}
+.badge{font-size:.875rem;border:1px solid var(--border);background:var(--surface-2);border-radius:6px;padding:1px 7px;margin-left:6px;color:var(--text-muted)}
+.note{font-size:.9rem;color:var(--text-muted)}
+svg{max-width:100%;height:auto}
+svg text{fill:var(--text);font:13px system-ui,sans-serif}
+svg .b1{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2}
+svg .b2{fill:var(--warn-bg);stroke:var(--warn);stroke-width:2}
+svg .b3{fill:var(--ok-bg);stroke:var(--ok);stroke-width:2}
+svg .ln{stroke:var(--text-muted);stroke-width:2;fill:none}
+footer{text-align:center;color:var(--text-muted);padding:20px;font-size:.9rem}
+.toolbar{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+/* concept map */
+#cmap{display:none;width:100%;background:var(--surface-2);border:1px solid var(--border);border-radius:10px}
+.cmlist{display:block;list-style:none;margin:8px 0;padding:0}
+.cmlist li{margin:6px 0}
+.cmbtn{display:block;width:100%;text-align:left;background:var(--surface);color:var(--text);border:1px solid var(--text-muted);border-radius:8px;padding:8px 10px;font:inherit;font-size:.95rem;cursor:pointer}
+.cmbtn:hover,.cmbtn.on{background:var(--accent-soft);border-color:var(--accent)}
+.cmbtn .cmr{display:block;color:var(--accent);font-weight:700}
+@media (min-width:700px){#cmap{display:block}.cmlist{display:none}}
+#cmap text{font:14px system-ui,sans-serif;fill:var(--text)}
+#cmap .cm-node rect{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2;cursor:pointer}
+#cmap .cm-node:hover rect,#cmap .cm-node:focus rect{fill:var(--accent)}
+#cmap .cm-node:hover text,#cmap .cm-node:focus text{fill:var(--on-accent)}
+#cmap .cm-node{outline:none}
+#cmap .cm-node:focus-visible rect{stroke:var(--focus);stroke-width:4}
+#cmap .cm-edge{cursor:pointer;outline:none}
+#cmap .cm-edge .vis{stroke:var(--text-muted);stroke-width:2;fill:none}
+#cmap .cm-edge .hit{stroke:var(--text);stroke-opacity:0;stroke-width:18;fill:none}
+#cmap .cm-edge:hover .vis,#cmap .cm-edge:focus .vis,#cmap .cm-edge.on .vis{stroke:var(--accent);stroke-width:4}
+#cmap .cm-edge text{font:13px system-ui,sans-serif;paint-order:stroke;stroke:var(--surface-2);stroke-width:5px;stroke-linejoin:round}
+#cmap .cm-lab{pointer-events:none}#cmap .cm-lt{font:13px system-ui,sans-serif;fill:var(--text);paint-order:stroke;stroke:var(--surface-2);stroke-width:5px;stroke-linejoin:round}
+#cmap .cm-edge:hover text,#cmap .cm-edge:focus text,#cmap .cm-edge.on text{font-weight:700}
+#cmap .cm-edge:focus-visible .vis{stroke:var(--focus);stroke-width:4}
+#cmap .arrow{fill:var(--text-muted)}
+.cmpanel{background:var(--info-bg);color:var(--text);border:1px solid var(--info);border-left-width:6px;border-radius:8px;padding:10px 14px;margin:10px 0;min-height:4.5em}
+.cmpanel .lk a{display:inline-block;margin:2px 10px 2px 0;font-weight:600}
+.route{padding-left:0;list-style:none;margin:8px 0}
+.route li{padding:8px 10px;margin:6px 0;border:1px solid var(--border);border-radius:8px;background:var(--surface)}
+.route li.done{background:var(--ok-bg);border-color:var(--ok)}
+.route label{cursor:pointer;display:block}
+.route .why{color:var(--text-muted);display:block;margin-left:1.7rem;font-size:.95rem}
+.steps .stp{font-weight:600}
+/* visual layer */
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.ic{width:16px;height:16px;vertical-align:-3px;margin-right:5px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.bic{width:32px;height:32px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+#cmap .cmic{fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:var(--accent);pointer-events:none}
+#cmap .cm-node:hover .cmic,#cmap .cm-node:focus .cmic{color:var(--on-accent)}
+#s1{--bar:var(--accent);--tint:var(--accent-soft)}
+#s2{--bar:var(--info);--tint:var(--info-bg)}
+#s3{--bar:var(--warn);--tint:var(--warn-bg)}
+#s4{--bar:var(--ok);--tint:var(--ok-bg)}
+#s5{--bar:var(--info);--tint:var(--info-bg)}
+#s6{--bar:var(--accent);--tint:var(--accent-soft)}
+#s7{--bar:var(--ok);--tint:var(--ok-bg)}
+.banner{display:flex;gap:12px;align-items:center;background:linear-gradient(90deg,var(--tint),var(--surface));border:1px solid var(--border);border-left:8px solid var(--bar);border-radius:12px;padding:12px 14px;margin:0 0 10px}
+.banner .ico{flex:none;width:48px;height:48px;border-radius:14px;background:var(--surface);border:2px solid var(--bar);color:var(--bar);display:grid;place-items:center}
+.banner h2{margin:0;font-size:1.3rem;line-height:1.3}
+.banner .hook{margin:3px 0 0;color:var(--text);font-style:italic}
+.vis{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:10px 0 14px}
+@media (min-width:700px){.vis{grid-template-columns:minmax(0,420px) minmax(0,1fr);align-items:start}}
+.hero{margin:0;background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:8px;transition:opacity .7s ease,transform .7s ease}
+.hero.pre{opacity:0;transform:translateY(16px)}
+.hero.in{opacity:1;transform:none}
+.hero svg{display:block;width:100%;max-width:420px;height:auto;margin:auto}
+.hero svg text{font:600 13px system-ui,sans-serif;fill:var(--text)}
+.side{display:grid;gap:10px}
+.ten,.dato{border:1px solid var(--border);border-left-width:6px;border-radius:10px;padding:10px 14px;color:var(--text);transition:transform .2s ease,box-shadow .2s ease}
+.ten{background:var(--info-bg);border-color:var(--info)}
+.dato{background:var(--warn-bg);border-color:var(--warn)}
+.ten h3{margin:0 0 4px;font-size:1rem}
+.ten ul{margin:0;padding-left:1.2rem}
+.dato{margin:0}
+.ten:hover,.dato:hover,.q:hover,.route li:hover{transform:translateY(-2px);box-shadow:0 6px 14px var(--border)}
+.q,.route li{transition:transform .2s ease,box-shadow .2s ease}
+.h-f1{fill:var(--ill-1)}.h-f2{fill:var(--ill-2)}.h-f3{fill:var(--ill-3)}.h-f4{fill:var(--ill-4)}.h-f5{fill:var(--ill-5)}
+.h-fs{fill:var(--surface)}.h-fb{fill:var(--surface-2)}.h-fa{fill:var(--accent)}.h-fok{fill:var(--ok)}
+.h-ln{stroke:var(--text-muted);stroke-width:2;stroke-linejoin:round;stroke-linecap:round}
+.h-beam{stroke:var(--text);stroke-width:5;stroke-linecap:round;fill:none}
+.h-str{stroke:var(--text-muted);stroke-width:2;fill:none;stroke-linecap:round}
+.h-heart{fill:var(--surface);stroke:var(--accent);stroke-width:3;stroke-linejoin:round}
+.h-hl{stroke:var(--surface);stroke-opacity:.55;stroke-width:3;stroke-linecap:round;fill:none}
+.h-ok{fill:var(--ok-bg);stroke:var(--ok);stroke-width:2}
+.h-ck{stroke:var(--ok);stroke-width:3;fill:none;stroke-linecap:round;stroke-linejoin:round}
+.h-x{stroke:var(--bad);stroke-width:2.5;stroke-linecap:round;fill:none}
+.h-lens{fill:var(--surface);fill-opacity:.35;stroke:var(--accent);stroke-width:5}
+.h-handle{stroke:var(--accent);stroke-width:8;stroke-linecap:round;fill:none}
+.h-sea{stroke:var(--surface);stroke-opacity:.85;stroke-width:2.5;fill:none;stroke-linecap:round}
+.gs1{stop-color:var(--ill-1)}.gs2{stop-color:var(--ill-2)}.gs3{stop-color:var(--ill-3)}.gs4{stop-color:var(--ill-4)}.gs5{stop-color:var(--ill-5)}.gsS{stop-color:var(--surface)}.gsB{stop-color:var(--surface-2)}.gsI{stop-color:var(--info)}
+.a-tilt{transform-origin:160px 60px;animation:tilt 6s ease-in-out infinite}
+.a-pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.4s ease-in-out infinite}
+.a-fly{animation:fly 9s ease-in-out infinite alternate}
+.a-wave{animation:wave 4s ease-in-out infinite alternate}
+.a-bob{animation:bob 3s ease-in-out infinite}
+.a-float{animation:bob 4.5s ease-in-out infinite}
+.a-sweep{animation:sweep 6s ease-in-out infinite alternate}
+.a-spin{transform-box:fill-box;transform-origin:center;animation:spin 8s ease-in-out infinite alternate}
+@keyframes tilt{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+@keyframes fly{from{transform:translateX(-50px)}to{transform:translateX(90px)}}
+@keyframes wave{from{transform:translateX(-6px)}to{transform:translateX(6px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes sweep{from{transform:translate(-12px,-6px)}to{transform:translate(-30px,18px)}}
+@keyframes spin{from{transform:rotate(-12deg) scale(1)}to{transform:rotate(12deg) scale(1.08)}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false"><defs><symbol id="i-mapa" viewBox="0 0 32 32"><path d="M4 9l8-3 8 3 8-3v18l-8 3-8-3-8 3z"/><path d="M12 6v18M20 9v18"/></symbol><symbol id="i-s1" viewBox="0 0 32 32"><path d="M16 5v21M9 27h14M5 10h22"/><path d="M5 10l-3 8a4 3 0 0 0 6 0zM27 10l-3 8a4 3 0 0 0 6 0z"/></symbol><symbol id="i-s2" viewBox="0 0 32 32"><path d="M16 27C6 20 4 12 9 8.5c3-2 6.3-.5 7 2.5.7-3 4-4.5 7-2.5C28 12 26 20 16 27z"/></symbol><symbol id="i-s3" viewBox="0 0 32 32"><path d="M4 12L16 5l12 7z"/><path d="M7 14v10M13 14v10M19 14v10M25 14v10M4 27h24"/></symbol><symbol id="i-s4" viewBox="0 0 32 32"><rect x="3" y="7" width="26" height="18" rx="3"/><circle cx="10.5" cy="14" r="2.8"/><path d="M6 21c.6-3.5 8.4-3.5 9 0M18 13h8M18 17h8"/></symbol><symbol id="i-s5" viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><ellipse cx="16" cy="16" rx="5" ry="11"/><path d="M5 16h22M7 9.5h18M7 22.5h18"/></symbol><symbol id="i-s6" viewBox="0 0 32 32"><circle cx="16" cy="16" r="11"/><circle cx="16" cy="16" r="6"/><circle cx="16" cy="16" r="1.5"/></symbol><symbol id="i-s7" viewBox="0 0 32 32"><rect x="6" y="5" width="20" height="23" rx="3"/><path d="M11 5v-2h10v2M10.5 13l2 2 3.5-4M10.5 21l2 2 3.5-4M19 14h4M19 22h4"/></symbol><linearGradient id="g-bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="gs5" stop-opacity=".55"/><stop offset="1" class="gsB"/></linearGradient><linearGradient id="g-warm" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="gs3"/><stop offset="1" class="gs1"/></linearGradient><linearGradient id="g-teal" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="gs2"/><stop offset="1" class="gs4"/></linearGradient><linearGradient id="g-sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="gs2"/><stop offset="1" class="gsI"/></linearGradient><linearGradient id="g-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="gs2" stop-opacity=".55"/><stop offset="1" class="gsB"/></linearGradient><linearGradient id="g-card" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="gsS"/><stop offset="1" class="gs5"/></linearGradient></defs></svg>
+<header><div class="in">
+<div class="top"><h1>Guía de estudio: Competencias Ciudadanas</h1><button class="btn ghost" id="theme" type="button" aria-pressed="false">Tema</button></div>
+<div class="chips"><span>Competencias Ciudadanas</span><span>Grado 9°</span><span>Cuarto Periodo</span></div>
+<div class="pbar" aria-hidden="true"><i id="pfill"></i></div>
+<div id="ptxt" role="status">Progreso: 0 de 0 actividades</div>
+</div></header>
+<nav id="nav" aria-label="Temas">
+<a href="#mapa"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-mapa"/></svg>Inicio y mapa</a><a href="#s1"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-s1"/></svg>1 Responsabilidad penal adolescente</a><a href="#s2"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-s2"/></svg>2 Derechos de niños y adolescentes</a><a href="#s3"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-s3"/></svg>3 Poder público y quién elige a quién</a><a href="#s4"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-s4"/></svg>4 Nacionalidad</a><a href="#s5"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-s5"/></svg>5 Territorio</a><a href="#s6"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-s6"/></svg>6 Estrategias Saber</a><a href="#s7"><svg class="ic" aria-hidden="true" focusable="false"><use href="#i-s7"/></svg>7 Autoevaluación</a>
+</nav>
+<main>
+
+<section id="mapa">
+<h2>Cómo usar esta guía</h2>
+<p>Esta guía te enseña los <b>temas</b> de la evaluación para que tú mismo razones y respondas. No contiene las respuestas del examen: los ejemplos y las prácticas son casos inventados distintos. Cada tema trae: explicación, vocabulario, un ejemplo resuelto paso a paso, trucos para preguntas tipo Saber y práctica con retroalimentación.</p>
+<div class="tip">Cómo estudiar cada tema: lee la explicación, abre el ejemplo resuelto, haz la práctica y al final presenta la autoevaluación (sección 7). Tu progreso se guarda en este navegador.</div>
+<h3>🗺 Mapa de conceptos: cómo se conectan los temas</h3>
+<p class="note">Pasa el cursor o toca un tema o una flecha para leer cómo se relacionan. En pantallas anchas, al hacer clic en un tema la página te lleva a esa sección; en el celular verás la lista de relaciones.</p>
+<svg id="cmap" viewBox="0 0 760 340" role="group" aria-label="Mapa de conceptos entre los temas de la guía"></svg>
+<ul id="cmlist" class="cmlist"></ul>
+<div id="cmpanel" class="cmpanel" role="status" aria-live="polite">Elige un tema o una relación para ver una explicación corta. Idea general: los derechos de la niñez (2) se aplican en el proceso penal de adolescentes (1) a través de las entidades del Estado (3), que reconoce a sus nacionales (4) y ejerce soberanía sobre su territorio (5); las estrategias (6) sirven para todos.</div>
+<h3>🧭 Ruta de estudio sugerida</h3>
+<p class="note">Marca cada paso al terminarlo. Los temas con práctica se marcan solos cuando completas todas sus actividades.</p>
+<ol id="route" class="route"></ol>
+<h3>Mapa: pregunta del examen → sección de la guía</h3>
+<div class="scroll"><table>
+<tr><th>Preguntas del examen</th><th>Tema</th><th>Ir a</th></tr>
+<tr><td>2, 3, 4, 7, 8</td><td>Sistema de responsabilidad penal para adolescentes: quién hace qué</td><td><a href="#s1">Sección 1</a></td></tr>
+<tr><td>1, 5, 6, 9</td><td>Código de la Infancia y la Adolescencia y conceptos sobre derechos</td><td><a href="#s2">Sección 2</a></td></tr>
+<tr><td>10, 11, 12, 16, 17</td><td>Ramas del poder, órganos de control, organización electoral y quién elige a los funcionarios (las preguntas 12 y 17 se repiten en el examen)</td><td><a href="#s3">Sección 3</a></td></tr>
+<tr><td>18, 19, 20</td><td>Nacionalidad colombiana (preguntas de Verdadero/Falso)</td><td><a href="#s4">Sección 4</a></td></tr>
+<tr><td>13, 14, 15</td><td>Territorio: mar, espacio aéreo, espectro</td><td><a href="#s5">Sección 5</a></td></tr>
+<tr><td>Todas (en especial 7, 8 con «todos los anteriores» y 18 a 20 de V/F)</td><td>Estrategias para pruebas tipo Saber</td><td><a href="#s6">Sección 6</a></td></tr>
+</table></div>
+<div class="toolbar"><button class="btn ghost" id="expand">Abrir todo</button><button class="btn ghost" id="collapse">Cerrar todo</button><button class="btn ghost" id="reset">Borrar mi progreso</button></div>
+</section>
+
+<!-- ============ 1 ============ -->
+<section id="s1">
+<div class="banner"><span class="ico"><svg class="bic" aria-hidden="true" focusable="false"><use href="#i-s1"/></svg></span><div><h2>1. Sistema de responsabilidad penal para adolescentes (SRPA)</h2><p class="hook">¿Sabías que a un adolescente no se le juzga igual que a un adulto?</p></div></div>
+<div class="vis"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Balanza de la justicia: en un plato hay un libro y en el otro una planta que brota, símbolo de una justicia que educa"><title>Balanza de la justicia que educa</title><rect width="320" height="180" rx="12" fill="url(#g-bg)"/><circle cx="160" cy="86" r="66" class="h-f3" fill-opacity=".22"/><path class="h-f5 h-ln" d="M114 168L128 150H192L206 168Z"/><rect x="154" y="62" width="12" height="90" rx="4" fill="url(#g-warm)" class="h-ln"/><circle cx="160" cy="54" r="8" class="h-f3 h-ln"/><g class="a-tilt"><path class="h-beam" d="M50 60H270"/><path class="h-str" d="M58 62L36 112M58 62L80 112M262 62L240 112M262 62L284 112"/><path class="h-f5 h-ln" d="M24 112H92A34 20 0 0 1 24 112Z"/><path class="h-f5 h-ln" d="M228 112H296A34 20 0 0 1 228 112Z"/><path class="h-f2 h-ln" d="M40 112V96Q50 91 58 96Q66 91 76 96V112Z"/><path class="h-str" d="M58 96V112"/><path class="h-str" d="M262 112V92"/><path class="h-f4 h-ln" d="M262 98C250 98 246 90 246 84C254 84 262 88 262 98Z"/><path class="h-f4 h-ln" d="M262 94C274 94 278 86 278 80C270 80 262 84 262 94Z"/></g><circle cx="40" cy="36" r="4" class="h-f1"/><circle cx="286" cy="40" r="3" class="h-f2"/><circle cx="280" cy="150" r="5" class="h-f3"/></svg></figure><div class="side"><div class="ten"><h3>⏱ En 10 segundos</h3><ul><li>Aplica a adolescentes de 14 a 17 años.</li><li>Su finalidad es pedagógica, protectora y educativa.</li><li>Fíjate en el verbo que describe el trabajo de cada actor.</li></ul></div><p class="dato"><b>💡 Dato curioso.</b> El sistema para adolescentes existe porque se busca que la sanción eduque y proteja, no solo que castigue: así lo dice su finalidad en el Código de la Infancia y la Adolescencia.</p></div></div>
+<details open><summary>Concepto</summary><div class="body">
+<p>Cuando un adolescente <b>entre 14 y 17 años</b> es acusado de cometer un delito, no se le juzga como a un adulto. Existe un sistema especial, con <b>finalidad pedagógica, protectora y educativa</b>, que se rige por el Código de la Infancia y la Adolescencia. Los niños menores de 14 años no entran a este sistema: reciben medidas de protección y restablecimiento de derechos.</p>
+<p>En el proceso participan varias personas. Para no confundirlas, fíjate en <b>qué verbo describe su trabajo</b>:</p>
+<div class="scroll"><table>
+<tr><th>Actor</th><th>Verbo clave</th><th>Qué hace</th></tr>
+<tr><td>Fiscal (Fiscalía General)</td><td>Investiga y acusa</td><td>Lleva el caso contra el adolescente ante la justicia, con base en las pruebas que obtiene.</td></tr>
+<tr><td>Defensor (de confianza o público)</td><td>Defiende y acompaña</td><td>Es el abogado del adolescente; puede ser contratado por la familia o ser un defensor público que ofrece el Estado.</td></tr>
+<tr><td>Defensor de Familia (ICBF)</td><td>Vigila y garantiza derechos</td><td>Representa al ICBF en el proceso y hace seguimiento a que los derechos del adolescente no se desconozcan.</td></tr>
+<tr><td>Juez de control de garantías</td><td>Verifica legalidad y derechos</td><td>Controla la legalidad de actuaciones como la captura, protegiendo las garantías de la persona.</td></tr>
+<tr><td>Juez de conocimiento</td><td>Decide</td><td>Conduce el juicio y toma la decisión final del caso.</td></tr>
+</table></div>
+<svg viewBox="0 0 760 190" role="img" aria-label="Flujo del proceso: hecho, investigación, audiencias de control, juicio, sanción pedagógica; acompañan defensor y defensor de familia">
+<rect class="b1" x="5" y="20" width="125" height="60" rx="10"/><text x="67" y="46" text-anchor="middle">Hecho</text><text x="67" y="64" text-anchor="middle">denunciado</text>
+<rect class="b1" x="155" y="20" width="135" height="60" rx="10"/><text x="222" y="46" text-anchor="middle">Investigación</text><text x="222" y="64" text-anchor="middle">(Fiscalía)</text>
+<rect class="b2" x="315" y="20" width="135" height="60" rx="10"/><text x="382" y="46" text-anchor="middle">Control de</text><text x="382" y="64" text-anchor="middle">garantías</text>
+<rect class="b2" x="475" y="20" width="125" height="60" rx="10"/><text x="537" y="46" text-anchor="middle">Juicio</text><text x="537" y="64" text-anchor="middle">(conocimiento)</text>
+<rect class="b3" x="625" y="20" width="130" height="60" rx="10"/><text x="690" y="46" text-anchor="middle">Sanción</text><text x="690" y="64" text-anchor="middle">pedagógica</text>
+<path class="ln" d="M130 50h25M290 50h25M450 50h25M600 50h25"/>
+<rect class="b3" x="5" y="110" width="750" height="30" rx="8"/><text x="380" y="130" text-anchor="middle">Defensor del adolescente: lo acompaña y lo defiende durante todo el proceso</text>
+<rect class="b3" x="5" y="148" width="750" height="30" rx="8"/><text x="380" y="168" text-anchor="middle">Defensor de Familia (ICBF): vigila que se garanticen sus derechos en todo el proceso</text>
+</svg>
+</div></details>
+
+<details><summary>Vocabulario clave</summary><div class="body"><dl>
+<dt>Adolescente</dt><dd>Persona entre 12 y 18 años (el SRPA se aplica de los 14 a los 17).</dd>
+<dt>Sanción pedagógica</dt><dd>Medida que busca educar y reintegrar, no solo castigar.</dd>
+<dt>Audiencia</dt><dd>Reunión ante un juez donde las partes presentan sus argumentos.</dd>
+<dt>Defensor público</dt><dd>Abogado que presta el Estado, sin costo, a quien no puede pagar uno.</dd>
+<dt>ICBF</dt><dd>Instituto Colombiano de Bienestar Familiar.</dd>
+<dt>Garantías</dt><dd>Protecciones que la ley da para que nadie sea tratado injustamente.</dd>
+</dl></div></details>
+
+<details class="ex"><summary>Ejemplo resuelto (caso inventado)</summary><div class="body">
+<p><b>Caso:</b> A Tomás (16 años) lo acusan de dañar unos equipos de un taller. Su mamá no tiene dinero para abogado. Se realizan varias audiencias. Quieres identificar quién es cada persona que aparece en el caso.</p>
+<ol>
+<li><b>Subraya el verbo</b> de cada descripción: «reúne evidencias del daño», «le asignan quien lo represente», «revisa que no le violaron sus derechos al detenerlo», «vigila que lo traten con dignidad», «decide si es responsable».</li>
+<li><b>Empareja el verbo con el actor</b> usando la tabla: reúne evidencias = investiga (fiscal); asignan quien lo represente = defensor público; revisa legalidad = juez que protege garantías; vigila derechos = defensor de familia; decide = juez de conocimiento.</li>
+<li><b>Verifica que no haya doble papel</b>: nadie acusa y defiende a la vez; por eso son personas distintas.</li>
+</ol>
+<p><b>Lección:</b> nunca te quedes con la palabra «juez» o «defensor» sin leer qué función cumple.</p>
+</div></details>
+
+<details><summary>Estrategias para preguntas Saber de este tema</summary><div class="body"><ul>
+<li>Las preguntas suelen describir una función sin decir el nombre. Busca el <b>verbo principal</b>.</li>
+<li>Hay nombres parecidos (defensor, defensor de familia; dos tipos de juez). Compara los títulos completos.</li>
+<li>Si aparece «todos los anteriores», comprueba cada opción por separado antes de elegirla.</li>
+<li>Si una opción describe a quien «acusa» y la pregunta pide a quien «protege», no puede ser la misma persona.</li>
+</ul></div></details>
+
+<h3>Práctica</h3>
+<div id="p1"></div>
+</section>
+
+<!-- ============ 2 ============ -->
+<section id="s2">
+<div class="banner"><span class="ico"><svg class="bic" aria-hidden="true" focusable="false"><use href="#i-s2"/></svg></span><div><h2>2. Código de la Infancia y la Adolescencia y derechos</h2><p class="hook">¿Quién debe proteger a un niño: la familia, la sociedad o el Estado?</p></div></div>
+<div class="vis"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Escudo con un corazón en el centro y niños y adolescentes a los lados: la protección integral de la niñez"><title>Escudo protector con corazón y niños</title><rect width="320" height="180" rx="12" fill="url(#g-bg)"/><circle cx="160" cy="86" r="68" class="h-f1" fill-opacity=".18"/><path class="h-ln" fill="url(#g-warm)" d="M160 20L220 38V92C220 124 194 142 160 156C126 142 100 124 100 92V38Z"/><path class="h-heart a-pulse" d="M160 124C128 102 132 72 150 72C156 72 160 76 160 82C160 76 164 72 170 72C188 72 192 102 160 124Z"/><circle cx="36" cy="118" r="8" class="h-f5 h-ln"/><path class="h-f2 h-ln" d="M24 148V140 Q24 128 36 128 Q48 128 48 140 V148Z"/><circle cx="70" cy="126" r="8" class="h-f5 h-ln"/><path class="h-f4 h-ln" d="M58 148V148 Q58 136 70 136 Q82 136 82 148 V148Z"/><circle cx="250" cy="126" r="8" class="h-f5 h-ln"/><path class="h-f3 h-ln" d="M238 148V148 Q238 136 250 136 Q262 136 262 148 V148Z"/><circle cx="284" cy="118" r="8" class="h-f5 h-ln"/><path class="h-f2 h-ln" d="M272 148V140 Q272 128 284 128 Q296 128 296 140 V148Z"/><path class="h-str" d="M52 112C58 100 70 98 82 100M268 112C262 100 250 98 238 100" stroke-dasharray="3 5"/></svg></figure><div class="side"><div class="ten"><h3>⏱ En 10 segundos</h3><ul><li>Niños y adolescentes son sujetos de derechos.</li><li>Cuatro ideas que se confunden: se distinguen por lo que le pasa al derecho.</li><li>Familia, sociedad y Estado son corresponsables.</li></ul></div><p class="dato"><b>💡 Dato curioso.</b> Antes de este código regía el Código del Menor de 1989, que veía a la niñez sobre todo como objeto de protección; el código actual la reconoce como sujeto de derechos.</p></div></div>
+<details open><summary>Concepto</summary><div class="body">
+<p>El Código de la Infancia y la Adolescencia es una <b>ley de la República</b> (anota en tus apuntes su número y su año: son datos que suelen preguntar). Reconoce a niños, niñas y adolescentes como sujetos de derechos y establece que la familia, la sociedad y el Estado son <b>corresponsables</b> de protegerlos (protección integral).</p>
+<p>Cuatro ideas que debes distinguir bien:</p>
+<ul>
+<li><b>Vulneración de derechos:</b> el derecho ya fue dañado, negado o no se respetó.</li>
+<li><b>Amenaza:</b> existe un riesgo de que el derecho sea dañado, pero aún no ocurrió.</li>
+<li><b>Restablecimiento de derechos:</b> las acciones del Estado para que el niño o adolescente vuelva a disfrutar el derecho que había perdido.</li>
+<li><b>Prevalencia (primacía) de derechos:</b> regla de prioridad: cuando una decisión afecta a niños y adolescentes, sus derechos van primero frente a los de otros.</li>
+</ul>
+<div class="tip">Truco: vulneración = «el daño». Restablecimiento = «la reparación». Prevalencia = «quién va primero». Amenaza = «el peligro».</div>
+<p>Anota en tus apuntes cómo define tu docente cada uno de estos términos y practica decidir cuál describe cada situación (usa la práctica de abajo).</p>
+</div></details>
+
+<details><summary>Vocabulario clave</summary><div class="body"><dl>
+<dt>Sujeto de derechos</dt><dd>Persona que tiene derechos que se le deben respetar y puede exigirlos.</dd>
+<dt>Interés superior</dt><dd>Principio: lo que más conviene al niño o adolescente guía las decisiones.</dd>
+<dt>Corresponsabilidad</dt><dd>Responsabilidad compartida entre familia, sociedad y Estado.</dd>
+<dt>Protección integral</dt><dd>Reconocer, garantizar, prevenir amenazas y restablecer derechos.</dd>
+<dt>Exigibilidad</dt><dd>Posibilidad de reclamar que un derecho se cumpla.</dd>
+</dl></div></details>
+
+<details class="ex"><summary>Ejemplo resuelto (caso inventado)</summary><div class="body">
+<p><b>Caso:</b> En un municipio ficticio, el único transporte escolar de una vereda se suspende por falta de presupuesto y 20 niños dejan de ir al colegio. La Defensora de Familia visita la vereda y coordina con la alcaldía un nuevo servicio de ruta. Además, la alcaldía debía decidir si usaba el único salón comunal para una reunión de adultos o para un refuerzo escolar de esos niños.</p>
+<ol>
+<li><b>¿Hay daño o riesgo?</b> Los niños ya no estudian: el derecho a la educación está afectado de hecho. Eso es vulneración (si solo hubiera peligro de perder el transporte, sería amenaza).</li>
+<li><b>¿Qué acción repara?</b> La ruta nueva devuelve el acceso a la escuela: es restablecimiento.</li>
+<li><b>¿Hay choque de derechos?</b> Salón comunal para reunión de adultos frente a refuerzo escolar. Aplica la regla de prevalencia: los derechos de los niños pasan primero.</li>
+<li><b>¿Quién responde?</b> Familia, comunidad y Estado, por corresponsabilidad.</li>
+</ol>
+</div></details>
+
+<details><summary>Estrategias para preguntas Saber de este tema</summary><div class="body"><ul>
+<li>Las preguntas de definición dan una frase larga y piden el término. Resume la frase en una palabra («reparar», «prioridad», «daño») y busca la opción que encaje.</li>
+<li>Los distractores son términos parecidos del mismo tema. Descarta primero los que describen lo contrario.</li>
+<li>Descarta las opciones que no son términos reales del Código; desconfía de combinaciones raras de palabras.</li>
+<li>En preguntas de datos (número de ley, año), asocia la ley con su tema y apunta el dato en tu tarjeta de estudio.</li>
+</ul></div></details>
+
+<h3>Práctica</h3>
+<div id="p2"></div>
+</section>
+
+<!-- ============ 3 ============ -->
+<section id="s3">
+<div class="banner"><span class="ico"><svg class="bic" aria-hidden="true" focusable="false"><use href="#i-s3"/></svg></span><div><h2>3. Poder público, órganos de control y quién elige a quién</h2><p class="hook">¿Quién vigila a quien gobierna, y quién escoge a cada funcionario?</p></div></div>
+<div class="vis"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Edificio con frontón y tres columnas de colores distintos, que representan las tres ramas del poder público"><title>Edificio con tres columnas: las tres ramas del poder</title><rect width="320" height="180" rx="12" fill="url(#g-bg)"/><circle cx="160" cy="90" r="70" class="h-f3" fill-opacity=".18"/><polygon class="a-pulse h-f3 h-ln" points="160.0,2.0 162.4,7.8 168.6,8.2 163.8,12.2 165.3,18.3 160.0,15.0 154.7,18.3 156.2,12.2 151.4,8.2 157.6,7.8"/><path class="h-f5 h-ln" d="M36 70L160 24L284 70Z"/><circle cx="160" cy="55" r="9" class="h-f3 h-ln"/><rect x="36" y="70" width="248" height="10" rx="2" class="h-f5 h-ln"/><rect x="58" y="80" width="44" height="60" rx="3" class="h-f1 h-ln"/><rect x="138" y="80" width="44" height="60" rx="3" class="h-f2 h-ln"/><rect x="218" y="80" width="44" height="60" rx="3" class="h-f4 h-ln"/><path class="h-hl" d="M70 86V134M90 86V134M150 86V134M170 86V134M230 86V134M250 86V134"/><rect x="32" y="140" width="256" height="10" rx="2" class="h-f5 h-ln"/><rect x="22" y="150" width="276" height="10" rx="2" class="h-f5 h-ln"/><rect x="12" y="160" width="296" height="10" rx="2" class="h-f5 h-ln"/></svg></figure><div class="side"><div class="ten"><h3>⏱ En 10 segundos</h3><ul><li>La Constitución de 1991 organiza tres ramas y órganos autónomos.</li><li>Los órganos de control vigilan; la organización electoral organiza las elecciones.</li><li>Para «quién elige a quién», haz una tarjeta por cargo.</li></ul></div><p class="dato"><b>💡 Dato curioso.</b> La Constitución de 1991 fue escrita por una Asamblea Nacional Constituyente elegida por voto popular, y se firmó en julio de ese año.</p></div></div>
+<details open><summary>Concepto</summary><div class="body">
+<p>La Constitución de 1991 organiza el poder público en <b>tres ramas</b>: legislativa (hace las leyes), ejecutiva (las aplica y administra) y judicial (resuelve conflictos y juzga). Además hay <b>órganos autónomos e independientes</b>: los de control (vigilan) y la organización electoral (organiza las elecciones).</p>
+<svg viewBox="0 0 760 260" role="img" aria-label="Ramas del poder público y órganos autónomos">
+<rect class="b1" x="10" y="10" width="230" height="95" rx="10"/><text x="125" y="32" text-anchor="middle" font-weight="bold">Rama legislativa</text><text x="125" y="54" text-anchor="middle">Congreso: Senado y Cámara</text><text x="125" y="74" text-anchor="middle">Hace y reforma leyes</text>
+<rect class="b1" x="265" y="10" width="230" height="95" rx="10"/><text x="380" y="32" text-anchor="middle" font-weight="bold">Rama ejecutiva</text><text x="380" y="54" text-anchor="middle">Presidente, ministros, alcaldes</text><text x="380" y="74" text-anchor="middle">Ejecuta y administra</text>
+<rect class="b1" x="520" y="10" width="230" height="95" rx="10"/><text x="635" y="32" text-anchor="middle" font-weight="bold">Rama judicial</text><text x="635" y="54" text-anchor="middle">Cortes, jueces, Fiscalía</text><text x="635" y="74" text-anchor="middle">Juzga y resuelve conflictos</text>
+<rect class="b2" x="10" y="140" width="360" height="105" rx="10"/><text x="190" y="162" text-anchor="middle" font-weight="bold">Órganos de control (autónomos)</text><text x="190" y="184" text-anchor="middle">Ministerio Público: Procuraduría</text><text x="190" y="202" text-anchor="middle">y Defensoría del Pueblo</text><text x="190" y="222" text-anchor="middle">Contraloría General de la República</text>
+<rect class="b3" x="395" y="140" width="355" height="105" rx="10"/><text x="572" y="162" text-anchor="middle" font-weight="bold">Organización electoral (autónoma)</text><text x="572" y="190" text-anchor="middle">Consejo Nacional Electoral</text><text x="572" y="210" text-anchor="middle">y otras entidades electorales</text>
+</svg>
+<h3>Quién elige a quién (datos para memorizar)</h3>
+<div class="scroll"><table>
+<tr><th>Cargo</th><th>Lo elige</th><th>Nota</th></tr>
+<tr><td>Presidente, gobernadores, alcaldes</td><td>Los ciudadanos por voto popular</td><td>Elección directa</td></tr>
+<tr><td>Procurador General de la Nación</td><td colspan="2">Anota en tus apuntes quién lo elige y de qué terna.</td></tr>
+<tr><td>Contralor General de la República</td><td colspan="2">Anota en tus apuntes quién lo elige y de qué lista.</td></tr>
+<tr><td>Defensor del Pueblo</td><td>La Cámara de Representantes</td><td>De terna del Presidente</td></tr>
+<tr><td>Fiscal General de la Nación</td><td colspan="2">Anota en tus apuntes quién lo elige y de qué terna.</td></tr>
+<tr><td>Registrador Nacional del Estado Civil</td><td>Los presidentes de la Corte Constitucional, la Corte Suprema y el Consejo de Estado</td><td>Anota en tus apuntes a qué grupo de entidades pertenece</td></tr>
+</table></div>
+<div class="tip">Regla para memorizar: hay <b>tres sitios</b> que más eligen: el pueblo (voto), el Congreso (Senado, Cámara o en pleno) y las altas cortes. Haz una tarjeta por cargo.</div>
+</div></details>
+
+<details><summary>Vocabulario clave</summary><div class="body"><dl>
+<dt>Terna</dt><dd>Lista de tres candidatos de la que se elige a uno.</dd>
+<dt>Órgano de control</dt><dd>Entidad que vigila el cumplimiento de la ley y el uso de recursos públicos.</dd>
+<dt>Control fiscal</dt><dd>Vigilancia del manejo del dinero del Estado (Contraloría).</dd>
+<dt>Control disciplinario</dt><dd>Vigilancia de la conducta de los servidores públicos (Procuraduría).</dd>
+<dt>Congreso en pleno</dt><dd>Senado y Cámara reunidos.</dd>
+<dt>Rama del poder público</dt><dd>Grupo de entidades con una función principal: legislar, ejecutar o juzgar.</dd>
+</dl></div></details>
+
+<details class="ex"><summary>Ejemplo resuelto (caso inventado)</summary><div class="body">
+<p><b>Caso:</b> Daniela quiere saber a qué puerta tocar: (a) alguien revisa cómo gastó el dinero un hospital público; (b) alguien organiza y vigila una jornada de votación en el país; (c) quién elige al funcionario que defiende los derechos humanos de la población.</p>
+<ol>
+<li><b>Separa función y elección.</b> Primero identifica <i>qué hace</i> la entidad, luego <i>quién elige</i> a su jefe. Son dos preguntas distintas.</li>
+<li>(a) Vigilar el gasto del dinero público = control fiscal, lo hace un órgano de control (Contraloría).</li>
+<li>(b) Organizar elecciones = organización electoral.</li>
+<li>(c) Defender derechos humanos = Defensoría del Pueblo (Ministerio Público). Para saber quién elige al Defensor, usa la tabla de arriba.</li>
+</ol>
+<p><b>Lección:</b> si la función no es hacer leyes, ejecutarlas ni juzgar, revisa si es un órgano autónomo.</p>
+</div></details>
+
+<details><summary>Estrategias para preguntas Saber de este tema</summary><div class="body"><ul>
+<li>Fíjate en la palabra interrogativa: «¿Quién elige?» versus «¿A qué rama pertenece?». Son preguntas diferentes aunque hablen del mismo cargo.</li>
+<li>Lee todas las opciones: algunas entidades aparecen como distractor porque eligen a <i>otro</i> funcionario.</li>
+<li>Si el examen repite una pregunta, responde con el mismo criterio; es una buena señal para revisar tu consistencia.</li>
+<li>La opción «ninguna de las anteriores» solo es válida si has descartado cada una con una razón.</li>
+</ul></div></details>
+
+<h3>Práctica</h3>
+<div id="p3"></div>
+</section>
+
+<!-- ============ 4 ============ -->
+<section id="s4">
+<div class="banner"><span class="ico"><svg class="bic" aria-hidden="true" focusable="false"><use href="#i-s4"/></svg></span><div><h2>4. Nacionalidad colombiana (Constitución, art. 96)</h2><p class="hook">¿Ser colombiano y ser ciudadano es lo mismo?</p></div></div>
+<div class="vis"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Documento de identidad con foto, franja de tres colores y un sello de verificación, símbolo de la nacionalidad"><title>Documento de identidad con sello</title><rect width="320" height="180" rx="12" fill="url(#g-bg)"/><g transform="rotate(-8 170 95)"><rect x="96" y="28" width="130" height="100" rx="10" class="h-f5 h-ln"/></g><rect x="68" y="34" width="184" height="116" rx="12" fill="url(#g-card)" class="h-ln"/><rect x="196" y="46" width="46" height="10" class="h-f3"/><rect x="196" y="56" width="46" height="5" class="h-f2"/><rect x="196" y="61" width="46" height="5" class="h-f1"/><rect x="82" y="50" width="52" height="62" rx="6" class="h-fb h-ln"/><circle cx="108" cy="72" r="11" class="h-f1"/><path class="h-f2" d="M88 112Q88 90 108 90Q128 90 128 112Z"/><rect x="146" y="76" width="96" height="7" rx="3" class="h-fb"/><rect x="146" y="90" width="76" height="7" rx="3" class="h-fb"/><rect x="146" y="104" width="56" height="7" rx="3" class="h-fb"/><text x="82" y="136" font-size="13">Nacionalidad</text><g class="a-pulse"><circle cx="228" cy="134" r="16" class="h-ok"/><path class="h-ck" d="M220 134L226 140L237 128"/></g></svg></figure><div class="side"><div class="ten"><h3>⏱ En 10 segundos</h3><ul><li>Se es nacional por nacimiento o por adopción.</li><li>Lee el artículo como una lista de condiciones.</li><li>Cuidado con cambiar la etiqueta «nacimiento» o «adopción».</li></ul></div><p class="dato"><b>💡 Dato curioso.</b> Nacionalidad y ciudadanía son cosas distintas: un bebé colombiano ya tiene nacionalidad, pero la ciudadanía, que permite votar, llega a los 18 años.</p></div></div>
+<details open><summary>Concepto</summary><div class="body">
+<p>La nacionalidad es el vínculo jurídico de una persona con un Estado. En Colombia se puede ser nacional <b>por nacimiento</b> o <b>por adopción</b>.</p>
+<h3>Por nacimiento</h3>
+<ul>
+<li>Naturales de Colombia, siempre que <b>al menos uno de sus padres sea nacional o esté domiciliado en Colombia</b> en el momento del nacimiento.</li>
+<li>Hay más casos de nacimiento: lee el artículo 96 (numeral 1) y anótalos en tus apuntes.</li>
+</ul>
+<h3>Por adopción</h3>
+<ul>
+<li>Extranjeros que soliciten y obtengan <b>carta de naturaleza</b>.</li>
+<li>Latinoamericanos y del Caribe por nacimiento, domiciliados en Colombia que, con autorización del Gobierno y según la ley y la reciprocidad, pidan ser inscritos como colombianos.</li>
+<li>Miembros de pueblos indígenas que comparten territorios fronterizos, con aplicación del principio de reciprocidad.</li>
+</ul>
+<h3>Pérdida y recuperación</h3>
+<ul>
+<li>Lo que ocurre con la nacionalidad de origen de quien se naturaliza también está en el artículo 96.</li>
+<li>Lee tú mismo el artículo 96 de la Constitución completo y anota qué dice sobre adquirir otra nacionalidad, sobre renunciar a la colombiana y sobre recobrarla.</li>
+</ul>
+</div></details>
+
+<details><summary>Vocabulario clave</summary><div class="body"><dl>
+<dt>Nacionalidad</dt><dd>Pertenencia jurídica a un país.</dd>
+<dt>Domicilio</dt><dd>Lugar donde una persona vive de forma habitual.</dd>
+<dt>Carta de naturaleza</dt><dd>Documento oficial con que un extranjero obtiene la nacionalidad colombiana.</dd>
+<dt>Oficina consular</dt><dd>Oficina de Colombia en el exterior donde se registran sus nacionales.</dd>
+<dt>Renuncia</dt><dd>Decisión voluntaria de abandonar un derecho o condición.</dd>
+<dt>Reciprocidad</dt><dd>Un país concede a otro los mismos derechos que este le concede.</dd>
+</dl></div></details>
+
+<details class="ex"><summary>Ejemplo resuelto (caso inventado)</summary><div class="body">
+<p><b>Caso:</b> Lucía nace en Cali; su madre es colombiana. Su amigo Pablo, un joven alemán, vive en Colombia hace años y solicita la carta de naturaleza.</p>
+<ol>
+<li><b>Lee el artículo como lista de condiciones</b> y comprueba cada condición con los datos del caso, no con tu intuición.</li>
+<li>Lucía: nació en Colombia y su madre es nacional: cumple la regla de «naturales de Colombia». Esa regla está bajo el título «nacimiento».</li>
+<li>Pablo: es extranjero y pide carta de naturaleza. Esa vía aparece bajo el título «adopción».</li>
+</ol>
+<p><b>Lección:</b> localiza la regla exacta; no respondas por parecido.</p>
+</div></details>
+
+<details><summary>Estrategias para preguntas Verdadero/Falso</summary><div class="body"><ul>
+<li>Una afirmación es <b>verdadera solo si todas sus partes lo son</b>. Una palabra equivocada la vuelve falsa.</li>
+<li>Subraya palabras como <i>siempre, nunca, todos, únicamente</i>. La ley casi nunca es tan absoluta; verifica ese detalle en el texto de la norma.</li>
+<li>Fíjate bajo qué <b>título</b> (por nacimiento / por adopción) aparece cada regla en el artículo.</li>
+<li>Compara la afirmación con la regla que aprendiste, frase por frase.</li>
+</ul></div></details>
+
+<h3>Práctica</h3>
+<div id="p4"></div>
+</section>
+
+<!-- ============ 5 ============ -->
+<section id="s5">
+<div class="banner"><span class="ico"><svg class="bic" aria-hidden="true" focusable="false"><use href="#i-s5"/></svg></span><div><h2>5. Territorio de Colombia: mar, espacio aéreo y espectro</h2><p class="hook">¿Hasta dónde llega Colombia: solo hasta donde termina la tierra?</p></div></div>
+<div class="vis"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Paisaje con montañas, mar, un velero, un avión y un satélite: el territorio incluye tierra, mar y aire"><title>Montañas, mar, avión y satélite</title><rect width="320" height="180" rx="12" fill="url(#g-sky)"/><circle cx="270" cy="38" r="15" class="h-f3"/><g class="h-fs" fill-opacity=".9"><ellipse cx="70" cy="40" rx="24" ry="8"/><circle cx="62" cy="34" r="9"/><circle cx="78" cy="32" r="11"/></g><g class="a-float"><rect x="194" y="24" width="12" height="10" rx="2" class="h-f1 h-ln"/><rect x="176" y="26" width="16" height="6" rx="1" class="h-f2 h-ln"/><rect x="208" y="26" width="16" height="6" rx="1" class="h-f2 h-ln"/></g><g class="a-fly"><ellipse cx="130" cy="66" rx="20" ry="5" class="h-fs h-ln"/><path class="h-f1 h-ln" d="M126 66L112 82H122L142 66Z"/><path class="h-f1 h-ln" d="M114 63L108 54H117L124 63Z"/></g><path class="h-f4 h-ln" d="M0 142L36 98L58 124L82 102L122 144V180H0Z"/><path class="h-fs" fill-opacity=".85" d="M36 98L28 110L36 106L44 112Z"/><path fill="url(#g-sea)" d="M112 148C140 138 172 146 204 141S280 138 320 144V180H112Z"/><path class="h-sea a-wave" d="M146 160q10-8 20 0t20 0t20 0"/><path class="h-sea a-wave" d="M214 172q10-8 20 0t20 0t20 0"/><g class="a-bob"><path class="h-f1 h-ln" d="M230 146H262L256 156H236Z"/><path class="h-fs h-ln" d="M246 142V120L262 142Z"/></g></svg></figure><div class="side"><div class="ten"><h3>⏱ En 10 segundos</h3><ul><li>El territorio no es solo tierra: también mar, aire y espectro.</li><li>Las zonas del mar se miden en millas náuticas: no las confundas por el nombre.</li><li>Dibuja la línea de millas para no confundir los nombres.</li></ul></div><p class="dato"><b>💡 Dato curioso.</b> Colombia es el único país de Suramérica con costas tanto en el océano Pacífico como en el mar Caribe.</p></div></div>
+<details open><summary>Concepto</summary><div class="body">
+<p>El territorio no es solo la tierra: incluye el <b>mar territorial</b>, la <b>plataforma continental</b>, el <b>espacio aéreo</b>, el <b>segmento de la órbita geoestacionaria</b> y el <b>espectro electromagnético</b> (por donde viajan radio, televisión y telecomunicaciones), según el artículo 101 de la Constitución.</p>
+<p>En el mar, todo se mide desde unas <b>líneas base</b> (líneas imaginarias que siguen la costa). Desde ellas:</p>
+<svg viewBox="0 0 760 170" role="img" aria-label="Zonas marítimas medidas desde las líneas base (esquema, no está a escala)">
+<rect class="b3" x="5" y="20" width="85" height="60" rx="6"/><text x="47" y="55" text-anchor="middle">Costa</text>
+<rect class="b1" x="90" y="20" width="150" height="60"/><text x="165" y="45" text-anchor="middle">Mar territorial</text><text x="165" y="63" text-anchor="middle">hasta 12 millas</text>
+<rect class="b2" x="240" y="20" width="150" height="60"/><text x="315" y="45" text-anchor="middle">Zona contigua</text><text x="315" y="63" text-anchor="middle">12 a 24 millas</text>
+<rect class="b3" x="390" y="20" width="360" height="60"/><text x="570" y="45" text-anchor="middle">Más allá del mar territorial</text><text x="570" y="63" text-anchor="middle">hasta 200 millas</text>
+<path class="ln" d="M90 100v-15M240 100v-15M390 100v-15M750 100v-15"/>
+<text x="90" y="118" text-anchor="middle">líneas base</text><text x="240" y="118" text-anchor="middle">12</text><text x="390" y="118" text-anchor="middle">24</text><text x="750" y="118" text-anchor="end">200</text>
+<rect class="b1" x="240" y="130" width="510" height="30" rx="6"/><text x="495" y="150" text-anchor="middle">Zona económica exclusiva: derechos sobre recursos (hasta 200 millas)</text>
+</svg>
+<p class="note">Esquema sin escala. Las millas son millas náuticas medidas desde las líneas base.</p>
+<div class="scroll"><table>
+<tr><th>Concepto</th><th>Idea central</th></tr>
+<tr><td>Líneas base</td><td>Punto de partida trazado siguiendo la costa para contar las millas de cada zona.</td></tr>
+<tr><td>Mar territorial</td><td>Franja pegada a la costa, de hasta 12 millas, donde el Estado ejerce soberanía.</td></tr>
+<tr><td>Zona contigua</td><td>Franja entre las 12 y las 24 millas; el Estado puede ejercer controles (aduanas, migración, salud).</td></tr>
+<tr><td>Zona económica exclusiva</td><td>Hasta 200 millas; el Estado tiene derechos sobre los recursos (pesca, minerales).</td></tr>
+<tr><td>Plataforma continental</td><td>Lecho y subsuelo del mar, prolongación del territorio terrestre bajo el agua.</td></tr>
+<tr><td>Espacio aéreo</td><td>La columna de aire sobre el territorio.</td></tr>
+<tr><td>Espectro electromagnético</td><td>Ondas por las que viajan señales como radio y televisión.</td></tr>
+<tr><td>Órbita geoestacionaria</td><td>Franja a gran altura sobre el ecuador donde los satélites se mantienen sobre un mismo punto.</td></tr>
+</table></div>
+</div></details>
+
+<details><summary>Vocabulario clave</summary><div class="body"><dl>
+<dt>Soberanía</dt><dd>Poder supremo de un Estado sobre su territorio.</dd>
+<dt>Milla náutica</dt><dd>Unidad del mar, equivale a 1852 metros.</dd>
+<dt>Alta mar</dt><dd>Aguas que no pertenecen a ningún Estado.</dd>
+<dt>Telecomunicaciones</dt><dd>Transmisión de señales a distancia (radio, TV, internet inalámbrico).</dd>
+<dt>Lecho marino</dt><dd>Fondo del mar.</dd>
+</dl></div></details>
+
+<details class="ex"><summary>Ejemplo resuelto (caso inventado)</summary><div class="body">
+<p><b>Caso:</b> Un barco pesquero ficticio navega a 15 millas de la costa colombiana, y su capitán pregunta qué zona es y qué autoridad puede revisarlo.</p>
+<ol>
+<li><b>Dibuja la línea</b> de 0 a 200 millas y marca 12 y 24.</li>
+<li><b>Ubica el punto:</b> 15 está después de 12 y antes de 24: ya no es mar territorial, pero sí es el área siguiente a éste.</li>
+<li><b>Relaciona con la función:</b> en esa área el Estado puede ejercer controles aduaneros, migratorios y sanitarios.</li>
+<li>Además, como está dentro de las 200 millas, hay derechos sobre los recursos que allí se encuentren.</li>
+</ol>
+<p><b>Lección:</b> convierte las definiciones en un dibujo con números.</p>
+</div></details>
+
+<details><summary>Estrategias para preguntas Saber de este tema</summary><div class="body"><ul>
+<li>Distingue lo que <b>mide</b> de lo que es una <b>zona</b> del mar: no todos los conceptos de la lista son franjas de agua.</li>
+<li>Cuando la pregunta hable de orden o posición, ubícala en tu dibujo de millas.</li>
+<li>Aprende a qué parte del territorio (tierra, mar, aire, otras) corresponde cada concepto de la lista.</li>
+<li>Haz el dibujo en el margen del examen: tarda 10 segundos y evita confundir zonas.</li>
+</ul></div></details>
+
+<h3>Práctica</h3>
+<div id="p5"></div>
+</section>
+
+<!-- ============ 6 ============ -->
+<section id="s6">
+<div class="banner"><span class="ico"><svg class="bic" aria-hidden="true" focusable="false"><use href="#i-s6"/></svg></span><div><h2>6. Estrategias generales para pruebas tipo Saber</h2><p class="hook">¿Y si pudieras subir tu puntaje solo cambiando la forma de responder?</p></div></div>
+<div class="vis"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Hoja de respuestas con burbujas A, B, C y D, algunas tachadas por eliminación, y una lupa que las revisa"><title>Hoja de respuestas con lupa</title><rect width="320" height="180" rx="12" fill="url(#g-bg)"/><g transform="rotate(-45 32 140)"><rect x="4" y="134" width="52" height="12" rx="2" class="h-f3 h-ln"/><path class="h-f5 h-ln" d="M56 134L72 140L56 146Z"/><rect x="4" y="134" width="9" height="12" class="h-f1 h-ln"/></g><rect x="64" y="14" width="150" height="152" rx="10" class="h-fs h-ln"/><rect x="78" y="26" width="92" height="7" rx="3" class="h-fb"/><rect x="78" y="74" width="70" height="7" rx="3" class="h-fb"/><rect x="78" y="122" width="100" height="7" rx="3" class="h-fb"/><circle cx="90" cy="52" r="10" class="h-fb h-ln"/><text x="90" y="56" text-anchor="middle" font-size="12">A</text><circle cx="116" cy="52" r="10" class="h-fb h-ln"/><text x="116" y="56" text-anchor="middle" font-size="12">B</text><circle cx="142" cy="52" r="10" class="h-fb h-ln"/><text x="142" y="56" text-anchor="middle" font-size="12">C</text><circle cx="168" cy="52" r="10" class="h-fb h-ln"/><text x="168" y="56" text-anchor="middle" font-size="12">D</text><circle cx="90" cy="100" r="10" class="h-fb h-ln"/><text x="90" y="104" text-anchor="middle" font-size="12">A</text><circle cx="116" cy="100" r="10" class="h-fb h-ln"/><text x="116" y="104" text-anchor="middle" font-size="12">B</text><circle cx="142" cy="100" r="10" class="h-fb h-ln"/><text x="142" y="104" text-anchor="middle" font-size="12">C</text><circle cx="168" cy="100" r="10" class="h-fb h-ln"/><text x="168" y="104" text-anchor="middle" font-size="12">D</text><circle cx="90" cy="148" r="10" class="h-fb h-ln"/><text x="90" y="152" text-anchor="middle" font-size="12">A</text><circle cx="116" cy="148" r="10" class="h-fb h-ln"/><text x="116" y="152" text-anchor="middle" font-size="12">B</text><circle cx="142" cy="148" r="10" class="h-fb h-ln"/><text x="142" y="152" text-anchor="middle" font-size="12">C</text><circle cx="168" cy="148" r="10" class="h-fb h-ln"/><text x="168" y="152" text-anchor="middle" font-size="12">D</text><path class="h-x" d="M108 44L124 60M124 44L108 60M134 44L150 60M150 44L134 60M82 92L98 108M98 92L82 108M160 140L176 156M176 140L160 156"/><g class="a-sweep"><circle cx="246" cy="92" r="26" class="h-lens"/><path class="h-handle" d="M265 111L292 142"/></g></svg></figure><div class="side"><div class="ten"><h3>⏱ En 10 segundos</h3><ul><li>Lee el enunciado completo y subraya lo que pide.</li><li>Elimina opciones y explica por qué.</li><li>Revisa cada parte: una parte falsa daña toda la afirmación.</li></ul></div><p class="dato"><b>💡 Dato curioso.</b> Con 4 opciones, adivinar acierta 1 de cada 4 veces (25 %); si descartas una opción con razones, la probabilidad sube a 1 de cada 3 (33 %).</p></div></div>
+<details open><summary>Antes de responder</summary><div class="body"><ol>
+<li><b>Lee el enunciado completo</b> y subraya la palabra que pide la tarea (quién, qué, cuál, no).</li>
+<li><b>Antes de mirar las opciones</b>, intenta responder con tus palabras.</li>
+<li><b>Lee todas las opciones</b>, aunque la primera parezca correcta.</li>
+<li><b>Elimina</b> las que contradicen lo que sabes y escribe por qué.</li>
+<li>Si dudas entre dos, vuelve a la <b>palabra clave</b> del enunciado.</li>
+</ol></div></details>
+<details><summary>Preguntas de «todos los anteriores» y «ninguna de las anteriores»</summary><div class="body">
+<p>Verifica una por una. Si encuentras dos opciones válidas y una falsa, «todos» no sirve. Si todas son válidas, la opción «todos los anteriores» es la que recoge el conjunto. Solo marca «ninguna» si descartaste todas con razones.</p></div></details>
+<details><summary>Verdadero / Falso</summary><div class="body">
+<p>Evalúa la oración completa, palabra por palabra. Una sola parte errónea hace falsa la afirmación. Sospecha de absolutos y de datos cambiados (etiquetas, cifras, cargos).</p></div></details>
+<details><summary>Las competencias ciudadanas que evalúa Saber</summary><div class="body">
+<p>Además de saber datos, las pruebas Saber miden: <b>conocimientos</b> (normas, instituciones), <b>argumentación</b> (justificar con razones), <b>multiperspectivismo</b> (entender cómo ven un asunto distintas personas: sus intereses, derechos y consecuencias) y <b>pensamiento sistémico</b> (ver cómo las decisiones afectan a varios actores). Cuando una pregunta presente un caso, usa esta rutina:</p>
+<ol><li>¿Quiénes participan?</li><li>¿Qué quiere o necesita cada uno?</li><li>¿Qué norma o derecho aplica?</li><li>¿Qué consecuencias tendría cada decisión?</li></ol>
+<p>Tu evaluación de periodo trabaja sobre todo el componente de <b>conocimientos</b>: la rutina anterior te sirve para otros temas y pruebas externas.</p></div></details>
+<details><summary>Plan de estudio de 3 días</summary><div class="body"><ul>
+<li><b>Día 1:</b> secciones 1 y 2. Haz tarjetas de actores y de conceptos.</li>
+<li><b>Día 2:</b> secciones 3 y 4. Repasa la tabla de quién elige a quién.</li>
+<li><b>Día 3:</b> sección 5, estrategias y autoevaluación final.</li></ul></div></details>
+<h3>Práctica</h3>
+<div id="p6"></div>
+</section>
+
+<!-- ============ 7 ============ -->
+<section id="s7">
+<div class="banner"><span class="ico"><svg class="bic" aria-hidden="true" focusable="false"><use href="#i-s7"/></svg></span><div><h2>7. Autoevaluación final</h2><p class="hook">¿Cuánto recuerdas sin mirar los apuntes?</p></div></div>
+<div class="vis"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Lista de verificación con marcas de acierto, barra de progreso, barras que crecen y una estrella de logro"><title>Lista de verificación y estrella de logro</title><rect width="320" height="180" rx="12" fill="url(#g-bg)"/><rect x="20" y="124" width="14" height="36" rx="3" class="h-f2 h-ln"/><rect x="40" y="104" width="14" height="56" rx="3" class="h-f4 h-ln"/><rect x="60" y="80" width="14" height="80" rx="3" class="h-f1 h-ln"/><rect x="92" y="22" width="136" height="148" rx="12" class="h-f5 h-ln"/><rect x="102" y="36" width="116" height="126" rx="6" class="h-fs h-ln"/><rect x="130" y="14" width="60" height="18" rx="6" class="h-f1 h-ln"/><circle cx="118" cy="58" r="8" class="h-ok"/><path class="h-ck" d="M113 58 L117 62 L124 54"/><rect x="134" y="55" width="72" height="7" rx="3" class="h-fb"/><circle cx="118" cy="82" r="8" class="h-ok"/><path class="h-ck" d="M113 82 L117 86 L124 78"/><rect x="134" y="79" width="60" height="7" rx="3" class="h-fb"/><circle cx="118" cy="106" r="8" class="h-ok"/><path class="h-ck" d="M113 106 L117 110 L124 102"/><rect x="134" y="103" width="76" height="7" rx="3" class="h-fb"/><circle cx="118" cy="130" r="8" class="h-fb h-ln"/><rect x="134" y="127" width="50" height="7" rx="3" class="h-fb"/><rect x="112" y="146" width="96" height="9" rx="4" class="h-fb h-ln"/><rect x="112" y="146" width="68" height="9" rx="4" class="h-fok"/><polygon class="a-spin h-f3 h-ln" points="262.0,28.0 267.9,43.9 284.8,44.6 271.5,55.1 276.1,71.4 262.0,62.0 247.9,71.4 252.5,55.1 239.2,44.6 256.1,43.9"/><circle cx="290" cy="100" r="4" class="h-f1"/><circle cx="244" cy="96" r="3" class="h-f2"/></svg></figure><div class="side"><div class="ten"><h3>⏱ En 10 segundos</h3><ul><li>12 preguntas nuevas que mezclan todos los temas.</li><li>Elige una opción en cada una y pulsa «Calificar».</li><li>Lee la explicación de cada opción, no solo la tuya.</li></ul></div><p class="dato"><b>💡 Dato curioso.</b> Intentar recordar sin mirar el material ayuda a fijar lo aprendido más que releerlo: los psicólogos lo llaman «efecto de la práctica de recuperación».</p></div></div>
+<p>12 preguntas nuevas, parecidas en estilo a la evaluación pero con otros casos. Elige una opción en cada una y presiona «Calificar». Recibirás explicación de cada opción.</p>
+<div id="final"></div>
+<button class="btn" id="grade">Calificar</button><button class="btn ghost" id="again">Reiniciar</button>
+<div id="score" class="res" style="display:none" role="status"></div>
+</section>
+</main>
+<footer>Guía de estudio. Contenido de apoyo; verifica siempre con tus apuntes y tu docente.</footer>
+
+<script>
+(function(){
+"use strict";
+var KEY="cc9p4_progress";
+var state={};
+try{var raw=localStorage.getItem(KEY);if(raw)state=JSON.parse(raw)||{};}catch(e){state={};}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){}}
+var registry={}; // section -> [ids]
+function reg(sec,id){(registry[sec]=registry[sec]||[]).push(id);}
+function updateProgress(){
+  var total=0,done=0;
+  Object.keys(registry).forEach(function(sec){
+    var d=0;registry[sec].forEach(function(id){total++;if(state[id]==="ok"){done++;d++;}});
+    var a=document.querySelector('nav a[href="#'+sec+'"]');
+    if(a){a.classList.toggle("done",d===registry[sec].length);}
+  });
+  document.getElementById("pfill").style.width=(total?Math.round(done*100/total):0)+"%";
+  document.getElementById("ptxt").textContent="Progreso: "+done+" de "+total+" actividades";
+  if(typeof updateRoute==="function")updateRoute();
+}
+function el(t,c,h){var e=document.createElement(t);if(c)e.className=c;if(h!==undefined)e.innerHTML=h;return e;}
+
+/* ---------- multiple choice ---------- */
+function mc(host,sec,id,item){
+  reg(sec,id);
+  var box=el("div","q");
+  box.appendChild(el("p","t",item.q));
+  if(item.hint){var d=el("details","hint");d.appendChild(el("summary","","💡 Pista (clic para ver)"));d.appendChild(el("div","body",item.hint));box.appendChild(d);}
+  var opts=el("div");var fbs=[];var btns=[];
+  var letters="abcd";
+  item.o.forEach(function(txt,i){
+    var b=el("button","opt",letters[i]+". "+txt);b.type="button";btns.push(b);
+    var fb=el("div","fb");fb.style.display="none";fbs.push(fb);
+    b.addEventListener("click",function(){
+      btns.forEach(function(x,j){x.disabled=true;
+        fbs[j].style.display="block";
+        fbs[j].className="fb "+(j===item.a?"ok":"bad");
+        fbs[j].innerHTML=(j===item.a?'<b class="ok">✔ Correcta.</b> ':'<b class="bad">✘ Incorrecta.</b> ')+item.w[j];
+        if(j===item.a)x.classList.add("sel-ok");
+      });
+      if(i!==item.a)b.classList.add("sel-bad");
+      state[id]=(i===item.a)?"ok":"bad";save();updateProgress();
+      retry.style.display="inline-block";
+    });
+    opts.appendChild(b);opts.appendChild(fb);
+  });
+  box.appendChild(opts);
+  var retry=el("button","btn ghost","Intentar de nuevo");retry.type="button";retry.style.display="none";
+  retry.addEventListener("click",function(){btns.forEach(function(x,j){x.disabled=false;x.className="opt";fbs[j].style.display="none";});retry.style.display="none";delete state[id];save();updateProgress();});
+  box.appendChild(retry);
+  if(state[id]==="ok"){var n=el("span","badge","Ya la resolviste bien");box.insertBefore(n,box.firstChild.nextSibling);}
+  host.appendChild(box);
+}
+
+/* ---------- classify ---------- */
+function classify(host,sec,id,c){
+  reg(sec,id);
+  var box=el("div","q");
+  box.appendChild(el("p","t",c.title));
+  box.appendChild(el("p","fb","Pulsa la categoría que corresponde a cada elemento."));
+  var right=0,answered={};
+  var msg=el("div","res");msg.style.display="none";
+  c.items.forEach(function(it,k){
+    var row=el("div","row");row.appendChild(el("div","tx",it.t));
+    var fb=el("div","fb");fb.style.flexBasis="100%";fb.style.display="none";
+    var bs=[];
+    c.cats.forEach(function(cat,ci){
+      var b=el("button","cat",cat);b.type="button";bs.push(b);
+      b.addEventListener("click",function(){
+        if(answered[k]==="ok")return;
+        if(ci===it.c){b.className="cat sel-ok";answered[k]="ok";right++;fb.className="fb ok";fb.innerHTML='<b class="ok">✔ Correcto.</b> '+it.w;bs.forEach(function(x){x.disabled=true;});}
+        else{b.className="cat sel-bad";b.disabled=true;fb.className="fb bad";fb.innerHTML='<b class="bad">✘ Todavía no.</b> '+it.wb;}
+        fb.style.display="block";
+        if(right===c.items.length){state[id]="ok";save();updateProgress();msg.style.display="block";msg.textContent="Completaste esta clasificación.";}
+      });
+      row.appendChild(b);
+    });
+    row.appendChild(fb);box.appendChild(row);
+  });
+  box.appendChild(msg);
+  if(state[id]==="ok")box.insertBefore(el("span","badge","Completada antes"),box.firstChild.nextSibling);
+  host.appendChild(box);
+}
+
+/* ---------- data ---------- */
+var TF=["Verdadero","Falso"];
+var P={};
+P.p1={mc:[
+{q:"Una funcionaria revisa el expediente de un adolescente de 15 años y reúne pruebas sobre un robo para presentarlas en el juicio. ¿Qué papel cumple?",o:["Defensor público","Fiscal","Juez de conocimiento","Defensor de Familia"],a:1,hint:"Busca el verbo: reúne pruebas y presenta.",w:["Defiende al adolescente; no es quien reúne la prueba de acusación.","Reunir pruebas y acusar son funciones de la Fiscalía.","El juez no investiga: decide con lo que le presentan las partes.","Vigila derechos del adolescente, no acusa."]},
+{q:"Una abogada del ICBF asiste a todas las audiencias para comprobar que el adolescente reciba atención en salud y educación y no sea maltratado. ¿Cuál es su rol?",o:["Fiscal","Defensor de Familia","Juez de conocimiento","Policía de infancia"],a:1,hint:"¿Acusa, decide o vigila derechos?",w:["El fiscal acusa, no protege derechos del adolescente.","Su función es vigilar que se garanticen los derechos del adolescente y exigir que se cumplan.","El juez decide la responsabilidad, no hace seguimiento de su atención.","La policía de infancia participa en la captura o aprehensión, no en la vigilancia del proceso."]},
+{q:"Antes del juicio, un juez revisa si la captura de Mateo se hizo respetando la ley y sus derechos. ¿Qué tipo de juez es?",o:["Juez de control de garantías","Juez de conocimiento","Juez civil","Ninguno, esa revisión la hace el fiscal"],a:0,w:["Su tarea es verificar legalidad y protección de derechos.","Este juez decide la responsabilidad en el juicio, no verifica las garantías previas.","El juez civil trata asuntos de derecho civil, no el proceso penal para adolescentes.","El fiscal es parte del proceso; no puede controlar su propia actuación."]},
+{q:"¿Cuál es la función principal del abogado defensor de un adolescente acusado?",o:["Reunir pruebas para acusarlo","Defenderlo y acompañarlo para demostrar su participación o no en los hechos","Decidir si es culpable","Vigilar que el ICBF cumpla su trabajo"],a:1,w:["Eso hace la Fiscalía.","Acompaña y defiende al adolescente durante todo el proceso.","Decidir corresponde al juez.","Esa vigilancia no es labor del defensor."]},
+{q:"Un niño de 11 años toma sin permiso un objeto costoso de una tienda. ¿Se le aplica el sistema penal para adolescentes?",o:["Sí, desde los 10 años","No, el SRPA se aplica de los 14 a los 17; a él le corresponden medidas de protección","Sí, pero sin juez","No, porque nunca se aplica a menores"],a:1,w:["Esa edad no es la que establece la ley.","Menores de 14 reciben medidas de protección y restablecimiento, no sanciones penales.","El sistema siempre incluye jueces.","Sí se aplica a adolescentes entre 14 y 17."]}
+],cl:{title:"Clasifica cada tarea en el actor que la realiza",cats:["Fiscal","Defensor","Defensor de Familia","Juez"],items:[
+{t:"Presenta la acusación con las pruebas que reunió.",c:0,w:"Acusar y probar es labor de la Fiscalía.",wb:"Quien acusa no es quien defiende, vigila ni decide."},
+{t:"Habla en nombre del adolescente en las audiencias.",c:1,w:"El defensor representa y defiende al adolescente.",wb:"Piensa en quién es el abogado del adolescente."},
+{t:"Exige que se respeten los derechos del adolescente durante todo el proceso.",c:2,w:"Es el rol de vigilancia y garantía del ICBF.",wb:"La palabra clave es vigilar derechos."},
+{t:"Escucha a las partes y toma la decisión sobre responsabilidad.",c:3,w:"Decidir le corresponde al juez.",wb:"¿Quién toma la decisión final?"}
+]}};
+P.p2={mc:[
+{q:"Una alcaldía cierra el único colegio de una vereda sin ofrecer alternativa y los niños quedan sin estudio. Esta situación es mejor descrita como:",o:["Vulneración de derechos","Prevalencia de derechos","Restablecimiento de derechos","Ejercicio normal de derechos"],a:0,hint:"¿Ya hay daño o solo riesgo?",w:["El derecho a la educación fue negado de hecho.","La prevalencia es una regla de prioridad, no una situación de daño.","Restablecimiento es la reparación, no el daño.","Ejercer un derecho normalmente significa poder disfrutarlo, y aquí no es así."]},
+{q:"Después de ese cierre, el ICBF logra que los niños asistan a un colegio cercano con transporte. Esa acción corresponde a:",o:["Vulneración de derechos","Amenaza de derechos","Restablecimiento de derechos","Ninguna de las anteriores"],a:2,w:["Es el daño, no la reparación.","La amenaza es un riesgo anterior al daño.","Son medidas para que recuperen el derecho que se les negó.","Sí corresponde a una de las anteriores."]},
+{q:"Un concejo debe decidir entre usar un lote para un parqueadero comercial o para un parque infantil; ambos grupos reclaman derechos. ¿Qué regla orienta la decisión sobre los niños?",o:["Gana quien pague más","Se decide por sorteo","Los derechos de los niños tienen prioridad","Los adultos siempre van primero"],a:2,w:["El dinero no es criterio jurídico en este caso.","Los derechos no se juegan al azar.","Es la prevalencia de derechos de niños y adolescentes.","Es lo contrario de lo que establece el Código."]},
+{q:"Según el Código de la Infancia y la Adolescencia, ¿quién es responsable de proteger a un niño?",o:["Solo la familia","Solo el Estado","Familia, sociedad y Estado","Solo el colegio"],a:2,w:["La familia es central, pero no la única.","El Estado no actúa solo.","Es la corresponsabilidad.","El colegio colabora, pero no es el único responsable."]}
+],cl:{title:"Clasifica cada situación",cats:["Vulneración","Amenaza","Restablecimiento","Prevalencia"],items:[
+{t:"A una niña le impiden asistir al colegio por su origen.",c:0,w:"El derecho ya está siendo negado.",wb:"El daño ya ocurre."},
+{t:"Hay cables sueltos en el parque donde juegan niños, y podrían electrocutarse.",c:1,w:"Existe un riesgo, pero el daño aún no ocurrió.",wb:"Todavía no hay daño; hay peligro."},
+{t:"Un defensor de familia ubica a un niño maltratado en un hogar seguro y le restituye su educación.",c:2,w:"Son medidas para recuperar derechos vulnerados.",wb:"Piensa en reparar lo dañado."},
+{t:"Entre un evento comercial y la zona de juegos infantil, se decide que prima la zona de juegos.",c:3,w:"Es una prioridad de los derechos de los niños.",wb:"Piensa en quién tiene prioridad."}
+]}};
+P.p3={mc:[
+{q:"¿Quién elige al Defensor del Pueblo?",o:["La Cámara de Representantes","La Corte Suprema de Justicia","El voto popular","El Consejo de Estado"],a:0,hint:"Mira la tabla de quién elige a quién.",w:["Lo elige la Cámara, de terna del Presidente.","La Corte Suprema no elige al Defensor.","Por voto popular se eligen Presidente, gobernadores y alcaldes.","El Consejo de Estado presenta ternas, pero no elige al Defensor."]},
+{q:"El Presidente de la República y los ministros forman parte de la rama:",o:["Legislativa","Ejecutiva","Judicial","Electoral"],a:1,w:["La legislativa hace las leyes.","La ejecutiva aplica leyes y administra.","La judicial resuelve conflictos.","La organización electoral organiza elecciones, no gobierna."]},
+{q:"¿Qué entidad vigila la conducta de los servidores públicos y puede investigarlos disciplinariamente?",o:["Contraloría","Procuraduría","Corte Constitucional","Congreso"],a:1,w:["Vigila el dinero público, no la conducta personal.","Es el control disciplinario.","La Corte revisa la constitucionalidad de leyes.","El Congreso hace leyes."]},
+{q:"La Fiscalía General de la Nación hace parte de:",o:["Rama judicial","Rama legislativa","Rama ejecutiva","Organización electoral"],a:0,w:["Investiga y acusa dentro del aparato de justicia.","No hace leyes.","No pertenece al gobierno.","No organiza elecciones."]},
+{q:"¿Qué es una terna?",o:["Una ley de tres artículos","Una lista de tres candidatos para elegir a uno","Tres votos del Congreso","Tres jueces reunidos"],a:1,w:["No es una ley.","Es la lista de la cual se escoge al funcionario.","No son votos.","No son jueces."]}
+],cl:{title:"Clasifica cada entidad según su ubicación",cats:["Rama legislativa","Rama ejecutiva","Rama judicial","Órgano de control","Organización electoral"],items:[
+{t:"Cámara de Representantes",c:0,w:"Forma parte del Congreso, que hace leyes.",wb:"Piensa en quién hace las leyes."},
+{t:"Gobernación de un departamento",c:1,w:"Administra y ejecuta a nivel departamental.",wb:"Es una autoridad que administra."},
+{t:"Corte Constitucional",c:2,w:"Es una alta corte de la rama judicial.",wb:"Es un tribunal."},
+{t:"Defensoría del Pueblo",c:3,w:"Pertenece al Ministerio Público, órgano de control.",wb:"Vigila y protege derechos humanos."},
+{t:"Consejo Nacional Electoral",c:4,w:"Organiza y vigila las elecciones.",wb:"Piensa en elecciones."}
+]}};
+P.p4={mc:[
+{q:"Mía nace en Cali, hija de turistas extranjeros que están de paso y no están domiciliados en Colombia. Según el artículo 96, ¿es colombiana por nacimiento?",o:["Sí, siempre por haber nacido en Colombia","No necesariamente: se exige que uno de sus padres sea nacional o esté domiciliado","Sí, por adopción","No, nunca"],a:1,hint:"Revisa la condición de los padres.",w:["La regla no es tan absoluta; hay condiciones.","El artículo pide que alguno de los padres sea colombiano o esté domiciliado en el país.","La adopción es otra vía (carta de naturaleza), no el caso.","Podría serlo si se cumplen las condiciones, por eso no es «nunca»."]},
+{q:"Un francés vive en Colombia y obtiene carta de naturaleza. Su calidad de colombiano es:",o:["Por nacimiento","Por adopción","Temporal","No existe"],a:1,w:["No nació de las condiciones de nacimiento.","La carta de naturaleza es una vía de adopción.","La ley no la llama temporal.","Sí existe esa vía."]},
+{q:"Verdadero o falso: un colombiano por adopción debe renunciar a su nacionalidad de origen.",o:TF,a:1,w:["La Constitución dice que no están obligados a renunciar.","Falso: no están obligados a renunciar a su nacionalidad de origen."]},
+{q:"¿Cómo se llama el documento oficial con el que un extranjero obtiene la nacionalidad colombiana por adopción?",o:["Cédula de ciudadanía","Carta de naturaleza","Registro civil de nacimiento","Pasaporte"],a:1,hint:"Mira el vocabulario clave de esta sección.",w:["La cédula la tienen los ciudadanos mayores de 18 años.","Es el documento que acredita la naturalización.","El registro civil acredita un nacimiento.","El pasaporte es un documento de viaje."]}
+],cl:{title:"¿Por nacimiento o por adopción?",cats:["Por nacimiento","Por adopción"],items:[
+{t:"Joven nacida en Medellín, de madre extranjera domiciliada en Colombia.",c:0,w:"Nació en Colombia y uno de sus padres está domiciliado en el país: vía de nacimiento.",wb:"Nació en Colombia y se cumple la condición sobre sus padres."},
+{t:"Un alemán que solicita y obtiene carta de naturaleza.",c:1,w:"La carta de naturaleza es una vía de adopción.",wb:"No nació ni es hijo de colombianos."},
+{t:"Niño nacido en Bogotá de padres colombianos.",c:0,w:"Es nacional por nacimiento.",wb:"Nació en Colombia de colombianos."},
+{t:"Un chileno domiciliado en Colombia que pide ser inscrito como colombiano.",c:1,w:"Es la vía para latinoamericanos domiciliados, por adopción.",wb:"No nació en Colombia ni es hijo de colombianos."}
+]}};
+P.p5={mc:[
+{q:"Un barco navega a 8 millas náuticas desde las líneas base. ¿En qué zona está?",o:["Mar territorial","Zona contigua","Alta mar","Espacio aéreo"],a:0,hint:"Dibuja la regla: 12 y 24.",w:["Está dentro de las 12 millas.","La zona contigua empieza después de 12.","Alta mar está mucho más lejos.","El espacio aéreo es la columna de aire, no una zona del mar."]},
+{q:"Una patrulla de aduanas revisa un barco que navega a 18 millas. ¿En qué zona se encuentra?",o:["Mar territorial","Zona contigua","Zona económica exclusiva","Alta mar"],a:1,w:["Llega solo hasta las 12 millas.","Está entre las 12 y 24 millas, donde el Estado puede hacer controles de aduana.","La ZEE llega hasta 200 millas, pero el control aduanero se asocia a la zona contigua.","Alta mar está mucho más lejos."]},
+{q:"Una empresa extranjera quiere pescar a 150 millas. ¿Quién tiene derechos sobre esos recursos?",o:["Nadie, es alta mar","Colombia, por zona económica exclusiva","Cualquier país","Solo la ONU"],a:1,w:["Está dentro de las 200 millas.","La ZEE da al Estado derechos sobre los recursos.","No cualquiera puede explotarlos.","La ONU no es dueña de esos recursos."]},
+{q:"Una emisora de radio transmite su señal por el aire. Esa señal viaja por:",o:["Plataforma continental","Espectro electromagnético","Mar territorial","Zona contigua"],a:1,w:["Es del lecho marino.","Es el conjunto de ondas para telecomunicaciones.","Es agua.","Es una zona del mar."]}
+],cl:{title:"Relaciona cada descripción con el concepto",cats:["Líneas base","Mar territorial","Zona contigua","Zona económica exclusiva","Plataforma continental"],items:[
+{t:"Punto de partida desde el cual se empiezan a contar las millas.",c:0,w:"Son las líneas desde las que se empieza a medir.",wb:"Piensa en medida, no en zona."},
+{t:"Franja de hasta 12 millas con soberanía plena.",c:1,w:"Es la franja pegada a la costa.",wb:"Es la más cercana a la costa."},
+{t:"Área siguiente al mar territorial donde se pueden hacer controles de aduana y migración.",c:2,w:"Es la zona contigua.",wb:"Es la que viene después del mar territorial."},
+{t:"Hasta 200 millas, con derechos sobre los recursos.",c:3,w:"Es la ZEE.",wb:"La cifra 200 es la clave."},
+{t:"Lecho y subsuelo del mar.",c:4,w:"Es la plataforma continental.",wb:"Piensa en el fondo, no en la superficie."}
+]}};
+P.p6={mc:[
+{q:"Una pregunta dice: «El ciudadano siempre pierde sus derechos si...» ¿Qué señal debe activar tu alerta?",o:["La palabra «ciudadano»","La palabra «siempre», un absoluto que suele hacer falsa la afirmación","El signo de interrogación","Nada, es normal"],a:1,w:["No es la señal.","Los absolutos como siempre o nunca suelen ser trampas; verifica con la norma.","No indica nada.","Debes verificar."]},
+{q:"Una pregunta con la opción «todos los anteriores». ¿Qué haces?",o:["La marco para ahorrar tiempo","Verifico cada opción antes de decidir","Marco la primera que me gusta","Dejo la pregunta en blanco"],a:1,w:["Es arriesgado sin verificar.","Solo es válida si cada una lo es.","Descartas sin leer.","Perderías el punto."]},
+{q:"En una pregunta V/F, la afirmación tiene tres partes y una es falsa. ¿Qué respuesta corresponde?",o:["Verdadero, porque las otras dos son ciertas","Falso, porque basta una parte errónea","Depende de la mayoría","No se puede saber"],a:1,w:["Una parte falsa daña toda la afirmación.","La oración completa debe ser verdadera.","No se vota.","Sí se puede."]}
+]};
+
+var FINAL=[
+{q:"En la audiencia de juicio contra un adolescente, ¿qué funcionario conduce el debate y emite la decisión final?",o:["Defensor de Familia","Juez de conocimiento","Defensor público","Juez de control de garantías"],a:1,w:["Vigila derechos; no decide.","Es quien decide sobre responsabilidad.","Representa al adolescente.","Verifica legalidad y derechos, antes del juicio."]},
+{q:"Durante una audiencia, un juez verifica que a Daniel le leyeron sus derechos y no lo maltrataron al capturarlo. Es un juez de:",o:["Control de garantías","Conocimiento","Civil","Ninguno de los anteriores"],a:0,w:["Se encarga de proteger derechos y legalidad.","Decide en el juicio.","No es de ese ámbito.","Sí corresponde a uno."]},
+{q:"Un hospital se niega a atender a una niña por ser extranjera. Ese hecho es:",o:["Prevalencia de derechos","Vulneración de derechos","Restablecimiento de derechos","Corresponsabilidad"],a:1,w:["Prevalencia es la regla de prioridad.","Hay un derecho a la salud negado.","Restablecimiento es la reparación.","Corresponsabilidad es la responsabilidad compartida."]},
+{q:"Tras ser retirado de un trabajo infantil, un niño es matriculado en un colegio y recibe apoyo psicológico. Eso se llama:",o:["Amenaza","Vulneración","Restablecimiento de derechos","Prevalencia de derechos"],a:2,w:["Es un riesgo, no una acción reparadora.","Es el daño anterior.","Son medidas para que recupere sus derechos.","Es la regla de prioridad."]},
+{q:"Si el derecho de un niño a descansar choca con el interés económico de una empresa, la norma ordena:",o:["Priorizar la empresa","Priorizar los derechos del niño","Dividirlo por mitades","Que decida el niño"],a:1,w:["Contradice el Código.","Es la prevalencia de derechos de la niñez.","No se reparten así.","No es lo que dice la norma."]},
+{q:"¿Cómo se elige al Presidente de la República?",o:["Por el Congreso","Por la Corte Suprema","Por voto popular","Por el Senado"],a:2,w:["No lo elige el Congreso.","No lo elige la Corte.","Lo eligen los ciudadanos.","No lo elige el Senado."]},
+{q:"¿A qué rama pertenece una juez que condena o absuelve en un caso concreto?",o:["Legislativa","Ejecutiva","Judicial","Electoral"],a:2,w:["Hace leyes.","Ejecuta y administra.","Resuelve y juzga.","Organiza elecciones."]},
+{q:"¿Qué es la ciudadanía y a qué edad se adquiere en Colombia?",o:["Es lo mismo que la nacionalidad y se tiene al nacer","Es la calidad que permite ejercer derechos políticos como votar, y se adquiere a los 18 años","Es un documento de viaje","Se adquiere a los 14 años"],a:1,w:["Son conceptos distintos: la nacionalidad es el vínculo jurídico con el Estado.","La ciudadanía habilita para ejercer derechos políticos.","No es un documento de viaje.","No es a esa edad."]},
+{q:"Un hondureño domiciliado en Colombia solicita ser inscrito como colombiano. Su nacionalidad será:",o:["Por nacimiento","Por adopción","Dual automática","No es posible"],a:1,w:["No nació en Colombia.","Es una de las vías de adopción para latinoamericanos.","No es esa la categoría.","Sí es posible."]},
+{q:"Verdadero o falso: toda persona nacida en Colombia es colombiana por nacimiento sin importar ninguna condición.",o:TF,a:1,w:["La regla tiene una condición sobre los padres.","Falso: se exige que uno de los padres sea nacional o esté domiciliado en el país."]},
+{q:"Un pescador extranjero captura peces a 100 millas de las líneas base de Colombia. ¿Qué concepto aplica?",o:["Mar territorial","Zona económica exclusiva","Espectro electromagnético","Espacio aéreo"],a:1,w:["Termina a las 12 millas.","Llega hasta 200 millas con derechos sobre recursos.","Es de ondas.","Es el aire."]},
+{q:"¿Para qué sirven las líneas base en el mar?",o:["Para transmitir señales de radio","Para medir desde ellas las zonas marítimas","Para delimitar el espacio aéreo","Para elegir funcionarios"],a:1,w:["Eso es el espectro.","Son la referencia de medida.","No sirven para eso.","No tienen que ver."]}
+];
+
+/* ---------- render ---------- */
+["p1","p2","p3","p4","p5"].forEach(function(p,idx){
+  var sec="s"+p.slice(1),host=document.getElementById(p);
+  P[p].mc.forEach(function(it,i){mc(host,sec,p+"m"+i,it);});
+  classify(host,sec,p+"c",P[p].cl);
+});
+(function(){var host=document.getElementById("p6");P.p6.mc.forEach(function(it,i){mc(host,"s6","p6m"+i,it);});})();
+
+/* final quiz */
+var picks=[],graded=false;
+function renderFinal(){
+  var host=document.getElementById("final");host.innerHTML="";picks=[];graded=false;
+  document.getElementById("score").style.display="none";
+  FINAL.forEach(function(it,i){
+    var box=el("div","q");box.appendChild(el("p","t",(i+1)+". "+it.q));
+    var btns=[];
+    it.o.forEach(function(t,j){
+      var b=el("button","opt","abcd"[j]+". "+t);b.type="button";btns.push(b);
+      b.addEventListener("click",function(){if(graded)return;picks[i]=j;btns.forEach(function(x,k){x.classList.toggle("picked",k===j);});});
+      box.appendChild(b);
+    });
+    var fb=el("div","fb");fb.id="ff"+i;box.appendChild(fb);
+    box._btns=btns;host.appendChild(box);
+  });
+}
+renderFinal();
+document.getElementById("grade").addEventListener("click",function(){
+  var boxes=document.getElementById("final").children,s=0,left=0;
+  graded=true;
+  FINAL.forEach(function(it,i){
+    var box=boxes[i],fb=document.getElementById("ff"+i);
+    if(picks[i]===undefined){left++;fb.innerHTML='<b class="bad">✘ Sin responder.</b>';return;}
+    box._btns.forEach(function(x,k){x.classList.remove("picked","sel-ok","sel-bad");if(k===it.a)x.classList.add("sel-ok");});
+    if(picks[i]===it.a){s++;fb.innerHTML='<b class="ok">✔ Correcta.</b> '+it.w[it.a];}
+    else{box._btns[picks[i]].classList.add("sel-bad");fb.innerHTML='<b class="bad">✘ Incorrecta.</b> Elegiste: '+it.w[picks[i]]+' <br><b class="ok">Opción correcta:</b> '+it.w[it.a];}
+  });
+  var sc=document.getElementById("score");sc.style.display="block";
+  var pct=Math.round(s*100/FINAL.length);
+  sc.textContent="Puntaje: "+s+" de "+FINAL.length+" ("+pct+"%). "+(left?left+" sin responder. ":"")+(pct>=80?"Muy bien, vas preparado.":pct>=60?"Vas bien: repasa las secciones donde fallaste.":"Repasa las secciones y vuelve a intentarlo.");
+  try{localStorage.setItem(KEY+"_final",String(s));}catch(e){}
+});
+document.getElementById("again").addEventListener("click",renderFinal);
+
+/* toolbar */
+document.getElementById("expand").addEventListener("click",function(){document.querySelectorAll("details").forEach(function(d){d.open=true;});});
+document.getElementById("collapse").addEventListener("click",function(){document.querySelectorAll("details").forEach(function(d){d.open=false;});});
+document.getElementById("reset").addEventListener("click",function(){state={};save();location.reload();});
+
+/* ---------- theme toggle ---------- */
+var rootEl=document.documentElement;
+function curTheme(){var t=rootEl.getAttribute("data-theme");if(t)return t;return(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";}
+var themeBtn=document.getElementById("theme");
+function paintTheme(){var t=curTheme();themeBtn.textContent=t==="dark"?"☀ Tema claro":"🌙 Tema oscuro";themeBtn.setAttribute("aria-pressed",String(t==="dark"));}
+themeBtn.addEventListener("click",function(){var n=curTheme()==="dark"?"light":"dark";rootEl.setAttribute("data-theme",n);try{localStorage.setItem("cc9_theme",n);}catch(e){}paintTheme();});
+paintTheme();
+
+/* ---------- nav active ---------- */
+function setActive(){var h=location.hash;document.querySelectorAll("#nav a").forEach(function(a){if(a.getAttribute("href")===h)a.setAttribute("aria-current","true");else a.removeAttribute("aria-current");});}
+window.addEventListener("hashchange",setActive);setActive();
+
+/* ---------- concept map ---------- */
+var NW=212,NH=58;
+var CM_NODES={
+s1:{x:120,y:190,l:["1 · Responsabilidad","penal adolescente"],n:"Responsabilidad penal adolescente",t:"El SRPA es el proceso especial para adolescentes de 14 a 17 años. Lo importante es distinguir qué hace cada actor: fiscal, defensor, defensor de familia y jueces."},
+s2:{x:120,y:60,l:["2 · Derechos de","niños y adolescentes"],n:"Derechos de niños y adolescentes",t:"El Código de la Infancia y la Adolescencia reconoce a niños y adolescentes como sujetos de derechos: vulneración, amenaza, restablecimiento y prevalencia."},
+s3:{x:380,y:125,l:["3 · Poder público","y quién elige a quién"],n:"Poder público y quién elige a quién",t:"La Constitución de 1991 organiza tres ramas del poder, órganos de control y organización electoral. Aquí aprendes quién elige a cada funcionario."},
+s4:{x:640,y:60,l:["4 · Nacionalidad","(art. 96)"],n:"Nacionalidad",t:"La nacionalidad es el vínculo jurídico con el Estado. Se adquiere por nacimiento o por adopción, y se lee como una lista de condiciones."},
+s5:{x:640,y:190,l:["5 · Territorio","mar, aire y espectro"],n:"Territorio",t:"El territorio incluye tierra, mar territorial, plataforma continental, espacio aéreo, órbita geoestacionaria y espectro electromagnético (art. 101)."},
+s6:{x:380,y:295,l:["6 · Estrategias Saber","para todos los temas"],n:"Estrategias Saber",t:"Técnicas para responder preguntas tipo Saber: leer el verbo, eliminar opciones, verificar «todos los anteriores» y evaluar cada parte en Verdadero/Falso."}
+};
+var CM_EDGES=[
+{a:"s2",b:"s1",lab:"es la base de",t:"El SRPA está regulado dentro del mismo Código de la Infancia y la Adolescencia. Por eso, en el proceso de un adolescente, el Defensor de Familia vigila que se garanticen sus derechos: es la protección integral y la prevalencia de derechos puestas en práctica."},
+{a:"s1",b:"s3",lab:"se aplica en",t:"Los actores del proceso pertenecen a distintas partes del Estado: la Fiscalía y los jueces a la rama judicial; el ICBF (Defensor de Familia) a la rama ejecutiva; y la Defensoría del Pueblo, que presta defensores públicos, al Ministerio Público (órgano de control)."},
+{a:"s2",b:"s3",lab:"lo garantiza",t:"El Código dice que familia, sociedad y Estado son corresponsables. «El Estado» no es una sola entidad: se reparte entre ramas del poder y órganos de control. Conocerlas te dice quién responde por cada tarea de protección."},
+{a:"s3",b:"s4",lab:"reconoce a sus",t:"La misma Constitución que organiza el poder público define, en el artículo 96, quiénes son nacionales colombianos. La nacionalidad es el punto de partida para ser parte de ese Estado y, más adelante, ejercer derechos políticos como votar."},
+{a:"s4",b:"s5",lab:"junto con",t:"Un Estado se entiende con su gente y con su espacio. La nacionalidad dice quiénes pertenecen al Estado; el artículo 101 dice qué comprende su territorio."},
+{a:"s3",b:"s5",lab:"ejerce soberanía en",t:"El poder público (sección 3) ejerce la soberanía del Estado sobre el territorio (sección 5): por ejemplo, controles de aduana, migración y salud en la zona contigua, y derechos sobre los recursos de la zona económica exclusiva."},
+{a:"s6",b:"s1",lab:"se usa en",t:"Las preguntas sobre el SRPA describen funciones sin dar el nombre. La estrategia es buscar el verbo principal y, si aparece «todos los anteriores», verificar cada opción por separado."},
+{a:"s6",b:"s3",lab:"se usa en",t:"En «quién elige a quién» las estrategias ayudan a leer la palabra interrogativa y a hacer una tarjeta por cargo. Si una pregunta se repite, responde con el mismo criterio."},
+{a:"s6",b:"s5",lab:"se usa en",t:"En territorio, dibujar la línea de millas convierte las definiciones en una imagen. Es la estrategia de «hacer un dibujo» aplicada a un tema con cifras y nombres parecidos."}
+];
+var cmPanel=document.getElementById("cmpanel");
+var CM_DEFAULT=cmPanel.innerHTML;
+function secLink(id){return '<a href="#'+id+'">Ir a la sección '+id.slice(1)+'</a>';}
+function showEdge(e){
+  cmPanel.innerHTML="<b>"+CM_NODES[e.a].n+" ➜ <i>"+e.lab+"</i> ➜ "+CM_NODES[e.b].n+"</b><p style=\"margin:4px 0\">"+e.t+"</p><div class=\"lk\">"+secLink(e.a)+secLink(e.b)+"</div>";
+  document.querySelectorAll("#cmap .cm-edge,.cmbtn").forEach(function(x){x.classList.toggle("on",x._e===e);});
+}
+function showNode(id){
+  cmPanel.innerHTML="<b>"+CM_NODES[id].n+"</b><p style=\"margin:4px 0\">"+CM_NODES[id].t+"</p><div class=\"lk\">"+secLink(id)+"</div>";
+}
+function svgE(n,at){var e=document.createElementNS("http://www.w3.org/2000/svg",n);Object.keys(at||{}).forEach(function(k){e.setAttribute(k,at[k]);});return e;}
+function clip(a,b,pad){var dx=b.x-a.x,dy=b.y-a.y;var tx=dx?(NW/2+pad)/Math.abs(dx):Infinity,ty=dy?(NH/2+pad)/Math.abs(dy):Infinity;var t=Math.min(tx,ty);return{x:a.x+dx*t,y:a.y+dy*t};}
+(function(){
+  var svg=document.getElementById("cmap"),list=document.getElementById("cmlist");
+  var defs=svgE("defs"),mk=svgE("marker",{id:"cmarrow",viewBox:"0 0 10 10",refX:"9",refY:"5",markerWidth:"6",markerHeight:"6",orient:"auto"});
+  mk.appendChild(svgE("path",{d:"M0 0L10 5L0 10z","class":"arrow"}));defs.appendChild(mk);svg.appendChild(defs);
+  CM_EDGES.forEach(function(e){
+    var A=CM_NODES[e.a],B=CM_NODES[e.b],p=clip(A,B,2),q=clip(B,A,6);
+    var g=svgE("g",{"class":"cm-edge",tabindex:"0",role:"button","aria-label":"Relación: "+A.n+", "+e.lab+", "+B.n});
+    g._e=e;
+    g.appendChild(svgE("line",{"class":"hit",x1:p.x,y1:p.y,x2:q.x,y2:q.y}));
+    g.appendChild(svgE("line",{"class":"vis",x1:p.x,y1:p.y,x2:q.x,y2:q.y,"marker-end":"url(#cmarrow)"}));
+    var tx=svgE("text",{x:(p.x+q.x)/2,y:(p.y+q.y)/2+4,"text-anchor":"middle"});g._t=tx;tx.textContent=e.lab;g.appendChild(tx);
+    g.addEventListener("mouseenter",function(){showEdge(e);});
+    g.addEventListener("click",function(){showEdge(e);});
+    g.addEventListener("focus",function(){showEdge(e);});
+    g.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();showEdge(e);}});
+    svg.appendChild(g);
+    var li=document.createElement("li"),b=document.createElement("button");b.type="button";b.className="cmbtn";b._e=e;
+    b.innerHTML="<b>"+A.n+"</b><span class=\"cmr\">"+e.lab+" ↓</span><b>"+B.n+"</b>";
+    b.addEventListener("click",function(){showEdge(e);});
+    li.appendChild(b);list.appendChild(li);
+  });
+  Object.keys(CM_NODES).forEach(function(id){
+    var N=CM_NODES[id];
+    var a=svgE("a",{"class":"cm-node",href:"#"+id,"aria-label":"Ir a la sección "+N.n});
+    a.appendChild(svgE("rect",{x:N.x-NW/2,y:N.y-NH/2,width:NW,height:NH,rx:10}));a.appendChild(svgE("use",{href:"#i-"+id,x:N.x-NW/2+8,y:N.y-11,width:22,height:22,"class":"cmic"}));
+    N.l.forEach(function(s,i){var t=svgE("text",{x:N.x,y:N.y-4+i*19,"text-anchor":"middle"});t.textContent=s;a.appendChild(t);});
+    a.addEventListener("mouseenter",function(){showNode(id);});
+    a.addEventListener("focus",function(){showNode(id);});
+    svg.appendChild(a);
+  });
+  var ov=svgE("g",{"class":"cm-lab","aria-hidden":"true"});svg.appendChild(ov);
+  svg.querySelectorAll(".cm-edge").forEach(function(g){var c=g._t.cloneNode(true);c.setAttribute("class","cm-lt");ov.appendChild(c);g._t.setAttribute("opacity","0");});
+})();
+
+/* ---------- study route ---------- */
+var ROUTE=[
+{s:"s2",w:"Empieza por los derechos de la niñez: es la base para entender por qué existen protecciones especiales."},
+{s:"s1",w:"Luego el SRPA: ves esos derechos funcionando dentro de un proceso con varios actores."},
+{s:"s3",w:"Ubica a esos actores en las ramas del poder y aprende quién elige a quién."},
+{s:"s4",w:"Nacionalidad: la Constitución también define quiénes son colombianos."},
+{s:"s5",w:"Territorio: el espacio donde el Estado ejerce su soberanía."},
+{s:"s6",w:"Estrategias: aprende a aplicar todo lo anterior en preguntas tipo Saber."},
+{s:"s7",w:"Autoevaluación: mezcla todos los temas para comprobar lo que aprendiste."}
+];
+var routeItems=[];
+(function(){
+  var ol=document.getElementById("route");
+  ROUTE.forEach(function(r){
+    var li=el("li"),lb=el("label"),cb=document.createElement("input");cb.type="checkbox";
+    var nm=document.querySelector('nav a[href="#'+r.s+'"]');
+    lb.appendChild(cb);lb.appendChild(el("span","","  <a href=\"#"+r.s+"\">"+(nm?nm.textContent:r.s)+"</a>"));
+    lb.appendChild(el("span","why",r.w));li.appendChild(lb);ol.appendChild(li);
+    var it={s:r.s,cb:cb,li:li};routeItems.push(it);
+    cb.addEventListener("change",function(){
+      if(autoDone(r.s)){cb.checked=true;return;}
+      if(cb.checked)state["route_"+r.s]=1;else delete state["route_"+r.s];
+      save();updateRoute();
+    });
+  });
+  updateRoute();
+})();
+function autoDone(s){var r=registry[s];if(!r||!r.length)return false;return r.every(function(id){return state[id]==="ok";});}
+function updateRoute(){
+  if(!routeItems)return;
+  routeItems.forEach(function(it){
+    var auto=autoDone(it.s),on=auto||!!state["route_"+it.s];
+    it.cb.checked=on;it.li.classList.toggle("done",on);
+  });
+}
+
+/* ---------- section links + bridges ---------- */
+var FROM={
+s1:"⬅ <b>Viene de:</b> la <a href=\"#s2\">sección 2</a> (derechos). El SRPA es el sistema especial que el Código de la Infancia regula para los adolescentes; si sigues la ruta sugerida, ya conoces esas ideas.",
+s2:"⬅ <b>Viene de:</b> la <a href=\"#s1\">sección 1</a> en el orden de la guía, pero es la base de la ruta sugerida: aquí están los derechos que el SRPA protege.",
+s3:"⬅ <b>Viene de:</b> las secciones <a href=\"#s1\">1</a> y <a href=\"#s2\">2</a>. Ya nombraste fiscal, jueces, ICBF y Defensoría; ahora los ubicas en las ramas del poder y los órganos de control.",
+s4:"⬅ <b>Viene de:</b> la <a href=\"#s3\">sección 3</a>. La Constitución que organiza el poder público también define quiénes son colombianos.",
+s5:"⬅ <b>Viene de:</b> la <a href=\"#s4\">sección 4</a> (las personas del Estado) y de la <a href=\"#s3\">3</a> (el poder que ejerce soberanía). Ahora estudias el espacio donde la ejerce.",
+s6:"⬅ <b>Viene de:</b> todas las anteriores. Aquí reúnes las técnicas que viste en cada tema («verbo clave», «dibujo», «una parte falsa daña todo»).",
+s7:"⬅ <b>Viene de:</b> las secciones <a href=\"#s1\">1</a> a <a href=\"#s6\">6</a>. Esta autoevaluación mezcla todos los temas, como el mapa de conceptos."
+};
+var BRIDGES={
+s1:{to:"Derechos de niños y adolescentes (sección 2)",txt:"En el SRPA viste que el Defensor de Familia «vigila y garantiza derechos». Esa obligación viene del Código de la Infancia y la Adolescencia, que estudias en la sección 2. Allí aprendes qué es vulneración, restablecimiento y prevalencia: las ideas que justifican que un adolescente tenga un proceso especial y protegido.",
+ q:"¿Cómo se relacionan el SRPA y el Código de la Infancia y la Adolescencia?",o:["Son independientes: el SRPA no tiene relación con los derechos de los niños.","El SRPA está regulado en el Código y debe respetar la protección integral y la prevalencia de derechos.","El Código solo se aplica a mayores de 18 años."],a:1,w:["Al contrario: el SRPA es parte del marco del Código.","Por eso existen un proceso especial y un Defensor de Familia que vigila los derechos.","El Código protege a niños, niñas y adolescentes, es decir, a menores de 18 años."]},
+s2:{to:"Poder público y quién elige a quién (sección 3)",txt:"El Código dice que familia, sociedad y Estado son corresponsables. Pero «el Estado» no es una sola entidad: se reparte en ramas del poder y órganos de control (sección 3). Cuando el ICBF restablece derechos actúa dentro de la rama ejecutiva; cuando un juez decide, es la rama judicial; cuando la Defensoría vigila, es un órgano de control.",
+ q:"¿Por qué sirve conocer las ramas del poder para entender la corresponsabilidad del Estado?",o:["Porque así sabes qué entidades distintas del Estado cumplen cada tarea de protección.","Porque la corresponsabilidad solo corresponde a la rama legislativa.","Porque las ramas del poder reemplazan a la familia."],a:0,w:["Cada entidad tiene una función; conocerlas te dice quién responde por qué.","La responsabilidad se reparte entre familia, sociedad y Estado, no solo en una rama.","La familia sigue siendo corresponsable; nadie la reemplaza."]},
+s3:{to:"Nacionalidad (sección 4)",steps:["Paso 1. La Constitución de 1991 organiza el poder público: ramas, órganos de control y organización electoral (sección 3).","Paso 2. La misma Constitución, en el artículo 96, dice quién es colombiano: es decir, a quién representa ese Estado.","Paso 3. La nacionalidad es el punto de partida para ejercer derechos políticos como votar, y por eso se conecta con «quién elige a quién».","Paso 4. Ambas secciones se estudian igual: lee el artículo como una lista de condiciones y comprueba cada una."]},
+s4:{to:"Territorio (sección 5)",txt:"Un Estado se entiende con su gente y con su espacio. La nacionalidad (sección 4) dice quiénes pertenecen a Colombia; el territorio (sección 5) dice dónde ejerce Colombia su soberanía: tierra, mar, aire y espectro.",
+ q:"¿Cómo se relacionan la nacionalidad y el territorio?",o:["Son lo mismo: la nacionalidad es el territorio.","La nacionalidad dice quiénes pertenecen al Estado y el territorio dice dónde ejerce su soberanía.","El territorio se pierde cuando alguien adquiere otra nacionalidad."],a:1,w:["Son ideas distintas: una se refiere a las personas y la otra al espacio.","Una se refiere a la población y la otra al espacio del Estado.","Perder el territorio no tiene relación con la nacionalidad de las personas."]},
+s5:{to:"Estrategias Saber (sección 6)",steps:["Paso 1. En territorio manejas cifras (12, 24, 200) y nombres parecidos: zona contigua, zona económica exclusiva, plataforma continental.","Paso 2. Dibujar la línea de millas convierte esas definiciones en una imagen: es una estrategia, no solo un dato.","Paso 3. En la sección 6 reúnes esas técnicas (dibujar, eliminar, verificar «todos los anteriores» y evaluar cada parte en V/F) para usarlas en todos los temas."]},
+s6:{to:"Autoevaluación (sección 7)",txt:"Las estrategias se aprenden usándolas. La autoevaluación mezcla casos de todos los temas, así que te obliga a decidir cuál regla aplicar en cada pregunta.",
+ q:"¿Cómo se relaciona esta sección con la autoevaluación?",o:["La autoevaluación no necesita estrategias.","Las estrategias se practican al resolver los casos de la autoevaluación, que mezcla todos los temas.","Solo debes memorizar las respuestas de cada caso."],a:1,w:["Sí las necesita: hay que decidir qué regla usar en cada caso.","Es el lugar para ponerlas en práctica.","Memorizar no sirve: los casos del examen son distintos; hay que razonar."]}
+};
+function bridgeQ(box,b){
+  box.appendChild(el("p","t","<b>"+b.q+"</b>"));
+  var btns=[],fbs=[];
+  b.o.forEach(function(t,i){
+    var bt=el("button","opt","abc"[i]+". "+t);bt.type="button";btns.push(bt);
+    var fb=el("div","fb");fb.style.display="none";fbs.push(fb);
+    bt.addEventListener("click",function(){
+      btns.forEach(function(x,j){x.classList.remove("sel-ok","sel-bad");fbs[j].style.display="none";});
+      var ok=(i===b.a);bt.classList.add(ok?"sel-ok":"sel-bad");
+      fb.className="fb "+(ok?"ok":"bad");
+      fb.innerHTML=(ok?'<b class="ok">✔ Correcto.</b> ':'<b class="bad">✘ Todavía no.</b> ')+b.w[i]+(ok?"":" Intenta con otra opción.");
+      fb.style.display="block";
+    });
+    box.appendChild(bt);box.appendChild(fb);
+  });
+}
+function bridgeSteps(box,steps){
+  var i=0,p=el("p","stp",steps[0]),nx=el("button","btn","Siguiente →"),pv=el("button","btn ghost","← Anterior");
+  nx.type="button";pv.type="button";pv.disabled=true;
+  var c=el("span","note"," 1 de "+steps.length);
+  function paint(){p.textContent=steps[i];c.textContent=" "+(i+1)+" de "+steps.length;pv.disabled=(i===0);nx.textContent=(i===steps.length-1)?"Volver a empezar ↺":"Siguiente →";}
+  nx.addEventListener("click",function(){i=(i===steps.length-1)?0:i+1;paint();});
+  pv.addEventListener("click",function(){if(i>0){i--;paint();}});
+  p.setAttribute("aria-live","polite");
+  box.appendChild(p);box.appendChild(pv);box.appendChild(nx);box.appendChild(c);
+}
+Object.keys(FROM).forEach(function(id){
+  var sec=document.getElementById(id);if(!sec)return;
+  var h=sec.querySelector(".banner")||sec.querySelector("h2");h.parentNode.insertBefore(el("div","from",FROM[id]),h.nextSibling);
+  var b=BRIDGES[id];if(!b)return;
+  var d=el("details","bridge");d.appendChild(el("summary","","🔗 Conexión con el siguiente tema: "+b.to));
+  var body=el("div","body");
+  if(b.txt)body.appendChild(el("p","",b.txt));
+  if(b.steps)bridgeSteps(body,b.steps);else bridgeQ(body,b);
+  d.appendChild(body);sec.appendChild(d);
+});
+
+/* ---------- hero reveal ---------- */
+(function(){
+  var heroes=document.querySelectorAll(".hero");
+  var rm=false;try{rm=window.matchMedia("(prefers-reduced-motion: reduce)").matches;}catch(e){}
+  if(rm||!("IntersectionObserver" in window))return;
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target);}});},{threshold:0.15});
+  heroes.forEach(function(h){h.classList.add("pre");io.observe(h);});
+})();
+
+updateProgress();
+})();
+</script>
+</body>
+</html>

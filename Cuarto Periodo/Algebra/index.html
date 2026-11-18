@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de Álgebra 9 - Cuarto Periodo</title>
+<script>try{var __t=localStorage.getItem("alg9-theme");if(__t==="light"||__t==="dark")document.documentElement.setAttribute("data-theme",__t);}catch(e){}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<style>
+:root{
+  --bg:#fbf7f0; --surface:#fffdf9; --surface-2:#f3ece0; --text:#2b2420; --text-muted:#5e5046;
+  --border:#e3d9c9; --accent:#a3441d; --on-accent:#ffffff; --accent-soft:#f8e7dc;
+  --ok:#1d6644; --ok-bg:#e3f1e6; --bad:#a1281c; --bad-bg:#f9e3de; --warn:#77500a; --warn-bg:#fdf0d5;
+  --info:#1b6158; --info-bg:#ddefea; --code-bg:#f3ece0; --focus:#1f7a6d;
+  --c0:#b34700; --c1:#0b57d0; --c2:#0b6b2e; --grid:#e3d9c9;
+  --fig-bg:#fdfdfb; --ill-1:#f2c9b3; --ill-2:#bfe0d9; --ill-3:#f3dc9f; --ill-4:#cfdcae; --ill-5:#e8d3c0;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1d1a16; --surface:#26221d; --surface-2:#302b25; --text:#f0e8dd; --text-muted:#c7baa9;
+    --border:#4a4239; --accent:#f1a47f; --on-accent:#2a140a; --accent-soft:#3e2b21;
+    --ok:#93d6ab; --ok-bg:#1b3125; --bad:#f5a89d; --bad-bg:#3e201b; --warn:#f2cf82; --warn-bg:#3a2f15;
+    --info:#89d3c6; --info-bg:#173430; --code-bg:#302b25; --focus:#7ccfc1;
+    --c0:#ffb27a; --c1:#8ab4ff; --c2:#7ee2a0; --grid:#4a4239;
+    --fig-bg:#f4f4f1; --ill-1:#6b3a25; --ill-2:#1f5048; --ill-3:#6b551d; --ill-4:#44521f; --ill-5:#4d4036;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1d1a16; --surface:#26221d; --surface-2:#302b25; --text:#f0e8dd; --text-muted:#c7baa9;
+  --border:#4a4239; --accent:#f1a47f; --on-accent:#2a140a; --accent-soft:#3e2b21;
+  --ok:#93d6ab; --ok-bg:#1b3125; --bad:#f5a89d; --bad-bg:#3e201b; --warn:#f2cf82; --warn-bg:#3a2f15;
+  --info:#89d3c6; --info-bg:#173430; --code-bg:#302b25; --focus:#7ccfc1;
+  --c0:#ffb27a; --c1:#8ab4ff; --c2:#7ee2a0; --grid:#4a4239;
+  --fig-bg:#f4f4f1; --ill-1:#6b3a25; --ill-2:#1f5048; --ill-3:#6b551d; --ill-4:#44521f; --ill-5:#4d4036;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+a:visited{color:var(--accent)}
+a:hover{text-decoration-thickness:2px}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+code{background:var(--code-bg);color:var(--text);border-radius:4px;padding:1px 5px}
+header{background:var(--accent);color:var(--on-accent);padding:20px 16px;border-bottom:1px solid var(--border)}
+header .in{max-width:1100px;margin:auto;display:flex;flex-wrap:wrap;gap:12px;align-items:flex-start;justify-content:space-between}
+header h1{margin:0 0 8px;font-size:1.6rem;line-height:1.25}
+header .tags{display:flex;gap:8px;flex-wrap:wrap}
+header .tag{background:none;color:var(--on-accent);border:1px solid var(--on-accent);border-radius:999px;padding:3px 12px;font-size:.95rem}
+.theme-btn{background:var(--on-accent);color:var(--accent);border:2px solid var(--on-accent);border-radius:10px;padding:8px 14px;font:inherit;font-weight:700;cursor:pointer}
+.theme-btn:hover{background:var(--accent);color:var(--on-accent)}
+header :focus-visible{outline-color:var(--on-accent)}
+.wrap{max-width:1100px;margin:auto;padding:0 16px 60px;display:grid;grid-template-columns:250px 1fr;gap:20px}
+nav#nav{position:sticky;top:0;align-self:start;max-height:100vh;overflow:auto;padding:16px 0}
+nav#nav h2{font-size:.95rem;margin:0 0 8px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
+nav#nav a{display:flex;gap:8px;align-items:center;padding:7px 10px;border-radius:8px;color:var(--text);text-decoration:none;font-size:1rem;border:1px solid var(--bg)}
+nav#nav a:visited{color:var(--text)}
+nav#nav a:hover,nav#nav a:focus{background:var(--surface-2);border-color:var(--accent)}
+nav#nav a[aria-current="true"]{background:var(--accent);color:var(--on-accent);font-weight:700}
+nav#nav a .dot{width:12px;height:12px;border-radius:50%;border:2px solid var(--text-muted);flex:none}
+nav#nav a.done .dot{background:var(--ok);border-color:var(--ok)}
+nav#nav a.done::after{content:"\2714";color:var(--ok);margin-left:auto}
+nav#nav a[aria-current="true"].done::after{color:var(--on-accent)}
+main{min-width:0;padding-top:16px}
+.card{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:14px;padding:16px;margin:0 0 16px}
+.card h2{margin-top:0}
+.prog{height:14px;background:var(--surface-2);border:1px solid var(--border);border-radius:99px;overflow:hidden}
+.prog>div{height:100%;background:var(--ok);width:0;transition:width .3s}
+.btn{background:var(--accent);color:var(--on-accent);border:2px solid var(--accent);border-radius:10px;padding:9px 14px;font:inherit;font-weight:600;cursor:pointer;margin:4px 6px 4px 0}
+.btn:hover{background:var(--info);border-color:var(--info);color:var(--on-accent)}
+.btn.sec{background:none;color:var(--accent);border:2px solid var(--accent)}
+.btn.sec:hover{background:var(--accent-soft);color:var(--text)}
+.btn:disabled,.btn[disabled]{background:var(--surface-2);color:var(--text-muted);border-color:var(--border);cursor:not-allowed}
+input,select,textarea{font:inherit;background:var(--surface);color:var(--text);border:2px solid var(--text-muted);border-radius:8px}
+input::placeholder,textarea::placeholder{color:var(--text-muted);opacity:1}
+input[type=radio],input[type=checkbox],input[type=range]{accent-color:var(--accent)}
+details.topic{background:var(--surface);border:1px solid var(--border);border-radius:14px;margin:0 0 14px;overflow:hidden;scroll-margin-top:12px}
+details.topic>summary{cursor:pointer;padding:14px 16px;font-weight:700;font-size:1.05rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap;list-style:none;color:var(--text)}
+details.topic>summary:hover{background:var(--surface-2)}
+details.topic>summary::-webkit-details-marker{display:none}
+details.topic>summary::before{content:"\25B8";color:var(--accent);transition:transform .15s}
+details.topic[open]>summary::before{transform:rotate(90deg)}
+details.topic[open]>summary{border-bottom:1px solid var(--border)}
+.num{background:var(--accent);color:var(--on-accent);border-radius:8px;min-width:28px;text-align:center;padding:1px 8px}
+.qchip{font-size:.875rem;font-weight:600;background:var(--warn-bg);color:var(--warn);border:1px solid var(--warn);border-radius:999px;padding:2px 10px}
+.body{padding:0 16px 16px}
+.body h4{margin:18px 0 6px;color:var(--accent);font-size:1.05rem}
+.box{border-left:5px solid var(--accent);background:var(--accent-soft);color:var(--text);padding:10px 14px;border-radius:0 10px 10px 0;margin:8px 0}
+.box.tip{border-color:var(--info);background:var(--info-bg)} .box.warn{border-color:var(--bad);background:var(--bad-bg)}
+.steps{list-style:none;padding:0;margin:8px 0}
+.steps li{display:none;padding:8px 12px;margin:6px 0;border:1px solid var(--border);border-radius:10px;background:var(--surface-2)}
+.steps li.show{display:block;animation:f .25s}
+@keyframes f{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:none}}
+.ex{border:1px dashed var(--border);border-radius:12px;padding:10px 12px;margin:10px 0}
+.ex .t{font-weight:700}
+.item{border:1px solid var(--border);border-radius:12px;padding:12px;margin:10px 0;background:var(--surface-2)}
+.item .opts label{display:block;padding:8px 10px;margin:6px 0;border:1px solid var(--text-muted);border-radius:10px;cursor:pointer;background:var(--surface)}
+.item .opts label:hover{border-color:var(--accent);background:var(--accent-soft)}
+.item .opts input{margin-right:8px}
+.fields{display:flex;flex-wrap:wrap;gap:10px;margin:8px 0}
+.fields label{display:flex;align-items:center;gap:6px}
+.fields input{width:90px;padding:7px 8px}
+.fb{margin-top:8px;padding:8px 12px;border-radius:10px;display:none;border:1px solid var(--border)}
+.fb.ok{display:block;background:var(--ok-bg);color:var(--ok);border-color:var(--ok)}
+.fb.bad{display:block;background:var(--bad-bg);color:var(--bad);border-color:var(--bad)}
+.fb.hint{display:block;background:var(--warn-bg);color:var(--warn);border-color:var(--warn)}
+.fb .s{color:var(--text);margin-top:6px}
+.graph svg{width:100%;max-width:420px;height:auto;display:block;margin:auto;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text)}
+.g-grid{stroke:var(--grid);stroke-width:1}
+.g-axis{stroke:var(--text);stroke-width:1.6}
+.g-tick{fill:var(--text-muted);font-size:12px}
+.g-pt{fill:var(--text);stroke:var(--surface);stroke-width:1.5}
+.g-lbl{fill:var(--text);font-size:13px;font-weight:600;paint-order:stroke;stroke:var(--surface);stroke-width:3px}
+.g-c0,.g-c1,.g-c2{fill:none;stroke-width:2.8}
+.g-c0{stroke:var(--c0)} .g-c1{stroke:var(--c1)} .g-c2{stroke:var(--c2)}
+.ctrl{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px 16px;margin:8px 0}
+.ctrl label{display:block;font-size:1rem}
+.ctrl input[type=range]{width:100%}
+table.map{border-collapse:collapse;width:100%;font-size:1rem}
+table.map th,table.map td{border:1px solid var(--border);padding:6px 10px;text-align:left}
+table.map th{background:var(--accent);color:var(--on-accent)}
+table.map tbody tr:nth-child(even){background:var(--surface-2)}
+table.map a{font-weight:600}
+.mini{font-size:.9rem;color:var(--text-muted)}
+.score{font-size:1.4rem;font-weight:800}
+.katex{font-size:1.05em;color:inherit}
+.katex-display{overflow-x:auto;overflow-y:hidden}
+/* conexiones */
+.tscroll{overflow-x:auto}
+
+.from{background:var(--surface-2);border:1px solid var(--border);border-left:5px solid var(--info);border-radius:0 10px 10px 0;padding:8px 12px;margin:12px 0 0;font-size:1rem}
+details.bridge{border:1px solid var(--accent);border-radius:12px;background:var(--accent-soft);margin:16px 0 4px;color:var(--text)}
+details.bridge>summary{cursor:pointer;padding:10px 14px;font-weight:700;color:var(--text)}
+details.bridge[open]>summary{border-bottom:1px solid var(--accent)}
+details.bridge .bin{padding:8px 14px 12px;animation:f .3s}
+.bq{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin:10px 0}
+.bq .bopt{display:block;width:100%;text-align:left;margin:6px 0;padding:8px 10px;border:2px solid var(--text-muted);border-radius:10px;background:var(--surface);color:var(--text);font:inherit;cursor:pointer}
+.bq .bopt:hover{border-color:var(--accent);background:var(--accent-soft)}
+.bq .bopt:disabled{cursor:default;opacity:1}
+.bq .bopt.ok{border-color:var(--ok);background:var(--ok-bg);color:var(--ok);font-weight:700}
+.bq .bopt.bad{border-color:var(--bad);background:var(--bad-bg);color:var(--bad)}
+.cmap-panel{background:var(--surface-2);border:1px solid var(--border);border-left:5px solid var(--accent);border-radius:0 10px 10px 0;padding:10px 14px;margin:10px 0;min-height:4.5em}
+.cmap-wrap{overflow-x:auto}
+.cmap svg{width:100%;height:auto;display:block;color:var(--text)}
+.cmap .legend{display:flex;gap:14px;flex-wrap:wrap;font-size:.95rem;margin:6px 0}
+.cmap .legend span::before{content:"";display:inline-block;width:14px;height:14px;border-radius:4px;border:3px solid var(--sw);margin-right:6px;vertical-align:-2px;background:var(--accent-soft)}
+.cm-edge{stroke:var(--text-muted);stroke-width:2;fill:none}
+.cm-hit{stroke:var(--accent);stroke-opacity:0;stroke-width:16;fill:none;cursor:pointer}
+.cm-e:hover .cm-edge,.cm-e:focus .cm-edge,.cm-e.on .cm-edge{stroke:var(--accent);stroke-width:3.5}
+.cm-e{outline:none}
+.cm-e:focus-visible .cm-lab{stroke:var(--focus);stroke-width:3}
+.cm-arrow{fill:var(--text-muted)}
+.cm-lab{fill:var(--surface);stroke:var(--border);stroke-width:1}
+.cm-ltxt{fill:var(--text);font-size:13px;font-weight:600;text-anchor:middle}
+.cm-e{cursor:pointer}
+.cm-n{cursor:pointer;outline:none}
+.cm-n rect{fill:var(--accent-soft);stroke-width:3}
+.cm-n text{fill:var(--text);font-size:13px;font-weight:700;text-anchor:middle}
+.cm-n:hover rect,.cm-n:focus rect,.cm-n.on rect{fill:var(--accent)}
+.cm-n:hover text,.cm-n:focus text,.cm-n.on text{fill:var(--on-accent)}
+.cm-n:focus-visible rect{stroke:var(--focus);stroke-dasharray:6 3}
+.f-poly rect{stroke:var(--accent)} .f-fact rect{stroke:var(--c0)} .f-sis rect{stroke:var(--ok)} .f-fun rect{stroke:var(--info)}
+.cmap .clist{display:none;list-style:none;padding:0;margin:0}
+.cmap .clist>li{border:1px solid var(--border);border-radius:10px;padding:8px 10px;margin:8px 0;background:var(--surface)}
+.cmap .clist details{margin:4px 0 0 8px}
+.cmap .clist summary{cursor:pointer;color:var(--text)}
+.route ol{padding-left:0;list-style:none;margin:8px 0}
+.route li.stage{border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin:8px 0;background:var(--surface-2)}
+.route li.stage b.st{color:var(--accent)}
+.route label{display:block;padding:3px 0}
+/* ilustraciones y encabezados llamativos */
+.ico{width:1.4em;height:1.4em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.ico.nv{width:18px;height:18px;margin-left:-2px}
+.ico.sm{width:30px;height:30px;color:var(--accent)}
+.banner{display:flex;gap:14px;align-items:center;margin:14px 0 12px;padding:12px 14px;border-left:6px solid var(--accent);border-radius:0 12px 12px 0;background:linear-gradient(90deg,var(--accent-soft),var(--surface));color:var(--text)}
+.banner .ban-ico{flex:none;width:52px;height:52px;border-radius:14px;background:var(--surface);border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;color:var(--accent)}
+.banner .ban-ico .ico{width:34px;height:34px}
+.banner .ban-k{font-size:.85rem;font-weight:700;color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.banner .ban-hook{font-size:1.15rem;font-weight:700;line-height:1.35;color:var(--text)}
+.vgrid{display:grid;grid-template-columns:1fr minmax(0,420px);gap:14px;align-items:center;margin:0 0 12px}
+.ten{background:var(--info-bg);color:var(--text);border:1px solid var(--info);border-left:6px solid var(--info);border-radius:0 12px 12px 0;padding:10px 14px}
+.ten h5{margin:0 0 6px;font-size:1rem;color:var(--info)}
+.ten ul{margin:0;padding-left:20px}
+.ten li{margin:3px 0}
+.vis{margin:0}
+.hv{width:100%;max-width:420px;height:auto;display:block;margin:auto;border:1px solid var(--border);border-radius:12px;color:var(--text)}
+.gs0{stop-color:var(--surface-2)} .gs1{stop-color:var(--surface)}
+.hv .f1{fill:var(--ill-1)} .hv .f2{fill:var(--ill-2)} .hv .f3{fill:var(--ill-3)} .hv .f4{fill:var(--ill-4)} .hv .f5{fill:var(--ill-5)}
+.hv .fa{fill:var(--accent)} .hv .fw{fill:var(--warn)} .hv .fo{fill:var(--ok)} .hv .fx{fill:var(--text)} .hv .fs{fill:var(--surface)}
+.hv .nf{fill:none}
+.hv .ol{stroke:var(--text-muted);stroke-width:1.2}
+.hv .sa{stroke:var(--accent)} .hv .si{stroke:var(--info)} .hv .sok{stroke:var(--ok)} .hv .sw{stroke:var(--warn)} .hv .sb,.hv .sbd{stroke:var(--bad)} .hv .sc0{stroke:var(--c0)} .hv .sm{stroke:var(--text-muted)}
+.hv .sbd{stroke-width:2.2}
+.hv .lw2{stroke-width:2.2} .hv .lw3{stroke-width:3} .hv .lw5{stroke-width:5} .hv .lw8{stroke-width:8;stroke-linecap:round}
+.hv line,.hv path{stroke-linecap:round;stroke-linejoin:round}
+.hv .gr{stroke:var(--border);stroke-width:1;fill:none}
+.hv .ax{stroke:var(--text);stroke-width:1.8}
+.hv text{font-family:inherit}
+.hv .tx{fill:var(--text);font-size:12px;font-weight:700}
+.hv .ts{fill:var(--text);font-size:10.5px;font-weight:600}
+.hv .tl{fill:var(--text);font-size:16px;font-weight:800}
+.hv .mut{fill:var(--text-muted)}
+.hv .halo{paint-order:stroke;stroke:var(--surface-2);stroke-width:3.5px;stroke-linejoin:round}
+.hv .mo{fill:var(--text);font:700 14px ui-monospace,Menlo,Consolas,monospace;white-space:pre}
+.hv .dsh{stroke-dasharray:5 4}
+.dato{background:var(--warn-bg);color:var(--text);border:1px solid var(--warn);border-radius:12px;padding:10px 14px;margin:0 0 12px}
+.dato b{color:var(--warn)}
+.an-f{animation:flt 3.4s ease-in-out infinite}
+.an-f2{animation:flt 2.6s ease-in-out infinite reverse}
+.an-p{animation:pul 2.4s ease-in-out infinite}
+.an-d{stroke-dasharray:6 6;animation:dshm 1.6s linear infinite}
+.mvdot{offset-rotate:0deg;animation:mvd 4.5s ease-in-out infinite alternate}
+@keyframes flt{50%{transform:translateY(-4px)}}
+@keyframes pul{50%{opacity:.45}}
+@keyframes dshm{to{stroke-dashoffset:-24}}
+@keyframes mvd{from{offset-distance:0%}to{offset-distance:100%}}
+.vis.rv{opacity:0;transform:translateY(12px)}
+.vis.rv.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
+.ten,.dato,.banner,.ex,.card,.vis .hv{transition:transform .18s ease,box-shadow .18s ease}
+.ten:hover,.dato:hover,.banner:hover,.ex:hover,.card:hover,.vis .hv:hover{transform:translateY(-2px);box-shadow:0 4px 12px var(--border)}
+.cm-ic circle{fill:var(--surface);stroke:var(--border);stroke-width:1.5}
+.cm-ic use{fill:none;stroke:var(--text);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:640px){
+  .vgrid{grid-template-columns:1fr}
+  .banner .ban-hook{font-size:1.02rem}
+  .banner .ban-ico{width:44px;height:44px}
+}
+@media (prefers-reduced-motion: reduce){
+  .vis.rv{opacity:1 !important;transform:none !important}
+  .mvdot{offset-distance:50%}
+  .ten:hover,.dato:hover,.banner:hover,.ex:hover,.card:hover,.vis .hv:hover{transform:none}
+}
+@media (max-width:820px){
+  .wrap{grid-template-columns:1fr}
+  nav#nav{position:static;max-height:none;padding:8px 0}
+  nav#nav .list{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px}
+  nav#nav a{white-space:nowrap;border:1px solid var(--border);background:var(--surface)}
+  header h1{font-size:1.3rem}
+  .cmap .cmap-wrap,.cmap .legend,.cmap .cmap-hint{display:none}
+  .cmap .clist{display:block}
+}
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation:none !important;transition:none !important;scroll-behavior:auto !important}
+}
+
+.exam-fig{margin:1rem 0;padding:.75rem;background:var(--surface-2);border:1px solid var(--text-muted);border-radius:12px;max-width:100%}
+.exam-fig .xf-btn{display:block;width:100%;padding:0;margin:0;border:0;background:transparent;cursor:zoom-in;border-radius:8px}
+.exam-fig .xf-btn:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.exam-fig img{max-width:100%;height:auto;display:block;margin:auto;border-radius:8px;background:var(--fig-bg)}
+.exam-fig figcaption{margin-top:.6rem;font-size:.92rem;color:var(--text-muted)}
+.exam-fig figcaption span{display:block;color:var(--text)}
+dialog.xf-dlg{max-width:96vw;max-height:94vh;padding:.5rem;border:1px solid var(--text-muted);border-radius:12px;background:var(--fig-bg);color:var(--text)}
+dialog.xf-dlg::backdrop{background:var(--text);opacity:.7}
+dialog.xf-dlg img{max-width:90vw;max-height:80vh;display:block;margin:auto;background:var(--fig-bg)}
+dialog.xf-dlg .xf-close{display:block;margin:.5rem auto 0}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><symbol id="ic-t0" viewBox="0 0 32 32"><circle cx="14" cy="14" r="8"/><path d="M20 20l8 8"/><path d="M10.5 14l2.5 2.5 4.5-5"/></symbol><symbol id="ic-t1" viewBox="0 0 32 32"><path d="M9 4v12M3 10h12"/><path d="M18 24h11"/></symbol><symbol id="ic-t2" viewBox="0 0 32 32"><path d="M8 8l16 16M24 8L8 24"/></symbol><symbol id="ic-t3" viewBox="0 0 32 32"><path d="M6 16h20"/><circle cx="16" cy="8" r="2"/><circle cx="16" cy="24" r="2"/></symbol><symbol id="ic-t4" viewBox="0 0 32 32"><rect x="4" y="9" width="24" height="14" rx="2"/><path d="M16 9v14M4 5h24"/></symbol><symbol id="ic-t5" viewBox="0 0 32 32"><path d="M5 5h13v9h9v13H5z"/><path d="M18 5h9v9" stroke-dasharray="2 2"/></symbol><symbol id="ic-t6" viewBox="0 0 32 32"><rect x="5" y="5" width="22" height="22" rx="1"/><path d="M17 5v22M5 17h22"/></symbol><symbol id="ic-t7" viewBox="0 0 32 32"><rect x="4" y="4" width="15" height="15"/><rect x="22" y="4" width="6" height="15"/><rect x="4" y="22" width="15" height="6"/><rect x="22" y="22" width="6" height="6"/></symbol><symbol id="ic-t8" viewBox="0 0 32 32"><rect x="3" y="4" width="11" height="14"/><rect x="16" y="4" width="11" height="14"/><rect x="3" y="21" width="11" height="6"/><rect x="16" y="21" width="11" height="6"/></symbol><symbol id="ic-t9" viewBox="0 0 32 32"><path d="M16 4l11 6v12l-11 6-11-6V10z"/><path d="M5 10l11 6 11-6M16 16v12"/></symbol><symbol id="ic-t10" viewBox="0 0 32 32"><path d="M4 4v24h24"/><path d="M7 24L26 8M7 10l19 14"/><circle cx="15.9" cy="17.5" r="2"/></symbol><symbol id="ic-t11" viewBox="0 0 32 32"><rect x="3" y="4" width="11" height="9" rx="2"/><rect x="18" y="19" width="11" height="9" rx="2"/><path d="M14 8h6v11M17 16l3 3 3-3"/></symbol><symbol id="ic-t12" viewBox="0 0 32 32"><path d="M4 6h20M4 13h20M4 21h20"/><path d="M26 8l3 3M29 8l-3 3"/></symbol><symbol id="ic-t13" viewBox="0 0 32 32"><path d="M5 6h22v15H15l-6 5v-5H5z"/><path d="M11 12h10M11 16h6"/></symbol><symbol id="ic-t14" viewBox="0 0 32 32"><path d="M4 4v24h24"/><path d="M7 24L27 8"/><circle cx="7" cy="24" r="1.5"/></symbol><symbol id="ic-t15" viewBox="0 0 32 32"><path d="M4 4v24h24"/><path d="M8 6Q16 38 24 6"/></symbol><symbol id="ic-t16" viewBox="0 0 32 32"><path d="M4 28h24"/><path d="M4 8Q9 22 14 8"/><path d="M16 14Q22 28 28 14" stroke-dasharray="2 2"/></symbol></svg>
+<header>
+  <div class="in">
+    <h1>Álgebra: guía de estudio interactiva</h1>
+    <div class="tags"><span class="tag">Asignatura: Álgebra</span><span class="tag">Grado 9</span><span class="tag">Cuarto Periodo</span></div>
+    <button class="theme-btn" id="themebtn" type="button" aria-pressed="false">Modo oscuro</button>
+  </div>
+</header>
+
+<div class="wrap">
+  <nav id="nav" aria-label="Temas"><h2>Temas</h2><div class="list" id="navlist"></div>
+    <p class="mini"><button class="btn sec" id="reset" type="button">Borrar progreso</button></p></nav>
+  <main>
+    <section class="card" id="intro">
+      <h2>Cómo usar esta guía</h2>
+      <p>Cada tema tiene: <b>concepto</b>, <b>reglas</b>, un <b>ejemplo resuelto paso a paso</b> y <b>ejercicios nuevos</b> (cambian cada vez que pulsas <i>Nuevo ejercicio</i>). Esta guía no resuelve las preguntas de tu evaluación: te enseña a resolver preguntas <i>del mismo tipo</i>, con otros números.</p>
+      <p><b>Tu progreso:</b> <span id="progtxt"></span></p>
+      <div class="prog" role="progressbar" aria-valuemin="0" aria-valuemax="100" id="progbar"><div id="progfill"></div></div>
+      <p><button class="btn" id="openall" type="button">Abrir todos los temas</button><button class="btn sec" id="closeall" type="button">Cerrar todos</button></p>
+    </section>
+
+    <section class="card cmap" id="cmap">
+      <h2>Mapa de conceptos: cómo se conectan los temas</h2>
+      <p>Cada recuadro es un tema y cada flecha dice cómo se relaciona con otro. <b>Toca una flecha</b> para leer la explicación; <b>toca un tema</b> para ir a su sección.</p>
+      <div class="legend" aria-label="Colores por bloque"><span style="--sw:var(--accent)">Polinomios</span><span style="--sw:var(--c0)">Factorización</span><span style="--sw:var(--ok)">Sistemas</span><span style="--sw:var(--info)">Funciones</span></div>
+      <div class="cmap-panel" aria-live="polite">Selecciona una flecha o un tema del mapa para ver la explicación.</div>
+      <div class="cmap-wrap"></div>
+      <ul class="clist"></ul>
+    </section>
+
+    <section class="card" id="ruta">
+      <h2>Ruta de estudio sugerida</h2>
+      <p>Sigue este orden: cada bloque se apoya en el anterior. Marca cada tema al terminarlo (se sincroniza con tu progreso).</p>
+      <div class="route"></div>
+    </section>
+
+    <section class="card" id="mapa">
+      <h2>Mapa: pregunta del examen &rarr; sección de la guía</h2>
+      <div class="tscroll"><table class="map" id="maptable"><thead><tr><th>Pregunta(s)</th><th>Sección para estudiar</th></tr></thead><tbody></tbody></table></div>
+      <p class="mini">Las preguntas 4, 8, 9 y 14 piden <i>evaluar un procedimiento</i>: mira también la sección 0.</p>
+    </section>
+
+    <div id="topics"></div>
+
+    <section class="card" id="quiz">
+      <h2>Autoevaluación final</h2>
+      <p>16 preguntas nuevas (una por tema, con números distintos cada vez). Responde todo y pulsa <b>Calificar</b>.</p>
+      <button class="btn" id="qstart" type="button">Generar autoevaluación</button>
+      <div id="qbox"></div>
+      <div id="qres" aria-live="polite"></div>
+    </section>
+  </main>
+</div>
+
+<!-- Lógica pura (sin DOM): generadores de ejercicios -->
+<script id="gens">
+"use strict";
+const R = String.raw;
+const rnd=(a,b)=>Math.floor(Math.random()*(b-a+1))+a;
+const nz=(a,b)=>{let v;do v=rnd(a,b);while(v===0);return v;};
+const pick=a=>a[rnd(0,a.length-1)];
+const shuffle=a=>{a=a.slice();for(let i=a.length-1;i>0;i--){const j=rnd(0,i);[a[i],a[j]]=[a[j],a[i]];}return a;};
+const gcd=(a,b)=>b?gcd(b,a%b):Math.abs(a);
+const T=s=>'$'+s+'$';
+function poly(terms){let s='';terms.forEach(([c,v])=>{if(c===0)return;const a=Math.abs(c);const body=(a===1&&v)?v:(a+v);if(!s)s=(c<0?'-':'')+body;else s+=(c<0?' - ':' + ')+body;});return s||'0';}
+const par=(terms)=>'('+poly(terms)+')';
+const VARS=[['x','y'],['m','n'],['a','b'],['p','q']];
+// Construye opciones MC: correct y cands son {s,k}; devuelve {options,correct}
+function buildOpts(correct,cands){
+  const seen=new Set([correct.k]);const seenS=new Set([correct.s]);const ds=[];
+  for(const c of cands){if(seen.has(c.k)||seenS.has(c.s))continue;seen.add(c.k);seenS.add(c.s);ds.push(c);if(ds.length===3)break;}
+  const all=shuffle([correct].concat(ds));
+  return {options:all.map(o=>T(o.s)),correct:all.indexOf(correct)};
+}
+function mc(prompt,correct,cands,sol,hint){
+  const o=buildOpts(correct,cands);
+  return {kind:'mc',prompt,options:o.options,correct:o.correct,sol,hint};
+}
+function num(prompt,fields,sol,hint){return {kind:'num',prompt,fields,sol,hint};}
+function pairKey(p,q,r,s){return [p*r,p*s+q*r,q*s].join(',');}
+function binProd(p,q,r,s,v1,v2){return par([[p,v1],[q,v2]])+par([[r,v1],[s,v2]]);}
+
+// ---- Gráficos SVG (cadena) ----
+function graphSVG(fns,o){
+  o=o||{};const Rg=o.R||10,S=360,pad=0;const X=x=>S/2+x*S/(2*Rg),Y=y=>S/2-y*S/(2*Rg);
+  let g='';
+  for(let i=-Rg;i<=Rg;i++){g+=`<line class="g-grid" x1="${X(i)}" y1="0" x2="${X(i)}" y2="${S}"/><line class="g-grid" x1="0" y1="${Y(i)}" x2="${S}" y2="${Y(i)}"/>`;}
+  g+=`<line class="g-axis" x1="0" y1="${Y(0)}" x2="${S}" y2="${Y(0)}"/><line class="g-axis" x1="${X(0)}" y1="0" x2="${X(0)}" y2="${S}"/>`;
+  for(let i=-Rg+2;i<=Rg-1;i+=2){if(i===0)continue;g+=`<text class="g-tick" x="${X(i)}" y="${Y(0)+14}" text-anchor="middle">${i}</text><text class="g-tick" x="${X(0)-4}" y="${Y(i)+4}" text-anchor="end">${i}</text>`;}
+  const cols=['g-c0','g-c1','g-c2'];
+  fns.forEach((fn,idx)=>{let d='';const N=240;for(let i=0;i<=N;i++){const x=-Rg+2*Rg*i/N;let y=fn.f(x);if(!isFinite(y))continue;y=Math.max(-3*Rg,Math.min(3*Rg,y));d+=(d?'L':'M')+X(x).toFixed(1)+' '+Y(y).toFixed(1);}
+    g+=`<path class="${cols[idx%3]}" d="${d}"/>`;});
+  (o.points||[]).forEach(p=>{g+=`<circle class="g-pt" cx="${X(p.x)}" cy="${Y(p.y)}" r="4.5"/>`;if(p.label)g+=`<text class="g-lbl" x="${X(p.x)+6}" y="${Y(p.y)-6}">${p.label}</text>`;});
+  return `<div class="graph"><svg viewBox="0 0 ${S} ${S}" role="img" aria-label="${o.alt||'Gráfica en el plano cartesiano'}">${g}</svg></div>`;
+}
+const sg=(n)=>n<0?'-':'+';
+function lineTex(m,b){return 'y='+poly([[m,'x'],[b,'']]);}
+
+const GENS={};
+
+// 1 Suma/resta de polinomios
+GENS.t1=function(){
+  const [u,v]=pick(VARS);
+  let A,B;do{A=[rnd(3,9),nz(-6,6),nz(-6,6)];B=[nz(-5,5),nz(-6,6),nz(-6,6)];}while(A.join()==='7,-3,5'&&B.join()==='2,4,-1');
+  const e=(c)=>par([[c[0],u+'^2'],[c[1],u+v],[c[2],v+'^2']]);
+  const r=[A[0]-B[0],A[1]-B[1],A[2]-B[2]];
+  return num(`Efectúa ${T(e(A)+'-'+e(B))}. Escribe los coeficientes (con signo) del resultado.`,
+   [{label:T(u+'^2'),ans:r[0]},{label:T(u+v),ans:r[1]},{label:T(v+'^2'),ans:r[2]}],
+   `Al restar se cambia el signo de <b>todos</b> los términos del segundo paréntesis: ${T(poly([[A[0],u+'^2'],[A[1],u+v],[A[2],v+'^2']])+poly([[-B[0],u+'^2'],[-B[1],u+v],[-B[2],v+'^2']]).replace(/^(-?)/,(m)=>m?' - ':' + ').replace(/^ \+ /,' + '))}. Resultado: ${T(poly([[r[0],u+'^2'],[r[1],u+v],[r[2],v+'^2']]))}.`,
+   'Pon un signo menos delante del segundo paréntesis y repártelo: cada término cambia de signo. Luego suma términos semejantes.');
+};
+// 2 Multiplicación
+GENS.t2=function(){
+  const a=nz(-5,5),b=nz(-5,5),c=nz(-6,6);
+  const r=[1,a+b,a*b+c,a*c];
+  return num(`Multiplica ${T(par([[1,'x'],[a,'']])+par([[1,'x^2'],[b,'x'],[c,'']]))}. Resultado: ${T('x^3+Ax^2+Bx+C')}.`,
+   [{label:'A',ans:r[1]},{label:'B',ans:r[2]},{label:'C',ans:r[3]}],
+   `${T('x\\cdot(x^2+'+b+'x+'+c+')')} más ${T(a+'\\cdot(x^2+'+b+'x+'+c+')')}; luego se suman semejantes: ${T(poly([[1,'x^3'],[r[1],'x^2'],[r[2],'x'],[r[3],'']]))}.`.replace(/\+-/g,'-'),
+   'Multiplica cada término del primer factor por todo el segundo y después reduce términos semejantes.');
+};
+// 3 División
+GENS.t3=function(){
+  let k,b,c;do{k=nz(-5,5);b=nz(-6,8);c=nz(-9,9);}while(k===2&&b===4&&c===7);
+  const q=b-k,r=c-k*q;const div=par([[1,'x'],[k,'']]);const dd=poly([[1,'x^2'],[b,'x'],[c,'']]);
+  if(Math.random()<0.5){
+    return num(`Divide ${T('('+dd+')\\div'+div)}. Cociente: ${T('x+Q')}, residuo: ${T('r')}.`,[{label:'Q',ans:q},{label:'r',ans:r}],
+      `${T('x^2')}÷${T('x')} = ${T('x')}; restas y queda ${T(poly([[b-k,'x'],[c,'']]))}; el siguiente término del cociente es ${T(q)}; el residuo es ${T(r)}. Comprobación: ${T(div+'(x'+(q<0?'':'+')+q+')'+(r<0?'':'+')+r)} reconstruye el dividendo.`,
+      'Divide el primer término del dividendo entre x, multiplica por el divisor, resta, y repite con lo que queda.');
+  }
+  const truth=Math.random()<0.5;const q2=truth?q:q+pick([-1,1]);const r2=truth?r:r+pick([-2,-1,1,2]);
+  // expansión del reclamo
+  const exp=poly([[1,'x^2'],[k+q2,'x'],[k*q2+r2,'']]);
+  const o1='Verdadera, porque divisor · cociente + residuo reconstruye exactamente el dividendo.';
+  const o2=truth?'Falsa, porque el cociente debe tener el mismo coeficiente que el divisor.':`Falsa, porque divisor · cociente + residuo da ${exp}, que no es el dividendo.`;
+  const o3='Falsa, porque en toda división de polinomios el residuo debe ser 0.';
+  const o4='Verdadera, porque si el cociente es correcto el residuo no importa.';
+  const opts=shuffle([[o1,truth],[o2,!truth],[o3,false],[o4,false]]);
+  return {kind:'mc',prompt:`Un estudiante dice que ${T('('+dd+')\\div'+div)} tiene cociente ${T(poly([[1,'x'],[q2,'']]))} y residuo ${T(r2)}. ¿Cuál justificación es correcta?`,
+   options:opts.map(o=>o[0].replace(/(da )([^,]+),/,(m,a,b)=>a+T(b)+',')),correct:opts.findIndex(o=>o[1]),
+   sol:`Se verifica con: dividendo = divisor × cociente + residuo. Aquí ${T('('+poly([[1,'x'],[k,'']])+')('+poly([[1,'x'],[q2,'']])+')'+(r2<0?'':'+')+r2+'='+exp)}; ${truth?'coincide con el dividendo, así que es verdadera.':'no coincide con el dividendo, así que es falsa.'} El residuo no tiene que ser 0 (solo si la división es exacta).`,
+   hint:'Comprueba: multiplica divisor por cociente, suma el residuo y compara con el dividendo.'};
+};
+// 4 Factor común y agrupación
+GENS.t4=function(){
+  if(Math.random()<0.5){
+    let g=rnd(2,6),m=nz(1,5),n=nz(-5,5);while(gcd(m,n)!==1){m=nz(1,5);n=nz(-5,5);}
+    const ex=poly([[g*m,'x^2'],[g*n,'x']]);
+    const C={s:`${g}x(${poly([[m,'x'],[n,'']])})`,k:'c'};
+    const cands=[{s:`x(${poly([[g*m,'x'],[g*n,'']])})`,k:'1'},{s:`${g}(${poly([[m,'x^2'],[n,'x']])})`,k:'2'},{s:`${g}x(${poly([[m,'x'],[-n,'']])})`,k:'3'},{s:`${g}(${poly([[m,'x'],[n,'']])})`,k:'4'}];
+    return mc(`Factoriza al máximo: ${T(ex)}.`,C,cands,`El mayor factor común es ${T(g+'x')} (mayor divisor común de los coeficientes y la menor potencia de x). Dividiendo cada término: ${T(poly([[m,'x'],[n,'']]))}. Resultado: ${T(C.s)}. Si dejas algún factor sin sacar, no está factorizada al máximo.`,'Busca el mayor número que divide a los coeficientes y la menor potencia de x que aparece en todos los términos.');
+  }
+  let a,b,c,d;do{a=rnd(1,4);b=nz(-3,3);c=rnd(1,4);d=nz(-3,3);}while(a===3&&b===-2&&c===2&&d===-3);
+  const ex=poly([[a*c,'x^2'],[a*d,'xy'],[b*c,'x'],[b*d,'y']]);
+  const mk=(a,b,c,d)=>({s:par([[a,'x'],[b,'']])+par([[c,'x'],[d,'y']]),k:[a*c,a*d,b*c,b*d].join(',')});
+  const C=mk(a,b,c,d);
+  const cands=[mk(a,-b,c,d),mk(a,b,c,-d),mk(a,-b,c,-d),mk(c,b,a,d),mk(a,d,c,b),mk(a+1,b,c,d)];
+  return mc(`Factoriza por agrupación de términos: ${T(ex)}.`,C,cands,`Agrupa de dos en dos: ${T('('+poly([[a*c,'x^2'],[a*d,'xy']])+')+('+poly([[b*c,'x'],[b*d,'y']])+')')}. Saca factor común en cada grupo: ${T(poly([[a,'x']])+'('+poly([[c,'x'],[d,'y']])+')'+(b<0?'':'+')+poly([[b,'']])+'('+poly([[c,'x'],[d,'y']])+')')}. Ahora el binomio ${T('('+poly([[c,'x'],[d,'y']])+')')} es común: ${T(C.s)}.`,
+  'Agrupa los dos primeros y los dos últimos términos. Cuando saques factor común del segundo grupo, cuida el signo para que el binomio quede igual al del primero.');
+};
+// 5 Diferencia de cuadrados
+GENS.t5=function(){
+  let a,b,k;const first=Math.random()<0.5;
+  do{a=rnd(1,9);b=rnd(2,9);k=pick([1,2]);}while(first?(a===5&&b===7&&k===2):(a===1&&b===4));
+  if(first){const ex=poly([[a*a,'x^2'],[-b*b,'y^'+(2*k)]]).replace(/y\^2\^/,'y^');
+    const yv=k===1?'y':'y^2';
+    const mkf=(s1,s2)=>`(${poly([[a,'x'],[s1*b,yv]])})(${poly([[a,'x'],[s2*b,yv]])})`;
+    const C={s:mkf(-1,1),k:'c'};
+    const cands=[{s:mkf(-1,-1),k:'1'},{s:mkf(1,1),k:'2'},{s:`(${poly([[a*a,'x'],[-b*b,yv]])})(${poly([[a*a,'x'],[b*b,yv]])})`,k:'3'}];
+    return mc(`Factoriza: ${T(poly([[a*a,'x^2'],[-b*b,'y^'+(2*k)]]))}.`,C,cands,`Es una diferencia de cuadrados ${T('A^2-B^2=(A-B)(A+B)')} con ${T('A='+poly([[a,'x']]))} y ${T('B='+poly([[b,yv]]))} (raíz de cada término: ${T(R`\sqrt{${a*a}x^2}=${a}x`)}). Resultado: ${T(C.s)}.`,'Saca la raíz cuadrada de cada término. Recuerda: suma por diferencia, un factor con + y otro con −.');
+  }
+  const C={s:`(${poly([[a,'x'],[-b,'']])})(${poly([[a,'x'],[b,'']])})`,k:'c'};
+  const cands=[{s:`(${poly([[a,'x'],[-b,'']])})^2`,k:'1'},{s:`(${poly([[a,'x'],[b,'']])})^2`,k:'2'},{s:`${a}x(${poly([[a,'x'],[-b,'']])})`,k:'3'}];
+  return mc(`Una placa cuadrada de lado ${T(a+'x')} tiene un recorte cuadrado de lado ${T(b)} en una esquina. ¿Cuál es el área restante, factorizada?`,C,cands,`Área restante = ${T(`(${a}x)^2-${b}^2=${a*a}x^2-${b*b}`)}, diferencia de cuadrados: ${T(C.s)}.`,'Área grande menos área pequeña; ambas son cuadrados perfectos.');
+};
+// 6 Trinomio cuadrado perfecto
+GENS.t6=function(){
+  let a,b,s;do{a=rnd(1,7);b=rnd(1,7);s=pick([-1,1]);}while(a+b<4||(a===6&&b===5&&s===1));
+  const ex=poly([[a*a,'x^2'],[s*2*a*b,'xy'],[b*b,'y^2']]);
+  if(Math.random()<0.55){
+    const mk=(s1)=>`(${poly([[a,'x'],[s1*b,'y']])})^2`;
+    const C={s:mk(s),k:'c'};
+    const cands=[{s:mk(-s),k:'1'},{s:`(${poly([[a,'x'],[b,'y']])})(${poly([[a,'x'],[-b,'y']])})`,k:'2'},{s:`(${poly([[a*a,'x'],[s*b*b,'y']])})^2`,k:'3'}];
+    return mc(`Factoriza: ${T(ex)}.`,C,cands,`Raíces de los extremos: ${T(a+'x')} y ${T(b+'y')}. Término central esperado: ${T('2\\cdot'+a+'x\\cdot'+b+'y='+2*a*b+'xy')}, que coincide en valor. El signo del término central (${s<0?'negativo':'positivo'}) es el signo dentro del binomio: ${T(C.s)}.`,'Comprueba que el término central sea el doble producto de las raíces; su signo es el del binomio.');
+  }
+  const mid=2*a*b+nz(-3,3);
+  return num(`En ${T(poly([[a*a,'x^2'],[mid,'xy'],[b*b,'y^2']]))} los extremos tienen raíces ${T(a+'x')} y ${T(b+'y')}. ¿Cuánto debería valer el coeficiente de ${T('xy')} para que sea trinomio cuadrado perfecto con signo positivo?`,
+   [{label:T('xy'),ans:2*a*b}],`El doble producto: ${T(`2\\cdot ${a}\\cdot ${b}=${2*a*b}`)}. Como el coeficiente dado es ${mid}, no es trinomio cuadrado perfecto.`,'Multiplica 2 por las dos raíces.');
+};
+// 7 Trinomio x^2+bx+c
+GENS.t7=function(){
+  let r,s;do{r=nz(-12,12);s=nz(-12,12);}while(Math.abs(r)===Math.abs(s)||(r+s===-3&&r*s===-28));
+  const B=r+s,Cc=r*s;const ex=poly([[1,'x^2'],[B,'x'],[Cc,'']]);
+  if(Math.random()<0.5){
+    const mk=(r,s)=>({s:`(${poly([[1,'x'],[r,'']])})(${poly([[1,'x'],[s,'']])})`,k:[r+s,r*s].join()});
+    const C=mk(r,s);
+    return mc(`Factoriza: ${T(ex)}.`,C,[mk(-r,-s),mk(r,-s),mk(-r,s),mk(r+1,s)],`Busco dos números que sumen ${B} y multipliquen ${Cc}: ${r} y ${s}. Entonces ${T(C.s)}. Comprobación al expandir: ${T(`x^2+((${r})+(${s}))x+(${r})(${s})`)}.`,'Dos números: producto = término independiente, suma = coeficiente de x. Prueba divisores del producto.');
+  }
+  const lo=Math.min(r,s),hi=Math.max(r,s);
+  return num(`Para factorizar ${T(ex)} busca dos números que sumen ${B} y cuyo producto sea ${Cc}. Escríbelos (el menor y el mayor).`,[{label:'menor',ans:lo},{label:'mayor',ans:hi}],`Son ${lo} y ${hi}: suma ${lo+hi}, producto ${lo*hi}. La factorización queda ${T(`(x${lo<0?'':'+'}${lo})(x${hi<0?'':'+'}${hi})`)}.`,'Lista parejas de divisores de '+Math.abs(Cc)+' y mira cuáles, con los signos adecuados, suman '+B+'.');
+};
+// 8 Trinomio ax^2+bx+c
+GENS.t8=function(){
+  let p,q,r,s;do{p=rnd(1,4);r=rnd(1,4);q=nz(-5,5);s=nz(-5,5);}while(p*r===1||gcd(p,q)!==1||gcd(r,s)!==1||p*s+q*r===0||(p*r===6&&p*s+q*r===-7&&q*s===-3));
+  const A=p*r,B=p*s+q*r,Cc=q*s;const ex=poly([[A,'x^2'],[B,'x'],[Cc,'']]);
+  if(Math.random()<0.5){
+    const mk=(p,q,r,s)=>({s:binProd(p,q,r,s,'x',''),k:pairKey(p,q,r,s)});
+    const C=mk(p,q,r,s);
+    return mc(`Factoriza: ${T(ex)}.`,C,[mk(p,-q,r,-s),mk(p,s,r,q),mk(p,-s,r,-q),mk(p,q,r,-s),mk(p,-q,r,s),mk(p,q+1,r,s),mk(p,q,r,s+1),mk(p+1,q,r,s)],`Producto ${T('a\\cdot c='+A*Cc)}. Dos números que sumen ${B} y multipliquen ${A*Cc}: ${(()=>{for(let m=-60;m<=60;m++){const n=B-m;if(m*n===A*Cc&&m<=n)return m+' y '+n;}return '';})()}. Se descompone el término central, se agrupa y queda ${T(C.s)}. Comprueba expandiendo.`,'Calcula a·c, busca dos números que multipliquen a·c y sumen b, parte el término central y agrupa.');
+  }
+  let m0=0,n0=0;for(let m=-80;m<=80;m++){const n=B-m;if(m*n===A*Cc){m0=Math.min(m,n);n0=Math.max(m,n);break;}}
+  return num(`Para factorizar ${T(ex)}, calcula ${T('a\\cdot c')} y busca dos números que multipliquen ${T('a\\cdot c')} y sumen ${B}. Escríbelos (menor y mayor).`,[{label:'menor',ans:m0},{label:'mayor',ans:n0}],`${T('a\\cdot c='+A+'\\cdot('+Cc+')='+A*Cc)}. Los números son ${m0} y ${n0}. Luego: ${T(poly([[A,'x^2'],[m0,'x'],[n0,'x'],[Cc,'']]))} y se agrupa.`,'Primero a·c = '+A*Cc+'. Prueba parejas de divisores.');
+};
+// 9 Cubos
+GENS.t9=function(){
+  let a,b,diff;do{a=rnd(1,4);b=rnd(1,4);diff=Math.random()<0.5;}while(a===2&&b===3&&diff);
+  const ex=poly([[a**3,'x^3'],[diff?-(b**3):b**3,'y^3']]);
+  const mk=(s1,s2)=>({s:`(${poly([[a,'x'],[s1*b,'y']])})(${poly([[a*a,'x^2'],[s2*a*b,'xy'],[b*b,'y^2']])})`,k:s1+','+s2});
+  const C=diff?mk(-1,1):mk(1,-1);
+  const cands=[mk(-1,-1),mk(1,1),diff?mk(1,-1):mk(-1,1)];
+  return mc(`Factoriza: ${T(ex)}.`,C,cands,diff?`Diferencia de cubos: ${T('A^3-B^3=(A-B)(A^2+AB+B^2)')} con ${T('A='+(a===1?'':a)+'x')}, ${T('B='+(b===1?'':b)+'y')}. Resultado: ${T(C.s)}.`:`Suma de cubos: ${T('A^3+B^3=(A+B)(A^2-AB+B^2)')} con ${T('A='+(a===1?'':a)+'x')}, ${T('B='+(b===1?'':b)+'y')}. Resultado: ${T(C.s)}.`,
+   'Saca la raíz cúbica de cada término. Usa la regla de signos: el binomio lleva el signo del enunciado; en el trinomio el signo del medio es el opuesto y el último siempre es +.');
+};
+// 10 Sistemas: intersección en gráfica
+GENS.t10=function(){
+  let x0,y0;do{x0=rnd(-5,5);y0=rnd(-5,5);}while(x0===3&&y0===1);let m1=nz(-3,3),m2=nz(-3,3);while(m1===m2)m2=nz(-3,3);
+  const b1=y0-m1*x0,b2=y0-m2*x0;
+  return Object.assign(num(`Observa las rectas ${T(lineTex(m1,b1))} (naranja) y ${T(lineTex(m2,b2))} (azul). Lee el punto de intersección y escribe sus coordenadas.${graphSVG([{f:x=>m1*x+b1},{f:x=>m2*x+b2}],{alt:'Dos rectas que se cortan'})}`,[{label:T('x'),ans:x0},{label:T('y'),ans:y0}],
+   `Se miran las coordenadas donde las rectas se cruzan: ${T(`(${x0},${y0})`)}. Verifica: en la primera ${T(`${m1}\\cdot(${x0})${b1<0?'':'+'}${b1}=${y0}`)} y en la segunda ${T(`${m2}\\cdot(${x0})${b2<0?'':'+'}${b2}=${y0}`)}.`,'El punto de intersección satisface las dos ecuaciones. Lee primero x (horizontal) y luego y (vertical), y comprueba reemplazando.'),{});
+};
+// 11 Sustitución
+GENS.t11=function(){
+  const x0=rnd(-4,6),m=nz(-3,3),k=nz(-6,6),y0=m*x0+k;const a=nz(-4,4),b=pick([2,3,4,-2,-3]);const c=a*x0+b*y0;
+  const eq1=lineTex(m,k),eq2=poly([[a,'x'],[b,'y']])+'='+c;
+  if(Math.random()<0.5){
+    const mk=(s,key)=>({s,k:key});
+    const bm=b===1?'':b;
+    const C=mk(`${poly([[a,'x']])}${b<0?' - ':' + '}${Math.abs(b)}(${poly([[m,'x'],[k,'']])})=${c}`,'c');
+    const cands=[mk(`${poly([[a,'x']])}${b<0?' - ':' + '}${Math.abs(b)}(${poly([[m,'x'],[-k,'']])})=${c}`,'1'),mk(`${poly([[a,'x'],[b*m,'x'],[k,'']])}=${c}`,'2'),mk(`${poly([[a,'x']])} + (${poly([[m,'x'],[k,'']])})=${c}`,'3'),mk(`${poly([[a,'x']])}${b<0?' - ':' + '}${Math.abs(b)}(${poly([[m,'x'],[k,'']])})=${c+b}`,'4')];
+    return mc(`Se resuelve por sustitución el sistema ${T(eq1)}, ${T(eq2)}. ¿Qué ecuación se obtiene al reemplazar ${T('y')} en la segunda ecuación?`,C,cands,`Como ${T('y='+poly([[m,'x'],[k,'']]))}, se escribe todo el lado derecho entre <b>paréntesis</b> y se reemplaza donde esté ${T('y')}, respetando el coeficiente ${b}: ${T(C.s)}.`,'Reemplaza la letra y por la expresión completa entre paréntesis, sin olvidar el número que multiplica a y.');
+  }
+  return num(`Resuelve por sustitución: ${T(eq1)}, ${T(eq2)}.`,[{label:T('x'),ans:x0},{label:T('y'),ans:y0}],`Se reemplaza: ${T(`${poly([[a,'x']])}${b<0?' - ':' + '}${Math.abs(b)}(${poly([[m,'x'],[k,'']])})=${c}`)}. Se distribuye, se reducen términos y se despeja ${T('x='+x0)}. Luego ${T(`y=${m}(${x0})${k<0?'':'+'}${k}=${y0}`)}.`,'Reemplaza, distribuye, reduce, despeja x y vuelve a la primera ecuación para hallar y.');
+};
+// 12 Reducción
+GENS.t12=function(){
+  const x0=nz(-6,6),y0=nz(-6,6);const n=rnd(1,4),a1=nz(-4,4),a2=nz(-4,4);
+  const doubled=Math.random()<0.5;
+  const b1=n,b2=doubled?-2*n:-n;const c1=a1*x0+b1*y0,c2=a2*x0+b2*y0;
+  const e=(a,b,c)=>poly([[a,'x'],[b,'y']])+'='+c;
+  return num(`Resuelve por reducción (eliminación): ${T(e(a1,b1,c1))}, ${T(e(a2,b2,c2))}.`,[{label:T('x'),ans:x0},{label:T('y'),ans:y0}],
+   doubled?`Multiplica la primera ecuación por 2 para que los coeficientes de y sean ${2*n} y ${-2*n}; al sumar, y se elimina y queda una ecuación solo con x. Resultado ${T(`x=${x0}`)}, ${T(`y=${y0}`)}.`:`Los coeficientes de y ya son opuestos (${b1} y ${b2}); al sumar las ecuaciones y desaparece. Resultado ${T(`x=${x0}`)}, ${T(`y=${y0}`)}.`,
+   doubled?'Mira los coeficientes de y: uno es el doble del otro con signo contrario. Multiplica la ecuación adecuada para que sean opuestos y suma.':'Suma las dos ecuaciones; revisa si una variable se elimina.');
+};
+// 13 Problemas
+GENS.t13=function(){
+  const money=v=>(v*1000).toLocaleString('es-CO')+' pesos';
+  if(Math.random()<0.5){
+    let p2,p1,n,a0;do{p2=rnd(3,8);p1=p2+rnd(2,8);n=rnd(30,80);a0=rnd(8,n-8);}while(p1===12&&p2===8&&n===50);const tot=p1*a0+p2*(n-a0);
+    return num(`En una rifa se vendieron boletas de ${money(p1)} (tipo A) y de ${money(p2)} (tipo B). Se vendieron ${n} boletas y se recaudaron ${money(tot)}. ¿Cuántas boletas tipo A se vendieron?`,[{label:'Tipo A',ans:a0}],
+     `Sea ${T('a')} el número de boletas A y ${T('b')} las B. ${T(`a+b=${n}`)} y ${T(`${p1}a+${p2}b=${tot}`)} (en miles). Despejando ${T(`b=${n}-a`)} y sustituyendo: ${T(`${p1}a+${p2}(${n}-a)=${tot}`)} ⇒ ${T(`${p1-p2}a=${tot-p2*n}`)} ⇒ ${T(`a=${a0}`)}.`,'Plantea dos ecuaciones: una para la cantidad total y otra para el dinero (en miles). Resuélvelas por sustitución o reducción.');
+  }
+  let x0,m2,d,m1,b1,b2;do{x0=rnd(2,9);m2=rnd(1,5);d=rnd(1,4);m1=m2+d;b1=rnd(5,18);b2=b1+d*x0;}while(m1===6&&m2===4&&b1===12);const cost=m1*x0+b1;
+  return num(`Plan A: ${T(`C=${m1}x+${b1}`)}. Plan B: ${T(`C=${m2}x+${b2}`)} (x en horas, C en miles de pesos). ¿Con cuántas horas cuestan igual y cuántos miles de pesos cuesta?`,[{label:'Horas',ans:x0},{label:'Miles $',ans:cost}],
+   `Se igualan: ${T(`${m1}x+${b1}=${m2}x+${b2}`)} ⇒ ${T(`${d}x=${b2-b1}`)} ⇒ ${T(`x=${x0}`)}. Reemplazando: ${T(`C=${m1}(${x0})+${b1}=${cost}`)}.`,'Cuando cuestan lo mismo, las dos expresiones son iguales: iguálalas y despeja x; luego calcula C.');
+};
+// 14 Función afín
+GENS.t14=function(){
+  const kind=rnd(0,2);
+  if(kind===0){
+    let m,x0;do{m=nz(-4,4);x0=nz(-6,6);}while(m===-1&&x0===3);const b=-m*x0;
+    return num(`Para ${T('y='+poly([[m,'x'],[b,'']]))} halla los cortes con los ejes: con el eje ${T('y')} el punto ${T('(0,\\ ?)')}, con el eje ${T('x')} el punto ${T('(?,\\ 0)')}.`,[{label:'corte y',ans:b},{label:'corte x',ans:x0}],`Corte con y: x = 0 ⇒ y = ${b}. Corte con x: y = 0 ⇒ ${T(poly([[m,'x'],[b,'']])+'=0')} ⇒ ${T('x='+x0)}.`,'Corte con y: haz x = 0. Corte con x: haz y = 0 y despeja.');
+  }
+  if(kind===1){
+    const m=nz(-4,4),b=nz(-6,6),x0=nz(-4,4),y0=m*x0+b;
+    const mk=(x,y)=>({s:`(${x},${y})`,k:x+','+y});const C=mk(x0,y0);
+    const c=[mk(x0,-m*x0+b),mk(x0,m*x0-b),mk(-x0,y0),mk(x0,y0+1),mk(x0,y0-1),mk(x0+1,y0)].filter(o=>{const [x,y]=o.k.split(',').map(Number);return y!==m*x+b;});
+    return mc(`¿Cuál punto pertenece a la gráfica de ${T(lineTex(m,b))}?`,C,c,`Se reemplaza x en la ecuación: para x = ${x0}, ${T(`y=${m}(${x0})${b<0?'':'+'}${b}=${y0}`)}. Un punto está en la recta solo si sus coordenadas cumplen la ecuación.`,'Reemplaza la coordenada x de cada punto en la ecuación y compara con la y del punto.');
+  }
+  const m=nz(-4,4),x1=nz(-3,3),y1=nz(-5,5),dx=nz(1,3);
+  return num(`Una recta pasa por ${T(`(${x1},${y1})`)} y ${T(`(${x1+dx},${y1+m*dx})`)}. ¿Cuál es su pendiente?`,[{label:'m',ans:m}],`${T(`m=\\dfrac{y_2-y_1}{x_2-x_1}=\\dfrac{${y1+m*dx}-(${y1})}{${x1+dx}-(${x1})}=${m}`)}.`,'Pendiente = (cambio en y) ÷ (cambio en x).');
+};
+// 15 Cuadrática, ceros
+GENS.t15=function(){
+  const kind=rnd(0,2);
+  if(kind===0){
+    let k;do{k=rnd(2,9);}while(k===3);return num(`Halla los ceros de ${T('f(x)=x^2-'+k*k)}. Escribe el menor y el mayor.`,[{label:'menor',ans:-k},{label:'mayor',ans:k}],`${T(`f(x)=0 \\Rightarrow x^2=${k*k} \\Rightarrow x=\\pm${k}`)}. O factorizando: ${T(`(x-${k})(x+${k})=0`)}.`,'Iguala f(x) a 0 y despeja, o factoriza.');
+  }
+  if(kind===1){
+    let p=nz(-8,8),q=nz(-8,8);while(p===q)q=nz(-8,8);const lo=Math.min(p,q),hi=Math.max(p,q);
+    return num(`Halla los ceros de ${T('f(x)='+poly([[1,'x^2'],[-(p+q),'x'],[p*q,'']]))}. Escribe el menor y el mayor.`,[{label:'menor',ans:lo},{label:'mayor',ans:hi}],`Factoriza: ${T(`(x${-p<0?'':'+'}${-p})(x${-q<0?'':'+'}${-q})=0`)}; cada factor igual a 0 da ${lo} y ${hi}.`,'Factoriza el trinomio y luego iguala cada factor a cero.');
+  }
+  const k=nz(-9,9),a=pick([1,2,-1]);
+  const cnt=(-k/a)>0?2:((k===0)?1:0);
+  const opts=['0 ceros (no corta el eje x)','1 cero','2 ceros','3 ceros'];
+  return {kind:'mc',prompt:`¿Cuántos ceros reales tiene ${T('f(x)='+poly([[a,'x^2'],[k,'']]))}?`,options:opts,correct:cnt,
+    sol:`Se resuelve ${T(poly([[a,'x^2'],[k,'']])+'=0')} ⇒ ${T(`x^2=${-k/a}`)}. ${cnt===2?'Es positivo: hay dos soluciones.':'Un cuadrado no puede ser negativo: no hay soluciones reales.'}`,hint:'Despeja x² y mira el signo del resultado.'};
+};
+// 16 Transformaciones
+GENS.t16=function(){
+  const kinds=['up','down','refl','left','right'];let t,k;do{t=pick(kinds);k=rnd(2,7);}while(t==='down'&&k===4);
+  const expr={up:`x^2+${k}`,down:`x^2-${k}`,refl:'-x^2',left:`(x+${k})^2`,right:`(x-${k})^2`}[t];
+  const txt={up:`Se desplaza ${k} unidades hacia arriba.`,down:`Se desplaza ${k} unidades hacia abajo.`,refl:'Se refleja respecto al eje x.',left:`Se desplaza ${k} unidades a la izquierda.`,right:`Se desplaza ${k} unidades a la derecha.`};
+  if(Math.random()<0.65){
+    const others=shuffle(kinds.filter(x=>x!==t)).slice(0,3);const all=shuffle([t].concat(others));
+    return {kind:'mc',prompt:`Respecto a ${T('f(x)=x^2')}, ¿qué transformación produce ${T('g(x)='+expr)}?`,options:all.map(x=>txt[x]),correct:all.indexOf(t),
+     sol:`Regla: ${T('f(x)+k')} mueve verticalmente (k>0 arriba); ${T('-f(x)')} refleja respecto al eje x; ${T('f(x-h)')} mueve horizontalmente (cuidado: ${T('(x-h)')} va a la <b>derecha</b>). Aquí: ${txt[t]}`,hint:'Fíjate si el cambio está fuera del cuadrado (vertical), con signo menos delante (reflexión) o dentro del paréntesis (horizontal).'};
+  }
+  const h=nz(-6,6),kk=nz(-8,8);
+  return num(`Halla el vértice de ${T('g(x)=(x'+(h<0?'+':'-')+Math.abs(h)+')^2'+(kk<0?'-':'+')+Math.abs(kk))}.`,[{label:'x del vértice',ans:h},{label:'y del vértice',ans:kk}],`Forma ${T('(x-h)^2+k')} tiene vértice ${T('(h,k)')}. Aquí ${T('h='+h)} (el signo dentro del paréntesis se invierte) y ${T('k='+kk)}.`,'En (x − h)² + k el vértice es (h, k). El signo dentro del paréntesis se invierte.');
+};
+const GEN_ORDER=['t1','t2','t3','t4','t5','t6','t7','t8','t9','t10','t11','t12','t13','t14','t15','t16'];
+if(typeof module!=='undefined')module.exports={GENS,GEN_ORDER};
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script id="ui">
+"use strict";
+const DELIMS=[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}];
+function rm(el){try{if(window.renderMathInElement)renderMathInElement(el,{delimiters:DELIMS,throwOnError:false});}catch(e){}}
+function kx(el,s){try{katex.render(s,el,{throwOnError:false});}catch(e){el.textContent=s;}}
+
+/* ---------- Progreso ---------- */
+let ST={studied:{},ok:{},tried:{},quiz:null};
+try{const s=localStorage.getItem('alg9-p4');if(s)ST=Object.assign(ST,JSON.parse(s));}catch(e){}
+function save(){try{localStorage.setItem('alg9-p4',JSON.stringify(ST));}catch(e){}}
+
+/* ---------- Contenido ---------- */
+const TOP=[
+{id:'t0',title:'Estrategia para preguntas tipo ICFES y cómo revisar un procedimiento',qs:['4','8','9','14'],
+ concept:R`<p>Muchas preguntas muestran el <b>procedimiento de otra persona</b> y piden decir si es correcto o encontrar <b>el primer error</b>. No necesitas adivinar: puedes <b>comprobar</b>.</p>`,
+ rules:R`<ul><li><b>Factorización:</b> expande (multiplica) el resultado; debe darte la expresión original.</li><li><b>División:</b> dividendo = divisor · cociente + residuo.</li><li><b>Sistemas:</b> reemplaza la solución en <u>las dos</u> ecuaciones.</li><li><b>Procedimiento paso a paso:</b> revisa cada paso en orden; el error es el <i>primero</i> que no se cumple.</li><li>Elimina opciones que no cumplan una comprobación rápida (signos, términos extremos, término central).</li></ul>`,
+ examples:[{title:'Ejemplo de revisión de un procedimiento (inventado)',steps:[R`Un estudiante dice: «${'$'}x^2+x-6=(x+3)(x+2)${'$'}».`,R`Comprobamos expandiendo: ${'$'}(x+3)(x+2)=x^2+5x+6${'$'}.`,R`${'$'}x^2+5x+6\ne x^2+x-6${'$'}, luego es incorrecto.`,R`Buscamos qué falló: para ${'$'}x^2+x-6${'$'} necesitamos suma ${'$'}1${'$'} y producto ${'$'}-6${'$'}: son ${'$'}3${'$'} y ${'$'}-2${'$'}. Correcto: ${'$'}(x+3)(x-2)${'$'}.`]}],
+ widget:'checker'},
+{id:'t1',title:'Suma y resta de polinomios',qs:['1'],
+ concept:R`<p>Un <b>polinomio</b> es una suma de términos. Solo se pueden sumar o restar <b>términos semejantes</b> (misma parte literal): ${'$'}3x^2${'$'} con ${'$'}5x^2${'$'}, pero no con ${'$'}5x${'$'}.</p>`,
+ rules:R`<ul><li>Sumar: quita paréntesis (no cambia nada) y reduce semejantes.</li><li><b>Restar:</b> el signo «−» delante del paréntesis <b>cambia el signo de todos</b> los términos de adentro.</li><li>Suma los coeficientes y conserva la parte literal.</li></ul>`,
+ examples:[{title:'Ejemplo',steps:[R`Calcula ${'$'}(4a^2+2ab-3b^2)-(a^2-5ab+2b^2)${'$'}.`,R`Cambia los signos del segundo paréntesis: ${'$'}4a^2+2ab-3b^2-a^2+5ab-2b^2${'$'}.`,R`Agrupa semejantes: ${'$'}(4a^2-a^2)+(2ab+5ab)+(-3b^2-2b^2)${'$'}.`,R`Resultado: ${'$'}3a^2+7ab-5b^2${'$'}.`]}]},
+{id:'t2',title:'Multiplicación de polinomios',qs:['3'],
+ concept:R`<p>Se usa la <b>propiedad distributiva</b>: cada término del primer factor multiplica a cada término del segundo. Con ${'$'}n${'$'} y ${'$'}m${'$'} términos salen ${'$'}n\cdot m${'$'} productos.</p>`,
+ rules:R`<ul><li>Coeficientes se multiplican; los exponentes de la misma letra se <b>suman</b>: ${'$'}x^2\cdot x=x^3${'$'}.</li><li>Signos: ${'$'}(+)(+)=+${'$'}, ${'$'}(-)(-)=+${'$'}, ${'$'}(+)(-)=-${'$'}.</li><li>Al final reduce términos semejantes. Marca cada producto para no olvidar ninguno.</li></ul>`,
+ examples:[{title:'Ejemplo',steps:[R`Multiplica ${'$'}(m^2+3n)(2m-n+4)${'$'}.`,R`Primer término ${'$'}m^2${'$'} por todo: ${'$'}2m^3-m^2n+4m^2${'$'}.`,R`Segundo término ${'$'}3n${'$'} por todo: ${'$'}6mn-3n^2+12n${'$'}.`,R`Junta: ${'$'}2m^3-m^2n+4m^2+6mn-3n^2+12n${'$'}. No hay semejantes que reducir.`,R`Comprobación rápida: cuenta 6 términos = 2·3. Correcto.`]}]},
+{id:'t3',title:'División de polinomios',qs:['4'],
+ concept:R`<p>Dividir ${'$'}D(x)\div d(x)${'$'} es hallar un <b>cociente</b> ${'$'}q(x)${'$'} y un <b>residuo</b> ${'$'}r(x)${'$'} tales que:</p><p>${'$'}${'$'}D(x)=d(x)\cdot q(x)+r(x)${'$'}${'$'}</p><p>El residuo tiene grado menor que el divisor. Es 0 solo si la división es exacta.</p>`,
+ rules:R`<ol><li>Ordena en forma decreciente.</li><li>Divide el primer término del dividendo entre el primero del divisor.</li><li>Multiplica ese resultado por el divisor y <b>resta</b> (cambia signos).</li><li>Repite con lo que queda hasta que el grado sea menor que el del divisor.</li></ol><div class="box tip"><b>Verificación:</b> divisor·cociente + residuo debe reconstruir el dividendo.</div>`,
+ examples:[{title:'Ejemplo',steps:[R`Divide ${'$'}(x^2+5x+8)\div(x+3)${'$'}.`,R`${'$'}x^2\div x=x${'$'}. Multiplico: ${'$'}x(x+3)=x^2+3x${'$'}. Resto: ${'$'}(x^2+5x)-(x^2+3x)=2x${'$'}; bajo el 8: ${'$'}2x+8${'$'}.`,R`${'$'}2x\div x=2${'$'}. Multiplico: ${'$'}2(x+3)=2x+6${'$'}. Resto: ${'$'}(2x+8)-(2x+6)=2${'$'}.`,R`Cociente ${'$'}x+2${'$'}, residuo ${'$'}2${'$'}.`,R`Verifico: ${'$'}(x+3)(x+2)+2=x^2+5x+6+2=x^2+5x+8${'$'} ✓.`]}]},
+{id:'t4',title:'Factor común y factorización por agrupación',qs:['2','5'],
+ concept:R`<p><b>Factorizar</b> es escribir una expresión como un <b>producto</b>. El <b>factor común</b> es lo que se repite en todos los términos: el mayor divisor de los coeficientes y la letra con el menor exponente.</p><p>En <b>áreas</b>: si dos rectángulos comparten un lado, el área total es (lado común) × (suma de los otros lados).</p>`,
+ rules:R`<ul><li>Factor común: ${'$'}ab+ac=a(b+c)${'$'}.</li><li>Agrupación (4 términos): agrupa de a dos, saca factor común de cada grupo y luego el <b>binomio común</b>.</li><li>Si el binomio no queda igual, revisa signos al sacar factor común (puede que necesites sacar un factor negativo).</li></ul>`,
+ examples:[{title:'Factor común',steps:[R`Factoriza ${'$'}12x^3+18x^2${'$'}.`,R`MCD de 12 y 18 es 6; menor potencia de x es ${'$'}x^2${'$'}: factor común ${'$'}6x^2${'$'}.`,R`${'$'}12x^3\div6x^2=2x${'$'} y ${'$'}18x^2\div6x^2=3${'$'}.`,R`Resultado ${'$'}6x^2(2x+3)${'$'}.`]},
+ {title:'Agrupación',steps:[R`Factoriza ${'$'}4ax-6ay+2bx-3by${'$'}.`,R`Agrupo: ${'$'}(4ax-6ay)+(2bx-3by)${'$'}.`,R`Factor común de cada grupo: ${'$'}2a(2x-3y)+b(2x-3y)${'$'}.`,R`El binomio común es ${'$'}(2x-3y)${'$'}: ${'$'}(2x-3y)(2a+b)${'$'}.`,R`Verifico expandiendo: ${'$'}4ax+2bx-6ay-3by${'$'} ✓.`]},
+ {title:'Área como factor común',steps:[R`Dos rectángulos de áreas ${'$'}5x^2${'$'} y ${'$'}10x${'$'} comparten el lado ${'$'}5x${'$'}.`,R`Sus otros lados son ${'$'}x${'$'} y ${'$'}2${'$'}.`,R`Área total: ${'$'}5x\cdot x+5x\cdot2=5x(x+2)${'$'}.`]}]},
+{id:'t5',title:'Diferencia de cuadrados',qs:['6','7'],
+ concept:R`<p>Una resta de dos cuadrados perfectos se factoriza como <b>suma por diferencia</b>. Aparece también en áreas: un cuadrado grande al que se le recorta un cuadrado pequeño.</p>`,
+ rules:R`<p>${'$'}${'$'}A^2-B^2=(A-B)(A+B)${'$'}${'$'}</p><ul><li>Saca la raíz de cada término: ${'$'}\sqrt{81x^4}=9x^2${'$'}; para potencias, divide el exponente entre 2.</li><li>Debe haber un <b>menos</b> entre ellos. ${'$'}A^2+B^2${'$'} no se factoriza así.</li><li>No es lo mismo que ${'$'}(A-B)^2${'$'}: ese cuadrado tendría un término central.</li></ul>`,
+ examples:[{title:'Ejemplo',steps:[R`Factoriza ${'$'}16a^2-81b^6${'$'}.`,R`${'$'}\sqrt{16a^2}=4a${'$'} y ${'$'}\sqrt{81b^6}=9b^3${'$'}.`,R`${'$'}(4a-9b^3)(4a+9b^3)${'$'}.`,R`Verifico: ${'$'}16a^2+36ab^3-36ab^3-81b^6${'$'} ✓ (el término central se cancela).`]},
+ {title:'Placa con recorte',steps:[R`Un cuadrado de lado ${'$'}x${'$'} pierde una esquina cuadrada de lado ${'$'}6${'$'}.`,R`Área restante: ${'$'}x^2-6^2=x^2-36${'$'}.`,R`${'$'}(x-6)(x+6)${'$'}.`]}]},
+{id:'t6',title:'Trinomio cuadrado perfecto',qs:['8'],
+ concept:R`<p>Un trinomio es <b>cuadrado perfecto</b> cuando viene de elevar un binomio al cuadrado. Tiene dos extremos que son cuadrados perfectos y un término central que es el <b>doble del producto de las raíces</b>.</p>`,
+ rules:R`<p>${'$'}${'$'}A^2\pm2AB+B^2=(A\pm B)^2${'$'}${'$'}</p><ul><li>Paso 1: raíz de los extremos (A y B).</li><li>Paso 2: comprueba que el término central sea ${'$'}2AB${'$'} (en valor).</li><li>Paso 3: el <b>signo del término central</b> es el signo dentro del binomio.</li></ul><div class="box warn">Si el término central es negativo, el binomio lleva «−». Si el valor del término central no es 2AB, no es trinomio cuadrado perfecto.</div>`,
+ examples:[{title:'Ejemplo',steps:[R`Factoriza ${'$'}49x^2-42xy+9y^2${'$'}.`,R`Raíces de los extremos: ${'$'}7x${'$'} y ${'$'}3y${'$'}.`,R`Doble producto: ${'$'}2\cdot7x\cdot3y=42xy${'$'} ✓ (coincide en valor).`,R`El término central es negativo: ${'$'}(7x-3y)^2${'$'}.`]},
+ {title:'Un caso que NO es cuadrado perfecto',steps:[R`${'$'}4x^2+10x+9${'$'}: raíces ${'$'}2x${'$'} y ${'$'}3${'$'}.`,R`Doble producto: ${'$'}2\cdot2x\cdot3=12x\ne10x${'$'}.`,R`No es trinomio cuadrado perfecto.`]}]},
+{id:'t7',title:'Trinomio de la forma x² + bx + c',qs:['9','10'],
+ concept:R`<p>Se factoriza en dos binomios ${'$'}(x+m)(x+n)${'$'}. Al expandir se obtiene ${'$'}x^2+(m+n)x+mn${'$'}; por eso buscamos dos números con <b>suma = b</b> y <b>producto = c</b>.</p>`,
+ rules:R`<ul><li>Si ${'$'}c>0${'$'}: ${'$'}m${'$'} y ${'$'}n${'$'} tienen el <b>mismo signo</b> (el de b).</li><li>Si ${'$'}c<0${'$'}: tienen <b>signos distintos</b> (el mayor en valor absoluto lleva el signo de b).</li><li>Los números aparecen con su signo en el binomio: si los números son ${'$'}-6${'$'} y ${'$'}5${'$'}, la factorización es ${'$'}(x-6)(x+5)${'$'} (no se invierten).</li><li>Siempre comprueba expandiendo.</li></ul>`,
+ examples:[{title:'Ejemplo 1',steps:[R`Factoriza ${'$'}x^2-x-12${'$'}.`,R`Busco suma ${'$'}-1${'$'} y producto ${'$'}-12${'$'}. Parejas de 12: 1·12, 2·6, 3·4.`,R`${'$'}3${'$'} y ${'$'}-4${'$'}: suma ${'$'}-1${'$'} ✓, producto ${'$'}-12${'$'} ✓.`,R`${'$'}(x+3)(x-4)${'$'}.`]},
+ {title:'Ejemplo 2',steps:[R`Factoriza ${'$'}x^2-14x+45${'$'}.`,R`Producto positivo y suma negativa: ambos números negativos.`,R`${'$'}-5${'$'} y ${'$'}-9${'$'}: suma ${'$'}-14${'$'}, producto ${'$'}45${'$'} ✓.`,R`${'$'}(x-5)(x-9)${'$'}.`]}]},
+{id:'t8',title:'Trinomio de la forma ax² + bx + c (a ≠ 1)',qs:['14'],
+ concept:R`<p>Cuando el coeficiente de ${'$'}x^2${'$'} no es 1, se usa el método de <b>descomposición del término central</b> y luego agrupación.</p>`,
+ rules:R`<ol><li>Identifica ${'$'}a,b,c${'$'} y calcula ${'$'}a\cdot c${'$'} (con su signo).</li><li>Busca ${'$'}m,n${'$'} con ${'$'}m\cdot n=ac${'$'} y ${'$'}m+n=b${'$'}.</li><li>Reescribe ${'$'}bx=mx+nx${'$'}.</li><li>Agrupa y saca factor común de cada pareja.</li><li>Saca el binomio común.</li></ol><div class="box warn"><b>Cuidado:</b> al sacar factor común del segundo grupo, si el primer término es negativo, saca el factor con signo negativo. Si los dos binomios no quedan iguales, el error está antes.</div>`,
+ examples:[{title:'Ejemplo',steps:[R`Factoriza ${'$'}8x^2+2x-15${'$'}.`,R`${'$'}a=8,\ b=2,\ c=-15${'$'}; ${'$'}ac=-120${'$'}.`,R`Busco suma ${'$'}2${'$'} y producto ${'$'}-120${'$'}: ${'$'}12${'$'} y ${'$'}-10${'$'}.`,R`Descompongo: ${'$'}8x^2+12x-10x-15${'$'}.`,R`Agrupo: ${'$'}4x(2x+3)-5(2x+3)${'$'}.`,R`Binomio común: ${'$'}(2x+3)(4x-5)${'$'}.`,R`Verifico: ${'$'}8x^2-10x+12x-15=8x^2+2x-15${'$'} ✓.`]}]},
+{id:'t9',title:'Suma y diferencia de cubos',qs:['13'],
+ concept:R`<p>Cuando cada término es un <b>cubo perfecto</b> (${'$'}a^3${'$'}, ${'$'}27x^3${'$'}, ${'$'}8${'$'}, …) se usa una identidad con un binomio y un trinomio.</p>`,
+ rules:R`<p>${'$'}${'$'}A^3-B^3=(A-B)(A^2+AB+B^2)${'$'}${'$'}${'$'}${'$'}A^3+B^3=(A+B)(A^2-AB+B^2)${'$'}${'$'}</p><ul><li>Raíz cúbica de cada término: ${'$'}\sqrt[3]{64x^3}=4x${'$'}.</li><li>Binomio: mismo signo que el enunciado. Trinomio: cuadrado de A, producto AB con signo <b>opuesto</b>, cuadrado de B (siempre +).</li><li>Nemotecnia: «Signo igual, Opuesto, Siempre positivo».</li></ul>`,
+ examples:[{title:'Diferencia',steps:[R`Factoriza ${'$'}27a^3-64b^3${'$'}.`,R`${'$'}A=3a,\ B=4b${'$'}.`,R`Binomio: ${'$'}(3a-4b)${'$'}. Trinomio: ${'$'}(3a)^2+(3a)(4b)+(4b)^2=9a^2+12ab+16b^2${'$'}.`,R`${'$'}(3a-4b)(9a^2+12ab+16b^2)${'$'}.`]},
+ {title:'Suma',steps:[R`Factoriza ${'$'}8m^3+125${'$'}.`,R`${'$'}A=2m,\ B=5${'$'}.`,R`${'$'}(2m+5)(4m^2-10m+25)${'$'}.`]}]},
+{id:'t10',title:'Sistemas de ecuaciones: solución en la gráfica',qs:['12'],
+ concept:R`<p>Cada ecuación lineal es una <b>recta</b>. La solución de un sistema ${'$'}2\times2${'$'} es el <b>punto de intersección</b> de las dos rectas: un par ${'$'}(x,y)${'$'} que cumple ambas ecuaciones.</p>`,
+ rules:R`<ul><li>Las coordenadas se leen <b>(horizontal, vertical)</b>.</li><li>Rectas que se cortan: una solución. Paralelas: ninguna. Iguales: infinitas.</li><li>Comprueba reemplazando el punto en las dos ecuaciones.</li></ul>`,
+ examples:[{title:'Ejemplo',steps:[R`Sistema: ${'$'}y=2x-1${'$'}, ${'$'}y=-x+5${'$'}.`,R`Tabla de la primera: ${'$'}x=0\to-1${'$'}; ${'$'}x=2\to3${'$'}. De la segunda: ${'$'}x=0\to5${'$'}; ${'$'}x=2\to3${'$'}.`,R`Ambas pasan por ${'$'}(2,3)${'$'}: ese es el punto de intersección.`,R`Verifico: ${'$'}2\cdot2-1=3${'$'} ✓ y ${'$'}-2+5=3${'$'} ✓.`]}],
+ widget:'system'},
+{id:'t11',title:'Método de sustitución',qs:['16'],
+ concept:R`<p>Si una variable ya está despejada, se <b>reemplaza esa expresión completa</b> en la otra ecuación; así queda una sola incógnita.</p>`,
+ rules:R`<ol><li>Despeja una variable en una ecuación.</li><li>Sustituye en la otra, <b>entre paréntesis</b>, respetando el número que la multiplica.</li><li>Resuelve la ecuación de una variable.</li><li>Reemplaza el valor hallado para obtener la otra.</li><li>Comprueba en ambas ecuaciones.</li></ol>`,
+ examples:[{title:'Ejemplo',steps:[R`Resuelve ${'$'}y=2x-1${'$'}, ${'$'}3x+y=14${'$'}.`,R`Sustituyo ${'$'}y${'$'}: ${'$'}3x+(2x-1)=14${'$'}.`,R`Reduzco: ${'$'}5x-1=14\Rightarrow5x=15\Rightarrow x=3${'$'}.`,R`${'$'}y=2(3)-1=5${'$'}.`,R`Verifico: ${'$'}3\cdot3+5=14${'$'} ✓.`]}]},
+{id:'t12',title:'Método de reducción (eliminación)',qs:['18'],
+ concept:R`<p>Se <b>suman</b> o restan las ecuaciones para que una variable desaparezca. Si los coeficientes no son opuestos, se multiplica una (o ambas) ecuación por un número.</p>`,
+ rules:R`<ol><li>Acomoda ambas ecuaciones en la forma ${'$'}ax+by=c${'$'}.</li><li>Haz que una variable tenga coeficientes opuestos.</li><li>Suma: esa variable se elimina.</li><li>Despeja la otra y reemplaza para hallar la restante.</li><li>Comprueba en las dos ecuaciones.</li></ol><div class="box tip">Si multiplicas una ecuación, multiplica <b>todos</b> sus términos, también el lado derecho.</div>`,
+ examples:[{title:'Ejemplo directo',steps:[R`${'$'}2x+3y=12${'$'} y ${'$'}4x-3y=6${'$'}.`,R`Los coeficientes de ${'$'}y${'$'} son opuestos (${'$'}3${'$'} y ${'$'}-3${'$'}). Sumo: ${'$'}6x=18\Rightarrow x=3${'$'}.`,R`En la primera: ${'$'}6+3y=12\Rightarrow y=2${'$'}.`,R`Verifico en la segunda: ${'$'}12-6=6${'$'} ✓.`]},
+ {title:'Ejemplo con multiplicación',steps:[R`${'$'}x+2y=7${'$'} y ${'$'}3x-4y=1${'$'}.`,R`Multiplico la primera por 2: ${'$'}2x+4y=14${'$'}.`,R`Sumo con la segunda: ${'$'}5x=15\Rightarrow x=3${'$'}.`,R`${'$'}3+2y=7\Rightarrow y=2${'$'}.`]}]},
+{id:'t13',title:'Problemas con sistemas de ecuaciones',qs:['15','20'],
+ concept:R`<p>Un problema de texto se traduce a un sistema: defines <b>incógnitas</b>, planteas una ecuación por cada relación y resuelves. También sirve para saber <b>cuándo dos costos se igualan</b>.</p>`,
+ rules:R`<ul><li>Define variables con unidades (p. ej. ${'$'}a${'$'} = n.º de entradas de adulto).</li><li>Ecuación de <b>cantidades</b> (total de objetos) y ecuación de <b>valor</b> (dinero).</li><li>Comparar planes: iguala las expresiones de costo y despeja x.</li><li>Responde con unidades y comprueba que cumpla el enunciado.</li></ul>`,
+ examples:[{title:'Boletas',steps:[R`Boletas de 9.000 pesos y de 5.000 pesos. Se vendieron 40 y se recaudaron 300.000 pesos. ¿Cuántas de 9.000 pesos?`,R`${'$'}a+n=40${'$'} y ${'$'}9a+5n=300${'$'} (miles).`,R`${'$'}n=40-a${'$'}: ${'$'}9a+5(40-a)=300\Rightarrow4a=100\Rightarrow a=25${'$'}.`,R`Hay 25 de 9.000 pesos y 15 de 5.000 pesos. Verifico: ${'$'}225+75=300${'$'} ✓.`]},
+ {title:'Igualar costos',steps:[R`Plan A: ${'$'}7x+8${'$'}; plan B: ${'$'}3x+24${'$'}.`,R`${'$'}7x+8=3x+24\Rightarrow4x=16\Rightarrow x=4${'$'} horas.`,R`Costo: ${'$'}7(4)+8=36${'$'} y ${'$'}3(4)+24=36${'$'} ✓.`]}]},
+{id:'t14',title:'Función afín (lineal)',qs:['11'],
+ concept:R`<p>Una función afín es ${'$'}y=mx+b${'$'} y su gráfica es una <b>recta</b>. ${'$'}m${'$'} es la <b>pendiente</b> (qué tanto sube o baja) y ${'$'}b${'$'} es el <b>corte con el eje y</b>.</p>`,
+ rules:R`<ul><li>${'$'}m>0${'$'}: la recta sube; ${'$'}m<0${'$'}: baja.</li><li>Corte con y: ${'$'}(0,b)${'$'}. Corte con x: haz ${'$'}y=0${'$'} ⇒ ${'$'}x=-b/m${'$'}.</li><li>Para elegir la gráfica correcta: verifica el corte con y, el signo de la pendiente y un punto por la tabla.</li></ul>`,
+ examples:[{title:'Ejemplo',steps:[R`Grafica ${'$'}y=-2x+4${'$'}.`,R`Corte con y: ${'$'}(0,4)${'$'}.`,R`Corte con x: ${'$'}0=-2x+4\Rightarrow x=2${'$'}: ${'$'}(2,0)${'$'}.`,R`Pendiente negativa: la recta baja de izquierda a derecha. Se une con una línea los dos puntos.`]}],
+ widget:'affine'},
+{id:'t15',title:'Función cuadrática: ceros y significado',qs:['17'],
+ concept:R`<p>Una función cuadrática ${'$'}f(x)=ax^2+bx+c${'$'} se grafica como <b>parábola</b>. Los <b>ceros</b> (o raíces) son los valores de ${'$'}x${'$'} para los que ${'$'}f(x)=0${'$'}: es donde la gráfica toca o corta el <b>eje horizontal</b>.</p>`,
+ rules:R`<ul><li>Para hallar ceros: iguala ${'$'}f(x)=0${'$'} y resuelve (factorizando o despejando).</li><li>Corte con el eje y: ${'$'}f(0)${'$'}.</li><li>Vértice: punto más alto o más bajo.</li><li>Pueden haber 0, 1 o 2 ceros reales.</li></ul><div class="box tip">No confundas: «cero de la función» (valor de x donde f vale 0) con «el valor de f cuando x = 0».</div>`,
+ examples:[{title:'Ejemplo',steps:[R`Ceros de ${'$'}f(x)=x^2-16${'$'}.`,R`${'$'}x^2-16=0${'$'} ⇒ ${'$'}(x-4)(x+4)=0${'$'}.`,R`${'$'}x=4${'$'} o ${'$'}x=-4${'$'}.`,R`Corte con y: ${'$'}f(0)=-16${'$'}; la parábola abre hacia arriba, vértice en ${'$'}(0,-16)${'$'}.`]}],
+ widget:'quad'},
+{id:'t16',title:'Transformaciones de la parábola',qs:['19'],
+ concept:R`<p>A partir de la función base ${'$'}f(x)=x^2${'$'} se pueden obtener otras gráficas moviéndola o reflejándola.</p>`,
+ rules:R`<ul><li>${'$'}f(x)+k${'$'}: desplazamiento <b>vertical</b> (k>0 arriba, k<0 abajo).</li><li>${'$'}-f(x)${'$'}: <b>reflexión respecto al eje x</b> (se voltea hacia abajo).</li><li>${'$'}f(x-h)${'$'}: desplazamiento <b>horizontal</b> h unidades a la derecha (si h>0). ${'$'}f(x+h)${'$'}: a la izquierda.</li><li>${'$'}a\,f(x)${'$'} con ${'$'}|a|>1${'$'}: parábola más angosta.</li><li>La parábola ${'$'}y=x^2${'$'} es simétrica respecto al eje y.</li></ul>`,
+ examples:[{title:'Ejemplo',steps:[R`Describe ${'$'}g(x)=(x+3)^2${'$'} y ${'$'}h(x)=x^2+5${'$'} respecto a ${'$'}x^2${'$'}.`,R`${'$'}g${'$'}: el cambio está dentro del paréntesis ⇒ movimiento horizontal; ${'$'}x+3${'$'} ⇒ 3 unidades a la <b>izquierda</b>.`,R`${'$'}h${'$'}: se suma fuera ⇒ vertical, 5 unidades hacia <b>arriba</b>.`,R`Vértices: ${'$'}g\to(-3,0)${'$'}, ${'$'}h\to(0,5)${'$'}.`]}],
+ widget:'quad'}
+];
+const MAP=[['1','t1'],['2','t4'],['3','t2'],['4','t3'],['5','t4'],['6','t5'],['7','t5'],['8','t6'],['9','t7'],['10','t7'],['11','t14'],['12','t10'],['13','t9'],['14','t8'],['15','t13'],['16','t11'],['17','t15'],['18','t12'],['19','t16'],['20','t13']];
+
+
+const VIS={
+t0:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Una lupa revisa tres pasos de un procedimiento: dos marcados con visto bueno y uno con una equis"><title>Una lupa revisa tres pasos de un procedimiento: dos marcados con visto bueno y uno con una equis</title><defs><linearGradient id="hg0" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg0)" width="320" height="180" rx="12"/><rect class="f2 ol" x="24" y="26" width="170" height="30" rx="8"/><circle class="fs sok" cx="44" cy="41" r="10"/><path class="nf sok lw2" d="M38 41l4 4 8-8"/><text class="tx" x="62" y="45" text-anchor="start">Paso 1</text><rect class="f2 ol" x="24" y="66" width="170" height="30" rx="8"/><circle class="fs sok" cx="44" cy="81" r="10"/><path class="nf sok lw2" d="M38 81l4 4 8-8"/><text class="tx" x="62" y="85" text-anchor="start">Paso 2</text><rect class="f2 ol sbd" x="24" y="106" width="170" height="30" rx="8"/><circle class="fs sb" cx="44" cy="121" r="10"/><path class="nf sb lw2" d="M39 116l10 10M49 116l-10 10"/><text class="tx" x="62" y="125" text-anchor="start">Paso 3</text><text class="ts" x="24" y="160" text-anchor="start">Revisa cada paso en orden</text><g class="an-f"><circle class="nf sa lw5" cx="252" cy="78" r="26"/><path class="nf sa lw8" d="M271 97l25 25"/><path class="nf sok lw3" d="M242 78l7 7 13-14"/></g></svg>`,hook:`¿Y si pudieras detectar un error en segundos, sin resolver todo otra vez?`,ten:["Revisar es comprobar, no adivinar.", "Factorización: expande y debe salir la expresión original.", "Sistemas: reemplaza en las dos ecuaciones."],fact:`El signo «=» lo propuso Robert Recorde en 1557, porque según él nada es más igual que dos rectas paralelas.`},
+t1:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Fichas de álgebra: cuadrados de x al cuadrado y tiras de x se agrupan con las de su misma clase al sumar polinomios"><title>Fichas de álgebra: cuadrados de x al cuadrado y tiras de x se agrupan con las de su misma clase al sumar polinomios</title><defs><linearGradient id="hg1" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg1)" width="320" height="180" rx="12"/><text class="tx" x="160" y="22" text-anchor="middle">Solo se suman términos semejantes</text><rect class="f1 ol" x="12" y="44" width="32" height="32" rx="3"/><text class="tx" x="28" y="64" text-anchor="middle">x²</text><rect class="f1 ol" x="48" y="44" width="32" height="32" rx="3"/><text class="tx" x="64" y="64" text-anchor="middle">x²</text><rect class="f2 ol" x="12" y="82" width="32" height="10" rx="2"/><rect class="f1 ol" x="108" y="44" width="32" height="32" rx="3"/><text class="tx" x="124" y="64" text-anchor="middle">x²</text><rect class="f2 ol" x="108" y="82" width="32" height="10" rx="2"/><rect class="f2 ol" x="108" y="96" width="32" height="10" rx="2"/><g class="an-f"><rect class="f1 ol" x="170" y="44" width="32" height="32" rx="3"/><text class="tx" x="186" y="64" text-anchor="middle">x²</text><rect class="f1 ol" x="206" y="44" width="32" height="32" rx="3"/><text class="tx" x="222" y="64" text-anchor="middle">x²</text><rect class="f1 ol" x="242" y="44" width="32" height="32" rx="3"/><text class="tx" x="258" y="64" text-anchor="middle">x²</text><rect class="f2 ol" x="170" y="82" width="32" height="10" rx="2"/><rect class="f2 ol" x="170" y="96" width="32" height="10" rx="2"/><rect class="f2 ol" x="170" y="110" width="32" height="10" rx="2"/></g><text class="tl" x="94" y="74" text-anchor="middle">+</text><text class="tl" x="156" y="74" text-anchor="middle">=</text><text class="tx" x="46" y="142" text-anchor="middle">2x² + x</text><text class="tx" x="124" y="142" text-anchor="middle">x² + 2x</text><text class="tx" x="222" y="142" text-anchor="middle">3x² + 3x</text><text class="ts mut" x="160" y="166" text-anchor="middle">cuadrados con cuadrados, tiras con tiras</text></svg>`,hook:`¿Sabías que no puedes sumar manzanas con naranjas… ni x² con x?`,ten:["Solo se suman términos semejantes.", "Restar cambia el signo de todos los términos del paréntesis.", "Se suman los coeficientes; la parte literal no cambia."],fact:`La palabra «álgebra» viene del árabe al-jabr, del libro de Al-Juarismi (siglo IX).`},
+t2:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Modelo de áreas: un rectángulo dividido en cuatro partes muestra los cuatro productos al multiplicar dos binomios"><title>Modelo de áreas: un rectángulo dividido en cuatro partes muestra los cuatro productos al multiplicar dos binomios</title><defs><linearGradient id="hg2" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg2)" width="320" height="180" rx="12"/><rect class="f1 ol" x="46" y="34" width="100" height="70" /><rect class="f2 ol" x="146" y="34" width="50" height="70" /><rect class="f2 ol" x="46" y="104" width="100" height="36" /><rect class="f3 ol an-p" x="146" y="104" width="50" height="36" /><text class="tx" x="96" y="74" text-anchor="middle">x²</text><text class="tx" x="171" y="74" text-anchor="middle">3x</text><text class="tx" x="96" y="126" text-anchor="middle">2x</text><text class="tx" x="171" y="126" text-anchor="middle">6</text><text class="tx" x="96" y="27" text-anchor="middle">x</text><text class="tx" x="171" y="27" text-anchor="middle">3</text><text class="tx" x="36" y="74" text-anchor="middle">x</text><text class="tx" x="36" y="126" text-anchor="middle">2</text><text class="tx" x="206" y="68" text-anchor="start">(x + 3)(x + 2)</text><text class="tx" x="206" y="88" text-anchor="start">= x² + 5x + 6</text><text class="ts mut" x="206" y="116" text-anchor="start">4 productos,</text><text class="ts mut" x="206" y="130" text-anchor="start">4 áreas</text></svg>`,hook:`¿Sabías que multiplicar polinomios es calcular el área de un rectángulo?`,ten:["Cada término multiplica a todos los del otro factor.", "Los exponentes de la misma letra se suman.", "Al final se reducen los términos semejantes."],fact:`Los matemáticos griegos como Euclides resolvían problemas algebraicos con áreas de figuras (Elementos, Libro II).`},
+t3:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Diecisiete puntos repartidos en tres grupos de cinco con dos sobrantes: dividendo es divisor por cociente más residuo"><title>Diecisiete puntos repartidos en tres grupos de cinco con dos sobrantes: dividendo es divisor por cociente más residuo</title><defs><linearGradient id="hg3" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg3)" width="320" height="180" rx="12"/><rect class="f2 ol" x="20" y="38" width="66" height="36" rx="8"/><circle class="fa" cx="29" cy="56" r="5.5"/><circle class="fa" cx="41" cy="56" r="5.5"/><circle class="fa" cx="53" cy="56" r="5.5"/><circle class="fa" cx="65" cy="56" r="5.5"/><circle class="fa" cx="77" cy="56" r="5.5"/><text class="ts" x="53" y="30" text-anchor="middle">grupo de 5</text><rect class="f2 ol" x="95" y="38" width="66" height="36" rx="8"/><circle class="fa" cx="104" cy="56" r="5.5"/><circle class="fa" cx="116" cy="56" r="5.5"/><circle class="fa" cx="128" cy="56" r="5.5"/><circle class="fa" cx="140" cy="56" r="5.5"/><circle class="fa" cx="152" cy="56" r="5.5"/><text class="ts" x="128" y="30" text-anchor="middle">grupo de 5</text><rect class="f2 ol" x="170" y="38" width="66" height="36" rx="8"/><circle class="fa" cx="179" cy="56" r="5.5"/><circle class="fa" cx="191" cy="56" r="5.5"/><circle class="fa" cx="203" cy="56" r="5.5"/><circle class="fa" cx="215" cy="56" r="5.5"/><circle class="fa" cx="227" cy="56" r="5.5"/><text class="ts" x="203" y="30" text-anchor="middle">grupo de 5</text><rect class="fs sw dsh" x="246" y="38" width="56" height="36" rx="8"/><circle class="fw an-p" cx="262" cy="56" r="5.5"/><circle class="fw an-p" cx="284" cy="56" r="5.5"/><text class="ts" x="274" y="30" text-anchor="middle">sobran</text><text class="tl" x="160" y="108" text-anchor="middle">17 = 5 · 3 + 2</text><text class="tl" x="160" y="134" text-anchor="middle">D = d · q + r</text><text class="ts mut" x="160" y="160" text-anchor="middle">dividendo = divisor · cociente + residuo</text></svg>`,hook:`¿Recuerdas dividir 17 entre 5? Con polinomios funciona igual.`,ten:["Dividendo = divisor · cociente + residuo.", "El residuo tiene grado menor que el divisor.", "Para verificar, reconstruye el dividendo."],fact:`Al dividir un polinomio p(x) entre (x − a), el residuo es el valor p(a): es el teorema del residuo.`},
+t4:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Dos rectángulos vecinos con un lado común h: el área total es h por la suma de los otros lados"><title>Dos rectángulos vecinos con un lado común h: el área total es h por la suma de los otros lados</title><defs><linearGradient id="hg4" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg4)" width="320" height="180" rx="12"/><rect class="f1 ol" x="36" y="38" width="96" height="70" /><rect class="f2 ol" x="132" y="38" width="60" height="70" /><rect class="nf sa an-d lw2" x="34" y="36" width="160" height="74" rx="3"/><text class="tx" x="84" y="78" text-anchor="middle">h·b</text><text class="tx" x="162" y="78" text-anchor="middle">h·c</text><text class="tx" x="84" y="28" text-anchor="middle">b</text><text class="tx" x="162" y="28" text-anchor="middle">c</text><text class="tx" x="22" y="76" text-anchor="middle">h</text><path class="nf sm lw2" d="M36 118h156M36 114v8M192 114v8"/><text class="tx" x="114" y="136" text-anchor="middle">b + c</text><text class="ts mut" x="206" y="62" text-anchor="start">Área total:</text><text class="tx" x="206" y="84" text-anchor="start">h·b + h·c</text><text class="tx" x="206" y="106" text-anchor="start">= h(b + c)</text></svg>`,hook:`¿Cómo se calcula el área de dos terrenos vecinos que comparten un lado?`,ten:["Factor común: el mayor divisor y la letra de menor exponente.", "Con 4 términos: agrupa de a dos.", "Debe aparecer el mismo binomio en ambos grupos."],fact:`El algoritmo de Euclides para hallar el máximo común divisor (hacia el 300 a. C.) sigue usándose hoy.`},
+t5:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Un cuadrado al que se le quita un cuadradito en la esquina se reacomoda como un rectángulo de lados suma y diferencia"><title>Un cuadrado al que se le quita un cuadradito en la esquina se reacomoda como un rectángulo de lados suma y diferencia</title><defs><linearGradient id="hg5" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg5)" width="320" height="180" rx="12"/><rect class="f2 ol" x="24" y="44" width="48" height="28" /><rect class="f1 ol" x="24" y="72" width="76" height="48" /><rect class="nf sw lw2 an-d" x="72" y="44" width="28" height="28" /><text class="tx" x="62" y="136" text-anchor="middle">a</text><text class="tx" x="86" y="62" text-anchor="middle">b</text><text class="ts" x="62" y="34" text-anchor="middle">a² − b²</text><path class="nf sm lw2" d="M112 84h26M132 77l8 7-8 7"/><rect class="f1 ol" x="150" y="70" width="76" height="48" /><rect class="f2 ol an-p" x="226" y="70" width="28" height="48" /><text class="ts" x="202" y="58" text-anchor="middle">(a + b)(a − b)</text><text class="tx" x="202" y="134" text-anchor="middle">a + b</text><text class="tx" x="262" y="98" text-anchor="start">a − b</text><text class="tx" x="160" y="164" text-anchor="middle">A² − B² = (A − B)(A + B)</text></svg>`,hook:`¿Cómo calcular 51 × 49 de cabeza?`,ten:["Resta de dos cuadrados = suma por diferencia.", "Debe haber un signo menos entre los cuadrados.", "No confundir con (A − B)², que tiene término central."],fact:`51 × 49 = (50 + 1)(50 − 1) = 50² − 1² = 2499. ¡Es una diferencia de cuadrados!`},
+t6:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Un cuadrado de lado a más b dividido en cuatro piezas: a al cuadrado, dos rectángulos ab y b al cuadrado"><title>Un cuadrado de lado a más b dividido en cuatro piezas: a al cuadrado, dos rectángulos ab y b al cuadrado</title><defs><linearGradient id="hg6" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg6)" width="320" height="180" rx="12"/><rect class="f1 ol" x="40" y="36" width="64" height="64" /><rect class="f2 ol an-p" x="104" y="36" width="36" height="64" /><rect class="f2 ol an-p" x="40" y="100" width="64" height="36" /><rect class="f3 ol" x="104" y="100" width="36" height="36" /><text class="tx" x="72" y="72" text-anchor="middle">a²</text><text class="tx" x="122" y="72" text-anchor="middle">ab</text><text class="tx" x="72" y="122" text-anchor="middle">ab</text><text class="tx" x="122" y="122" text-anchor="middle">b²</text><text class="tx" x="72" y="28" text-anchor="middle">a</text><text class="tx" x="122" y="28" text-anchor="middle">b</text><text class="tx" x="28" y="72" text-anchor="middle">a</text><text class="tx" x="28" y="122" text-anchor="middle">b</text><text class="tl" x="160" y="62" text-anchor="start">(a + b)²</text><text class="tx" x="160" y="88" text-anchor="start">= a² + 2ab + b²</text><text class="ts mut" x="160" y="114" text-anchor="start">las dos piezas ab</text><text class="ts mut" x="160" y="128" text-anchor="start">forman el término 2ab</text></svg>`,hook:`¿Por qué un cuadrado de lado a + b se parte en cuatro piezas?`,ten:["Extremos: cuadrados perfectos.", "Término central: el doble del producto de las raíces.", "El signo del centro es el signo del binomio."],fact:`Un error muy común es creer que (a + b)² = a² + b²: faltan las dos piezas ab, es decir, el término 2ab.`},
+t7:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Fichas de álgebra armadas como rectángulo: un cuadrado de x, tiras de x y unidades; la suma y el producto de m y n definen los factores"><title>Fichas de álgebra armadas como rectángulo: un cuadrado de x, tiras de x y unidades; la suma y el producto de m y n definen los factores</title><defs><linearGradient id="hg7" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg7)" width="320" height="180" rx="12"/><rect class="f1 ol" x="24" y="28" width="60" height="60" /><text class="tx" x="54" y="62" text-anchor="middle">x²</text><rect class="f2 ol" x="84" y="28" width="14" height="60" /><rect class="f2 ol" x="98" y="28" width="14" height="60" /><rect class="f2 ol" x="112" y="28" width="14" height="60" /><rect class="f2 ol" x="24" y="88" width="60" height="14" /><rect class="f2 ol" x="24" y="102" width="60" height="14" /><rect class="f3 ol" x="84" y="88" width="14" height="14" /><rect class="f3 ol" x="84" y="102" width="14" height="14" /><rect class="f3 ol" x="98" y="88" width="14" height="14" /><rect class="f3 ol" x="98" y="102" width="14" height="14" /><rect class="f3 ol" x="112" y="88" width="14" height="14" /><rect class="f3 ol" x="112" y="102" width="14" height="14" /><rect class="f2 ol" x="152" y="32" width="150" height="30" rx="8"/><text class="tx" x="162" y="51" text-anchor="start">m + n = b   (suma)</text><rect class="f2 ol" x="152" y="72" width="150" height="30" rx="8"/><text class="tx" x="162" y="91" text-anchor="start">m · n = c   (producto)</text><text class="tl" x="152" y="128" text-anchor="start">(x + m)(x + n)</text><text class="ts mut" x="24" y="148" text-anchor="start">6 unidades = 3 × 2</text></svg>`,hook:`¿Y si el truco fuera buscar solo dos números?`,ten:["Busca m y n con suma b y producto c.", "Si c es positivo, m y n tienen el mismo signo.", "Comprueba expandiendo."],fact:`Esa relación entre suma, producto y coeficientes se llama fórmulas de Vieta, por François Viète (siglo XVI).`},
+t8:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Fichas de álgebra con dos cuadrados de x, siete tiras y tres unidades: el coeficiente de x al cuadrado distinto de uno"><title>Fichas de álgebra con dos cuadrados de x, siete tiras y tres unidades: el coeficiente de x al cuadrado distinto de uno</title><defs><linearGradient id="hg8" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg8)" width="320" height="180" rx="12"/><rect class="f1 ol" x="20" y="24" width="40" height="40" /><rect class="f1 ol" x="62" y="24" width="40" height="40" /><text class="tx" x="40" y="48" text-anchor="middle">x²</text><text class="tx" x="82" y="48" text-anchor="middle">x²</text><rect class="f2 ol" x="104" y="24" width="12" height="40" /><rect class="f2 ol" x="20" y="66" width="40" height="12" /><rect class="f2 ol" x="62" y="66" width="40" height="12" /><rect class="f3 ol" x="104" y="66" width="12" height="12" /><rect class="f2 ol" x="20" y="78" width="40" height="12" /><rect class="f2 ol" x="62" y="78" width="40" height="12" /><rect class="f3 ol" x="104" y="78" width="12" height="12" /><rect class="f2 ol" x="20" y="90" width="40" height="12" /><rect class="f2 ol" x="62" y="90" width="40" height="12" /><rect class="f3 ol" x="104" y="90" width="12" height="12" /><text class="tl" x="140" y="44" text-anchor="start">2x² + 7x + 3</text><text class="tx" x="140" y="76" text-anchor="start">a·c = 6  →  m + n = b</text><text class="ts" x="140" y="100" text-anchor="start">bx se parte en mx + nx</text><text class="ts" x="140" y="118" text-anchor="start">y luego se agrupa</text><text class="ts mut" x="140" y="148" text-anchor="start">2 cuadrados, 7 tiras, 3 unidades</text></svg>`,hook:`¿Qué pasa cuando x² tiene un coeficiente distinto de 1?`,ten:["Calcula a·c y busca m y n (suma b).", "Parte el término central en mx + nx.", "Agrupa y saca el binomio común."],fact:`Un trinomio ax² + bx + c con coeficientes enteros se factoriza en enteros solo si b² − 4ac es un cuadrado perfecto.`},
+t9:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Un cubo grande de arista a y un cubo pequeño de arista b: las identidades de suma y diferencia de cubos"><title>Un cubo grande de arista a y un cubo pequeño de arista b: las identidades de suma y diferencia de cubos</title><defs><linearGradient id="hg9" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg9)" width="320" height="180" rx="12"/><g class="an-f"><polygon class="f3 ol" points="14,60.0 55.8,36 97.6,60.0 55.8,84.0"/><polygon class="f1 ol" points="14,60.0 55.8,84.0 55.8,132.0 14,108.0"/><polygon class="f2 ol" points="55.8,84.0 97.6,60.0 97.6,108.0 55.8,132.0"/><text class="tx" x="34.9" y="100.0" text-anchor="middle">a³</text></g><g class="an-f2"><polygon class="f3 ol" points="106,97.0 128.6,84 151.2,97.0 128.6,110.0"/><polygon class="f1 ol" points="106,97.0 128.6,110.0 128.6,136.0 106,123.0"/><polygon class="f2 ol" points="128.6,110.0 151.2,97.0 151.2,123.0 128.6,136.0"/><text class="tx" x="117.3" y="120.5" text-anchor="middle">b³</text></g><text class="tx" x="160" y="64" text-anchor="start">a³ − b³ =</text><text class="tx" x="160" y="86" text-anchor="start">(a − b)(a² + ab + b²)</text><text class="ts mut" x="160" y="116" text-anchor="start">y la suma de cubos:</text><text class="tx" x="160" y="134" text-anchor="start">(a + b)(a² − ab + b²)</text></svg>`,hook:`¿Sabías que también hay identidades para cubos?`,ten:["Raíz cúbica de cada término.", "Binomio con el mismo signo del enunciado.", "Trinomio: signo opuesto en AB, y siempre +B²."],fact:`En el siglo XVI, matemáticos italianos como Tartaglia y Cardano resolvieron las ecuaciones cúbicas.`},
+t10:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Dos rectas en el plano cartesiano que se cortan en un punto, que es la solución del sistema de ecuaciones"><title>Dos rectas en el plano cartesiano que se cortan en un punto, que es la solución del sistema de ecuaciones</title><defs><linearGradient id="hg10" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg10)" width="320" height="180" rx="12"/><line class="gr" x1="40" y1="14" x2="40" y2="160"/><line class="gr" x1="60" y1="14" x2="60" y2="160"/><line class="gr" x1="80" y1="14" x2="80" y2="160"/><line class="gr" x1="100" y1="14" x2="100" y2="160"/><line class="gr" x1="120" y1="14" x2="120" y2="160"/><line class="gr" x1="140" y1="14" x2="140" y2="160"/><line class="gr" x1="160" y1="14" x2="160" y2="160"/><line class="gr" x1="180" y1="14" x2="180" y2="160"/><line class="gr" x1="200" y1="14" x2="200" y2="160"/><line class="gr" x1="220" y1="14" x2="220" y2="160"/><line class="gr" x1="240" y1="14" x2="240" y2="160"/><line class="gr" x1="260" y1="14" x2="260" y2="160"/><line class="gr" x1="280" y1="14" x2="280" y2="160"/><line class="gr" x1="300" y1="14" x2="300" y2="160"/><line class="gr" x1="40" y1="20" x2="304" y2="20"/><line class="gr" x1="40" y1="40" x2="304" y2="40"/><line class="gr" x1="40" y1="60" x2="304" y2="60"/><line class="gr" x1="40" y1="80" x2="304" y2="80"/><line class="gr" x1="40" y1="100" x2="304" y2="100"/><line class="gr" x1="40" y1="120" x2="304" y2="120"/><line class="gr" x1="40" y1="140" x2="304" y2="140"/><line class="gr" x1="40" y1="160" x2="304" y2="160"/><path class="nf ax" d="M40 14v146h264"/><path class="nf sa lw3" d="M50 150L290 40"/><path class="nf si lw3" d="M50 54L290 150"/><circle class="nf sw lw2 an-p" cx="159" cy="98" r="11"/><circle class="fx" cx="159" cy="98" r="4.5"/><text class="tx halo" x="172" y="86" text-anchor="start">(x, y)</text><text class="tx halo" x="286" y="34" text-anchor="end">ecuación 1</text><text class="tx halo" x="286" y="172" text-anchor="end">ecuación 2</text></svg>`,hook:`¿Dónde se cruzan dos caminos?`,ten:["Cada ecuación lineal es una recta.", "La solución es el punto donde se cortan.", "Coordenadas: (horizontal, vertical)."],fact:`Dos rectas pueden cortarse en un punto, ser paralelas (ninguna solución) o coincidir (infinitas soluciones).`},
+t11:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Una expresión despejada pasa a reemplazar la variable en la otra ecuación: queda una sola incógnita"><title>Una expresión despejada pasa a reemplazar la variable en la otra ecuación: queda una sola incógnita</title><defs><linearGradient id="hg11" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg11)" width="320" height="180" rx="12"/><rect class="f2 ol" x="24" y="22" width="180" height="36" rx="8"/><rect class="f1" x="70" y="29" width="50" height="22" /><text class="mo" x="36" y="46">y = 2x + 1</text><text class="ts mut" x="216" y="44" text-anchor="start">← y despejada</text><path class="nf sa lw2" d="M95 60C95 82 105 88 105 106M99 98l6 9 6-9"/><text class="ts" x="124" y="86" text-anchor="start">reemplaza y</text><rect class="f2 ol" x="24" y="112" width="180" height="36" rx="8"/><rect class="f1 an-p" x="70" y="119" width="67" height="22" /><text class="mo" x="36" y="136">x + (2x + 1) = 7</text><text class="ts mut" x="216" y="134" text-anchor="start">← 1 incógnita</text></svg>`,hook:`¿Y si pudieras reemplazar una letra por todo lo que vale?`,ten:["Despeja una variable.", "Sustituye la expresión entre paréntesis.", "Resuelve y comprueba en ambas ecuaciones."],fact:`René Descartes popularizó en 1637 usar las últimas letras (x, y, z) para las incógnitas.`},
+t12:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Dos ecuaciones sumadas una sobre otra: los términos con y son opuestos y se cancelan"><title>Dos ecuaciones sumadas una sobre otra: los términos con y son opuestos y se cancelan</title><defs><linearGradient id="hg12" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg12)" width="320" height="180" rx="12"/><text class="mo" x="60" y="44">2x + y = 8</text><text class="mo" x="60" y="72"> x − y = 1</text><text class="tl" x="40" y="74" text-anchor="middle">+</text><rect class="fx" x="36" y="82" width="170" height="2" /><rect class="f1 an-p" x="85" y="28" width="26" height="50" rx="4" opacity=".55"/><text class="mo" x="60" y="112">3x + 0 = 9</text><text class="tx" x="204" y="52" text-anchor="start">+y con −y</text><text class="tx" x="204" y="68" text-anchor="start">se cancelan</text><text class="ts mut" x="60" y="148" text-anchor="start">se suman las ecuaciones</text></svg>`,hook:`¿Cómo hacer desaparecer una incógnita?`,ten:["Busca coeficientes opuestos.", "Suma las ecuaciones: una letra se elimina.", "Si multiplicas una ecuación, multiplica todos sus términos."],fact:`Un método parecido a la eliminación aparece en el texto chino «Los nueve capítulos sobre el arte matemático».`},
+t13:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Entradas de adulto y de estudiante con precios distintos: una ecuación de cantidades y otra de valor"><title>Entradas de adulto y de estudiante con precios distintos: una ecuación de cantidades y otra de valor</title><defs><linearGradient id="hg13" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg13)" width="320" height="180" rx="12"/><g class="" transform="translate(18 26)"><path class="f1 ol" d="M0 0h60v14a6 6 0 0 0 0 12v14h-60v-14a6 6 0 0 0 0-12z"/><text class="tx" x="30" y="25" text-anchor="middle">p</text></g><g class="" transform="translate(86 26)"><path class="f1 ol" d="M0 0h60v14a6 6 0 0 0 0 12v14h-60v-14a6 6 0 0 0 0-12z"/><text class="tx" x="30" y="25" text-anchor="middle">p</text></g><g class="an-f" transform="translate(154 26)"><path class="f1 ol" d="M0 0h60v14a6 6 0 0 0 0 12v14h-60v-14a6 6 0 0 0 0-12z"/><text class="tx" x="30" y="25" text-anchor="middle">p</text></g><g class="" transform="translate(18 76)"><path class="f2 ol" d="M0 0h60v14a6 6 0 0 0 0 12v14h-60v-14a6 6 0 0 0 0-12z"/><text class="tx" x="30" y="25" text-anchor="middle">q</text></g><g class="" transform="translate(86 76)"><path class="f2 ol" d="M0 0h60v14a6 6 0 0 0 0 12v14h-60v-14a6 6 0 0 0 0-12z"/><text class="tx" x="30" y="25" text-anchor="middle">q</text></g><text class="ts" x="226" y="52" text-anchor="start">adultos (a)</text><text class="ts" x="226" y="102" text-anchor="start">estudiantes (n)</text><text class="tx" x="160" y="142" text-anchor="middle">a + n = total</text><text class="tx" x="160" y="162" text-anchor="middle">p·a + q·n = recaudo</text></svg>`,hook:`¿Cuántas entradas de cada tipo se vendieron?`,ten:["Define las incógnitas con unidades.", "Una ecuación de cantidades y otra de valor.", "Responde con unidades y comprueba."],fact:`Hay tablillas babilónicas de hace unos 4000 años con problemas equivalentes a sistemas de ecuaciones.`},
+t14:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Una recta que sube en el plano cartesiano con su corte en el eje vertical y un triángulo que muestra la pendiente"><title>Una recta que sube en el plano cartesiano con su corte en el eje vertical y un triángulo que muestra la pendiente</title><defs><linearGradient id="hg14" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg14)" width="320" height="180" rx="12"/><line class="gr" x1="100" y1="10" x2="100" y2="150"/><line class="gr" x1="120" y1="10" x2="120" y2="150"/><line class="gr" x1="140" y1="10" x2="140" y2="150"/><line class="gr" x1="160" y1="10" x2="160" y2="150"/><line class="gr" x1="180" y1="10" x2="180" y2="150"/><line class="gr" x1="200" y1="10" x2="200" y2="150"/><line class="gr" x1="220" y1="10" x2="220" y2="150"/><line class="gr" x1="240" y1="10" x2="240" y2="150"/><line class="gr" x1="260" y1="10" x2="260" y2="150"/><line class="gr" x1="280" y1="10" x2="280" y2="150"/><line class="gr" x1="300" y1="10" x2="300" y2="150"/><line class="gr" x1="80" y1="10" x2="80" y2="150"/><line class="gr" x1="60" y1="10" x2="60" y2="150"/><line class="gr" x1="40" y1="10" x2="40" y2="150"/><line class="gr" x1="20" y1="10" x2="20" y2="150"/><line class="gr" x1="20" y1="30" x2="300" y2="30"/><line class="gr" x1="20" y1="50" x2="300" y2="50"/><line class="gr" x1="20" y1="70" x2="300" y2="70"/><line class="gr" x1="20" y1="90" x2="300" y2="90"/><line class="gr" x1="20" y1="110" x2="300" y2="110"/><line class="gr" x1="20" y1="130" x2="300" y2="130"/><line class="gr" x1="20" y1="150" x2="300" y2="150"/><path class="nf ax" d="M100 8v144M20 130h282"/><path class="nf sa lw3" d="M40 130L270 15"/><path class="nf si lw2" d="M150 75H210V45"/><text class="tx halo" x="180" y="92" text-anchor="middle">avanza</text><text class="tx halo" x="218" y="63" text-anchor="start">sube</text><circle class="fw" cx="100" cy="100" r="5"/><text class="tx halo" x="92" y="92" text-anchor="end">(0, b)</text><circle class="fa mvdot" r="5" style="offset-path:path('M40 130L270 15')"/><text class="tx" x="300" y="168" text-anchor="end">m = sube / avanza</text></svg>`,hook:`¿Cuánto cuesta un taxi si el contador ya marca algo al subir?`,ten:["y = mx + b: m es la pendiente, b el corte con y.", "m > 0 sube; m < 0 baja.", "Verifica el corte con y y un punto."],fact:`El plano cartesiano se llama así por René Descartes (Cartesius en latín), que unió el álgebra y la geometría.`},
+t15:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Una parábola en forma de arco que corta el eje horizontal en dos puntos llamados ceros, con su vértice arriba"><title>Una parábola en forma de arco que corta el eje horizontal en dos puntos llamados ceros, con su vértice arriba</title><defs><linearGradient id="hg15" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg15)" width="320" height="180" rx="12"/><path class="nf ax" d="M24 130h278"/><path class="nf sa lw3" d="M60 130Q160 -50 260 130"/><circle class="fo" cx="60" cy="130" r="6"/><circle class="fo" cx="260" cy="130" r="6"/><circle class="fw" cx="160" cy="40" r="5"/><text class="tx" x="60" y="152" text-anchor="middle">cero</text><text class="tx" x="260" y="152" text-anchor="middle">cero</text><text class="tx" x="160" y="28" text-anchor="middle">vértice</text><circle class="fx mvdot" r="5.5" style="offset-path:path('M60 130Q160 -50 260 130')"/><text class="ts mut" x="160" y="170" text-anchor="middle">f(x) = 0 donde la gráfica toca el eje horizontal</text></svg>`,hook:`¿Qué forma tiene el chorro de una fuente?`,ten:["La gráfica es una parábola.", "Los ceros son los x con f(x) = 0.", "Puede tener 0, 1 o 2 ceros reales."],fact:`Galileo mostró que, sin aire, un proyectil describe una parábola; por eso las antenas parabólicas concentran las ondas en un punto.`},
+t16:{svg:`<svg class="hv" viewBox="0 0 320 180" role="img" aria-label="Tres parábolas: la básica, una más angosta y una desplazada hacia la derecha y hacia arriba"><title>Tres parábolas: la básica, una más angosta y una desplazada hacia la derecha y hacia arriba</title><defs><linearGradient id="hg16" x1="0" y1="0" x2="0" y2="1"><stop class="gs0" offset="0"/><stop class="gs1" offset="1"/></linearGradient></defs><rect fill="url(#hg16)" width="320" height="180" rx="12"/><path class="nf ax" d="M20 70h282M160 4v108"/><path class="nf sa lw3" d="M125 30Q160 110 195 30"/><path class="nf si lw3" d="M145 30Q160 110 175 30"/><path class="nf sc0 lw3 an-d" d="M195 16Q230 76 265 16"/><line class="sa lw3" x1="24" y1="128" x2="48" y2="128"/><text class="tx" x="56" y="132" text-anchor="start">y = x²</text><line class="si lw3" x1="24" y1="146" x2="48" y2="146"/><text class="tx" x="56" y="150" text-anchor="start">y = a·x²,  a &gt; 1  (más angosta)</text><line class="sc0 lw3" x1="24" y1="164" x2="48" y2="164"/><text class="tx" x="56" y="168" text-anchor="start">y = (x − h)² + k  (se desplaza)</text></svg>`,hook:`¿Qué le pasa a la parábola si la empujas, la subes o la estiras?`,ten:["f(x) + k: sube o baja.", "f(x − h): se mueve a derecha o izquierda.", "Si |a| > 1, la parábola es más angosta."],fact:`En y = a(x − h)² + k el vértice es el punto (h, k); si a es negativo, la parábola se abre hacia abajo.`},
+};
+function icoSVG(id,cls){return `<svg class="ico ${cls||''}" aria-hidden="true" focusable="false"><use href="#ic-${id}"/></svg>`;}
+function introHTML(t,i){
+  const v=VIS[t.id];if(!v)return '';
+  return `<div class="banner">${'<span class="ban-ico">'+icoSVG(t.id)+'</span>'}<div><div class="ban-k">Tema ${i}</div><div class="ban-hook">${v.hook}</div></div></div>`+
+  `<div class="vgrid"><div class="ten"><h5>En 10 segundos</h5><ul>${v.ten.map(x=>'<li>'+x+'</li>').join('')}</ul></div><figure class="vis rv">${v.svg}</figure></div>`+
+  `<div class="dato"><b>Dato curioso:</b> ${v.fact}</div>`;
+}
+function initReveal(){
+  const els=document.querySelectorAll('.vis.rv');
+  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('in'));return;}
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:0.15});
+  els.forEach(e=>io.observe(e));
+}
+/* ---------- Conexiones entre temas ---------- */
+const SHORT={t0:'Estrategia y revisar',t1:'Suma y resta de polinomios',t2:'Multiplicar polinomios',t3:'Dividir polinomios',t4:'Factor común y agrupación',t5:'Diferencia de cuadrados',t6:'Trinomio cuadrado perfecto',t7:'Trinomio x² + bx + c',t8:'Trinomio ax² + bx + c',t9:'Suma y diferencia de cubos',t10:'Sistemas: gráfica',t11:'Método de sustitución',t12:'Método de reducción',t13:'Problemas con sistemas',t14:'Función afín',t15:'Función cuadrática',t16:'Transformaciones de la parábola'};
+const FAM={t0:'poly',t1:'poly',t2:'poly',t3:'poly',t4:'fact',t5:'fact',t6:'fact',t7:'fact',t8:'fact',t9:'fact',t10:'sis',t11:'sis',t12:'sis',t13:'sis',t14:'fun',t15:'fun',t16:'fun'};
+const POS={t1:[100,50],t2:[375,50],t3:[650,50],t9:[925,50],t0:[100,170],t4:[375,170],t5:[650,170],t8:[100,290],t7:[375,290],t6:[650,290],t10:[925,290],t16:[100,410],t15:[375,410],t14:[650,410],t11:[925,410],t13:[650,530],t12:[925,530]};
+const EDGES=[
+['t0','t4','se verifica','Para comprobar una factorización multiplicas los factores: si obtienes la expresión original, está bien. Es la aplicación más directa de la estrategia de revisión del tema 0.'],
+['t1','t2','se usa en','Al multiplicar polinomios aparecen muchos términos; para dejar el resultado final se reducen los términos semejantes, justo lo que se practica al sumar y restar polinomios.'],
+['t2','t3','inversa de','Dividir deshace multiplicar: si A·B = C, entonces C ÷ B = A cuando la división es exacta. Por eso una división se comprueba con dividendo = divisor · cociente + residuo.'],
+['t2','t4','se deshace con','Factorizar es multiplicar al revés: partes del producto ya hecho y buscas los factores que lo originaron. Multiplicar sirve para comprobar la factorización.'],
+['t3','t4','factor exacto','Si al dividir un polinomio entre un divisor el residuo es 0, ese divisor es un factor del polinomio. Es otra forma de ver una factorización.'],
+['t4','t5','se combina','Primero se busca factor común; después de sacarlo, a veces lo que queda es una diferencia de cuadrados u otro patrón especial.'],
+['t5','t6','patrón parecido','Ambos son productos notables leídos al revés. La diferencia de cuadrados no tiene término central; el trinomio cuadrado perfecto sí lo tiene (el doble producto de las raíces).'],
+['t5','t9','mismo estilo','Suma y diferencia de cubos también se factorizan con una fórmula reconocible, como la diferencia de cuadrados: identificar el patrón antes de factorizar ahorra trabajo.'],
+['t6','t7','es caso de','El trinomio cuadrado perfecto es un caso especial de x² + bx + c en el que los dos números buscados son iguales. Cuando no lo es, buscas dos números distintos que sumen b y multipliquen c.'],
+['t7','t8','se amplía a','Cuando el coeficiente de x² no es 1, la idea es la misma pero el producto que se busca involucra a·c (o se prueban binomios). Es el mismo razonamiento con un paso más.'],
+['t7','t15','da los ceros de','Al factorizar un trinomio cuadrático y igualar cada factor a 0 obtienes los ceros de la función cuadrática, es decir, dónde su gráfica corta el eje x.'],
+['t14','t15','se amplía a','La función afín tiene grado 1 y su gráfica es una recta; la cuadrática tiene grado 2 y su gráfica es una parábola. Una recta corta el eje x una vez; una parábola puede cortarlo 0, 1 o 2 veces.'],
+['t15','t16','transformar','Conociendo la parábola base y sus ceros, las transformaciones (desplazar, reflejar, estirar) permiten describir cualquier otra parábola.'],
+['t14','t10','rectas en','Cada ecuación lineal de un sistema es una recta. Entender pendiente y corte con y te dice si las rectas se cortan en un punto, son paralelas o coinciden.'],
+['t10','t11','se calcula con','En la gráfica la solución es el punto donde se cortan las rectas, pero leerla puede ser impreciso. Sustituir entrega ese mismo punto de forma exacta con álgebra.'],
+['t11','t12','alternativa a','Sustitución despeja una variable y la reemplaza; reducción suma o resta ecuaciones para eliminar una variable. Ambos llevan a la misma solución: elige el que requiera menos cálculos.'],
+['t12','t13','se aplica en','Los métodos son herramientas: un problema de texto primero se traduce a dos ecuaciones y luego se resuelve con el método más cómodo.'],
+['t11','t13','se aplica en','Sustituir también sirve para resolver las ecuaciones planteadas en un problema, sobre todo cuando una variable ya está despejada.']
+];
+const FROM={
+t1:['t0','ahí aprendiste a comprobar; aquí empieza el cálculo con términos semejantes.'],
+t2:['t1','necesitas reducir términos semejantes al final de cada multiplicación.'],
+t3:['t2','dividir es la operación inversa de multiplicar.'],
+t4:['t3','un residuo 0 indica que el divisor es un factor.',['t2','factorizar es multiplicar al revés.']],
+t5:['t4','después de sacar factor común puede quedar un patrón especial.'],
+t6:['t5','otro patrón de productos notables, ahora con término central.'],
+t7:['t6','el trinomio cuadrado perfecto es un caso especial de este trinomio.'],
+t8:['t7','misma idea, pero con el coeficiente de x² distinto de 1.'],
+t9:['t8','otro patrón de factorización.',['t5','se parece a la diferencia de cuadrados.']],
+t10:['t9','pasas de reescribir expresiones a hallar valores de incógnitas.'],
+t11:['t10','la intersección que ves en la gráfica se calcula exacta con álgebra.'],
+t12:['t11','es la segunda forma de resolver un sistema.'],
+t13:['t12','los métodos ya aprendidos se usan para resolver problemas de texto.'],
+t14:['t13','las ecuaciones de un sistema son rectas.',['t10','la gráfica de cada ecuación es una función afín.']],
+t15:['t14','pasas del grado 1 al grado 2.',['t7','factorizar trinomios te da los ceros.']],
+t16:['t15','ya conoces la parábola base y sus ceros.']
+};
+const BR={
+t0:['Comprobar (expandir, reemplazar, verificar paso a paso) es una habilidad que usarás en cada tema. El siguiente, suma y resta de polinomios, es la base de casi todo lo demás: reducir términos semejantes.','¿Cómo se relaciona la estrategia de comprobar con los demás temas?',['Sirve en todos: el resultado se verifica con la operación inversa o reemplazando valores','Solo sirve en la división','Solo sirve cuando hay gráficas'],'Comprobar es una idea general: multiplicar para verificar factorizaciones, reemplazar para verificar sistemas, etc.'],
+t1:['Al multiplicar polinomios obtienes muchos términos; para dejar el resultado final debes sumar los términos semejantes, justo lo que practicaste aquí.','¿Qué paso de la suma de polinomios reaparece al final de una multiplicación?',['Reducir términos semejantes','Dividir entre el residuo','Trazar una recta'],'Cada producto de términos genera términos que luego se agrupan por semejanza.'],
+t2:['Dividir deshace multiplicar: si A·B = C, entonces C ÷ B = A (cuando la división es exacta). Por eso la comprobación de una división es dividendo = divisor · cociente + residuo.','¿Cómo se relacionan multiplicar y dividir polinomios?',['Una operación deshace a la otra (son inversas)','Son exactamente la misma operación','No tienen relación'],'Son operaciones inversas, igual que con los números.'],
+t3:['Si al dividir un polinomio entre D el residuo es 0, entonces D es un factor: el polinomio queda escrito como producto. Factorizar es justamente eso, y el factor común es la forma más simple.','Si al dividir P entre D el residuo es 0, ¿qué significa?',['D es un factor de P','P no se puede factorizar','D vale siempre 1'],'Residuo 0 significa P = D · cociente, o sea, un producto.'],
+t4:['El factor común es siempre el primer paso. Después de sacarlo, a veces queda una diferencia de cuadrados u otro patrón especial por factorizar.','Antes de buscar un patrón especial, ¿qué conviene revisar primero?',['Si hay un factor común','Si se puede graficar','Si el residuo es 0 en una división'],'Sacar el factor común simplifica la expresión y deja a la vista los patrones.'],
+t5:['Ambos son patrones de productos notables leídos al revés: (a+b)(a−b) = a² − b² y (a±b)² = a² ± 2ab + b². La diferencia de cuadrados no tiene término central; el trinomio cuadrado perfecto sí.','¿Cuál es la diferencia clave entre estos dos patrones?',['El trinomio cuadrado perfecto tiene término central (2ab); la diferencia de cuadrados no','La diferencia de cuadrados siempre tiene tres términos','No hay ninguna diferencia'],'Mira siempre cuántos términos hay y si existe un término del medio.'],
+t6:['Un trinomio cuadrado perfecto es un caso especial de x² + bx + c: sus dos números son iguales. Cuando no lo es, buscas dos números distintos que sumen b y multipliquen c.','En x² + bx + c, ¿qué dos números se buscan para factorizar?',['Los que suman b y multiplican c','Los que multiplican b y suman c','Los que restan a y c'],'Al expandir (x+m)(x+n) se obtiene x² + (m+n)x + mn.'],
+t7:['Cuando el coeficiente de x² no es 1, ya no basta «suma b, producto c»: el producto que importa involucra a·c. Es la misma idea con un paso más (descomponer el término central o probar binomios).','¿Qué cambia al pasar de x² + bx + c a ax² + bx + c?',['Debes considerar a·c (o probar binomios)','Ya no se puede factorizar','Se usa diferencia de cubos'],'La estructura es igual; solo se complica la búsqueda de los números.'],
+t8:['Los cubos siguen la misma lógica de patrones: a³ ± b³ se factoriza con una fórmula que produce un binomio por un trinomio. Reconocer la forma antes de factorizar ahorra tiempo.','¿Cuál de estas expresiones es un patrón de cubos?',['a³ − b³','a² − b²','a² + 2ab + b²'],'Los exponentes 3 indican cubos; los exponentes 2 indican cuadrados.'],
+t9:['Terminas la factorización y pasas a sistemas: ahora el objetivo no es reescribir expresiones sino encontrar valores de dos incógnitas. Seguirás simplificando expresiones algebraicas al despejar.','¿Qué cambia entre factorizar y resolver un sistema?',['Factorizar reescribe una expresión; un sistema busca valores de las incógnitas','Nada: son el mismo objetivo','En un sistema ya no se usa álgebra'],'En un sistema el resultado son valores (un par ordenado), no una expresión.'],
+t10:['En la gráfica la solución es el punto donde se cortan las rectas, pero leerla puede ser impreciso. Sustituir da el mismo punto de forma exacta con álgebra.','¿Qué representa la solución de un sistema de dos ecuaciones lineales en la gráfica?',['El punto donde se cortan las rectas','El corte de una sola recta con el eje y','La pendiente de las rectas'],'Ese punto cumple las dos ecuaciones a la vez.'],
+t11:['Sustitución despeja una variable y la reemplaza. Reducción suma o resta las ecuaciones para eliminar una variable. Ambas llevan a la misma solución; elige la que implique menos cálculos.','¿Cuándo resulta cómodo usar sustitución?',['Cuando una variable ya está despejada o tiene coeficiente 1','Solo cuando no hay solución','Nunca, siempre conviene reducción'],'Despejar es fácil cuando el coeficiente es 1.'],
+t12:['Los métodos son herramientas: un problema de texto primero debe traducirse a dos ecuaciones (definiendo las incógnitas) y luego se resuelve con el método elegido.','¿Cuál es el primer paso en un problema con sistemas de ecuaciones?',['Definir las incógnitas y plantear las ecuaciones','Aplicar reducción sin leer el enunciado','Graficar siempre'],'Sin un buen planteamiento, el método no sirve de nada.'],
+t13:['Cada ecuación lineal de un sistema es una recta (función afín). Entender pendiente y corte con y te dice cómo se ven las rectas: paralelas (misma pendiente) o que se cortan.','Dos rectas con la misma pendiente y distinto corte con y, ¿qué sistema forman?',['Uno sin solución (rectas paralelas)','Uno con una sola solución','Uno con infinitas soluciones'],'Rectas paralelas no se cortan jamás.'],
+t14:['La función afín tiene grado 1 y su gráfica es una recta; la cuadrática tiene grado 2 y su gráfica es una parábola. Una recta corta el eje x una vez, pero una parábola puede cortarlo 0, 1 o 2 veces.','¿Cuántos ceros reales puede tener una función cuadrática?',['0, 1 o 2','Siempre 2','Siempre 1'],'Depende de si la parábola corta, toca o no alcanza el eje x.'],
+t15:['Conociendo la parábola base y sus ceros, las transformaciones (desplazar, reflejar, estirar) permiten describir cualquier parábola. Además, los ceros se obtienen igualando a 0 cada factor, lo que conecta con la factorización.','¿Qué relación hay entre factorizar y hallar ceros?',['Si la función es un producto de factores, cada factor igual a 0 da un cero','Los ceros se obtienen sumando los coeficientes','No hay ninguna relación'],'Un producto es 0 solo si algún factor es 0.'],
+t16:['Cierras la guía: pon a prueba todos los temas en la autoevaluación. Si fallas una pregunta, el mapa de conceptos te dice de qué tema viene la idea que necesitas repasar.','Si te cuesta hallar los ceros de una parábola, ¿qué temas te conviene repasar?',['Factorización de trinomios y función cuadrática','Solo división de polinomios','Ningún tema'],'Los ceros se relacionan con factorizar y con la forma de la parábola.']
+};
+const ROUTE=[
+['Etapa 1 · Base de polinomios','Todo lo demás usa estas operaciones y la habilidad de comprobar.',['t0','t1','t2','t3']],
+['Etapa 2 · Factorizar (multiplicar al revés)','Va de lo simple (factor común) a los trinomios y cubos; en cada paso comprueba multiplicando.',['t4','t5','t6','t7','t8','t9']],
+['Etapa 3 · Sistemas de ecuaciones','Empieza con la gráfica para entender la solución y luego aprende los métodos exactos.',['t10','t11','t12','t13']],
+['Etapa 4 · Funciones','Rectas y parábolas; retoma la factorización para hallar ceros.',['t14','t15','t16']]
+];
+const tt=id=>{const i=TOP.findIndex(t=>t.id===id);return i+'. '+TOP[i].title;};
+const reduceMotion=()=>{try{return matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){return false;}};
+function goTo(id){const d=document.getElementById(id);if(!d)return;d.open=true;d.scrollIntoView({behavior:reduceMotion()?'auto':'smooth',block:'start'});}
+function nodeLines(id){const s=(TOP.findIndex(t=>t.id===id))+'. '+SHORT[id];if(s.length<=19)return [s];const w=s.split(' ');let best=null,bd=1e9;for(let k=1;k<w.length;k++){const a=w.slice(0,k).join(' '),b=w.slice(k).join(' ');const d=Math.abs(a.length-b.length);if(d<bd){bd=d;best=[a,b];}}return best;}
+function buildMap(){
+  const root=document.getElementById('cmap');if(!root)return;
+  const W=170,H=56;let e='',n='';
+  const panel=root.querySelector('.cmap-panel');
+  const info=(h)=>{panel.innerHTML=h;rm(panel);};
+  EDGES.forEach(([a,b,lab,txt],i)=>{
+    const [x1,y1]=POS[a],[x2,y2]=POS[b];const dx=x2-x1,dy=y2-y1;
+    const t=Math.min(dx?(W/2+4)/Math.abs(dx):1e9,dy?(H/2+4)/Math.abs(dy):1e9);
+    const sx=x1+dx*t,sy=y1+dy*t,ex=x2-dx*t,ey=y2-dy*t;const mx=(sx+ex)/2,my=(sy+ey)/2;const lw=lab.length*7.4+16;
+    e+=`<g class="cm-e" tabindex="0" role="button" data-i="${i}" aria-label="${SHORT[a]} ${lab} ${SHORT[b]}"><line class="cm-edge" x1="${sx.toFixed(1)}" y1="${sy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}" marker-end="url(#cmarr)"/><line class="cm-hit" x1="${sx.toFixed(1)}" y1="${sy.toFixed(1)}" x2="${ex.toFixed(1)}" y2="${ey.toFixed(1)}"/><rect class="cm-lab" x="${(mx-lw/2).toFixed(1)}" y="${(my-12).toFixed(1)}" width="${lw.toFixed(1)}" height="24" rx="12"/><text class="cm-ltxt" x="${mx.toFixed(1)}" y="${(my+4.5).toFixed(1)}">${lab}</text></g>`;
+  });
+  TOP.forEach(t=>{const [x,y]=POS[t.id];const L=nodeLines(t.id);
+    n+=`<g class="cm-n f-${FAM[t.id]}" tabindex="0" role="link" data-t="${t.id}" aria-label="Ir a ${tt(t.id)}"><rect x="${x-W/2}" y="${y-H/2}" width="${W}" height="${H}" rx="12"/><g class="cm-ic"><circle cx="${x-W/2+6}" cy="${y-H/2+6}" r="13"/><use href="#ic-${t.id}" x="${x-W/2-2}" y="${y-H/2-2}" width="16" height="16"/></g>${L.length===1?`<text x="${x}" y="${y+4.5}">${L[0]}</text>`:`<text x="${x}" y="${y-3}">${L[0]}</text><text x="${x}" y="${y+14}">${L[1]}</text>`}</g>`;});
+  root.querySelector('.cmap-wrap').innerHTML=`<svg viewBox="0 0 1025 580" role="group" aria-label="Mapa de conceptos entre los temas"><defs><marker id="cmarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto"><path class="cm-arrow" d="M0 0 L10 5 L0 10 z"/></marker></defs>${e}${n}</svg>`;
+  const showEdge=i=>{const [a,b,lab,txt]=EDGES[i];root.querySelectorAll('.cm-e').forEach(g=>g.classList.toggle('on',+g.dataset.i===i));
+    info(`<b>${SHORT[a]} → ${SHORT[b]}</b> <i>(${lab})</i><br>${txt}<br><a href="#${b}" data-open="${b}">Ir a «${SHORT[b]}»</a>`);};
+  const showNode=id=>{const out=EDGES.filter(x=>x[0]===id),inc=EDGES.filter(x=>x[1]===id);root.querySelectorAll('.cm-n').forEach(g=>g.classList.toggle('on',g.dataset.t===id));
+    info(`<b>${tt(id)}</b><br>`+(inc.length?`Se apoya en: ${inc.map(x=>SHORT[x[0]]+' ('+x[2]+')').join('; ')}.<br>`:'')+(out.length?`Lleva a: ${out.map(x=>SHORT[x[1]]+' ('+x[2]+')').join('; ')}.`:'')+`<br><a href="#${id}" data-open="${id}">Ir a la sección</a>`);};
+  root.querySelectorAll('.cm-e').forEach(g=>{const i=+g.dataset.i;g.addEventListener('click',()=>showEdge(i));g.addEventListener('mouseenter',()=>showEdge(i));g.addEventListener('focus',()=>showEdge(i));g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();showEdge(i);}});});
+  root.querySelectorAll('.cm-n').forEach(g=>{const id=g.dataset.t;g.addEventListener('click',()=>{showNode(id);goTo(id);});g.addEventListener('mouseenter',()=>showNode(id));g.addEventListener('keydown',ev=>{if(ev.key==='Enter'||ev.key===' '){ev.preventDefault();showNode(id);goTo(id);}});});
+  root.querySelector('.clist').innerHTML=TOP.map(t=>{const out=EDGES.map((x,i)=>[x,i]).filter(([x])=>x[0]===t.id);
+    return `<li><a href="#${t.id}" data-open="${t.id}"><b>${tt(t.id)}</b></a>`+out.map(([x])=>`<details><summary>→ ${x[2]} → ${SHORT[x[1]]}</summary><p>${x[3]}</p><a href="#${x[1]}" data-open="${x[1]}">Ir a «${SHORT[x[1]]}»</a></details>`).join('')+`</li>`;}).join('');
+  panel.addEventListener('click',ev=>{const a=ev.target.closest('[data-open]');if(a){ev.preventDefault();goTo(a.dataset.open);}});
+  root.querySelector('.clist').addEventListener('click',ev=>{const a=ev.target.closest('a[data-open]');if(a){ev.preventDefault();goTo(a.dataset.open);}});
+}
+function bridgeHTML(t,i){
+  const b=BR[t.id];const nx=TOP[i+1];
+  return `<details class="bridge"><summary>🔗 Conexión con el siguiente tema</summary><div class="bin"><p>${b[0]}</p><div class="bq" data-bq="${t.id}"><b>${b[1]}</b><div class="bopts"></div><div class="fb" aria-live="polite"></div></div><p>${nx?`<a href="#${nx.id}" data-open="${nx.id}">Siguiente: ${tt(nx.id)} →</a>`:`<a href="#quiz">Ir a la autoevaluación final →</a>`}</p></div></details>`;
+}
+function mountBridge(d,t){
+  const q=d.querySelector('.bq');if(!q)return;const b=BR[t.id];
+  const opts=shuffle(b[2].map((s,k)=>({s,k})));const box=q.querySelector('.bopts'),fb=q.querySelector('.fb');
+  opts.forEach(o=>{const bt=document.createElement('button');bt.type='button';bt.className='bopt';bt.textContent=o.s;
+    bt.onclick=()=>{const ok=o.k===0;q.querySelectorAll('.bopt').forEach(x=>x.disabled=true);bt.classList.add(ok?'ok':'bad');
+      if(!ok)[...q.querySelectorAll('.bopt')].find(x=>x.textContent===b[2][0]).classList.add('ok');
+      fb.className='fb '+(ok?'ok':'bad');fb.innerHTML=(ok?'<b>✔ Correcto.</b> ':'<b>✘ Incorrecto.</b> La respuesta correcta está marcada. ')+b[3];};
+    box.appendChild(bt);});
+}
+function fromHTML(t){
+  const f=FROM[t.id];if(!f)return `<div class="from"><b>⬅ Punto de partida:</b> aquí aprendes a comprobar resultados; lo usarás en todos los temas.</div>`;
+  const links=[f,f[2]].filter(Boolean);
+  return `<div class="from"><b>⬅ Viene de:</b> `+links.map(x=>`<a href="#${x[0]}" data-open="${x[0]}">${tt(x[0])}</a>: ${x[1]}`).join(' También de ')+`</div>`;
+}
+function buildRoute(){
+  const r=document.getElementById('ruta');if(!r)return;
+  r.querySelector('.route').innerHTML='<ol>'+ROUTE.map(([nm,why,ids])=>`<li class="stage"><b class="st">${nm}</b><br><span class="mini">${why}</span>`+ids.map(id=>`<label><input type="checkbox" class="rcb" data-t="${id}"> <a href="#${id}" data-open="${id}">${tt(id)}</a></label>`).join('')+`</li>`).join('')+'<li class="stage"><b class="st">Etapa 5 · Autoevaluación</b><br><span class="mini">Cuando termines las etapas, genera la autoevaluación final y repasa lo que falle.</span><br><a href="#quiz">Ir a la autoevaluación</a></li></ol>';
+  r.querySelectorAll('.rcb').forEach(c=>{c.checked=!!ST.studied[c.dataset.t];c.onchange=()=>{ST.studied[c.dataset.t]=c.checked;save();updateProg();};});
+  r.addEventListener('click',ev=>{const a=ev.target.closest('a[data-open]');if(a){ev.preventDefault();goTo(a.dataset.open);}});
+}
+/* ---------- Tema claro / oscuro ---------- */
+function initTheme(){
+  const root=document.documentElement,btn=document.getElementById('themebtn');
+  const eff=()=>root.getAttribute('data-theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches)?'dark':'light');
+  const lab=()=>{btn.textContent=eff()==='dark'?'☀ Modo claro':'🌙 Modo oscuro';btn.setAttribute('aria-pressed',eff()==='dark');};
+  try{const s=localStorage.getItem('alg9-theme');if(s==='light'||s==='dark')root.setAttribute('data-theme',s);}catch(e){}
+  btn.onclick=()=>{const n=eff()==='dark'?'light':'dark';root.setAttribute('data-theme',n);try{localStorage.setItem('alg9-theme',n);}catch(e){}lab();};
+  lab();
+}
+
+/* ---------- Items interactivos ---------- */
+let uid=0;
+function norm(s){return parseFloat(String(s).replace(/[−–]/g,'-').replace(',','.').replace(/\s/g,''));}
+function mountItem(box,item,opt){
+  opt=opt||{};const id='i'+(uid++);let done=false,wasOk=false;
+  let h=`<div class="q">${item.prompt}</div>`;
+  if(item.kind==='mc'){h+='<div class="opts" role="radiogroup">'+item.options.map((o,i)=>`<label><input type="radio" name="${id}" value="${i}"> ${o}</label>`).join('')+'</div>';}
+  else{h+='<div class="fields">'+item.fields.map((f,i)=>`<label>${f.label} <input type="text" inputmode="text" autocomplete="off" data-i="${i}" aria-label="respuesta ${i+1}"></label>`).join('')+'</div>';}
+  if(!opt.quiz)h+='<button class="btn chk" type="button">Verificar</button><button class="btn sec hnt" type="button">Ver pista</button>';
+  h+='<div class="fb" aria-live="polite"></div>';
+  box.innerHTML=h;rm(box);
+  const fb=box.querySelector('.fb');
+  function evalNow(){
+    if(item.kind==='mc'){const s=box.querySelector('input:checked');if(!s)return null;return +s.value===item.correct;}
+    let all=true,empty=false;box.querySelectorAll('.fields input').forEach((inp,i)=>{if(inp.value.trim()==='')empty=true;const v=norm(inp.value);if(!(Math.abs(v-item.fields[i].ans)<1e-6))all=false;});
+    return empty?null:all;
+  }
+  const ctl={check(show){
+    const r=evalNow();if(r===null){if(show){fb.className='fb hint';fb.textContent='💡 Responde primero.';}return null;}
+    if(show){fb.className='fb '+(r?'ok':'bad');fb.innerHTML=(r?'<b>✔ Correcto.</b>':'<b>✘ Incorrecto.</b> Revisa el procedimiento.')+`<div class="s">${item.sol}</div>`;rm(fb);}
+    if(opt.onResult&&!done){done=true;opt.onResult(r);}
+    return r;},
+   reveal(){fb.className='fb ok';fb.innerHTML='<b>✔ Solución:</b><div class="s">'+item.sol+'</div>';rm(fb);}};
+  if(!opt.quiz){
+    box.querySelector('.chk').onclick=()=>ctl.check(true);
+    box.querySelector('.hnt').onclick=()=>{fb.className='fb hint';fb.innerHTML='<b>💡 Pista:</b> '+item.hint;rm(fb);};
+  }
+  return ctl;
+}
+
+/* ---------- Gráficos interactivos ---------- */
+function sl(id,lab,min,max,step,val){return `<label>${lab} = <b id="${id}v">${val}</b><input type="range" id="${id}" min="${min}" max="${max}" step="${step}" value="${val}"></label>`;}
+function quadTex(a,h,k){const A=a===1?'':(a===-1?'-':a);const inner=h===0?'x':('x'+(h<0?'+':'-')+Math.abs(h));return `f(x)=${A}(${inner})^2${k===0?'':(k<0?'-':'+')+Math.abs(k)}`.replace('(x)^2','x^2');}
+function widget(kind,mount,tid){
+  const gen=graphSVG;
+  if(kind==='affine'){
+    mount.innerHTML=`<h4>Explora la recta</h4><div class="ctrl">${sl('m'+tid,'m (pendiente)',-5,5,0.5,1)}${sl('b'+tid,'b (corte con y)',-8,8,1,2)}</div><div class="eq"></div><div class="gr"></div><div class="inf mini"></div>`;
+    const m=mount.querySelector('#m'+tid),b=mount.querySelector('#b'+tid);
+    const up=()=>{const M=+m.value,B=+b.value;mount.querySelector('#m'+tid+'v').textContent=M;mount.querySelector('#b'+tid+'v').textContent=B;
+      const pts=[{x:0,y:B,label:'(0, '+B+')'}];let t='';if(M!==0){const xi=-B/M;pts.push({x:xi,y:0,label:'('+(+xi.toFixed(2))+', 0)'});t=`Corte con x: ${(+xi.toFixed(2))}.`;}else t='Pendiente 0: recta horizontal.';
+      mount.querySelector('.gr').innerHTML=gen([{f:x=>M*x+B}],{points:pts});kx(mount.querySelector('.eq'),'y='+(M===0?'':(M===1?'':(M===-1?'-':M))+'x')+(B===0?(M===0?'0':''):(M===0?B:(B<0?'-':'+')+Math.abs(B))));
+      mount.querySelector('.inf').textContent=(M>0?'Sube':M<0?'Baja':'Es horizontal')+'. '+t;};
+    m.oninput=b.oninput=up;up();
+  }
+  if(kind==='system'){
+    mount.innerHTML=`<h4>Dos rectas y su intersección</h4><div class="ctrl">${sl('a'+tid,'m₁ (naranja, ▬ primera recta)',-4,4,0.5,2)}${sl('c'+tid,'b₁',-8,8,1,-1)}${sl('d'+tid,'m₂ (azul, ▬ segunda recta)',-4,4,0.5,-1)}${sl('e'+tid,'b₂',-8,8,1,5)}</div><div class="gr"></div><div class="inf"></div>`;
+    const ids=['a','c','d','e'].map(p=>mount.querySelector('#'+p+tid));
+    const up=()=>{const [m1,b1,m2,b2]=ids.map(i=>+i.value);ids.forEach(i=>mount.querySelector('#'+i.id+'v').textContent=i.value);
+      const pts=[];let t='';if(m1===m2)t=b1===b2?'Son la misma recta: infinitas soluciones.':'Son paralelas: el sistema no tiene solución.';else{const x=(b2-b1)/(m1-m2),y=m1*x+b1;pts.push({x,y,label:'('+(+x.toFixed(2))+', '+(+y.toFixed(2))+')'});t='Intersección: ('+(+x.toFixed(2))+', '+(+y.toFixed(2))+')';}
+      mount.querySelector('.gr').innerHTML=gen([{f:x=>m1*x+b1},{f:x=>m2*x+b2}],{points:pts});mount.querySelector('.inf').textContent=t;};
+    ids.forEach(i=>i.oninput=up);up();
+  }
+  if(kind==='quad'){
+    mount.innerHTML=`<h4>Explora la parábola ${'$'}f(x)=a(x-h)^2+k${'$'}</h4><div class="ctrl">${sl('a'+tid,'a',-3,3,1,1)}${sl('h'+tid,'h (horizontal)',-6,6,1,0)}${sl('k'+tid,'k (vertical)',-9,9,1,-1)}</div><div class="eq"></div><div class="gr"></div><div class="inf mini"></div>`;rm(mount);
+    const ia=mount.querySelector('#a'+tid),ih=mount.querySelector('#h'+tid),ik=mount.querySelector('#k'+tid);
+    const up=()=>{let a=+ia.value;if(a===0){a=1;ia.value=1;}const h=+ih.value,k=+ik.value;
+      mount.querySelector('#a'+tid+'v').textContent=a;mount.querySelector('#h'+tid+'v').textContent=h;mount.querySelector('#k'+tid+'v').textContent=k;
+      kx(mount.querySelector('.eq'),quadTex(a,h,k));
+      const pts=[{x:h,y:k,label:'vértice'}];let t=`Vértice (${h}, ${k}). Abre hacia ${a>0?'arriba':'abajo'}.`;
+      const q=-k/a;if(q>0){const r=Math.sqrt(q);pts.push({x:h-r,y:0},{x:h+r,y:0});t+=` Ceros: x = ${+(h-r).toFixed(2)} y x = ${+(h+r).toFixed(2)}.`;}else if(q===0){t+=` Un cero: x = ${h}.`;}else t+=' No corta el eje x (sin ceros reales).';
+      mount.querySelector('.gr').innerHTML=gen([{f:x=>a*(x-h)*(x-h)+k},{f:x=>x*x}],{points:pts});mount.querySelector('.inf').textContent=t+' (La gráfica azul es la parábola base x².)';};
+    [ia,ih,ik].forEach(i=>i.oninput=up);up();
+  }
+  if(kind==='checker'){
+    mount.innerHTML=`<h4>Comprobador de factorizaciones</h4><p class="mini">Escribe un producto de dos binomios ${'$'}(px+q)(rx+s)${'$'} y mira qué trinomio resulta. Úsalo para verificar tus factorizaciones.</p><div class="fields"><label>p <input id="cp${tid}" value="2"></label><label>q <input id="cq${tid}" value="3"></label><label>r <input id="cr${tid}" value="1"></label><label>s <input id="cs${tid}" value="-4"></label></div><div class="out"></div>`;rm(mount);
+    const ii=['cp','cq','cr','cs'].map(p=>mount.querySelector('#'+p+tid));
+    const up=()=>{const [p,q,r,s]=ii.map(i=>norm(i.value));if([p,q,r,s].some(isNaN)){mount.querySelector('.out').textContent='Escribe números.';return;}
+      const P=(c,v)=>c===0?'':(Math.abs(c)===1&&v?(c<0?'-':'')+v:c+v);
+      const A=p*r,B=p*s+q*r,C=q*s;let t=P(A,'x^2');[[B,'x'],[C,'']].forEach(([c,v])=>{if(c!==0)t+=(c<0?'-':(t?'+':''))+(Math.abs(c)===1&&v?v:Math.abs(c)+v);});
+      kx(mount.querySelector('.out'),`(${p}x${q<0?'':'+'}${q})(${r}x${s<0?'':'+'}${s})=${t||'0'}`);};
+    ii.forEach(i=>i.oninput=up);up();
+  }
+}
+
+/* ---------- Construcción de la página ---------- */
+function updateProg(){
+  const n=TOP.length,d=TOP.filter(t=>ST.studied[t.id]).length;
+  document.getElementById('progtxt').textContent=`${d} de ${n} temas marcados como estudiados`+(ST.quiz!==null?` · mejor autoevaluación: ${ST.quiz}/16`:'');
+  document.getElementById('progfill').style.width=(100*d/n)+'%';document.getElementById('progbar').setAttribute('aria-valuenow',Math.round(100*d/n));
+  TOP.forEach(t=>{const a=document.querySelector('#navlist a[data-t="'+t.id+'"]');if(a)a.classList.toggle('done',!!ST.studied[t.id]);
+    const sc=document.querySelector('#'+t.id+' .stud');if(sc)sc.checked=!!ST.studied[t.id];document.querySelectorAll('.rcb[data-t="'+t.id+'"]').forEach(x=>x.checked=!!ST.studied[t.id]);
+    const c=document.getElementById('cnt-'+t.id);if(c)c.textContent=(ST.ok[t.id]||0)+' aciertos de '+(ST.tried[t.id]||0)+' intentos';});
+}
+const EXFIG={"t4": [["2", "Dos rectángulos rotulados como zona 1 y zona 2, cada uno con una expresión de área escrita", "qué tienen en común las dos expresiones de área y qué pide la pregunta con el área total."]], "t5": [["7", "Esquema de un cuadrado con una esquina cuadrada recortada, con medidas rotuladas en los lados", "las medidas de cada lado y qué figura queda cuando se quita el recorte."]], "t10": [["12", "Plano cartesiano con dos rectas de colores distintos que se cruzan, con un punto marcado y una leyenda", "la escala de ambos ejes y en qué lugar se cruzan las rectas; recuerda leer (horizontal, vertical)."]], "t14": [["11", "Cuatro planos cartesianos rotulados como opción A, B, C y D, cada uno con una recta", "en cada gráfica dónde corta la recta al eje vertical y si sube o baja de izquierda a derecha."]], "t15": [["17", "Gráfica de una parábola con dos puntos marcados sobre el eje horizontal y una leyenda", "dónde están los puntos marcados y qué relación tienen con la ecuación; usa lo que aprendiste arriba sobre ceros para decidir qué significan."]], "t16": [["19", "Plano cartesiano con tres parábolas de colores distintos, una leyenda y dos vértices rotulados", "el vértice de cada curva, hacia dónde abre y cómo se compara cada una con la curva base de la leyenda."]]};
+function exFigHTML(t){return (EXFIG[t.id]||[]).map(([n,alt,tip])=>`<figure class="exam-fig"><button type="button" class="xf-btn" data-src="img/pregunta-${n}.png" data-alt="${alt}" aria-label="Ampliar imagen de la pregunta ${n}"><img src="img/pregunta-${n}.png" alt="${alt}" loading="lazy"></button><figcaption>📄 Imagen de tu evaluación — pregunta ${n}. <span>Observa: ${tip}</span></figcaption></figure>`).join('');}
+(function(){document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('.xf-btn');if(!b)return;let d=document.getElementById('xfdlg');if(!d){d=document.createElement('dialog');d.id='xfdlg';d.className='xf-dlg';d.setAttribute('aria-label','Imagen ampliada');d.innerHTML='<img alt=""><button type="button" class="btn xf-close">Cerrar</button>';document.body.appendChild(d);d.querySelector('.xf-close').onclick=()=>d.close();d.addEventListener('click',ev=>{if(ev.target===d)d.close();});}
+const im=d.querySelector('img');im.src=b.dataset.src;im.alt=b.dataset.alt;if(d.showModal)d.showModal();else d.setAttribute('open','');});})();
+function build(){
+  const nav=document.getElementById('navlist'),root=document.getElementById('topics');
+  nav.innerHTML='<a href="#intro">Inicio</a><a href="#cmap">Mapa de conceptos</a><a href="#ruta">Ruta de estudio</a><a href="#mapa">Mapa del examen</a>'+TOP.map((t,i)=>`<a href="#${t.id}" data-t="${t.id}"><span class="dot"></span>${icoSVG(t.id,"nv")}${i}. ${t.title.length>34?t.title.slice(0,32)+'…':t.title}</a>`).join('')+'<a href="#quiz">Autoevaluación</a>';
+  const tb=document.querySelector('#maptable tbody');
+  tb.innerHTML=MAP.map(([q,s])=>{const i=TOP.findIndex(t=>t.id===s);return `<tr><td>Pregunta ${q}</td><td><a href="#${s}" data-open="${s}">${i}. ${TOP[i].title}</a></td></tr>`;}).join('');
+  TOP.forEach((t,i)=>{
+    const d=document.createElement('details');d.className='topic';d.id=t.id;
+    let h=`<summary><span class="num">${i}</span>${icoSVG(t.id,"sm")}<span>${t.title}</span><span class="qchip">Examen: ${t.qs.map(q=>'P'+q).join(', ')}</span></summary><div class="body">${introHTML(t,i)}${fromHTML(t)}<h4>Concepto</h4>${t.concept}<h4>Reglas y fórmulas</h4>${t.rules}${exFigHTML(t)}<h4>Ejemplo resuelto paso a paso</h4>`;
+    t.examples.forEach((e,j)=>{h+=`<div class="ex" data-ex><div class="t">${e.title}</div><ol class="steps">${e.steps.map((s,k)=>`<li>${s}</li>`).join('')}</ol><button class="btn nxt" type="button">Siguiente paso</button><button class="btn sec all" type="button">Mostrar todo</button><button class="btn sec rst" type="button">Reiniciar</button></div>`;});
+    if(t.widget)h+=`<div class="graphbox" data-w="${t.widget}"></div>`;
+    if(GENS[t.id])h+=`<h4>Practica (ejercicios nuevos)</h4><div class="prac"></div><button class="btn newx" type="button">Nuevo ejercicio</button><span class="mini" id="cnt-${t.id}"></span>`;
+    h+=`<p><label><input type="checkbox" class="stud"> Ya estudié este tema</label></p>${bridgeHTML(t,i)}</div>`;
+    d.innerHTML=h;root.appendChild(d);rm(d);
+    d.querySelectorAll('[data-ex]').forEach(ex=>{const li=[...ex.querySelectorAll('li')];let n=0;
+      const sh=()=>li.forEach((l,k)=>l.classList.toggle('show',k<n));
+      ex.querySelector('.nxt').onclick=()=>{if(n<li.length)n++;sh();};ex.querySelector('.all').onclick=()=>{n=li.length;sh();};ex.querySelector('.rst').onclick=()=>{n=0;sh();};
+      ex.querySelector('.nxt').click();});
+    const wb=d.querySelector('.graphbox');if(wb)widget(wb.dataset.w,wb,t.id);
+    if(GENS[t.id]){const pr=d.querySelector('.prac');const make=()=>{mountItem(pr,GENS[t.id](),{onResult:ok=>{ST.tried[t.id]=(ST.tried[t.id]||0)+1;if(ok)ST.ok[t.id]=(ST.ok[t.id]||0)+1;save();updateProg();}});};make();d.querySelector('.newx').onclick=make;}
+    mountBridge(d,t);
+    const cb=d.querySelector('.stud');cb.checked=!!ST.studied[t.id];cb.onchange=()=>{ST.studied[t.id]=cb.checked;save();updateProg();};
+  });
+  document.querySelectorAll('[data-open],#navlist a[data-t]').forEach(a=>a.addEventListener('click',()=>{const id=a.dataset.open||a.dataset.t;const d=document.getElementById(id);if(d)d.open=true;}));
+  buildMap();buildRoute();initTheme();initReveal();
+  const setCur=()=>{document.querySelectorAll('#navlist a').forEach(a=>a.setAttribute('aria-current',a.getAttribute('href')==='#'+location.hash.slice(1)?'true':'false'));};window.addEventListener('hashchange',setCur);setCur();
+  document.getElementById('openall').onclick=()=>document.querySelectorAll('details.topic').forEach(d=>d.open=true);
+  document.getElementById('closeall').onclick=()=>document.querySelectorAll('details.topic').forEach(d=>d.open=false);
+  document.getElementById('reset').onclick=()=>{if(confirm('¿Borrar todo tu progreso?')){ST={studied:{},ok:{},tried:{},quiz:null};save();location.reload();}};
+  document.getElementById('qstart').onclick=startQuiz;
+  updateProg();
+}
+/* ---------- Autoevaluación ---------- */
+let QCT=[];
+function startQuiz(){
+  const box=document.getElementById('qbox');box.innerHTML='';document.getElementById('qres').innerHTML='';QCT=[];
+  GEN_ORDER.forEach((id,i)=>{const w=document.createElement('div');w.className='item';w.innerHTML='<b>Pregunta '+(i+1)+'</b> <span class="mini">(tema '+id.slice(1)+')</span><div class="m"></div>';box.appendChild(w);QCT.push({id,c:mountItem(w.querySelector('.m'),GENS[id](),{quiz:true}),w});});
+  const b=document.createElement('button');b.className='btn';b.type='button';b.textContent='Calificar';b.onclick=grade;box.appendChild(b);
+}
+function grade(){
+  let s=0,un=0;const bad=[];
+  QCT.forEach(q=>{const r=q.c.check(true);if(r===null){un++;bad.push(q.id);}else if(r)s++;else bad.push(q.id);});
+  const el=document.getElementById('qres');
+  const rev=[...new Set(bad)].map(id=>`<a href="#${id}" data-open="${id}">${id.slice(1)}. ${TOP.find(t=>t.id===id).title}</a>`).join('<br>');
+  el.innerHTML=`<p class="score">Puntaje: ${s} / ${QCT.length}</p>`+(un?`<p class="mini">${un} sin responder.</p>`:'')+(bad.length?`<p><b>Repasa estos temas:</b><br>${rev}</p>`:'<p><b>¡Excelente! Dominas todos los temas.</b></p>');
+  el.querySelectorAll('[data-open]').forEach(a=>a.addEventListener('click',()=>{document.getElementById(a.dataset.open).open=true;}));
+  if(ST.quiz===null||s>ST.quiz){ST.quiz=s;save();updateProg();}
+}
+build();
+</script>
+</body>
+</html>

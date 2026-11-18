@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de Química 9° - Cuarto Periodo</title>
+<style>
+:root{--bg:#fbf7f0;--surface:#fffdf9;--surface-2:#f3ece0;--text:#2b2420;--text-muted:#5e5046;--border:#e3d9c9;--accent:#a3441d;--on-accent:#ffffff;--accent-soft:#f8e7dc;--ok:#1d6644;--ok-bg:#e3f1e6;--bad:#a1281c;--bad-bg:#f9e3de;--warn:#77500a;--warn-bg:#fdf0d5;--info:#1b6158;--info-bg:#ddefea;--code-bg:#f3ece0;--focus:#1f7a6d;--ph0:#ff8f88;--ph1:#ff9f8a;--ph2:#ffae7a;--ph3:#ffc266;--ph4:#ffe066;--ph5:#d9ec7a;--ph6:#b5e07e;--ph7:#8fd68f;--ph8:#7fd8c4;--ph9:#7fd0f0;--ph10:#82b8f5;--ph11:#9aa8f0;--ph12:#b79af0;--ph13:#c98ae6;--ph14:#d98ad6;--ph-fg:#14181f;--ill-1:#c4633a;--ill-2:#2c8a7d;--ill-3:#d9a23f;--ill-4:#7d9748;--ill-5:#e6d9c1}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ph0:#a3262b;--ph1:#a83a1e;--ph2:#9a4a0c;--ph3:#855a00;--ph4:#6e6500;--ph5:#586b10;--ph6:#3f7220;--ph7:#1f7336;--ph8:#0d7467;--ph9:#0b6f8f;--ph10:#1a5fb0;--ph11:#3b53b8;--ph12:#5a45b5;--ph13:#7440a8;--ph14:#8a3a98;--ph-fg:#eef1f5;--ill-1:#e58f68;--ill-2:#62b8aa;--ill-3:#e8bd62;--ill-4:#a6c06f;--ill-5:#4d4339}}
+:root[data-theme="dark"]{--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ph0:#a3262b;--ph1:#a83a1e;--ph2:#9a4a0c;--ph3:#855a00;--ph4:#6e6500;--ph5:#586b10;--ph6:#3f7220;--ph7:#1f7336;--ph8:#0d7467;--ph9:#0b6f8f;--ph10:#1a5fb0;--ph11:#3b53b8;--ph12:#5a45b5;--ph13:#7440a8;--ph14:#8a3a98;--ph-fg:#eef1f5;--ill-1:#e58f68;--ill-2:#62b8aa;--ill-3:#e8bd62;--ill-4:#a6c06f;--ill-5:#4d4339}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:var(--accent);text-decoration:underline}
+a:visited{color:var(--accent)}
+a:hover{color:var(--info)}
+.katex{color:inherit}
+header{background:var(--surface);color:var(--text);border-bottom:4px solid var(--accent);padding:16px}
+.hrow{display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+header h1{margin:0;font-size:1.5rem}
+header .tags{margin-top:8px;display:flex;gap:8px;flex-wrap:wrap}
+header .tags span{background:var(--accent-soft);color:var(--text);border:1px solid var(--accent);padding:2px 10px;border-radius:99px;font-size:.9rem}
+.bar{height:12px;background:var(--surface-2);border:1px solid var(--text-muted);border-radius:9px;margin-top:12px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .4s}
+#plabel{font-size:.9rem;margin-top:4px;color:var(--text-muted)}
+.wrap{display:flex;align-items:flex-start}
+nav{position:sticky;top:0;width:250px;flex:none;max-height:100vh;overflow:auto;background:var(--surface);border-right:1px solid var(--border);padding:12px}
+nav a{display:block;padding:7px 10px;border-radius:8px;color:var(--text);text-decoration:none;font-size:.95rem;border-left:4px solid transparent}
+nav a:visited{color:var(--text)}
+nav a:hover{background:var(--surface-2);border-left-color:var(--text-muted);color:var(--text)}
+nav a.act{background:var(--accent-soft);border-left-color:var(--accent);font-weight:700}
+nav a.done::after{content:" ✔";color:var(--ok);font-weight:700}
+nav button{margin-top:8px}
+main{flex:1;min-width:0;padding:16px;max-width:960px;margin:0 auto}
+#menu{display:none}
+@media(max-width:800px){.wrap{display:block}nav{display:none;position:static;width:auto;max-height:none}nav.open{display:block}#menu{display:inline-block;margin:8px 16px}}
+.topic{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:14px;margin:0 0 18px;padding:0}
+.topic>summary{cursor:pointer;padding:14px 16px;font-size:1.2rem;font-weight:700;list-style:none;color:var(--text)}
+.topic>summary::-webkit-details-marker{display:none}
+.topic>summary::before{content:"▸ ";color:var(--accent)}
+.topic[open]>summary::before{content:"▾ "}
+.topic>summary:hover{background:var(--surface-2);border-radius:14px}
+.body{padding:0 16px 16px}
+h3{margin:18px 0 6px;font-size:1.05rem}
+.qs{font-size:.9rem;color:var(--text-muted);font-weight:400}
+small,.note{font-size:.9rem;color:var(--text-muted)}
+table{border-collapse:collapse;width:100%;margin:8px 0;font-size:.95rem;color:var(--text)}
+th,td{border:1px solid var(--border);padding:6px 8px;text-align:left}
+th{background:var(--accent-soft);color:var(--text)}
+tr:nth-child(even) td{background:var(--surface-2)}
+.tblw{overflow-x:auto}
+.box{background:var(--surface-2);color:var(--text);border-radius:10px;padding:10px 12px;margin:10px 0;border:1px solid var(--border)}
+.key{background:var(--info-bg);border-left:6px solid var(--info)}
+.warn{background:var(--warn-bg);border-left:6px solid var(--warn)}
+.warn::before{content:"⚠ ";font-weight:700;color:var(--warn)}
+code,.f{font-family:ui-monospace,Menlo,Consolas,monospace;background:var(--code-bg);color:var(--text);padding:1px 5px;border-radius:5px}
+button,.btn{font:inherit;background:var(--accent);color:var(--on-accent);border:2px solid var(--accent);border-radius:8px;padding:7px 12px;cursor:pointer}
+button:hover:not(:disabled){background:var(--info);border-color:var(--info);color:var(--on-accent)}
+button:disabled{background:var(--surface-2);color:var(--text-muted);border-color:var(--text-muted);cursor:not-allowed}
+button.sec{background:var(--surface-2);color:var(--text);border:2px solid var(--text-muted)}
+button.sec:hover:not(:disabled){background:var(--accent-soft);border-color:var(--accent);color:var(--text)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+input,select,textarea{font:inherit;padding:6px 8px;border:2px solid var(--text-muted);border-radius:8px;background:var(--surface);color:var(--text);max-width:100%}
+input::placeholder,textarea::placeholder{color:var(--text-muted);opacity:1}
+input[type=number]{width:110px}
+input[type=radio],input[type=checkbox]{accent-color:var(--accent)}
+.reveal{display:none;margin-top:8px;padding:9px 12px;border-radius:8px;background:var(--warn-bg);color:var(--text);border-left:6px solid var(--warn)}
+.reveal.exp{background:var(--info-bg);border-left-color:var(--info)}
+.reveal.show{display:block}
+.fb{margin-top:8px;padding:8px 12px;border-radius:8px;display:none;font-weight:600}
+.fb.ok{display:block;background:var(--ok-bg);color:var(--ok);border:2px solid var(--ok)}
+.fb.no{display:block;background:var(--bad-bg);color:var(--bad);border:2px solid var(--bad)}
+.t-ok{color:var(--ok)}
+.t-bad{color:var(--bad)}
+.item{border:1px solid var(--border);border-radius:10px;padding:12px;margin:10px 0;background:var(--surface)}
+.opt{display:block;width:100%;text-align:left;margin:5px 0;padding:7px 12px;border-radius:8px;background:var(--surface);color:var(--text);border:2px solid var(--text-muted);cursor:pointer}
+button.opt:hover:not(:disabled),label.opt:hover{background:var(--accent-soft);border-color:var(--accent);color:var(--text)}
+.opt.ok{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);font-weight:600}
+.opt.ok::after{content:"  ✔ Correcto"}
+.opt.no{background:var(--bad-bg);border-color:var(--bad);color:var(--bad);font-weight:600}
+.opt.no::after{content:"  ✘ Incorrecto"}
+.tool{border:2px dashed var(--accent);border-radius:12px;padding:12px;margin:12px 0;background:var(--surface)}
+.tool h4{margin:0 0 8px}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:6px 0}
+svg{max-width:100%;height:auto;color:var(--text)}
+.phbar{display:flex;height:30px;border-radius:6px;overflow:hidden;margin-top:8px;border:1px solid var(--text-muted)}
+.phbar span{flex:1;font-size:.875rem;font-weight:700;text-align:center;color:var(--ph-fg);line-height:30px}
+.mark{position:relative;height:20px}
+.mark b{position:absolute;top:0;transform:translateX(-50%);font-size:1rem;transition:left .3s;color:var(--text)}
+.meter{height:16px;background:var(--surface-2);border:1px solid var(--text-muted);border-radius:8px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--accent);transition:width .4s}
+footer{text-align:center;color:var(--text-muted);padding:16px;font-size:.9rem}
+/* conexiones */
+.cwide{display:block}
+.clist{display:none}
+@media(max-width:1000px){.cwide{display:none}.clist{display:block}}
+.cnode rect{fill:var(--accent-soft);stroke:var(--accent);stroke-width:2}
+.cnode text{fill:var(--text);font-size:13px;font-weight:700}
+.cnode{cursor:pointer}
+.cnode:hover rect,.cnode:focus rect{fill:var(--accent);}
+.cnode:hover text,.cnode:focus text{fill:var(--on-accent)}
+.cedge path.vis{fill:none;stroke:var(--text-muted);stroke-width:2.5}
+.cedge path.hit{fill:none;stroke:transparent;stroke-width:18}
+.cedge{cursor:help}
+.cedge:hover path.vis,.cedge:focus path.vis,.cedge.on path.vis{stroke:var(--accent);stroke-width:4}
+.cedge text{fill:var(--text);font-size:14px;paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round}
+.arr{fill:var(--text-muted)}
+#cpanel{min-height:5.5em}
+.clist details{border:1px solid var(--border);border-radius:10px;margin:8px 0;background:var(--surface)}
+.clist summary{padding:10px 12px;cursor:pointer;font-weight:600}
+.clist .cl-b{padding:0 12px 12px}
+.from{background:var(--surface-2);border:1px solid var(--border);border-left:6px solid var(--accent);border-radius:10px;padding:8px 12px;margin:12px 0 4px;color:var(--text)}
+.bridge{border:2px solid var(--accent);border-radius:12px;margin:18px 0 0;background:var(--accent-soft);color:var(--text)}
+.bridge>summary{padding:12px 14px;cursor:pointer;font-weight:700}
+.bridge[open]>.bbody{animation:rise .35s ease-out}
+.bbody{padding:0 14px 14px}
+.mini{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin:10px 0}
+.route{padding-left:0;list-style:none;margin:8px 0}
+.route li{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--border);border-radius:10px;padding:8px 12px;margin:6px 0;background:var(--surface)}
+.route input{width:22px;height:22px;flex:none;margin-top:3px}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ilustraciones y temas llamativos */
+.a1{fill:var(--ill-1)}.a2{fill:var(--ill-2)}.a3{fill:var(--ill-3)}.a4{fill:var(--ill-4)}.a5{fill:var(--ill-5)}
+.g1{stop-color:var(--ill-1)}.g2{stop-color:var(--ill-2)}.g3{stop-color:var(--ill-3)}.g4{stop-color:var(--ill-4)}.g5{stop-color:var(--ill-5)}
+.hero{display:block;width:100%;max-width:420px;height:auto;margin:0 auto}
+.hbg{fill:var(--surface-2);stroke:var(--border)}
+.ol{stroke:var(--text-muted);stroke-width:1.5;stroke-linejoin:round;stroke-linecap:round}
+.ln{fill:none;stroke:var(--text-muted);stroke-width:1.5;stroke-linecap:round}
+.ol.thk,.ln.thk{stroke-width:3}
+.lb{fill:var(--text);font:600 11px system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+.big{fill:var(--text);font:700 36px ui-monospace,Menlo,Consolas,monospace}
+.herow{margin:0}
+.ico{width:32px;height:32px;flex:none;color:var(--accent)}
+.ico.sm{width:20px;height:20px}
+.topic.sec>summary{display:flex;align-items:center;gap:10px;background:var(--accent-soft);border-left:8px solid var(--sc,var(--accent));border-radius:14px}
+.topic.sec[open]>summary{border-radius:14px 14px 0 0}
+.topic.sec>summary:hover{background:var(--surface-2)}
+.topic.sec>summary::before{display:none}
+.topic.sec>summary::after{content:"▸";margin-left:auto;color:var(--accent);flex:none}
+.topic.sec[open]>summary::after{content:"▾"}
+#mol{--sc:var(--ill-1)}#formulas{--sc:var(--ill-2)}#limite{--sc:var(--ill-3)}#soluciones{--sc:var(--ill-4)}#solub{--sc:var(--ill-1)}#densidad{--sc:var(--ill-2)}#ph{--sc:var(--ill-3)}#aplic{--sc:var(--ill-4)}
+.secintro{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:12px 0 4px}
+.hook{background:var(--accent-soft);color:var(--text);border-left:6px solid var(--sc,var(--accent));border-radius:10px;padding:10px 14px;font-size:1.05rem}
+.t10 ul{margin:6px 0 0;padding-left:20px}
+.lab{color:var(--info);display:block}
+.dato{background:var(--warn-bg);border-left:6px solid var(--warn)}
+.dato .lab{color:var(--warn);display:inline}
+.dato .lab::before{content:"💡 "}
+.dato .lab::after{content:":"}
+.secintro .box{margin:0}
+@media(min-width:760px){.secintro{grid-template-columns:minmax(0,420px) minmax(0,1fr);grid-template-areas:"hook hook" "hero t10" "hero dato"}.secintro .hook{grid-area:hook}.secintro .herow{grid-area:hero}.secintro .t10{grid-area:t10}.secintro .dato{grid-area:dato}}
+nav a{display:flex;align-items:center;gap:8px}
+.cnode use{color:var(--accent)}
+.cnode:hover use,.cnode:focus use{color:var(--on-accent)}
+.js .fadein{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.js .fadein.in{opacity:1;transform:none}
+@media (hover:hover){.item,.tool,.dato,.t10,.hook,.mini{transition:transform .2s ease,box-shadow .2s ease}.item:hover,.tool:hover,.dato:hover,.t10:hover,.hook:hover,.mini:hover{transform:translateY(-2px);box-shadow:0 6px 14px -8px var(--text-muted)}}
+@keyframes tilt{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes drift{0%,100%{transform:translate(0,0)}33%{transform:translate(4px,-4px)}66%{transform:translate(-4px,3px)}}
+@keyframes fall{0%{transform:translateY(0);opacity:1}70%{transform:translateY(56px);opacity:1}100%{transform:translateY(62px);opacity:0}}
+@keyframes stir{0%,100%{transform:rotate(-7deg)}50%{transform:rotate(7deg)}}
+@keyframes dropf{0%{transform:translateY(-4px);opacity:0}20%{opacity:1}80%{transform:translateY(36px);opacity:1}100%{transform:translateY(42px);opacity:0}}
+@keyframes bobs{0%,100%{transform:translateY(-4px)}50%{transform:translateY(4px)}}
+@keyframes dock{0%,15%{transform:translateY(0)}50%,75%{transform:translateY(22px)}100%{transform:translateY(0)}}
+@keyframes fadep{0%,100%{opacity:.95}50%{opacity:.25}}
+.an-tilt{animation:tilt 5s ease-in-out infinite;transform-origin:160px 50px;transform-box:view-box}
+.an-float{animation:floaty 3.4s ease-in-out infinite}
+.an-drift{animation:drift 4.5s ease-in-out infinite}
+.an-fall{animation:fall 3.6s ease-in infinite}
+.an-stir{animation:stir 2.6s ease-in-out infinite;transform-origin:178px 20px;transform-box:view-box}
+.an-dropf{animation:dropf 3s ease-in infinite}
+.an-bob{animation:bobs 3s ease-in-out infinite}
+.an-dock{animation:dock 4.5s ease-in-out infinite}
+.an-fade{animation:fadep 3.2s ease-in-out infinite}
+.d2{animation-delay:-1.6s}.d3{animation-delay:-2.4s}
+@media (prefers-reduced-motion:reduce){.js .fadein{opacity:1!important;transform:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs><symbol id="ic-mol" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="20" r="6" class="a2"/><circle cx="21" cy="20" r="6" class="a3"/><circle cx="16" cy="10" r="6" class="a1"/></g></symbol><symbol id="ic-formulas" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 23 L16 10 L25 23"/><circle cx="16" cy="10" r="5" class="a1"/><circle cx="7" cy="23" r="4" class="a3"/><circle cx="25" cy="23" r="4" class="a2"/></g></symbol><symbol id="ic-limite" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5h14l-7 11z" class="a3"/><path d="M16 16l7 11H9z" class="a1"/></g></symbol><symbol id="ic-soluciones" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 21h17l2.5 5.5a1.5 1.5 0 0 1-1.5 2.5h-19A1.5 1.5 0 0 1 5 26.5z" class="a2"/><path d="M10 4h12M12 4v9L6 25.5A2 2 0 0 0 8 28.5h16a2 2 0 0 0 2-3L20 13V4"/></g></symbol><symbol id="ic-solub" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M26 16a10 10 0 1 1-3-7"/><path d="M25 3v7h-7" /><circle cx="16" cy="16" r="3" class="a1"/></g></symbol><symbol id="ic-densidad" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="5" width="20" height="22" rx="3"/><rect x="7" y="16" width="18" height="10" class="a1"/><rect x="7" y="6" width="18" height="10" class="a3"/><circle cx="16" cy="16" r="4" class="a2"/></g></symbol><symbol id="ic-ph" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4C16 4 7 14 7 20a9 9 0 0 0 18 0C25 14 16 4 16 4z" class="a2"/><path d="M12 21a4.5 4.5 0 0 0 4 4"/></g></symbol><symbol id="ic-aplic" viewBox="0 0 32 32"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><g transform="rotate(-40 16 16)"><path d="M16 10H9a6 6 0 0 0 0 12h7z" class="a1"/><path d="M16 10h7a6 6 0 0 1 0 12h-7z" class="a3"/><rect x="3" y="10" width="26" height="12" rx="6"/></g></g></symbol></defs></svg>
+<header>
+<div class="hrow"><h1>Guía de estudio: Química</h1><button id="theme" class="sec" aria-label="Cambiar entre tema claro y oscuro">🌓 Claro / oscuro</button></div>
+<div class="tags"><span>Grado 9°</span><span>Cuarto Periodo</span><span>Evaluación bimestral tipo ICFES</span></div>
+<div class="bar"><i id="pbar"></i></div><div id="plabel">Progreso: 0%</div>
+</header>
+<button id="menu" class="sec" aria-expanded="false">☰ Temas</button>
+<div class="wrap">
+<nav id="nav" aria-label="Temas"></nav>
+<main>
+
+<details class="topic" open id="mapa"><summary>Mapa: ¿dónde estudio cada pregunta del examen?</summary>
+<div class="body">
+<p>Esta guía <b>no contiene las respuestas</b> del examen: te explica la teoría, te muestra ejemplos parecidos y te hace practicar para que las encuentres tú. Haz clic en la sección para ir a ella.</p>
+<div class="tblw"><table>
+<tr><th>Pregunta(s)</th><th>Tema</th><th>Ir a</th></tr>
+<tr><td>1, 2</td><td>Mol y masa molar</td><td><a href="#mol" data-go="mol">Sección 1</a></td></tr>
+<tr><td>3, 4</td><td>Fórmulas, subíndices, coeficientes y balanceo</td><td><a href="#formulas" data-go="formulas">Sección 2</a></td></tr>
+<tr><td>5</td><td>Reactivo límite</td><td><a href="#limite" data-go="limite">Sección 3</a></td></tr>
+<tr><td>6, 9, 10</td><td>Soluciones: soluto, solvente y tipos</td><td><a href="#soluciones" data-go="soluciones">Sección 4</a></td></tr>
+<tr><td>7</td><td>Factores de la disolución</td><td><a href="#solub" data-go="solub">Sección 5</a></td></tr>
+<tr><td>8</td><td>Densidad y cambios de volumen</td><td><a href="#densidad" data-go="densidad">Sección 6</a></td></tr>
+<tr><td>11, 12, 13, 14, 15, 16</td><td>Ácidos, bases, pH y pOH</td><td><a href="#ph" data-go="ph">Sección 7</a></td></tr>
+<tr><td>17, 18, 19, 20</td><td>Química aplicada: medicina y alimentos</td><td><a href="#aplic" data-go="aplic">Sección 8</a></td></tr>
+</table></div>
+<div class="box warn"><b>Nota sobre la pregunta 8:</b> su enunciado empieza con una frase sobre "coeficientes del método algebraico" que parece de otro tema. Lo que realmente se trabaja ahí es el párrafo de densidad. Ver Sección 6 (y el balanceo en la Sección 2).</div>
+<h3>Estrategia para preguntas tipo ICFES</h3>
+<ol>
+<li>Lee el enunciado completo y subraya qué te piden (¿cantidad? ¿nombre? ¿valor?).</li>
+<li>Si es cálculo, hazlo en el borrador y luego compara con las opciones.</li>
+<li>Descarta opciones con palabras absolutas ("completamente", "todas", "única") o que no tienen relación con la química.</li>
+<li>Revisa unidades: g, mol, g/mL.</li>
+</ol>
+</div></details>
+
+<details class="topic" open id="conexiones"><summary>Mapa de conceptos y ruta de estudio <span class="qs">(cómo se conectan los temas)</span></summary>
+<div class="body">
+<p>Los temas no están aislados: lo que aprendes en uno se usa en el siguiente. Este mapa muestra cómo se relacionan. Al final de cada sección encontrarás una tarjeta "🔗 Conexión con el siguiente tema".</p>
+<h3>Mapa de conceptos</h3>
+<div class="cwide">
+<p class="note">Pasa el cursor, toca o enfoca (con Tab) una flecha para leer la relación. Un clic en un tema te lleva a su sección.</p>
+<svg id="cmap" viewBox="-120 0 860 400" role="group" aria-label="Mapa de conceptos: temas y relaciones entre ellos"></svg>
+<div id="cpanel" class="box key" aria-live="polite">Elige una flecha o un tema del mapa para ver su relación.</div>
+</div>
+<div class="clist" id="clist"><p class="note">Toca cada relación para leer cómo se conectan los temas.</p></div>
+<h3>Ruta de estudio sugerida</h3>
+<p>Un orden recomendado, del más básico al más aplicado. La casilla se marca sola cuando terminas toda la práctica de esa sección, y también puedes marcarla tú.</p>
+<ol class="route" id="route"></ol>
+</div></details>
+
+<!-- 1 -->
+<details class="topic sec" open id="mol"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-mol"/></svg><span>1. Mol y masa molar <span class="qs">(preguntas 1 y 2)</span></span></summary>
+<div class="body"><div class="secintro"><div class="hook">¿Cómo se cuenta algo tan pequeño que no se ve? Los químicos no cuentan átomos de uno en uno: los cuentan en grupos, como docenas… ¡pero gigantes!</div><div class="box key t10"><b class="lab">En 10 segundos</b><ul><li>Un mol = 6,02×10<sup>23</sup> partículas.</li><li>Masa molar (g/mol) = suma de las masas atómicas de la fórmula.</li><li>masa = moles × M; moles = masa ÷ M.</li></ul></div><figure class="herow fadein"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Ilustración: una balanza con un montón de partículas en un plato y una pesa en el otro, que representa el mol y la masa molar"><title>Ilustración: una balanza con un montón de partículas en un plato y una pesa en el otro, que representa el mol y la masa molar</title><defs><linearGradient id="hg-mol" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="g3" stop-opacity=".28"/><stop offset="1" class="g2" stop-opacity=".12"/></linearGradient></defs><rect class="hbg" width="320" height="180" rx="14"/><rect width="320" height="180" rx="14" fill="url(#hg-mol)"/><text class="lb" x="160" y="22" text-anchor="middle">1 mol = 6,02×10<tspan dy="-5" font-size="8">23</tspan><tspan dy="5"> partículas</tspan></text><rect class="a5 ol" x="128" y="150" width="64" height="10" rx="4"/><rect class="a5 ol" x="156" y="52" width="8" height="100" rx="3"/><g class="an-tilt"><rect class="a1" x="46" y="46" width="228" height="8" rx="4"/><path class="ln" d="M64 54 L38 112 M64 54 L90 112 M256 54 L230 112 M256 54 L282 112"/><circle class="a2 ol" cx="50" cy="105" r="7"/><circle class="a3 ol" cx="64" cy="105" r="7"/><circle class="a1 ol" cx="78" cy="105" r="7"/><circle class="a1 ol" cx="57" cy="92" r="7"/><circle class="a2 ol" cx="71" cy="92" r="7"/><circle class="a3 ol" cx="64" cy="79" r="7"/><path class="a4 ol" d="M30 112 H98 Q64 136 30 112z"/><path class="a4 ol" d="M222 112 H290 Q256 136 222 112z"/><rect class="a3 ol" x="248" y="82" width="16" height="8" rx="3"/><path class="a3 ol" d="M238 112 L244 90 H268 L274 112z"/></g><circle class="a3 ol" cx="160" cy="50" r="7"/><text class="lb" x="64" y="166" text-anchor="middle">partículas</text><text class="lb" x="256" y="166" text-anchor="middle">masa molar (g/mol)</text></svg></figure><div class="box dato"><b class="lab">Dato curioso</b> El nombre “número de Avogadro” fue propuesto por el físico Jean Perrin en honor al científico italiano Amedeo Avogadro (1776–1856).</div></div>
+<h3>Idea clave</h3>
+<p>Los átomos son diminutos, así que los químicos los cuentan en grupos. Un <b>mol</b> es un grupo de 6,02×10<sup>23</sup> partículas (como una "docena" gigante). La <b>masa molar (M)</b> es lo que pesa un mol de una sustancia y se expresa en <b>g/mol</b>.</p>
+<div class="box key"><b>Cómo se obtiene:</b> mira cada elemento en la tabla periódica, toma su masa atómica, multiplícala por cuántos átomos de ese elemento hay en la fórmula y suma todo.</div>
+<div class="box key"><b>Fórmulas:</b><br>
+masa (g) = moles × masa molar<br>
+moles = masa (g) ÷ masa molar</div>
+<h3>Masas atómicas (redondeadas)</h3>
+<div class="tblw"><table><tr><th>H</th><th>C</th><th>N</th><th>O</th><th>Na</th><th>Mg</th><th>Al</th><th>P</th><th>S</th><th>Cl</th><th>K</th><th>Ca</th><th>Fe</th></tr>
+<tr><td>1</td><td>12</td><td>14</td><td>16</td><td>23</td><td>24</td><td>27</td><td>31</td><td>32</td><td>35,5</td><td>39</td><td>40</td><td>56</td></tr></table></div>
+<h3>Ejemplo resuelto (distinto al examen): masa molar del CO<sub>2</sub></h3>
+<div id="ex-mol"></div>
+<h3>Calculadora de fórmulas (sirve para las Secciones 1 y 2)</h3>
+<div class="tool" id="tool-formula">
+<h4>Analizador de fórmulas</h4>
+<div class="row"><label>Fórmula: <input id="fx" value="Mg(OH)2" size="14" aria-label="Fórmula química"></label>
+<label>Coeficiente: <input id="fc" type="number" min="1" value="1"></label>
+<button id="fgo">Calcular</button></div>
+<div id="fout" aria-live="polite"></div>
+<small>Usa mayúsculas y minúsculas correctas (Co ≠ CO). Admite paréntesis.</small>
+</div>
+<div class="tool">
+<h4>Conversor gramos ↔ moles</h4>
+<div class="row"><label>Masa molar (g/mol) <input id="cm" type="number" step="any" value="58.5"></label>
+<label>Moles <input id="cn" type="number" step="any" value="2"></label>
+<button id="cgo">Moles → gramos</button>
+<label>Gramos <input id="cg" type="number" step="any" value="117"></label>
+<button id="cgo2">Gramos → moles</button></div>
+<div id="cout" aria-live="polite"></div>
+</div>
+<h3>Practica</h3><div class="practice" data-sec="mol"></div>
+</div></details>
+
+<!-- 2 -->
+<details class="topic sec" id="formulas"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-formulas"/></svg><span>2. Fórmulas, subíndices, coeficientes y balanceo <span class="qs">(preguntas 3 y 4)</span></span></summary>
+<div class="body"><div class="secintro"><div class="hook">¿Por qué una ecuación química se parece tanto a una receta de cocina?</div><div class="box key t10"><b class="lab">En 10 segundos</b><ul><li>Subíndice: átomos de ese elemento; el del paréntesis multiplica lo de adentro.</li><li>Coeficiente: multiplica todos los átomos de la fórmula.</li><li>Balancear = cambiar coeficientes, nunca subíndices.</li></ul></div><figure class="herow fadein"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Ilustración: la expresión 2 H2O con flechas que señalan el coeficiente y el subíndice, y debajo dos modelos de moléculas de agua"><title>Ilustración: la expresión 2 H2O con flechas que señalan el coeficiente y el subíndice, y debajo dos modelos de moléculas de agua</title><defs><linearGradient id="hg-formulas" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="g1" stop-opacity=".28"/><stop offset="1" class="g2" stop-opacity=".12"/></linearGradient></defs><rect class="hbg" width="320" height="180" rx="14"/><rect width="320" height="180" rx="14" fill="url(#hg-formulas)"/><text class="big" x="160" y="58" text-anchor="middle">2 H<tspan dy="7" font-size="20">2</tspan><tspan dy="-7">O</tspan></text><path class="ln" d="M121 68 Q104 76 92 86"/><path class="ln" d="M182 72 Q214 76 232 86"/><text class="lb" x="76" y="100" text-anchor="middle">coeficiente</text><text class="lb" x="252" y="100" text-anchor="middle">subíndice</text><g class="an-float"><path class="ln" d="M110 128 L92 148 M110 128 L128 148"/><circle class="a1 ol" cx="110" cy="128" r="14"/><circle class="a5 ol" cx="92" cy="148" r="8"/><circle class="a5 ol" cx="128" cy="148" r="8"/></g><g class="an-float d2"><path class="ln" d="M210 128 L192 148 M210 128 L228 148"/><circle class="a1 ol" cx="210" cy="128" r="14"/><circle class="a5 ol" cx="192" cy="148" r="8"/><circle class="a5 ol" cx="228" cy="148" r="8"/></g></svg></figure><div class="box dato"><b class="lab">Dato curioso</b> En el siglo XVIII, Antoine Lavoisier mostró con mediciones cuidadosas que en una reacción la masa total se conserva; esa idea es la base del balanceo.</div></div>
+<h3>Idea clave</h3>
+<ul>
+<li><b>Subíndice</b> (número pequeño abajo): cuántos átomos de ese elemento hay. Solo afecta al símbolo que tiene a su izquierda.</li>
+<li><b>Paréntesis con subíndice</b>: el subíndice multiplica a todo lo de adentro.</li>
+<li><b>Coeficiente</b> (número grande delante): cuántas moléculas/unidades de esa fórmula hay; multiplica TODOS los átomos de la fórmula.</li>
+</ul>
+<svg viewBox="0 0 520 110" role="img" aria-label="Ejemplo de lectura de la fórmula 2 Mg(NO3)2" style="max-width:520px">
+<rect x="1" y="1" width="518" height="108" rx="10" fill="none" stroke="currentColor"/>
+<text x="20" y="55" font-size="34" fill="currentColor" font-family="monospace">2 Mg(NO<tspan font-size="20" dy="8">3</tspan><tspan dy="-8">)</tspan><tspan font-size="20" dy="8">2</tspan></text>
+<text x="20" y="95" font-size="14" fill="currentColor">coeficiente 2 → duplica; subíndice 2 fuera del paréntesis → duplica lo de adentro</text>
+</svg>
+<div class="box key"><b>Método para contar:</b> (1) subíndice del elemento × (2) subíndice del paréntesis × (3) coeficiente.</div>
+<h3>Ejemplo resuelto (distinto al examen): átomos en 2 Mg(NO<sub>3</sub>)<sub>2</sub></h3>
+<div id="ex-form"></div>
+<h3>Balancear una ecuación</h3>
+<p>La ley de conservación de la masa dice que los átomos de los reactivos deben ser iguales a los de los productos. Se balancea cambiando <b>coeficientes</b>, nunca subíndices. En el método algebraico se plantean ecuaciones y a veces las soluciones salen fraccionarias; entonces se multiplican todos los coeficientes por un mismo número para que queden enteros sin cambiar la proporción.</p>
+<div class="tool">
+<h4>Verificador de balanceo</h4>
+<div class="row"><select id="beq" aria-label="Ecuación"><option value="0">Fe + O2 → Fe2O3</option><option value="1">C3H8 + O2 → CO2 + H2O</option><option value="2">Al + HCl → AlCl3 + H2</option></select></div>
+<div class="row" id="bco"></div>
+<button id="bgo">Verificar</button>
+<div id="bout" aria-live="polite"></div>
+</div>
+<h3>Practica</h3><div class="practice" data-sec="formulas"></div>
+</div></details>
+
+<!-- 3 -->
+<details class="topic sec" id="limite"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-limite"/></svg><span>3. Reactivo límite <span class="qs">(pregunta 5)</span></span></summary>
+<div class="body"><div class="secintro"><div class="hook">¿Qué pasa si se acaba el jamón en plena fiesta de sándwiches? Algo parecido decide cuánto producto se obtiene en una reacción.</div><div class="box key t10"><b class="lab">En 10 segundos</b><ul><li>Reactivo límite: el que se acaba primero.</li><li>Se compara en moles usando los coeficientes de la ecuación balanceada.</li><li>Los productos se calculan con el reactivo límite.</li></ul></div><figure class="herow fadein"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Ilustración: tres sándwiches terminados sobre un plato y dos rebanadas de pan que sobran porque se acabó el jamón"><title>Ilustración: tres sándwiches terminados sobre un plato y dos rebanadas de pan que sobran porque se acabó el jamón</title><defs><linearGradient id="hg-limite" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="g4" stop-opacity=".28"/><stop offset="1" class="g3" stop-opacity=".12"/></linearGradient></defs><rect class="hbg" width="320" height="180" rx="14"/><rect width="320" height="180" rx="14" fill="url(#hg-limite)"/><ellipse class="a5 ol" cx="117" cy="128" rx="108" ry="10"/><rect class="a3 ol" x="22" y="113" width="54" height="10" rx="5"/><rect class="a1 ol" x="19" y="104" width="60" height="10" rx="5"/><path class="a3 ol" d="M22 104 q0 -15 27 -15 q27 0 27 15z"/><rect class="a3 ol" x="86" y="113" width="54" height="10" rx="5"/><rect class="a1 ol" x="83" y="104" width="60" height="10" rx="5"/><path class="a3 ol" d="M86 104 q0 -15 27 -15 q27 0 27 15z"/><rect class="a3 ol" x="150" y="113" width="54" height="10" rx="5"/><rect class="a1 ol" x="147" y="104" width="60" height="10" rx="5"/><path class="a3 ol" d="M150 104 q0 -15 27 -15 q27 0 27 15z"/><g class="an-float"><path class="a3 ol" d="M244 126 V94 q-5 -3 -3 -10 q4 -9 17 -7 q13 -2 17 7 q2 7 -3 10 V126z"/></g><g class="an-float d2"><path class="a3 ol" d="M276 126 V94 q-5 -3 -3 -10 q4 -9 17 -7 q13 -2 17 7 q2 7 -3 10 V126z"/></g><text class="lb" x="117" y="152" text-anchor="middle">3 sándwiches: se acabó el jamón</text><text class="lb" x="274" y="152" text-anchor="middle">sobra pan</text><text class="lb" x="160" y="24" text-anchor="middle">El ingrediente que se acaba primero manda</text></svg></figure><div class="box dato"><b class="lab">Dato curioso</b> En la industria suele ponerse en exceso el reactivo más barato para asegurar que el más costoso se consuma por completo.</div></div>
+<h3>Idea clave</h3>
+<p>Es el reactivo que se <b>acaba primero</b>. Cuando se agota, la reacción se detiene aunque sobre de los otros reactivos (el "reactivo en exceso").</p>
+<div class="box key"><b>Analogía:</b> para hacer un sándwich necesitas 2 panes y 1 jamón. Con 8 panes y 3 jamones, ¿qué se acaba primero? Lo que se acaba primero decide cuántos sándwiches puedes hacer.</div>
+<svg viewBox="0 0 440 90" role="img" aria-label="Analogía de sándwiches" style="max-width:420px"><g fill="currentColor"><text x="5" y="30" font-size="16">Panes: ▭▭▭▭▭▭▭▭</text><text x="5" y="55" font-size="16">Jamón: ▬▬▬</text><text x="5" y="80" font-size="16">Se hacen sándwiches hasta que algo se agote</text></g></svg>
+<div class="box key"><b>Pasos:</b><ol><li>Escribe la ecuación balanceada.</li><li>Calcula cuánto de cada reactivo "necesitarías" para consumir al otro, usando los coeficientes.</li><li>El que no alcanza es el límite.</li><li>Los productos se calculan siempre con el reactivo límite.</li></ol></div>
+<h3>Simulador: N<sub>2</sub> + 3 H<sub>2</sub> → 2 NH<sub>3</sub></h3>
+<div class="tool">
+<div class="row"><label>Moles de N<sub>2</sub> <input id="ln" type="number" min="0" step="any" value="2"></label>
+<label>Moles de H<sub>2</sub> <input id="lh" type="number" min="0" step="any" value="3"></label><button id="lgo">Simular</button></div>
+<div id="lout" aria-live="polite"></div>
+</div>
+<h3>Practica</h3><div class="practice" data-sec="limite"></div>
+</div></details>
+
+<!-- 4 -->
+<details class="topic sec" id="soluciones"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-soluciones"/></svg><span>4. Soluciones: soluto, solvente y tipos <span class="qs">(preguntas 6, 9 y 10)</span></span></summary>
+<div class="body"><div class="secintro"><div class="hook">¿Sabías que el aire que respiras también es una “solución”?</div><div class="box key t10"><b class="lab">En 10 segundos</b><ul><li>Solución = mezcla homogénea de soluto y solvente.</li><li>Soluto: lo que se disuelve; solvente: el medio, normalmente el componente en mayor cantidad.</li><li>Se clasifican por el estado de soluto y solvente (gas, líquido, sólido).</li></ul></div><figure class="herow fadein"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Ilustración: un vaso con agua donde cristales de azúcar se disuelven y sus partículas se reparten por todo el líquido, con las etiquetas soluto y solvente"><title>Ilustración: un vaso con agua donde cristales de azúcar se disuelven y sus partículas se reparten por todo el líquido, con las etiquetas soluto y solvente</title><defs><linearGradient id="hg-soluciones" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="g2" stop-opacity=".28"/><stop offset="1" class="g3" stop-opacity=".12"/></linearGradient></defs><rect class="hbg" width="320" height="180" rx="14"/><rect width="320" height="180" rx="14" fill="url(#hg-soluciones)"/><path class="a2" fill-opacity=".55" d="M105 74 Q132 66 160 74 T215 74 V132 q0 13 -13 13 H118 q-13 0 -13 -13z"/><g class="an-drift"><circle class="a1" cx="130" cy="100" r="3.5"/><circle class="a1" cx="172" cy="96" r="3.5"/><circle class="a1" cx="140" cy="132" r="3.5"/><circle class="a1" cx="196" cy="128" r="3.5"/><circle class="a1" cx="160" cy="114" r="3.5"/></g><g class="an-drift d2"><circle class="a1" cx="150" cy="120" r="3.5"/><circle class="a1" cx="190" cy="106" r="3.5"/><circle class="a1" cx="124" cy="114" r="3.5"/><circle class="a1" cx="168" cy="134" r="3.5"/><circle class="a1" cx="196" cy="91" r="3.5"/></g><g class="an-fall"><rect class="a5 ol" x="154" y="42" width="11" height="11" rx="2" transform="rotate(20 160 48)"/></g><path class="ln" d="M104 36 V132 q0 14 14 14 H202 q14 0 14 -14 V36"/><path class="ln" d="M96 36 H224"/><text class="lb" x="54" y="112" text-anchor="middle">solvente</text><path class="ln" d="M84 109 H108"/><text class="lb" x="266" y="92" text-anchor="middle">soluto</text><path class="ln" d="M238 89 L203 90"/></svg></figure><div class="box dato"><b class="lab">Dato curioso</b> El aire seco tiene aproximadamente 78 % de nitrógeno y 21 % de oxígeno (en volumen): es una solución de gases.</div></div>
+<h3>Idea clave</h3>
+<p>Una <b>solución (disolución)</b> es una mezcla homogénea: no se distinguen sus componentes a simple vista. Tiene:</p>
+<ul><li><b>Soluto:</b> lo que se disuelve.</li><li><b>Solvente (disolvente):</b> el medio que disuelve; es el componente que está en mayor proporción. Cuando se mezclan dos líquidos, el que está en mayor cantidad es el solvente (si hay agua en abundancia, se llama solución acuosa).</li></ul>
+<h3>Tipos según el estado del soluto y del solvente</h3>
+<div class="tblw"><table><tr><th>Soluto → Solvente</th><th>Ejemplo cotidiano</th></tr>
+<tr><td>Gas en gas</td><td>Aire (O<sub>2</sub> en N<sub>2</sub>)</td></tr>
+<tr><td>Gas en líquido</td><td>Gaseosa (CO<sub>2</sub> en agua)</td></tr>
+<tr><td>Líquido en líquido</td><td>Gasolina (mezcla de hidrocarburos), perfume</td></tr>
+<tr><td>Sólido en líquido</td><td>Sal en agua (salmuera), tintura de yodo</td></tr>
+<tr><td>Sólido en sólido</td><td>Acero (hierro + carbono), latón (cobre + zinc), oro de 18 quilates</td></tr></table></div>
+<div class="box warn">Ojo: una <b>sustancia pura</b> (un solo elemento, como el hierro o el cobre) no es una solución; una mezcla heterogénea (arena en agua, ensalada) tampoco lo es necesariamente. Pregúntate: ¿hay dos o más componentes mezclados de forma uniforme?</div>
+<h3>Ejemplo resuelto (distinto al examen)</h3>
+<div class="box">Tintura de yodo: 2 g de yodo sólido en 100 mL de alcohol. Soluto: yodo (se disuelve). Solvente: alcohol (mayor cantidad). Tipo: sólido en líquido.</div>
+<h3>Practica</h3><div class="practice" data-sec="soluciones"></div>
+</div></details>
+
+<!-- 5 -->
+<details class="topic sec" id="solub"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-solub"/></svg><span>5. Factores que afectan la velocidad de disolución <span class="qs">(pregunta 7)</span></span></summary>
+<div class="body"><div class="secintro"><div class="hook">¿Por qué el azúcar “desaparece” en el agua, y cómo lograr que lo haga más rápido?</div><div class="box key t10"><b class="lab">En 10 segundos</b><ul><li>Más contacto entre soluto y solvente (más superficie) → disolución más rápida.</li><li>Partículas que se mueven más (agitación, mayor temperatura) → más rápida.</li><li>Piensa siempre: ¿cambia el contacto o el movimiento de las partículas?</li></ul></div><figure class="herow fadein"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Ilustración: un vaso con agua, una cuchara que agita la mezcla y cristales de azúcar que se van disolviendo"><title>Ilustración: un vaso con agua, una cuchara que agita la mezcla y cristales de azúcar que se van disolviendo</title><defs><linearGradient id="hg-solub" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="g4" stop-opacity=".28"/><stop offset="1" class="g2" stop-opacity=".12"/></linearGradient></defs><rect class="hbg" width="320" height="180" rx="14"/><rect width="320" height="180" rx="14" fill="url(#hg-solub)"/><path class="a2" fill-opacity=".55" d="M105 74 Q132 66 160 74 T215 74 V132 q0 13 -13 13 H118 q-13 0 -13 -13z"/><rect class="a5 ol an-fade" x="125" y="134" width="8" height="8" rx="2"/><rect class="a5 ol an-fade d2" x="143" y="138" width="8" height="8" rx="2"/><rect class="a5 ol an-fade d3" x="160" y="135" width="8" height="8" rx="2"/><path class="ln" d="M128 112 Q160 124 192 112"/><path class="a1" d="M192 112 l-9 -2 l3 8z"/><g class="an-stir"><path class="ln thk" d="M178 20 L160 100"/><ellipse class="a3 ol" cx="158" cy="104" rx="8" ry="5" transform="rotate(-15 158 104)"/></g><path class="ln" d="M104 36 V132 q0 14 14 14 H202 q14 0 14 -14 V36"/><path class="ln" d="M96 36 H224"/><text class="lb" x="262" y="50" text-anchor="middle">agitación</text><path class="ln" d="M236 47 L176 47"/><text class="lb" x="52" y="138" text-anchor="middle">cristales</text><path class="ln" d="M82 135 L121 135"/></svg></figure><div class="box dato"><b class="lab">Dato curioso</b> En 100 g de agua a 20 °C se disuelven unos 200 g de azúcar de mesa, y cerca de 490 g a 100 °C.</div></div>
+<h3>Idea clave</h3>
+<p>Disolver es un proceso en el que las partículas del soluto se separan y se mezclan con las del solvente. Se hace más rápido cuando:</p>
+<ul><li>Hay <b>más contacto</b> entre soluto y solvente (más superficie: partículas más pequeñas).</li><li>Las partículas se <b>mueven más</b> (agitación y mayor temperatura).</li></ul>
+<div class="box key">Piensa en azúcar: un terrón y una cucharada de azúcar fina se comportan distinto. ¿Cuál tendría más superficie expuesta al agua?</div>
+<h3>Simulador</h3>
+<div class="tool">
+<div class="row"><label>Temperatura <select id="st"><option value="1">Fría</option><option value="2" selected>Ambiente</option><option value="3">Caliente</option></select></label>
+<label>Agitación <select id="sa"><option value="1">No</option><option value="2">Sí</option></select></label>
+<label>Tamaño del soluto <select id="ss"><option value="1">Terrón (grande)</option><option value="3">Granulado</option><option value="6">Polvo (muy fino)</option></select></label></div>
+<div class="meter"><i id="sbar"></i></div><div id="sout" aria-live="polite"></div>
+<small>Modelo simple y cualitativo: barra llena = disolución más rápida.</small>
+</div>
+<h3>Practica</h3><div class="practice" data-sec="solub"></div>
+</div></details>
+
+<!-- 6 -->
+<details class="topic sec" id="densidad"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-densidad"/></svg><span>6. Densidad y cambios de volumen <span class="qs">(pregunta 8)</span></span></summary>
+<div class="body"><div class="secintro"><div class="hook">¿Por qué el aceite siempre se queda arriba del agua, aunque los agites juntos?</div><div class="box key t10"><b class="lab">En 10 segundos</b><ul><li>D = m ÷ V (g/mL o g/cm³).</li><li>La masa se conserva al cambiar de temperatura o de estado.</li><li>Con la masa igual, si el volumen sube la densidad baja, y viceversa.</li></ul></div><figure class="herow fadein"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Ilustración: un cilindro con tres líquidos en capas, aceite arriba, agua en medio y miel abajo, con una esfera flotando entre el aceite y el agua y una flecha que indica que abajo está lo más denso"><title>Ilustración: un cilindro con tres líquidos en capas, aceite arriba, agua en medio y miel abajo, con una esfera flotando entre el aceite y el agua y una flecha que indica que abajo está lo más denso</title><defs><linearGradient id="hg-densidad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="g5" stop-opacity=".28"/><stop offset="1" class="g2" stop-opacity=".12"/></linearGradient></defs><rect class="hbg" width="320" height="180" rx="14"/><rect width="320" height="180" rx="14" fill="url(#hg-densidad)"/><path class="a3" fill-opacity=".8" d="M127 40 H193 V76 H127z"/><path class="a2" fill-opacity=".7" d="M127 76 H193 V112 H127z"/><path class="a1" fill-opacity=".8" d="M127 112 H193 V146 q0 6 -6 6 H133 q-6 0 -6 -6z"/><path class="ln" d="M126 28 V146 q0 8 8 8 H186 q8 0 8 -8 V28"/><path class="ln" d="M118 28 H202"/><g class="an-bob"><circle class="a4 ol" cx="160" cy="76" r="9"/></g><text class="lb" x="112" y="62" text-anchor="end">aceite</text><text class="lb" x="112" y="98" text-anchor="end">agua</text><text class="lb" x="112" y="134" text-anchor="end">miel</text><path class="ln" d="M216 48 V132"/><path class="a1" d="M211 124 l5 10 l5 -10z"/><text class="lb" x="224" y="52" text-anchor="start">menos denso</text><text class="lb" x="224" y="148" text-anchor="start">más denso</text></svg></figure><div class="box dato"><b class="lab">Dato curioso</b> El mercurio es tan denso (cerca de 13,6 g/mL) que un bloque de hierro (cerca de 7,9 g/mL) flota en él.</div></div>
+<h3>Idea clave</h3>
+<div class="box key"><b>Densidad:</b> D = m / V (g/mL o g/cm³). Masa = cantidad de materia. Volumen = espacio que ocupa.</div>
+<ul><li>La <b>masa se conserva</b> cuando una sustancia cambia de temperatura o de estado: no se crea ni se destruye materia.</li><li>Si la densidad cambia y la masa no, lo que cambió fue el <b>volumen</b>. Como D = m/V, si V sube, D baja; si V baja, D sube.</li></ul>
+<h3>Ejemplo resuelto (distinto al examen)</h3>
+<div class="box">Un bloque de aluminio de 54 g ocupa 20 mL. D = 54 ÷ 20 = 2,7 g/mL. Al calentarlo se dilata un poco: la masa sigue siendo 54 g, pero ocupa más volumen, así que su densidad baja ligeramente.</div>
+<div class="tool">
+<h4>Calculadora de densidad</h4>
+<div class="row"><label>Masa (g) <input id="dm" type="number" step="any" value="54"></label><label>Volumen (mL) <input id="dv" type="number" step="any" value="20"></label><button id="dgo">Calcular D</button></div>
+<div id="dout" aria-live="polite"></div>
+</div>
+<h3>Practica</h3><div class="practice" data-sec="densidad"></div>
+</div></details>
+
+<!-- 7 -->
+<details class="topic sec" id="ph"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-ph"/></svg><span>7. Ácidos, bases, pH y pOH <span class="qs">(preguntas 11 a 16)</span></span></summary>
+<div class="body"><div class="secintro"><div class="hook">¿Cómo sabe un químico si algo es ácido o básico sin probarlo?</div><div class="box key t10"><b class="lab">En 10 segundos</b><ul><li>pH menor que 7: ácida; igual a 7: neutra; mayor que 7: básica.</li><li>Cada unidad de pH es un factor de 10 en acidez.</li><li>pH = −log [H<sup>+</sup>] y pH + pOH = pKw (¡calcula tú pKw!).</li></ul></div><figure class="herow fadein"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Ilustración: una tira de papel indicador con una escala de colores de ácido a básico, una gota cayendo entre dos vasos, uno con más iones H+ y otro con más iones OH-"><title>Ilustración: una tira de papel indicador con una escala de colores de ácido a básico, una gota cayendo entre dos vasos, uno con más iones H+ y otro con más iones OH-</title><defs><linearGradient id="hg-ph" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="g1" stop-opacity=".28"/><stop offset="1" class="g2" stop-opacity=".12"/></linearGradient></defs><rect class="hbg" width="320" height="180" rx="14"/><rect width="320" height="180" rx="14" fill="url(#hg-ph)"/><defs><linearGradient id="phg" x1="0" x2="1"><stop offset="0" style="stop-color:var(--ph0)"/><stop offset="0.214" style="stop-color:var(--ph3)"/><stop offset="0.5" style="stop-color:var(--ph7)"/><stop offset="0.714" style="stop-color:var(--ph10)"/><stop offset="1" style="stop-color:var(--ph14)"/></linearGradient></defs><rect class="ol" fill="url(#phg)" x="40" y="24" width="240" height="26" rx="6"/><text class="lb" x="70" y="68" text-anchor="middle">ácido</text><text class="lb" x="160" y="68" text-anchor="middle">neutro</text><text class="lb" x="250" y="68" text-anchor="middle">básico</text><g><path class="a1" fill-opacity=".6" d="M53 116 H107 V142 q0 11 -11 11 H64 q-11 0 -11 -11z"/><circle class="a1" cx="66" cy="128" r="3"/><circle class="a1" cx="80" cy="136" r="3"/><circle class="a1" cx="92" cy="126" r="3"/><circle class="a1" cx="72" cy="146" r="3"/><circle class="a1" cx="98" cy="144" r="3"/><circle class="a1" cx="84" cy="120" r="3"/><circle class="a1" cx="100" cy="130" r="3"/><circle class="a1" cx="62" cy="140" r="3"/><path class="ln" d="M52 100 V142 q0 12 12 12 H96 q12 0 12 -12 V100"/></g><g><path class="a2" fill-opacity=".6" d="M213 116 H267 V142 q0 11 -11 11 H224 q-11 0 -11 -11z"/><circle class="a2" cx="226" cy="128" r="3"/><circle class="a2" cx="240" cy="136" r="3"/><circle class="a2" cx="252" cy="126" r="3"/><circle class="a2" cx="232" cy="146" r="3"/><circle class="a2" cx="258" cy="144" r="3"/><circle class="a2" cx="244" cy="120" r="3"/><circle class="a2" cx="260" cy="130" r="3"/><circle class="a2" cx="222" cy="140" r="3"/><path class="ln" d="M212 100 V142 q0 12 12 12 H256 q12 0 12 -12 V100"/></g><text class="lb" x="80" y="92" text-anchor="middle">más H⁺</text><text class="lb" x="240" y="92" text-anchor="middle">más OH⁻</text><g class="an-dropf"><path class="a2 ol" d="M160 78 q-8 12 -8 18 a8 8 0 0 0 16 0 q0 -6 -8 -18z"/></g></svg></figure><div class="box dato"><b class="lab">Dato curioso</b> El químico danés Søren Sørensen introdujo el concepto de pH en 1909, mientras trabajaba en los laboratorios de la cervecera Carlsberg.</div></div>
+<h3>Idea clave</h3>
+<ul>
+<li><b>pH:</b> escala que mide qué tan ácida o básica (alcalina) es una disolución. Va de 0 a 14 (a 25 °C).</li>
+<li>pH menor que 7: ácida. Igual a 7: neutra. Mayor que 7: básica.</li>
+<li>Cada unidad de pH es un factor de 10 en acidez: pH 3 es 10 veces más ácido que pH 4.</li>
+</ul>
+<svg viewBox="0 0 560 70" role="img" aria-label="Escala de pH de 0 a 14" style="max-width:560px">
+<defs><linearGradient id="g" x1="0" x2="1"><stop offset="0.0" style="stop-color:var(--ph0)"/><stop offset="0.071" style="stop-color:var(--ph1)"/><stop offset="0.143" style="stop-color:var(--ph2)"/><stop offset="0.214" style="stop-color:var(--ph3)"/><stop offset="0.286" style="stop-color:var(--ph4)"/><stop offset="0.357" style="stop-color:var(--ph5)"/><stop offset="0.429" style="stop-color:var(--ph6)"/><stop offset="0.5" style="stop-color:var(--ph7)"/><stop offset="0.571" style="stop-color:var(--ph8)"/><stop offset="0.643" style="stop-color:var(--ph9)"/><stop offset="0.714" style="stop-color:var(--ph10)"/><stop offset="0.786" style="stop-color:var(--ph11)"/><stop offset="0.857" style="stop-color:var(--ph12)"/><stop offset="0.929" style="stop-color:var(--ph13)"/><stop offset="1.0" style="stop-color:var(--ph14)"/></linearGradient></defs>
+<rect x="10" y="10" width="540" height="26" rx="6" fill="url(#g)"/>
+<g fill="currentColor" font-size="15" text-anchor="middle"><text x="10" y="55">0</text><text x="280" y="55">7 neutro</text><text x="550" y="55">14</text><text x="75" y="55">ácido</text><text x="485" y="55">básico</text></g></svg>
+<h3>Sustancias cotidianas y su pH aproximado</h3>
+<div class="tblw"><table><tr><th>Sustancia</th><th>pH</th><th>Sustancia</th><th>pH</th></tr>
+<tr><td>Jugo gástrico</td><td>1,5</td><td>Sangre</td><td>7,4</td></tr>
+<tr><td>Gaseosa</td><td>3</td><td>Bicarbonato</td><td>8,3</td></tr>
+<tr><td>Café</td><td>5</td><td>Jabón de manos</td><td>10</td></tr>
+<tr><td>Leche</td><td>6,5</td><td>Amoniaco doméstico</td><td>11,5</td></tr></table></div>
+<small>Tu cuaderno tendrá más sustancias (frutas, productos de aseo, etc.). Complétala con él.</small>
+<h3>Ácidos comunes (¿cuál da la acidez a cada producto?)</h3>
+<div class="tblw"><table><tr><th>Ácido</th><th>Dónde está</th></tr>
+<tr><td>Clorhídrico (HCl)</td><td>Estómago (jugo gástrico)</td></tr>
+<tr><td>Sulfúrico (H<sub>2</sub>SO<sub>4</sub>)</td><td>Baterías de automóvil</td></tr>
+<tr><td>Nítrico (HNO<sub>3</sub>)</td><td>Fertilizantes y explosivos</td></tr>
+<tr><td>Láctico</td><td>Yogur</td></tr>
+<tr><td>Carbónico</td><td>Gaseosas</td></tr></table></div>
+<div class="box warn">Para tu estudio: repasa en tu cuaderno cuál es el ácido característico de los demás alimentos y bebidas fermentadas que vimos en clase.</div>
+<h3>Fórmulas que debes dominar</h3>
+<div class="box key">
+Para acidez se usa la concentración de iones hidrógeno, [H<sup>+</sup>]; para basicidad, la de iones hidroxilo, [OH<sup>−</sup>].<br>
+pH = −log [ion que causa la acidez]<br>
+pOH = −log [ion que causa la basicidad]<br>
+Agua a 25 °C: Kw = [H<sup>+</sup>]·[OH<sup>−</sup>] = 1×10<sup>−14</sup>. Aplicando −log a ambos lados se obtiene una relación sencilla entre pH y pOH: <b>pH + pOH = pKw</b>, donde pKw = −log Kw. Calcula tú pKw.
+</div>
+<p>Truco para −log: si la concentración es 1×10<sup>−n</sup>, el valor es n.</p>
+<h3>Ejemplo resuelto (distinto al examen)</h3>
+<div id="ex-ph"></div>
+<div class="tool">
+<h4>Calculadora de pH / pOH</h4>
+<div class="row"><label>Parto de: <select id="pm"><option value="h">[H⁺] = 1×10^(−n)</option><option value="o">[OH⁻] = 1×10^(−n)</option><option value="ph">pH conocido</option><option value="po">pOH conocido</option></select></label>
+<label>n / valor <input id="pv" type="number" step="any" value="6"></label><button id="pgo">Calcular</button></div>
+<div id="pout" aria-live="polite"></div>
+<div class="phbar" aria-hidden="true" id="pbar2"></div><div class="mark" aria-hidden="true"><b id="pmark" style="left:0">▲</b></div>
+</div>
+<h3>Practica</h3><div class="practice" data-sec="ph"></div>
+</div></details>
+
+<!-- 8 -->
+<details class="topic sec" id="aplic"><summary><svg class="ico" aria-hidden="true" focusable="false"><use href="#ic-aplic"/></svg><span>8. Química aplicada: medicina y alimentos <span class="qs">(preguntas 17 a 20)</span></span></summary>
+<div class="body"><div class="secintro"><div class="hook">¿Cómo logra la química quitar el dolor en el dentista o digerir la leche?</div><div class="box key t10"><b class="lab">En 10 segundos</b><ul><li>Relaciona cada sustancia con su uso o efecto.</li><li>Primero identifica la familia: anestésico, antibiótico, enzima…</li><li>Desconfía de las opciones con palabras absolutas.</li></ul></div><figure class="herow fadein"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Ilustración: una enzima con un hueco en forma de V y su sustrato encajando en él, como una llave en su cerradura"><title>Ilustración: una enzima con un hueco en forma de V y su sustrato encajando en él, como una llave en su cerradura</title><defs><linearGradient id="hg-aplic" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="g3" stop-opacity=".28"/><stop offset="1" class="g4" stop-opacity=".12"/></linearGradient></defs><rect class="hbg" width="320" height="180" rx="14"/><rect width="320" height="180" rx="14" fill="url(#hg-aplic)"/><path class="a2 ol" d="M60 130 V90 Q60 60 100 60 H125 L140 82 L155 60 H180 Q220 60 220 90 V130 Q220 150 200 150 H80 Q60 150 60 130z"/><circle class="a5" cx="100" cy="112" r="10"/><circle class="a5" cx="178" cy="120" r="14"/><circle class="a3" cx="138" cy="128" r="7"/><g class="an-dock"><path class="a1 ol" d="M125 38 L155 38 L140 60z"/></g><text class="lb" x="262" y="46" text-anchor="middle">sustrato</text><path class="ln" d="M232 43 L162 43"/><text class="lb" x="266" y="122" text-anchor="middle">enzima</text><path class="ln" d="M224 118 H240"/><text class="lb" x="60" y="36" text-anchor="middle">sitio activo</text><path class="ln" d="M88 40 Q112 46 128 62"/><text class="lb" x="160" y="172" text-anchor="middle">cada enzima encaja con su sustrato</text></svg></figure><div class="box dato"><b class="lab">Dato curioso</b> La penicilina, el primer antibiótico de uso masivo, fue descubierta por Alexander Fleming en 1928.</div></div>
+<h3>Idea clave</h3>
+<p>Estas preguntas piden relacionar una <b>sustancia</b> con su <b>uso o efecto</b> en el cuerpo o en la industria. Normalmente la respuesta correcta es la más específica y realista; las incorrectas suelen exagerar o mezclar conceptos.</p>
+<h3>Estrategia</h3>
+<ol>
+<li>Identifica a qué familia pertenece la sustancia: anestésico, analgésico, antibiótico, enzima, relajante muscular, vitamina...</li>
+<li>Recuerda qué hace esa familia: anestésico/analgésico → reduce dolor; antibiótico → combate bacterias; enzima → acelera una reacción sobre un tipo específico de molécula.</li>
+<li>Descarta opciones con palabras absolutas ("todas", "completamente", "principal fuente") o que confunden procesos (ej. un analgésico no actúa como antibiótico).</li>
+<li>Pregunta clave: ¿el efecto descrito coincide con el uso que se menciona en el enunciado?</li>
+</ol>
+<h3>Mini glosario de enzimas (ejemplos distintos a los del examen)</h3>
+<div class="tblw"><table><tr><th>Enzima</th><th>Actúa sobre</th><th>Ejemplo de uso</th></tr>
+<tr><td>Lactasa</td><td>Lactosa (azúcar de la leche)</td><td>Leche "deslactosada"</td></tr>
+<tr><td>Amilasa</td><td>Almidón</td><td>Saliva: inicia la digestión del pan</td></tr>
+<tr><td>Lipasa</td><td>Grasas (lípidos)</td><td>Digestión de grasas</td></tr></table></div>
+<p>Regla: el nombre de las enzimas suele terminar en <b>-asa</b> y empezar con lo que digieren. Con esto puedes deducir qué molécula ataca cada enzima que veas.</p>
+<h3>Ejemplo resuelto (distinto al examen)</h3>
+<div class="box">La lidocaína se usa en odontología. Familia: anestésico local. Un anestésico local bloquea la transmisión de señales nerviosas en la zona aplicada, por eso desaparece la sensación de dolor. Opciones que le atribuyan a un anestésico otra función (antibiótica, nutritiva, etc.) no encajan.</div>
+<h3>Practica</h3><div class="practice" data-sec="aplic"></div>
+</div></details>
+
+<!-- quiz -->
+<details class="topic" open id="quiz"><summary>Autoevaluación final (preguntas parecidas, no iguales)</summary>
+<div class="body">
+<p>12 preguntas de todos los temas. Responde y presiona "Calificar". Puedes repetirlo cuantas veces quieras.</p>
+<div id="quizbox"></div>
+<div class="row"><button id="qgo">Calificar</button><button class="sec" id="qreset">Reiniciar</button></div>
+<div id="qres" aria-live="polite" class="box" style="display:none"></div>
+</div></details>
+
+<div class="row"><button class="sec" id="resetall">Borrar mi progreso</button></div>
+</main>
+</div>
+<footer>Guía de estudio. Úsala junto con tus apuntes y tu docente.</footer>
+
+<script>
+(function(){
+"use strict";
+var $=function(s,c){return (c||document).querySelector(s)},$$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+/* storage */
+document.documentElement.classList.add("js");
+var KEY="quim9p4";
+var st={done:{},quiz:0,route:{}};
+var done={};var RM=false;try{RM=matchMedia("(prefers-reduced-motion: reduce)").matches}catch(e){}
+function load(){try{var r=localStorage.getItem(KEY);if(r)st=JSON.parse(r)}catch(e){}if(!st.done)st.done={}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
+load();if(!st.route)st.route={};
+try{var th=localStorage.getItem(KEY+"th");if(th)document.documentElement.setAttribute("data-theme",th)}catch(e){}
+
+var AM={H:1,He:4,Li:7,C:12,N:14,O:16,F:19,Na:23,Mg:24,Al:27,Si:28,P:31,S:32,Cl:35.5,K:39,Ca:40,Mn:55,Fe:56,Cu:63.5,Zn:65,Br:80,Ag:108,I:127,Ba:137,Pb:207};
+function parse(f){
+  var i=0;
+  function num(){var s="";while(i<f.length&&/\d/.test(f[i]))s+=f[i++];return s?parseInt(s,10):1}
+  function grp(){var o={};
+    while(i<f.length){var c=f[i];
+      if(c==="("){i++;var g=grp();if(f[i]!==")")throw new Error("Falta cerrar paréntesis");i++;var n=num();for(var k in g)o[k]=(o[k]||0)+g[k]*n}
+      else if(c===")"){return o}
+      else if(/[A-Z]/.test(c)){var s=c;i++;if(i<f.length&&/[a-z]/.test(f[i]))s+=f[i++];if(!(s in AM))throw new Error("Elemento no incluido: "+s);o[s]=(o[s]||0)+num()}
+      else throw new Error("Carácter no válido: "+c)}
+    return o}
+  var r=grp();if(i<f.length)throw new Error("Paréntesis de más");if(!Object.keys(r).length)throw new Error("Escribe una fórmula");return r}
+function fmt(x){return (Math.round(x*100)/100).toString().replace(".",",")}
+
+/* formula tool */
+function runF(){var o=$("#fout");try{
+  var f=$("#fx").value.trim(),c=Math.max(1,parseInt($("#fc").value,10)||1),a=parse(f),m=0,rows="";
+  for(var k in a){m+=a[k]*AM[k];rows+="<tr><td>"+k+"</td><td>"+a[k]+"</td><td>"+a[k]*c+"</td><td>"+fmt(a[k]*AM[k])+"</td></tr>"}
+  o.innerHTML="<div class='tblw'><table><tr><th>Elemento</th><th>Átomos por unidad</th><th>Átomos con coeficiente "+c+"</th><th>Aporte a M (g/mol)</th></tr>"+rows+"</table></div><b>Masa molar: "+fmt(m)+" g/mol</b>"
+}catch(e){o.textContent="Error: "+e.message}}
+$("#fgo").onclick=runF;
+$("#cgo").onclick=function(){var m=+$("#cm").value,n=+$("#cn").value;$("#cout").textContent=n+" mol × "+m+" g/mol = "+fmt(n*m)+" g"};
+$("#cgo2").onclick=function(){var m=+$("#cm").value,g=+$("#cg").value;$("#cout").textContent=m>0?g+" g ÷ "+m+" g/mol = "+fmt(g/m)+" mol":"La masa molar debe ser mayor que 0"};
+
+/* worked examples */
+function steps(el,list){
+  el.innerHTML="";var idx=0,box=document.createElement("div"),b=document.createElement("button");
+  b.textContent="Mostrar siguiente paso";
+  b.onclick=function(){if(idx<list.length){var d=document.createElement("div");d.className="box";d.innerHTML=list[idx++];box.appendChild(d)}if(idx>=list.length)b.disabled=true};
+  el.appendChild(b);el.appendChild(box)}
+steps($("#ex-mol"),["Fórmula: CO<sub>2</sub> → 1 átomo de C y 2 de O.","C: 1 × 12 = 12","O: 2 × 16 = 32","Suma: 12 + 32 = <b>44 g/mol</b>. Entonces 2 mol de CO<sub>2</sub> pesarían 2 × 44 = 88 g (por eso 1 mol = 44 g)."]);
+steps($("#ex-form"),["Coeficiente 2: todo se duplica al final.","Dentro de la unidad Mg(NO<sub>3</sub>)<sub>2</sub>: Mg = 1; N = 1 × 2 = 2; O = 3 × 2 = 6.","Con el coeficiente 2: Mg = 2; N = 4; O = 12."]);
+steps($("#ex-ph"),["Problema: una solución tiene [H<sup>+</sup>] = 1×10<sup>−3</sup> M.","pH = −log(10<sup>−3</sup>) = 3, así que es ácida.","pOH = pKw − pH (usa pKw que calculaste) → obtienes el pOH.","Si el pH fuera 10, ¿sería ácida o básica? Básica, porque 10 &gt; 7."]);
+
+/* balance tool */
+var EQ=[{r:["Fe","O2"],p:["Fe2O3"]},{r:["C3H8","O2"],p:["CO2","H2O"]},{r:["Al","HCl"],p:["AlCl3","H2"]}];
+function drawB(){var e=EQ[+$("#beq").value],h="";var all=e.r.concat(e.p);
+  all.forEach(function(f,i){h+=(i===e.r.length?" → ":i?" + ":"")+"<input type='number' min='1' value='1' class='bc' aria-label='Coeficiente de "+f+"'> "+f.replace(/(\d+)/g,"<sub>$1</sub>")});
+  $("#bco").innerHTML=h;$("#bout").textContent=""}
+$("#beq").onchange=drawB;drawB();
+$("#bgo").onclick=function(){var e=EQ[+$("#beq").value],cs=$$(".bc").map(function(x){return parseInt(x.value,10)||1}),L={},R={};
+  e.r.forEach(function(f,i){var a=parse(f);for(var k in a)L[k]=(L[k]||0)+a[k]*cs[i]});
+  e.p.forEach(function(f,i){var a=parse(f);for(var k in a)R[k]=(R[k]||0)+a[k]*cs[e.r.length+i]});
+  var ok=true,t="";Object.keys(L).forEach(function(k){t+=k+": "+L[k]+" | "+(R[k]||0)+" ; ";if(L[k]!==R[k])ok=false});
+  $("#bout").innerHTML=(ok?"<b class='t-ok'>✔ Balanceada.</b> ":"<b class='t-bad'>✘ Aún no está balanceada.</b> ")+"Átomos (reactivos | productos): "+t};
+
+/* limiting tool */
+$("#lgo").onclick=function(){var n=+$("#ln").value,h=+$("#lh").value;
+  if(n<0||h<0||isNaN(n)||isNaN(h)){$("#lout").textContent="Escribe valores válidos";return}
+  var byN=n,byH=h/3,x=Math.min(byN,byH),lim=byN<byH?"N₂":byN>byH?"H₂":"ninguno (proporción exacta)";
+  var ex=byN<byH?"H₂ sobran "+fmt(h-3*n)+" mol":byN>byH?"N₂ sobran "+fmt(n-h/3)+" mol":"no sobra nada";
+  $("#lout").innerHTML="Con "+fmt(n)+" mol de N₂ podrían formarse "+fmt(2*byN)+" mol de NH₃. Con "+fmt(h)+" mol de H₂ podrían formarse "+fmt(2*byH)+" mol.<br><b>Reactivo límite: "+lim+".</b> Máximo de NH₃: "+fmt(2*x)+" mol. Exceso: "+ex+"."};
+
+/* solub tool */
+function runS(){var v=(+$("#st").value)*(+$("#sa").value)*(+$("#ss").value),max=3*2*6,p=Math.round(v/max*100);
+  $("#sbar").style.width=Math.max(6,p)+"%";$("#sout").textContent=p>=60?"Se disuelve muy rápido.":p>=25?"Velocidad media.":"Se disuelve lentamente."}
+["st","sa","ss"].forEach(function(i){$("#"+i).onchange=runS});runS();
+
+/* density tool */
+$("#dgo").onclick=function(){var m=+$("#dm").value,v=+$("#dv").value;$("#dout").textContent=v>0?"D = "+m+" ÷ "+v+" = "+fmt(m/v)+" g/mL":"El volumen debe ser mayor que 0"};
+
+/* pH tool */
+var pb=$("#pbar2");for(var ci=0;ci<15;ci++){var s=document.createElement("span");s.style.background="var(--ph"+ci+")";s.textContent=ci;pb.appendChild(s)}
+$("#pgo").onclick=function(){var m=$("#pm").value,v=+$("#pv").value,pH,pOH;
+  if(m==="h"||m==="ph"){pH=v;pOH=14-v}else{pOH=v;pH=14-v}
+  var o=$("#pout");if(pH<0||pH>14||isNaN(pH)){o.textContent="Valor fuera de la escala 0 a 14";return}
+  o.innerHTML="pH = "+fmt(pH)+" | pOH = "+fmt(pOH)+" → "+(pH<7?"ácida":pH>7?"básica":"neutra");
+  $("#pmark").style.left=(pH/15*100+100/30)+"%"};
+
+/* practice data */
+var P={
+mol:[
+{t:"mc",q:"¿Cuál es la masa molar del NaCl (Na = 23, Cl = 35,5)?",o:["23 g/mol","35,5 g/mol","58,5 g/mol","12 g/mol"],a:2,h:"Suma las masas atómicas de cada átomo de la fórmula.",e:"23 + 35,5 = 58,5 g/mol."},
+{t:"num",q:"¿Cuántos gramos hay en 2 mol de CO₂? (M = 44 g/mol)",a:88,h:"masa = moles × masa molar.",e:"2 × 44 = 88 g."},
+{t:"num",q:"¿Cuántos moles son 90 g de glucosa C₆H₁₂O₆? (calcula primero su M)",a:0.5,h:"M = 6·12 + 12·1 + 6·16 = 180 g/mol; moles = masa ÷ M.",e:"90 ÷ 180 = 0,5 mol."},
+{t:"mc",q:"Las unidades de la masa molar son:",o:["g","mol","g/mol","mol/g"],a:2,h:"Es gramos por cada mol.",e:"Masa molar = g/mol."}],
+formulas:[
+{t:"num",q:"¿Cuántos átomos de oxígeno hay en Al₂(SO₄)₃?",a:12,h:"Subíndice del O (4) × subíndice del paréntesis (3).",e:"4 × 3 = 12."},
+{t:"mc",q:"Fe(NO₃)₃ contiene:",o:["1 Fe, 3 N, 3 O","1 Fe, 3 N, 9 O","3 Fe, 1 N, 3 O","1 Fe, 1 N, 9 O"],a:1,h:"El 3 de fuera multiplica N y O.",e:"N: 1×3 = 3; O: 3×3 = 9."},
+{t:"num",q:"En 2 Al(OH)₃ + 3 H₂SO₄ → Al₂(SO₄)₃ + 6 H₂O, ¿cuántos átomos de oxígeno hay en los REACTIVOS?",a:18,h:"Cuenta el O de cada reactivo y multiplica por su coeficiente; suma.",e:"2·(1·3)=6 en Al(OH)₃ y 3·4=12 en H₂SO₄ → 18."},
+{t:"mc",q:"Al balancear CH₄ + O₂ → CO₂ + H₂O, el coeficiente del O₂ es:",o:["1","2","3","4"],a:1,h:"Necesitas 4 O en los productos: 2 de CO₂ y 2 de 2 H₂O.",e:"CH₄ + 2 O₂ → CO₂ + 2 H₂O."}],
+limite:[
+{t:"mc",q:"Receta: 1 sándwich = 2 panes + 1 jamón. Tienes 10 panes y 3 jamones. ¿Cuántos sándwiches máximo puedes hacer?",o:["3","5","10","13"],a:0,h:"Calcula cuántos sándwiches permite cada ingrediente y toma el menor.",e:"Panes alcanzan para 5, jamón para 3: el jamón es el límite."},
+{t:"num",q:"2 H₂ + O₂ → 2 H₂O. Con 4 mol de H₂ y 3 mol de O₂, ¿cuántos mol de H₂O se forman como máximo?",a:4,h:"Con 4 mol de H₂, la relación 2:2 da cuántos mol de agua; con O₂ da el doble.",e:"H₂ da 4 mol; O₂ daría 6 mol. El H₂ limita: 4 mol."},
+{t:"mc",q:"Al terminar una reacción sobra un reactivo. Ese reactivo es:",o:["El reactivo límite","El reactivo en exceso","El catalizador","El producto"],a:1,h:"El que se acaba es el límite.",e:"El que sobra es el reactivo en exceso."},
+{t:"num",q:"N₂ + 3 H₂ → 2 NH₃. Con 3 mol de N₂ y 6 mol de H₂, ¿cuántos mol de NH₃ se forman?",a:4,h:"Compara: 6 mol H₂ ÷ 3 y 3 mol N₂ ÷ 1; usa el menor y multiplica por 2.",e:"H₂ limita: 6/3 = 2; ×2 = 4 mol."}],
+soluciones:[
+{t:"mc",q:"En la tintura de yodo (poco yodo disuelto en mucho alcohol), el solvente es:",o:["Yodo","Alcohol","Ambos","Ninguno"],a:1,h:"Solvente = componente en mayor cantidad.",e:"El alcohol."},
+{t:"mc",q:"El aire (O₂ y otros gases disueltos en N₂) es una solución de tipo:",o:["Sólido-líquido","Gas-gas","Líquido-líquido","Sólido-sólido"],a:1,h:"Mira el estado físico de soluto y solvente.",e:"Gas en gas."},
+{t:"mc",q:"¿Cuál es una solución sólido-sólido?",o:["Acero (hierro y carbono)","Agua con sal","Gaseosa","Aire"],a:0,h:"Busca una mezcla uniforme de sólidos.",e:"Es una mezcla homogénea de sólidos."},
+{t:"mc",q:"¿Cuál NO es una solución?",o:["Salmuera","Latón","Arena en agua (se sedimenta)","Aire limpio"],a:2,h:"Una solución es homogénea.",e:"La arena se ve y se sedimenta: mezcla heterogénea."}],
+solub:[
+{t:"mc",q:"Para disolver más rápido una tableta efervescente en agua conviene:",o:["Triturarla, usar agua tibia y agitar","Dejarla entera en agua fría sin mover","Usar menos agua y no agitar","Enfriar el vaso"],a:0,h:"Más superficie, más temperatura, más movimiento.",e:"Esos tres factores aceleran la disolución."},
+{t:"mc",q:"¿Cuál NO influye en qué tan rápido se disuelve el azúcar en el agua?",o:["La temperatura","Agitar","El color del vaso","El tamaño de los cristales"],a:2,h:"Piensa en contacto y movimiento de partículas.",e:"El color del vaso no tiene efecto."},
+{t:"mc",q:"Explica por qué el azúcar en polvo se disuelve más rápido que un terrón:",o:["Pesa menos","Tiene más superficie de contacto","Es más dulce","Es de otro color"],a:1,h:"Más pedacitos pequeños, más caras expuestas.",e:"Mayor superficie de contacto."}],
+densidad:[
+{t:"num",q:"Una sustancia de 50 g ocupa 20 mL. ¿Cuál es su densidad en g/mL?",a:2.5,h:"D = m ÷ V.",e:"50 ÷ 20 = 2,5 g/mL."},
+{t:"num",q:"Un aceite tiene D = 0,8 g/mL. ¿Cuántos gramos hay en 250 mL?",a:200,h:"Despeja m = D × V.",e:"0,8 × 250 = 200 g."},
+{t:"mc",q:"Un gas se comprime a un recipiente más pequeño sin escaparse. ¿Qué pasa con su densidad?",o:["Baja","Sube","No cambia","Queda en cero"],a:1,h:"Misma masa, menor volumen.",e:"D = m/V: V baja, D sube."},
+{t:"mc",q:"Si una sustancia al calentarse mantiene su masa pero su volumen aumenta, su densidad:",o:["Aumenta","Disminuye","Queda igual","No se puede saber"],a:1,h:"V está en el denominador.",e:"Disminuye."}],
+ph:[
+{t:"num",q:"Una solución tiene [H⁺] = 1×10⁻⁹ M. ¿Cuál es su pH?",a:9,h:"pH = −log[H⁺]; el exponente sin signo.",e:"pH = 9."},
+{t:"num",q:"Si el pH de una solución es 9, ¿cuál es su pOH?",a:5,h:"Usa la relación entre pH y pOH con el valor de pKw que calculaste.",e:"pOH = pKw − 9 = 5."},
+{t:"mc",q:"Una solución con pH 12 es:",o:["Ácida fuerte","Neutra","Básica fuerte","Ácida débil"],a:2,h:"Lejos y por encima de 7.",e:"Básica fuerte."},
+{t:"mc",q:"Si el pH baja de 6 a 3, la acidez:",o:["Baja","Sube","Igual","Se hace neutra"],a:1,h:"Menor pH = más ácido.",e:"Aumenta (1000 veces)."},
+{t:"num",q:"[OH⁻] = 1×10⁻³ M. ¿Cuál es el pH?",a:11,h:"Calcula primero pOH = −log[OH⁻] y luego pH = pKw − pOH.",e:"pOH = 3; pH = 11."}],
+aplic:[
+{t:"mc",q:"La lidocaína se usa en odontología porque:",o:["Elimina todas las bacterias de la boca","Bloquea señales nerviosas de dolor en la zona","Produce calcio en los dientes","Es fuente de oxígeno"],a:1,h:"Es un anestésico local.",e:"Reduce la percepción del dolor localmente."},
+{t:"mc",q:"La lactasa se agrega a la leche porque:",o:["Digiere la lactosa","Digiere las grasas","Convierte proteínas en vitaminas","Evita toda oxidación"],a:0,h:"El nombre indica sobre qué actúa.",e:"Actúa sobre lactosa."},
+{t:"mc",q:"La amilasa de la saliva actúa sobre:",o:["Almidón","Proteínas","Grasas","Vitaminas"],a:0,h:"Amil- viene de almidón.",e:"Almidón."},
+{t:"mc",q:"Al leer una opción que dice 'impide COMPLETAMENTE la oxidación', conviene:",o:["Marcarla de inmediato","Desconfiar, porque las palabras absolutas suelen indicar opciones falsas","Cambiar la pregunta","Ignorar las demás"],a:1,h:"Pocas cosas en química son absolutas.",e:"Desconfía de las palabras absolutas."}]
+};
+
+/* practice renderer */
+function norm(x){return (x||"").toString().replace(",",".").trim()}
+function render(){
+  $$(".practice").forEach(function(c){var s=c.getAttribute("data-sec");P[s].forEach(function(it,i){
+    var id=s+"-"+i,d=document.createElement("div");d.className="item";
+    var h="<div><b>"+(i+1)+".</b> "+it.q+"</div>";
+    if(it.t==="mc"){h+=it.o.map(function(o,k){return "<button class='opt' data-k='"+k+"'>"+String.fromCharCode(97+k)+") "+o+"</button>"}).join("")}
+    else h+="<div class='row'><input type='number' step='any' aria-label='Tu respuesta'><button class='chk'>Comprobar</button></div>";
+    h+="<div class='row'><button class='sec hb'>Ver pista</button><button class='sec eb'>Ver explicación</button></div><div class='reveal hint'><b>💡 Pista:</b> "+it.h+"</div><div class='reveal exp'><b>Explicación:</b> "+it.e+"</div><div class='fb'></div>";
+    d.innerHTML=h;c.appendChild(d);
+    var fb=$(".fb",d);
+    function res(ok){fb.className="fb "+(ok?"ok":"no");fb.textContent=ok?"✔ Correcto":"✘ Incorrecto. Usa la pista e inténtalo de nuevo.";if(ok){st.done[id]=1;save();prog()}}
+    if(it.t==="mc")$$(".opt",d).forEach(function(b){b.onclick=function(){var k=+b.getAttribute("data-k");b.classList.add(k===it.a?"ok":"no");res(k===it.a)}});
+    else{$(".chk",d).onclick=function(){var v=parseFloat(norm($("input",d).value));res(!isNaN(v)&&Math.abs(v-it.a)<0.01)}}
+    $(".hb",d).onclick=function(){$(".hint",d).classList.toggle("show")};
+    $(".eb",d).onclick=function(){$(".exp",d).classList.toggle("show")};
+    if(st.done[id]){fb.className="fb ok";fb.textContent="✔ Ya lo resolviste antes"}
+  })})}
+render();
+
+/* hero fade-in on scroll */
+(function(){var els=$$(".fadein");if(RM||!("IntersectionObserver" in window)){els.forEach(function(x){x.classList.add("in")});return}
+var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add("in");io.unobserve(e.target)}})},{threshold:.12});els.forEach(function(x){io.observe(x)})})();
+/* nav + progress */
+var secs=[["mapa","Mapa del examen"],["conexiones","Conceptos y ruta"],["mol","1. Mol y masa molar"],["formulas","2. Fórmulas y balanceo"],["limite","3. Reactivo límite"],["soluciones","4. Soluciones"],["solub","5. Factores de disolución"],["densidad","6. Densidad"],["ph","7. pH y pOH"],["aplic","8. Química aplicada"],["quiz","Autoevaluación"]];
+var TN0={mol:1,formulas:1,limite:1,soluciones:1,solub:1,densidad:1,ph:1,aplic:1};function sv0(t){return document.createElementNS("http://www.w3.org/2000/svg",t)}
+var nav=$("#nav");secs.forEach(function(s){var a=document.createElement("a");a.href="#"+s[0];if(TN0[s[0]]){var ic=sv0("svg");ic.setAttribute("class","ico sm");ic.setAttribute("aria-hidden","true");var us=sv0("use");us.setAttribute("href","#ic-"+s[0]);ic.appendChild(us);a.appendChild(ic)}a.appendChild(document.createTextNode(s[1]));a.setAttribute("data-go",s[0]);a.id="n-"+s[0];nav.appendChild(a)});
+document.addEventListener("click",function(e){var g=e.target.closest&&e.target.closest("[data-go]");if(!g)return;e.preventDefault();var el=document.getElementById(g.getAttribute("data-go"));if(el){el.open=true;el.scrollIntoView({behavior:RM?"auto":"smooth"});$$("nav a").forEach(function(a){a.classList.toggle("act",a.getAttribute("data-go")===g.getAttribute("data-go"))})}$("#nav").classList.remove("open")});
+$("#menu").onclick=function(){var o=nav.classList.toggle("open");this.setAttribute("aria-expanded",o)};
+function prog(){var tot=0,dn=0;for(var s in P){var all=true;P[s].forEach(function(_,i){tot++;if(st.done[s+"-"+i])dn++;else all=false});done[s]=all;var n=$("#n-"+s);if(n)n.classList.toggle("done",all)}
+  var q=st.quiz||0;tot+=12;dn+=q;var p=Math.round(dn/tot*100);$("#pbar").style.width=p+"%";$("#plabel").textContent="Progreso: "+p+"% (práctica y autoevaluación)";syncRoute()}
+prog();
+
+/* quiz */
+var Q=[
+{q:"Masa molar de H₂SO₄ (H=1, S=32, O=16):",o:["49 g/mol","98 g/mol","64 g/mol","34 g/mol"],a:1},
+{q:"¿Cuántos gramos son 0,5 mol de NaCl (M = 58,5 g/mol)?",o:["58,5 g","117 g","29,25 g","12 g"],a:2},
+{q:"¿Cuántos átomos de O hay en Ca(NO₃)₂?",o:["3","5","6","2"],a:2},
+{q:"Con 2 mol de N₂ y 9 mol de H₂ (N₂ + 3H₂ → 2NH₃), el reactivo límite es:",o:["N₂","H₂","Ninguno","NH₃"],a:0},
+{q:"En una mezcla de 5 mL de sal de cocina con 300 mL de agua, el solvente es:",o:["Sal","Agua","Ambos","Ninguno"],a:1},
+{q:"El latón y el acero son ejemplos de soluciones:",o:["Gas-gas","Líquido-líquido","Sólido-sólido","Gas-líquido"],a:2},
+{q:"El azúcar se disuelve más rápido en té caliente que en té frío porque:",o:["La temperatura aumenta el movimiento de las partículas","El té caliente pesa menos","El azúcar cambia de color","Hay menos agua"],a:0},
+{q:"Un bloque de 120 g ocupa 40 mL. Su densidad es:",o:["3 g/mL","0,33 g/mL","80 g/mL","160 g/mL"],a:0},
+{q:"¿Cuál de estas sustancias es más ácida?",o:["pH 2","pH 6","pH 7","pH 9"],a:0},
+{q:"Si el pH de una solución es 5, su pOH es:",o:["5","9","14","2"],a:1},
+{q:"El pH de una solución con [H⁺] = 1×10⁻⁴ M es:",o:["4","10","−4","0,0001"],a:0},
+{q:"La lipasa se usa para tratar la digestión de:",o:["Grasas","Almidón","Lactosa","Vitaminas"],a:0}];
+var qb=$("#quizbox");
+Q.forEach(function(x,i){var d=document.createElement("div");d.className="item";d.innerHTML="<div><b>"+(i+1)+".</b> "+x.q+"</div>"+x.o.map(function(o,k){return "<label class='opt'><input type='radio' name='q"+i+"' value='"+k+"'> "+String.fromCharCode(97+k)+") "+o+"</label>"}).join("");qb.appendChild(d)});
+$("#qgo").onclick=function(){var s=0,miss=[];Q.forEach(function(x,i){var c=document.querySelector("input[name=q"+i+"]:checked"),ok=c&&+c.value===x.a;if(ok)s++;else miss.push(i+1);
+  $$("input[name=q"+i+"]").forEach(function(r){var l=r.parentNode;l.classList.remove("ok","no");if(+r.value===x.a)l.classList.add("ok");else if(r.checked)l.classList.add("no")})});
+  var r=$("#qres");r.style.display="block";r.innerHTML="<b>Puntaje: "+s+" / "+Q.length+"</b>"+(miss.length?". Repasa los temas de las preguntas: "+miss.join(", ")+".":". Excelente.");
+  if(s>(st.quiz||0)){st.quiz=s;save();prog()}};
+$("#qreset").onclick=function(){$$("#quizbox input").forEach(function(r){r.checked=false});$$("#quizbox .opt").forEach(function(l){l.classList.remove("ok","no")});$("#qres").style.display="none"};
+
+$("#theme").onclick=function(){var d=document.documentElement,cur=d.getAttribute("data-theme");var dark=cur?cur==="dark":matchMedia("(prefers-color-scheme: dark)").matches;var n=dark?"light":"dark";d.setAttribute("data-theme",n);try{localStorage.setItem(KEY+"th",n)}catch(e){}};
+$("#resetall").onclick=function(){if(confirm("¿Borrar todo tu progreso?")){st={done:{},quiz:0,route:{}};save();location.reload()}};
+/* connections: concept map, bridges, route */
+var TN={mol:"Mol y masa molar",formulas:"Fórmulas y balanceo",limite:"Reactivo límite",soluciones:"Soluciones",solub:"Factores de disolución",densidad:"Densidad",ph:"pH y pOH",aplic:"Química aplicada"};
+var ORDER=["mol","formulas","limite","soluciones","solub","densidad","ph","aplic"];
+var POS={mol:[20,30],formulas:[20,180],limite:[20,330],solub:[290,30],soluciones:[290,180],densidad:[290,330],ph:[560,100],aplic:[560,260]};
+var NW=160,NH=48;
+var E=[
+{a:"mol",b:"formulas",l:"cuenta átomos con",t:"Para calcular una masa molar necesitas saber cuántos átomos de cada elemento hay en la fórmula, y en una ecuación los coeficientes dicen cuántas unidades (moles) participan. El mol es la unidad de conteo; las fórmulas dicen qué se cuenta."},
+{a:"formulas",b:"limite",l:"proporciones para",t:"Una ecuación balanceada da la proporción exacta en que reaccionan las sustancias (los coeficientes). Con esa proporción comparas lo que tienes de cada reactivo y descubres cuál se acaba primero."},
+{a:"mol",b:"limite",l:"gramos ↔ moles",t:"Los datos suelen venir en gramos, pero la proporción de la ecuación es en moles. Convertir con la masa molar permite comparar reactivos en la misma unidad."},
+{a:"mol",b:"soluciones",l:"cantidad de soluto",t:"Una forma habitual de expresar cuánto soluto hay en una solución usa moles (por ejemplo, moles de soluto por litro). Por eso el mol vuelve a aparecer al estudiar soluciones."},
+{a:"soluciones",b:"solub",l:"rapidez de",t:"Una vez que sabes qué es soluto y solvente, surge otra pregunta: qué tan rápido se disuelve. Depende del contacto entre las partículas (tamaño del soluto), de la agitación y de la temperatura."},
+{a:"soluciones",b:"densidad",l:"masa y volumen",t:"Una solución tiene masa y ocupa un volumen; la densidad (masa ÷ volumen) relaciona ambas. Al disolver un soluto cambian la masa total y, en general, también la densidad."},
+{a:"soluciones",b:"ph",l:"medio de",t:"Los ácidos y las bases se estudian sobre todo disueltos en agua. El pH mide la concentración de iones H⁺ en esa solución, por eso se apoya en lo visto sobre soluciones y concentración."},
+{a:"ph",b:"aplic",l:"se aplica en",t:"El pH importa en el cuerpo y en los alimentos: el estómago es muy ácido, la sangre es casi neutra, y muchas sustancias y enzimas funcionan bien solo en cierto rango de pH."},
+{a:"solub",b:"aplic",l:"se aplica en",t:"En medicina y alimentos importa qué tan rápido se disuelve algo: por ejemplo, una tableta o un polvo para preparar bebidas actúan distinto según su tamaño de partícula, temperatura y agitación."}
+];
+var HTMLESC=function(s){return s};
+function sv(tag,at){var e=document.createElementNS("http://www.w3.org/2000/svg",tag);for(var k in at)e.setAttribute(k,at[k]);return e}
+function ctr(id){return [POS[id][0]+NW/2,POS[id][1]+NH/2]}
+function clip(id,tx,ty){var c=ctr(id),dx=tx-c[0],dy=ty-c[1],t=Math.min(NW/2/Math.abs(dx||1e-6),NH/2/Math.abs(dy||1e-6));return [c[0]+dx*t,c[1]+dy*t]}
+var panel=$("#cpanel");
+function showEdge(ed){panel.innerHTML="<b>"+TN[ed.a]+" → "+TN[ed.b]+"</b> <i>("+ed.l+")</i><p>"+ed.t+"</p><div class='row'><button class='sec' data-go='"+ed.a+"'>Ir a "+TN[ed.a]+"</button><button class='sec' data-go='"+ed.b+"'>Ir a "+TN[ed.b]+"</button></div>"}
+function showNode(id){var o="",i="";E.forEach(function(e){if(e.a===id)o+="<li>va hacia <b>"+TN[e.b]+"</b> ("+e.l+")</li>";if(e.b===id)i+="<li>viene de <b>"+TN[e.a]+"</b> ("+e.l+")</li>"});panel.innerHTML="<b>"+TN[id]+"</b><ul>"+i+o+"</ul><small>Haz clic en el tema para ir a su sección.</small>"}
+function drawMap(){var svg=$("#cmap");if(!svg)return;
+  var df=sv("defs",{}),mk=sv("marker",{id:"arr",viewBox:"0 0 10 10",refX:"9",refY:"5",markerWidth:"9",markerHeight:"9",orient:"auto"});mk.appendChild(sv("path",{d:"M0 0L10 5L0 10z","class":"arr"}));df.appendChild(mk);svg.appendChild(df);
+  E.forEach(function(ed,n){var p0,p1,d,mx,my;
+    if(ed.a==="mol"&&ed.b==="limite"){p0=[POS.mol[0],POS.mol[1]+NH/2];p1=[POS.limite[0],POS.limite[1]+NH/2];d="M"+p0+" Q-130 "+(p0[1]+(p1[1]-p0[1])/2)+" "+p1;mx=-55;my=(p0[1]+p1[1])/2}
+    else{var ca=ctr(ed.a),cb=ctr(ed.b);p0=clip(ed.a,cb[0],cb[1]);p1=clip(ed.b,ca[0],ca[1]);d="M"+p0[0]+" "+p0[1]+" L"+p1[0]+" "+p1[1];var f=(ed.a==="solub"&&ed.b==="aplic")?0.72:0.5;mx=p0[0]+(p1[0]-p0[0])*f;my=p0[1]+(p1[1]-p0[1])*f}
+    var g=sv("g",{"class":"cedge",tabindex:"0",role:"button","aria-label":TN[ed.a]+" "+ed.l+" "+TN[ed.b]});
+    g.appendChild(sv("path",{d:d,"class":"hit"}));g.appendChild(sv("path",{d:d,"class":"vis","marker-end":"url(#arr)"}));
+    var tx=sv("text",{x:mx,y:my+4,"text-anchor":"middle"});tx.textContent=ed.l;g.appendChild(tx);
+    function on(){$$(".cedge.on",svg).forEach(function(x){x.classList.remove("on")});g.classList.add("on");showEdge(ed)}
+    g.addEventListener("mouseenter",on);g.addEventListener("focus",on);g.addEventListener("click",on);
+    svg.appendChild(g)});
+  ORDER.forEach(function(id){var g=sv("g",{"class":"cnode",tabindex:"0",role:"link","data-go":id,"aria-label":"Ir a "+TN[id]});
+    g.appendChild(sv("rect",{x:POS[id][0],y:POS[id][1],width:NW,height:NH,rx:10}));
+    g.appendChild(sv("use",{href:"#ic-"+id,x:POS[id][0]+8,y:POS[id][1]+12,width:24,height:24}));
+    var nm=TN[id],tx0=POS[id][0]+36+(NW-36-4)/2,t;
+    if(nm.length>16){var sp=nm.indexOf(" ",Math.floor(nm.length/2)-3);if(sp<0)sp=nm.indexOf(" ");var l1=nm.slice(0,sp),l2=nm.slice(sp+1);
+      t=sv("text",{x:tx0,y:POS[id][1]+NH/2-2,"text-anchor":"middle"});var a1=sv("tspan",{x:tx0,dy:"0"});a1.textContent=l1;var a2=sv("tspan",{x:tx0,dy:"15"});a2.textContent=l2;t.appendChild(a1);t.appendChild(a2)}
+    else{t=sv("text",{x:tx0,y:POS[id][1]+NH/2+5,"text-anchor":"middle"});t.textContent=nm}
+    g.appendChild(t);
+    g.addEventListener("mouseenter",function(){showNode(id)});g.addEventListener("focus",function(){showNode(id)});
+    g.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();g.dispatchEvent(new MouseEvent("click",{bubbles:true}))}});
+    svg.appendChild(g)});
+  var cl=$("#clist");E.forEach(function(ed){var d=document.createElement("details");d.innerHTML="<summary>"+TN[ed.a]+" → "+TN[ed.b]+" <small>("+ed.l+")</small></summary><div class='cl-b'><p>"+ed.t+"</p><div class='row'><button class='sec' data-go='"+ed.a+"'>Ir a "+TN[ed.a]+"</button><button class='sec' data-go='"+ed.b+"'>Ir a "+TN[ed.b]+"</button></div></div>";cl.appendChild(d)})}
+drawMap();
+
+/* bridges */
+function L(id,t){return "<a href='#"+id+"' data-go='"+id+"'>"+(t||TN[id])+"</a>"}
+var BR={
+mol:{from:"Es el punto de partida (ver el "+L("mapa","mapa del examen")+"). Aquí aprendes a contar partículas con el mol; casi todo lo que sigue usa esta idea.",to:"formulas",
+ t:"Para calcular una masa molar tuviste que contar átomos en una fórmula. En el siguiente tema aprenderás a leer fórmulas con subíndices, paréntesis y coeficientes, y a balancear ecuaciones; ahí los coeficientes funcionan como una cuenta de moles.",
+ q:"¿Cómo se relacionan el mol y las fórmulas químicas?",o:["La fórmula dice cuántos átomos de cada elemento se cuentan al calcular la masa molar","No se relacionan: el mol solo sirve para soluciones","El mol cambia los subíndices de la fórmula"],a:0,ok:"Exacto: la fórmula indica qué y cuántos átomos hay; el mol sirve para contarlos en grupo.",no:"Piensa en cómo calculaste M: sumaste masas atómicas multiplicadas por el número de átomos de la fórmula."},
+formulas:{from:"Viene de "+L("mol")+": ya sabes sumar masas atómicas; ahora aprendes a leer exactamente cuántos átomos hay y a balancear ecuaciones.",to:"limite",
+ t:"Una ecuación balanceada es la \"receta\" de la reacción: los coeficientes dan la proporción entre sustancias. El reactivo límite usa esa receta para decidir cuál ingrediente se acaba primero.",
+ q:"¿Cómo se relacionan el balanceo y el reactivo límite?",o:["Los subíndices deciden cuál reactivo se acaba","Los coeficientes de la ecuación balanceada dan la proporción para compararlos","Son temas independientes"],a:1,ok:"Correcto: sin la proporción de la ecuación balanceada no puedes saber cuál reactivo limita.",no:"Recuerda la analogía del sándwich: la receta (2 panes : 1 jamón) es lo que permite comparar."},
+limite:{from:"Viene de "+L("mol")+" y de "+L("formulas")+": necesitas pasar a moles y usar los coeficientes de la ecuación balanceada.",to:"soluciones",
+ t:"Muchas reacciones ocurren con las sustancias disueltas en agua. En ese caso el reactivo que participa es el soluto de una solución, y saber cuánto hay depende de la concentración. Por eso después de reacciones pasamos a estudiar soluciones.",
+ q:"En una reacción que ocurre en agua, la sustancia disuelta que reacciona es el…",o:["Solvente","Soluto","Producto obligatoriamente"],a:1,ok:"Sí: lo disuelto es el soluto; el agua suele ser el solvente.",no:"Recuerda: soluto = lo que se disuelve; solvente = el medio, en mayor cantidad."},
+soluciones:{from:"Viene de "+L("limite")+" (las reacciones suelen ocurrir en solución) y de "+L("mol")+" (para expresar cuánto soluto hay).",to:"solub",
+ t:"Ya sabes qué es una solución y quién es soluto y solvente. La siguiente pregunta es qué tan rápido se forma: depende del tamaño del soluto, de la agitación y de la temperatura.",
+ q:"¿Qué aporta cada tema?",o:["Soluciones dice qué se mezcla; Factores dice qué tan rápido se disuelve","Soluciones dice la rapidez; Factores dice quién es el soluto","Los dos dicen lo mismo"],a:0,ok:"Correcto: primero identificas los componentes y después analizas la rapidez del proceso.",no:"Un tema describe los componentes de la mezcla; el otro, la velocidad con que se forma."},
+solub:{from:"Viene de "+L("soluciones")+": ya identificas soluto y solvente; ahora analizas la rapidez con que se disuelve.",to:"densidad",
+ t:"Cuando disuelves un soluto, su masa se suma a la de la solución y el volumen cambia poco. Eso se mide con la densidad (masa ÷ volumen): por eso las soluciones pueden ser más densas que el solvente puro.",
+ q:"Al disolver azúcar en agua, la masa total de la solución…",o:["Disminuye","Aumenta, porque se suma la masa del soluto","Se vuelve cero"],a:1,ok:"Sí: la masa se conserva y se suma; por eso la densidad suele cambiar.",no:"La masa no desaparece: lo que disuelves sigue en la solución."},
+densidad:{from:"Viene de "+L("soluciones")+" y "+L("solub")+": toda solución tiene masa y volumen, y la densidad relaciona ambos.",to:"ph",
+ t:"La densidad (masa ÷ volumen) y la concentración de iones H⁺ (cantidad ÷ volumen) son del mismo estilo: ambas relacionan una cantidad con un volumen. El pH usa esa idea, pero con una escala logarítmica.",
+ q:"¿Qué tienen en común la densidad y la concentración [H⁺] que usa el pH?",o:["Ambas relacionan una cantidad con un volumen","Ambas se miden en g/mL","Ninguna depende del volumen"],a:0,ok:"Exacto: son magnitudes de tipo \"cantidad por volumen\".",no:"Mira las fórmulas: D = m/V y [H⁺] = cantidad de H⁺/V."},
+ph:{from:"Viene de "+L("soluciones")+" (ácidos y bases disueltos en agua), de "+L("mol")+" (concentración en mol/L) y de "+L("densidad")+" (magnitudes por volumen).",to:"aplic",
+ t:"El pH explica por qué el estómago, la sangre o los alimentos se comportan distinto. Muchas enzimas y medicamentos funcionan bien solo en cierto rango de pH, así que este tema da el fundamento para la química aplicada.",
+ q:"Una enzima funciona mejor en cierto rango de pH. Si el pH del medio cambia mucho, lo más probable es que…",o:["La enzima trabaje peor","La enzima trabaje igual siempre","La enzima se convierta en vitamina"],a:0,ok:"Correcto: cada enzima tiene un rango de pH adecuado.",no:"Recuerda: pocas cosas en química son absolutas; las enzimas son sensibles al pH."},
+aplic:{from:"Viene de "+L("ph")+", "+L("solub")+" y "+L("soluciones")+": aquí se aplican en medicina y alimentos.",to:"quiz",toName:"la autoevaluación",
+ t:"Este tema integra los anteriores: una pregunta aplicada puede pedir identificar la familia de una sustancia, pensar en soluciones y pH, o hacer un cálculo con moles. La autoevaluación mezcla todos los temas para que practiques esas conexiones.",
+ q:"Una pregunta de química aplicada que incluye un cálculo puede necesitar…",o:["Solo memorizar nombres","Varios temas combinados (mol, soluciones, pH, etc.)","Ningún tema anterior"],a:1,ok:"Sí: los temas se combinan; por eso conviene repasarlos como una red.",no:"Piensa en el mapa de conceptos: los temas están conectados."}
+};
+ORDER.forEach(function(id){var b=BR[id],sec=document.getElementById(id);if(!sec)return;var body=$(".body",sec),tn=b.toName||TN[b.to];
+  var f=document.createElement("div");f.className="from";f.innerHTML="⬅ <b>Viene de…</b> "+b.from;var si=$(".secintro",body);body.insertBefore(f,si?si.nextSibling:body.firstChild);
+  var d=document.createElement("details");d.className="bridge";
+  d.innerHTML="<summary>🔗 Conexión con el siguiente tema: "+tn+"</summary><div class='bbody'><p>"+b.t+"</p><div class='mini'><b>"+b.q+"</b><div class='mo'></div><div class='fb' aria-live='polite'></div></div><button data-go='"+b.to+"'>Ir a "+tn+" →</button></div>";
+  var mo=$(".mo",d),fb=$(".fb",d);
+  b.o.forEach(function(t,k){var bt=document.createElement("button");bt.className="opt";bt.textContent=String.fromCharCode(97+k)+") "+t;
+    bt.onclick=function(){var ok=k===b.a;bt.classList.remove("ok","no");bt.classList.add(ok?"ok":"no");fb.className="fb "+(ok?"ok":"no");fb.textContent=(ok?"✔ Correcto. ":"✘ Incorrecto. 💡 ")+(ok?b.ok:b.no)};mo.appendChild(bt)});
+  body.appendChild(d)});
+
+/* route */
+var RT=[["mol","Primero: el mol y la masa molar son la base de todos los cálculos."],["formulas","Después: leer fórmulas y balancear te da las proporciones."],["limite","Luego: con proporciones y moles decides cuál reactivo se acaba."],["soluciones","Cambia de enfoque: qué es una solución y sus componentes."],["solub","Completa soluciones con los factores que aceleran la disolución."],["densidad","Masa y volumen: la densidad de sustancias y soluciones."],["ph","Con soluciones y concentraciones, estudia ácidos, bases y pH."],["aplic","Cierre: aplica todo en medicina y alimentos."],["quiz","Por último: autoevaluación con todos los temas."]];
+
+function syncRoute(){var ol=$("#route");if(!ol||!RT)return;ol.innerHTML="";if(!st.route)st.route={};
+  RT.forEach(function(r,i){var id=r[0],auto=id==="quiz"?(st.quiz||0)>=10:!!done[id],v=st.route[id]===undefined?auto:st.route[id];
+    var li=document.createElement("li"),cb=document.createElement("input");cb.type="checkbox";cb.checked=v;cb.id="rt-"+id;cb.setAttribute("aria-label","Marcar "+(id==="quiz"?"Autoevaluación":TN[id])+" como estudiado");
+    cb.onchange=function(){st.route[id]=cb.checked;save()};
+    var lb=document.createElement("label");lb.setAttribute("for","rt-"+id);lb.innerHTML=(i+1)+". <b>"+(id==="quiz"?"Autoevaluación":TN[id])+"</b> — "+r[1];
+    li.appendChild(cb);li.appendChild(lb);ol.appendChild(li)})}
+
+prog();
+runF();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,1106 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de estudio Física 9 - Cuarto Periodo</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<script>document.documentElement.classList.add("js");try{var __t=localStorage.getItem("fis9p4theme");if(__t==="light"||__t==="dark")document.documentElement.setAttribute("data-theme",__t)}catch(e){}</script>
+<style>
+:root{color-scheme:light;--bg:#fbf7f0;--surface:#fffdf9;--surface-2:#f3ece0;--text:#2b2420;--text-muted:#5e5046;--border:#e3d9c9;--accent:#a3441d;--on-accent:#ffffff;--accent-soft:#f8e7dc;--ok:#1d6644;--ok-bg:#e3f1e6;--bad:#a1281c;--bad-bg:#f9e3de;--warn:#77500a;--warn-bg:#fdf0d5;--info:#1b6158;--info-bg:#ddefea;--code-bg:#f3ece0;--focus:#1f7a6d;--c1:#0b57d0;--c2:#b3400a;--c3:#0b6b2e;--c4:#7a2fc9;--ill-1:#d9825b;--ill-2:#3f9b8e;--ill-3:#d9a441;--ill-4:#8a9a4b;--ill-5:#efe3cf;--fig-bg:#fdfdfb;--scrim:#2b2420a0}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--c1:#8ab4ff;--c2:#ffa66b;--c3:#7ee2a0;--c4:#cfa8ff;--ill-1:#f1a47f;--ill-2:#6cc2b3;--ill-3:#e6bf6a;--ill-4:#b5c46f;--ill-5:#3a342c;--fig-bg:#f4f1ea;--scrim:#000000b0}}
+:root[data-theme="dark"]{color-scheme:dark;--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--c1:#8ab4ff;--c2:#ffa66b;--c3:#7ee2a0;--c4:#cfa8ff;--ill-1:#f1a47f;--ill-2:#6cc2b3;--ill-3:#e6bf6a;--ill-4:#b5c46f;--ill-5:#3a342c;--fig-bg:#f4f1ea;--scrim:#000000b0}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+::selection{background:var(--accent);color:var(--on-accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.katex{color:inherit}
+code{background:var(--code-bg);color:var(--text);border:1px solid var(--border);border-radius:4px;padding:1px 5px;font-size:.95em}
+header{background:var(--surface-2);color:var(--text);border-bottom:4px solid var(--accent);padding:18px 16px}
+header .hrow{display:flex;gap:12px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;padding-bottom:0}
+header h1{margin:0 0 6px;font-size:1.6rem;color:var(--text)}
+.tags span{display:inline-block;background:var(--surface);color:var(--text);border:1px solid var(--text-muted);border-radius:99px;padding:2px 12px;margin:2px 6px 2px 0;font-size:.95rem}
+.wrap{max-width:980px;margin:0 auto;padding:0 16px 60px}
+nav{position:sticky;top:0;z-index:10;background:var(--bg);border-bottom:1px solid var(--border);padding:8px 0}
+nav .chips{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--text);border:1px solid var(--text-muted);background:var(--surface);border-radius:99px;padding:4px 12px;font-size:.9rem}
+nav a:visited{color:var(--text)}
+nav a:hover{background:var(--accent-soft);border-color:var(--accent)}
+nav a.done{border-color:var(--ok);color:var(--ok)}
+nav a.done::before{content:"✔ "}
+nav a.cur,nav a.cur:visited{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.bar{height:10px;background:var(--surface-2);border:1px solid var(--text-muted);border-radius:9px;overflow:hidden;margin:6px 0 2px}
+.bar i{display:block;height:100%;width:0;background:var(--ok);transition:width .3s}
+.small{font-size:.9rem;color:var(--text-muted)}
+.card,details.sec{background:var(--surface);color:var(--text);border:1px solid var(--border);border-radius:12px;margin:14px 0}
+.card{padding:12px 16px}
+details.sec>summary{cursor:pointer;padding:14px 16px;font-weight:700;font-size:1.1rem;list-style:none;color:var(--text);border-radius:12px}
+details.sec>summary:hover,details.bridge>summary:hover{background:var(--surface-2)}
+details.sec>summary::before{content:"▸ ";color:var(--accent)}
+details.sec[open]>summary::before{content:"▾ "}
+details.sec .body{padding:0 16px 16px}
+h3{margin:18px 0 6px;color:var(--accent);font-size:1.05rem}
+.box{background:var(--accent-soft);color:var(--text);border-left:4px solid var(--accent);padding:8px 12px;border-radius:6px;margin:10px 0}
+.box.warn{background:var(--warn-bg);border-left-color:var(--warn)}
+table{border-collapse:collapse;margin:8px 0;width:100%;color:var(--text)}
+th,td{border:1px solid var(--border);padding:5px 8px;text-align:left;font-size:.95rem}
+th{background:var(--accent-soft);color:var(--text)}
+tr:nth-child(even) td{background:var(--surface-2)}
+hr{border:0;border-top:1px solid var(--border)}
+.ex,.prac,.mc,.sim{border:1px dashed var(--text-muted);border-radius:10px;padding:10px 12px;margin:12px 0}
+.ex>b.t,.prac>b.t,.mc>b.t,.sim>b.t{display:block;color:var(--info);margin-bottom:4px}
+.step{margin:6px 0;padding:6px 10px;background:var(--accent-soft);color:var(--text);border-radius:6px;animation:fi .3s}
+@keyframes fi{from{opacity:0;transform:translateY(4px)}to{opacity:1}}
+button{font:inherit;cursor:pointer;border:2px solid var(--accent);background:var(--accent);color:var(--on-accent);border-radius:8px;padding:6px 14px;margin:4px 6px 4px 0}
+button:hover:not(:disabled){box-shadow:inset 0 0 0 2px var(--on-accent)}
+button:disabled{background:var(--surface-2);color:var(--text-muted);border-color:var(--text-muted);cursor:not-allowed}
+button.sec2{background:transparent;color:var(--accent)}
+button.sec2:hover:not(:disabled){background:var(--accent-soft);box-shadow:none}
+input[type=number],input[type=text],select,textarea{font:inherit;padding:5px 8px;border:2px solid var(--text-muted);border-radius:8px;background:var(--surface);color:var(--text)}
+input[type=number],input[type=text]{width:130px}
+input::placeholder,textarea::placeholder{color:var(--text-muted);opacity:1}
+input[type=range],input[type=checkbox]{accent-color:var(--accent)}
+.fb{margin-top:6px;padding:6px 10px;border-radius:6px;border-left:4px solid var(--text-muted);background:var(--surface-2);color:var(--text)}
+.fb.ok{background:var(--ok-bg);color:var(--ok);border-left-color:var(--ok)}
+.fb.ok::before{content:"✔ "}
+.fb.no{background:var(--bad-bg);color:var(--bad);border-left-color:var(--bad)}
+.fb.no::before{content:"✘ "}
+.fb.hint{background:var(--warn-bg);color:var(--warn);border-left-color:var(--warn)}
+.fb.hint::before{content:"💡 "}
+.opt{display:block;width:100%;text-align:left;background:var(--surface);color:var(--text);border:2px solid var(--text-muted);margin:4px 0}
+.opt:hover:not(:disabled){background:var(--accent-soft);box-shadow:none}
+.opt.sel{border-color:var(--accent);background:var(--accent-soft);color:var(--text)}
+.opt.sel::before{content:"● "}
+.opt.ok{border-color:var(--ok);background:var(--ok-bg);color:var(--text)}
+.opt.ok::before{content:"✔ "}
+.opt.no{border-color:var(--bad);background:var(--bad-bg);color:var(--text)}
+.opt.no::before{content:"✘ "}
+.ctl{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:6px 14px;margin:8px 0}
+.ctl label{font-size:.95rem}
+.ctl input[type=range]{width:100%}
+svg{width:100%;height:auto;background:var(--surface);border:1px solid var(--border);border-radius:8px;color:var(--text)}
+svg text{fill:var(--text);font-size:11px}
+.ax{stroke:var(--text-muted);stroke-width:1}.gr{stroke:var(--border);stroke-width:.6}
+.s1{stroke:var(--c1);fill:none;stroke-width:2.2}.s2{stroke:var(--c2);fill:none;stroke-width:2.2}.s3{stroke:var(--c3);fill:none;stroke-width:2;stroke-dasharray:5 3}.s4{stroke:var(--c4);fill:none;stroke-width:2}
+svg .pt{fill:var(--c2)}svg .pt1{fill:var(--c1)}svg .pt3{fill:var(--c3)}svg .dot{fill:var(--text)}
+.g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+.val{font-weight:700;color:var(--info)}
+.map td:first-child{white-space:nowrap;font-weight:700}
+a{color:var(--accent)}
+a:visited{color:var(--info)}
+footer{text-align:center;color:var(--text-muted);padding:20px;font-size:.9rem}
+.sr{position:absolute;left:-9999px}
+/* conexiones entre temas */
+.from{background:var(--surface-2);color:var(--text);border-left:4px solid var(--info);padding:8px 12px;border-radius:6px;margin:0 0 12px;font-size:.95rem}
+details.bridge{background:var(--info-bg);color:var(--text);border:1px solid var(--info);border-radius:12px;margin:16px 0}
+details.bridge>summary{cursor:pointer;padding:12px 16px;font-weight:700;color:var(--info);border-radius:12px}
+details.bridge[open]>.bc{animation:fi .3s}
+details.bridge .bc{padding:0 16px 14px}
+details.bridge .step{background:var(--surface);border:1px solid var(--info)}
+.route{padding-left:22px}
+.route li{margin:6px 0}
+.cm-svg{display:none}
+.cm-list{display:block}
+@media (min-width:760px){.cm-svg{display:block}.cm-list{display:none}}
+#cmap .cm-node{cursor:pointer;outline:none}
+#cmap .cm-node rect{fill:var(--surface);stroke:var(--accent);stroke-width:2}
+#cmap .cm-node:hover rect,#cmap .cm-node.sel rect{fill:var(--accent-soft)}
+#cmap .cm-node:focus-visible rect{stroke:var(--focus);stroke-width:4}
+#cmap .cm-node text{fill:var(--text);font-size:14px;font-weight:600}
+#cmap .cm-edge{stroke:var(--text-muted);stroke-width:1.6;fill:none}
+#cmap .cm-edge.hl{stroke:var(--accent);stroke-width:3}
+#cmap .cm-dot{fill:var(--surface);stroke:var(--text-muted);stroke-width:2;cursor:pointer;outline:none}
+#cmap .cm-dot:hover,#cmap .cm-dot.hl{fill:var(--accent);stroke:var(--accent)}
+#cmap .cm-dot:focus-visible{stroke:var(--focus);stroke-width:4}
+#cmap .cm-lbl{fill:var(--text);font-size:14px;font-weight:600;paint-order:stroke;stroke:var(--surface);stroke-width:5px;stroke-linejoin:round}
+#cmap .mk{fill:var(--text-muted)}
+#cmap .cm-ico{color:var(--accent);pointer-events:none}
+.cm-list ul{margin:2px 0 10px;padding-left:20px}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* ilustraciones y encabezados llamativos */
+svg.defs{position:absolute;width:0;height:0;border:0;background:none;overflow:hidden}
+svg.ico{width:1.35em;height:1.35em;background:none;border:0;border-radius:0;vertical-align:-.3em;margin-right:6px;color:var(--accent);flex:none}
+nav a .ico{width:1.1em;height:1.1em;margin-right:4px;color:currentColor}
+details.sec>summary .ico{width:1.5em;height:1.5em}
+.banner{display:flex;gap:14px;align-items:center;background:var(--accent-soft);color:var(--text);border-left:6px solid var(--accent);border-radius:10px;padding:12px 16px;margin:4px 0 14px}
+.banner svg.ico{width:44px;height:44px;margin:0;color:var(--accent)}
+.bn-k{font-size:.85rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
+.bn-h{font-size:1.1rem;font-weight:700;color:var(--text);line-height:1.35}
+.intro{display:grid;grid-template-columns:minmax(0,1fr);gap:12px;margin:0 0 14px}
+@media (min-width:720px){.intro{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);align-items:start}}
+figure.hero-fig{margin:0}
+figure.hero-fig figcaption{font-size:.85rem;color:var(--text-muted);text-align:center;margin-top:4px}
+svg.hero{display:block;width:100%;max-width:420px;height:auto;margin:0 auto}
+svg.hero text{fill:var(--text);font-size:11px;font-weight:600}
+.hero .ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.hero .k{stroke:var(--text)}.hero .km{stroke:var(--text-muted)}
+.hero .e1{stroke:var(--ill-1)}.hero .e2{stroke:var(--ill-2)}.hero .e3{stroke:var(--ill-3)}.hero .e4{stroke:var(--ill-4)}
+.hero .f1{fill:var(--ill-1)}.hero .f2{fill:var(--ill-2)}.hero .f3{fill:var(--ill-3)}.hero .f4{fill:var(--ill-4)}.hero .f5{fill:var(--ill-5)}
+.hero .fa{fill:url(#gA)}.hero .fb{fill:url(#gB)}.hero .fc{fill:url(#gC)}
+.hero .thin{stroke-width:1.6}.hero .dash{stroke-dasharray:6 5}
+.hero .mk1{fill:var(--ill-1)}.hero .mk2{fill:var(--ill-2)}.hero .mk3{fill:var(--ill-3)}.hero .mkt{fill:var(--text)}
+svg.defs .sa{stop-color:var(--ill-1)}svg.defs .sb{stop-color:var(--ill-3)}svg.defs .sc{stop-color:var(--ill-2)}svg.defs .sd{stop-color:var(--ill-4)}
+svg.defs .mk1{fill:var(--ill-1)}svg.defs .mk2{fill:var(--ill-2)}svg.defs .mk3{fill:var(--ill-3)}svg.defs .mkt{fill:var(--text)}
+.t10,.dato{border-radius:10px;padding:10px 14px;margin:0 0 10px;transition:transform .2s,box-shadow .2s}
+.t10{background:var(--surface-2);color:var(--text);border:1px solid var(--border);border-left:6px solid var(--accent)}
+.t10>b,.dato>b{display:block;font-size:.85rem;letter-spacing:.04em;text-transform:uppercase}
+.t10>b{color:var(--accent)}
+.t10 ul{margin:4px 0 0;padding-left:20px}.t10 li{margin:3px 0}
+.dato{background:var(--info-bg);color:var(--text);border:1px solid var(--info);border-left:6px solid var(--info);margin-bottom:0}
+.dato>b{color:var(--info)}
+.dato p{margin:4px 0 0}
+.t10:hover,.dato:hover{transform:translateY(-2px);box-shadow:0 8px 14px -10px currentColor}
+.js .reveal{opacity:0;transform:translateY(12px);transition:opacity .6s ease,transform .6s ease}
+.js .reveal.in{opacity:1;transform:none}
+.hero .bub{animation:rise 3.2s ease-in infinite}
+.hero .bub.d2{animation-delay:1s}.hero .bub.d3{animation-delay:2s}
+@keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:1}100%{transform:translateY(-38px);opacity:0}}
+.hero .mv{animation:travel 4.5s ease-in-out infinite}
+.hero .mv.acc{animation-timing-function:ease-in}
+@keyframes travel{from{offset-distance:0%}to{offset-distance:100%}}
+@supports not (offset-path:path('M0 0')){.hero .mv{display:none}}
+.hero .car{animation:drive 5s ease-in-out infinite}
+@keyframes drive{0%{transform:translateX(0)}100%{transform:translateX(150px)}}
+@media (prefers-reduced-motion:reduce){.js .reveal{opacity:1;transform:none;transition:none}.hero .bub,.hero .mv,.hero .car,.t10:hover,.dato:hover{animation:none;transform:none}.hero .bub{opacity:1}}
+.exam-fig{background:var(--surface);border:1px solid var(--text-muted);border-radius:10px;padding:10px;margin:12px 0}
+.exam-fig img{max-width:100%;height:auto;display:block;margin:auto;border-radius:8px;background:var(--fig-bg);cursor:zoom-in}
+.exam-fig figcaption{margin-top:8px;font-size:.92rem;color:var(--text)}
+.exam-fig figcaption span{display:block;color:var(--text-muted);margin-top:2px}
+#lb{border:2px solid var(--text-muted);border-radius:12px;background:var(--surface);color:var(--text);padding:10px;max-width:96vw;max-height:94vh}
+#lb::backdrop{background:var(--scrim)}
+#lb img{max-width:100%;max-height:78vh;display:block;margin:8px auto;background:var(--fig-bg);border-radius:8px}
+</style>
+</head>
+<body>
+<svg class="defs" aria-hidden="true" focusable="false"><defs><linearGradient id="gA" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="sa"/><stop offset="1" class="sb"/></linearGradient><linearGradient id="gB" x1="0" y1="0" x2="0" y2="1"><stop offset="0" class="sc"/><stop offset="1" class="sd"/></linearGradient><linearGradient id="gC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" class="sb"/><stop offset="1" class="sa"/></linearGradient><marker id="mk1" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk1"/></marker><marker id="mk2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk2"/></marker><marker id="mk3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mk3"/></marker><marker id="mkt" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10z" class="mkt"/></marker><symbol id="ico-s1" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M7.5 15h9"/></symbol><symbol id="ico-s2" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="8" rx="1"/><path d="M7 8v3M11 8v4M15 8v3M19 8v4"/></symbol><symbol id="ico-s3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M7 16l4-4 3 3 5-6"/></symbol><symbol id="ico-s4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="18" r="2"/><circle cx="18" cy="6" r="2"/><path d="M8 18c7 0 0-9 6-9h2"/></symbol><symbol id="ico-s5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 16v-3l2-4h14l2 4v3z"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/></symbol><symbol id="ico-s6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v16h16"/><path d="M4 17l12-9v9z"/></symbol><symbol id="ico-s7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 17a8 8 0 1 1 16 0"/><path d="M12 17l4-5"/><circle cx="12" cy="17" r="1"/></symbol><symbol id="ico-s8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 10v9M8 16l4 4 4-4"/></symbol><symbol id="ico-s9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20L18 7"/><path d="M18 7h-5M18 7v5"/><path d="M4 20h12" stroke-dasharray="2 2"/></symbol><symbol id="ico-s10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h6v14"/><path d="M9 6c7 0 10 4 12 13"/><circle cx="9" cy="6" r="1"/></symbol><symbol id="ico-s11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 19C6 4 18 4 21 19"/><circle cx="12" cy="7.5" r="1.3"/><path d="M3 19h18"/></symbol></defs></svg>
+<header><div class="wrap hrow"><div>
+<h1>Guía de estudio de Física</h1>
+<div class="tags"><span>Asignatura: Física</span><span>Grado 9</span><span>Cuarto Periodo</span></div>
+<div class="small">Para prepararte: conceptos, fórmulas, ejemplos paso a paso, simuladores y práctica. No incluye las respuestas de la evaluación.</div>
+</div><button id="themebtn" type="button" aria-label="Cambiar entre modo claro y oscuro">Cambiar tema</button></div></header>
+<nav><div class="wrap"><div class="chips" id="chips"></div>
+<div class="bar"><i id="pbar"></i></div><div class="small" id="ptxt"></div></div></nav>
+<main class="wrap">
+<div class="card">
+<b>Cómo usar esta guía</b>
+<ol>
+<li>Abre una sección, lee el concepto y las fórmulas.</li>
+<li>Pulsa <b>Siguiente paso</b> en cada ejemplo resuelto (los ejemplos son distintos a los de tu evaluación).</li>
+<li>Juega con los simuladores moviendo los controles.</li>
+<li>Practica con números que cambian cada vez y marca la sección como estudiada.</li>
+<li>Al final, haz el autoexamen con preguntas nuevas.</li>
+</ol>
+<details><summary><b>Mapa: pregunta del examen → sección de la guía</b></summary>
+<table class="map">
+<tr><th>Pregunta(s)</th><th>Tema</th><th>Sección</th></tr>
+<tr><td>1 y 3</td><td>Método científico, hipótesis y variables</td><td><a href="#s1" data-go="s1">1</a></td></tr>
+<tr><td>2</td><td>Conversión de unidades y notación científica</td><td><a href="#s2" data-go="s2">2</a></td></tr>
+<tr><td>4 y 5</td><td>Relación entre magnitudes y gráficas de datos</td><td><a href="#s3" data-go="s3">3</a></td></tr>
+<tr><td>6 y 7</td><td>Distancia, desplazamiento, rapidez y velocidad media</td><td><a href="#s4" data-go="s4">4</a></td></tr>
+<tr><td>8 y 9</td><td>MRU y gráfica posición-tiempo</td><td><a href="#s5" data-go="s5">5</a></td></tr>
+<tr><td>10 y 14</td><td>Gráficas velocidad-tiempo y aceleración-tiempo (áreas)</td><td><a href="#s6" data-go="s6">6</a></td></tr>
+<tr><td>11, 12, 13 (y 14)</td><td>MRUV: aceleración, tiempo de frenado, posición</td><td><a href="#s7" data-go="s7">7</a></td></tr>
+<tr><td>15</td><td>Caída libre</td><td><a href="#s8" data-go="s8">8</a></td></tr>
+<tr><td>16 y 17</td><td>Vectores: suma y descomposición</td><td><a href="#s9" data-go="s9">9</a></td></tr>
+<tr><td>18</td><td>Lanzamiento horizontal</td><td><a href="#s10" data-go="s10">10</a></td></tr>
+<tr><td>19 y 20</td><td>Movimiento parabólico</td><td><a href="#s11" data-go="s11">11</a></td></tr>
+</table></details>
+</div>
+
+<div class="card" id="cmapcard">
+<b>🗺 Mapa de conceptos: cómo se conectan los temas</b>
+<p class="small">Cada recuadro es un tema y cada flecha dice cómo uno ayuda a entender el siguiente. Pulsa el punto de una flecha para leer la relación; pulsa un tema para ir a su sección.</p>
+<div id="cmap"></div>
+</div>
+<div class="card" id="ruta">
+<b>🧭 Ruta de estudio sugerida</b>
+<p class="small">Sigue este orden: cada tema usa lo del anterior. Las casillas se sincronizan con tu progreso.</p>
+<div class="box" id="nextpath" role="status"></div>
+<ol class="route">
+<li><label><input type="checkbox" data-done="s1"> <a href="#s1" data-go="s1">1 Hipótesis</a></label> <span class="small">Primero: plantear preguntas, variables e hipótesis; todo experimento empieza ahí.</span></li>
+<li><label><input type="checkbox" data-done="s2"> <a href="#s2" data-go="s2">2 Unidades</a></label> <span class="small">Lo que mides necesita unidades; sin ellas no puedes comparar.</span></li>
+<li><label><input type="checkbox" data-done="s3"> <a href="#s3" data-go="s3">3 Relaciones</a></label> <span class="small">Con datos en unidades coherentes, ves cómo se relacionan dos magnitudes.</span></li>
+<li><label><input type="checkbox" data-done="s4"> <a href="#s4" data-go="s4">4 Desplazamiento</a></label> <span class="small">Aplicas esas ideas a distancia, tiempo y velocidad.</span></li>
+<li><label><input type="checkbox" data-done="s5"> <a href="#s5" data-go="s5">5 MRU</a></label> <span class="small">Velocidad constante: el movimiento más sencillo y su gráfica x–t.</span></li>
+<li><label><input type="checkbox" data-done="s6"> <a href="#s6" data-go="s6">6 Gráficas v-t</a></label> <span class="small">Qué pasa cuando la velocidad cambia: pendiente y áreas.</span></li>
+<li><label><input type="checkbox" data-done="s7"> <a href="#s7" data-go="s7">7 MRUV</a></label> <span class="small">Aceleración constante: las fórmulas que salen de esas gráficas.</span></li>
+<li><label><input type="checkbox" data-done="s8"> <a href="#s8" data-go="s8">8 Caída libre</a></label> <span class="small">Un MRUV con a = g; prepara el eje vertical de los lanzamientos.</span></li>
+<li><label><input type="checkbox" data-done="s9"> <a href="#s9" data-go="s9">9 Vectores</a></label> <span class="small">Componentes x e y: la herramienta para movimientos en dos dimensiones.</span></li>
+<li><label><input type="checkbox" data-done="s10"> <a href="#s10" data-go="s10">10 Horizontal</a></label> <span class="small">Une MRU (eje x) y caída libre (eje y).</span></li>
+<li><label><input type="checkbox" data-done="s11"> <a href="#s11" data-go="s11">11 Parabólico</a></label> <span class="small">Reúne todo lo anterior; después, haz el autoexamen.</span></li>
+</ol>
+</div>
+
+<!-- ========== S1 ========== -->
+<details class="sec" id="s1"><summary><svg class="ico" aria-hidden="true"><use href="#ico-s1"/></svg>1. Método científico, hipótesis y variables</summary><div class="body">
+<div class="banner"><svg class="ico" aria-hidden="true"><use href="#ico-s1"/></svg><div><div class="bn-k">Tema 1 · Hipótesis</div><div class="bn-h">¿Sabías que un buen experimento cambia una sola cosa a la vez?</div></div></div>
+<div class="intro"><figure class="hero-fig reveal"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Matraz de laboratorio con burbujas y una libreta de hipótesis con casillas de verificación"><title>Matraz de laboratorio con burbujas y una libreta de hipótesis con casillas de verificación</title><path class="ln k" d="M95 38h30M100 38v37l-30 55q-6 14 10 14h60q16 0 10-14l-30-55V38"/><path class="fa" d="M83 112h54l11 20q4 10-8 10H80q-12 0-8-10z"/><circle class="bub f5" cx="102" cy="128" r="4"/><circle class="bub d2 f5" cx="116" cy="130" r="3"/><circle class="bub d3 f5" cx="127" cy="127" r="5"/><rect class="f5" x="190" y="36" width="96" height="116" rx="8"/><rect class="ln k thin" x="190" y="36" width="96" height="116" rx="8"/><rect class="f2" x="220" y="28" width="36" height="14" rx="5"/><text x="238" y="64" text-anchor="middle">Hipótesis</text><circle class="f1" cx="206" cy="86" r="5"/><path class="ln km thin" d="M218 86h56"/><circle class="f2" cx="206" cy="108" r="5"/><path class="ln km thin" d="M218 108h44"/><circle class="f3" cx="206" cy="130" r="5"/><path class="ln km thin" d="M218 130h52"/></svg><figcaption>Un matraz y una libreta: preguntar, probar y anotar.</figcaption></figure><div><div class="t10"><b>En 10 segundos</b><ul><li>Sigue el camino: pregunta, hipótesis, experimento y conclusión.</li><li>Independiente: la que tú cambias. Dependiente: la que mides. Controladas: las que mantienes iguales.</li><li>Una hipótesis se puede comprobar y suele decir «Si cambio…, entonces… cambiará…».</li></ul></div><div class="dato"><b>Dato curioso</b><p>Los científicos repiten sus mediciones varias veces para que un resultado raro no los engañe.</p></div></div></div>
+<h3>Concepto</h3>
+<p>Un experimento responde una <b>pregunta de investigación</b>. La <b>hipótesis</b> es una respuesta posible que se puede comprobar, y suele escribirse así: <i>"Si cambio ___, entonces ___ cambiará de esta manera"</i>.</p>
+<table><tr><th>Variable</th><th>¿Qué es?</th></tr>
+<tr><td>Independiente</td><td>Lo que el investigador <b>cambia a propósito</b>.</td></tr>
+<tr><td>Dependiente</td><td>Lo que se <b>mide</b>; es el resultado que puede cambiar.</td></tr>
+<tr><td>Controladas</td><td>Lo que se <b>mantiene igual</b> para que la comparación sea justa.</td></tr></table>
+<div class="box"><b>Truco:</b> mira la pregunta de investigación: "¿cómo influye <u>A</u> en <u>B</u>?" A es la independiente y B la dependiente. Una buena hipótesis menciona <b>las dos</b> y deja todo lo demás igual. Si una hipótesis cambia una variable distinta a la de la pregunta, no responde directamente.</div>
+<div class="ex" data-title="Ejemplo resuelto: plantas y luz">
+<div class="problem">Un grupo quiere saber cómo influye la <b>cantidad de horas de luz</b> en la <b>altura</b> que alcanzan unas plantas de frijol. Usan la misma semilla, el mismo suelo y la misma cantidad de agua.</div>
+<div class="step">Paso 1. Variable independiente: lo que cambian a propósito, las horas de luz.</div>
+<div class="step">Paso 2. Variable dependiente: lo que miden, la altura de la planta.</div>
+<div class="step">Paso 3. Controladas: tipo de semilla, suelo y agua (se dejan iguales).</div>
+<div class="step">Paso 4. Hipótesis que responde la pregunta (une independiente y dependiente): "Si aumentan las horas de luz, las plantas alcanzarán mayor altura".</div>
+<div class="step">Paso 5. Revisa: una hipótesis sobre el tipo de suelo no respondería la pregunta, porque el suelo estaba controlado.</div>
+</div>
+<div class="mc" data-sec="s1" data-n="3"></div>
+<label class="done"><input type="checkbox" data-done="s1"> Ya estudié esta sección</label>
+</div></details>
+
+<!-- ========== S2 ========== -->
+<details class="sec" id="s2"><summary><svg class="ico" aria-hidden="true"><use href="#ico-s2"/></svg>2. Conversión de unidades y notación científica</summary><div class="body">
+<div class="banner"><svg class="ico" aria-hidden="true"><use href="#ico-s2"/></svg><div><div class="bn-k">Tema 2 · Unidades</div><div class="bn-h">¿Sabías que una confusión de unidades puede costar una nave espacial?</div></div></div>
+<div class="intro"><figure class="hero-fig reveal"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Escalera de unidades de longitud, de kilómetro a milímetro, sobre una regla"><title>Escalera de unidades de longitud, de kilómetro a milímetro, sobre una regla</title><rect class="fa" x="24" y="50" width="64" height="96" rx="6"/><text x="56" y="44" text-anchor="middle">km</text><rect class="fb" x="96" y="72" width="64" height="74" rx="6"/><text x="128" y="66" text-anchor="middle">m</text><rect class="fc" x="168" y="94" width="64" height="52" rx="6"/><text x="200" y="88" text-anchor="middle">cm</text><rect class="fa" x="240" y="116" width="64" height="30" rx="6"/><text x="272" y="110" text-anchor="middle">mm</text><path class="ln k thin" d="M20 150h284"/><path class="ln k thin" d="M20.0 150v8"/><path class="ln k thin" d="M34.2 150v5"/><path class="ln k thin" d="M48.4 150v5"/><path class="ln k thin" d="M62.6 150v5"/><path class="ln k thin" d="M76.8 150v5"/><path class="ln k thin" d="M91.0 150v8"/><path class="ln k thin" d="M105.2 150v5"/><path class="ln k thin" d="M119.4 150v5"/><path class="ln k thin" d="M133.6 150v5"/><path class="ln k thin" d="M147.8 150v5"/><path class="ln k thin" d="M162.0 150v8"/><path class="ln k thin" d="M176.2 150v5"/><path class="ln k thin" d="M190.4 150v5"/><path class="ln k thin" d="M204.6 150v5"/><path class="ln k thin" d="M218.8 150v5"/><path class="ln k thin" d="M233.0 150v8"/><path class="ln k thin" d="M247.2 150v5"/><path class="ln k thin" d="M261.4 150v5"/><path class="ln k thin" d="M275.6 150v5"/><path class="ln k thin" d="M289.8 150v5"/><path class="ln k thin" d="M304.0 150v8"/><path class="ln e1 thin" d="M60 26h200" marker-end="url(#mk1)"/><text x="160" y="20" text-anchor="middle">potencias de 10</text></svg><figcaption>Peldaños de unidades: cada paso se mide en potencias de 10.</figcaption></figure><div><div class="t10"><b>En 10 segundos</b><ul><li>Para convertir, multiplica por factores que valen 1 (por ejemplo, 1000 m por cada 1 km).</li><li>Notación científica: un número entre 1 y 10 multiplicado por una potencia de 10.</li><li>Si pasas a una unidad más pequeña, el número crece; si pasas a una más grande, disminuye.</li></ul></div><div class="dato"><b>Dato curioso</b><p>En 1999 la sonda Mars Climate Orbiter se perdió en parte porque dos equipos usaron unidades distintas (libras-fuerza y newtons).</p></div></div></div>
+<h3>Concepto</h3>
+<p>La <b>notación científica</b> escribe un número como $a\times10^{n}$ con $1\le a<10$ y $n$ entero. Si el número es grande, $n$ es positivo; si es menor que 1, $n$ es negativo.</p>
+<table><tr><th>Prefijo</th><th>Equivalencia</th></tr>
+<tr><td>1 km</td><td>$10^{3}$ m</td></tr><tr><td>1 cm</td><td>$10^{-2}$ m</td></tr><tr><td>1 mm</td><td>$10^{-3}$ m</td></tr>
+<tr><td>1 kg</td><td>$10^{3}$ g</td></tr><tr><td>1 h</td><td>3600 s</td></tr><tr><td>1 min</td><td>60 s</td></tr></table>
+<div class="box"><b>Regla del punto decimal:</b> si lo corres $n$ lugares a la <b>izquierda</b>, el exponente es $+n$; a la <b>derecha</b>, es $-n$.<br>
+<b>Velocidades:</b> $\text{km/h}\to\text{m/s}$: divide entre 3,6. $\text{m/s}\to\text{km/h}$: multiplica por 3,6.</div>
+<div class="ex" data-title="Ejemplo resuelto: de hm y notación científica">
+<div class="problem">Una pista mide 6,4 hm. (1 hm = 100 m). Exprésala en metros con notación científica.</div>
+<div class="step">Paso 1. Convierte: $6{,}4\times100=640$ m.</div>
+<div class="step">Paso 2. Lleva el punto decimal para que quede entre 1 y 10: 640 → 6,40 (dos lugares a la izquierda).</div>
+<div class="step">Paso 3. Entonces el exponente es +2: $6{,}4\times10^{2}$ m.</div>
+<div class="step">Otro caso: 0,00072 m. El punto se corre 4 lugares a la derecha: $7{,}2\times10^{-4}$ m.</div>
+</div>
+<div class="prac" data-gen="sci_conv"></div>
+<div class="prac" data-gen="sci_exp"></div>
+<div class="mc" data-sec="s2" data-n="2"></div>
+<label class="done"><input type="checkbox" data-done="s2"> Ya estudié esta sección</label>
+</div></details>
+
+<!-- ========== S3 ========== -->
+<details class="sec" id="s3"><summary><svg class="ico" aria-hidden="true"><use href="#ico-s3"/></svg>3. Relación entre magnitudes y gráficas de datos</summary><div class="body">
+<div class="banner"><svg class="ico" aria-hidden="true"><use href="#ico-s3"/></svg><div><div class="bn-k">Tema 3 · Relaciones</div><div class="bn-h">¿Sabías que una gráfica deja ver patrones que una tabla esconde?</div></div></div>
+<div class="intro"><figure class="hero-fig reveal"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Gráfica con puntos de datos alineados sobre una recta que parte del origen"><title>Gráfica con puntos de datos alineados sobre una recta que parte del origen</title><path class="ln km thin" d="M40 150h262M40 150V22"/><path class="ln e1" d="M40 150L270 45"/><circle class="f3" cx="80" cy="128" r="4.5"/><circle class="f3" cx="118" cy="106" r="4.5"/><circle class="f3" cx="160" cy="96" r="4.5"/><circle class="f3" cx="200" cy="72" r="4.5"/><circle class="f3" cx="250" cy="58" r="4.5"/><text x="296" y="166" text-anchor="end">x</text><text x="30" y="30" text-anchor="end">y</text><text x="60" y="40">y/x = constante</text><circle class="mv f2" r="6" cx="0" cy="0" style="offset-path:path('M40 150L270 45')"/></svg><figcaption>Puntos de datos que siguen una recta que sale del origen.</figcaption></figure><div><div class="t10"><b>En 10 segundos</b><ul><li>Directa: y/x es constante y la gráfica es una recta desde el origen.</li><li>Calcula y/x, x·y y x²·y: el que siempre da lo mismo revela la relación.</li><li>La curva o recta debe pasar por todos los puntos de la tabla.</li></ul></div><div class="dato"><b>Dato curioso</b><p>Johannes Kepler descubrió que, en los planetas, el cuadrado del periodo orbital es proporcional al cubo de la distancia media al Sol (T² ∝ r³).</p></div></div></div>
+<h3>Tipos de relación</h3>
+<table><tr><th>Relación</th><th>Cómo reconocerla en una tabla</th><th>Forma de la gráfica</th></tr>
+<tr><td>Directa (lineal que pasa por el origen)</td><td>$y/x$ es constante</td><td>Recta creciente desde el origen</td></tr>
+<tr><td>Lineal con cambio constante</td><td>$y$ cambia lo mismo cuando $x$ cambia lo mismo</td><td>Recta (puede ser decreciente)</td></tr>
+<tr><td>Inversa</td><td>$x\cdot y$ es constante</td><td>Curva que baja (hipérbola)</td></tr>
+<tr><td>Inversa al cuadrado</td><td>$x^{2}\cdot y$ es constante</td><td>Curva que baja más rápido</td></tr></table>
+<div class="box"><b>Método:</b> calcula $y/x$, $x\cdot y$ y $x^{2}y$ para cada fila. El que da siempre el mismo valor revela la relación. Al graficar, usa los puntos de la tabla: la curva debe pasar por <b>todos</b>, no solo por algunos.</div>
+<div class="ex" data-title="Ejemplo resuelto: fuerza y alargamiento">
+<div class="problem">Un resorte se alarga 3 cm con una fuerza de 2 N, 6 cm con 4 N y 9 cm con 6 N. ¿Qué relación hay entre la fuerza y el alargamiento?</div>
+<div class="step">Paso 1. Prueba directa: $3/2=1{,}5$; $6/4=1{,}5$; $9/6=1{,}5$. Siempre el mismo valor.</div>
+<div class="step">Paso 2. Comprobación con las otras pruebas: $2\cdot3=6$ pero $4\cdot6=24$, así que $x\cdot y$ no es constante.</div>
+<div class="step">Paso 3. Conclusión: relación directa, $y=1{,}5\,x$. La gráfica es una recta que sale del origen.</div>
+</div>
+<div class="sim" data-sim="rel"></div>
+<div class="prac" data-gen="inv"></div>
+<div class="prac" data-gen="inv2"></div>
+<div class="mc" data-sec="s3" data-n="3"></div>
+<label class="done"><input type="checkbox" data-done="s3"> Ya estudié esta sección</label>
+<h3>Imágenes de tu evaluación</h3>
+<figure class="exam-fig"><img src="img/pregunta-5.png" alt="Cuatro gráficas pequeñas rotuladas A, B, C y D, todas con distancia en metros en el eje horizontal e intensidad en el eje vertical; unas muestran líneas rectas y otras líneas curvas." loading="lazy" width="1200" height="766"><figcaption>📄 Imagen de tu evaluación — pregunta 5. <span>Observa: en cada gráfica, qué magnitud va en cada eje y con qué unidades; luego ubica los puntos de la tabla del enunciado y mira si la línea que los une es recta o curva y si sube o baja.</span></figcaption></figure>
+</div></details>
+
+<!-- ========== S4 ========== -->
+<details class="sec" id="s4"><summary><svg class="ico" aria-hidden="true"><use href="#ico-s4"/></svg>4. Distancia, desplazamiento, rapidez media y velocidad media</summary><div class="body">
+<div class="banner"><svg class="ico" aria-hidden="true"><use href="#ico-s4"/></svg><div><div class="bn-k">Tema 4 · Distancia y desplazamiento</div><div class="bn-h">¿Sabías que ir de A a B por un camino largo o por uno recto no es lo mismo en física?</div></div></div>
+<div class="intro"><figure class="hero-fig reveal"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Un recorrido curvo punteado entre A y B comparado con la flecha recta de A a B"><title>Un recorrido curvo punteado entre A y B comparado con la flecha recta de A a B</title><path class="ln e2 dash" d="M40 140C70 30 130 175 175 100S250 70 268 52"/><path class="ln e1" d="M40 140L268 52" marker-end="url(#mk1)"/><circle class="f4" cx="40" cy="140" r="7"/><circle class="f3" cx="268" cy="52" r="7"/><text x="28" y="160">A</text><text x="276" y="46">B</text><path class="ln e2 dash thin" d="M12 16h24"/><text x="42" y="20">distancia</text><path class="ln e1 thin" d="M12 34h24"/><text x="42" y="38">desplazamiento</text><circle class="mv f5 k" r="5" cx="0" cy="0" style="offset-path:path('M40 140C70 30 130 175 175 100S250 70 268 52')"/></svg><figcaption>El camino recorrido (punteado) y el desplazamiento (flecha recta).</figcaption></figure><div><div class="t10"><b>En 10 segundos</b><ul><li>Distancia: lo que recorres en total (escalar). Desplazamiento: flecha recta de inicio a fin (vector).</li><li>Rapidez media = distancia ÷ tiempo.</li><li>Velocidad media = desplazamiento ÷ tiempo.</li></ul></div><div class="dato"><b>Dato curioso</b><p>En barcos y aviones la rapidez se mide en nudos: 1 nudo es 1 milla náutica por hora, unos 1,852 km/h.</p></div></div></div>
+<h3>Conceptos</h3>
+<ul>
+<li><b>Distancia recorrida</b>: longitud total del camino. Es escalar (solo número y unidad); nunca disminuye.</li>
+<li><b>Desplazamiento</b>: vector que va del punto inicial al final, en línea recta. Tiene magnitud y dirección. Si vuelves al inicio, es cero.</li>
+</ul>
+$$\text{rapidez media}=\frac{\text{distancia total}}{\text{tiempo}}\qquad \vec v_{\text{media}}=\frac{\Delta\vec x}{\Delta t}=\frac{\text{desplazamiento}}{\text{tiempo}}$$
+<div class="box">Unidades: m, km (distancia); s, h (tiempo); m/s, km/h (rapidez y velocidad). Cuando los tramos son perpendiculares, la magnitud del desplazamiento sale con Pitágoras: $d=\sqrt{a^{2}+b^{2}}$. Cuando van en sentidos opuestos sobre la misma recta, se restan.</div>
+<div class="ex" data-title="Ejemplo resuelto: camino en L">
+<div class="problem">Una niña camina 90 m hacia el sur y luego 120 m hacia el oeste en 70 s.</div>
+<div class="step">Paso 1. Distancia: $90+120=210$ m.</div>
+<div class="step">Paso 2. Desplazamiento (los tramos son perpendiculares): $\sqrt{90^{2}+120^{2}}=\sqrt{22500}=150$ m, dirección suroeste.</div>
+<div class="step">Paso 3. Rapidez media: $210/70=3$ m/s.</div>
+<div class="step">Paso 4. Magnitud de la velocidad media: $150/70\approx2{,}14$ m/s. Son distintas porque distancia y desplazamiento lo son.</div>
+</div>
+<div class="ex" data-title="Ejemplo resuelto: vuelta completa">
+<div class="problem">Un ciclista da 3 vueltas a un velódromo de 250 m en 100 s y termina donde empezó.</div>
+<div class="step">Paso 1. Distancia: $3\times250=750$ m.</div>
+<div class="step">Paso 2. Rapidez media: $750/100=7{,}5$ m/s.</div>
+<div class="step">Paso 3. Desplazamiento: 0 m (posición final = inicial). Por eso su velocidad media es 0 m/s aunque su rapidez media no lo sea.</div>
+</div>
+<div class="prac" data-gen="disp"></div>
+<div class="prac" data-gen="rapidez"></div>
+<div class="mc" data-sec="s4" data-n="3"></div>
+<label class="done"><input type="checkbox" data-done="s4"> Ya estudié esta sección</label>
+<h3>Imágenes de tu evaluación</h3>
+<figure class="exam-fig"><img src="img/pregunta-6.png" alt="Esquema con tres flechas azules que forman un recorrido en el plano, con cuatro puntos rotulados con palabras, medidas escritas junto a cada flecha y una pequeña brújula en una esquina." loading="lazy" width="1200" height="581"><figcaption>📄 Imagen de tu evaluación — pregunta 6. <span>Observa: la brújula (N y E), la longitud y dirección de cada flecha, y dónde están los puntos de inicio y final; distingue el camino recorrido de la línea recta que uniría esos dos puntos.</span></figcaption></figure>
+</div></details>
+
+<!-- ========== S5 ========== -->
+<details class="sec" id="s5"><summary><svg class="ico" aria-hidden="true"><use href="#ico-s5"/></svg>5. MRU y gráfica posición-tiempo</summary><div class="body">
+<div class="banner"><svg class="ico" aria-hidden="true"><use href="#ico-s5"/></svg><div><div class="bn-k">Tema 5 · MRU</div><div class="bn-h">¿Sabías que la luz es el ejemplo más famoso de rapidez constante?</div></div></div>
+<div class="intro"><figure class="hero-fig reveal"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Un carro que avanza por una carretera recta con marcas de posición y una gráfica posición-tiempo en línea recta"><title>Un carro que avanza por una carretera recta con marcas de posición y una gráfica posición-tiempo en línea recta</title><path class="ln km thin" d="M200 20v66h100"/><path class="ln e1" d="M204 82L296 28"/><text x="250" y="100" text-anchor="middle">x-t</text><path class="ln k thin dash" d="M10 150h300"/><path class="ln km thin" d="M30 150v-8"/><path class="ln km thin" d="M90 150v-8"/><path class="ln km thin" d="M150 150v-8"/><path class="ln km thin" d="M210 150v-8"/><path class="ln km thin" d="M270 150v-8"/><g class="car"><path class="fa" d="M14 132l8-14h30l10 14z"/><rect class="f2" x="8" y="130" width="64" height="14" rx="5"/><circle class="f5 k ln thin" cx="24" cy="146" r="6"/><circle class="f5 k ln thin" cx="56" cy="146" r="6"/><path class="ln e3 thin" d="M-18 126h18M-26 134h26M-18 142h18"/></g></svg><figcaption>Un carro avanza parejo y su gráfica x-t es una recta.</figcaption></figure><div><div class="t10"><b>En 10 segundos</b><ul><li>MRU: línea recta, velocidad constante y aceleración cero.</li><li>Posición: x = x₀ + v·t.</li><li>En la gráfica x-t es una recta y su pendiente es la velocidad.</li></ul></div><div class="dato"><b>Dato curioso</b><p>En el vacío la luz viaja a una rapidez constante de unos 299 792 km por segundo.</p></div></div></div>
+<h3>Concepto</h3>
+<p>En el <b>movimiento rectilíneo uniforme (MRU)</b> el móvil va en línea recta con <b>velocidad constante</b> y aceleración cero.</p>
+$$x=x_0+v\,t\qquad v=\frac{\Delta x}{\Delta t}$$
+<p>Para saber si una tabla es MRU: calcula $\Delta x/\Delta t$ en cada intervalo; si es siempre el mismo número, es MRU y ese número es la velocidad (¡fíjate en el intervalo de tiempo, no solo en cuánto sube la posición!).</p>
+<h3>Leer una gráfica $x$–$t$</h3>
+<table><tr><th>Se ve así</th><th>Significa</th></tr>
+<tr><td>Línea inclinada hacia arriba</td><td>Se mueve en sentido positivo (v &gt; 0)</td></tr>
+<tr><td>Línea horizontal</td><td>Reposo (v = 0)</td></tr>
+<tr><td>Línea inclinada hacia abajo</td><td>Se mueve en sentido negativo (v &lt; 0)</td></tr>
+<tr><td>Más inclinada</td><td>Mayor rapidez</td></tr>
+<tr><td>Curva</td><td>La velocidad cambia (hay aceleración)</td></tr></table>
+<div class="box warn">La <b>pendiente</b> de $x$–$t$ es la velocidad. Reposo = posición que <b>no cambia</b> con el tiempo.</div>
+<div class="ex" data-title="Ejemplo resuelto: tabla de posiciones">
+<div class="problem">Tiempo (s): 0, 2, 4, 6. Posición (m): 10, 24, 38, 52.</div>
+<div class="step">Paso 1. Intervalos de tiempo: siempre 2 s.</div>
+<div class="step">Paso 2. Cambios de posición: 14 m en cada uno.</div>
+<div class="step">Paso 3. Velocidad en cada intervalo: $14/2=7$ m/s, siempre igual, entonces es MRU.</div>
+<div class="step">Paso 4. Ecuación: $x=10+7t$. Para $t=5$ s: $x=10+35=45$ m.</div>
+</div>
+<div class="sim" data-sim="motion"></div>
+<div class="prac" data-gen="mru"></div>
+<div class="mc" data-sec="s5" data-n="3"></div>
+<label class="done"><input type="checkbox" data-done="s5"> Ya estudié esta sección</label>
+<h3>Imágenes de tu evaluación</h3>
+<figure class="exam-fig"><img src="img/pregunta-9.png" alt="Gráfica de una línea azul con tres tramos; el eje horizontal es tiempo en segundos y el vertical es posición en metros." loading="lazy" width="1200" height="718"><figcaption>📄 Imagen de tu evaluación — pregunta 9. <span>Observa: los ejes y sus unidades; cómo cambia la inclinación de la línea en cada tramo y qué significa que un tramo suba, sea horizontal o baje.</span></figcaption></figure>
+</div></details>
+
+<!-- ========== S6 ========== -->
+<details class="sec" id="s6"><summary><svg class="ico" aria-hidden="true"><use href="#ico-s6"/></svg>6. Gráficas velocidad-tiempo y aceleración-tiempo (áreas)</summary><div class="body">
+<div class="banner"><svg class="ico" aria-hidden="true"><use href="#ico-s6"/></svg><div><div class="bn-k">Tema 6 · Gráficas v-t y a-t</div><div class="bn-h">¿Sabías que un área puede decirte qué tan lejos llegaste?</div></div></div>
+<div class="intro"><figure class="hero-fig reveal"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Gráfica velocidad-tiempo con una recta ascendente y el triángulo bajo ella sombreado"><title>Gráfica velocidad-tiempo con una recta ascendente y el triángulo bajo ella sombreado</title><path class="fa" d="M40 150L240 150L240 50z"/><path class="ln km thin" d="M40 150h252M40 150V22"/><path class="ln e1" d="M40 150L240 50"/><path class="ln km thin dash" d="M240 50V150"/><text x="288" y="166" text-anchor="end">t</text><text x="30" y="30" text-anchor="end">v</text><text x="56" y="38">área bajo v-t = desplazamiento</text><circle class="mv f2" r="5" cx="0" cy="0" style="offset-path:path('M40 150L240 50')"/></svg><figcaption>El área sombreada bajo la recta v-t.</figcaption></figure><div><div class="t10"><b>En 10 segundos</b><ul><li>La pendiente de la gráfica v-t es la aceleración.</li><li>El área bajo v-t es el desplazamiento.</li><li>El área con signo bajo a-t es el cambio de velocidad.</li></ul></div><div class="dato"><b>Dato curioso</b><p>La idea de «área bajo una curva» es la base del cálculo integral, desarrollado en el siglo XVII por Newton y Leibniz.</p></div></div></div>
+<h3>Concepto</h3>
+<ul>
+<li>En una gráfica <b>v–t</b>: el <b>área</b> bajo la curva es el desplazamiento; la <b>pendiente</b> es la aceleración.</li>
+<li>En una gráfica <b>a–t</b>: el <b>área con signo</b> es el <b>cambio de velocidad</b> $\Delta v$. Área bajo el eje = $\Delta v$ negativo.</li>
+</ul>
+<table><tr><th>Figura</th><th>Área</th></tr>
+<tr><td>Rectángulo</td><td>$base\cdot altura$</td></tr><tr><td>Triángulo</td><td>$\tfrac12\,base\cdot altura$</td></tr><tr><td>Trapecio</td><td>$\tfrac12(B+b)\,h$</td></tr></table>
+<div class="box">Parte la gráfica en figuras simples, calcula cada área con sus unidades (m/s × s = m; m/s² × s = m/s) y suma. Si la velocidad nunca es negativa, <b>distancia = desplazamiento</b>. Si la velocidad tiene tramos negativos, la distancia suma el valor absoluto de cada área.</div>
+<div class="ex" data-title="Ejemplo resuelto: v–t con frenado">
+<div class="problem">Un patinador va a 8 m/s durante 3 s y luego frena de forma uniforme hasta detenerse en el segundo 7.</div>
+<div class="step">Paso 1. Tramo 1 (0–3 s): rectángulo $8\times3=24$ m.</div>
+<div class="step">Paso 2. Tramo 2 (3–7 s): triángulo de base 4 s y altura 8 m/s: $\tfrac12\cdot4\cdot8=16$ m.</div>
+<div class="step">Paso 3. Suma: $24+16=40$ m.</div>
+</div>
+<div class="ex" data-title="Ejemplo resuelto: a–t">
+<div class="problem">Un patín parte con 2 m/s. Su aceleración es +3 m/s² durante 4 s y luego −2 m/s² durante 3 s.</div>
+<div class="step">Paso 1. Área del tramo 1: $3\times4=12$ m/s, entonces la velocidad sube a $2+12=14$ m/s.</div>
+<div class="step">Paso 2. Área del tramo 2: $-2\times3=-6$ m/s.</div>
+<div class="step">Paso 3. Velocidad final: $14-6=8$ m/s.</div>
+</div>
+<div class="prac" data-gen="vt_area"></div>
+<div class="prac" data-gen="at_area"></div>
+<div class="mc" data-sec="s6" data-n="2"></div>
+<label class="done"><input type="checkbox" data-done="s6"> Ya estudié esta sección</label>
+<h3>Imágenes de tu evaluación</h3>
+<figure class="exam-fig"><img src="img/pregunta-10.png" alt="Gráfica con una línea azul formada por un tramo horizontal y un tramo inclinado; el eje horizontal es tiempo en segundos, el vertical es velocidad en m/s, y la región bajo la línea está sombreada." loading="lazy" width="1200" height="718"><figcaption>📄 Imagen de tu evaluación — pregunta 10. <span>Observa: las unidades de los ejes y la región sombreada bajo la línea: ¿de qué figuras geométricas está formada y cuáles son sus medidas?</span></figcaption></figure>
+<figure class="exam-fig"><img src="img/pregunta-14.png" alt="Gráfica con un segmento horizontal rojo y otro azul a distinta altura, unidos por una línea punteada vertical; el eje horizontal es tiempo en segundos y el vertical es aceleración en m/s²." loading="lazy" width="1200" height="900"><figcaption>📄 Imagen de tu evaluación — pregunta 14. <span>Observa: las unidades de los ejes, el valor y el signo de cada tramo de color, y la región entre cada segmento y el eje del tiempo.</span></figcaption></figure>
+</div></details>
+
+<!-- ========== S7 ========== -->
+<details class="sec" id="s7"><summary><svg class="ico" aria-hidden="true"><use href="#ico-s7"/></svg>7. MRUV: movimiento con aceleración constante</summary><div class="body">
+<div class="banner"><svg class="ico" aria-hidden="true"><use href="#ico-s7"/></svg><div><div class="bn-k">Tema 7 · MRUV</div><div class="bn-h">¿Sabías que frenar también es acelerar?</div></div></div>
+<div class="intro"><figure class="hero-fig reveal"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Posiciones sucesivas de un móvil cada vez más separadas, que muestran un movimiento que acelera"><title>Posiciones sucesivas de un móvil cada vez más separadas, que muestran un movimiento que acelera</title><path class="ln k thin" d="M10 128h300"/><circle class="f1" cx="26" cy="112" r="8" opacity="0.25"/><circle class="f1" cx="38" cy="112" r="8" opacity="0.33"/><circle class="f1" cx="54" cy="112" r="8" opacity="0.40"/><circle class="f1" cx="76" cy="112" r="8" opacity="0.47"/><circle class="f1" cx="104" cy="112" r="8" opacity="0.55"/><circle class="f1" cx="138" cy="112" r="8" opacity="0.62"/><circle class="f1" cx="178" cy="112" r="8" opacity="0.70"/><circle class="f1" cx="224" cy="112" r="8" opacity="0.78"/><circle class="f1" cx="276" cy="112" r="8" opacity="0.85"/><path class="ln e2" d="M30 150h250" marker-end="url(#mk2)"/><text x="160" y="170" text-anchor="middle">cada vez recorre más en el mismo tiempo</text><path class="ln e3 thin" d="M30 66h30M30 56h50M30 76h20"/><circle class="mv acc f2" r="6" cx="0" cy="0" style="offset-path:path('M28 84L292 84')"/></svg><figcaption>Posiciones cada vez más separadas: el móvil acelera.</figcaption></figure><div><div class="t10"><b>En 10 segundos</b><ul><li>MRUV: la velocidad cambia lo mismo en cada segundo (aceleración constante).</li><li>v = v₀ + a·t y x = x₀ + v₀·t + ½·a·t².</li><li>Si frena, la aceleración tiene signo contrario al de la velocidad.</li></ul></div><div class="dato"><b>Dato curioso</b><p>Un carro que pasa de 0 a 100 km/h en 10 s tiene una aceleración media de unos 2,8 m/s².</p></div></div></div>
+<h3>Concepto</h3>
+<p>En el <b>MRUV</b> la velocidad cambia la <b>misma cantidad en cada segundo</b>: la aceleración es constante y distinta de cero. Esto ocurre tanto si el móvil <b>acelera</b> como si <b>frena</b>; lo que cambia es el signo de $a$ respecto al sentido de la velocidad.</p>
+$$v_f=v_0+a\,t\qquad x=x_0+v_0t+\tfrac12 a t^{2}\qquad v_f^{2}=v_0^{2}+2a\,\Delta x$$
+<div class="box"><b>Signos:</b> escoge el sentido positivo (normalmente el del movimiento inicial). Si frenas, $a<0$. Un tiempo siempre debe resultar positivo; si te da negativo, revisa los signos. <b>Unidades:</b> $a$ en m/s², $v$ en m/s, $t$ en s, $x$ en m.</div>
+<div class="ex" data-title="Ejemplo resuelto: frenado">
+<div class="problem">Un tren de juguete va a 28 m/s y frena con $a=-4$ m/s² hasta detenerse. ¿Cuánto tarda?</div>
+<div class="step">Paso 1. Datos: $v_0=28$, $v_f=0$, $a=-4$.</div>
+<div class="step">Paso 2. Fórmula: $v_f=v_0+at$, entonces $t=\dfrac{v_f-v_0}{a}$.</div>
+<div class="step">Paso 3. $t=\dfrac{0-28}{-4}=7$ s. Positivo, como debe ser.</div>
+</div>
+<div class="ex" data-title="Ejemplo resuelto: posición final">
+<div class="problem">Una moto está en $x_0=2$ m, lleva $v_0=3$ m/s y acelera a 1,5 m/s² durante 6 s. ¿Dónde está?</div>
+<div class="step">Paso 1. Fórmula: $x=x_0+v_0t+\tfrac12at^{2}$.</div>
+<div class="step">Paso 2. Sustituye: $x=2+3(6)+\tfrac12(1{,}5)(6)^{2}$.</div>
+<div class="step">Paso 3. $x=2+18+27=47$ m. (No olvides elevar $t$ al cuadrado <b>antes</b> de multiplicar, y sumar $x_0$.)</div>
+</div>
+<div class="sim" data-sim="motion2"></div>
+<div class="prac" data-gen="mruv_t"></div>
+<div class="prac" data-gen="mruv_x"></div>
+<div class="mc" data-sec="s7" data-n="3"></div>
+<label class="done"><input type="checkbox" data-done="s7"> Ya estudié esta sección</label>
+</div></details>
+
+<!-- ========== S8 ========== -->
+<details class="sec" id="s8"><summary><svg class="ico" aria-hidden="true"><use href="#ico-s8"/></svg>8. Caída libre</summary><div class="body">
+<div class="banner"><svg class="ico" aria-hidden="true"><use href="#ico-s8"/></svg><div><div class="bn-k">Tema 8 · Caída libre</div><div class="bn-h">¿Sabías que Galileo estudió la caída con rampas porque no tenía cronómetros precisos?</div></div></div>
+<div class="intro"><figure class="hero-fig reveal"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Una esfera que cae con posiciones cada vez más separadas por la gravedad y una rampa inclinada al estilo de Galileo"><title>Una esfera que cae con posiciones cada vez más separadas por la gravedad y una rampa inclinada al estilo de Galileo</title><circle class="f1" cx="90" cy="14" r="7" opacity="0.30"/><circle class="f1" cx="90" cy="20" r="7" opacity="0.45"/><circle class="f1" cx="90" cy="38" r="7" opacity="0.60"/><circle class="f1" cx="90" cy="68" r="7" opacity="0.75"/><circle class="f1" cx="90" cy="110" r="7" opacity="0.90"/><circle class="f1" cx="90" cy="136" r="7" opacity="1.05"/><path class="ln e2" d="M40 20v110" marker-end="url(#mk2)"/><text x="28" y="76" text-anchor="end">g</text><path class="ln k" d="M150 150h160M165 70L292 150"/><circle class="mv acc f3 k" r="8" cx="0" cy="0" style="offset-path:path('M168 56L290 135')"/><circle class="mv acc f2 k" r="7" cx="0" cy="0" style="offset-path:path('M90 14V142')"/></svg><figcaption>Una esfera que cae y otra que baja por una rampa.</figcaption></figure><div><div class="t10"><b>En 10 segundos</b><ul><li>Caída libre: solo actúa la gravedad, g ≈ 9,8 m/s² (≈ 10 en los ejercicios).</li><li>Es un MRUV con a = g hacia abajo.</li><li>Si parte del reposo: h = ½·g·t² y v = g·t.</li></ul></div><div class="dato"><b>Dato curioso</b><p>Galileo usaba planos inclinados para «diluir» la gravedad y medir tiempos con relojes de agua.</p></div></div></div>
+<h3>Concepto</h3>
+<p>En <b>caída libre</b> (sin resistencia del aire) todos los cuerpos aceleran hacia abajo con la misma $g\approx9{,}8\text{ m/s}^{2}$ (en los problemas suele usarse 10). La <b>masa no aparece</b> en las fórmulas del movimiento.</p>
+$$h=\tfrac12 g t^{2}\qquad v=g\,t\qquad t=\sqrt{\frac{2h}{g}}$$
+<div class="box">Se usa con $v_0=0$ (soltar). Revisa que la altura esté en metros y que uses el valor de $g$ que indica el problema.</div>
+<div class="ex" data-title="Ejemplo resuelto: soltar desde un puente">
+<div class="problem">Se suelta una piedra desde 80 m ($g=10$ m/s²). ¿Cuánto tarda y con qué rapidez llega?</div>
+<div class="step">Paso 1. $t=\sqrt{2h/g}=\sqrt{160/10}=\sqrt{16}$.</div>
+<div class="step">Paso 2. $t=4$ s.</div>
+<div class="step">Paso 3. $v=gt=10\cdot4=40$ m/s.</div>
+</div>
+<div class="sim" data-sim="fall"></div>
+<div class="prac" data-gen="freefall"></div>
+<div class="mc" data-sec="s8" data-n="2"></div>
+<label class="done"><input type="checkbox" data-done="s8"> Ya estudié esta sección</label>
+</div></details>
+
+<!-- ========== S9 ========== -->
+<details class="sec" id="s9"><summary><svg class="ico" aria-hidden="true"><use href="#ico-s9"/></svg>9. Vectores: suma y descomposición</summary><div class="body">
+<div class="banner"><svg class="ico" aria-hidden="true"><use href="#ico-s9"/></svg><div><div class="bn-k">Tema 9 · Vectores</div><div class="bn-h">¿Sabías que los pilotos suman vectores para corregir el viento?</div></div></div>
+<div class="intro"><figure class="hero-fig reveal"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Dos vectores unidos punta con cola y el vector resultante punteado con sus componentes"><title>Dos vectores unidos punta con cola y el vector resultante punteado con sus componentes</title><path class="ln km thin" d="M50 160V24M50 150h250"/><path class="ln km thin dash" d="M50 150H250V108"/><path class="ln e1" d="M50 150L150 88" marker-end="url(#mk1)"/><path class="ln e2" d="M150 88L250 108" marker-end="url(#mk2)"/><path class="ln e3 dash" d="M50 150L250 108" marker-end="url(#mk3)"/><text x="84" y="108">A</text><text x="204" y="86">B</text><text x="120" y="30">R = A + B</text><circle class="f4" cx="50" cy="150" r="5"/></svg><figcaption>Dos vectores punta con cola y su resultante.</figcaption></figure><div><div class="t10"><b>En 10 segundos</b><ul><li>Un vector tiene magnitud, dirección y sentido.</li><li>Suma por componentes: Rₓ = Aₓ + Bₓ y Rᵧ = Aᵧ + Bᵧ.</li><li>Descomposición: Aₓ = A·cos θ y Aᵧ = A·sen θ (θ desde la horizontal).</li></ul></div><div class="dato"><b>Dato curioso</b><p>La velocidad de un avión respecto al suelo resulta de sumar su velocidad respecto al aire y la velocidad del viento.</p></div></div></div>
+<h3>Suma por componentes</h3>
+<p>Un vector se escribe $\vec A=(A_x,A_y)$. Para sumar, se suma componente con componente (respetando signos):</p>
+$$\vec R=\vec A+\vec B=(A_x+B_x,\;A_y+B_y)\qquad |\vec R|=\sqrt{R_x^{2}+R_y^{2}}$$
+<h3>Descomposición</h3>
+<p>Una fuerza $F$ con ángulo $\theta$ medido desde la <b>horizontal</b>:</p>
+$$F_x=F\cos\theta\qquad F_y=F\sin\theta$$
+<div class="box warn"><b>Cuidado:</b> si el ángulo se mide desde la <b>vertical</b>, se intercambian: $F_x=F\sin\theta$ y $F_y=F\cos\theta$. Valores útiles: $\sin37°=0{,}6$, $\cos37°=0{,}8$, $\sin53°=0{,}8$, $\cos53°=0{,}6$, $\sin30°=0{,}5$, $\cos30°\approx0{,}87$. Comprueba: $F_x^{2}+F_y^{2}=F^{2}$.</div>
+<div class="ex" data-title="Ejemplo resuelto: suma">
+<div class="problem">$\vec A=(5,-1)$ m y $\vec B=(-3,4)$ m.</div>
+<div class="step">Paso 1. Componente x: $5+(-3)=2$.</div>
+<div class="step">Paso 2. Componente y: $-1+4=3$.</div>
+<div class="step">Paso 3. $\vec R=(2,3)$ m; magnitud $\sqrt{4+9}\approx3{,}6$ m.</div>
+</div>
+<div class="ex" data-title="Ejemplo resuelto: descomponer">
+<div class="problem">Una fuerza de 20 N forma 30° con la <b>vertical</b>.</div>
+<div class="step">Paso 1. Ángulo desde la vertical, entonces $F_x=F\sin30°$ y $F_y=F\cos30°$.</div>
+<div class="step">Paso 2. $F_x=20\cdot0{,}5=10$ N.</div>
+<div class="step">Paso 3. $F_y=20\cdot0{,}87\approx17{,}3$ N.</div>
+</div>
+<div class="sim" data-sim="vec"></div>
+<div class="prac" data-gen="vec_sum"></div>
+<div class="prac" data-gen="comp"></div>
+<div class="mc" data-sec="s9" data-n="2"></div>
+<label class="done"><input type="checkbox" data-done="s9"> Ya estudié esta sección</label>
+<h3>Imágenes de tu evaluación</h3>
+<figure class="exam-fig"><img src="img/pregunta-17.png" alt="Diagrama con ejes x e y, un vector rojo que sale del origen con una flecha, un arco que marca un ángulo y una nota de texto junto al ángulo." loading="lazy" width="1052" height="894"><figcaption>📄 Imagen de tu evaluación — pregunta 17. <span>Observa: desde qué eje se mide el ángulo marcado y dónde queda el vector respecto a los ejes; imagina el triángulo rectángulo que forman el vector y sus componentes.</span></figcaption></figure>
+</div></details>
+
+<!-- ========== S10 ========== -->
+<details class="sec" id="s10"><summary><svg class="ico" aria-hidden="true"><use href="#ico-s10"/></svg>10. Lanzamiento horizontal</summary><div class="body">
+<div class="banner"><svg class="ico" aria-hidden="true"><use href="#ico-s10"/></svg><div><div class="bn-k">Tema 10 · Lanzamiento horizontal</div><div class="bn-h">¿Sabías que un clavadista de acantilado dibuja media parábola en el aire?</div></div></div>
+<div class="intro"><figure class="hero-fig reveal"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Una esfera lanzada horizontalmente desde un borde que describe media parábola hasta el suelo"><title>Una esfera lanzada horizontalmente desde un borde que describe media parábola hasta el suelo</title><path class="f4" d="M0 60h90v90H0z"/><path class="f4" d="M0 150h320v8H0z"/><path class="ln e2 dash thin" d="M90 55Q185 55 280 150"/><circle class="f1" cx="128" cy="59" r="5" opacity=".7"/><circle class="f1" cx="166" cy="70" r="5" opacity=".7"/><circle class="f1" cx="204" cy="89" r="5" opacity=".7"/><circle class="f1" cx="242" cy="116" r="5" opacity=".7"/><path class="ln e1" d="M96 40h40" marker-end="url(#mk1)"/><text x="104" y="32">vₓ</text><circle class="f3 k ln thin" cx="90" cy="55" r="6"/><path class="ln km thin" d="M90 144H280"/><text x="185" y="138" text-anchor="middle">alcance</text><circle class="mv f3" r="5" cx="0" cy="0" style="offset-path:path('M90 55Q185 55 280 150')"/></svg><figcaption>Una esfera sale del borde y traza media parábola.</figcaption></figure><div><div class="t10"><b>En 10 segundos</b><ul><li>Horizontal: MRU (vₓ constante). Vertical: caída libre.</li><li>El tiempo de vuelo depende de la altura: t = √(2h/g).</li><li>Alcance: R = vₓ·t.</li></ul></div><div class="dato"><b>Dato curioso</b><p>Los clavadistas de La Quebrada, en Acapulco, saltan desde plataformas de unos 35 m de altura.</p></div></div></div>
+<h3>Concepto</h3>
+<p>El movimiento se separa en dos independientes:</p>
+<ul><li><b>Horizontal</b>: MRU con $v_x$ constante, $x=v_x t$.</li><li><b>Vertical</b>: caída libre desde el reposo, $h=\tfrac12gt^{2}$.</li></ul>
+$$t=\sqrt{\frac{2h}{g}}\qquad R=v_x\,t$$
+<div class="box">El tiempo de vuelo depende <b>solo de la altura</b> (y de $g$), no de la velocidad horizontal. Calcula primero $t$ con la parte vertical y luego el alcance con la horizontal. Las unidades de $R$ son metros.</div>
+<div class="ex" data-title="Ejemplo resuelto: desde un balcón">
+<div class="problem">Una pelota sale horizontalmente a 6 m/s desde 80 m de altura ($g=10$). ¿Cuánto tarda en caer y cuál es su alcance?</div>
+<div class="step">Paso 1. Parte vertical: $80=5t^{2}$ entonces $t^{2}=16$.</div>
+<div class="step">Paso 2. $t=4$ s.</div>
+<div class="step">Paso 3. Parte horizontal: $R=6\cdot4=24$ m.</div>
+</div>
+<div class="sim" data-sim="proj0"></div>
+<div class="prac" data-gen="horiz"></div>
+<div class="mc" data-sec="s10" data-n="2"></div>
+<label class="done"><input type="checkbox" data-done="s10"> Ya estudié esta sección</label>
+<h3>Imágenes de tu evaluación</h3>
+<figure class="exam-fig"><img src="img/pregunta-18.png" alt="Dos esquemas lado a lado: en cada uno hay una torre con una pelota arriba y una flecha vertical que indica la altura; sobre la pelota de la derecha hay además una flecha horizontal." loading="lazy" width="1200" height="680"><figcaption>📄 Imagen de tu evaluación — pregunta 18. <span>Observa: las alturas marcadas, el rótulo de cada esquema sobre cómo sale cada pelota y qué flecha aparece solo en una de ellas.</span></figcaption></figure>
+</div></details>
+
+<!-- ========== S11 ========== -->
+<details class="sec" id="s11"><summary><svg class="ico" aria-hidden="true"><use href="#ico-s11"/></svg>11. Movimiento parabólico</summary><div class="body">
+<div class="banner"><svg class="ico" aria-hidden="true"><use href="#ico-s11"/></svg><div><div class="bn-k">Tema 11 · Movimiento parabólico</div><div class="bn-h">¿Sabías que un balón pateado y una bala de cañón siguen el mismo tipo de curva?</div></div></div>
+<div class="intro"><figure class="hero-fig reveal"><svg class="hero" viewBox="0 0 320 180" role="img" aria-label="Trayectoria parabólica de un proyectil lanzado por un cañón, con la altura máxima y el alcance marcados"><title>Trayectoria parabólica de un proyectil lanzado por un cañón, con la altura máxima y el alcance marcados</title><path class="f4" d="M0 140h320v8H0z"/><path class="ln e2 dash thin" d="M40 140Q160 -70 280 140"/><circle class="f1" cx="76" cy="86" r="4" opacity=".7"/><circle class="f1" cx="112" cy="52" r="4" opacity=".7"/><circle class="f1" cx="208" cy="52" r="4" opacity=".7"/><circle class="f1" cx="244" cy="86" r="4" opacity=".7"/><path class="ln km thin dash" d="M160 35V140"/><text x="168" y="100">altura máxima</text><path class="ln km thin" d="M40 158H280"/><text x="160" y="174" text-anchor="middle">alcance</text><g transform="rotate(-55 40 140)"><rect class="f3" x="36" y="133" width="36" height="14" rx="5"/></g><circle class="f1" cx="40" cy="142" r="9"/><circle class="mv f3 k ln thin" r="5" cx="0" cy="0" style="offset-path:path('M40 140Q160 -70 280 140')"/></svg><figcaption>Un proyectil sube, alcanza su punto más alto y baja.</figcaption></figure><div><div class="t10"><b>En 10 segundos</b><ul><li>Horizontal: MRU. Vertical: sube, frena, se detiene arriba y baja con g.</li><li>Tiempo de subida tₛ = v₀ᵧ/g y vuelo total T = 2tₛ (mismo nivel).</li><li>Altura máxima H = v₀ᵧ²/(2g) y alcance R = vₓ·T.</li></ul></div><div class="dato"><b>Dato curioso</b><p>Sin resistencia del aire, la trayectoria de cualquier proyectil es una parábola; Galileo fue de los primeros en demostrarlo.</p></div></div></div>
+<h3>Concepto</h3>
+<p>Un proyectil lanzado con velocidad $v_0$ y ángulo $\theta$ tiene dos componentes: $v_{0x}$ (constante) y $v_{0y}$ (cambia por la gravedad).</p>
+$$v_{0x}=v_0\cos\theta\quad v_{0y}=v_0\sin\theta\quad t_s=\frac{v_{0y}}{g}\quad T=2t_s\quad H=\frac{v_{0y}^{2}}{2g}\quad R=v_{0x}\,T$$
+<div class="box"><b>Puntos clave:</b> en la altura máxima $v_y=0$ (la velocidad horizontal sigue). Anota en tus apuntes cómo cambia el alcance con el ángulo cuando la velocidad inicial es la misma (lanzamiento y aterrizaje al mismo nivel); el simulador de abajo te ayuda a explorarlo. Para sacar conclusiones de una tabla de datos, compara valores: ¿cuál es el mayor? ¿cuáles se repiten?</div>
+<div class="ex" data-title="Ejemplo resuelto: lanzamiento a 53°">
+<div class="problem">Se lanza un balón desde el suelo con 30 m/s a 53° ($\sin53°=0{,}8$; $\cos53°=0{,}6$; $g=10$).</div>
+<div class="step">Paso 1. Componentes: $v_{0x}=30\cdot0{,}6=18$ m/s; $v_{0y}=30\cdot0{,}8=24$ m/s.</div>
+<div class="step">Paso 2. Tiempo de subida: $t_s=24/10=2{,}4$ s; tiempo total $T=4{,}8$ s.</div>
+<div class="step">Paso 3. Altura máxima: $H=24^{2}/20=28{,}8$ m.</div>
+<div class="step">Paso 4. Alcance: $R=18\cdot4{,}8=86{,}4$ m.</div>
+</div>
+<div class="sim" data-sim="proj"></div>
+<div class="prac" data-gen="parab"></div>
+<div class="mc" data-sec="s11" data-n="3"></div>
+<label class="done"><input type="checkbox" data-done="s11"> Ya estudié esta sección</label>
+<h3>Imágenes de tu evaluación</h3>
+<figure class="exam-fig"><img src="img/pregunta-20.png" alt="Esquema de una esfera sobre el suelo con una flecha roja inclinada, un arco que marca un ángulo y una línea punteada curva que forma un arco." loading="lazy" width="1200" height="551"><figcaption>📄 Imagen de tu evaluación — pregunta 20. <span>Observa: el ángulo marcado y a partir de qué línea se mide, el valor de la velocidad inicial y dónde empieza y termina la trayectoria punteada.</span></figcaption></figure>
+</div></details>
+
+<!-- ========== FINAL ========== -->
+<details class="sec" id="quiz" open><summary>Autoexamen final (preguntas nuevas)</summary><div class="body">
+<p>14 preguntas parecidas en estilo, con números diferentes. Responde todas y pulsa <b>Calificar</b>. Cada vez que repitas, cambian los números.</p>
+<div id="quizbox"></div>
+<button id="qgo">Calificar</button><button class="sec2" id="qnew">Nuevo autoexamen</button>
+<div id="qres" class="fb" style="display:none"></div>
+</div></details>
+</main>
+<footer>Guía de estudio. Física 9 - Cuarto Periodo. Los ejemplos y ejercicios son originales y distintos a la evaluación.</footer>
+<script>
+(function(){
+"use strict";
+var r=String.raw;
+function $(s,e){return (e||document).querySelector(s)}
+function $$(s,e){return Array.prototype.slice.call((e||document).querySelectorAll(s))}
+function ri(a,b){return Math.floor(Math.random()*(b-a+1))+a}
+function pick(a){return a[ri(0,a.length-1)]}
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=ri(0,i),t=a[i];a[i]=a[j];a[j]=t}return a}
+function f(n){n=Math.round(n*100)/100;return String(n).replace(".",",").replace("-","−")}
+function rm(el){try{if(window.renderMathInElement)window.renderMathInElement(el,{delimiters:[{left:"$$",right:"$$",display:true},{left:"$",right:"$",display:false}],throwOnError:false})}catch(e){}}
+/* ---------- storage ---------- */
+var S={done:{},ok:{}};
+try{var raw=localStorage.getItem("fis9p4");if(raw)S=JSON.parse(raw)||S}catch(e){}
+S.done=S.done||{};S.ok=S.ok||{};
+function save(){try{localStorage.setItem("fis9p4",JSON.stringify(S))}catch(e){}}
+var SEC=["s1","s2","s3","s4","s5","s6","s7","s8","s9","s10","s11"];
+var NAMES=["1 Hipótesis","2 Unidades","3 Relaciones","4 Desplazamiento","5 MRU","6 Gráficas v-t","7 MRUV","8 Caída libre","9 Vectores","10 Horizontal","11 Parabólico"];
+function renderChips(){
+  var c=$("#chips");c.innerHTML="";
+  SEC.forEach(function(s,i){var a=document.createElement("a");a.href="#"+s;a.innerHTML='<svg class="ico" aria-hidden="true"><use href="#ico-'+s+'"/></svg>'+NAMES[i];if(S.done[s])a.className="done";a.addEventListener("click",function(e){e.preventDefault();go(s)});if(s===curId)a.classList.add("cur");c.appendChild(a)});
+  var q=document.createElement("a");q.href="#quiz";q.textContent="Autoexamen";q.addEventListener("click",function(e){e.preventDefault();go("quiz")});c.appendChild(q);
+  var n=SEC.filter(function(s){return S.done[s]}).length;
+  $("#pbar").style.width=(n/SEC.length*100)+"%";
+  var ok=0;for(var k in S.ok)ok+=S.ok[k];
+  $$("input[data-done]").forEach(function(c){c.checked=!!S.done[c.getAttribute("data-done")]});
+  var nx=SEC.filter(function(s){return !S.done[s]})[0],np=$("#nextpath");
+  if(np)np.innerHTML=nx?'Siguiente en tu ruta: <a href="#'+nx+'" data-go="'+nx+'">'+NAMES[SEC.indexOf(nx)]+'</a>':'Ya marcaste todos los temas. Haz el <a href="#quiz" data-go="quiz">autoexamen</a> para comprobar.';
+  $("#ptxt").textContent="Progreso: "+n+" de "+SEC.length+" secciones estudiadas · "+ok+" ejercicios numéricos acertados";
+}
+var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)");
+var curId="";
+function setCur(id){curId=id;$$("#chips a").forEach(function(a){a.classList.toggle("cur",a.getAttribute("href")==="#"+id)})}
+function go(id){var d=document.getElementById(id);if(!d)return;d.open=true;d.scrollIntoView({behavior:(RM&&RM.matches)?"auto":"smooth",block:"start"});setCur(id)}
+document.addEventListener("click",function(e){var t=e.target.closest&&e.target.closest("[data-go]");if(t){e.preventDefault();go(t.getAttribute("data-go"))}});
+document.addEventListener("change",function(e){var c=e.target;if(c.matches&&c.matches("input[data-done]")){S.done[c.getAttribute("data-done")]=c.checked;save();renderChips()}});
+(function(){var tk=false;window.addEventListener("scroll",function(){if(tk)return;tk=true;requestAnimationFrame(function(){tk=false;var best="";SEC.concat(["quiz"]).forEach(function(s){var el=document.getElementById(s);if(el&&el.getBoundingClientRect().top<=120)best=s});if(best!==curId)setCur(best)})},{passive:true})})();
+/* ---------- tema claro/oscuro ---------- */
+var tb=$("#themebtn"),mq=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)");
+function effDark(){var t=document.documentElement.getAttribute("data-theme");return t?t==="dark":!!(mq&&mq.matches)}
+function tlabel(){tb.textContent=effDark()?"☀ Cambiar a modo claro":"🌙 Cambiar a modo oscuro"}
+tb.addEventListener("click",function(){var n=effDark()?"light":"dark";document.documentElement.setAttribute("data-theme",n);try{localStorage.setItem("fis9p4theme",n)}catch(e){}tlabel()});
+if(mq&&mq.addEventListener)mq.addEventListener("change",tlabel);
+tlabel();
+/* ---------- step reveal ---------- */
+$$(".ex").forEach(function(ex){
+  var t=document.createElement("b");t.className="t";t.textContent=ex.getAttribute("data-title");ex.insertBefore(t,ex.firstChild);
+  var steps=$$(".step",ex);steps.forEach(function(s){s.style.display="none"});
+  var shown=0;
+  var b=document.createElement("button");b.textContent="Siguiente paso";
+  var rs=document.createElement("button");rs.className="sec2";rs.textContent="Reiniciar";
+  var info=document.createElement("span");info.className="small";
+  function upd(){info.textContent=shown+" / "+steps.length;b.disabled=shown>=steps.length}
+  b.addEventListener("click",function(){if(shown<steps.length){steps[shown].style.display="";shown++;upd()}});
+  rs.addEventListener("click",function(){steps.forEach(function(s){s.style.display="none"});shown=0;upd()});
+  ex.appendChild(b);ex.appendChild(rs);ex.appendChild(info);upd();
+});
+/* ---------- numeric generators ---------- */
+function mfix(t){return t.replace(/\$([^$]+)\$/g,function(m,x){return "$"+x.replace(/(\d),(\d)/g,"$1{,}$2")+"$"})}
+function ctx(txt,sol,ans,unit,tol){return {q:mfix(txt),sol:mfix(sol),ans:ans,unit:unit,tol:tol}}
+var G={};
+G.sci_conv=function(){
+  var k=ri(0,4),x,t;
+  if(k==0){x=ri(11,99)/10;return ctx("Expresa "+f(x)+" km en metros.",r`Multiplica por $1000$: $${f(x)}\times1000=${f(x*1000)}$ m.`,x*1000,"m")}
+  if(k==1){x=ri(15,95)*5;return ctx("Expresa "+x+" cm en metros.",r`Divide entre $100$: $${x}/100=${f(x/100)}$ m.`,x/100,"m")}
+  if(k==2){x=pick([18,36,54,72,90,108,126,144]);return ctx("Convierte "+x+" km/h a m/s.",r`Divide entre $3{,}6$: $${x}/3{,}6=${f(x/3.6)}$ m/s.`,x/3.6,"m/s")}
+  if(k==3){x=pick([5,8,10,12,15,20,25,30]);return ctx("Convierte "+x+" m/s a km/h.",r`Multiplica por $3{,}6$: $${x}\times3{,}6=${f(x*3.6)}$ km/h.`,x*3.6,"km/h")}
+  x=ri(2,9)/2;return ctx("Expresa "+f(x)+" horas en segundos.",r`$1\text{ h}=3600$ s, entonces $${f(x)}\times3600=${f(x*3600)}$ s.`,x*3600,"s")
+};
+G.sci_exp=function(){
+  var m=ri(11,99)/10,n=pick([-6,-5,-4,-3,-2,3,4,5,6,7]),d=String(Math.round(m*10)),N;
+  if(n>0)N=d+"0".repeat(n-1);else N="0,"+"0".repeat(-n-1)+d;
+  return ctx("El número "+N+" se escribe en notación científica como $"+f(m)+"\\times10^{n}$. ¿Cuánto vale $n$?",
+   r`Mueve el punto decimal hasta dejar $${f(m)}$ (entre 1 y 10). Si lo corriste hacia la izquierda, $n$ es positivo; hacia la derecha, negativo. Resultado: $n=${n}$.`,n,"",0.01)
+};
+G.inv=function(){
+  var k=pick([120,180,240,360,600]),ds=[2,3,4,5,6,8,10,12].filter(function(x){return k%x==0}),a=pick(ds),b=pick(ds.filter(function(x){return x!=a}));
+  return ctx("Un tanque de "+k+" L se llena con una llave. Con un caudal de "+a+" L/min tarda "+(k/a)+" min. ¿Cuántos minutos tardará con un caudal de "+b+" L/min? (Relación inversa).",
+   r`El producto es constante: $q\cdot t=${a}\cdot${k/a}=${k}$. Entonces $t=${k}/${b}=${f(k/b)}$ min.`,k/b,"min")
+};
+G.inv2=function(){
+  var I=pick([144,180,360,720]),d=pick([1,2,3]),rr=pick([2,3]),up=Math.random()<.7,d2,I2;
+  if(up){d2=d*rr;I2=I/(rr*rr)}else{d2=d;d=d*rr;I2=I*rr*rr}
+  var I1=up?I:I/(rr*rr);
+  if(up){return ctx("La intensidad de una luz es inversamente proporcional al cuadrado de la distancia. A "+d+" m mide "+I+" unidades. ¿Cuánto mide a "+d2+" m?",r`$I\cdot d^{2}$ es constante: $${I}\cdot${d}^{2}=${I*d*d}$. A $${d2}$ m: $I=${I*d*d}/${d2}^{2}=${f(I2)}$.`,I2,"u.a.")}
+  var Ia=I/(rr*rr);
+  return ctx("La intensidad de una luz es inversamente proporcional al cuadrado de la distancia. A "+d+" m mide "+f(Ia)+" unidades. ¿Cuánto mide a "+d2+" m (más cerca)?",r`$I\cdot d^{2}$ es constante: $${f(Ia)}\cdot${d}^{2}=${f(Ia*d*d)}$. A $${d2}$ m: $I=${f(Ia*d*d)}/${d2}^{2}=${f(Ia*d*d/(d2*d2))}$.`,Ia*d*d/(d2*d2),"u.a.")
+};
+G.disp=function(){
+  var k=ri(2,9),a=3*k,b=4*k,t=ri(5,12)*5,dir=pick([["norte","este"],["sur","oeste"],["este","sur"],["oeste","norte"]]);
+  var base="Un joven camina "+a+" m hacia el "+dir[0]+" y luego "+b+" m hacia el "+dir[1]+". ";
+  if(Math.random()<.5)return ctx(base+"¿Qué distancia total recorrió?",r`Distancia = suma de tramos: $${a}+${b}=${a+b}$ m.`,a+b,"m");
+  return ctx(base+"¿Cuál es la magnitud de su desplazamiento?",r`Tramos perpendiculares: $\sqrt{${a}^{2}+${b}^{2}}=\sqrt{${a*a+b*b}}=${5*k}$ m.`,5*k,"m")
+};
+G.rapidez=function(){
+  var n=ri(2,5),L=pick([200,300,400,500]),t=ri(40,200);
+  if(Math.random()<.65)return ctx("Un corredor da "+n+" vueltas a una pista de "+L+" m en "+t+" s. ¿Cuál es su rapidez media?",r`Distancia: $${n}\cdot${L}=${n*L}$ m. Rapidez $=${n*L}/${t}=${f(n*L/t)}$ m/s.`,n*L/t,"m/s");
+  return ctx("Un corredor da "+n+" vueltas completas a una pista de "+L+" m en "+t+" s y termina donde empezó. ¿Cuál es la magnitud de su velocidad media?",r`Su desplazamiento es $0$ m (vuelve al inicio), entonces $v=0/${t}=0$ m/s.`,0,"m/s",0.01)
+};
+G.mru=function(){
+  var x0=ri(-5,20),v=pick([2,2.5,3,4,5,6,7.5,9]),t=ri(2,12);
+  if(Math.random()<.6)return ctx("Un móvil con MRU parte de $x_0="+f(x0)+"$ m con $v="+f(v)+"$ m/s. ¿Dónde está a los "+t+" s?",r`$x=x_0+vt=${f(x0)}+${f(v)}\cdot${t}=${f(x0+v*t)}$ m.`,x0+v*t,"m");
+  var xf=x0+v*t;return ctx("Un móvil con MRU parte de $x_0="+f(x0)+"$ m con $v="+f(v)+"$ m/s. ¿En qué instante llega a $x="+f(xf)+"$ m?",r`$t=(x-x_0)/v=(${f(xf)}-${f(x0)})/${f(v)}=${t}$ s.`,t,"s")
+};
+G.vt_area=function(){
+  var v=pick([6,8,10,12,14]),t1=pick([2,3,4,5]),t2=t1+pick([2,3,4]);
+  return ctx("Un carrito va a "+v+" m/s durante "+t1+" s y luego frena uniformemente hasta detenerse en el segundo "+t2+". ¿Qué distancia recorre en total?",r`Rectángulo: $${v}\cdot${t1}=${v*t1}$ m. Triángulo: $\tfrac12\cdot${t2-t1}\cdot${v}=${v*(t2-t1)/2}$ m. Total $=${f(v*t1+v*(t2-t1)/2)}$ m.`,v*t1+v*(t2-t1)/2,"m")
+};
+G.at_area=function(){
+  var v0,a1,t1,a2,t2,vf;do{v0=ri(0,8);a1=ri(1,4);t1=ri(2,5);a2=-ri(1,3);t2=ri(1,4)}while(v0==4&&a1==2&&t1==3&&a2==-1&&t2==2);vf=v0+a1*t1+a2*t2;
+  return ctx("Un carrito lleva $v_0="+v0+"$ m/s. Su aceleración es $+"+a1+"$ m/s² durante "+t1+" s y luego $"+a2+"$ m/s² durante "+t2+" s. ¿Cuál es su velocidad final?",r`Áreas de la gráfica a-t: $${a1}\cdot${t1}=${a1*t1}$ y $(${a2})\cdot${t2}=${a2*t2}$. Velocidad final $=${v0}+${a1*t1}+(${a2*t2})=${vf}$ m/s.`,vf,"m/s")
+};
+G.mruv_t=function(){
+  var a,n,v0;do{a=ri(2,6);n=ri(3,9);}while(a==3&&n==6);v0=a*n;
+  if(Math.random()<.55)return ctx("Un móvil va a "+v0+" m/s y frena con $a=-"+a+"$ m/s² hasta detenerse. ¿Cuántos segundos tarda?",r`$t=(v_f-v_0)/a=(0-${v0})/(-${a})=${n}$ s.`,n,"s");
+  var v1=ri(1,6),vf=v1+a*n;return ctx("Un móvil parte con "+v1+" m/s y acelera a "+a+" m/s². ¿Cuánto tarda en alcanzar "+vf+" m/s?",r`$t=(v_f-v_0)/a=(${vf}-${v1})/${a}=${n}$ s.`,n,"s")
+};
+G.mruv_x=function(){
+  var x0,v0,a,t,x;do{x0=ri(0,10);v0=ri(1,8);a=pick([1,2,3,4,-1,-2]);t=ri(2,6)}while(x0==5&&v0==4&&a==2&&t==4);x=x0+v0*t+0.5*a*t*t;
+  return ctx("Un carrito está en $x_0="+x0+"$ m con $v_0="+v0+"$ m/s y acelera a $"+a+"$ m/s² durante "+t+" s. ¿En qué posición queda?",r`$x=x_0+v_0t+\tfrac12at^{2}=${x0}+${v0}\cdot${t}+\tfrac12(${a})(${t})^{2}=${f(x)}$ m.`,x,"m")
+};
+G.freefall=function(){
+  var h=pick([5,45,80,125,180,245]),t=Math.sqrt(2*h/10);
+  if(Math.random()<.5)return ctx("Se suelta un objeto desde "+h+" m ($g=10$ m/s², sin aire). ¿Cuánto tarda en llegar al suelo?",r`$t=\sqrt{2h/g}=\sqrt{${2*h}/10}=\sqrt{${2*h/10}}=${f(t)}$ s.`,t,"s");
+  return ctx("Se suelta un objeto desde "+h+" m ($g=10$ m/s², sin aire). ¿Con qué rapidez llega al suelo?",r`$t=\sqrt{2h/g}=${f(t)}$ s; $v=gt=10\cdot${f(t)}=${f(10*t)}$ m/s.`,10*t,"m/s")
+};
+G.vec_sum=function(){
+  var A,B;do{A=[ri(-6,6),ri(-6,6)];B=[ri(-6,6),ri(-6,6)]}while(A[0]==4&&A[1]==2&&B[0]==-2&&B[1]==3);var R=[A[0]+B[0],A[1]+B[1]],c=ri(0,1);
+  return ctx("$\\vec A=("+A[0]+","+A[1]+")$ m y $\\vec B=("+B[0]+","+B[1]+")$ m. Calcula la componente "+(c?"y":"x")+" de $\\vec R=\\vec A+\\vec B$.",r`Suma de componentes: $${c?A[1]:A[0]}+(${c?B[1]:B[0]})=${R[c]}$ m.`,R[c],"m",0.01)
+};
+G.comp=function(){
+  var F,ang,ref,c;
+  do{F=pick([10,20,30,40,60,100]);ang=pick([37,53]);ref=pick(["horizontal","vertical"]);}while(false);
+  var s=ang==37?0.6:0.8,co=ang==37?0.8:0.6,fx,fy;
+  if(ref=="horizontal"){fx=F*co;fy=F*s}else{fx=F*s;fy=F*co}
+  c=ri(0,1);
+  var sol=ref=="horizontal"?r`Ángulo desde la horizontal: $F_x=F\cos\theta$, $F_y=F\sin\theta$. `:r`Ángulo desde la vertical: se intercambian, $F_x=F\sin\theta$, $F_y=F\cos\theta$. `;
+  return ctx("Una fuerza de "+F+" N forma "+ang+"° con la "+ref+". Usa $\\sin37°=0{,}6$; $\\cos37°=0{,}8$; $\\sin53°=0{,}8$; $\\cos53°=0{,}6$. ¿Cuánto vale la componente "+(c?"vertical":"horizontal")+"?",sol+"Resultado: "+(c?"$F_y="+f(fy)+"$":"$F_x="+f(fx)+"$")+" N.",c?fy:fx,"N")
+};
+G.horiz=function(){
+  var h,vx;do{h=pick([20,45,80,125]);vx=ri(3,12)}while(h==45&&vx==4);
+  var t=Math.sqrt(2*h/10);
+  if(Math.random()<.5)return ctx("Una esfera sale horizontalmente a "+vx+" m/s desde una mesa a "+h+" m de altura ($g=10$ m/s²). ¿Cuál es su alcance horizontal?",r`$t=\sqrt{2h/g}=${f(t)}$ s; $R=v_xt=${vx}\cdot${f(t)}=${f(vx*t)}$ m.`,vx*t,"m");
+  return ctx("Una esfera sale horizontalmente a "+vx+" m/s desde una mesa a "+h+" m de altura ($g=10$ m/s²). ¿Cuánto tiempo está en el aire?",r`$t=\sqrt{2h/g}=\sqrt{${2*h/10}}=${f(t)}$ s (no depende de $v_x$).`,t,"s")
+};
+G.parab=function(){
+  var v0,ang;do{v0=pick([10,20,30,40,60,100]);ang=pick([37,53])}while(0);
+  var vx=v0*(ang==37?0.8:0.6),vy=v0*(ang==37?0.6:0.8),T=2*vy/10,H=vy*vy/20,R=vx*T,k=ri(0,2);
+  var base="Un proyectil sale del suelo con "+v0+" m/s a "+ang+"° ($\\sin37°=0{,}6$; $\\cos37°=0{,}8$; $g=10$ m/s²) y aterriza al mismo nivel. ";
+  var steps=r`$v_{0x}=${f(vx)}$ m/s, $v_{0y}=${f(vy)}$ m/s; $T=2v_{0y}/g=${f(T)}$ s; $H=v_{0y}^{2}/2g=${f(H)}$ m; $R=v_{0x}T=${f(R)}$ m. `;
+  if(k==0)return ctx(base+"¿Cuál es su altura máxima?",steps+"Piden $H$.",H,"m");
+  if(k==1)return ctx(base+"¿Cuál es su alcance horizontal?",steps+"Piden $R$.",R,"m");
+  return ctx(base+"¿Cuál es su tiempo total de vuelo?",steps+"Piden $T$.",T,"s")
+};
+var GTITLE={sci_conv:"Práctica: conversión de unidades",sci_exp:"Práctica: notación científica",inv:"Práctica: relación inversa",inv2:"Práctica: inversa al cuadrado",disp:"Práctica: distancia y desplazamiento",rapidez:"Práctica: rapidez y velocidad media",mru:"Práctica: MRU",vt_area:"Práctica: área bajo v-t",at_area:"Práctica: área bajo a-t",mruv_t:"Práctica: MRUV tiempo",mruv_x:"Práctica: MRUV posición",freefall:"Práctica: caída libre",vec_sum:"Práctica: suma de vectores",comp:"Práctica: componentes",horiz:"Práctica: lanzamiento horizontal",parab:"Práctica: movimiento parabólico"};
+var GSEC={sci_conv:"s2",sci_exp:"s2",inv:"s3",inv2:"s3",disp:"s4",rapidez:"s4",mru:"s5",vt_area:"s6",at_area:"s6",mruv_t:"s7",mruv_x:"s7",freefall:"s8",vec_sum:"s9",comp:"s9",horiz:"s10",parab:"s11"};
+function parse(v){v=String(v).trim().replace(/\s/g,"").replace("−","-").replace(",",".");if(v===""||isNaN(Number(v)))return NaN;return Number(v)}
+function check(p,val){var tol=p.tol!=null?p.tol:Math.max(Math.abs(p.ans)*0.02,0.02);return Math.abs(val-p.ans)<=tol}
+function buildPrac(box){
+  var id=box.getAttribute("data-gen"),p,okEl;
+  var t=document.createElement("b");t.className="t";t.textContent=GTITLE[id];box.appendChild(t);
+  var q=document.createElement("div"),row=document.createElement("div"),inp=document.createElement("input"),u=document.createElement("span"),
+  b1=document.createElement("button"),b2=document.createElement("button"),fb=document.createElement("div");
+  inp.type="text";inp.inputMode="decimal";inp.setAttribute("aria-label","Tu respuesta");
+  b1.textContent="Comprobar";b2.textContent="Otro ejercicio";b2.className="sec2";fb.className="fb";fb.style.display="none";
+  row.appendChild(inp);row.appendChild(u);row.appendChild(b1);row.appendChild(b2);
+  box.appendChild(q);box.appendChild(row);box.appendChild(fb);
+  function nw(){p=G[id]();q.innerHTML=p.q;u.textContent=" "+p.unit;inp.value="";fb.style.display="none";rm(q)}
+  function chk(){
+    var v=parse(inp.value);fb.style.display="";
+    if(isNaN(v)){fb.className="fb hint";fb.textContent="Pista: escribe un número (puedes usar coma decimal).";return}
+    if(check(p,v)){fb.className="fb ok";fb.innerHTML="Correcto. "+p.sol;S.ok[id]=(S.ok[id]||0)+1;save();renderChips()}
+    else{fb.className="fb no";fb.innerHTML="Incorrecto. Todavía no. Revisa el método: "+p.sol}
+    rm(fb)}
+  b1.addEventListener("click",chk);inp.addEventListener("keydown",function(e){if(e.key==="Enter")chk()});b2.addEventListener("click",nw);nw();
+}
+$$(".prac").forEach(buildPrac);
+/* ---------- multiple choice bank ---------- */
+var MC=[
+{s:"s1",q:"Pregunta: ¿cómo influye la temperatura del agua en el tiempo que tarda un cubo de azúcar en disolverse? ¿Cuál es la variable dependiente?",o:["La temperatura del agua","El tiempo de disolución","El tamaño del cubo","La cantidad de agua"],c:1,why:"La dependiente es lo que se mide: el tiempo. La temperatura es la independiente; tamaño y cantidad de agua se controlan."},
+{s:"s1",q:"Para que un experimento sea justo, las variables controladas deben...",o:["Cambiar junto con la independiente","Mantenerse iguales en todas las pruebas","Medirse como resultado","Eliminarse del experimento"],c:1,why:"Controlar es mantener constante para que solo la variable independiente explique el cambio."},
+{s:"s1",q:"Se investiga cómo influye el largo de un péndulo en su periodo. ¿Cuál hipótesis responde directamente?",o:["Si aumenta la masa de la esfera, el periodo cambiará.","Si aumenta el largo del hilo, el periodo será mayor.","Si se mueve el péndulo en otro salón, no cambiará nada.","Si se mide con otro reloj, el periodo es mayor."],c:1,why:"Debe unir la variable independiente (largo) y la dependiente (periodo)."},
+{s:"s1",q:"Una hipótesis bien formulada es:",o:["Una verdad que no se puede probar","Una respuesta posible que se puede comprobar con un experimento","Un resultado ya medido","Una lista de materiales"],c:1,why:"Se pone a prueba; puede confirmarse o refutarse."},
+{s:"s2",q:"¿Cuál es $0{,}0058$ m en notación científica?",o:["$5{,}8\\times10^{3}$","$5{,}8\\times10^{-3}$","$5{,}8\\times10^{-2}$","$58\\times10^{-4}$"],c:1,why:"El punto se corre 3 lugares a la derecha, así que el exponente es −3 y la mantisa queda entre 1 y 10."},
+{s:"s2",q:"¿Cuántos metros son 9,1 cm en notación científica?",o:["$9{,}1\\times10^{-2}$ m","$9{,}1\\times10^{2}$ m","$9{,}1\\times10^{-1}$ m","$9{,}1\\times10^{1}$ m"],c:0,why:"1 cm = $10^{-2}$ m, así que 9,1 cm = $9{,}1\\times10^{-2}$ m."},
+{s:"s2",q:"Para pasar de km/h a m/s se:",o:["Multiplica por 3,6","Divide entre 3,6","Multiplica por 60","Divide entre 100"],c:1,why:"1 km/h = 1000 m / 3600 s = 1/3,6 m/s."},
+{s:"s3",q:"Si al duplicar $x$ el valor de $y$ se reduce a la mitad, la relación es:",o:["Directa","Inversa","Cuadrática","Lineal creciente"],c:1,why:"Producto $x\\cdot y$ constante: inversa."},
+{s:"s3",q:"En una tabla, $y/x$ es siempre 7. La gráfica es:",o:["Una recta que pasa por el origen","Una hipérbola","Una recta horizontal","Una parábola abierta hacia abajo"],c:0,why:"$y=7x$ es relación directa."},
+{s:"s3",q:"Los datos cumplen $x^{2}\\cdot y=$ constante. ¿Qué pasa con $y$ si $x$ se triplica?",o:["Se triplica","Se divide entre 3","Se divide entre 9","Se multiplica por 9"],c:2,why:"$y=k/x^{2}$; con $3x$, $y$ pasa a $k/9x^{2}$."},
+{s:"s3",q:"¿Qué gráfica NO es una recta?",o:["Relación directa","Relación inversa","Relación lineal decreciente","Rapidez constante vs. tiempo"],c:1,why:"La inversa es una curva (hipérbola)."},
+{s:"s4",q:"Un corredor termina una carrera en el mismo punto donde empezó. Su desplazamiento es:",o:["La longitud de la pista","Cero","La mitad de la pista","Depende de la rapidez"],c:1,why:"Desplazamiento = posición final − inicial = 0."},
+{s:"s4",q:"¿Cuál magnitud es vectorial?",o:["Distancia","Rapidez","Desplazamiento","Tiempo"],c:2,why:"El desplazamiento tiene magnitud y dirección."},
+{s:"s4",q:"Camina 6 m al este y 8 m al norte. ¿Cuánto vale la magnitud del desplazamiento?",o:["14 m","10 m","2 m","48 m"],c:1,why:"$\\sqrt{6^{2}+8^{2}}=10$ m (Pitágoras); la distancia sería 14 m."},
+{s:"s5",q:"En una gráfica $x$–$t$ una línea horizontal significa:",o:["Velocidad constante distinta de cero","Reposo","Aceleración constante","Caída libre"],c:1,why:"La posición no cambia con el tiempo."},
+{s:"s5",q:"En MRU, ¿qué es cierto?",o:["La aceleración es constante y mayor que cero","La velocidad es constante y la aceleración es cero","La velocidad aumenta cada segundo","La posición no cambia"],c:1,why:"MRU = velocidad constante."},
+{s:"s5",q:"Una gráfica $x$–$t$ con línea que baja indica:",o:["Reposo","Velocidad negativa","Aceleración positiva","Que el objeto se acelera siempre"],c:1,why:"Pendiente negativa = velocidad negativa."},
+{s:"s6",q:"El área bajo una gráfica $a$–$t$ es:",o:["El desplazamiento","El cambio de velocidad","La posición inicial","La fuerza"],c:1,why:"m/s² × s = m/s."},
+{s:"s6",q:"El área bajo una gráfica $v$–$t$ tiene unidades de:",o:["m/s","m/s²","m","s"],c:2,why:"m/s × s = m."},
+{s:"s6",q:"Una gráfica $v$–$t$ es una recta inclinada. Su pendiente es:",o:["La posición","La aceleración","El tiempo","La distancia"],c:1,why:"Pendiente = Δv/Δt = a."},
+{s:"s7",q:"Un móvil con MRUV aumenta su velocidad 3 m/s cada segundo. ¿Cuál es su aceleración?",o:["3 m/s²","3 m/s","0 m/s²","1/3 m/s²"],c:0,why:"La aceleración es el cambio de velocidad por unidad de tiempo: 3 m/s cada 1 s = 3 m/s²."},
+{s:"s7",q:"Si $v_0=0$ y $a=3$ m/s², ¿qué velocidad tiene a los 5 s?",o:["8 m/s","15 m/s","3 m/s","1,7 m/s"],c:1,why:"$v=0+3\\cdot5=15$ m/s."},
+{s:"s7",q:"En la ecuación $x=x_0+v_0t+\\tfrac12at^{2}$, ¿qué pasa si $a=0$?",o:["Se reduce a $x=x_0+v_0t$ (MRU)","Se reduce a $x=x_0$","No se puede usar","Da siempre cero"],c:0,why:"Sin aceleración, el movimiento es MRU."},
+{s:"s8",q:"Un objeto se suelta y llega al suelo con 30 m/s ($g=10$ m/s², sin aire). ¿Cuánto tardó en caer?",o:["3 s","300 s","0,3 s","6 s"],c:0,why:"$v=gt$, entonces $t=30/10=3$ s."},
+{s:"s8",q:"Si la altura se cuadruplica, el tiempo de caída:",o:["Se cuadruplica","Se duplica","Se reduce a la mitad","No cambia"],c:1,why:"$t=\\sqrt{2h/g}$: con $4h$ el tiempo se multiplica por 2."},
+{s:"s9",q:"Si $\\vec A=(3,0)$ y $\\vec B=(0,4)$, entonces $|\\vec A+\\vec B|$ es:",o:["7","5","1","12"],c:1,why:"Componentes (3,4): $\\sqrt{9+16}=5$."},
+{s:"s9",q:"Una fuerza forma ángulo $\\theta$ con la horizontal. ¿Qué componente usa el coseno?",o:["La vertical","La horizontal","Ninguna","Las dos"],c:1,why:"$F_x=F\\cos\\theta$ cuando el ángulo está medido desde la horizontal."},
+{s:"s10",q:"Una piedra se lanza horizontalmente desde un puente. Respecto al tiempo en el aire, la velocidad horizontal:",o:["Lo aumenta","No lo cambia","Lo disminuye","Lo hace cero"],c:1,why:"El tiempo depende de la altura y de $g$."},
+{s:"s10",q:"En el lanzamiento horizontal, la componente horizontal de la velocidad:",o:["Aumenta","Disminuye","Se mantiene constante","Es siempre cero"],c:2,why:"Sin fuerzas horizontales, hay MRU en x."},
+{s:"s11",q:"En el punto más alto de un lanzamiento parabólico:",o:["$v_y=0$ y $v_x\\ne0$","$v=0$","$v_x=0$ y $v_y\\ne0$","$a=0$"],c:0,why:"La aceleración sigue siendo $g$; solo $v_y$ se anula."},
+{s:"s11",q:"Un proyectil sale del suelo con $v_{0y}=20$ m/s ($g=10$ m/s², mismo nivel). ¿Cuál es su tiempo total de vuelo?",o:["4 s","2 s","8 s","20 s"],c:0,why:"$t_s=v_{0y}/g=2$ s y $T=2t_s=4$ s."},
+{s:"s11",q:"Durante todo el vuelo de un proyectil (sin aire), la componente horizontal de su velocidad:",o:["Permanece constante","Aumenta","Disminuye","Se anula arriba"],c:0,why:"No hay aceleración horizontal: $v_x$ es constante."}
+];
+function buildMC(box){
+  var sec=box.getAttribute("data-sec"),n=+box.getAttribute("data-n")||2;
+  var t=document.createElement("b");t.className="t";t.textContent="Práctica: preguntas de selección múltiple";box.appendChild(t);
+  var area=document.createElement("div"),b=document.createElement("button");b.className="sec2";b.textContent="Otras preguntas";
+  box.appendChild(area);box.appendChild(b);
+  function draw(){
+    area.innerHTML="";
+    shuffle(MC.filter(function(m){return m.s===sec})).slice(0,n).forEach(function(m){area.appendChild(mcItem(m))});
+    rm(area)}
+  b.addEventListener("click",draw);draw();
+}
+function mcItem(m,cb){
+  var w=document.createElement("div");w.style.margin="8px 0";
+  var q=document.createElement("div");q.innerHTML="<b>"+m.q+"</b>";w.appendChild(q);
+  var idx=shuffle(m.o.map(function(_,i){return i})),fb=document.createElement("div");fb.className="fb";fb.style.display="none";
+  var btns=[],picked=-1;
+  idx.forEach(function(i){
+    var o=document.createElement("button");o.className="opt";o.innerHTML=m.o[i];
+    o.addEventListener("click",function(){
+      if(cb){picked=i;btns.forEach(function(x){x.b.classList.remove("sel")});o.classList.add("sel");return}
+      if(w.getAttribute("data-a"))return;w.setAttribute("data-a","1");
+      btns.forEach(function(x){if(x.i==m.c)x.b.classList.add("ok")});
+      fb.style.display="";
+      if(i==m.c){fb.className="fb ok";fb.textContent="Correcto. "+m.why}else{o.classList.add("no");fb.className="fb no";fb.textContent="Incorrecto. No es esa. "+m.why}
+      rm(w)});
+    btns.push({b:o,i:i});w.appendChild(o)});
+  w.appendChild(fb);
+  w._get=function(){return picked};w._show=function(){
+    btns.forEach(function(x){x.b.classList.remove("sel");if(x.i==m.c)x.b.classList.add("ok");else if(x.i==picked)x.b.classList.add("no");x.b.disabled=true});
+    fb.style.display="";fb.className="fb "+(picked==m.c?"ok":"no");fb.textContent=(picked==m.c?"Correcto. ":"Incorrecto. Revisa: ")+m.why;rm(w);return picked==m.c};
+  return w;
+}
+$$(".mc").forEach(buildMC);
+/* ---------- plot helper ---------- */
+function nice(max,n){var raw=max/n,p=Math.pow(10,Math.floor(Math.log10(raw))),m=raw/p,s=m<=1?1:m<=2?2:m<=5?5:10;return s*p}
+function plot(svg,o){
+  var W=400,H=240,L=44,R=12,T=12,B=30,pw=W-L-R,ph=H-T-B;
+  function X(x){return L+(x-o.x0)/(o.x1-o.x0)*pw}
+  function Y(y){return T+ph-(y-o.y0)/(o.y1-o.y0)*ph}
+  var h='<svg viewBox="0 0 '+W+' '+H+'" role="img" aria-label="'+(o.label||"gráfica")+'">';
+  var sx=nice(o.x1-o.x0,6),sy=nice(o.y1-o.y0,5),v;
+  for(v=Math.ceil(o.x0/sx)*sx;v<=o.x1+1e-9;v+=sx){h+='<line class="gr" x1="'+X(v)+'" x2="'+X(v)+'" y1="'+T+'" y2="'+(T+ph)+'"/><text x="'+X(v)+'" y="'+(H-14)+'" text-anchor="middle">'+f(v)+'</text>'}
+  for(v=Math.ceil(o.y0/sy)*sy;v<=o.y1+1e-9;v+=sy){h+='<line class="gr" x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(v)+'" y2="'+Y(v)+'"/><text x="'+(L-4)+'" y="'+(Y(v)+4)+'" text-anchor="end">'+f(v)+'</text>'}
+  if(o.y0<0&&o.y1>0)h+='<line class="ax" x1="'+L+'" x2="'+(W-R)+'" y1="'+Y(0)+'" y2="'+Y(0)+'"/>';
+  if(o.x0<0&&o.x1>0)h+='<line class="ax" y1="'+T+'" y2="'+(T+ph)+'" x1="'+X(0)+'" x2="'+X(0)+'"/>';
+  h+='<rect x="'+L+'" y="'+T+'" width="'+pw+'" height="'+ph+'" fill="none" class="ax"/>';
+  (o.series||[]).forEach(function(s){var d="";for(var i=0;i<s.x.length;i++)d+=(i?"L":"M")+X(s.x[i]).toFixed(1)+" "+Y(s.y[i]).toFixed(1);h+='<path class="'+s.cls+'" d="'+d+'"/>'});
+  (o.pts||[]).forEach(function(p){h+='<circle cx="'+X(p[0])+'" cy="'+Y(p[1])+'" r="4" class="pt"/>'});
+  (o.extra||function(){return ""})(X,Y)&&(h+=o.extra(X,Y));
+  h+='<text x="'+(L+pw/2)+'" y="'+(H-2)+'" text-anchor="middle">'+(o.xl||"")+'</text><text x="12" y="'+(T+ph/2)+'" transform="rotate(-90 12 '+(T+ph/2)+')" text-anchor="middle">'+(o.yl||"")+'</text></svg>';
+  svg.innerHTML=h;return {X:X,Y:Y};
+}
+function slider(label,id,min,max,step,val,unit){return '<label>'+label+': <span class="val" id="'+id+'v">'+val+'</span> '+(unit||"")+'<br><input type="range" id="'+id+'" min="'+min+'" max="'+max+'" step="'+step+'" value="'+val+'"></label>'}
+function simBox(el,title,html){el.innerHTML='<b class="t">'+title+'</b>'+html}
+/* ---------- simulators ---------- */
+var SIMS={};
+SIMS.rel=function(el,uid){
+  simBox(el,"Simulador: tipos de relación",'<div class="ctl"><label>Tipo: <select id="'+uid+'t"><option value="d">Directa  y = k·x</option><option value="i">Inversa  y = k/x</option><option value="c">Inversa al cuadrado  y = k/x²</option></select></label>'+slider("Constante k",uid+"k",1,20,1,8)+'</div><div class="g2"><div id="'+uid+'g"></div><div id="'+uid+'tb"></div></div>');
+  function upd(){
+    var t=$("#"+uid+"t").value,k=+$("#"+uid+"k").value;$("#"+uid+"kv").textContent=k;
+    function fy(x){return t=="d"?k*x:t=="i"?k/x:k/(x*x)}
+    var xs=[],ys=[],i;for(i=0.5;i<=8.01;i+=0.1){xs.push(i);ys.push(fy(i))}
+    var ymax=t=="d"?k*8:k*2*(t=="i"?1:4)+1;
+    var pts=[1,2,4,8].map(function(x){return [x,fy(x)]}).filter(function(p){return p[1]<=ymax});
+    plot($("#"+uid+"g"),{x0:0,x1:8,y0:0,y1:ymax,series:[{x:xs.filter(function(x,j){return ys[j]<=ymax}),y:ys.filter(function(y){return y<=ymax}),cls:"s1"}],pts:pts,xl:"x",yl:"y",label:"gráfica de la relación"});
+    var h='<table><tr><th>x</th><th>y</th><th>y/x</th><th>x·y</th><th>x²·y</th></tr>';
+    [1,2,4,8].forEach(function(x){var y=fy(x);h+='<tr><td>'+x+'</td><td>'+f(y)+'</td><td>'+f(y/x)+'</td><td>'+f(x*y)+'</td><td>'+f(x*x*y)+'</td></tr>'});
+    $("#"+uid+"tb").innerHTML=h+'</table><div class="small">Mira qué columna se queda constante.</div>';
+  }
+  $("#"+uid+"t").addEventListener("change",upd);$("#"+uid+"k").addEventListener("input",upd);upd();
+};
+function motionSim(el,uid,lock){
+  simBox(el,lock?"Simulador: MRUV (cambia la aceleración)":"Simulador: MRU y gráficas",'<div class="ctl">'+slider("Posición inicial x₀",uid+"x",-10,20,1,0,"m")+slider("Velocidad inicial v₀",uid+"v",-10,15,1,lock?6:5,"m/s")+(lock?slider("Aceleración a",uid+"a",-5,5,0.5,2,"m/s²"):"")+slider("Tiempo t",uid+"t",0,10,0.1,3,"s")+'</div><button id="'+uid+'p">Reproducir</button><div id="'+uid+'tr"></div><div class="g2"><div id="'+uid+'g1"></div><div id="'+uid+'g2"></div></div><div id="'+uid+'o" class="box"></div>');
+  var timer=null;
+  function upd(){
+    var x0=+$("#"+uid+"x").value,v0=+$("#"+uid+"v").value,a=lock?+$("#"+uid+"a").value:0,t=+$("#"+uid+"t").value;
+    $("#"+uid+"xv").textContent=x0;$("#"+uid+"vv").textContent=v0;if(lock)$("#"+uid+"av").textContent=a;$("#"+uid+"tv").textContent=t.toFixed(1);
+    var xs=[],xx=[],vv=[],i,mn=1e9,mx=-1e9;
+    for(i=0;i<=10.001;i+=0.2){xs.push(i);var x=x0+v0*i+0.5*a*i*i;xx.push(x);vv.push(v0+a*i);mn=Math.min(mn,x);mx=Math.max(mx,x)}
+    var pad=(mx-mn)*0.1+1,xt=x0+v0*t+0.5*a*t*t,vt=v0+a*t;
+    plot($("#"+uid+"g1"),{x0:0,x1:10,y0:mn-pad,y1:mx+pad,series:[{x:xs,y:xx,cls:"s1"}],pts:[[t,xt]],xl:"t (s)",yl:"x (m)",label:"posición contra tiempo"});
+    var vmin=Math.min.apply(null,vv),vmax=Math.max.apply(null,vv);
+    plot($("#"+uid+"g2"),{x0:0,x1:10,y0:Math.min(vmin,0)-1,y1:Math.max(vmax,0)+1,series:[{x:xs,y:vv,cls:"s2"}],pts:[[t,vt]],xl:"t (s)",yl:"v (m/s)",label:"velocidad contra tiempo"});
+    var lo=Math.min(mn,0),hi=Math.max(mx,0),span=(hi-lo)||1,px=20+(xt-lo)/span*360;
+    $("#"+uid+"tr").innerHTML='<svg viewBox="0 0 400 40"><line class="ax" x1="20" x2="380" y1="28" y2="28"/><circle cx="'+Math.max(20,Math.min(380,px))+'" cy="20" r="8" class="pt"/><text x="20" y="12">'+f(lo)+' m</text><text x="380" y="12" text-anchor="end">'+f(hi)+' m</text></svg>';
+    $("#"+uid+"o").innerHTML='En t = '+t.toFixed(1)+' s: x = <span class="val">'+f(xt)+' m</span>, v = <span class="val">'+f(vt)+' m/s</span>, a = '+f(a)+' m/s². Tipo: <b>'+(a==0?(v0==0?"reposo":"MRU"):"MRUV")+'</b>. '+(a==0&&v0!=0?"La gráfica x-t es recta y v-t es horizontal.":a!=0?"La gráfica x-t es curva y v-t es recta con pendiente a.":"");
+  }
+  $$("input[type=range]",el).forEach(function(i){i.addEventListener("input",upd)});
+  $("#"+uid+"p").addEventListener("click",function(){
+    if(timer){clearInterval(timer);timer=null;this.textContent="Reproducir";return}
+    var b=this,s=$("#"+uid+"t");if(+s.value>=10)s.value=0;b.textContent="Pausar";
+    timer=setInterval(function(){s.value=Math.min(10,+s.value+0.1);upd();if(+s.value>=10){clearInterval(timer);timer=null;b.textContent="Reproducir"}},100)});
+  upd();
+}
+SIMS.motion=function(el,u){motionSim(el,u,false)};
+SIMS.motion2=function(el,u){motionSim(el,u,true)};
+SIMS.fall=function(el,uid){
+  simBox(el,"Simulador: caída libre con distinta masa",'<div class="ctl">'+slider("Masa esfera A",uid+"a",50,1000,50,200,"g")+slider("Masa esfera B",uid+"b",50,1000,50,800,"g")+slider("Altura",uid+"h",5,125,5,45,"m")+'</div><button id="'+uid+'go">Soltar</button><svg id="'+uid+'s" viewBox="0 0 400 220"></svg><div id="'+uid+'o" class="box">Pulsa Soltar.</div>');
+  var anim=null;
+  function draw(ya,yb){
+    var h=+$("#"+uid+"h").value;
+    function Y(y){return 190-(y/h)*170}
+    $("#"+uid+"s").innerHTML='<line class="ax" x1="20" x2="380" y1="190" y2="190"/><circle cx="140" cy="'+(Y(ya)-8)+'" r="'+(6+(+$("#"+uid+"a").value)/100)+'" class="pt1"/><circle cx="260" cy="'+(Y(yb)-8)+'" r="'+(6+(+$("#"+uid+"b").value)/100)+'" class="pt"/><text x="140" y="212" text-anchor="middle">A</text><text x="260" y="212" text-anchor="middle">B</text>';
+  }
+  function reset(){var h=+$("#"+uid+"h").value;draw(h,h)}
+  ["a","b","h"].forEach(function(k){$("#"+uid+k).addEventListener("input",function(){$("#"+uid+k+"v").textContent=this.value;if(anim){cancelAnimationFrame(anim);anim=null}reset()})});
+  $("#"+uid+"go").addEventListener("click",function(){
+    if(anim)cancelAnimationFrame(anim);
+    var h=+$("#"+uid+"h").value,T=Math.sqrt(2*h/10),t0=null,SC=1.5;
+    function step(ts){if(t0===null)t0=ts;var t=Math.min(T,(ts-t0)/1000/SC),y=Math.max(0,h-5*t*t*SC*SC*0);
+      var tt=(ts-t0)/1000/SC*1;tt=Math.min(tt,T);y=h-5*tt*tt;draw(y,y);
+      if(tt<T)anim=requestAnimationFrame(step);else{anim=null;$("#"+uid+"o").innerHTML='Tiempo de caída de A: <span class="val">'+f(T)+' s</span>. Tiempo de B: <span class="val">'+f(T)+' s</span>. (Animación 1,5 veces más lenta que la real.)'}}
+    anim=requestAnimationFrame(step)});
+  reset();
+};
+SIMS.vec=function(el,uid){
+  simBox(el,"Simulador: componentes y suma de vectores",'<div class="ctl">'+slider("Fuerza F",uid+"f",5,100,5,40,"N")+slider("Ángulo θ",uid+"th",0,90,1,30,"°")+'<label>Ángulo medido desde: <select id="'+uid+'r"><option value="h">la horizontal</option><option value="v">la vertical</option></select></label></div><div class="g2"><div id="'+uid+'g"></div><div id="'+uid+'o" class="box"></div></div><hr><div class="ctl">'+slider("A x",uid+"ax",-8,8,1,3)+slider("A y",uid+"ay",-8,8,1,1)+slider("B x",uid+"bx",-8,8,1,-4)+slider("B y",uid+"by",-8,8,1,2)+'</div><div class="g2"><div id="'+uid+'g2"></div><div id="'+uid+'o2" class="box"></div></div>');
+  function arrow(X,Y,x1,y1,x2,y2,cls,dash){return '<line x1="'+X(x1)+'" y1="'+Y(y1)+'" x2="'+X(x2)+'" y2="'+Y(y2)+'" class="'+cls+'"'+(dash?' stroke-dasharray="4 3"':'')+'/><circle cx="'+X(x2)+'" cy="'+Y(y2)+'" r="3" class="dot"/>'}
+  function u1(){
+    var F=+$("#"+uid+"f").value,th=+$("#"+uid+"th").value,ref=$("#"+uid+"r").value;$("#"+uid+"fv").textContent=F;$("#"+uid+"thv").textContent=th;
+    var rad=th*Math.PI/180,fx=ref=="h"?F*Math.cos(rad):F*Math.sin(rad),fy=ref=="h"?F*Math.sin(rad):F*Math.cos(rad);
+    var M=F*1.1;plot($("#"+uid+"g"),{x0:-M*0.1,x1:M,y0:-M*0.1,y1:M,label:"vector y componentes",xl:"x (N)",yl:"y (N)",extra:function(X,Y){return arrow(X,Y,0,0,fx,fy,"s1")+arrow(X,Y,0,0,fx,0,"s2",1)+arrow(X,Y,fx,0,fx,fy,"s3")}});
+    $("#"+uid+"o").innerHTML='Fₓ = <span class="val">'+f(fx)+' N</span><br>F<sub>y</sub> = <span class="val">'+f(fy)+' N</span><br>Comprobación: √(Fₓ²+F<sub>y</sub>²) = '+f(Math.sqrt(fx*fx+fy*fy))+' N<br><span class="small">Azul: F. Naranja: componente x. Verde: componente y.</span>';
+  }
+  function u2(){
+    var v=["ax","ay","bx","by"].map(function(k){var s=$("#"+uid+k);$("#"+uid+k+"v").textContent=s.value;return +s.value}),Rx=v[0]+v[2],Ry=v[1]+v[3];
+    var xs=[0,v[0],Rx,v[2],0].concat([-9,9]).map(Math.abs),M=10;
+    plot($("#"+uid+"g2"),{x0:-M,x1:M,y0:-M,y1:M,label:"suma de vectores",xl:"x",yl:"y",extra:function(X,Y){return arrow(X,Y,0,0,v[0],v[1],"s1")+arrow(X,Y,v[0],v[1],Rx,Ry,"s2")+arrow(X,Y,0,0,Rx,Ry,"s4")}});
+    $("#"+uid+"o2").innerHTML='R = A + B = (<span class="val">'+Rx+'</span>, <span class="val">'+Ry+'</span>)<br>|R| = '+f(Math.sqrt(Rx*Rx+Ry*Ry))+'<br><span class="small">Azul: A. Naranja: B puesto a continuación de A. Morado: R (resultante). Los ejes van de −10 a 10.</span>';
+  }
+  $$("input,select",el).forEach(function(i){i.addEventListener("input",function(){u1();u2()})});u1();u2();
+};
+function projSim(el,uid,horizontal){
+  simBox(el,horizontal?"Simulador: lanzamiento horizontal":"Simulador: movimiento parabólico",'<div class="ctl">'+(horizontal?slider("Altura",uid+"h",10,125,5,45,"m")+slider("Velocidad horizontal",uid+"v",1,30,1,8,"m/s"):slider("Velocidad inicial",uid+"v",5,60,1,30,"m/s")+slider("Ángulo",uid+"a",5,85,1,40,"°")+'<label><input type="checkbox" id="'+uid+'c"> Comparar con el ángulo complementario</label>')+'</div><button id="'+uid+'go">Lanzar</button><div id="'+uid+'g"></div><div id="'+uid+'o" class="box"></div>');
+  var anim=null,cur=null;
+  function path(v,ang,h0){
+    var rad=ang*Math.PI/180,vx=v*Math.cos(rad),vy=v*Math.sin(rad),T=(vy+Math.sqrt(vy*vy+20*h0))/10,xs=[],ys=[];
+    for(var i=0;i<=60;i++){var t=T*i/60;xs.push(vx*t);ys.push(Math.max(0,h0+vy*t-5*t*t))}
+    return {xs:xs,ys:ys,T:T,vx:vx,vy:vy,R:vx*T,H:h0+vy*vy/20,v:v,ang:ang,h0:h0};
+  }
+  function draw(mark){
+    var v=+$("#"+uid+"v").value;$("#"+uid+"vv").textContent=v;var P,Q=null,h0=0;
+    if(horizontal){h0=+$("#"+uid+"h").value;$("#"+uid+"hv").textContent=h0;P=path(v,0,h0)}
+    else{var a=+$("#"+uid+"a").value;$("#"+uid+"av").textContent=a;P=path(v,a,0);if($("#"+uid+"c").checked)Q=path(v,90-a,0)}
+    cur=P;
+    var xmax=horizontal?Math.max(P.R,10)*1.1:Math.max(v*v/10,5)*1.05,ymax=horizontal?h0*1.1:xmax*0.6,ser=[{x:P.xs,y:P.ys,cls:"s1"}];
+    if(Q)ser.push({x:Q.xs,y:Q.ys,cls:"s2"});
+    var g=plot($("#"+uid+"g"),{x0:0,x1:xmax,y0:0,y1:ymax,series:ser,xl:"x (m)",yl:"y (m)",label:"trayectoria",extra:function(X,Y){return mark?'<circle id="'+uid+'b" cx="'+X(mark[0])+'" cy="'+Y(mark[1])+'" r="6" class="pt3"/>':""}});
+    $("#"+uid+"o").innerHTML=horizontal?'Tiempo de vuelo: <span class="val">'+f(P.T)+' s</span> · Alcance: <span class="val">'+f(P.R)+' m</span>. Prueba cambiar la velocidad horizontal: ¿cambia el tiempo? ¿y el alcance?':'Azul'+(Q?' ('+a+'°)':'')+': t. vuelo <span class="val">'+f(P.T)+' s</span>, altura máx. <span class="val">'+f(P.H)+' m</span>, alcance <span class="val">'+f(P.R)+' m</span>.'+(Q?'<br>Naranja ('+(90-a)+'°): alcance <span class="val">'+f(Q.R)+' m</span>, altura máx. '+f(Q.H)+' m.':"");
+    return g;
+  }
+  $$("input",el).forEach(function(i){i.addEventListener("input",function(){if(anim){cancelAnimationFrame(anim);anim=null}draw()})});
+  $("#"+uid+"go").addEventListener("click",function(){
+    if(anim)cancelAnimationFrame(anim);var P=cur,t0=null;
+    function step(ts){if(t0===null)t0=ts;var k=Math.min(1,(ts-t0)/(P.T*1000*1.5)),i=Math.round(k*60);draw([P.xs[i],P.ys[i]]);if(k<1)anim=requestAnimationFrame(step);else anim=null}
+    anim=requestAnimationFrame(step)});
+  draw();
+}
+SIMS.proj0=function(el,u){projSim(el,u,true)};
+SIMS.proj=function(el,u){projSim(el,u,false)};
+var n=0;$$(".sim").forEach(function(el){n++;SIMS[el.getAttribute("data-sim")](el,"u"+n)});
+/* ---------- conexiones entre temas ---------- */
+var ALLNAMES={s1:"1 Hipótesis",s2:"2 Unidades",s3:"3 Relaciones",s4:"4 Desplazamiento",s5:"5 MRU",s6:"6 Gráficas v-t",s7:"7 MRUV",s8:"8 Caída libre",s9:"9 Vectores",s10:"10 Horizontal",s11:"11 Parabólico"};
+function lk(s){return '<a href="#'+s+'" data-go="'+s+'">'+ALLNAMES[s]+'</a>'}
+var POS={s1:[90,50],s2:[90,150],s3:[270,100],s4:[90,250],s5:[270,230],s6:[450,130],s7:[450,230],s8:[630,230],s9:[270,380],s10:[450,330],s11:[630,370]};
+var EDGES=[
+{a:"s1",b:"s2",l:"se mide con",t:"Toda variable que mides necesita una unidad bien expresada: sin unidades coherentes no hay medida que valga."},
+{a:"s1",b:"s3",l:"alimenta a",t:"Las variables y los datos de un experimento se organizan en tablas y gráficas para descubrir cómo se relacionan."},
+{a:"s2",b:"s3",l:"da escala a",t:"Para comparar datos en una tabla o graficarlos, todas las medidas de una misma magnitud deben estar en la misma unidad."},
+{a:"s2",b:"s4",l:"se usa para",t:"Distancias en m o km, tiempos en s o h y velocidades en m/s o km/h: las conversiones del tema 2 aparecen en cada problema de movimiento."},
+{a:"s3",b:"s5",l:"se aplica en",t:"Una relación directa entre posición y tiempo se dibuja como una recta: esa es la gráfica x–t del MRU."},
+{a:"s4",b:"s5",l:"es la base de",t:"La velocidad media (desplazamiento entre tiempo) es la idea que, cuando se mantiene constante, define el MRU."},
+{a:"s4",b:"s9",l:"se generaliza en",t:"El desplazamiento es un vector. El tema 9 enseña a operar con vectores: sumarlos y descomponerlos."},
+{a:"s5",b:"s6",l:"se amplía en",t:"En MRU la gráfica v–t es una horizontal. El tema 6 enseña a leer gráficas donde la velocidad cambia: pendiente = aceleración, área = desplazamiento."},
+{a:"s6",b:"s7",l:"se convierte en",t:"Una v–t recta e inclinada indica aceleración constante: eso es el MRUV. Sus fórmulas salen de la pendiente y del área de esa recta."},
+{a:"s7",b:"s8",l:"tiene como caso a",t:"La caída libre es un MRUV en el que la aceleración es la gravedad, g."},
+{a:"s5",b:"s10",l:"es el eje x de",t:"En la dirección horizontal, un proyectil lanzado horizontalmente se mueve con velocidad constante: MRU."},
+{a:"s8",b:"s10",l:"es el eje y de",t:"En la dirección vertical, el lanzamiento horizontal cae igual que un objeto soltado: caída libre."},
+{a:"s9",b:"s10",l:"permite separar",t:"Se trabaja por componentes: la velocidad inicial es toda horizontal y la componente vertical inicial es cero."},
+{a:"s10",b:"s11",l:"es caso de",t:"El lanzamiento horizontal es el parabólico con ángulo 0°. Con un ángulo aparece además una velocidad vertical inicial."},
+{a:"s9",b:"s11",l:"da las componentes de",t:"Las componentes de la velocidad inicial (con coseno y seno del ángulo) se obtienen descomponiendo el vector."},
+{a:"s8",b:"s11",l:"describe la vertical de",t:"En vertical, el proyectil sube y baja con aceleración constante g: el mismo modelo de la caída libre y del MRUV."}
+];
+(function(){
+  var host=$("#cmap");if(!host)return;
+  var HW=70,HH=20,NS="http://www.w3.org/2000/svg";
+  function clip(c,d){var dx=d[0]-c[0],dy=d[1]-c[1],s=Math.min(dx?(HW+4)/Math.abs(dx):1e9,dy?(HH+4)/Math.abs(dy):1e9);return [c[0]+dx*s,c[1]+dy*s]}
+  var svg='<svg viewBox="0 0 720 430" role="group" aria-label="Mapa de conceptos de los temas"><defs><marker id="cmarr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path class="mk" d="M0 0L10 5L0 10z"/></marker></defs>';
+  EDGES.forEach(function(e,i){
+    var A=POS[e.a],B=POS[e.b],p=clip(A,B),q=clip(B,A);e.mx=(p[0]+q[0])/2;e.my=(p[1]+q[1])/2;
+    svg+='<g><line class="cm-edge" data-e="'+i+'" x1="'+p[0].toFixed(1)+'" y1="'+p[1].toFixed(1)+'" x2="'+q[0].toFixed(1)+'" y2="'+q[1].toFixed(1)+'" marker-end="url(#cmarr)"/></g>';
+  });
+  EDGES.forEach(function(e,i){
+    svg+='<circle class="cm-dot" data-e="'+i+'" tabindex="0" role="button" cx="'+e.mx.toFixed(1)+'" cy="'+e.my.toFixed(1)+'" r="8" aria-label="Relación: '+ALLNAMES[e.a]+' '+e.l+' '+ALLNAMES[e.b]+'"><title>'+ALLNAMES[e.a]+' '+e.l+' '+ALLNAMES[e.b]+'</title></circle>';
+  });
+  SEC.forEach(function(s){
+    var P=POS[s];
+    svg+='<g class="cm-node" data-s="'+s+'" tabindex="0" role="link" aria-label="Ir al tema '+ALLNAMES[s]+'"><rect x="'+(P[0]-HW)+'" y="'+(P[1]-HH)+'" width="'+(2*HW)+'" height="'+(2*HH)+'" rx="10"/><use class="cm-ico" href="#ico-'+s+'" x="'+(P[0]-HW+5)+'" y="'+(P[1]-8)+'" width="16" height="16"/><text x="'+(P[0]+8)+'" y="'+(P[1]+5)+'" text-anchor="middle">'+ALLNAMES[s]+'</text></g>';
+  });
+  svg+='<g id="cmlbl"></g></svg>';
+  var list='<div class="cm-list"><p class="small">Cada tema se conecta con otros. Toca un tema para ir a él.</p><ul>';
+  SEC.forEach(function(s){
+    list+='<li><b>'+lk(s)+'</b><ul>';
+    EDGES.forEach(function(e){
+      if(e.a===s)list+='<li>→ <i>'+e.l+'</i> '+lk(e.b)+'. '+e.t+'</li>';
+      if(e.b===s)list+='<li>← viene de '+lk(e.a)+' (<i>'+e.l+'</i>). '+e.t+'</li>';
+    });
+    list+='</ul></li>';
+  });
+  list+='</ul></div>';
+  host.innerHTML='<div class="cm-svg">'+svg+'<div id="cmp" class="box" role="status" aria-live="polite">Pasa el cursor o toca un tema (o un punto sobre una flecha) para ver cómo se relacionan. Toca un tema para ir a su sección.</div></div>'+list;
+  var panel=$("#cmp"),lbl=$("#cmlbl");
+  function clear(){$$("#cmap .hl").forEach(function(x){x.classList.remove("hl")});$$("#cmap .cm-node.sel").forEach(function(x){x.classList.remove("sel")});lbl.innerHTML=""}
+  function showEdge(i){
+    clear();var e=EDGES[i];
+    $$('#cmap [data-e="'+i+'"]').forEach(function(x){x.classList.add("hl")});
+    $$('#cmap .cm-node[data-s="'+e.a+'"],#cmap .cm-node[data-s="'+e.b+'"]').forEach(function(x){x.classList.add("sel")});
+    lbl.innerHTML='<text class="cm-lbl" x="'+e.mx+'" y="'+(e.my-14)+'" text-anchor="middle">'+e.l+'</text>';
+    panel.innerHTML='<b>'+ALLNAMES[e.a]+'</b> — <i>'+e.l+'</i> → <b>'+ALLNAMES[e.b]+'</b><br>'+e.t+'<br><button class="sec2" type="button" data-go="'+e.a+'">Ir a '+ALLNAMES[e.a]+'</button><button class="sec2" type="button" data-go="'+e.b+'">Ir a '+ALLNAMES[e.b]+'</button>';
+  }
+  function showNode(s){
+    clear();
+    $$('#cmap .cm-node[data-s="'+s+'"]').forEach(function(x){x.classList.add("sel")});
+    var h='<b>'+ALLNAMES[s]+'</b> se conecta con:<ul>';
+    EDGES.forEach(function(e,i){
+      if(e.a===s||e.b===s){
+        $$('#cmap [data-e="'+i+'"]').forEach(function(x){x.classList.add("hl")});
+        h+=e.a===s?'<li>→ <i>'+e.l+'</i> '+ALLNAMES[e.b]+'. '+e.t+'</li>':'<li>← viene de '+ALLNAMES[e.a]+' (<i>'+e.l+'</i>). '+e.t+'</li>';
+      }
+    });
+    panel.innerHTML=h+'</ul>';
+  }
+  $$("#cmap .cm-dot").forEach(function(d){var i=+d.getAttribute("data-e");
+    d.addEventListener("mouseenter",function(){showEdge(i)});d.addEventListener("focus",function(){showEdge(i)});d.addEventListener("click",function(){showEdge(i)});
+    d.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();showEdge(i)}})});
+  $$("#cmap .cm-node").forEach(function(g){var s=g.getAttribute("data-s");
+    g.addEventListener("mouseenter",function(){showNode(s)});g.addEventListener("focus",function(){showNode(s)});
+    g.addEventListener("click",function(){showNode(s);go(s)});
+    g.addEventListener("keydown",function(ev){if(ev.key==="Enter"||ev.key===" "){ev.preventDefault();showNode(s);go(s)}})});
+})();
+var FROM={
+s1:"Es el punto de partida: aquí aprendes a plantear preguntas, variables e hipótesis, que usarás en todo experimento.",
+s2:"Del tema "+lk("s1")+": en un experimento las variables se miden, y toda medida lleva unidad. Aquí aprendes a expresarlas y convertirlas.",
+s3:"De los temas "+lk("s1")+" y "+lk("s2")+": las variables medidas con unidades coherentes se organizan en tablas y gráficas para ver cómo se relacionan.",
+s4:"Del tema "+lk("s2")+": usarás m, km, s, h y las conversiones. Del tema "+lk("s3")+": distancia y tiempo son dos magnitudes que se relacionan.",
+s5:"Del tema "+lk("s4")+": la velocidad media es la base del MRU. Del tema "+lk("s3")+": una relación directa se dibuja como recta, como la gráfica x–t.",
+s6:"Del tema "+lk("s5")+": ya sabes leer x–t. Ahora lees v–t y a–t, donde la velocidad puede cambiar.",
+s7:"Del tema "+lk("s6")+": una v–t inclinada (aceleración constante) es el MRUV. También usa el MRU del tema "+lk("s5")+" como caso con a = 0.",
+s8:"Del tema "+lk("s7")+": la caída libre es un MRUV con aceleración g.",
+s9:"Del tema "+lk("s4")+": el desplazamiento ya era un vector. Aquí aprendes a sumar y descomponer vectores.",
+s10:"De los temas "+lk("s5")+" (eje x, MRU), "+lk("s8")+" (eje y, caída libre) y "+lk("s9")+" (componentes).",
+s11:"Del tema "+lk("s10")+" (es el caso con ángulo 0°), del "+lk("s9")+" (componentes) y del "+lk("s8")+" (movimiento vertical)."
+};
+var BR={
+s1:{n:"s2",txt:"Una hipótesis habla de variables que se miden. Medir exige unidades coherentes: no puedes comparar 2 km con 300 m sin convertir. El tema 2 te da las herramientas para expresar y convertir cada medida.",
+ q:{q:"¿Cómo se relacionan la hipótesis (tema 1) y las unidades (tema 2)?",o:["Las variables de la hipótesis se miden, y medir exige unidades coherentes","No tienen ninguna relación","Las unidades reemplazan a la hipótesis"],c:0,why:"Para comprobar una hipótesis se miden variables; esas medidas deben expresarse en unidades comparables."}},
+s2:{n:"s3",txt:"Con las medidas en unidades coherentes puedes armar una tabla y ver cómo cambia una magnitud cuando cambia otra. Eso es una relación entre magnitudes (directa, inversa...) y se dibuja como una gráfica.",
+ q:{q:"¿Cómo se relacionan las unidades (tema 2) y las gráficas de datos (tema 3)?",o:["Los datos de una misma magnitud deben estar en la misma unidad para compararlos y graficarlos","Las gráficas no necesitan unidades","Las unidades se usan solo al final"],c:0,why:"Sin unidades coherentes, la tabla y la gráfica mezclarían escalas distintas."}},
+s3:{n:"s4",txt:"Cuando las magnitudes de la tabla son distancia y tiempo, su relación recibe un nombre concreto: velocidad. Pasas de una relación general entre magnitudes a una relación específica del movimiento.",
+ q:{q:"¿Cómo se relacionan las relaciones entre magnitudes (tema 3) y la rapidez media (tema 4)?",o:["La rapidez es el cociente distancia/tiempo: una relación concreta entre dos magnitudes","La rapidez no es una relación entre magnitudes","Solo se relacionan en los experimentos"],c:0,why:"Dividir una magnitud entre otra (distancia entre tiempo) es justamente estudiar su relación."}},
+s4:{n:"s5",txt:"La velocidad media es el desplazamiento dividido entre el tiempo. Si esa velocidad se mantiene igual en todo el recorrido, tienes MRU, y la gráfica x–t es una recta cuya pendiente es esa velocidad (una relación directa, como en el tema 3).",
+ q:{q:"¿Cómo se relacionan la velocidad media (tema 4) y el MRU (tema 5)?",o:["En el MRU la velocidad media coincide con la velocidad en cualquier instante","En el MRU la velocidad media es siempre cero","No tienen relación"],c:0,why:"Si la velocidad no cambia, cualquier intervalo da el mismo valor de velocidad media."}},
+s5:{n:"s6",txt:"En MRU la velocidad es constante, así que su gráfica v–t es una línea horizontal. ¿Y si la velocidad cambia? Entonces la gráfica v–t se inclina: su pendiente es la aceleración y su área sigue dando el desplazamiento.",
+ q:{q:"¿Cómo se relacionan el MRU (tema 5) y las gráficas v–t (tema 6)?",o:["El MRU es una v–t horizontal; otras v–t muestran velocidad que cambia","El MRU no se puede dibujar en v–t","En MRU la v–t siempre es inclinada"],c:0,why:"Velocidad constante significa una línea horizontal en v–t."}},
+s6:{n:"s7",txt:r`Una v–t recta e inclinada indica aceleración constante: eso es el MRUV. Sus fórmulas salen de la gráfica: la recta es $v=v_0+at$, y el área bajo ella da $x=x_0+v_0t+\tfrac12at^{2}$.`,
+ q:{q:"¿Cómo se relacionan las gráficas v–t (tema 6) y el MRUV (tema 7)?",o:["La pendiente de la v–t es la aceleración constante del MRUV","El MRUV no aparece en las gráficas","La pendiente de la v–t es la posición"],c:0,why:"Pendiente de v–t = Δv/Δt = a."}},
+s7:{n:"s8",steps:[r`La caída libre es un MRUV muy especial: la aceleración siempre es la gravedad, $a=g$, hacia abajo.`,r`Si sueltas el objeto ($v_0=0$) y tomas $a=g$ en la ecuación de posición del MRUV, queda $h=\tfrac12gt^{2}$.`,r`De $v_f=v_0+at$ sale $v=gt$. Es el mismo modelo del tema 7, solo que la aceleración ya es conocida.`],
+ txt:"Sigue los pasos para ver cómo se pasa del MRUV a la caída libre."},
+s8:{n:"s9",txt:"Hasta ahora todo era en una sola dirección. Para describir movimientos en el plano necesitas magnitudes con dirección: los vectores. Se descomponen en componentes x e y, y cada componente se trata con las fórmulas de movimiento que ya conoces.",
+ q:{q:"¿Cómo se relacionan la caída libre (tema 8) y los vectores (tema 9)?",o:["La caída libre es movimiento en una dirección; los vectores permiten combinar varias direcciones","Los vectores reemplazan a la gravedad","No tienen relación"],c:0,why:"Con componentes, cada dirección se estudia por separado, por ejemplo la vertical como caída libre."}},
+s9:{n:"s10",steps:[r`En un lanzamiento horizontal la velocidad inicial ya es horizontal: $v_{0x}=v_0$ y $v_{0y}=0$ (ángulo de 0°).`,r`Eje x: MRU (tema 5), $x=v_xt$.`,r`Eje y: caída libre (tema 8), $h=\tfrac12gt^{2}$.`,"Los dos ejes se conectan por el mismo tiempo $t$: el que tarda en caer fija cuánto avanza horizontalmente."],
+ txt:"Sigue los pasos para ver cómo los vectores (componentes) permiten estudiar el lanzamiento horizontal."},
+s10:{n:"s11",txt:r`El lanzamiento horizontal es el caso en que el ángulo es 0°. Si ahora lanzas con un ángulo, aparece una velocidad vertical inicial $v_{0y}$: usas las componentes del tema 9, el eje x sigue siendo MRU y el eje y sube y baja con aceleración $g$.`,
+ q:{q:"¿Cómo se relacionan el lanzamiento horizontal (tema 10) y el parabólico (tema 11)?",o:["El horizontal es un parabólico con ángulo 0°","Son movimientos sin nada en común","En el parabólico no hay gravedad"],c:0,why:"Ambos combinan MRU en x con caída o subida y bajada en y; cambia el ángulo de salida."}},
+s11:{n:"quiz",txt:"Cierre: el movimiento parabólico reúne casi todos los temas: unidades y relaciones (2 y 3), velocidad y gráficas (4 a 6), MRUV y caída libre (7 y 8) y vectores (9). Es buen momento para comprobar lo aprendido en el autoexamen.",
+ q:{q:"¿Qué dos movimientos se combinan en el movimiento parabólico?",o:["MRU horizontal y movimiento vertical con aceleración g","Dos MRU perpendiculares","Dos caídas libres horizontales"],c:0,why:"En x no hay aceleración; en y actúa solo la gravedad."}}
+};
+SEC.forEach(function(s,i){
+  var body=$("#"+s+" .body");if(!body)return;
+  var fr=document.createElement("div");fr.className="from";fr.innerHTML="<b>⬅ Viene de…</b> "+FROM[s];body.insertBefore(fr,body.firstChild);
+  var b=BR[s],det=document.createElement("details");det.className="bridge";
+  var sm=document.createElement("summary");sm.textContent="🔗 Conexión con "+(b.n==="quiz"?"el autoexamen":"el siguiente tema");det.appendChild(sm);
+  var bc=document.createElement("div");bc.className="bc";det.appendChild(bc);
+  var p=document.createElement("p");p.innerHTML=b.txt;bc.appendChild(p);
+  if(b.steps){
+    var st=document.createElement("div"),shown=0,nb=document.createElement("button"),rb=document.createElement("button"),inf=document.createElement("span");
+    rb.className="sec2";nb.type=rb.type="button";nb.textContent="Siguiente →";rb.textContent="Reiniciar";inf.className="small";
+    var els=b.steps.map(function(t){var d=document.createElement("div");d.className="step";d.style.display="none";d.innerHTML=t;st.appendChild(d);return d});
+    function upd(){inf.textContent=shown+" / "+els.length;nb.disabled=shown>=els.length}
+    nb.addEventListener("click",function(){if(shown<els.length){els[shown].style.display="";shown++;upd()}});
+    rb.addEventListener("click",function(){els.forEach(function(d){d.style.display="none"});shown=0;upd()});
+    bc.appendChild(st);bc.appendChild(nb);bc.appendChild(rb);bc.appendChild(inf);upd();
+  }else{
+    var qw=document.createElement("div");qw.appendChild(mcItem(b.q));bc.appendChild(qw);
+  }
+  var go2=document.createElement("button");go2.type="button";go2.className="sec2";go2.setAttribute("data-go",b.n);
+  go2.textContent=b.n==="quiz"?"Ir al autoexamen →":"Ir al tema "+ALLNAMES[b.n]+" →";bc.appendChild(go2);
+  body.insertBefore(det,$("label.done",body));rm(det);rm(fr);
+});
+/* ---------- final quiz ---------- */
+var QG=["sci_conv","inv2","disp","rapidez","mru","vt_area","at_area","mruv_t","mruv_x","freefall","vec_sum","comp","horiz","parab"];
+var qitems=[];
+function newQuiz(){
+  var box=$("#quizbox");box.innerHTML="";qitems=[];$("#qres").style.display="none";
+  var gens=shuffle(QG).slice(0,8);
+  gens.forEach(function(g,i){
+    var p=G[g](),d=document.createElement("div");d.className="card";
+    d.innerHTML='<b>'+(i+1)+'.</b> <span>'+p.q+'</span><br>';
+    var inp=document.createElement("input");inp.type="text";inp.inputMode="decimal";inp.setAttribute("aria-label","Respuesta "+(i+1));
+    d.appendChild(inp);d.appendChild(document.createTextNode(" "+p.unit));
+    var fb=document.createElement("div");fb.className="fb";fb.style.display="none";d.appendChild(fb);
+    box.appendChild(d);qitems.push({t:"n",p:p,inp:inp,fb:fb,sec:GSEC[g]});
+  });
+  var ids=shuffle(MC).slice(0,6);
+  ids.forEach(function(m,i){
+    var d=document.createElement("div");d.className="card";d.innerHTML='<b>'+(9+i)+'.</b>';
+    var it=mcItem(m,true);d.appendChild(it);box.appendChild(d);qitems.push({t:"m",it:it,m:m,sec:m.s});
+  });
+  rm(box);
+}
+$("#qgo").addEventListener("click",function(){
+  var score=0,bad={};
+  qitems.forEach(function(q){
+    var ok=false;
+    if(q.t=="n"){var v=parse(q.inp.value);ok=!isNaN(v)&&check(q.p,v);q.fb.style.display="";q.fb.className="fb "+(ok?"ok":"no");q.fb.innerHTML=(ok?"Correcto. ":"Incorrecto. Revisa: ")+q.p.sol;rm(q.fb)}
+    else ok=q.it._show();
+    if(ok)score++;else bad[q.sec]=1;
+  });
+  var tot=qitems.length,r=$("#qres");r.style.display="";r.className="fb "+(score>=tot*0.7?"ok":"no");
+  var secs=Object.keys(bad).map(function(s){return NAMES[SEC.indexOf(s)]||s});
+  r.innerHTML="Puntaje: <b>"+score+" / "+tot+"</b> ("+Math.round(score/tot*100)+"%). "+(secs.length?"Repasa: "+secs.join(", ")+".":"Excelente, no tienes temas pendientes.");
+  try{S.quiz=score+"/"+tot;save()}catch(e){}
+  r.scrollIntoView({behavior:"smooth",block:"nearest"});
+});
+$("#qnew").addEventListener("click",newQuiz);
+newQuiz();renderChips();
+window.addEventListener("load",function(){rm(document.body)});
+if(window.renderMathInElement)rm(document.body);
+})();
+</script>
+<script>
+(function(){var els=Array.prototype.slice.call(document.querySelectorAll(".reveal"));
+function show(e){e.classList.add("in")}
+if(!("IntersectionObserver" in window)){els.forEach(show);return}
+var io=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){show(x.target);io.unobserve(x.target)}})},{threshold:.15});
+els.forEach(function(e){io.observe(e)})})();
+</script>
+<dialog id="lb" aria-label="Imagen ampliada"><button type="button" id="lbx">Cerrar</button><img id="lbi" alt=""><div class="small" id="lbc"></div></dialog>
+<script>(function(){var d=document.getElementById("lb");if(!d||!d.showModal)return;var i=document.getElementById("lbi"),c=document.getElementById("lbc");
+document.querySelectorAll(".exam-fig img").forEach(function(im){im.tabIndex=0;im.setAttribute("role","button");
+function open(){i.src=im.src;i.alt=im.alt;c.textContent=im.parentNode.querySelector("figcaption").textContent;d.showModal()}
+im.addEventListener("click",open);im.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();open()}})});
+document.getElementById("lbx").addEventListener("click",function(){d.close()});
+d.addEventListener("click",function(e){if(e.target===d)d.close()})})();</script>
+</body></html>

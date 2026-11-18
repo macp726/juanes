@@ -1,0 +1,1216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guía de estudio Ciencias Sociales 9</title>
+<style>
+:root{--bg:#fbf7f0;--surface:#fffdf9;--surface-2:#f3ece0;--text:#2b2420;--text-muted:#5e5046;--border:#e3d9c9;--accent:#a3441d;--on-accent:#ffffff;--accent-soft:#f8e7dc;--ok:#1d6644;--ok-bg:#e3f1e6;--bad:#a1281c;--bad-bg:#f9e3de;--warn:#77500a;--warn-bg:#fdf0d5;--info:#1b6158;--info-bg:#ddefea;--code-bg:#f3ece0;--focus:#1f7a6d;--ill-1:#c4693f;--ill-2:#2f8a7c;--ill-3:#d9a441;--ill-4:#7c8a3a;--ill-5:#e9d9bf;--fig-bg:#fdfcf8;}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ill-1:#e8916a;--ill-2:#5bb8a8;--ill-3:#e6bd68;--ill-4:#adbb6a;--ill-5:#4a4239;--fig-bg:#fdfcf8;}}
+:root[data-theme="dark"]{--bg:#1d1a16;--surface:#26221d;--surface-2:#302b25;--text:#f0e8dd;--text-muted:#c7baa9;--border:#4a4239;--accent:#f1a47f;--on-accent:#2a140a;--accent-soft:#3e2b21;--ok:#93d6ab;--ok-bg:#1b3125;--bad:#f5a89d;--bad-bg:#3e201b;--warn:#f2cf82;--warn-bg:#3a2f15;--info:#89d3c6;--info-bg:#173430;--code-bg:#302b25;--focus:#7ccfc1;--ill-1:#e8916a;--ill-2:#5bb8a8;--ill-3:#e6bd68;--ill-4:#adbb6a;--ill-5:#4a4239;--fig-bg:#fdfcf8;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+::selection{background:var(--accent);color:var(--on-accent)}
+a{color:var(--accent)}a:visited{color:var(--accent)}
+code{background:var(--code-bg);color:var(--text);padding:1px 5px;border-radius:4px}
+.katex{color:inherit}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+header{background:var(--surface);color:var(--text);border-bottom:3px solid var(--accent);padding:18px 16px 14px}
+header .in{max-width:980px;margin:0 auto}
+header h1{margin:0 0 6px;font-size:1.55rem;line-height:1.25}
+.hrow{display:flex;gap:10px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin:8px 0}
+.badge{background:var(--accent-soft);color:var(--accent);border:1px solid var(--accent);padding:3px 10px;border-radius:99px;font-size:.9rem;font-weight:600}
+.pbar{height:14px;background:var(--surface-2);border:1px solid var(--border);border-radius:99px;overflow:hidden;margin-top:8px}
+.pbar i{display:block;height:100%;width:0;background:var(--ok);transition:width .4s}
+#ptxt{font-size:.92rem;margin-top:4px;color:var(--text-muted)}
+nav{position:sticky;top:0;z-index:20;background:var(--surface);border-bottom:1px solid var(--border);overflow-x:auto;white-space:nowrap;padding:8px 12px;display:flex;gap:6px}
+nav button{flex:0 0 auto;border:1px solid var(--text-muted);background:var(--surface-2);color:var(--text);padding:6px 10px;border-radius:8px;font-size:.92rem;cursor:pointer}
+nav button:hover{background:var(--accent-soft);border-color:var(--accent)}
+nav button.cur{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+nav button.done{border-color:var(--ok);color:var(--ok);font-weight:700}
+nav button.done.cur{background:var(--accent);color:var(--on-accent)}
+main{max-width:980px;margin:0 auto;padding:12px 16px 60px}
+details.sec{background:var(--surface);border:1px solid var(--border);border-radius:12px;margin:14px 0;overflow:hidden}
+details.sec>summary{cursor:pointer;padding:14px 16px;font-size:1.15rem;font-weight:700;list-style:none;display:flex;gap:8px;align-items:center;color:var(--text)}
+details.sec>summary:hover{background:var(--surface-2)}
+details.sec>summary::-webkit-details-marker{display:none}
+details.sec>summary::before{content:"\25B6";font-size:.8rem;color:var(--accent);transition:transform .2s}
+details.sec[open]>summary::before{transform:rotate(90deg)}
+details.sec>summary .q{margin-left:auto;font-size:.88rem;font-weight:600;color:var(--text-muted);text-align:right}
+.body{padding:4px 16px 18px}
+h3{margin:18px 0 6px;font-size:1.08rem;color:var(--accent)}
+h4{margin:12px 0 4px}
+p,li{max-width:75ch}
+.box,.tip,.ex,.from{border-radius:10px;padding:10px 14px;margin:12px 0;color:var(--text)}
+.box{background:var(--surface-2);border:1px solid var(--border)}
+.tip{background:var(--warn-bg);border-left:5px solid var(--warn)}
+.tip::before{content:"\1F4A1  ";}
+.ex{background:var(--info-bg);border-left:5px solid var(--info)}
+.ex .src{font-style:italic;border-left:3px solid var(--info);padding-left:10px;margin:8px 0}
+.from{background:var(--accent-soft);border:1px solid var(--accent);font-size:.95rem}
+.vocab{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}
+.vocab div{background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:6px 10px;font-size:.95rem;color:var(--text)}
+.vocab b{color:var(--accent)}
+table{border-collapse:collapse;width:100%;font-size:.95rem;display:block;overflow-x:auto}
+th,td{border:1px solid var(--border);padding:6px 8px;text-align:left;vertical-align:top;color:var(--text)}
+th{background:var(--accent-soft)}
+tr:nth-child(even) td{background:var(--surface-2)}
+details.rv{margin:8px 0}
+details.rv>summary,details.bridge>summary{display:inline-block;cursor:pointer;background:var(--accent);color:var(--on-accent);padding:6px 14px;border-radius:8px;font-size:.95rem;font-weight:600;list-style:none}
+details.rv>summary::-webkit-details-marker,details.bridge>summary::-webkit-details-marker{display:none}
+details.rv>summary:hover,details.bridge>summary:hover{opacity:.88}
+details.rv>div,details.bridge>div{margin-top:8px;padding:8px 12px;border:1px dashed var(--border);border-radius:8px;background:var(--surface-2);color:var(--text)}
+details.bridge{margin:16px 0 8px;padding:8px;border:2px solid var(--info);border-radius:12px;background:var(--info-bg)}
+details.bridge[open]>div{animation:fade .3s}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+button.btn{background:var(--accent);color:var(--on-accent);border:1px solid var(--accent);padding:7px 14px;border-radius:8px;font-weight:600;cursor:pointer;font-size:.95rem;margin:4px 4px 4px 0}
+button.btn:hover:not(:disabled){opacity:.88}
+button.btn:disabled,.opt:disabled,.chip:disabled{cursor:not-allowed}
+button.btn.alt{background:var(--surface-2);color:var(--text);border:1px solid var(--text-muted)}
+.studied{margin-top:14px}
+.q-item{border:1px solid var(--border);border-radius:10px;padding:10px 12px;margin:10px 0;background:var(--surface-2);color:var(--text)}
+.q-item .qt{font-weight:600;margin-bottom:6px}
+.opt{display:block;width:100%;text-align:left;background:var(--surface);color:var(--text);border:1px solid var(--text-muted);border-radius:8px;padding:8px 10px;margin:5px 0;cursor:pointer;font-size:1rem}
+.opt:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.opt.sel{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
+.opt.right{background:var(--ok-bg);border-color:var(--ok);color:var(--text)}
+.opt.wrong{background:var(--bad-bg);border-color:var(--bad);color:var(--text)}
+.fb{margin-top:6px;padding:8px 10px;border-radius:8px;font-size:.98rem;color:var(--text)}
+.fb.ok{background:var(--ok-bg);border-left:5px solid var(--ok)}
+.fb.no{background:var(--bad-bg);border-left:5px solid var(--bad)}
+.fb.ok b.ic{color:var(--ok)}.fb.no b.ic{color:var(--bad)}
+.hintbox{background:var(--warn-bg);color:var(--text);border-left:5px solid var(--warn);padding:6px 10px;border-radius:8px;margin:6px 0;font-size:.95rem}
+.hid{display:none}
+.show{display:block}
+.act{border:2px solid var(--border);border-radius:12px;padding:12px;margin:14px 0;background:var(--surface);color:var(--text)}
+.act h4{margin-top:0}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0}
+.chip{border:1px solid var(--text-muted);background:var(--surface);color:var(--text);padding:6px 10px;border-radius:8px;cursor:pointer;font-size:.95rem}
+.chip:hover:not(:disabled){border-color:var(--accent);background:var(--accent-soft)}
+.chip.used{opacity:.55}
+.chip.sel{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent) inset}
+.ordlist li{margin:3px 0;color:var(--text)}
+.ordlist li.ok{color:var(--ok);font-weight:700}
+.ordlist li.no{color:var(--bad);font-weight:700}
+.matchrow{display:grid;grid-template-columns:1fr;gap:4px;margin:8px 0;padding:8px;border:1px solid var(--border);border-radius:8px;color:var(--text);background:var(--surface)}
+select,input,textarea{background:var(--surface);color:var(--text);border:1px solid var(--text-muted);border-radius:6px;padding:6px;font-size:1rem;font-family:inherit}
+::placeholder{color:var(--text-muted);opacity:1}
+.matchrow select{width:100%}
+.matchrow.ok{border-color:var(--ok);background:var(--ok-bg)}
+.matchrow.no{border-color:var(--bad);background:var(--bad-bg)}
+#tl .track{display:flex;gap:6px;overflow-x:auto;padding:10px 2px;border-top:3px solid var(--border);margin-top:8px}
+#tl .ev{flex:0 0 auto;min-width:68px;border:2px solid var(--text-muted);background:var(--surface);color:var(--text);border-radius:10px;padding:6px 8px;cursor:pointer;font-size:.88rem;text-align:center}
+#tl .ev b{display:block;font-size:1rem}
+#tl .ev[aria-expanded="true"]{border-color:var(--accent);box-shadow:0 0 0 2px var(--accent);background:var(--accent-soft)}
+.c-p{border-top:6px solid var(--accent)!important}.c-v{border-top:6px solid var(--bad)!important}.c-z{border-top:6px solid var(--ok)!important}.c-s{border-top:6px solid var(--warn)!important}
+#tlpanel{margin-top:8px;min-height:60px;padding:10px 14px;border-radius:10px;background:var(--info-bg);border-left:5px solid var(--info);color:var(--text)}
+.legend{display:flex;flex-wrap:wrap;gap:6px;font-size:.92rem;margin:6px 0}
+.legend button{border:1px solid var(--text-muted);background:var(--surface-2);color:var(--text);padding:4px 10px;border-radius:99px;cursor:pointer;font-size:.92rem}
+.legend button.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
+.fc{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:8px}
+.fc button{min-height:74px;border:1px solid var(--text-muted);background:var(--surface);color:var(--text);border-radius:10px;padding:8px;cursor:pointer;font-size:.95rem}
+.fc button.flip{background:var(--info-bg);border-color:var(--info)}
+svg{max-width:100%;height:auto}
+svg text{fill:var(--text);font-family:system-ui,sans-serif}
+svg .on text,svg text.on,svg .t-on{fill:var(--on-accent)}
+.f-a{fill:var(--bad)}.f-b{fill:var(--accent)}.f-c{fill:var(--ok)}.f-d{fill:var(--warn)}.f-n{fill:var(--surface-2);stroke:var(--border);stroke-width:2}
+.ln{stroke:var(--text-muted);stroke-width:3}
+.score{font-size:1.2rem;font-weight:700;padding:10px;border-radius:10px;background:var(--info-bg);color:var(--text);margin-top:10px;border:1px solid var(--info)}
+label.chk{display:block;margin:6px 0;color:var(--text)}
+label.chk input{width:18px;height:18px;vertical-align:middle;margin-right:6px}
+.small{font-size:.92rem;color:var(--text-muted)}
+.cmap{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:8px;margin:8px 0}
+.cnode{border:2px solid var(--accent);border-radius:10px;background:var(--surface);padding:8px;display:flex;flex-direction:column;gap:6px;color:var(--text)}
+.cnode.hl{background:var(--accent-soft)}
+.cnode b{font-size:.98rem}
+.cnode .row{display:flex;gap:6px;flex-wrap:wrap}
+.edges{list-style:none;padding:0;margin:8px 0;display:grid;gap:6px}
+.edges button{width:100%;text-align:left;border:1px solid var(--text-muted);border-left:5px solid var(--accent);background:var(--surface);color:var(--text);border-radius:8px;padding:7px 10px;cursor:pointer;font-size:.95rem}
+.edges button:hover,.edges button.on{background:var(--accent-soft);border-color:var(--accent)}
+#cpanel{padding:10px 14px;border-radius:10px;background:var(--info-bg);border-left:5px solid var(--info);color:var(--text);min-height:56px}
+.route li{margin:6px 0}
+.route label{cursor:pointer}
+.sprite{position:absolute;width:0;height:0;overflow:hidden}
+.ic{width:32px;height:32px;flex:0 0 auto;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;color:var(--accent)}
+.ic-s{width:24px;height:24px}
+nav button .ic{width:16px;height:16px;vertical-align:-3px;margin-right:5px;color:inherit}
+.cnode b{display:flex;gap:6px;align-items:center}
+.cnode .ic{width:22px;height:22px}
+.cnode,.t10,.dato,.act{transition:transform .2s,box-shadow .2s}
+.cnode:hover,.t10:hover,.dato:hover{transform:translateY(-2px);box-shadow:0 6px 14px var(--border)}
+.banner{display:flex;gap:12px;align-items:center;margin:8px 0 12px;padding:12px 14px;border-radius:12px;border-left:6px solid var(--accent);background:linear-gradient(90deg,var(--accent-soft),var(--surface-2));color:var(--text)}
+.banner .ic-b{width:40px;height:40px;padding:6px;border-radius:50%;background:var(--surface);border:2px solid var(--accent)}
+.banner .bt{margin:0;font-size:1.2rem;line-height:1.25;color:var(--accent)}
+.banner .hook{margin:4px 0 0;font-style:italic;color:var(--text)}
+.intro{display:grid;grid-template-columns:1fr;gap:12px;align-items:start;margin:8px 0 14px}
+@media(min-width:760px){.intro{grid-template-columns:minmax(0,420px) 1fr}}
+.hero{margin:0}
+.hero svg{display:block;width:100%;max-width:420px;height:auto;margin:0 auto;border-radius:14px;border:1px solid var(--border)}
+.io .hero{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+.io .hero.in{opacity:1;transform:none}
+.cards{display:grid;gap:10px}
+.t10,.dato{border-radius:10px;padding:10px 14px;color:var(--text)}
+.t10{background:var(--info-bg);border-left:5px solid var(--info)}
+.dato{background:var(--warn-bg);border-left:5px solid var(--warn)}
+.t10 .ct{color:var(--info)}
+.dato .ct{color:var(--warn)}
+.dato .ct::before{content:"\1F50D  "}
+.t10 .ct::before{content:"\23F1  "}
+.t10 ul{margin:6px 0 0;padding-left:20px}
+.t10 li{margin:3px 0}
+.dato p{margin:4px 0 0}
+.hbg{fill:url(#gBg)}
+.il1{fill:var(--ill-1)}.il2{fill:var(--ill-2)}.il3{fill:var(--ill-3)}.il4{fill:var(--ill-4)}.il5{fill:var(--ill-5)}
+.gl1{fill:url(#g1)}.gl2{fill:url(#g2)}.gl3{fill:url(#g3)}.gl4{fill:url(#g4)}.gl5{fill:url(#g5)}
+.sf{fill:var(--surface)}.s2f{fill:var(--surface-2)}.tdot{fill:var(--text)}
+.st1,.st2,.st3,.st4{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.sf.st1,.sf.st2,.sf.st3{fill:var(--surface)}
+.st1{stroke:var(--ill-1);stroke-width:3}.st2{stroke:var(--ill-2);stroke-width:3}.st3{stroke:var(--text-muted);stroke-width:2.5}.st4{stroke:var(--ill-1);stroke-width:3}
+.stt{stroke:var(--text-muted);stroke-width:3;stroke-linecap:round}
+.gsb stop:first-child{stop-color:var(--accent-soft)}.gsb stop:last-child{stop-color:var(--surface-2)}
+.gs1 stop:first-child{stop-color:var(--ill-1)}.gs1 stop:last-child{stop-color:var(--ill-1);stop-opacity:.6}
+.gs2 stop:first-child{stop-color:var(--ill-2)}.gs2 stop:last-child{stop-color:var(--ill-2);stop-opacity:.6}
+.gs3 stop:first-child{stop-color:var(--ill-3)}.gs3 stop:last-child{stop-color:var(--ill-3);stop-opacity:.6}
+.gs4 stop:first-child{stop-color:var(--ill-4)}.gs4 stop:last-child{stop-color:var(--ill-4);stop-opacity:.6}
+.gs5 stop:first-child{stop-color:var(--surface)}.gs5 stop:last-child{stop-color:var(--ill-5)}
+.gssp stop:first-child{stop-color:var(--ill-2)}.gssp stop.mid{stop-color:var(--ill-3)}.gssp stop:last-child{stop-color:var(--ill-1)}
+.an{transform-box:fill-box;transform-origin:center}
+.an-v{transform-box:view-box}
+.hero:not(.in) .an{animation-play-state:paused}
+@keyframes a-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes a-wob{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes a-pulse{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.04)}}
+@keyframes a-move{0%{transform:translateX(0)}100%{transform:translateX(284px)}}
+@keyframes a-flag{0%,100%{transform:skewY(0)}50%{transform:skewY(6deg)}}
+@keyframes a-sw{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+@keyframes a-sw2{0%,100%{transform:translateX(0)}50%{transform:translateX(-4px)}}
+@keyframes a-tilt{0%,100%{transform:rotate(-3deg)}50%{transform:rotate(3deg)}}
+@keyframes a-wave{0%{opacity:.15}50%{opacity:1}100%{opacity:.15}}
+@keyframes a-drop{0%{transform:translateY(-8px);opacity:.6}60%{transform:translateY(22px);opacity:1}100%{transform:translateY(22px);opacity:.6}}
+@keyframes a-slide{0%,100%{transform:translateX(0)}50%{transform:translateX(250px)}}
+@keyframes a-write{0%,100%{transform:translate(0,0)}50%{transform:translate(-8px,6px)}}
+@keyframes a-twk{0%,100%{transform:scale(1) rotate(0)}50%{transform:scale(1.05) rotate(4deg)}}
+.a-bob{animation:a-bob 3s ease-in-out infinite}.a-wob{animation:a-wob 2.4s ease-in-out infinite}.a-pulse{animation:a-pulse 2.6s ease-in-out infinite}
+.a-move{animation:a-move 5s ease-in-out infinite alternate}.a-flag{animation:a-flag 2.4s ease-in-out infinite}
+.a-sw{animation:a-sw 2s ease-in-out infinite}.a-sw2{animation:a-sw2 2s ease-in-out infinite}.a-tilt{animation:a-tilt 4s ease-in-out infinite}
+.a-wave{animation:a-wave 1.8s ease-in-out infinite}.a-drop{animation:a-drop 2.8s ease-in infinite}.a-slide{animation:a-slide 6s ease-in-out infinite}
+.a-write{animation:a-write 2.2s ease-in-out infinite}.a-twk{animation:a-twk 3.2s ease-in-out infinite}
+@media (prefers-reduced-motion:reduce){.io .hero{opacity:1;transform:none}.cnode:hover,.t10:hover,.dato:hover{transform:none}}
+
+.exam-fig{background:var(--surface);border:1px solid var(--text-muted);border-radius:12px;padding:10px;margin:14px auto;max-width:560px;color:var(--text)}
+.exam-fig img{max-width:100%;height:auto;display:block;margin:auto;border-radius:8px;background:var(--fig-bg);cursor:zoom-in}
+.exam-fig img:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.exam-fig figcaption{font-size:.92rem;margin-top:8px;color:var(--text-muted)}
+.exam-fig figcaption span{display:block;color:var(--text);margin-top:4px}
+/* ---------- Galería de presidentes ---------- */
+.pgal{list-style:none;padding:0;margin:10px 0;display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.pg-card{background:var(--surface);border:1px solid var(--border);border-top:5px solid var(--border);border-radius:12px;padding:8px;display:flex;flex-direction:column;gap:4px;color:var(--text)}
+.pg-card.fn{border-top-color:var(--accent)}
+.pg-ph-wrap{aspect-ratio:3/4;background:var(--fig-bg);border-radius:8px;overflow:hidden}
+.pg-card img,.pg-ph{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}
+.pg-card img{cursor:zoom-in}
+.pg-card img:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.pg-ph .ph-bg{fill:var(--ill-5)}.pg-ph .ph-c{fill:var(--surface-2)}.pg-ph .ph-t{fill:var(--text)}
+.pg-n{font-size:.95rem;line-height:1.2}
+.pg-p{font-weight:700;color:var(--text-muted);font-size:.9rem}
+.pg-tag{align-self:flex-start;background:var(--accent-soft);color:var(--accent);border-radius:999px;padding:1px 8px;font-size:.78rem;font-weight:700}
+.pg-h{font-size:.82rem;color:var(--text-muted);line-height:1.3}
+.pg-q{background:var(--surface-2);border:1px solid var(--border);border-radius:12px;padding:12px;margin:14px 0;color:var(--text)}
+.pg-q .pg-qi{max-width:220px;aspect-ratio:3/4;background:var(--fig-bg);border-radius:8px;overflow:hidden;margin:8px 0}
+.pg-q .pg-qi img{width:100%;height:100%;object-fit:cover;display:block}
+.pg-q .opts{display:grid;gap:6px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.pg-q .pg-fb{margin-top:8px;font-weight:600}
+details.pg-cred{margin:12px 0;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text)}
+details.pg-cred>summary{cursor:pointer;padding:8px 12px;font-weight:700}
+details.pg-cred ul{margin:0;padding:4px 12px 10px 30px;font-size:.88rem;color:var(--text-muted)}
+details.pg-cred a{color:var(--accent)}
+#lb{position:fixed;inset:0;z-index:100;background:var(--bg);display:none;flex-direction:column;align-items:center;justify-content:center;padding:16px;gap:12px}
+#lb.on{display:flex}
+#lb img{max-width:100%;max-height:calc(100vh - 90px);object-fit:contain;background:var(--fig-bg);border-radius:8px}
+@media(min-width:700px){.matchrow{grid-template-columns:1fr 1fr;align-items:center}}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false" width="0" height="0" style="position:absolute"><defs><symbol id="i-s0" viewBox="0 0 32 32"><circle cx="16" cy="16" r="12"/><path d="M20.5 11.5 L18 18 L11.5 20.5 L14 14Z"/></symbol><symbol id="i-s1" viewBox="0 0 32 32"><path d="M3 20 H29"/><path d="M8 20 V8 M16 20 V12 M24 20 V6"/><path d="M8 8 h5 M16 12 h5 M24 6 h4"/></symbol><symbol id="i-s2" viewBox="0 0 32 32"><circle cx="12" cy="16" r="8"/><circle cx="20" cy="16" r="8"/></symbol><symbol id="i-s3" viewBox="0 0 32 32"><path d="M3 11 L16 4 L29 11Z"/><path d="M7 14 V24 M13 14 V24 M19 14 V24 M25 14 V24"/><path d="M3 27 H29"/></symbol><symbol id="i-s4" viewBox="0 0 32 32"><path d="M9 28 V6"/><rect x="9" y="5" width="17" height="11" rx="2"/><path d="M5 28 H15"/></symbol><symbol id="i-s5" viewBox="0 0 32 32"><path d="M16 3 L27 7 V16 C27 22 22 26 16 29 C10 26 5 22 5 16 V7Z"/><path d="M16 3 L14 12 L18 17 L15 29"/></symbol><symbol id="i-s6" viewBox="0 0 32 32"><rect x="4" y="6" width="24" height="20" rx="3"/><path d="M4 22 L12 14 L18 20 L22 16 L28 22"/><circle cx="21" cy="11" r="2"/></symbol><symbol id="i-s7" viewBox="0 0 32 32"><path d="M16 5 V27 M9 27 H23 M5 9 H27"/><path d="M5 9 L2 18 H10Z M27 9 L24 18 H32Z"/></symbol><symbol id="i-s8" viewBox="0 0 32 32"><path d="M5 27 C12 22 18 14 27 5"/><path d="M11 20 C7 19 6 15 7 12 C11 12 13 15 11 20Z M17 14 C14 11 14 7 16 4 C19 6 20 10 17 14Z M21 10 C23 14 26 14 28 13 C27 9 24 8 21 10Z"/></symbol><symbol id="i-s9" viewBox="0 0 32 32"><path d="M4 13 L20 6 V26 L4 19Z"/><path d="M23 11 C26 14 26 18 23 21 M27 8 C32 13 32 19 27 24"/></symbol><symbol id="i-s10" viewBox="0 0 32 32"><path d="M16 29 C8 20 6 15 6 12 A10 10 0 0 1 26 12 C26 15 24 20 16 29Z"/><circle cx="16" cy="12" r="3.5"/></symbol><symbol id="i-s11" viewBox="0 0 32 32"><rect x="5" y="14" width="22" height="13" rx="2"/><path d="M11 18 H21"/><path d="M13 14 V6 H19 V14"/><path d="M14.5 9.5 L16 11 L18 8"/></symbol><symbol id="i-s12" viewBox="0 0 32 32"><path d="M5 27 L8 19 L22 5 L27 10 L13 24Z M19 8 L24 13"/><path d="M5 27 L8 19 L13 24Z"/></symbol><symbol id="i-s13" viewBox="0 0 32 32"><rect x="6" y="6" width="20" height="23" rx="3"/><rect x="11" y="3" width="10" height="6" rx="2"/><path d="M11 17 L14 20 L21 13"/></symbol><linearGradient id="gBg" class="gsb" x1="0" y1="0" x2="1" y2="1"><stop offset="0"/><stop offset="1"/></linearGradient><linearGradient id="g1" class="gs1" x1="0" y1="0" x2="0" y2="1"><stop offset="0"/><stop offset="1"/></linearGradient><linearGradient id="g2" class="gs2" x1="0" y1="0" x2="0" y2="1"><stop offset="0"/><stop offset="1"/></linearGradient><linearGradient id="g3" class="gs3" x1="0" y1="0" x2="0" y2="1"><stop offset="0"/><stop offset="1"/></linearGradient><linearGradient id="g4" class="gs4" x1="0" y1="0" x2="0" y2="1"><stop offset="0"/><stop offset="1"/></linearGradient><linearGradient id="g5" class="gs5" x1="0" y1="0" x2="0" y2="1"><stop offset="0"/><stop offset="1"/></linearGradient><linearGradient id="gSp" class="gssp" x1="0" y1="0" x2="1" y2="0"><stop offset="0"/><stop offset=".5" class="mid"/><stop offset="1"/></linearGradient></defs></svg>
+<header><div class="in">
+<div class="hrow"><h1>Guía de estudio · Ciencias Sociales</h1><button type="button" class="btn alt" id="themebtn" aria-pressed="false">Cambiar a modo oscuro</button></div>
+<div class="badges"><span class="badge">Grado 9</span><span class="badge">Cuarto Periodo</span><span class="badge">Colombia: del Frente Nacional a hoy</span></div>
+<div class="pbar" role="progressbar" aria-label="Progreso" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="pbarwrap"><i id="pfill"></i></div>
+<div id="ptxt">Progreso: 0%</div>
+</div></header>
+<nav id="nav" aria-label="Temas"></nav>
+<main id="main">
+
+<!-- ============ S0 ============ -->
+<details class="sec" id="s0" data-title="Inicio y estrategia" open>
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s0"/></svg>0. Cómo usar esta guía y estrategia tipo ICFES <span class="q">Todas las preguntas</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s0"/></svg><div><h2 class="bt">Inicio y estrategia</h2><p class="hook">¿Sabías que leer primero la pregunta final te ayuda a no caer en las trampas del texto?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Diana con una flecha en el centro y cinco pasos numerados: estrategia para responder el examen"><title>Diana con una flecha en el centro y cinco pasos numerados: estrategia para responder el examen</title><rect class="hbg" width="320" height="180" rx="14"/><circle class="gl1" cx="110" cy="92" r="62"/><circle class="sf" cx="110" cy="92" r="48"/><circle class="gl3" cx="110" cy="92" r="34"/><circle class="sf" cx="110" cy="92" r="20"/><circle class="il1" cx="110" cy="92" r="8"/><g class="an a-wob"><line class="stt" x1="110" y1="92" x2="188" y2="30"/><path class="st2" d="M188 30 L196 22 M184 26 L192 18 M192 34 L200 26"/></g><path class="st3" d="M240 32 V150" stroke-dasharray="4 5"/><circle class="sf st1" cx="240" cy="32" r="12"/><text x="240" y="37" text-anchor="middle" font-size="13" font-weight="700">1</text><circle class="sf st1" cx="240" cy="62" r="12"/><text x="240" y="67" text-anchor="middle" font-size="13" font-weight="700">2</text><circle class="sf st1" cx="240" cy="92" r="12"/><text x="240" y="97" text-anchor="middle" font-size="13" font-weight="700">3</text><circle class="sf st1" cx="240" cy="122" r="12"/><text x="240" y="127" text-anchor="middle" font-size="13" font-weight="700">4</text><circle class="sf st1" cx="240" cy="150" r="12"/><text x="240" y="155" text-anchor="middle" font-size="13" font-weight="700">5</text></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Lee primero lo que te piden y luego el texto.</li><li>Subraya fechas, nombres y conectores como «sin embargo».</li><li>Descarta lo que contradice un hecho y elige la opción más completa.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>El ICFES nació como Instituto Colombiano para el Fomento de la Educación Superior. Hoy se llama Instituto Colombiano para la Evaluación de la Educación, pero conserva la sigla.</p></div></div></div>
+<p>La evaluación recorre la historia política reciente de Colombia: <b>desde el Frente Nacional (1958) hasta los gobiernos actuales</b>. Esta guía te explica los temas, te enseña a razonar con ejemplos distintos a los del examen y te da práctica con retroalimentación. <b>No contiene las respuestas de la evaluación</b>: el objetivo es que aprendas a llegar a ellas tú solo.</p>
+<h3>Mapa de conceptos: cómo se conectan los temas</h3>
+<p class="small">Cada recuadro es un tema: pulsa su título para ir a la sección o «Relaciones» para ver cómo se conecta. También puedes pulsar cualquier relación de la lista.</p>
+<div class="cmap" id="cmap"></div>
+<ul class="edges" id="edges"></ul>
+<div id="cpanel" aria-live="polite">Elige un tema o una relación para ver la explicación.</div>
+<h3>Ruta de estudio sugerida</h3>
+<p class="small">Sigue este orden; marca cada paso cuando lo termines (se sincroniza con tu progreso).</p>
+<ol class="route" id="route"></ol>
+<h3>Mapa: pregunta del examen → sección de la guía</h3>
+<table>
+<tr><th>Pregunta(s)</th><th>Tema</th><th>Sección</th></tr>
+<tr><td>1, 20</td><td>Frente Nacional</td><td>Secciones 2 y 12</td></tr>
+<tr><td>2, 3</td><td>Gobiernos del Frente Nacional</td><td>Sección 3</td></tr>
+<tr><td>5</td><td>Elecciones de 1970 y sus consecuencias</td><td>Secciones 3 y 4</td></tr>
+<tr><td>6, 14</td><td>Años 70 y 80, protesta social y M-19</td><td>Sección 4</td></tr>
+<tr><td>18</td><td>Narcotráfico y gobierno de Barco</td><td>Sección 5</td></tr>
+<tr><td>4, 8</td><td>Reconocer presidentes y sus periodos (imágenes)</td><td>Sección 6 (y línea de tiempo, sección 1)</td></tr>
+<tr><td>7, 9</td><td>Seguridad Democrática y Ley de Justicia y Paz</td><td>Sección 7</td></tr>
+<tr><td>10, 11</td><td>Gobierno Santos y proceso de paz</td><td>Sección 8</td></tr>
+<tr><td>13, 15</td><td>Gobierno Duque y estallido social</td><td>Sección 9</td></tr>
+<tr><td>16, 17</td><td>Gobierno Petro y Paz Total</td><td>Sección 10</td></tr>
+<tr><td>12, 19</td><td>Partidos políticos y espectro político</td><td>Secciones 11 y 12</td></tr>
+</table>
+<h3>Método de 5 pasos para preguntas tipo ICFES</h3>
+<ol>
+<li><b>Lee primero la pregunta final</b> (lo que te piden) y luego el texto: ¿piden una causa, una consecuencia, una interpretación, una contradicción, un significado o un dilema?</li>
+<li><b>Subraya</b> fechas, nombres, verbos y conectores (<i>sin embargo, por lo tanto, también</i>). Los conectores de contraste (<i>sin embargo</i>) suelen señalar el problema central.</li>
+<li><b>Ubica la época</b>: ¿antes o después del Frente Nacional? ¿conflicto, paz, narcotráfico? Tu línea de tiempo mental te ayuda a descartar.</li>
+<li><b>Descarta</b> opciones que contradicen un hecho que conoces, que no responden a lo que se pregunta o que usan palabras absolutas como <i>exclusivamente, completamente, definitivamente, automáticamente</i>. Ojo: esto es una pista frecuente, no una regla infalible; verifica siempre con el contenido.</li>
+<li><b>Elige la opción más completa y matizada</b>: la que reconoce avances y límites a la vez, y es coherente con el texto y con la historia.</li>
+</ol>
+<div class="tip"><b>Para preguntas con imagen:</b> mira primero el enunciado y las opciones. Luego busca pistas visuales (lugar, objetos, época de la fotografía, personas) y relaciónalas con lo que estudiaste. Si la imagen no basta, apóyate en fechas y nombres que sí sabes.</div>
+<div class="studied"><button class="btn alt mark" data-sec="s0">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S1 ============ -->
+<details class="sec" id="s1" data-title="Línea de tiempo">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s1"/></svg>1. Línea de tiempo interactiva 1948 – 2026 <span class="q">Apoyo a todas</span></summary>
+<div class="body" id="tl">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s1"/></svg><div><h2 class="bt">Línea de tiempo</h2><p class="hook">¿Sabías que esta línea resume casi 80 años de historia política en una sola mirada?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Línea de tiempo con cinco banderas de colores sobre los años 1948, 1958, 1974, 1991 y 2016"><title>Línea de tiempo con cinco banderas de colores sobre los años 1948, 1958, 1974, 1991 y 2016</title><rect class="hbg" width="320" height="180" rx="14"/><circle class="il3" cx="278" cy="34" r="14" opacity=".55"/><line class="stt" x1="18" y1="112" x2="302" y2="112"/><line class="stt" x1="50" y1="112" x2="50" y2="58"/><path class="an a-flag il1" d="M50 58 L76 62 L70 74 L76 86 L50 86 Z" style="animation-delay:0.0s"/><circle class="sf st1" cx="50" cy="112" r="5"/><text x="50" y="136" text-anchor="middle" font-size="12" font-weight="700">1948</text><line class="stt" x1="100" y1="112" x2="100" y2="58"/><path class="an a-flag il2" d="M100 58 L126 62 L120 74 L126 86 L100 86 Z" style="animation-delay:0.4s"/><circle class="sf st1" cx="100" cy="112" r="5"/><text x="100" y="136" text-anchor="middle" font-size="12" font-weight="700">1958</text><line class="stt" x1="155" y1="112" x2="155" y2="58"/><path class="an a-flag il3" d="M155 58 L181 62 L175 74 L181 86 L155 86 Z" style="animation-delay:0.8s"/><circle class="sf st1" cx="155" cy="112" r="5"/><text x="155" y="136" text-anchor="middle" font-size="12" font-weight="700">1974</text><line class="stt" x1="215" y1="112" x2="215" y2="58"/><path class="an a-flag il4" d="M215 58 L241 62 L235 74 L241 86 L215 86 Z" style="animation-delay:1.2s"/><circle class="sf st1" cx="215" cy="112" r="5"/><text x="215" y="136" text-anchor="middle" font-size="12" font-weight="700">1991</text><line class="stt" x1="275" y1="112" x2="275" y2="58"/><path class="an a-flag il1" d="M275 58 L301 62 L295 74 L301 86 L275 86 Z" style="animation-delay:1.6s"/><circle class="sf st1" cx="275" cy="112" r="5"/><text x="275" y="136" text-anchor="middle" font-size="12" font-weight="700">2016</text><circle class="il1 an a-move" cx="18" cy="112" r="5" style="opacity:.9"/><text x="160" y="164" text-anchor="middle" font-size="12">Del Bogotazo a la actualidad</text></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Va de 1948 a 2026 y ordena los hechos clave.</li><li>Los colores indican el tipo de hecho; puedes filtrar.</li><li>Ubicar la época te ayuda a descartar opciones.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>La Constitución de 1991 reemplazó a la de 1886, que había durado 105 años.</p></div></div></div>
+<p>Haz clic en cada evento para ver su explicación. Los colores indican el tipo de hecho. Filtra por categoría con los botones.</p>
+<div class="legend" id="tlleg" role="group" aria-label="Filtros"></div>
+<div class="track" id="tltrack"></div>
+<div id="tlpanel" aria-live="polite">Selecciona un evento de la línea de tiempo.</div>
+<div class="act"><h4>Actividad: ordena cronológicamente (presidentes)</h4>
+<div class="order" data-set="pres"></div></div>
+<div class="studied"><button class="btn alt mark" data-sec="s1">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S2 ============ -->
+<details class="sec" id="s2" data-title="Frente Nacional">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s2"/></svg>2. El Frente Nacional (1958 – 1974) <span class="q">Preguntas 1, 20</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s2"/></svg><div><h2 class="bt">Frente Nacional</h2><p class="hook">¿Sabías que dos partidos acordaron turnarse la presidencia durante 16 años?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Dos partidos representados por círculos que se turnan el poder con flechas, y cuatro bloques alternados que suman 16 años"><title>Dos partidos representados por círculos que se turnan el poder con flechas, y cuatro bloques alternados que suman 16 años</title><rect class="hbg" width="320" height="180" rx="14"/><circle class="gl1" cx="105" cy="58" r="30"/><circle class="gl2" cx="215" cy="58" r="30"/><g class="an a-sw"><path class="st3" d="M143 48 H177"/><path class="st3" d="M170 42 L178 48 L170 54"/></g><g class="an a-sw2"><path class="st3" d="M177 68 H143"/><path class="st3" d="M150 62 L142 68 L150 74"/></g><text x="105" y="104" text-anchor="middle" font-size="12" font-weight="700">Liberales</text><text x="215" y="104" text-anchor="middle" font-size="12" font-weight="700">Conservadores</text><rect class="gl1" x="36" y="118" width="58" height="22" rx="5"/><rect class="gl2" x="98" y="118" width="58" height="22" rx="5"/><rect class="gl1" x="160" y="118" width="58" height="22" rx="5"/><rect class="gl2" x="222" y="118" width="58" height="22" rx="5"/><text x="160" y="162" text-anchor="middle" font-size="12">4 periodos × 4 años = 16 años</text></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Entre 1958 y 1974 liberales y conservadores se alternaron el poder.</li><li>Buscaba dejar atrás la violencia bipartidista y compartir el gobierno.</li><li>Anota en tus apuntes qué logró y qué dejó sin resolver.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>El plebiscito del 1 de diciembre de 1957, que aprobó el pacto, fue la primera votación nacional en la que las mujeres colombianas pudieron votar.</p></div></div></div>
+<h3>Contexto: ¿por qué surgió?</h3>
+<ul>
+<li><b>La Violencia bipartidista</b>: desde finales de los años 40, liberales y conservadores se enfrentaron en el campo y las ciudades. El asesinato del líder liberal Jorge Eliécer Gaitán (9 de abril de 1948) agravó el conflicto.</li>
+<li><b>La dictadura de Rojas Pinilla</b> (1953 – 1957): llegó por golpe de Estado, al principio con apoyo de sectores de ambos partidos; después hubo censura y represión. Cayó el 10 de mayo de 1957 y gobernó una Junta Militar.</li>
+<li><b>Los pactos</b>: los jefes de los dos partidos tradicionales acordaron un sistema para repartirse el poder (pactos de Benidorm 1956 y Sitges 1957, en España).</li>
+<li><b>El plebiscito del 1 de diciembre de 1957</b> aprobó el acuerdo; por primera vez votaron las mujeres en el país.</li>
+</ul>
+<h3>Características</h3>
+<div class="vocab">
+<div><b>Alternación</b>: la Presidencia pasaría un periodo a cada partido durante 16 años (4 periodos).</div>
+<div><b>Paridad</b>: los cargos públicos (Congreso, ministerios, gobernaciones, justicia) se repartían por igual entre liberales y conservadores.</div>
+<div><b>Bipartidismo</b>: sistema dominado por dos partidos.</div>
+<div><b>Exclusión</b>: dejar por fuera a quienes no pertenecen a los dos partidos.</div>
+<div><b>Clientelismo</b>: dar cargos o favores a cambio de apoyo político.</div>
+<div><b>Legitimidad</b>: confianza de la gente en que el sistema es justo y representativo.</div>
+<div><b>Plebiscito</b>: votación en que el pueblo aprueba o rechaza una decisión política.</div>
+<div><b>Oposición</b>: quienes critican al gobierno desde fuera de él.</div>
+</div>
+<h3>Esquema gráfico: alternación presidencial</h3>
+<svg viewBox="0 0 640 110" role="img" aria-label="Cuatro periodos presidenciales alternados entre partido Liberal y Conservador, 1958 a 1974">
+<rect x="10" y="20" width="150" height="60" rx="8" class="f-a"/><text x="85" y="46" text-anchor="middle" class="t-on" style="font-weight:700">1958-1962</text><text x="85" y="66" text-anchor="middle" class="t-on">Liberal</text>
+<rect x="170" y="20" width="150" height="60" rx="8" class="f-b"/><text x="245" y="46" text-anchor="middle" class="t-on" style="font-weight:700">1962-1966</text><text x="245" y="66" text-anchor="middle" class="t-on">Conservador</text>
+<rect x="330" y="20" width="150" height="60" rx="8" class="f-a"/><text x="405" y="46" text-anchor="middle" class="t-on" style="font-weight:700">1966-1970</text><text x="405" y="66" text-anchor="middle" class="t-on">Liberal</text>
+<rect x="490" y="20" width="140" height="60" rx="8" class="f-b"/><text x="560" y="46" text-anchor="middle" class="t-on" style="font-weight:700">1970-1974</text><text x="560" y="66" text-anchor="middle" class="t-on">Conservador</text>
+<text x="320" y="100" text-anchor="middle" font-size="12">Los partidos se turnan. La alternancia presidencial terminó en 1974; la paridad en cargos se extendió hasta 1978.</text>
+</svg>
+<figure class="exam-fig">
+<img src="img/pregunta-20.png" alt="Imagen dividida en dos mitades, una azul y otra roja, con una fotografía antigua de personas reunidas en un recinto en el centro y un título en forma de pregunta debajo." loading="lazy">
+<figcaption>📄 Imagen de tu evaluación — pregunta 20. <span>Observa: fíjate en los dos colores y en cómo se reparten la imagen, y en la fotografía antigua del centro (¿quiénes están reunidos y dónde?). Relaciónalo con las características y el esquema de alternación de esta sección para armar tu argumento.</span></figcaption>
+</figure>
+<h3>Relaciones causa → consecuencia</h3>
+<ul>
+<li>Violencia bipartidista + dictadura → pacto para pacificar y devolver el poder a los civiles.</li>
+<li>Reparto del poder entre dos partidos → ¿qué efecto tuvo sobre la confrontación entre ellos y sobre los demás grupos políticos? Anótalo en tus apuntes.</li>
+<li>Poca apertura política + problemas agrarios y sociales → inconformidad, abstención y, en parte, surgimiento de guerrillas y movimientos nuevos.</li>
+</ul>
+<div class="tip"><b>Clave para razonar:</b> cuando una pregunta habla de una <i>contradicción</i> o de un <i>límite</i>, busca algo que el sistema logró <u>y</u> algo que, al mismo tiempo, dejó sin resolver. Pregúntate: ¿quién ganó con el acuerdo y quién quedó por fuera?</div>
+
+<div class="ex"><h4>Ejemplo resuelto (otro caso): el plebiscito de 1957</h4>
+<p><b>Fuente (paráfrasis didáctica):</b></p>
+<p class="src">«En diciembre de 1957 los colombianos fueron convocados a votar un plebiscito. El texto aprobado fijaba que durante 16 años los dos partidos tradicionales se turnarían la Presidencia y que los cargos se repartirían por mitades. Una novedad fue que las mujeres pudieron votar en una elección nacional.»</p>
+<p><b>Pregunta modelo:</b> ¿qué aspecto muestra una ampliación de la participación y cuál un límite?</p>
+<details class="rv"><summary>Ver explicación paso a paso</summary><div>
+<ol><li><b>Identifica qué piden:</b> un avance y un límite (dos cosas distintas).</li>
+<li><b>Busca el avance:</b> «las mujeres pudieron votar» amplía quién participa.</li>
+<li><b>Busca el límite:</b> «solo dos partidos, mitad y mitad» restringe qué opciones políticas pueden competir.</li>
+<li><b>Concluye:</b> se amplió el derecho al voto, pero se limitó el pluralismo de partidos.</li></ol>
+<p>Fíjate: razonamos con el texto, separando <i>quién vota</i> de <i>por quién se puede votar</i>.</p></div></details></div>
+
+<div class="act"><h4>Práctica con retroalimentación</h4><div class="quiz" data-set="fn"></div></div>
+<div class="act"><h4>Actividad: ordena el camino hacia el Frente Nacional</h4><div class="order" data-set="fnpath"></div></div>
+<div class="act"><h4>Actividad: une causa y consecuencia</h4><div class="match" data-set="fn"></div></div>
+<div class="studied"><button class="btn alt mark" data-sec="s2">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S3 ============ -->
+<details class="sec" id="s3" data-title="Gobiernos del F. Nacional">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s3"/></svg>3. Los gobiernos del Frente Nacional <span class="q">Preguntas 2, 3, 5</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s3"/></svg><div><h2 class="bt">Gobiernos del Frente Nacional</h2><p class="hook">¿Sabías que en 16 años hubo solo cuatro presidentes, dos liberales y dos conservadores?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Edificio con columnas alternadas de dos colores y frontón, símbolo del gobierno compartido del Frente Nacional"><title>Edificio con columnas alternadas de dos colores y frontón, símbolo del gobierno compartido del Frente Nacional</title><rect class="hbg" width="320" height="180" rx="14"/><path class="gl3" d="M44 70 L160 24 L276 70Z"/><circle class="sf" cx="160" cy="54" r="9"/><rect class="gl1 an a-pulse" x="70" y="72" width="22" height="56" rx="3" style="animation-delay:0.0s"/><rect class="gl2 an a-pulse" x="124" y="72" width="22" height="56" rx="3" style="animation-delay:0.5s"/><rect class="gl1 an a-pulse" x="178" y="72" width="22" height="56" rx="3" style="animation-delay:1.0s"/><rect class="gl2 an a-pulse" x="232" y="72" width="22" height="56" rx="3" style="animation-delay:1.5s"/><rect class="il5" x="52" y="128" width="216" height="9" rx="2"/><rect class="sf st3" x="40" y="137" width="240" height="9" rx="2"/><rect class="il5" x="30" y="146" width="260" height="9" rx="2"/><text x="160" y="172" text-anchor="middle" font-size="12" font-weight="700">1958 – 1974</text></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Lleras Camargo, Valencia, Lleras Restrepo y Pastrana Borrero.</li><li>Reformas clave: la agraria de 1961 y la constitucional de 1968.</li><li>En 1970 hubo elecciones muy discutidas, con denuncias de fraude.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>Al principio la alternancia se pactó por 12 años; una reforma de 1959 la amplió a 16 (1958 – 1974).</p></div></div></div>
+<table>
+<tr><th>Presidente</th><th>Periodo / partido</th><th>Ideas clave para estudiar</th></tr>
+<tr><td>Alberto Lleras Camargo</td><td>1958 – 1962 · Liberal</td><td>Inicio del sistema. Ley 135 de 1961 (reforma social agraria) y creación del INCORA. Nace la ANAPO (1961), fuerza de oposición ligada a Rojas Pinilla.</td></tr>
+<tr><td>Guillermo León Valencia</td><td>1962 – 1966 · Conservador</td><td>Violencia rural persistente; operaciones militares contra zonas campesinas con presencia armada (1964). En esos años aparecen guerrillas modernas (FARC, ELN).</td></tr>
+<tr><td>Carlos Lleras Restrepo</td><td>1966 – 1970 · Liberal</td><td>Reforma constitucional de 1968 (estudia qué cambió y para qué); impulso a la reforma agraria; organización campesina (ANUC, 1967).</td></tr>
+<tr><td>Misael Pastrana Borrero</td><td>1970 – 1974 · Conservador</td><td>Elecciones de abril de 1970 muy discutidas, con denuncias de fraude. Desarrollo urbano y de vivienda.</td></tr>
+</table>
+<div class="vocab" style="margin-top:10px">
+<div><b>Intervención del Estado</b>: el Estado dirige o regula parte de la economía.</div>
+<div><b>Planeación</b>: organizar metas y recursos a mediano plazo.</div>
+<div><b>Reforma agraria</b>: redistribuir o titular tierras para reducir la desigualdad rural.</div>
+<div><b>Causas estructurales</b>: problemas profundos y duraderos (tierra, desigualdad, exclusión).</div>
+<div><b>Estado de sitio</b>: régimen de excepción que daba poderes especiales al gobierno.</div>
+<div><b>Fraude</b>: manipulación de resultados electorales (o su denuncia).</div>
+<div><b>Modernización</b>: hacer más eficientes las instituciones.</div>
+<div><b>Violencia política</b>: uso de la fuerza por razones de poder o ideología.</div>
+</div>
+<h3>Cómo se razona en estos temas</h3>
+<ul>
+<li><b>Respuesta militar vs. causas sociales:</b> distingue lo que una operación militar puede lograr de los problemas que originaron un conflicto (tierra, pobreza, falta de Estado). Pregúntate siempre: ¿la medida ataca el síntoma o la causa?</li>
+<li><b>Reformas del Estado:</b> si un texto habla de «planificación, intervención, modernización», pregúntate <i>qué quiere lograr el Estado con ello</i> y anótalo con tus palabras.</li>
+<li><b>Disputas electorales:</b> la desconfianza en las elecciones tiene consecuencias políticas a largo plazo. Busca qué movimientos o protestas nacieron después.</li>
+</ul>
+
+<div class="ex"><h4>Ejemplo resuelto (otro caso): la ANUC y la tierra</h4>
+<p class="src">«En 1967 se creó la Asociación Nacional de Usuarios Campesinos (ANUC) con apoyo del gobierno. Años después, parte del movimiento campesino se radicalizó y realizó tomas de tierras porque consideraba que la reforma agraria avanzaba muy lentamente.»</p>
+<p><b>Pregunta modelo:</b> ¿qué relación hay entre la política agraria y la protesta campesina?</p>
+<details class="rv"><summary>Ver explicación paso a paso</summary><div>
+<ol><li><b>Qué piden:</b> una relación entre una política y una reacción social.</li>
+<li><b>Identifica la política:</b> reforma agraria + organización campesina impulsada desde el Estado.</li>
+<li><b>Identifica la reacción:</b> tomas de tierras, por lentitud percibida.</li>
+<li><b>Relación:</b> una reforma que no cumple las expectativas puede alimentar la presión desde abajo. Fíjate en la palabra clave «lentamente»: indica una brecha entre lo prometido y lo logrado.</li></ol></div></details></div>
+
+<div class="act"><h4>Práctica con retroalimentación</h4><div class="quiz" data-set="gob"></div></div>
+<div class="act"><h4>Actividad: ordena los presidentes del Frente Nacional</h4><div class="order" data-set="fnpres"></div></div>
+<div class="act"><h4>Actividad: une el presidente con su rasgo de gobierno</h4><div class="match" data-set="gob"></div></div>
+<div class="studied"><button class="btn alt mark" data-sec="s3">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S4 ============ -->
+<details class="sec" id="s4" data-title="Años 70-80 y M-19">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s4"/></svg>4. Después del Frente Nacional: protesta social y M-19 <span class="q">Preguntas 5, 6, 14</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s4"/></svg><div><h2 class="bt">Años 70-80 y M-19</h2><p class="hook">¿Sabías que una elección muy discutida puede cambiar el rumbo político de un país?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Multitud de personas con pancartas en blanco frente a edificios de ciudad, que representa la protesta social"><title>Multitud de personas con pancartas en blanco frente a edificios de ciudad, que representa la protesta social</title><rect class="hbg" width="320" height="180" rx="14"/><rect class="il5" x="20" y="60" width="26" height="90" rx="2"/><rect class="s2f" x="52" y="40" width="34" height="110" rx="2"/><rect class="il5" x="92" y="70" width="22" height="80" rx="2"/><rect class="s2f" x="230" y="50" width="30" height="100" rx="2"/><rect class="il5" x="266" y="72" width="30" height="78" rx="2"/><g class="an a-bob" style="animation-delay:0.0s"><circle class="il2" cx="86" cy="92" r="8"/><path class="gl2" d="M74 150 V114 Q74 102 86 102 Q98 102 98 114 V150Z"/><line class="stt" x1="94" y1="106" x2="94" y2="64"/><rect class="gl1" x="79" y="44" width="30" height="20" rx="3"/></g><g class="an a-bob" style="animation-delay:0.3s"><circle class="il2" cx="138" cy="84" r="8"/><path class="gl2" d="M126 150 V106 Q126 94 138 94 Q150 94 150 106 V150Z"/><line class="stt" x1="146" y1="98" x2="146" y2="56"/><rect class="gl3" x="131" y="36" width="30" height="20" rx="3"/></g><g class="an a-bob" style="animation-delay:0.6s"><circle class="il2" cx="190" cy="94" r="8"/><path class="gl2" d="M178 150 V116 Q178 104 190 104 Q202 104 202 116 V150Z"/><line class="stt" x1="198" y1="108" x2="198" y2="66"/><rect class="gl1" x="183" y="46" width="30" height="20" rx="3"/></g><g class="an a-bob" style="animation-delay:0.9s"><circle class="il2" cx="236" cy="88" r="8"/><path class="gl2" d="M224 150 V110 Q224 98 236 98 Q248 98 248 110 V150Z"/><line class="stt" x1="244" y1="102" x2="244" y2="60"/><rect class="gl3" x="229" y="40" width="30" height="20" rx="3"/></g><rect class="il5" x="0" y="148" width="320" height="32"/></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Tras el Frente Nacional crecieron la protesta social y las guerrillas.</li><li>Investiga de dónde viene el nombre del M-19.</li><li>Las fotos históricas se leen con lugar, época y objetos.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>El M-19 se desmovilizó en 1990 y su movimiento político participó en la Asamblea Constituyente de 1991.</p></div></div></div>
+<h3>Presidentes y rasgos</h3>
+<table>
+<tr><th>Presidente</th><th>Periodo</th><th>Ideas clave</th></tr>
+<tr><td>Alfonso López Michelsen</td><td>1974 – 1978</td><td>Primer gobierno tras el Frente Nacional. Inflación, costo de vida, conflictos laborales. Paro cívico nacional del 14 de septiembre de 1977.</td></tr>
+<tr><td>Julio César Turbay Ayala</td><td>1978 – 1982</td><td>Estatuto de Seguridad (1978): más poder a las fuerzas armadas para controlar el orden público; denuncias por violaciones de derechos humanos.</td></tr>
+<tr><td>Belisario Betancur</td><td>1982 – 1986</td><td>Amnistía y diálogos de paz con guerrillas (acuerdos de 1984); nace la Unión Patriótica (1985); Palacio de Justicia (nov. 1985) y tragedia de Armero (nov. 1985).</td></tr>
+</table>
+<h3>El M-19 (Movimiento 19 de Abril)</h3>
+<ul>
+<li><b>Origen:</b> investiga qué ocurrió el 19 de abril de 1970 y por qué el movimiento lleva esa fecha en su nombre.</li>
+<li><b>Carácter:</b> guerrilla urbana, muy mediática, con acciones simbólicas.</li>
+<li><b>Acciones que debes ubicar en el tiempo:</b> robo de la espada de Bolívar (1974), robo de armas del Cantón Norte (1978-79), toma de la Embajada de República Dominicana (1980), toma del Palacio de Justicia (6 y 7 de noviembre de 1985).</li>
+<li><b>Final:</b> desmovilización en 1990 y participación como partido (AD M-19) en la Asamblea Constituyente de 1991.</li>
+</ul>
+<div class="tip"><b>No los confundas:</b> FARC y ELN (mediados de los años 60, de origen rural), EPL (1967), M-19 (años 70, urbano), AUC (autodefensas, años 90). Estudia a cada actor con su época y estilo de acción. Estudia también <u>qué ocurrió en cada lugar</u> (por ejemplo, edificios emblemáticos de Bogotá y a qué hecho se asocia cada uno).</div>
+<h3>Cómo leer una fotografía histórica</h3>
+<ol>
+<li>Describe sin interpretar: lugar, objetos, personas, vehículos, tono (blanco y negro/color).</li>
+<li>Ubica la época por las pistas (tecnología, ropa, estilo de la imagen).</li>
+<li>Relaciona lo observado con hechos que conoces de esa época y del lugar.</li>
+<li>Verifica contra cada opción: ¿qué evento calza con <u>todas</u> las pistas?</li>
+</ol>
+<figure class="exam-fig">
+<img src="img/pregunta-14.png" alt="Fotografía en blanco y negro de una plaza con un edificio grande de muros claros y columnas verticales, un campanario a la derecha, un cerro al fondo, soldados y vehículos blindados." loading="lazy">
+<figcaption>📄 Imagen de tu evaluación — pregunta 14. <span>Observa: describe sin interpretar (tipo de edificio, vehículos, personas, ubicación respecto a la montaña y la torre, blanco y negro) y ubica la época. Luego contrasta con la lista de acciones del M-19 y sus fechas, y verifica que la opción calce con todas las pistas.</span></figcaption>
+</figure>
+<div class="ex"><h4>Ejemplo resuelto (otro caso): protesta regional por servicios</h4>
+<p class="src">«En 1981, un grupo de campesinos y docentes de una región marchó para exigir mejores vías, escuelas y salarios. El gobierno declaró que se trataba de agitadores. Las organizaciones sostuvieron que reclamaban servicios que el Estado no había llevado a la zona.»</p>
+<p><b>Pregunta modelo:</b> ¿qué muestra esta protesta sobre la relación entre ciudadanía y Estado?</p>
+<details class="rv"><summary>Ver explicación paso a paso</summary><div>
+<ol><li><b>Qué piden:</b> interpretar qué revela el hecho.</li>
+<li><b>Contrasta las dos versiones:</b> gobierno = agitación; comunidad = falta de servicios.</li>
+<li><b>Busca lo que ambas comparten:</b> hay desacuerdo entre lo que el Estado ofrece y lo que la gente necesita.</li>
+<li><b>Conclusión:</b> la protesta expresa demandas sociales no atendidas; no «prueba» por sí sola una conspiración.</li></ol></div></details></div>
+
+<div class="act"><h4>Práctica con retroalimentación</h4><div class="quiz" data-set="m19"></div></div>
+<div class="act"><h4>Actividad: ordena cronológicamente</h4><div class="order" data-set="armed"></div></div>
+<div class="act"><h4>Actividad: une causa y consecuencia</h4><div class="match" data-set="m19"></div></div>
+<div class="studied"><button class="btn alt mark" data-sec="s4">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S5 ============ -->
+<details class="sec" id="s5" data-title="Narcotráfico y Barco">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s5"/></svg>5. Narcotráfico, terrorismo y el gobierno de Barco <span class="q">Pregunta 18</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s5"/></svg><div><h2 class="bt">Narcotráfico y Barco</h2><p class="hook">¿Sabías que en los años 80 el Estado enfrentó un reto nuevo: el narcotráfico?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Escudo agrietado frente a edificios de ciudad que representa a las instituciones puestas a prueba"><title>Escudo agrietado frente a edificios de ciudad que representa a las instituciones puestas a prueba</title><rect class="hbg" width="320" height="180" rx="14"/><rect class="il5" x="20" y="110" width="30" height="45" rx="2"/><rect class="s2f" x="54" y="90" width="36" height="65" rx="2"/><rect class="il5" x="232" y="100" width="34" height="55" rx="2"/><rect class="s2f" x="270" y="118" width="30" height="37" rx="2"/><rect class="il5" x="0" y="154" width="320" height="26"/><circle class="st2 an a-pulse" cx="160" cy="88" r="68" fill="none" opacity=".5"/><path class="gl2" d="M160 24 L216 44 V92 C216 124 192 146 160 158 C128 146 104 124 104 92 V44 Z"/><path class="sf" d="M160 36 L204 52 V92 C204 116 186 134 160 146 C134 134 116 116 116 92 V52 Z" opacity=".9"/><rect class="il1" x="134" y="78" width="9" height="34" rx="2"/><rect class="il1" x="154" y="78" width="9" height="34" rx="2"/><rect class="il1" x="174" y="78" width="9" height="34" rx="2"/><path class="il1" d="M128 76 L160 60 L192 76Z"/><path class="st4" d="M160 36 L152 66 L168 86 L154 116 L162 146"/></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Los carteles usaron el terrorismo para presionar al Estado.</li><li>Barco gobernó entre 1986 y 1990.</li><li>Pregunta clave: ¿cómo afecta esto a las instituciones?</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>En las elecciones de marzo de 1990 estudiantes añadieron una «séptima papeleta» para pedir una Constituyente; así se abrió el camino a la Constitución de 1991.</p></div></div></div>
+<h3>Contexto</h3>
+<ul>
+<li>Desde finales de los 70 crecieron los <b>carteles</b> (Medellín y Cali). Con dinero ilegal ganaron influencia en la economía, la política y la sociedad.</li>
+<li>Para evitar la <b>extradición</b> y la presión judicial usaron el sicariato, los secuestros y el <b>terrorismo</b> con bombas.</li>
+<li>Víctimas conocidas: ministro Rodrigo Lara Bonilla (1984), director de El Espectador Guillermo Cano (1986), candidato Luis Carlos Galán (agosto de 1989), entre muchos otros.</li>
+<li><b>Virgilio Barco (1986 – 1990):</b> gobierno liberal que inauguró la fórmula gobierno-oposición tras el fin del Frente Nacional. Enfrentó al narcotráfico, impulsó la <b>elección popular de alcaldes</b> (primera vez en 1988) y presenció la desmovilización del M-19 (1990).</li>
+<li>El movimiento estudiantil de la «Séptima papeleta» (1990) abrió el camino a la <b>Asamblea Constituyente</b> y a la Constitución de 1991, en el gobierno de César Gaviria.</li>
+</ul>
+<div class="vocab">
+<div><b>Narcotráfico</b>: producción y comercio ilegal de drogas.</div>
+<div><b>Narcoterrorismo</b>: uso del terror por parte de mafias para presionar al Estado.</div>
+<div><b>Extradición</b>: enviar a un acusado a ser juzgado en otro país.</div>
+<div><b>Sicariato</b>: asesinato por encargo.</div>
+<div><b>Institucionalidad</b>: fortaleza de las instituciones (justicia, elecciones, Congreso).</div>
+<div><b>Descentralización</b>: dar poder y recursos a municipios y departamentos.</div>
+<div><b>Intimidación</b>: amenaza para obligar a alguien a actuar de cierta manera.</div>
+<div><b>Impunidad</b>: ausencia de castigo.</div>
+</div>
+<h3>Cómo razonar «relación entre X e instituciones»</h3>
+<p>Cuando pregunten por la relación entre un fenómeno criminal y el debilitamiento del Estado, pregúntate: <b>¿cómo actúa el actor sobre las instituciones?</b> (dinero, amenaza, violencia, corrupción) y <b>¿qué efecto tiene sobre jueces, políticos y ciudadanos?</b> Descarta lo que contradiga lo que sabes de los hechos de esos años.</p>
+<div class="ex"><h4>Ejemplo resuelto (otro caso): gobierno Gaviria y el sometimiento</h4>
+<p class="src">«En 1990 el gobierno ofreció rebajas de penas a narcotraficantes que se entregaran y confesaran delitos. Sus críticos advirtieron que las condiciones de reclusión eran demasiado benévolas; sus defensores sostuvieron que así se reducía la violencia.»</p>
+<p><b>Pregunta modelo:</b> ¿qué tensión muestra esta política?</p>
+<details class="rv"><summary>Ver explicación paso a paso</summary><div>
+<ol><li><b>Identifica los dos lados:</b> reducir la violencia (defensores) vs. castigo suficiente (críticos).</li>
+<li><b>Nombra la tensión:</b> eficacia para bajar la violencia vs. justicia proporcional.</li>
+<li><b>Conclusión:</b> la política buscó pacificar, pero abrió el debate sobre si había justicia. Es un patrón que reaparecerá en la Ley de Justicia y Paz (sección 7).</li></ol></div></details></div>
+<div class="act"><h4>Práctica con retroalimentación</h4><div class="quiz" data-set="barco"></div></div>
+<div class="studied"><button class="btn alt mark" data-sec="s5">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S6 ============ -->
+<details class="sec" id="s6" data-title="Presidentes e imágenes">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s6"/></svg>6. Presidentes y periodos: preguntas con imagen <span class="q">Preguntas 4, 8 (y 14)</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s6"/></svg><div><h2 class="bt">Presidentes e imágenes</h2><p class="hook">¿Sabías que reconocer un rostro no basta si no sabes en qué años gobernó?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Tres marcos de cuadro genéricos con placas de nombre y una barra de periodos, y una lupa: quién es y cuándo gobernó"><title>Tres marcos de cuadro genéricos con placas de nombre y una barra de periodos, y una lupa: quién es y cuándo gobernó</title><rect class="hbg" width="320" height="180" rx="14"/><g class="an a-pulse" style="animation-delay:0.0s"><rect class="sf st3" x="30" y="22" width="70" height="80" rx="4"/><circle class="il3" cx="82" cy="46" r="8"/><path class="gl4" d="M34 98 L52 66 L64 80 L78 62 L96 98Z"/></g><rect class="il5" x="40" y="108" width="50" height="6" rx="2"/><rect class="il5" x="40" y="118" width="34" height="5" rx="2"/><g class="an a-pulse" style="animation-delay:0.6s"><rect class="sf st3" x="125" y="22" width="70" height="80" rx="4"/><circle class="il3" cx="177" cy="46" r="8"/><path class="gl4" d="M129 98 L147 66 L159 80 L173 62 L191 98Z"/></g><rect class="il5" x="135" y="108" width="50" height="6" rx="2"/><rect class="il5" x="135" y="118" width="34" height="5" rx="2"/><g class="an a-pulse" style="animation-delay:1.2s"><rect class="sf st3" x="220" y="22" width="70" height="80" rx="4"/><circle class="il3" cx="272" cy="46" r="8"/><path class="gl4" d="M224 98 L242 66 L254 80 L268 62 L286 98Z"/></g><rect class="il5" x="230" y="108" width="50" height="6" rx="2"/><rect class="il5" x="230" y="118" width="34" height="5" rx="2"/><rect class="gl1" x="30" y="136" width="70" height="10" rx="5"/><rect class="gl2" x="105" y="136" width="90" height="10" rx="5"/><rect class="gl3" x="200" y="136" width="90" height="10" rx="5"/><text x="160" y="170" text-anchor="middle" font-size="12" font-weight="700">¿Quién fue? ¿En qué años?</text></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Estas preguntas piden quién es y cuándo gobernó.</li><li>Memoriza el nombre junto con su periodo.</li><li>Apóyate en la línea de tiempo para verificar.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>Desde la Constitución de 1991 el periodo presidencial es de cuatro años. La reelección inmediata se aprobó con una reforma constitucional de diciembre de 2004 (la Corte Constitucional la avaló en 2005) y se eliminó en 2015.</p></div></div></div>
+<p>Las preguntas con retrato piden dos datos al mismo tiempo: <b>quién es</b> y <b>en qué años gobernó</b>. Hay que memorizar ambos.</p>
+<h3>Tarjetas de estudio</h3>
+<p class="small">Toca la tarjeta para ver el periodo. Intenta recordarlo antes de voltearla.</p>
+<div class="fc" id="fc"></div>
+<button class="btn alt" id="fcshuffle">Barajar tarjetas</button>
+<h3>Estrategias</h3>
+<ol>
+<li><b>Estudia los retratos oficiales</b> en fuentes confiables (galería de presidentes de la Presidencia, Banco de la República, libros de texto) y asocia cada rostro con su nombre y periodo.</li>
+<li><b>Verifica nombre y periodo juntos.</b> Si una opción tiene un nombre correcto con un periodo equivocado (o al revés), no sirve. Aprende los periodos para poder descartar.</li>
+<li><b>Cuidado con apellidos repetidos:</b> hay dos presidentes con apellido Lleras y dos con apellido Pastrana (Misael y su hijo Andrés). Distingue siempre por nombre completo y época.</li>
+<li><b>Usa el contexto:</b> época de la foto (blanco y negro/color), estilo del retrato, banda presidencial, escenario. Pero no basta: es mejor reconocer el rostro.</li>
+<li><b>Agrupa por bloques:</b> Frente Nacional (4), años 70-80 (3 + Barco), años 90 (Gaviria, Samper), 2000 en adelante (Pastrana, Uribe, Santos, Duque, Petro).</li>
+</ol>
+<h3>Galería de presidentes</h3>
+<p>Toca una foto para ampliarla. La franja de color marca a los presidentes del Frente Nacional; están ordenados por año.</p>
+<ul class="pgal" id="pgal"><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/rojas-pinilla-gustavo.jpg" alt="Retrato de Gustavo Rojas Pinilla, presidente de Colombia (1953–1957)" loading="lazy"></div><b class="pg-n">Gustavo Rojas Pinilla</b><span class="pg-p">1953–1957</span><span class="pg-h">Llegó por golpe de Estado; cayó en 1957.</span></li><li class="pg-card fn"><div class="pg-ph-wrap"><img src="img/presidentes/lleras-camargo-alberto.jpg" alt="Retrato de Alberto Lleras Camargo, presidente de Colombia (1958–1962)" loading="lazy"></div><b class="pg-n">Alberto Lleras Camargo</b><span class="pg-p">1958–1962</span><span class="pg-tag">Frente Nacional</span><span class="pg-h">Inicia el Frente Nacional.</span></li><li class="pg-card fn"><div class="pg-ph-wrap"><img src="img/presidentes/valencia-guillermo-leon.jpg" alt="Retrato de Guillermo León Valencia, presidente de Colombia (1962–1966)" loading="lazy"></div><b class="pg-n">Guillermo León Valencia</b><span class="pg-p">1962–1966</span><span class="pg-tag">Frente Nacional</span><span class="pg-h">Operaciones en zonas campesinas; surgen FARC y ELN.</span></li><li class="pg-card fn"><div class="pg-ph-wrap"><img src="img/presidentes/lleras-restrepo-carlos.jpg" alt="Retrato de Carlos Lleras Restrepo, presidente de Colombia (1966–1970)" loading="lazy"></div><b class="pg-n">Carlos Lleras Restrepo</b><span class="pg-p">1966–1970</span><span class="pg-tag">Frente Nacional</span><span class="pg-h">Reforma constitucional de 1968.</span></li><li class="pg-card fn"><div class="pg-ph-wrap"><img src="img/presidentes/pastrana-borrero-misael.jpg" alt="Retrato de Misael Pastrana Borrero, presidente de Colombia (1970–1974)" loading="lazy"></div><b class="pg-n">Misael Pastrana Borrero</b><span class="pg-p">1970–1974</span><span class="pg-tag">Frente Nacional</span><span class="pg-h">Elecciones de 1970 con denuncias de fraude.</span></li><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/lopez-michelsen-alfonso.jpg" alt="Retrato de Alfonso López Michelsen, presidente de Colombia (1974–1978)" loading="lazy"></div><b class="pg-n">Alfonso López Michelsen</b><span class="pg-p">1974–1978</span><span class="pg-h">Fin de la alternación; paro cívico de 1977.</span></li><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/turbay-ayala-julio-cesar.jpg" alt="Retrato de Julio César Turbay Ayala, presidente de Colombia (1978–1982)" loading="lazy"></div><b class="pg-n">Julio César Turbay Ayala</b><span class="pg-p">1978–1982</span><span class="pg-h">Estatuto de Seguridad y debate por derechos humanos.</span></li><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/betancur-belisario.jpg" alt="Retrato de Belisario Betancur, presidente de Colombia (1982–1986)" loading="lazy"></div><b class="pg-n">Belisario Betancur</b><span class="pg-p">1982–1986</span><span class="pg-h">Acuerdos de cese al fuego con guerrillas.</span></li><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/barco-virgilio.jpg" alt="Retrato de Virgilio Barco, presidente de Colombia (1986–1990)" loading="lazy"></div><b class="pg-n">Virgilio Barco</b><span class="pg-p">1986–1990</span><span class="pg-h">Gobierno y oposición tras el Frente Nacional.</span></li><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/gaviria-cesar.jpg" alt="Retrato de César Gaviria, presidente de Colombia (1990–1994)" loading="lazy"></div><b class="pg-n">César Gaviria</b><span class="pg-p">1990–1994</span><span class="pg-h">Nueva Constitución de 1991.</span></li><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/samper-ernesto.jpg" alt="Retrato de Ernesto Samper, presidente de Colombia (1994–1998)" loading="lazy"></div><b class="pg-n">Ernesto Samper</b><span class="pg-p">1994–1998</span><span class="pg-h">Proceso 8000 y crisis de legitimidad.</span></li><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/pastrana-arango-andres.jpg" alt="Retrato de Andrés Pastrana Arango, presidente de Colombia (1998–2002)" loading="lazy"></div><b class="pg-n">Andrés Pastrana Arango</b><span class="pg-p">1998–2002</span><span class="pg-h">Diálogos en El Caguán y Plan Colombia.</span></li><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/uribe-velez-alvaro.jpg" alt="Retrato de Álvaro Uribe Vélez, presidente de Colombia (2002–2010)" loading="lazy"></div><b class="pg-n">Álvaro Uribe Vélez</b><span class="pg-p">2002–2010</span><span class="pg-h">Seguridad Democrática.</span></li><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/santos-juan-manuel.jpg" alt="Retrato de Juan Manuel Santos, presidente de Colombia (2010–2018)" loading="lazy"></div><b class="pg-n">Juan Manuel Santos</b><span class="pg-p">2010–2018</span><span class="pg-h">Ley de Víctimas y diálogos con las FARC.</span></li><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/duque-ivan.jpg" alt="Retrato de Iván Duque Márquez, presidente de Colombia (2018–2022)" loading="lazy"></div><b class="pg-n">Iván Duque Márquez</b><span class="pg-p">2018–2022</span><span class="pg-h">Implementación del Acuerdo de 2016.</span></li><li class="pg-card"><div class="pg-ph-wrap"><img src="img/presidentes/petro-gustavo.jpg" alt="Retrato de Gustavo Petro, presidente de Colombia (2022–2026)" loading="lazy"></div><b class="pg-n">Gustavo Petro</b><span class="pg-p">2022–2026</span><span class="pg-h">Ley de Paz Total.</span></li></ul>
+<div class="pg-q" id="pgq"><h4>¿Quién es? Mini práctica con la galería</h4><div id="pgqbox"></div><button class="btn alt" type="button" id="pgqnext">Otra foto</button></div>
+<figure class="exam-fig">
+<img src="img/pregunta-4.png" alt="Fotografía a color de un hombre mayor con gafas de montura oscura, traje oscuro y una banda de colores cruzada sobre el pecho, sentado frente a una estantería con libros." loading="lazy">
+<figcaption>📄 Imagen de tu evaluación — pregunta 4. <span>Observa: fíjate en la época de la fotografía (colores, calidad, estilo del retrato), en la banda y en el escenario. Luego revisa en las secciones 3 y 4 los periodos de gobierno y descarta las opciones cuyo periodo no calza con la época.</span></figcaption>
+</figure>
+<figure class="exam-fig">
+<img src="img/pregunta-8.png" alt="Fotografía a color de un hombre de traje oscuro y corbata amarilla, de pie junto a una bandera tricolor con un escudo circular." loading="lazy">
+<figcaption>📄 Imagen de tu evaluación — pregunta 8. <span>Observa: observa la nitidez y el estilo de la imagen para ubicar la época, la ropa y los símbolos del fondo. Compara con los periodos de gobierno de las secciones 3, 4 y 6 y usa las tarjetas de estudio para comprobar nombre y periodo juntos.</span></figcaption>
+</figure>
+<div class="act"><h4>Actividad: une presidente con periodo</h4><div class="match" data-set="periodos"></div></div>
+<div class="act"><h4>Práctica con retroalimentación</h4><div class="quiz" data-set="pres"></div></div>
+<details class="pg-cred"><summary>Créditos de las fotos</summary><ul><li><b>Gustavo Rojas Pinilla</b>: Autor desconocido. Licencia: CC BY-SA 4.0. <a href="https://commons.wikimedia.org/wiki/File:Portrait_of_Gustavo_Rojas_Pinilla_(cropped).png" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Alberto Lleras Camargo</b>: Autor desconocido. Licencia: Dominio público. <a href="https://commons.wikimedia.org/wiki/File:Alberto_Lleras_Camargo,_Presidente_da_Col%C3%B4mbia.tif" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Guillermo León Valencia</b>: Dominio de uso libre (CC0). Licencia: CC0. <a href="https://commons.wikimedia.org/wiki/File:Guillermo_Leon_Valencia_Munoz.jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Carlos Lleras Restrepo</b>: White House Photo Office (NARA). Licencia: Dominio público. <a href="https://commons.wikimedia.org/wiki/File:Carlos_Lleras_Restrepo_1.jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Misael Pastrana Borrero</b>: Autor desconocido. Licencia: Atribución (según Wikimedia Commons). <a href="https://commons.wikimedia.org/wiki/File:Misael_Pastrana.JPG" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Alfonso López Michelsen</b>: Archivos Nacionales de Rumania / Instituto de Investigación de los Crímenes del Comunismo. Licencia: Atribución (según Wikimedia Commons). <a href="https://commons.wikimedia.org/wiki/File:Alfonso_Lopez_Michelsen.jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Julio César Turbay Ayala</b>: Marc Verhille (Bibliothèque de l&#x27;Hôtel de Ville - Bibliothèques spécialisées de la Ville de Paris). Licencia: Dominio público. <a href="https://commons.wikimedia.org/wiki/File:Julio_C%C3%A9sar_Turbay_Ayala.jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Belisario Betancur</b>: Ronald Reagan Library. Licencia: Dominio público. <a href="https://commons.wikimedia.org/wiki/File:Belisario_Betancur_1985.jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Virgilio Barco</b>: PiaGustavinH. Licencia: CC BY-SA 4.0. <a href="https://commons.wikimedia.org/wiki/File:Virgilio_Barco_Vargas.jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>César Gaviria</b>: World Economic Forum on Flickr. Licencia: CC BY-SA 2.0. <a href="https://commons.wikimedia.org/wiki/File:C%C3%A9sar_Gaviria,_World_Economic_Forum_on_Latin_America_2009_(cropped_2).jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Ernesto Samper</b>: Montechelo Technology. Licencia: CC BY-SA 4.0. <a href="https://commons.wikimedia.org/wiki/File:Ernesto_Samper_2023_(cropped).jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Andrés Pastrana Arango</b>: Departamento de Defensa de EE. UU. (DoD). Licencia: Dominio público. <a href="https://commons.wikimedia.org/wiki/File:Andres_Pastrana_Arango_(2001).jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Álvaro Uribe Vélez</b>: Center for American Progress. Licencia: CC BY-SA 2.0. <a href="https://commons.wikimedia.org/wiki/File:%C3%81lvaro_Uribe_(cropped).jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Juan Manuel Santos</b>: Cancillería de Perú on Flickr.. Licencia: CC BY-SA 2.0. <a href="https://commons.wikimedia.org/wiki/File:Juan_Manuel_Santos_in_2018.jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Iván Duque Márquez</b>: Palácio do Planalto from Brasilia, Brasil. Licencia: CC BY 2.0. <a href="https://commons.wikimedia.org/wiki/File:Iv%C3%A1n_Duque,_oct_2021_1.1.jpg" target="_blank" rel="noopener">Página del archivo</a></li><li><b>Gustavo Petro</b>: Presidencia de Colombia. Licencia: Dominio público. <a href="https://commons.wikimedia.org/wiki/File:Presidente_Gustavo_Petro_U.jpg" target="_blank" rel="noopener">Página del archivo</a></li></ul></details>
+<div class="studied"><button class="btn alt mark" data-sec="s6">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S7 ============ -->
+<details class="sec" id="s7" data-title="Uribe y Justicia y Paz">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s7"/></svg>7. Álvaro Uribe: Seguridad Democrática y Justicia y Paz <span class="q">Preguntas 7, 9</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s7"/></svg><div><h2 class="bt">Uribe y Justicia y Paz</h2><p class="hook">¿Sabías que una ley ofreció penas reducidas a cambio de verdad y desmovilización?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Balanza de la justicia en equilibrio con dos platos"><title>Balanza de la justicia en equilibrio con dos platos</title><rect class="hbg" width="320" height="180" rx="14"/><circle class="il3" cx="160" cy="76" r="62" opacity=".3"/><rect class="gl1" x="152" y="46" width="16" height="96" rx="4"/><rect class="gl1" x="120" y="142" width="80" height="12" rx="5"/><rect class="il5" x="108" y="152" width="104" height="10" rx="4"/><g class="an an-v a-tilt" style="transform-origin:160px 50px"><line class="st2" x1="70" y1="50" x2="250" y2="50"/><circle class="il3" cx="160" cy="50" r="9"/><path class="st3" d="M78 50 L58 104 M78 50 L98 104 M242 50 L222 104 M242 50 L262 104"/><path class="gl2" d="M52 104 H104 C104 124 52 124 52 104Z"/><path class="gl4" d="M216 104 H268 C268 124 216 124 216 104Z"/></g><circle class="il1" cx="160" cy="32" r="7"/></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Uribe gobernó de 2002 a 2010 con la Seguridad Democrática.</li><li>La Ley 975 de 2005 creó el marco de Justicia y Paz.</li><li>Pregunta clave: ¿qué se ofrece a los desmovilizados y qué se les exige?</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>La Ley 975 de 2005 estableció una pena alternativa de entre 5 y 8 años de prisión para quienes cumplieran sus condiciones.</p></div></div></div>
+<h3>Contexto</h3>
+<ul>
+<li>Antes: el gobierno de Andrés Pastrana (1998-2002) combinó el <b>Plan Colombia</b> (cooperación con EE. UU.) con un proceso de paz con las FARC en una zona de distensión (El Caguán), que terminó en febrero de 2002.</li>
+<li><b>Uribe (2002 – 2010):</b> elegido en 2002, reelegido en 2006 tras una reforma constitucional (2004).</li>
+<li><b>Seguridad Democrática:</b> política para aumentar la presencia de la fuerza pública en el territorio, recuperar el control de carreteras y municipios y debilitar a las guerrillas. Se destacan resultados como la reducción de secuestros y homicidios; y debates por <b>violaciones de derechos humanos</b> (por ejemplo, las llamadas ejecuciones extrajudiciales) y por escándalos de la época.</li>
+<li><b>Autodefensas (AUC) y Ley 975 de 2005:</b> desmovilización de estructuras paramilitares desde 2003 y marco jurídico especial llamado <b>Ley de Justicia y Paz</b>, con rebajas de pena a cambio de confesar delitos, entregar bienes y contribuir a la reparación.</li>
+</ul>
+<div class="vocab">
+<div><b>Justicia transicional</b>: mecanismos para pasar de la guerra a la paz buscando verdad, justicia y reparación.</div>
+<div><b>Verdad</b>: saber qué pasó.</div>
+<div><b>Justicia</b>: sanción a los responsables.</div>
+<div><b>Reparación</b>: compensar a las víctimas.</div>
+<div><b>No repetición</b>: garantías para que no vuelva a ocurrir.</div>
+<div><b>Desmovilización</b>: dejar las armas y la estructura armada.</div>
+<div><b>Fuerza pública</b>: Ejército, Armada, Fuerza Aérea y Policía.</div>
+<div><b>Paramilitarismo</b>: grupos armados ilegales de derecha surgidos para enfrentar a la guerrilla y que cometieron graves crímenes.</div>
+</div>
+<div class="tip"><b>Patrón de razonamiento para políticas controvertidas:</b> 1) ¿qué buscaba? 2) ¿qué logró? 3) ¿qué cuestionamientos tuvo? Las mejores interpretaciones suelen reconocer lo logrado <u>y</u> los costos o debates, sin afirmar que la política resolvió todo ni que fue un fracaso total.</div>
+
+<div class="ex"><h4>Ejemplo resuelto (otro caso): la Comisión de la Verdad de Sudáfrica</h4>
+<p class="src">«Tras el fin del apartheid, Sudáfrica creó una comisión en la que quienes habían cometido violencia política podían pedir amnistía si decían toda la verdad. Algunas víctimas valoraron conocer lo ocurrido; otras criticaron que los responsables no fueran a la cárcel.»</p>
+<p><b>Pregunta modelo:</b> ¿cuál es el dilema central del mecanismo?</p>
+<details class="rv"><summary>Ver explicación paso a paso</summary><div>
+<ol><li><b>Qué se ofrece a los victimarios:</b> amnistía (beneficio).</li>
+<li><b>Qué se exige a cambio:</b> verdad completa.</li>
+<li><b>Qué reclaman las víctimas:</b> justicia y castigo.</li>
+<li><b>Dilema:</b> equilibrar beneficios que incentivan la paz con los derechos de las víctimas. Si solo ves un lado, tu respuesta queda incompleta.</li></ol></div></details></div>
+<div class="act"><h4>Práctica con retroalimentación</h4><div class="quiz" data-set="uribe"></div></div>
+<div class="studied"><button class="btn alt mark" data-sec="s7">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S8 ============ -->
+<details class="sec" id="s8" data-title="Santos y la paz">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s8"/></svg>8. Juan Manuel Santos y el proceso de paz <span class="q">Preguntas 10, 11</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s8"/></svg><div><h2 class="bt">Santos y la paz</h2><p class="hook">¿Sabías que, tras décadas de guerra, el Estado y las FARC firmaron un acuerdo?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Paloma de la paz con una rama de olivo frente a un documento firmado"><title>Paloma de la paz con una rama de olivo frente a un documento firmado</title><rect class="hbg" width="320" height="180" rx="14"/><circle class="il3" cx="105" cy="88" r="58" opacity=".28"/><g class="an a-bob"><path class="gl5" d="M48 96 L24 112 L30 98 L22 90 L52 90Z"/><path class="sf st3" d="M50 96 C60 72 100 64 124 76 C140 84 146 98 136 106 C112 120 64 120 50 96Z"/><path class="gl2" d="M82 82 C78 52 106 34 132 36 C124 54 116 72 104 90Z" opacity=".95"/><circle class="sf st3" cx="136" cy="82" r="10"/><path class="il3" d="M145 80 L156 83 L145 87Z"/><circle class="tdot" cx="138" cy="80" r="2"/><path class="st4" d="M156 86 C172 92 190 94 206 90"/><ellipse class="il4" cx="170" cy="86" rx="9" ry="4" transform="rotate(-25 170 86)"/><ellipse class="il4" cx="184" cy="96" rx="9" ry="4" transform="rotate(25 184 96)"/><ellipse class="il4" cx="196" cy="84" rx="9" ry="4" transform="rotate(-25 196 84)"/></g><rect class="sf st3" x="228" y="34" width="68" height="104" rx="6"/><path class="st2" d="M240 54 H284 M240 66 H284 M240 78 H274"/><path class="st1" d="M240 108 C248 94 252 120 260 106 C266 98 270 112 282 104"/><circle class="il3" cx="278" cy="124" r="6"/><text x="160" y="168" text-anchor="middle" font-size="12" font-weight="700">Paz firmada en papel</text></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Santos gobernó de 2010 a 2018.</li><li>Los diálogos con las FARC empezaron en 2012.</li><li>El 2 de octubre de 2016 hubo plebiscito y luego un acuerdo ajustado.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>Santos recibió el Premio Nobel de Paz en 2016, pocos días después de que ganara el «No» en el plebiscito.</p></div></div></div>
+<h3>Contexto</h3>
+<ul>
+<li><b>Santos (2010 – 2018)</b>: fue ministro de Defensa de Uribe. Como presidente promulgó la Ley de Víctimas y Restitución de Tierras (2011).</li>
+<li><b>Negociación:</b> conversaciones exploratorias en secreto (2011-2012); instalación pública (Oslo, octubre de 2012) y mesa en <b>La Habana</b>, Cuba, con Cuba y Noruega como garantes y Chile y Venezuela como acompañantes.</li>
+<li><b>Agenda de 6 puntos:</b> reforma rural integral; participación política; fin del conflicto; solución al problema de las drogas ilícitas; víctimas; implementación, verificación y refrendación.</li>
+<li><b>2016:</b> firma del primer acuerdo (septiembre) → plebiscito (2 de octubre) → ganó el NO por un margen muy estrecho y con baja participación → renegociación → nuevo acuerdo firmado el <b>24 de noviembre</b> y refrendado por el Congreso. Santos recibió el Nobel de Paz en 2016.</li>
+<li><b>Implementación:</b> dejación de armas verificada por la ONU (2017); JEP, Comisión de la Verdad y Unidad de Búsqueda de Personas Dadas por Desaparecidas; la FARC pasó a ser partido político.</li>
+</ul>
+<svg viewBox="0 0 640 120" role="img" aria-label="Fases del proceso de paz 2012 a 2017">
+<line x1="30" y1="55" x2="610" y2="55" class="ln"/>
+<g text-anchor="middle" font-size="12">
+<circle cx="60" cy="55" r="9" class="f-b"/><text x="60" y="30">2012</text><text x="60" y="88">Inicio de</text><text x="60" y="102">diálogos</text>
+<circle cx="190" cy="55" r="9" class="f-b"/><text x="190" y="30">2016</text><text x="190" y="88">Primer</text><text x="190" y="102">acuerdo</text>
+<circle cx="320" cy="55" r="9" class="f-d"/><text x="320" y="30">2 oct. 2016</text><text x="320" y="88">Plebiscito</text><text x="320" y="102">(resultado ajustado)</text>
+<circle cx="450" cy="55" r="9" class="f-c"/><text x="450" y="30">24 nov. 2016</text><text x="450" y="88">Nuevo</text><text x="450" y="102">acuerdo</text>
+<circle cx="580" cy="55" r="9" class="f-c"/><text x="580" y="30">2017 →</text><text x="580" y="88">Implemen-</text><text x="580" y="102">tación</text>
+</g></svg>
+<h3>Vocabulario</h3>
+<div class="vocab">
+<div><b>Negociación política</b>: resolver un conflicto armado mediante acuerdos.</div>
+<div><b>Mecanismos de participación</b>: plebiscito, referendo, consulta popular, cabildo abierto, revocatoria, iniciativa legislativa.</div>
+<div><b>Refrendar</b>: validar o aprobar un acuerdo.</div>
+<div><b>Legitimidad política</b>: respaldo social y democrático a una decisión.</div>
+<div><b>Reincorporación</b>: regreso de excombatientes a la vida civil.</div>
+<div><b>Garante</b>: país que acompaña y da confianza a las partes.</div>
+<div><b>Implementación</b>: poner en práctica lo pactado.</div>
+<div><b>Polarización</b>: división fuerte de la opinión pública.</div>
+</div>
+<div class="tip"><b>Dos tipos de pregunta:</b> (1) «¿qué cambio representó…?» → compara el enfoque anterior con el nuevo. (2) «¿qué demuestra sobre la democracia…?» → piensa en participación, resultados y reglas.</div>
+<div class="ex"><h4>Ejemplo resuelto (otro caso): proceso con el EPL, el M-19 y la Constituyente</h4>
+<p class="src">«A comienzos de los años 90 varios grupos guerrilleros firmaron acuerdos y dejaron las armas. A cambio, sus exintegrantes pudieron participar en política legal y en la elección de la Asamblea Constituyente de 1991.»</p>
+<p><b>Pregunta modelo:</b> ¿qué cambio de enfoque ilustra?</p>
+<details class="rv"><summary>Ver explicación paso a paso</summary><div>
+<ol><li><b>Antes:</b> confrontación militar como única vía.</li>
+<li><b>Ahora:</b> acuerdos, garantías de participación política y reglas nuevas.</li>
+<li><b>Palabra clave:</b> «a cambio de». Muestra un intercambio negociado.</li>
+<li><b>Conclusión:</b> redáctala tú: ¿qué opciones tenía el Estado antes y cuáles aparecen ahora?</li></ol></div></details></div>
+<div class="act"><h4>Práctica con retroalimentación</h4><div class="quiz" data-set="santos"></div></div>
+<div class="act"><h4>Actividad: ordena los hitos del proceso 2012–2016</h4><div class="order" data-set="paz"></div></div>
+<div class="studied"><button class="btn alt mark" data-sec="s8">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S9 ============ -->
+<details class="sec" id="s9" data-title="Duque y 2021">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s9"/></svg>9. Iván Duque, implementación del Acuerdo y estallido social <span class="q">Preguntas 13, 15</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s9"/></svg><div><h2 class="bt">Duque y 2021</h2><p class="hook">¿Sabías que una protesta contra una reforma tributaria creció hasta ser un paro nacional?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Megáfono con ondas de sonido y una hoja de calendario con el día 28 de abril, para el paro nacional de 2021"><title>Megáfono con ondas de sonido y una hoja de calendario con el día 28 de abril, para el paro nacional de 2021</title><rect class="hbg" width="320" height="180" rx="14"/><path class="gl1" d="M48 74 L112 46 V122 L48 98Z"/><rect class="il2" x="30" y="76" width="22" height="20" rx="4"/><rect class="il3" x="52" y="104" width="16" height="30" rx="4" transform="rotate(12 60 119)"/><path class="st3 an a-wave" d="M128 70 C140 84 140 100 128 114"/><path class="st3 an a-wave" style="animation-delay:.5s" d="M140 58 C160 80 160 106 140 128"/><path class="st3 an a-wave" style="animation-delay:1s" d="M152 46 C182 76 182 110 152 140"/><rect class="sf st3" x="204" y="30" width="92" height="108" rx="8"/><rect class="gl1" x="204" y="30" width="92" height="22" rx="8"/><rect class="il1" x="204" y="44" width="92" height="8"/><text x="250" y="86" text-anchor="middle" font-size="12" font-weight="700">ABRIL</text><text x="250" y="122" text-anchor="middle" font-size="32" font-weight="700">28</text><text x="250" y="160" text-anchor="middle" font-size="12">2021</text></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Duque gobernó de 2018 a 2022.</li><li>Su gobierno trató de implementar el Acuerdo de paz.</li><li>En 2021 el estallido social llenó calles de todo el país.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>El paro nacional empezó el 28 de abril de 2021 y el gobierno retiró el proyecto de reforma tributaria pocos días después.</p></div></div></div>
+<h3>Contexto</h3>
+<ul>
+<li><b>Duque (2018 – 2022):</b> recibió la implementación del Acuerdo de 2016 (JEP, reincorporación, programas de desarrollo rural en municipios más afectados).</li>
+<li><b>Desafíos de seguridad:</b> asesinatos de líderes sociales y de excombatientes, disputas entre grupos armados ilegales y surgimiento de disidencias.</li>
+<li><b>Protestas:</b> paro del 21 de noviembre de 2019 y el <b>Paro Nacional que comenzó el 28 de abril de 2021</b>, detonado por una reforma tributaria. Se sumaron demandas sociales y denuncias por uso excesivo de la fuerza. El proyecto fue retirado.</li>
+<li>La pandemia de COVID-19 (2020-2021) agravó el desempleo y la pobreza.</li>
+</ul>
+<div class="vocab">
+<div><b>Reforma tributaria</b>: cambio en impuestos.</div>
+<div><b>Causa detonante</b>: hecho que enciende una crisis.</div>
+<div><b>Causas estructurales</b>: problemas acumulados que explican por qué estalla.</div>
+<div><b>Líder social</b>: persona que defiende derechos o comunidades.</div>
+<div><b>Disidencia</b>: grupo que se separa de un proceso de paz.</div>
+<div><b>Movilización</b>: participación masiva en protestas.</div>
+<div><b>Uso desproporcionado de la fuerza</b>: respuesta mayor a lo necesario.</div>
+<div><b>Desigualdad</b>: distribución desigual de ingresos y oportunidades.</div>
+</div>
+<div class="tip"><b>Clave para «interpretar un estallido social»:</b> distingue la <i>causa detonante</i> (lo que lo activa) de las <i>causas estructurales</i> (lo que lo explica). Una interpretación sólida casi nunca usa palabras como «exclusivamente» o «única».</div>
+<div class="ex"><h4>Ejemplo resuelto (otro caso): el paro del 21 de noviembre de 2019</h4>
+<p class="src">«Sindicatos, estudiantes, comunidades indígenas y ciudadanos marcharon el 21N. Los motivos mencionados incluían rechazo a posibles reformas económicas, preocupación por la violencia contra líderes sociales y exigencias por el cumplimiento del Acuerdo de Paz.»</p>
+<p><b>Pregunta modelo:</b> ¿por qué se considera una protesta multisectorial?</p>
+<details class="rv"><summary>Ver explicación paso a paso</summary><div>
+<ol><li><b>Cuenta los actores:</b> sindicatos, estudiantes, indígenas, ciudadanos.</li>
+<li><b>Cuenta los motivos:</b> economía, seguridad, paz.</li>
+<li><b>Conclusión:</b> muchos sectores con motivos diversos convergieron. Eso la hace multisectorial, y explica que sea difícil resumirla en una sola causa.</li></ol></div></details></div>
+<h3>Cómo razonar sobre la paz posconflicto</h3>
+<p>Firmar un acuerdo es un paso; <b>implementarlo</b> es otro. Anota en tu cuaderno qué retos esperarías después de firmar: ¿quién cuida los territorios que dejaron las armas?, ¿quién financia?, ¿quién ocupa los espacios vacíos?</p>
+<div class="act"><h4>Práctica con retroalimentación</h4><div class="quiz" data-set="duque"></div></div>
+<div class="act"><h4>Actividad: causa detonante o estructural</h4><div class="match" data-set="duque"></div></div>
+<div class="studied"><button class="btn alt mark" data-sec="s9">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S10 ============ -->
+<details class="sec" id="s10" data-title="Petro y Paz Total">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s10"/></svg>10. Gustavo Petro y la Paz Total <span class="q">Preguntas 16, 17</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s10"/></svg><div><h2 class="bt">Petro y Paz Total</h2><p class="hook">¿Sabías que la Paz Total busca dialogar con varios grupos armados a la vez?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Silueta simplificada de Colombia con puntos conectados por líneas y globos de diálogo, que representan negociaciones con varios grupos"><title>Silueta simplificada de Colombia con puntos conectados por líneas y globos de diálogo, que representan negociaciones con varios grupos</title><rect class="hbg" width="320" height="180" rx="14"/><g transform="translate(52 4)"><path class="gl4" d="M77.1 1.4 L71.4 7.5 L66.7 14.1 L62.0 24.4 L65.8 32.0 L68.6 39.5 L65.8 45.1 L70.5 52.6 L81.8 52.6 L89.3 53.6 L103.4 60.2 L112.8 60.2 L112.8 76.1 L110.0 92.1 L115.6 102.5 L111.9 107.2 L94.0 108.1 L91.2 112.8 L89.3 120.3 L94.9 128.8 L90.2 157.9 L82.7 154.2 L85.5 142.9 L70.5 141.0 L59.2 137.2 L51.7 126.0 L40.4 119.4 L32.9 114.7 L23.5 114.7 L16.9 110.9 L5.6 106.2 L6.6 101.5 L15.0 93.1 L19.7 81.8 L19.7 68.6 L18.8 57.3 L16.9 50.8 L19.7 37.6 L25.4 36.7 L29.1 31.0 L36.7 24.4 L37.6 19.7 L44.2 15.0 L49.8 12.2 L61.1 12.2 L67.7 5.6Z"/><line class="stt" x1="27.3" y1="85.5" x2="36.7" y2="60.2" stroke-dasharray="3 4"/><line class="stt" x1="50.8" y1="74.3" x2="65.8" y2="44.2" stroke-dasharray="3 4"/><line class="stt" x1="36.7" y1="60.2" x2="56.4" y2="104.3" stroke-dasharray="3 4"/><line class="stt" x1="65.8" y1="44.2" x2="32.9" y2="104.3" stroke-dasharray="3 4"/><line class="stt" x1="56.4" y1="104.3" x2="44.2" y2="16.0" stroke-dasharray="3 4"/><line class="stt" x1="32.9" y1="104.3" x2="27.3" y2="85.5" stroke-dasharray="3 4"/><line class="stt" x1="44.2" y1="16.0" x2="50.8" y2="74.3" stroke-dasharray="3 4"/><circle class="il1 an a-pulse" cx="27.3" cy="85.5" r="5" style="animation-delay:0.0s"/><circle class="il3 an a-pulse" cx="50.8" cy="74.3" r="5" style="animation-delay:0.3s"/><circle class="il2 an a-pulse" cx="36.7" cy="60.2" r="5" style="animation-delay:0.6s"/><circle class="il4 an a-pulse" cx="65.8" cy="44.2" r="5" style="animation-delay:0.9s"/><circle class="il2 an a-pulse" cx="56.4" cy="104.3" r="5" style="animation-delay:1.2s"/><circle class="il1 an a-pulse" cx="32.9" cy="104.3" r="5" style="animation-delay:1.5s"/><circle class="il3 an a-pulse" cx="44.2" cy="16.0" r="5" style="animation-delay:1.8s"/></g><g class="an a-bob" style="animation-delay:0.0s"><rect class="sf st2" x="226" y="28" width="76" height="30" rx="9"/><path class="st3" d="M238 43 H282 M238 51 H270"/></g><g class="an a-bob" style="animation-delay:0.5s"><rect class="sf st2" x="226" y="72" width="76" height="30" rx="9"/><path class="st3" d="M238 87 H282 M238 95 H270"/></g><g class="an a-bob" style="animation-delay:1.0s"><rect class="sf st2" x="226" y="116" width="76" height="30" rx="9"/><path class="st3" d="M238 131 H282 M238 139 H270"/></g></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Petro asumió la presidencia el 7 de agosto de 2022.</li><li>La Ley 2272 de 2022 define la política de Paz Total.</li><li>Plantea mesas de diálogo con distintos tipos de grupos.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>Francia Márquez, vicepresidenta de Petro, fue la primera mujer afrodescendiente en ocupar ese cargo en Colombia.</p></div></div></div>
+<h3>Contexto</h3>
+<ul>
+<li><b>Elección:</b> segunda vuelta el 19 de junio de 2022; posesión el 7 de agosto de 2022. Francia Márquez fue la primera mujer afrocolombiana vicepresidenta. Investiga qué tuvo de novedoso esta elección (el Pacto Histórico) en la historia política del país.</li>
+<li><b>Agenda:</b> reformas social, laboral, pensional y de salud, política de tierras, transición energética y ambiental. Estas propuestas se han debatido en el Congreso y entre la ciudadanía.</li>
+<li><b>Paz Total (Ley 2272 de 2022):</b> política que busca negociar con grupos con carácter político (como el ELN) y facilitar el <b>sometimiento a la justicia</b> de estructuras criminales. Incluye ceses al fuego, mesas de diálogo y enfoque territorial.</li>
+<li><b>Retos:</b> fragmentación de grupos y disputas territoriales; investiga qué otros desafíos se han señalado.</li>
+</ul>
+<p class="small">Nota: el periodo 2022-2026 terminó en agosto de 2026. Esta guía se centra en lo que dice tu examen; para hechos posteriores consulta a tu docente o fuentes de prensa confiables.</p>
+<div class="vocab">
+<div><b>Coalición</b>: alianza de partidos o movimientos.</div>
+<div><b>Gobernabilidad</b>: capacidad de gobernar con apoyo del Congreso.</div>
+<div><b>Negociación</b>: diálogo con grupos con proyecto político para acordar su salida del conflicto.</div>
+<div><b>Sometimiento</b>: entrega y juzgamiento de grupos criminales a cambio de beneficios legales.</div>
+<div><b>Cese al fuego</b>: suspensión temporal de ataques.</div>
+<div><b>Enfoque territorial</b>: priorizar a las regiones más afectadas.</div>
+<div><b>Garantías de no repetición</b>: condiciones para que la violencia no vuelva.</div>
+<div><b>Transición energética</b>: pasar de combustibles fósiles a energías limpias.</div>
+</div>
+<div class="tip"><b>Cuidado con el análisis «histórico»:</b> «significado histórico» pide ubicar el hecho en un proceso largo. «Dificultad estructural» pide algo profundo y duradero, no un detalle puntual.</div>
+<div class="ex"><h4>Ejemplo resuelto (otro caso): el Plan Colombia</h4>
+<p class="src">«El Plan Colombia (1999-2000) combinó recursos para fortalecer a las fuerzas armadas con programas de sustitución de cultivos y apoyo institucional. Los resultados fueron mixtos: avances en seguridad, pero persistencia de cultivos y desplazamiento en algunas zonas.»</p>
+<p><b>Pregunta modelo:</b> ¿qué condiciones deben cumplirse para que un plan así tenga resultados sostenibles?</p>
+<details class="rv"><summary>Ver explicación paso a paso</summary><div>
+<ol><li><b>Identifica el problema:</b> resultados mixtos.</li>
+<li><b>Mira lo que faltó:</b> alternativas económicas y presencia del Estado.</li>
+<li><b>Conclusión:</b> redáctala tú: ¿qué debería cambiar en el territorio para que los resultados duren?</li></ol></div></details></div>
+<div class="act"><h4>Práctica con retroalimentación</h4><div class="quiz" data-set="petro"></div></div>
+<div class="studied"><button class="btn alt mark" data-sec="s10">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S11 ============ -->
+<details class="sec" id="s11" data-title="Partidos y espectro">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s11"/></svg>11. Partidos políticos y espectro izquierda – centro – derecha <span class="q">Preguntas 12, 19</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s11"/></svg><div><h2 class="bt">Partidos y espectro</h2><p class="hook">¿Sabías que en una democracia casi siempre compiten más de dos partidos?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Urna con un voto cayendo y barra del espectro político de izquierda a derecha con un marcador"><title>Urna con un voto cayendo y barra del espectro político de izquierda a derecha con un marcador</title><rect class="hbg" width="320" height="180" rx="14"/><g><rect class="gl1" x="110" y="64" width="100" height="62" rx="6"/><rect class="tdot" x="132" y="76" width="56" height="7" rx="3"/><rect class="il5" x="110" y="58" width="100" height="10" rx="3"/></g><g class="an a-drop"><rect class="sf st3" x="140" y="26" width="40" height="30" rx="3"/><path class="st2" d="M149 42 L156 49 L172 33"/></g><rect x="30" y="138" width="260" height="12" rx="6" fill="url(#gSp)"/><g class="an a-slide"><path class="il1" d="M30 128 L38 128 L34 136Z"/></g><text x="30" y="170" font-size="12" font-weight="700">Izquierda</text><text x="160" y="170" text-anchor="middle" font-size="12" font-weight="700">Centro</text><text x="290" y="170" text-anchor="end" font-size="12" font-weight="700">Derecha</text></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Un partido reúne personas con ideas para llegar al poder.</li><li>El espectro ordena ideas de izquierda a derecha.</li><li>La tendencia se averigua con un método, no con atajos.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>«Izquierda» y «derecha» vienen de la Asamblea Nacional de la Revolución Francesa (1789), donde cada grupo se sentaba a un lado del presidente.</p></div></div></div>
+<h3>¿Qué es un partido político?</h3>
+<p>Organización de personas con ideas y proyecto común que busca participar en elecciones y acceder al poder. En Colombia deben tener <b>personería jurídica</b> y cumplir reglas (Constitución de 1991, leyes de partidos y de oposición).</p>
+<h3>El espectro político</h3>
+<svg viewBox="0 0 640 140" role="img" aria-label="Espectro político con izquierda, centro y derecha y sus ideas principales">
+<rect x="20" y="20" width="200" height="28" rx="14" class="f-a"/><rect x="220" y="20" width="200" height="28" class="f-n"/><rect x="420" y="20" width="200" height="28" rx="14" class="f-b"/>
+<g font-size="12" text-anchor="middle">
+<text x="110" y="70" font-weight="700">IZQUIERDA</text><text x="110" y="88">Más Estado, redistribución</text><text x="110" y="104">e igualdad social</text>
+<text x="320" y="70" font-weight="700">CENTRO</text><text x="320" y="88">Posiciones moderadas,</text><text x="320" y="104">mezcla de ideas</text>
+<text x="530" y="70" font-weight="700">DERECHA</text><text x="530" y="88">Mercado, orden, tradición,</text><text x="530" y="104">menos Estado en la economía</text>
+</g></svg>
+<p class="small">Origen: en la Asamblea Nacional de Francia (1789) los grupos se sentaron a lados distintos. Hoy es una guía, no una etiqueta exacta: un partido puede ser de centro en un tema y más de izquierda o derecha en otro.</p>
+<div class="vocab">
+<div><b>Ideología</b>: conjunto de ideas sobre cómo debe funcionar la sociedad.</div>
+<div><b>Plataforma</b>: propuestas oficiales del partido.</div>
+<div><b>Multipartidismo</b>: muchos partidos compiten.</div>
+<div><b>Bipartidismo</b>: dos partidos dominan.</div>
+<div><b>Personería jurídica</b>: reconocimiento legal para actuar como partido.</div>
+<div><b>Umbral</b>: porcentaje mínimo de votos para conservar curules o personería.</div>
+<div><b>Estatuto de la Oposición (2018)</b>: derechos de los partidos que no hacen parte del gobierno.</div>
+<div><b>Representación</b>: que las ideas de los ciudadanos estén en el Congreso.</div>
+</div>
+<h3>Cómo averiguar la tendencia de un partido (método, sin atajos)</h3>
+<ol>
+<li>Entra a la <b>página oficial</b> o a sus documentos fundacionales.</li>
+<li>Revisa 4 criterios: <b>papel del Estado en la economía</b>, <b>igualdad social</b>, <b>orden y seguridad</b>, <b>valores y tradiciones</b>.</li>
+<li>Contrasta con lo que la prensa y los politólogos dicen y con las votaciones del partido en el Congreso.</li>
+<li>Anota fuentes: no todas las clasificaciones coinciden.</li>
+</ol>
+<figure class="exam-fig">
+<img src="img/pregunta-19.png" alt="Collage de muchos logotipos de colores de distintas organizaciones políticas, cada uno con letras, formas o dibujos propios." loading="lazy">
+<figcaption>📄 Imagen de tu evaluación — pregunta 19 (te sirve también para la pregunta 12). <span>Observa: cuántos logotipos distintos hay, qué colores, formas y símbolos usan y qué palabras llevan. Úsalo como evidencia para tu respuesta: muchas organizaciones con identidades distintas. Para clasificarlas en el espectro, aplica el método de arriba con fuentes confiables.</span></figcaption>
+</figure>
+<div class="tip"><b>Si debes dibujar logos (pregunta de producción):</b> elige un partido por tendencia con fuentes confiables, observa su nombre, colores y símbolo, y dibújalos con claridad y etiquetas. Practica con tres partidos que hayas investigado tú; revisa cada logo en la fuente oficial antes de la evaluación.</div>
+<h3>¿Por qué puede haber muchos partidos?</h3>
+<p>Un sistema pasa de pocos a muchos partidos cuando se combinan: <b>reglas de entrada más abiertas</b> (por ejemplo, la Constitución de 1991 reconoció el derecho a fundar partidos), <b>fin del reparto del poder entre dos</b>, <b>crisis de confianza</b> en los partidos tradicionales, <b>personalismo</b> (listas alrededor de un líder) y <b>reformas electorales</b> que intentan ordenar el sistema (como la de 2003). Úsalo como <i>caja de herramientas</i> para argumentar con tus palabras (ver sección 12).</p>
+<div class="act"><h4>Actividad: ¿qué tendencia sugiere cada propuesta?</h4>
+<p class="small">Ejercicio sobre propuestas (no sobre partidos). Elige la tendencia más cercana.</p>
+<div id="spec"></div></div>
+<div class="act"><h4>Práctica con retroalimentación</h4><div class="quiz" data-set="part"></div></div>
+<div class="studied"><button class="btn alt mark" data-sec="s11">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S12 ============ -->
+<details class="sec" id="s12" data-title="Preguntas abiertas">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s12"/></svg>12. Cómo responder preguntas abiertas <span class="q">Preguntas 12, 19, 20</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s12"/></svg><div><h2 class="bt">Preguntas abiertas</h2><p class="hook">¿Sabías que una buena respuesta abierta casi siempre tiene tres partes?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Hoja con tres bloques: tesis, argumentos y cierre, y un lápiz que escribe"><title>Hoja con tres bloques: tesis, argumentos y cierre, y un lápiz que escribe</title><rect class="hbg" width="320" height="180" rx="14"/><rect class="sf st3" x="30" y="14" width="196" height="152" rx="8"/><rect class="il1" x="42" y="26" width="6" height="30" rx="3"/><text x="56" y="40" font-size="12" font-weight="700">Tesis</text><path class="st3" d="M56 50 H208"/><rect class="il2" x="42" y="64" width="6" height="44" rx="3"/><text x="56" y="78" font-size="12" font-weight="700">Argumentos</text><path class="st3" d="M56 102 H208"/><rect class="il3" x="42" y="120" width="6" height="30" rx="3"/><text x="56" y="134" font-size="12" font-weight="700">Cierre</text><path class="st3" d="M56 144 H208"/><g class="an a-write"><path class="gl3" d="M246 40 L286 128 L276 134 L236 46Z"/><path class="il1" d="M286 128 L276 134 L280 146Z"/><rect class="il5" x="238" y="34" width="16" height="12" rx="3" transform="rotate(-24 246 40)"/></g></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Plantilla: tesis, argumentos y cierre.</li><li>Apoya cada argumento con datos, fechas o ejemplos.</li><li>Revisa tu texto con la lista de autoevaluación.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>Aristóteles dijo que persuadir se apoya en tres recursos: el carácter de quien habla (ethos), la emoción (pathos) y la razón (logos).</p></div></div></div>
+<h3>Plantilla para «argumenta», «explica por qué» y «qué es»</h3>
+<ol>
+<li><b>Tesis (1 frase):</b> responde directo a la pregunta.</li>
+<li><b>Contexto:</b> cuándo, dónde, quiénes.</li>
+<li><b>Dos o tres argumentos</b> con datos concretos (fechas, nombres, hechos).</li>
+<li><b>Consecuencia o valoración:</b> qué cambió, qué quedó pendiente.</li>
+<li><b>Cierre:</b> una frase que retome la tesis.</li>
+</ol>
+<div class="ex"><h4>Ejemplo resuelto (otro tema): «Argumenta qué es la Constitución de 1991»</h4>
+<details class="rv"><summary>Ver respuesta modelo comentada</summary><div>
+<p><b>Tesis:</b> La Constitución de 1991 es la norma fundamental vigente en Colombia, que reemplazó a la de 1886 y redefinió los derechos y las instituciones. <i>(define + ubica)</i></p>
+<p><b>Contexto:</b> Surgió de una Asamblea Constituyente elegida en 1990, en medio de violencia y deseo de cambio; participaron fuerzas diversas, incluyendo exguerrilleros. <i>(quiénes, cuándo)</i></p>
+<p><b>Argumentos:</b> creó la tutela, reconoció a Colombia como Estado social de derecho y multiétnico y pluricultural, y amplió la participación (mecanismos como plebiscito y referendo). <i>(dato + explicación)</i></p>
+<p><b>Cierre:</b> Por eso se considera un pacto que buscó abrir el sistema político y proteger derechos. <i>(retoma la tesis)</i></p></div></details></div>
+<div class="ex"><h4>Ejemplo resuelto (otro tema): «Explica por qué se aprobó la elección popular de alcaldes»</h4>
+<details class="rv"><summary>Ver respuesta modelo comentada</summary><div>
+<p>Causas posibles: <b>(1)</b> crisis de representación y deseo de más participación local; <b>(2)</b> el modelo centralista no resolvía problemas locales; <b>(3)</b> el contexto de reforma política de los años 80. Cada causa va con una frase que la explica. Después, una consecuencia: los alcaldes pasaron a responder ante los votantes y se fortaleció la descentralización.</p></div></details></div>
+<h3>Lista de autoevaluación de tu respuesta</h3>
+<div id="rubric">
+<label class="chk"><input type="checkbox"> Respondí lo que se preguntaba (no me fui por las ramas).</label>
+<label class="chk"><input type="checkbox"> Incluí al menos una fecha y un nombre propio o hecho concreto.</label>
+<label class="chk"><input type="checkbox"> Di al menos dos razones o argumentos diferentes.</label>
+<label class="chk"><input type="checkbox"> Expliqué la consecuencia o el límite, no solo el hecho.</label>
+<label class="chk"><input type="checkbox"> Usé vocabulario de la guía (bipartidismo, alternación, paridad, legitimidad, etc.).</label>
+<label class="chk"><input type="checkbox"> Mi respuesta se entiende para alguien que no vio el examen.</label>
+</div>
+<div class="tip"><b>Practica así:</b> escribe en tu cuaderno una respuesta de 6 a 8 renglones a «Explica por qué la Violencia bipartidista llevó a un pacto de poder compartido» usando la plantilla y compárala con la lista de arriba.</div>
+<div class="studied"><button class="btn alt mark" data-sec="s12">Marcar como estudiada</button></div>
+</div></details>
+
+<!-- ============ S13 ============ -->
+<details class="sec" id="s13" data-title="Autoevaluación final">
+<summary><svg class="ic ic-s" aria-hidden="true" focusable="false"><use href="#i-s13"/></svg>13. Autoevaluación final (15 preguntas) <span class="q">Repaso general</span></summary>
+<div class="body">
+<div class="banner"><svg class="ic ic-b" aria-hidden="true" focusable="false"><use href="#i-s13"/></svg><div><h2 class="bt">Autoevaluación final</h2><p class="hook">¿Sabías que practicar recordando suele funcionar mejor que solo releer?</p></div></div><div class="intro"><figure class="hero"><svg viewBox="0 0 320 180" role="img" aria-label="Hoja de verificación con marcas de acierto y una medalla con estrella"><title>Hoja de verificación con marcas de acierto y una medalla con estrella</title><rect class="hbg" width="320" height="180" rx="14"/><rect class="sf st3" x="36" y="16" width="146" height="152" rx="10"/><rect class="gl1" x="76" y="8" width="66" height="18" rx="8"/><circle class="sf st2" cx="64" cy="52" r="9"/><path class="st2" d="M59 52 l4 4 l7 -8"/><rect class="il5" x="82" y="48" width="90" height="8" rx="4"/><circle class="sf st2" cx="64" cy="82" r="9"/><path class="st2" d="M59 82 l4 4 l7 -8"/><rect class="il5" x="82" y="78" width="70" height="8" rx="4"/><circle class="sf st2" cx="64" cy="112" r="9"/><path class="st2" d="M59 112 l4 4 l7 -8"/><rect class="il5" x="82" y="108" width="84" height="8" rx="4"/><circle class="sf st2" cx="64" cy="142" r="9"/><path class="st2" d="M59 142 l4 4 l7 -8"/><rect class="il5" x="82" y="138" width="60" height="8" rx="4"/><g class="an a-twk"><circle class="gl3" cx="244" cy="72" r="38"/><circle class="sf" cx="244" cy="72" r="28"/><path class="il1" d="M244 52 L250 67 L266 68 L254 78 L258 94 L244 85 L230 94 L234 78 L222 68 L238 67Z"/></g><path class="il1" d="M226 106 L216 148 L244 134 L272 148 L262 106Z" opacity=".9"/></svg></figure><div class="cards"><div class="t10"><b class="ct">En 10 segundos</b><ul><li>Son 15 preguntas nuevas, con casos distintos.</li><li>Responde todas y pulsa Calificar.</li><li>Repasa lo que fallaste y vuelve a intentarlo.</li></ul></div><div class="dato"><b class="ct">Dato curioso</b><p>Hermann Ebbinghaus mostró en 1885 que repasar en varios días espaciados ayuda a recordar más que estudiar todo de una sola vez.</p></div></div></div>
+<p>Preguntas nuevas, con casos distintos a los de la evaluación. Responde todas y pulsa <b>Calificar</b>.</p>
+<div id="final"></div>
+<button class="btn" id="finalgo">Calificar</button><button class="btn alt" id="finalreset">Reiniciar</button>
+<div id="finalscore" class="score" aria-live="polite" style="display:none"></div>
+<div class="studied"><button class="btn alt mark" data-sec="s13">Marcar como estudiada</button></div>
+</div></details>
+<p class="small"><button class="btn alt" id="resetall">Borrar mi progreso</button> Guía elaborada para estudio. Verifica fechas y datos con tu cuaderno y tu docente.</p>
+</main>
+<script>
+"use strict";
+/* ---------- Estado y almacenamiento ---------- */
+var KEY = "cs9_p4_guia";
+var state = { sec:{}, q:{}, ord:{}, mat:{}, best:0 };
+function load(){ try{ var r = localStorage.getItem(KEY); if(r){ var o = JSON.parse(r); if(o && typeof o==="object"){ state = Object.assign(state,o); } } }catch(e){} }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} }
+function $(s,r){ return (r||document).querySelector(s); }
+function $$(s,r){ return Array.prototype.slice.call((r||document).querySelectorAll(s)); }
+function el(tag,cls,html){ var e=document.createElement(tag); if(cls) e.className=cls; if(html!==undefined) e.innerHTML=html; return e; }
+function shuffle(a){ var b=a.slice(); for(var i=b.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t=b[i]; b[i]=b[j]; b[j]=t; } return b; }
+
+/* ---------- Datos: preguntas de práctica ---------- */
+var QS = {
+ fn:[
+  {q:"¿Cuál de estos hechos NO hace parte de las causas que llevaron al acuerdo del Frente Nacional?",o:["La violencia entre liberales y conservadores","El desgaste y la caída de la dictadura de Rojas Pinilla","El deseo de los jefes de los partidos de recuperar el poder civil","La expedición de la Constitución de 1991"],c:3,e:"Error de cronología: la Constitución de 1991 llegó más de 30 años después. Cuando una opción menciona un hecho posterior, descártala.",h:"Mira las fechas: el pacto es de 1957."},
+  {q:"En un colegio se acuerda que el consejo estudiantil solo puede tener representantes de dos grupos, que se turnan cada año. Las peleas entre esos grupos disminuyen. ¿Qué crítica democrática es más sólida?",o:["Ningún estudiante saldrá beneficiado","Los demás estudiantes pierden voz y opciones de representación","El consejo desaparecerá","Los grupos nunca volverán a discutir"],c:1,e:"Es una analogía: compara qué se gana y qué se pierde con un acuerdo de poder compartido.",h:"Piensa en qué ganó el sistema y a quién dejó por fuera."},
+  {q:"¿Qué mecanismo de participación se usó en diciembre de 1957 para aprobar el acuerdo político?",o:["Un golpe de Estado","Una guerra civil","Un plebiscito","Una asamblea militar"],c:2,e:"El plebiscito es una votación en la que los ciudadanos aprueban o rechazan una decisión política.",h:"Es un mecanismo donde el pueblo vota Sí o No."}
+ ],
+ gob:[
+  {q:"En 1967 los campesinos crearon la ANUC para presionar por el acceso a la tierra. Esto muestra principalmente que…",o:["El problema agrario ya estaba resuelto","Los campesinos se organizaron para exigir tierra y apoyo del Estado","No existía ningún conflicto rural","Los campesinos apoyaban eliminar la reforma agraria"],c:1,e:"Una organización social aparece cuando existe una demanda insatisfecha; la tierra era una demanda histórica.",h:"¿Por qué se organizaría un grupo? Por una necesidad no resuelta."},
+  {q:"Durante buena parte del Frente Nacional se gobernó con frecuencia bajo estado de sitio. ¿Qué tensión refleja?",o:["Entre mantener el orden y proteger libertades","Entre dos monarquías","Entre el comercio y la religión","Entre la costa y el interior solamente"],c:0,e:"El estado de sitio da poderes especiales al gobierno, lo que puede limitar libertades ciudadanas.",h:"Piensa en poderes especiales y derechos."},
+  {q:"La Ley 135 de 1961 creó el INCORA. ¿Qué buscaba este instituto?",o:["Cobrar impuestos urbanos","Titular y redistribuir tierras rurales","Controlar el comercio exterior","Dirigir las Fuerzas Militares"],c:1,e:"El INCORA (Instituto Colombiano de la Reforma Agraria) se ocupaba de la tierra rural.",h:"Reforma agraria = tierra."}
+ ],
+ m19:[
+  {q:"El Estatuto de Seguridad de 1978 fue controvertido porque…",o:["Eliminó a las Fuerzas Armadas","Aumentó el poder de la fuerza pública y recibió denuncias por abusos","Creó el voto femenino","Estableció el Frente Nacional"],c:1,e:"Respondía a la preocupación por el orden público, pero recibió críticas por derechos humanos.",h:"Piensa en orden público y derechos."},
+  {q:"Una diferencia entre el M-19 y las guerrillas rurales de los años 60 es que el M-19…",o:["Era una guerrilla urbana con acciones simbólicas y mediáticas","Nació en 1948","No tuvo relación con la política","Era un partido del Frente Nacional"],c:0,e:"El M-19 actuó sobre todo en ciudades y con hechos de gran impacto público.",h:"Urbano vs. rural."},
+  {q:"¿Cuál fue una estrategia de Belisario Betancur frente a la violencia guerrillera?",o:["Negar la existencia de guerrillas","Amnistía y diálogos de paz","Aplicar solo el Estatuto de Seguridad","Entregar el poder a la Junta Militar"],c:1,e:"Betancur apostó por una salida negociada con amnistía y diálogos en 1982-84.",h:"Su gobierno recordado por «paz» y «amnistía»."}
+ ],
+ barco:[
+  {q:"Luis Carlos Galán, asesinado en agosto de 1989, era…",o:["Un jefe guerrillero","Un candidato presidencial que combatía el narcotráfico","Un presidente del Frente Nacional","Un magistrado de la Corte"],c:1,e:"Su asesinato es un símbolo del terror del narcotráfico contra la política.",h:"Era candidato a la Presidencia."},
+  {q:"La elección popular de alcaldes (primera vez en 1988) se relaciona con…",o:["Centralizar todo el poder","Descentralización y mayor participación local","El fin de las elecciones","La reelección presidencial"],c:1,e:"Se buscó acercar el poder a los ciudadanos de cada municipio.",h:"¿Quién elige a los alcaldes ahora?"},
+  {q:"El movimiento de la «Séptima papeleta» (1990) condujo a…",o:["La Junta Militar","Una Asamblea Constituyente y a la Constitución de 1991","El Frente Nacional","El Plan Colombia"],c:1,e:"Estudiantes pidieron votar por una Constituyente; se convocó y se promulgó la Constitución en 1991.",h:"Piensa en 1991."}
+ ],
+ pres:[
+  {q:"Misael Pastrana Borrero y Andrés Pastrana Arango son…",o:["La misma persona","Padre e hijo, presidentes en 1970-1974 y 1998-2002","Hermanos presidentes en el mismo periodo","Presidentes del siglo XIX"],c:1,e:"Se distinguen por nombre completo y época; es una confusión muy común.",h:"Revisa los periodos."},
+  {q:"¿Cuál pareja presidente-periodo es correcta?",o:["Gaviria: 1994-1998","Samper: 1994-1998","Turbay: 1982-1986","Betancur: 1986-1990"],c:1,e:"Samper gobernó 1994-1998; Gaviria 1990-1994; Turbay 1978-1982; Betancur 1982-1986.",h:"Ordena la lista 1978-1998."}
+ ],
+ uribe:[
+  {q:"El Plan Colombia (desde 1999) combinó…",o:["Cooperación con EE. UU., fortalecimiento militar y programas sociales y de sustitución","Solo ayuda humanitaria","La eliminación del Ejército","Un acuerdo con el narcotráfico para legalizarlo"],c:0,e:"Fue una estrategia con componentes de seguridad y de desarrollo.",h:"Fue un programa de cooperación internacional."},
+  {q:"¿Qué es la justicia transicional?",o:["Un tribunal sin leyes","Mecanismos para pasar de la guerra a la paz buscando verdad, justicia y reparación","Una política de impuestos","La eliminación de los jueces"],c:1,e:"Verdad, justicia, reparación y no repetición.",h:"Verdad, justicia, reparación."},
+  {q:"Un informe dice que una política redujo el secuestro y aumentó la presencia policial, pero también recibió denuncias de abusos. ¿Qué análisis es más equilibrado?",o:["La política fue perfecta","La política fue un fracaso total","Reconoce resultados y a la vez los cuestionamientos","No se puede analizar"],c:2,e:"Una lectura sólida reconoce logros y costos al mismo tiempo.",h:"Evita los extremos."}
+ ],
+ santos:[
+  {q:"¿Qué países fueron garantes de la mesa de La Habana?",o:["Cuba y Noruega","Francia y Alemania","Estados Unidos y Rusia","Brasil y Argentina"],c:0,e:"Cuba y Noruega fueron garantes; Chile y Venezuela acompañantes.",h:"Un país es sede y el otro lideró la instalación en Oslo."},
+  {q:"¿Cuál de estos es un mecanismo de participación ciudadana?",o:["Un decreto presidencial","La revocatoria del mandato","Un estado de sitio","Una sentencia judicial"],c:1,e:"Los mecanismos de participación incluyen voto, plebiscito, referendo, consulta popular, cabildo abierto, revocatoria e iniciativa legislativa.",h:"Es algo que el pueblo puede activar."},
+  {q:"El punto «reforma rural integral» del acuerdo se relaciona con…",o:["Acceso a la tierra y desarrollo del campo","Reformar el Ejército","Eliminar los impuestos","La política exterior"],c:0,e:"Busca atender causas históricas del conflicto agrario.",h:"Rural = campo."}
+ ],
+ duque:[
+  {q:"Una «disidencia» es…",o:["Un grupo que se separa o no se adhiere a un acuerdo de paz y sigue en armas","Un partido político nuevo","Una reforma tributaria","Un mecanismo de participación"],c:0,e:"Las disidencias son parte de los retos de seguridad posteriores a 2016.",h:"Piensa en el prefijo «dis-»: separación."},
+  {q:"Frente a una protesta masiva, la interpretación más sólida es…",o:["Tiene una sola causa","Combina un detonante con causas estructurales acumuladas","Solo reacciona a un anuncio","Es un invento de los medios"],c:1,e:"Una crisis social suele tener varios niveles de causas.",h:"Detonante vs. estructural."}
+ ],
+ petro:[
+  {q:"La principal diferencia entre negociación y sometimiento es que…",o:["La negociación se da con grupos con carácter político y el sometimiento con estructuras criminales a cambio de beneficios legales","Son lo mismo","El sometimiento no tiene reglas","La negociación elimina la justicia"],c:0,e:"Es una distinción clave para entender la política de Paz Total.",h:"Político vs. criminal."},
+  {q:"Una coalición política es…",o:["Un solo partido","Una alianza entre partidos o movimientos","Un grupo armado","Un mecanismo del Frente Nacional"],c:1,e:"Se forman para ganar elecciones o gobernar con mayoría.",h:"Co- = juntos."},
+  {q:"Un «cese al fuego» es…",o:["La entrega de todas las armas","La suspensión temporal de ataques","Una sentencia judicial","Un impuesto de guerra"],c:1,e:"Es una pausa acordada en las hostilidades, no el fin del conflicto.",h:"Cese = detener."}
+ ],
+ part:[
+  {q:"Multipartidismo significa…",o:["Dominio de un solo partido","Competencia entre muchos partidos","Prohibición de partidos","Dos partidos que se turnan"],c:1,e:"Es lo contrario del bipartidismo del Frente Nacional.",h:"Multi = muchos."},
+  {q:"El Estatuto de la Oposición (2018) busca…",o:["Eliminar la oposición","Dar garantías y derechos a los partidos que no hacen parte del gobierno","Prohibir las críticas","Crear nuevos impuestos"],c:1,e:"Es una herramienta para el pluralismo y el control político.",h:"Oposición = no gobierna."}
+ ]
+};
+var FINAL = [
+ {q:"¿Qué cambió en 1974 respecto al Frente Nacional?",o:["Terminó la obligación de alternar la Presidencia","Se inició el Frente Nacional","Cayó Rojas Pinilla","Se firmó la Constitución de 1991"],c:0,e:"La alternación presidencial terminó en 1974; la paridad en otros cargos se extendió hasta 1978."},
+ {q:"El gobierno de Gaviria (1990-1994) se asocia con…",o:["La Constitución de 1991 y la apertura económica","El Frente Nacional","El Plan Colombia","La Paz Total"],c:0,e:"En 1991 se promulgó la nueva Constitución y se inició la apertura económica."},
+ {q:"El gobierno de Samper (1994-1998) enfrentó una crisis de legitimidad por…",o:["La caída de Rojas Pinilla","Denuncias de financiación de la campaña con dineros ilícitos (Proceso 8000)","El plebiscito de 2016","La reforma tributaria de 2021"],c:1,e:"El Proceso 8000 cuestionó la financiación de la campaña."},
+ {q:"En el proceso de paz de Pastrana Arango (1998-2002) se creó…",o:["La zona de distensión en El Caguán","La JEP","El Frente Nacional","La ANUC"],c:0,e:"El diálogo con las FARC se realizó en una zona de despeje que se terminó en febrero de 2002."},
+ {q:"Un derecho creado en la Constitución de 1991 para proteger derechos fundamentales de forma rápida es…",o:["La tutela","El estado de sitio","La paridad","El plebiscito de 1957"],c:0,e:"La acción de tutela permite pedir protección inmediata de derechos fundamentales."},
+ {q:"El Estatuto de Seguridad (1978) estuvo asociado a…",o:["Un mayor poder de la fuerza pública y críticas por derechos humanos","La paz con las FARC","La creación del INCORA","La elección de alcaldes"],c:0,e:"Fue una medida de orden público durante el gobierno de Turbay."},
+ {q:"Una estrategia de Betancur frente a las guerrillas fue…",o:["Amnistía y diálogos","La eliminación de los partidos","La Seguridad Democrática","El Plan Colombia"],c:0,e:"Betancur impulsó acuerdos de cese al fuego en 1984."},
+ {q:"La reelección presidencial inmediata en Colombia fue posible a partir de…",o:["Una reforma constitucional de 2004","La Constitución de 1886","El plebiscito de 1957","El Acuerdo de 2016"],c:0,e:"Uribe fue reelegido en 2006 tras esa reforma."},
+ {q:"Una «garantía de no repetición» busca…",o:["Que la violencia no vuelva a ocurrir","Que las víctimas no declaren","Que no haya elecciones","Que se repitan los juicios"],c:0,e:"Es uno de los componentes de la justicia transicional, junto con verdad, justicia y reparación."},
+ {q:"Uno de los 6 puntos de la agenda de La Habana fue…",o:["La participación política","La reelección de Santos","La eliminación de la Constitución","El regreso del Frente Nacional"],c:0,e:"Los otros: reforma rural, fin del conflicto, drogas ilícitas, víctimas, implementación."},
+ {q:"La política de «Paz Total» incluye…",o:["Negociación con grupos políticos y sometimiento de estructuras criminales","Prohibir las protestas","La eliminación de la JEP","Cerrar las fronteras"],c:0,e:"Se amparó en la Ley 2272 de 2022."},
+ {q:"En un estallido social, una «causa estructural» es…",o:["Un problema acumulado y duradero como la desigualdad","Una noticia de un día","Un partido de fútbol","Un decreto de hace una semana"],c:0,e:"La causa estructural explica por qué un detonante genera una crisis."},
+ {q:"Un referendo es…",o:["Una votación sobre una norma o ley","Un golpe de Estado","Una guerra","Un tipo de partido"],c:0,e:"Es un mecanismo de participación ciudadana."},
+ {q:"Una propuesta que enfatiza más intervención del Estado y redistribución se ubica más cerca de la…",o:["Izquierda","Derecha","Monarquía","Dictadura"],c:0,e:"Es un criterio del espectro, no una etiqueta exacta."},
+ {q:"La descentralización en los años 80 incluyó…",o:["La elección popular de alcaldes","La eliminación de los municipios","El fin de las elecciones","El regreso del Frente Nacional"],c:0,e:"La primera elección fue en 1988."}
+];
+var ORD = {
+ pres:{t:"Ordena del más antiguo al más reciente",items:[["Lleras Camargo","1958"],["Lleras Restrepo","1966"],["Barco","1986"],["Gaviria","1990"],["Uribe","2002"],["Santos","2010"],["Duque","2018"]]},
+ fnpath:{t:"Camino al Frente Nacional",items:[["Asesinato de Gaitán","1948"],["Golpe de Rojas Pinilla","1953"],["Caída de Rojas y Junta Militar","1957"],["Plebiscito","1 dic. 1957"],["Primer presidente del Frente Nacional","1958"]]},
+ fnpres:{t:"Presidentes del Frente Nacional",items:[["Lleras Camargo","1958"],["Valencia","1962"],["Lleras Restrepo","1966"],["Pastrana Borrero","1970"]]},
+ armed:{t:"Años 70-90",items:[["Elecciones discutidas","1970"],["Paro cívico nacional","1977"],["Estatuto de Seguridad","1978"],["Acuerdos de paz bajo Betancur","1984"],["Desmovilización del M-19","1990"]]},
+ paz:{t:"Hitos del proceso",items:[["Diálogos exploratorios","2011-12"],["Instalación pública de la mesa","2012"],["Firma del primer acuerdo","sept. 2016"],["Plebiscito","2 oct. 2016"],["Segundo acuerdo","24 nov. 2016"]]}
+};
+var MAT = {
+ fn:{pairs:[["Violencia bipartidista y dictadura","Pacto de poder compartido entre liberales y conservadores"],["Plebiscito","Votación en que el pueblo aprueba o rechaza una decisión"],["Clientelismo","Cargos y favores a cambio de apoyo político"],["Voto de las mujeres en 1957","Ampliación del cuerpo de votantes"]]},
+ gob:{pairs:[["Lleras Camargo","Ley 135 de 1961 e INCORA"],["Valencia","Operaciones en zonas campesinas con presencia armada"],["Lleras Restrepo","Reforma constitucional de 1968"],["Pastrana Borrero","Elecciones de 1970 discutidas"]]},
+ m19:{pairs:[["Estatuto de Seguridad (1978)","Más poder a la fuerza pública y críticas por derechos humanos"],["Amnistía y diálogos de Betancur","Acuerdos con guerrillas en 1984"],["Desmovilización del M-19 (1990)","Participación en la Constituyente de 1991"]]},
+ periodos:{pairs:[["Barco","1986-1990"],["Gaviria","1990-1994"],["Samper","1994-1998"],["Pastrana Arango","1998-2002"],["Uribe","2002-2010"],["Santos","2010-2018"],["Duque","2018-2022"],["Betancur","1982-1986"]]},
+ duque:{pairs:[["Un alza repentina de una tarifa","Causa detonante"],["Años de bajos salarios y pocas oportunidades","Causa estructural"],["Desconfianza prolongada hacia las autoridades","Causa estructural"],["Un decreto que cambia de un día para otro un precio","Causa detonante"]]}
+};
+var SPEC = [
+ ["El Estado debe garantizar salud y pensiones públicas para todos","Izquierda"],
+ ["Reducir impuestos y dar más espacio a la empresa privada","Derecha"],
+ ["Mantener el mercado, pero con subsidios focalizados y acuerdos entre sectores","Centro"],
+ ["Redistribuir la riqueza con impuestos progresivos","Izquierda"],
+ ["Priorizar el orden y la autoridad","Derecha"],
+ ["Defender las tradiciones y valores establecidos","Derecha"]
+];
+var EVENTS = [
+ ["1948","v","Asesinato de Gaitán","Jorge Eliécer Gaitán, líder liberal, es asesinado el 9 de abril. Se intensifica la Violencia bipartidista."],
+ ["1953","p","Golpe de Rojas Pinilla","El general toma el poder el 13 de junio. Gobierna hasta 1957."],
+ ["1957","p","Caída de Rojas y plebiscito","Rojas cae el 10 de mayo; una Junta Militar gobierna. El 1 de diciembre un plebiscito aprueba el acuerdo bipartidista y las mujeres votan por primera vez."],
+ ["1958","p","Inicia el Frente Nacional","Alberto Lleras Camargo (liberal) inicia el sistema de alternación."],
+ ["1961","p","Reforma agraria y ANAPO","Ley 135 de 1961 y creación del INCORA. Nace la ANAPO, de oposición."],
+ ["1964","v","Operaciones y guerrillas","Operaciones del gobierno de Valencia en zonas campesinas; en esos años surgen FARC y ELN."],
+ ["1968","p","Reforma constitucional","Reforma constitucional durante el gobierno de Lleras Restrepo."],
+ ["1970","p","Elecciones del 19 de abril","Misael Pastrana gana en medio de denuncias de fraude."],
+ ["1974","p","Fin de la alternación","Termina la alternación presidencial obligatoria; gobierna López Michelsen. El M-19 se da a conocer."],
+ ["1977","s","Paro cívico nacional","14 de septiembre. Gran protesta nacional durante el gobierno de López Michelsen."],
+ ["1978","v","Estatuto de Seguridad","Turbay Ayala: medidas de orden público y debate por derechos humanos."],
+ ["1980","v","Embajada de Rep. Dominicana","Toma por parte del M-19 (febrero a abril de 1980)."],
+ ["1984","z","Acuerdos de paz","Con Betancur se firman acuerdos de cese al fuego con varias guerrillas."],
+ ["1985","v","Palacio de Justicia y Armero","Toma del Palacio de Justicia (6-7 nov.) y tragedia de Armero (13 nov.). Nace la Unión Patriótica."],
+ ["1986","p","Gobierno de Barco","Gobierno-oposición tras el Frente Nacional. Violencia del narcotráfico."],
+ ["1988","p","Alcaldes elegidos por voto","Primera elección popular de alcaldes (descentralización)."],
+ ["1989","v","Asesinato de Galán","Narcoterrorismo: asesinato de Galán y atentados con bombas."],
+ ["1990","z","M-19 y Séptima papeleta","Desmovilización del M-19; Gaviria asume; la Séptima papeleta abre paso a la Constituyente."],
+ ["1991","p","Nueva Constitución","4 de julio: Constitución de 1991. Tutela y nuevos mecanismos de participación."],
+ ["1994","p","Gobierno de Samper","Proceso 8000: crisis de legitimidad."],
+ ["1998","z","Pastrana, Caguán y Plan Colombia","Diálogos con las FARC en El Caguán (hasta febrero de 2002) y Plan Colombia."],
+ ["2002","p","Uribe y Seguridad Democrática","Inicio de la Seguridad Democrática. Reelección en 2006."],
+ ["2005","z","Ley de Justicia y Paz","Ley 975: marco jurídico para la desmovilización de las AUC."],
+ ["2010","p","Gobierno de Santos","Ley de Víctimas (2011) y diálogos con las FARC desde 2012."],
+ ["2012","z","Diálogos con las FARC","Instalación pública y mesa en La Habana."],
+ ["2016","z","Acuerdo y plebiscito","Firma de acuerdos, plebiscito (2 oct.), nuevo acuerdo (24 nov.) y Nobel de Paz."],
+ ["2018","p","Gobierno de Duque","Le corresponde implementar el Acuerdo de 2016."],
+ ["2019","s","Paro del 21 de noviembre","Marchas con múltiples sectores."],
+ ["2021","s","Paro Nacional","Desde el 28 de abril: protestas masivas con demandas sociales."],
+ ["2022","p","Gobierno de Petro y Paz Total","Posesión el 7 de agosto. Ley 2272 de 2022 (Paz Total)."],
+ ["2026","p","Fin del periodo 2022-2026","Termina el mandato presidencial en agosto. Consulta a tu docente por hechos posteriores."]
+];
+var FC = [["Lleras Camargo","1958 - 1962"],["Valencia","1962 - 1966"],["Lleras Restrepo","1966 - 1970"],["Misael Pastrana","1970 - 1974"],["López Michelsen","1974 - 1978"],["Turbay Ayala","1978 - 1982"],["Betancur","1982 - 1986"],["Barco","1986 - 1990"],["Gaviria","1990 - 1994"],["Samper","1994 - 1998"],["Andrés Pastrana","1998 - 2002"],["Uribe","2002 - 2010"],["Santos","2010 - 2018"],["Duque","2018 - 2022"],["Petro","2022 - 2026"]];
+
+/* ---------- Componentes ---------- */
+function renderQuiz(box){
+ var set = box.getAttribute("data-set"); var items = QS[set]||[];
+ items.forEach(function(it,i){
+  var id = set+i; var wrap = el("div","q-item"); wrap.appendChild(el("div","qt",(i+1)+". "+it.q));
+  var fb = el("div","fb"); fb.style.display="none";
+  var opts = [];
+  it.o.forEach(function(t,k){ var b = el("button","opt",String.fromCharCode(65+k)+". "+t); b.type="button";
+   b.addEventListener("click",function(){
+    opts.forEach(function(x){ x.disabled=true; });
+    var ok = (k===it.c);
+    b.classList.add(ok?"right":"wrong"); if(!ok) opts[it.c].classList.add("right"); mark(b,ok); if(!ok) mark(opts[it.c],true);
+    fb.style.display="block"; fb.className="fb "+(ok?"ok":"no");
+    fb.innerHTML=(ok?"<b class=\"ic\">\u2714 Correcto.</b> ":"<b class=\"ic\">\u2718 Incorrecto.</b> ")+it.e;
+    if(ok){ state.q[id]=1; save(); updateProgress(); }
+   });
+   opts.push(b); wrap.appendChild(b); });
+  var hint = el("div","hintbox hid","\uD83D\uDCA1 Pista: "+it.h);
+  var hb = el("button","btn alt","Ver pista"); hb.type="button";
+  hb.addEventListener("click",function(){ hint.classList.toggle("show"); hb.textContent = hint.classList.contains("show")?"Ocultar pista":"Ver pista"; });
+  var rb = el("button","btn alt","Intentar de nuevo"); rb.type="button";
+  rb.addEventListener("click",function(){ opts.forEach(function(x,ix){ x.disabled=false; x.removeAttribute("data-m"); x.classList.remove("right","wrong"); x.textContent=String.fromCharCode(65+ix)+". "+it.o[ix]; }); fb.style.display="none"; });
+  wrap.appendChild(hb); wrap.appendChild(rb); wrap.appendChild(hint); wrap.appendChild(fb); box.appendChild(wrap);
+ });
+}
+function renderOrder(box){
+ var set = box.getAttribute("data-set"); var d = ORD[set]; var correct = d.items;
+ var pool = shuffle(correct); var chosen = [];
+ box.appendChild(el("p","small","<b>"+d.t+".</b> Toca los eventos en el orden correcto."));
+ var chips = el("div","chips"); var list = el("ol","ordlist"); var msg = el("div","fb"); msg.style.display="none";
+ var hint = el("div","hintbox hid","\uD83D\uDCA1 Pista (años): "+correct.map(function(x){return x[0]+" = "+x[1];}).join("; "));
+ function draw(){
+  chips.innerHTML=""; list.innerHTML="";
+  pool.forEach(function(it){ var used = chosen.indexOf(it)>-1; var b=el("button","chip"+(used?" used":""),it[0]); b.type="button"; b.disabled=used;
+   b.addEventListener("click",function(){ chosen.push(it); draw(); }); chips.appendChild(b); });
+  chosen.forEach(function(it){ list.appendChild(el("li","",it[0])); });
+ }
+ var check = el("button","btn","Comprobar"); check.type="button";
+ check.addEventListener("click",function(){
+  if(chosen.length<correct.length){ msg.style.display="block"; msg.className="fb no"; msg.textContent="Faltan eventos por ordenar."; return; }
+  var all=true; $$("li",list).forEach(function(li,i){ var ok = chosen[i]===correct[i]; li.className=ok?"ok":"no"; li.textContent=(ok?"\u2714 ":"\u2718 ")+chosen[i][0]; if(!ok) all=false; });
+  msg.style.display="block"; msg.className="fb "+(all?"ok":"no");
+  msg.textContent = all?"\u2714 Orden correcto.":"\u2718 Hay eventos fuera de lugar (marcados con \u2718). Usa la pista de los años y reinicia.";
+  if(all){ state.ord[set]=1; save(); updateProgress(); }
+ });
+ var reset = el("button","btn alt","Reiniciar"); reset.type="button";
+ reset.addEventListener("click",function(){ chosen=[]; pool=shuffle(correct); msg.style.display="none"; draw(); });
+ var hb = el("button","btn alt","Ver pista"); hb.type="button"; hb.addEventListener("click",function(){ hint.classList.toggle("show"); });
+ box.appendChild(chips); box.appendChild(list); box.appendChild(check); box.appendChild(reset); box.appendChild(hb); box.appendChild(hint); box.appendChild(msg); draw();
+}
+function renderMatch(box){
+ var set = box.getAttribute("data-set"); var pairs = MAT[set].pairs;
+ var opts = []; pairs.forEach(function(p){ if(opts.indexOf(p[1])<0) opts.push(p[1]); }); opts = shuffle(opts);
+ var rows = [];
+ pairs.forEach(function(p){
+  var row = el("div","matchrow"); row.appendChild(el("div","","<b>"+p[0]+"</b>"));
+  var sel = el("select"); sel.setAttribute("aria-label","Elige para "+p[0]);
+  sel.appendChild(new Option("Elige…",""));
+  opts.forEach(function(o){ sel.appendChild(new Option(o,o)); });
+  var st=el("div","small",""); row.appendChild(sel); row.appendChild(st); box.appendChild(row); rows.push([row,sel,p[1],st]);
+ });
+ var msg = el("div","fb"); msg.style.display="none";
+ var check = el("button","btn","Comprobar"); check.type="button";
+ check.addEventListener("click",function(){
+  var good=0; rows.forEach(function(r){ var ok = r[1].value===r[2]; r[0].className="matchrow "+(ok?"ok":"no"); r[3].textContent=ok?"\u2714 Correcto":"\u2718 Incorrecto"; if(ok) good++; });
+  msg.style.display="block"; msg.className="fb "+(good===rows.length?"ok":"no"); msg.textContent = (good===rows.length?"\u2714 ":"\u2718 ")+good+" de "+rows.length+" correctas."+(good<rows.length?" Revisa las marcadas en rojo.":"");
+  if(good===rows.length){ state.mat[set]=1; save(); updateProgress(); }
+ });
+ box.appendChild(check); box.appendChild(msg);
+}
+function renderSpec(box){
+ SPEC.forEach(function(s,i){
+  var row = el("div","q-item"); row.appendChild(el("div","qt",s[0]));
+  var fb = el("div","fb"); fb.style.display="none"; var bs=[];
+  ["Izquierda","Centro","Derecha"].forEach(function(t){ var b=el("button","chip",t); b.type="button";
+   b.addEventListener("click",function(){ bs.forEach(function(x){x.disabled=true;}); var ok=(t===s[1]); b.classList.add("sel"); fb.style.display="block"; fb.className="fb "+(ok?"ok":"no");
+    fb.textContent = ok?"\u2714 Correcto, tiende hacia esa posición.":"\u2718 Incorrecto. Más cercana a: "+s[1]+". Recuerda: es una tendencia, no una etiqueta exacta."; });
+   bs.push(b); row.appendChild(b); });
+  row.appendChild(fb); box.appendChild(row);
+ });
+}
+function renderTimeline(){
+ var cats={p:"Política e instituciones",v:"Violencia y conflicto",z:"Paz y reformas",s:"Protesta social"};
+ var track=$("#tltrack"), panel=$("#tlpanel"), leg=$("#tlleg"); var active={p:1,v:1,z:1,s:1}, selected=null;
+ function draw(){
+  track.innerHTML="";
+  EVENTS.forEach(function(e,i){ if(!active[e[1]]) return;
+   var b=el("button","ev c-"+e[1],"<b>"+e[0]+"</b>"+e[2]); b.type="button"; b.setAttribute("aria-expanded",String(selected===i));
+   b.addEventListener("click",function(){ selected=i; panel.innerHTML="<b>"+e[0]+" · "+e[2]+"</b><br>"+e[3]+"<br><span class='small'>Categoría: "+cats[e[1]]+"</span>"; draw(); });
+   track.appendChild(b); });
+ }
+ Object.keys(cats).forEach(function(k){ var b=el("button","on",cats[k]); b.type="button"; b.addEventListener("click",function(){ active[k]=active[k]?0:1; b.classList.toggle("on"); draw(); }); leg.appendChild(b); });
+ draw();
+}
+function renderFC(){
+ var box=$("#fc"); var data=FC.slice();
+ function draw(){ box.innerHTML=""; data.forEach(function(c){ var b=el("button","","<b>"+c[0]+"</b><br>¿Periodo?"); b.type="button";
+  b.addEventListener("click",function(){ var f=b.classList.toggle("flip"); b.innerHTML = f?"<b>"+c[0]+"</b><br>"+c[1]:"<b>"+c[0]+"</b><br>¿Periodo?"; }); box.appendChild(b); }); }
+ $("#fcshuffle").addEventListener("click",function(){ data=shuffle(FC); draw(); }); draw();
+}
+function renderFinal(){
+ var box=$("#final"); box.innerHTML=""; var sel=[]; var items=shuffleKeep(FINAL);
+ items.forEach(function(it,i){
+  var w=el("div","q-item"); w.appendChild(el("div","qt",(i+1)+". "+it.q)); sel[i]=-1; var bs=[];
+  it.o.forEach(function(t,k){ var b=el("button","opt",String.fromCharCode(65+k)+". "+t); b.type="button";
+   b.addEventListener("click",function(){ sel[i]=k; bs.forEach(function(x){x.classList.remove("sel");}); b.classList.add("sel"); }); bs.push(b); w.appendChild(b); });
+  var fb=el("div","fb"); fb.style.display="none"; w.appendChild(fb); it._ui={bs:bs,fb:fb}; box.appendChild(w);
+ });
+ $("#finalgo").onclick=function(){
+  var sc=0; items.forEach(function(it,i){ var ok=sel[i]===it.c; if(ok) sc++; it._ui.bs.forEach(function(b){b.disabled=true;});
+   if(sel[i]>=0) it._ui.bs[sel[i]].classList.add(ok?"right":"wrong"); it._ui.bs[it.c].classList.add("right");
+   it._ui.fb.style.display="block"; it._ui.fb.className="fb "+(ok?"ok":"no"); it._ui.fb.textContent=(ok?"\u2714 Correcto. ":"\u2718 Incorrecto. ")+it.e; if(sel[i]>=0) mark(it._ui.bs[sel[i]],ok); if(!ok) mark(it._ui.bs[it.c],true); });
+  var s=$("#finalscore"); s.style.display="block"; var pct=Math.round(sc/items.length*100);
+  s.textContent="Puntaje: "+sc+" de "+items.length+" ("+pct+"%). "+(pct>=80?"Excelente. Repasa solo lo que fallaste.":pct>=60?"Vas bien. Repasa las secciones de las preguntas falladas.":"Vuelve a las secciones y a los ejemplos resueltos antes de repetir.");
+  if(sc>state.best){ state.best=sc; save(); } updateProgress();
+ };
+ $("#finalreset").onclick=function(){ $("#finalscore").style.display="none"; renderFinal(); };
+}
+function mark(b,ok){ if(b.getAttribute("data-m")) return; b.setAttribute("data-m","1"); b.textContent=(ok?"\u2714 ":"\u2718 ")+b.textContent; }
+function shuffleKeep(a){ return shuffle(a); }
+
+/* ---------- Conexiones entre temas ---------- */
+var EDGES = [
+ ["s1","s2","ubica en el tiempo a","La línea de tiempo muestra la secuencia: Violencia, dictadura, caída de Rojas y pacto de 1957. Sin esa secuencia es difícil entender por qué existió el Frente Nacional."],
+ ["s2","s3","se aplica en","El pacto del Frente Nacional (alternación y paridad) se llevó a la práctica en cuatro gobiernos: Lleras Camargo, Valencia, Lleras Restrepo y Pastrana Borrero."],
+ ["s3","s4","deja tensiones que explican","Los límites del sistema (poca apertura a otras fuerzas, problemas agrarios sin resolver, elecciones discutidas) ayudan a entender la protesta social y los nuevos movimientos de los años 70 y 80."],
+ ["s4","s5","convive con","En los años 80 la violencia política y guerrillera se mezcla con el crecimiento del narcotráfico: ambos desafían al Estado al mismo tiempo."],
+ ["s5","s11","abre paso, con la Constitución de 1991, a","La crisis de los años 80-90 y la Séptima papeleta llevaron a la Constituyente de 1991, que abrió la participación y la creación de partidos."],
+ ["s2","s11","explica el origen del bipartidismo y su cambio en","El Frente Nacional consolidó el dominio de dos partidos. Entender eso permite comparar con el sistema de muchos partidos de hoy."],
+ ["s4","s8","es un antecedente de","Los acuerdos de paz con guerrillas en los años 80 y 90 (por ejemplo, el del M-19) son antecedentes de la idea de negociar políticamente el fin del conflicto."],
+ ["s7","s8","contrasta y se conecta con","Santos fue ministro de Defensa de Uribe. Además, la justicia transicional de 2005 es un antecedente de la justicia del Acuerdo de 2016."],
+ ["s8","s9","se implementa en","Firmar el Acuerdo no basta: su cumplimiento (reincorporación, seguridad, desarrollo rural) quedó en manos del gobierno siguiente."],
+ ["s9","s10","da paso, con otro enfoque, a","Los retos de paz y las demandas sociales de 2019-2021 preceden un gobierno con agenda de cambio social y una nueva política de paz."],
+ ["s1","s6","se apoya para memorizar","Los periodos presidenciales de la línea de tiempo son la base de las tarjetas para reconocer presidente y periodo."],
+ ["s11","s12","se usa para argumentar en","Los conceptos de partidos y espectro político son material para las preguntas abiertas: dan vocabulario y ejemplos."]
+];
+var FROM = {
+ s1:"Viene de la sección 0 (método): aquí ubicas en el tiempo los hechos que luego analizarás con los 5 pasos.",
+ s2:"Viene de la línea de tiempo (sección 1): el Frente Nacional se entiende al ubicar antes la Violencia y la dictadura (1948-1957).",
+ s3:"Viene del Frente Nacional (sección 2): estos cuatro gobiernos son la aplicación del pacto.",
+ s4:"Viene de los gobiernos del Frente Nacional (sección 3): sus límites ayudan a explicar la protesta social y los nuevos movimientos.",
+ s5:"Viene de la sección 4: la violencia política de los 70-80 se cruza con el auge del narcotráfico.",
+ s6:"Viene de las secciones 3 a 5: ya recorriste gobiernos de 1958 a 1990; aquí fijas nombres y periodos.",
+ s7:"Viene de la sección 6 y del contexto de las secciones 4 y 5: con los periodos claros, ubicas a Uribe tras Pastrana Arango.",
+ s8:"Viene de la sección 7: Santos fue ministro de Defensa de Uribe, y la justicia transicional ya la conoces.",
+ s9:"Viene de la sección 8: Duque recibe la implementación del Acuerdo de 2016.",
+ s10:"Viene de la sección 9: los retos de paz y la protesta social llegan al gobierno siguiente.",
+ s11:"Viene de las secciones 2 y 10: de los dos partidos del Frente Nacional a las coaliciones actuales.",
+ s12:"Viene de todas las anteriores: ahora usas los conceptos y datos para argumentar por escrito.",
+ s13:"Viene de toda la guía: pon a prueba lo aprendido."
+};
+var BR = {
+ s0:{t:"El método de 5 pasos necesita una línea de tiempo mental: sin saber cuándo ocurrió algo, es difícil juzgar si una opción es coherente. Por eso el siguiente tema es la línea de tiempo.",q:"¿Para qué sirve ubicar un hecho en el tiempo antes de responder?",o:["Para memorizar sin entender","Para descartar opciones que mencionan hechos de otra época","Para no leer el texto"],c:1,e:"Un hecho posterior no puede ser causa de uno anterior."},
+ s1:{t:"La línea muestra que 1957-1958 es un punto de quiebre: se pasa de la dictadura y la Violencia a un pacto civil. Ese pacto es el tema que sigue.",q:"¿Qué ocurrió justo antes de que comenzara el Frente Nacional?",o:["Se promulgó la Constitución de 1991","Cayó la dictadura y gobernó una Junta Militar","Se inició la Paz Total"],c:1,e:"La caída de Rojas Pinilla (mayo de 1957) y la Junta Militar precedieron al pacto y al plebiscito."},
+ s2:{t:"El pacto no se quedó en el papel: se aplicó en cuatro gobiernos que debes conocer. Cada gobierno enfrentó problemas distintos dentro del mismo sistema.",q:"¿Cómo se relaciona el pacto del Frente Nacional con los gobiernos de 1958-1974?",o:["Los gobiernos aplicaron sus reglas de alternación y paridad","No hay relación","El pacto se firmó en 1991"],c:0,e:"El sistema fijó las reglas; los gobiernos las pusieron en práctica."},
+ s3:{t:"Los límites del sistema (poca apertura, problemas del campo, elecciones discutidas) no desaparecieron al terminar el Frente Nacional: ayudan a explicar la protesta social y los nuevos grupos de los años 70 y 80.",q:"¿Cómo se relaciona la poca apertura política con los movimientos de oposición posteriores?",o:["Cuando un sistema deja por fuera a sectores, parte de ellos busca otras vías de expresión","No tiene ninguna relación","Los movimientos posteriores apoyaban el sistema sin críticas"],c:0,e:"La exclusión política es una causa frecuente de protesta y de nuevos movimientos."},
+ s4:{t:"Mientras continuaban las guerrillas y las protestas, en los años 80 creció otro desafío al Estado: el narcotráfico. Ambos fenómenos se superponen en el tiempo.",q:"¿Qué otro fenómeno creció en los años 80, junto a la violencia guerrillera?",o:["El narcotráfico y su violencia","La monarquía","El Frente Nacional"],c:0,e:"Los carteles de Medellín y Cali ganaron poder en esa década."},
+ s5:{t:"Estos hechos ocurrieron en gobiernos concretos (Betancur, Barco, Gaviria). Para ubicarlos, hay que dominar nombres y periodos: es el tema que sigue.",q:"¿Por qué conviene aprender los periodos presidenciales?",o:["Para situar hechos y descartar opciones con fechas que no corresponden","Para no estudiar los hechos","No sirve para nada"],c:0,e:"Los periodos son el eje que ordena la historia política."},
+ s6:{t:"Con los periodos claros, pasamos a 2002-2010, cuando la seguridad, el paramilitarismo y la justicia transicional marcan la agenda.",q:"¿Qué presidente gobernó inmediatamente después de Andrés Pastrana (1998-2002)?",o:["Santos","Álvaro Uribe","Duque"],c:1,e:"Uribe gobernó 2002-2010."},
+ s7:{t:"Santos fue ministro de Defensa de Uribe. La justicia transicional de 2005 es un antecedente de la del Acuerdo de 2016.",q:"¿Qué tienen en común la Ley de Justicia y Paz (2005) y el sistema de justicia del Acuerdo de 2016?",o:["Ambos son mecanismos de justicia transicional","Ambos eliminan toda sanción","Ambos son de 1957"],c:0,e:"Ambos buscan verdad, justicia y reparación."},
+ s8:{t:"Firmar un acuerdo es solo el comienzo: la implementación es la prueba real y fue el reto del siguiente gobierno.",q:"Después de firmar un acuerdo de paz, ¿qué sigue?",o:["La implementación y sus desafíos","El fin automático de la violencia","Nada"],c:0,e:"Reincorporación, seguridad y desarrollo rural requieren años de trabajo."},
+ s9:{t:"Los retos de paz y las demandas sociales de 2019-2021 preceden a un gobierno con una agenda de cambio social y una nueva política de paz.",q:"¿Qué gobierno sigue al de Duque en la línea de tiempo?",o:["Petro (2022)","Santos (2010)","Uribe (2002)"],c:0,e:"Duque gobernó 2018-2022; Petro, 2022-2026."},
+ s10:{t:"El gobierno de Petro se entiende mejor desde la historia de los partidos: de los dos partidos del Frente Nacional a un sistema con muchas fuerzas.",q:"¿Qué cambio de largo plazo ilustra el paso del Frente Nacional a hoy?",o:["De dos partidos dominantes a muchos partidos y coaliciones","De muchos partidos a un partido único","Ningún cambio"],c:0,e:"Es una tendencia general de pluralización."},
+ s11:{t:"Los conceptos de partidos y espectro político son vocabulario y evidencia para las preguntas abiertas.",q:"¿Qué debe tener una buena respuesta abierta?",o:["Tesis, argumentos con datos y cierre","Solo una frase","Copiar el enunciado"],c:0,e:"Esa estructura convence al lector."},
+ s12:{t:"Ahora es momento de poner todo a prueba con la autoevaluación final.",q:"¿Cuál es una buena estrategia antes de la autoevaluación?",o:["Repasar ejemplos resueltos y la línea de tiempo","No repasar","Memorizar opciones al azar"],c:0,e:"Repasar con intención es más eficaz que adivinar."}
+};
+var ROUTE = [
+ ["s0","Método de 5 pasos: es la base para todo."],
+ ["s1","Línea de tiempo: te da el orden de los hechos."],
+ ["s2","Frente Nacional: origen del sistema que se estudia."],
+ ["s3","Gobiernos del Frente Nacional: aplicación del pacto."],
+ ["s4","Años 70 y 80: protesta, M-19 y nuevas tensiones."],
+ ["s5","Narcotráfico y Barco: el otro gran desafío de los 80."],
+ ["s6","Presidentes y periodos: refuerza la memoria de nombres y años."],
+ ["s7","Uribe: seguridad y justicia transicional."],
+ ["s8","Santos: el cambio hacia la negociación."],
+ ["s9","Duque: implementación y protesta social."],
+ ["s10","Petro: Paz Total y cambio político."],
+ ["s11","Partidos y espectro: une los temas con la política actual."],
+ ["s12","Preguntas abiertas: practica a escribir."],
+ ["s13","Autoevaluación: mide cuánto aprendiste."]
+];
+function secName(id){ var d=document.getElementById(id); return d?d.getAttribute("data-title"):id; }
+function buildConnections(){
+ var panel=$("#cpanel"), cmap=$("#cmap"), ul=$("#edges");
+ var ids=[]; EDGES.forEach(function(e){ [e[0],e[1]].forEach(function(x){ if(ids.indexOf(x)<0) ids.push(x); }); });
+ ids.sort(function(a,b){ return parseInt(a.slice(1),10)-parseInt(b.slice(1),10); });
+ var nodes={};
+ function show(txt,hl){ panel.innerHTML=txt; Object.keys(nodes).forEach(function(k){ nodes[k].classList.toggle("hl",hl.indexOf(k)>-1); }); }
+ ids.forEach(function(id){
+  var n=el("div","cnode"); var nb=el("b","",secName(id)); nb.insertBefore(ico(id),nb.firstChild); n.appendChild(nb);
+  var row=el("div","row"); var go=el("button","btn alt","Ir a la sección"); go.type="button"; go.addEventListener("click",function(){ goTo(id); });
+  var rel=el("button","btn alt","Relaciones"); rel.type="button";
+  rel.addEventListener("click",function(){ var rs=EDGES.filter(function(e){ return e[0]===id||e[1]===id; });
+   show("<b>"+secName(id)+"</b><ul>"+rs.map(function(e){ return "<li>"+secName(e[0])+" "+e[2]+" "+secName(e[1])+".</li>"; }).join("")+"</ul>",[id].concat(rs.map(function(e){ return e[0]===id?e[1]:e[0]; }))); });
+  row.appendChild(go); row.appendChild(rel); n.appendChild(row); cmap.appendChild(n); nodes[id]=n; });
+ EDGES.forEach(function(e){ var li=el("li"); var b=el("button","",secName(e[0])+" — <i>"+e[2]+"</i> → "+secName(e[1])); b.type="button";
+  b.addEventListener("click",function(){ $$("#edges button").forEach(function(x){ x.classList.remove("on"); }); b.classList.add("on"); show("<b>"+secName(e[0])+" → "+secName(e[1])+"</b><br>"+e[3],[e[0],e[1]]); });
+  li.appendChild(b); ul.appendChild(li); });
+ var rt=$("#route");
+ ROUTE.forEach(function(r){ var li=el("li"); var lb=el("label","chk"); var cb=el("input"); cb.type="checkbox"; cb.className="rt"; cb.setAttribute("data-sec",r[0]);
+  cb.addEventListener("change",function(){ state.sec[r[0]]=cb.checked; save(); updateProgress(); });
+  lb.appendChild(cb); lb.appendChild(document.createTextNode(secName(r[0])+": "+r[1])); li.appendChild(lb); rt.appendChild(li); });
+ var secs=$$("details.sec");
+ secs.forEach(function(d,i){
+  var body=$(".body",d);
+  if(FROM[d.id]){ var f=el("div","from","⬅ "+FROM[d.id]); var prev=secs[i-1]; if(prev){ var gb=el("button","btn alt","Volver a: "+secName(prev.id)); gb.type="button"; gb.addEventListener("click",function(){ goTo(prev.id); }); f.appendChild(document.createElement("br")); f.appendChild(gb); } body.insertBefore(f,body.firstChild); }
+  var b=BR[d.id]; var next=secs[i+1]; if(!b||!next) return;
+  var br=el("details","bridge"); br.appendChild(el("summary","","🔗 Conexión con el siguiente tema"));
+  var in_=el("div"); in_.appendChild(el("p","","<b>"+secName(d.id)+" → "+secName(next.id)+".</b> "+b.t));
+  var qd=el("div","q-item"); qd.appendChild(el("div","qt",b.q)); var fb=el("div","fb"); fb.style.display="none"; var bs=[];
+  b.o.forEach(function(t,k){ var ob=el("button","opt",String.fromCharCode(65+k)+". "+t); ob.type="button";
+   ob.addEventListener("click",function(){ var ok=k===b.c; bs.forEach(function(x){ x.disabled=true; }); ob.classList.add(ok?"right":"wrong"); mark(ob,ok); if(!ok){ bs[b.c].classList.add("right"); mark(bs[b.c],true); }
+    fb.style.display="block"; fb.className="fb "+(ok?"ok":"no"); fb.innerHTML=(ok?"<b class=\"ic\">✔ Correcto.</b> ":"<b class=\"ic\">✘ Incorrecto.</b> ")+b.e; });
+   bs.push(ob); qd.appendChild(ob); });
+  qd.appendChild(fb); in_.appendChild(qd);
+  var nb=el("button","btn","Ir al siguiente tema →"); nb.type="button"; nb.addEventListener("click",function(){ goTo(next.id); }); in_.appendChild(nb);
+  br.appendChild(in_); body.insertBefore(br,$(".studied",body));
+ });
+}
+/* ---------- Tema claro/oscuro ---------- */
+function isDark(){ var t=document.documentElement.getAttribute("data-theme"); if(t==="dark") return true; if(t==="light") return false; try{ return window.matchMedia("(prefers-color-scheme: dark)").matches; }catch(e){ return false; } }
+function paintBtn(){ var b=$("#themebtn"); var d=isDark(); b.textContent=d?"Cambiar a modo claro":"Cambiar a modo oscuro"; b.setAttribute("aria-pressed",String(d)); }
+function initTheme(){
+ try{ var t=localStorage.getItem("cs9_theme"); if(t==="dark"||t==="light") document.documentElement.setAttribute("data-theme",t); }catch(e){}
+ paintBtn();
+ $("#themebtn").addEventListener("click",function(){ var n=isDark()?"light":"dark"; document.documentElement.setAttribute("data-theme",n); try{ localStorage.setItem("cs9_theme",n); }catch(e){} paintBtn(); });
+}
+
+/* ---------- Navegación y progreso ---------- */
+function reduced(){ try{ return window.matchMedia("(prefers-reduced-motion: reduce)").matches; }catch(e){ return false; } }
+function goTo(id){ var d=document.getElementById(id); if(!d) return; d.open=true; d.scrollIntoView({behavior:reduced()?"auto":"smooth",block:"start"});
+ $$("#nav button").forEach(function(b){ b.classList.toggle("cur",b.getAttribute("data-for")===id); }); }
+function buildNav(){
+ var nav=$("#nav");
+ $$("details.sec").forEach(function(d){ var b=el("button","",d.getAttribute("data-title")); b.type="button"; b.setAttribute("data-for",d.id);
+  b.addEventListener("click",function(){ goTo(d.id); }); b.insertBefore(ico(d.id),b.firstChild); nav.appendChild(b); });
+}
+/* ---------- Iconos e ilustraciones ---------- */
+function ico(id){ var NS="http://www.w3.org/2000/svg"; var s=document.createElementNS(NS,"svg"); s.setAttribute("class","ic"); s.setAttribute("aria-hidden","true"); s.setAttribute("focusable","false");
+ var u=document.createElementNS(NS,"use"); u.setAttribute("href","#i-"+id); s.appendChild(u); return s; }
+function initHeroes(){
+ var hs=$$(".hero");
+ if(reduced()||!("IntersectionObserver" in window)){ hs.forEach(function(h){ h.classList.add("in"); }); return; }
+ document.documentElement.classList.add("io");
+ var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }); },{threshold:0.15});
+ hs.forEach(function(h){ io.observe(h); });
+}
+
+function updateProgress(){
+ var secs=$$("details.sec"); var n=secs.length, done=0;
+ secs.forEach(function(d){ var ok=!!state.sec[d.id]; if(ok) done++; var b=$('#nav button[data-for="'+d.id+'"]'); if(b) b.classList.toggle("done",ok);
+  var m=$(".mark",d); if(m) m.textContent = ok?"Estudiada (clic para desmarcar)":"Marcar como estudiada"; });
+ $$(".rt").forEach(function(c){ c.checked=!!state.sec[c.getAttribute("data-sec")]; });
+ var ex=Object.keys(state.q).length+Object.keys(state.ord).length+Object.keys(state.mat).length;
+ var pct=Math.round(done/n*100);
+ $("#pfill").style.width=pct+"%"; $("#pbarwrap").setAttribute("aria-valuenow",String(pct));
+ $("#ptxt").textContent="Progreso: "+pct+"% · "+done+" de "+n+" secciones · "+ex+" ejercicios acertados"+(state.best?" · mejor autoevaluación: "+state.best+"/"+FINAL.length:"");
+}
+/* ---------- Ampliar imágenes de la evaluación ---------- */
+/* ---------- Quien es (galeria) ---------- */
+var PGQ = [["Gustavo Rojas Pinilla", "1953\u20131957", "rojas-pinilla-gustavo"], ["Alberto Lleras Camargo", "1958\u20131962", "lleras-camargo-alberto"], ["Guillermo Le\u00f3n Valencia", "1962\u20131966", "valencia-guillermo-leon"], ["Carlos Lleras Restrepo", "1966\u20131970", "lleras-restrepo-carlos"], ["Misael Pastrana Borrero", "1970\u20131974", "pastrana-borrero-misael"], ["Alfonso L\u00f3pez Michelsen", "1974\u20131978", "lopez-michelsen-alfonso"], ["Julio C\u00e9sar Turbay Ayala", "1978\u20131982", "turbay-ayala-julio-cesar"], ["Belisario Betancur", "1982\u20131986", "betancur-belisario"], ["Virgilio Barco", "1986\u20131990", "barco-virgilio"], ["C\u00e9sar Gaviria", "1990\u20131994", "gaviria-cesar"], ["Ernesto Samper", "1994\u20131998", "samper-ernesto"], ["Andr\u00e9s Pastrana Arango", "1998\u20132002", "pastrana-arango-andres"], ["\u00c1lvaro Uribe V\u00e9lez", "2002\u20132010", "uribe-velez-alvaro"], ["Juan Manuel Santos", "2010\u20132018", "santos-juan-manuel"], ["Iv\u00e1n Duque M\u00e1rquez", "2018\u20132022", "duque-ivan"], ["Gustavo Petro", "2022\u20132026", "petro-gustavo"]];
+function initPgq(){
+ var box=$("#pgqbox"); if(!box||PGQ.length<4) return; var btn=$("#pgqnext");
+ function round(){
+  box.innerHTML=""; var cur=PGQ[Math.floor(Math.random()*PGQ.length)];
+  var others=shuffle(PGQ.filter(function(p){ return p!==cur; })).slice(0,3);
+  var opts=shuffle(others.concat([cur]));
+  var fig=el("div","pg-qi"); var im=document.createElement("img"); im.src="img/presidentes/"+cur[2]+".jpg"; im.alt="Retrato de un presidente de Colombia: \u00bfqui\u00e9n es?"; fig.appendChild(im); box.appendChild(fig);
+  var wrap=el("div","opts"); var fb=el("div","pg-fb"); fb.setAttribute("aria-live","polite"); var bs=[];
+  opts.forEach(function(p){ var b=el("button","opt",p[0]); b.type="button";
+   b.addEventListener("click",function(){ bs.forEach(function(x){ x.disabled=true; });
+    var ok=(p===cur); b.classList.add(ok?"right":"wrong");
+    if(!ok) bs.forEach(function(x){ if(x.textContent===cur[0]) x.classList.add("right"); });
+    fb.textContent=(ok?"\u2714 Correcto: ":"\u2718 Era ")+cur[0]+", "+cur[1]+"."; });
+   bs.push(b); wrap.appendChild(b); });
+  box.appendChild(wrap); box.appendChild(fb);
+ }
+ btn.addEventListener("click",round); round();
+}
+function initLightbox(){
+ var imgs=$$(".exam-fig img, .pg-card img"); if(!imgs.length) return;
+ var lb=document.createElement("div"); lb.id="lb"; lb.setAttribute("role","dialog"); lb.setAttribute("aria-modal","true"); lb.setAttribute("aria-label","Imagen ampliada");
+ var big=document.createElement("img"); var cl=document.createElement("button"); cl.className="btn"; cl.type="button"; cl.textContent="Cerrar (Esc)";
+ lb.appendChild(big); lb.appendChild(cl); document.body.appendChild(lb);
+ var last=null;
+ function close(){ lb.classList.remove("on"); if(last){ try{ last.focus(); }catch(e){} } }
+ function open(im){ last=im; big.src=im.getAttribute("src"); big.alt=im.alt; lb.classList.add("on"); cl.focus(); }
+ cl.addEventListener("click",close);
+ lb.addEventListener("click",function(e){ if(e.target!==big) close(); });
+ document.addEventListener("keydown",function(e){ if(e.key==="Escape"&&lb.classList.contains("on")) close(); });
+ imgs.forEach(function(im){ im.tabIndex=0; im.setAttribute("role","button"); im.title="Clic para ampliar";
+  im.addEventListener("click",function(){ open(im); });
+  im.addEventListener("keydown",function(e){ if(e.key==="Enter"||e.key===" "){ e.preventDefault(); open(im); } }); });
+}
+function init(){
+ load(); buildNav();
+ $$(".quiz").forEach(renderQuiz); $$(".order").forEach(renderOrder); $$(".match").forEach(renderMatch);
+ renderSpec($("#spec")); renderTimeline(); renderFC(); renderFinal();
+ $$(".mark").forEach(function(b){ b.addEventListener("click",function(){ var id=b.getAttribute("data-sec"); state.sec[id]=!state.sec[id]; save(); updateProgress(); }); });
+ $("#resetall").addEventListener("click",function(){ if(confirm("¿Borrar todo tu progreso?")){ state={sec:{},q:{},ord:{},mat:{},best:0}; save(); updateProgress(); } });
+ buildConnections(); initTheme(); updateProgress(); initHeroes(); initLightbox(); initPgq();
+}
+init();
+</script>
+</body>
+</html>
