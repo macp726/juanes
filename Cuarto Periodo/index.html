@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guías Cuarto Periodo</title>
+<style>
+:root{
+  --bg:#fbf7f0; --surface:#fffdf9; --text:#2b2420; --text-muted:#5e5046;
+  --border:#e3d9c9; --accent:#a3441d; --on-accent:#ffffff; --accent-soft:#f8e7dc; --focus:#1f7a6c;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#1d1a16; --surface:#26221d; --text:#f0e8dd; --text-muted:#c7baa9;
+    --border:#4a4239; --accent:#f1a47f; --on-accent:#2a140a; --accent-soft:#3e2b21; --focus:#7ccfc1;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#1d1a16; --surface:#26221d; --text:#f0e8dd; --text-muted:#c7baa9;
+  --border:#4a4239; --accent:#f1a47f; --on-accent:#2a140a; --accent-soft:#3e2b21; --focus:#7ccfc1;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.5}
+main{max-width:960px;margin:0 auto;padding:32px 16px 48px}
+header{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;justify-content:space-between;margin-bottom:24px}
+h1{margin:0;font-size:clamp(1.6rem,4vw,2.2rem)}
+header p{margin:4px 0 0;color:var(--text-muted)}
+#theme{background:var(--surface);color:var(--text);border:1px solid var(--border);
+  border-radius:999px;padding:8px 14px;font:inherit;cursor:pointer}
+ul{list-style:none;margin:0;padding:0;display:grid;gap:14px;
+  grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+a.card{display:flex;align-items:center;gap:14px;height:100%;padding:18px;
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  color:var(--text);text-decoration:none;transition:transform .15s,border-color .15s}
+a.card:hover{transform:translateY(-2px);border-color:var(--accent)}
+a.card:focus-visible,#theme:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.ico{flex:none;width:48px;height:48px;border-radius:12px;display:grid;place-items:center;
+  background:var(--accent-soft);font-size:1.5rem}
+.name{font-weight:650;font-size:1.05rem}
+.sub{color:var(--text-muted);font-size:.85rem}
+@media (prefers-reduced-motion: reduce){a.card{transition:none}a.card:hover{transform:none}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div>
+      <h1>Guías de evaluación · 9°</h1>
+      <p>Cuarto Periodo 2026 — elige una materia para estudiar</p>
+    </div>
+    <button id="theme" type="button">🌙 Modo oscuro</button>
+  </header>
+  <ul>
+    <li><a class="card" href="Algebra/index.html"><span class="ico" aria-hidden="true">➗</span><span><span class="name">Álgebra</span><br><span class="sub">Polinomios, factorización, sistemas</span></span></a></li>
+    <li><a class="card" href="Biologia/index.html"><span class="ico" aria-hidden="true">🧬</span><span><span class="name">Biología</span><br><span class="sub">Origen de la vida, evolución</span></span></a></li>
+    <li><a class="card" href="Quimica/index.html"><span class="ico" aria-hidden="true">⚗️</span><span><span class="name">Química</span><br><span class="sub">Mol, estequiometría, soluciones</span></span></a></li>
+    <li><a class="card" href="Fisica/index.html"><span class="ico" aria-hidden="true">🚀</span><span><span class="name">Física</span><br><span class="sub">Cinemática, vectores, proyectiles</span></span></a></li>
+    <li><a class="card" href="Ingles/index.html"><span class="ico" aria-hidden="true">🗣️</span><span><span class="name">Inglés</span><br><span class="sub">Conditionals, passive, relatives</span></span></a></li>
+    <li><a class="card" href="Ciencias_Sociales/index.html"><span class="ico" aria-hidden="true">🏛️</span><span><span class="name">Ciencias Sociales</span><br><span class="sub">Frente Nacional a hoy</span></span></a></li>
+    <li><a class="card" href="Competencias_Ciudadanas/index.html"><span class="ico" aria-hidden="true">⚖️</span><span><span class="name">Competencias Ciudadanas</span><br><span class="sub">Estado, derechos, instituciones</span></span></a></li>
+    <li><a class="card" href="Etica_y_Valores/index.html"><span class="ico" aria-hidden="true">🤝</span><span><span class="name">Ética y Valores</span><br><span class="sub">Ambiente, ODS, cooperación</span></span></a></li>
+  </ul>
+</main>
+<script>
+(function(){
+  var root=document.documentElement, btn=document.getElementById('theme');
+  function eff(){return root.getAttribute('data-theme')||(window.matchMedia&&matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');}
+  function lab(){var d=eff()==='dark';btn.textContent=d?'☀ Modo claro':'🌙 Modo oscuro';btn.setAttribute('aria-pressed',d);}
+  try{var s=localStorage.getItem('home-theme');if(s==='light'||s==='dark')root.setAttribute('data-theme',s);}catch(e){}
+  btn.onclick=function(){var n=eff()==='dark'?'light':'dark';root.setAttribute('data-theme',n);try{localStorage.setItem('home-theme',n);}catch(e){}lab();};
+  lab();
+})();
+</script>
+</body>
+</html>
