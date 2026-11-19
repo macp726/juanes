@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Quiz 6 · Relato de un náufrago · Caps. I–V · Respuestas explicadas</title>
+<meta name="description" content="Guía del Quiz 6 de Lectura crítica 9° sobre Relato de un náufrago (capítulos I a V): las once preguntas con respuesta correcta, explicación, evidencia textual y respuestas de ejemplo, incluida la pregunta abierta.">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --max:1080px; --r:16px;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+[data-theme="dark"]{
+  --bg:#060d14; --bg2:#0a1622; --surface:#0f1d2b; --surface2:#142638;
+  --line:rgba(230,181,103,.24); --line2:rgba(255,255,255,.09);
+  --ink:#eceae3; --muted:#a7b2c1; --faint:#7b889c;
+  --gold:#e6b567; --gold2:#f7d9a0; --sea:#5fd3c4; --rose:#f09595; --violet:#a99cf5;
+  --ok:#63d6a6; --bad:#f08a8a;
+  --shadow:0 30px 70px -42px rgba(0,0,0,.95);
+  --on-gold:#0b1420; --glow:rgba(95,211,196,.10);
+}
+[data-theme="light"]{
+  --bg:#f5f1e7; --bg2:#ece5d5; --surface:#fffdf7; --surface2:#f8f2e5;
+  --line:rgba(150,105,35,.28); --line2:rgba(25,40,60,.12);
+  --ink:#172234; --muted:#526075; --faint:#7f8a9a;
+  --gold:#9d6c1c; --gold2:#b8811f; --sea:#0c6f6a; --rose:#b4433f; --violet:#5f4fc9;
+  --ok:#0e7a55; --bad:#b0392f;
+  --shadow:0 24px 60px -42px rgba(60,55,35,.30);
+  --on-gold:#fffaf0; --glow:rgba(12,111,106,.10);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--sans);color:var(--ink);line-height:1.62;
+  background:
+    radial-gradient(1100px 620px at 84% -10%,rgba(230,181,103,.12),transparent 62%),
+    radial-gradient(950px 560px at -10% 18%,var(--glow),transparent 62%),
+    var(--bg);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%;display:block}
+a{color:var(--gold)}
+::selection{background:var(--gold);color:var(--on-gold)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{width:min(var(--max),100% - 40px);margin-inline:auto}
+section{scroll-margin-top:82px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--on-gold);padding:10px 16px;z-index:999;border-radius:0 0 10px 0}
+.skip:focus{left:0}
+
+/* ============ TOPBAR ============ */
+#scrollLine{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--sea));z-index:200;transition:width .1s linear}
+.topbar{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(16px) saturate(120%);border-bottom:1px solid var(--line2)}
+.tb-in{display:flex;align-items:center;gap:10px;height:60px}
+.brand{font-family:var(--serif);font-size:.98rem;white-space:nowrap;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:9px}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--sea);box-shadow:0 0 0 4px rgba(95,211,196,.14)}
+.brand b{color:var(--gold);font-weight:600}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--muted);text-decoration:none;font-size:.78rem;padding:7px 9px;border-radius:8px;white-space:nowrap;transition:.18s}
+.nav a:hover{color:var(--ink);background:var(--surface)}
+.ibtn{display:grid;place-items:center;height:36px;min-width:36px;padding:0 9px;border:1px solid var(--line2);background:var(--surface);color:var(--ink);border-radius:9px;cursor:pointer;transition:.18s;font-size:.85rem;font-family:var(--sans)}
+.ibtn:hover{border-color:var(--gold);color:var(--gold)}
+[data-theme="dark"] .i-sun{display:none}
+[data-theme="light"] .i-moon{display:none}
+@media (max-width:880px){.nav{display:none}.brand{min-width:0;overflow:hidden;text-overflow:ellipsis}}
+@media (max-width:520px){.tb-in{gap:6px}.ibtn{padding:0 7px;font-size:.78rem}}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:60px 0 30px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(95,211,196,.16) 1px,transparent 0);background-size:26px 26px;opacity:.45;mask-image:radial-gradient(600px 340px at 76% 12%,#000,transparent 72%);pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.71rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 14px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--gold)}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,3.2rem);line-height:1.07;letter-spacing:-.015em;margin:0 0 15px;max-width:20ch;text-wrap:balance}
+h1 em{font-style:italic;color:var(--gold)}
+.lede{font-size:1.02rem;color:var(--muted);max-width:64ch;margin:0 0 20px}
+.lede b{color:var(--ink);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{font-size:.75rem;color:var(--muted);border:1px solid var(--line2);background:var(--surface);border-radius:99px;padding:6px 12px;display:inline-flex;align-items:center;gap:6px}
+.chip b{color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:11px 18px;font-size:.88rem;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.18s;font-family:var(--sans)}
+.btn-primary{background:linear-gradient(160deg,var(--gold2),var(--gold));color:var(--on-gold);box-shadow:0 14px 30px -18px rgba(230,181,103,.8)}
+.btn-primary:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.btn-ghost{border-color:var(--line2);background:var(--surface);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-sm{padding:8px 13px;font-size:.79rem;border-radius:8px}
+.obj{position:relative;border:1px solid var(--line);border-left:3px solid var(--gold);background:linear-gradient(120deg,var(--surface2),var(--surface));border-radius:0 13px 13px 0;padding:17px 20px;max-width:80ch}
+.obj h2{margin:0 0 5px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.obj p{margin:0;font-size:.93rem;color:var(--muted)}
+.obj p b{color:var(--ink)}
+
+/* ============ SECCIONES ============ */
+.sec{padding:42px 0}
+.sec-head{margin-bottom:22px}
+.sec-head .n{font-family:var(--mono);font-size:.71rem;color:var(--gold);letter-spacing:.18em}
+.sec-head h2{font-family:var(--serif);font-size:clamp(1.4rem,2.9vw,1.98rem);line-height:1.22;margin:6px 0 8px;letter-spacing:-.01em;font-weight:600}
+.sec-head p{margin:0;color:var(--muted);font-size:.93rem;max-width:72ch}
+.card{border:1px solid var(--line2);background:var(--surface);border-radius:var(--r);padding:20px}
+.grid{display:grid;gap:13px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+
+/* ============ TABLA ============ */
+.tbl{border:1px solid var(--line2);border-radius:12px;overflow:hidden;font-size:.85rem}
+.trow{display:grid;grid-template-columns:.4fr 1.7fr .9fr .5fr;gap:12px;padding:10px 14px;border-top:1px solid var(--line2);align-items:start}
+.trow:first-child{border-top:0}
+.trow.thead{background:var(--surface2);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.trow:nth-child(even){background:color-mix(in srgb,var(--surface2) 42%,transparent)}
+.trow span{color:var(--muted);line-height:1.45}
+.trow span b{color:var(--ink)}
+.trow .num{font-family:var(--mono);color:var(--gold)}
+.trow .key{font-family:var(--mono);font-size:.8rem;color:var(--ok);font-weight:700}
+@media (max-width:680px){
+  .trow{grid-template-columns:32px 1fr 62px;gap:8px;padding:10px 12px}
+  .trow.thead{display:none}
+  .trow .tipo{display:none}
+  .trow .key{text-align:right}
+}
+
+/* ============ CLAVES ============ */
+.keycard{border:1px solid var(--line2);background:var(--surface);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px;transition:.2s}
+.keycard:hover{border-color:var(--line);transform:translateY(-2px)}
+.keycard .who{font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.keycard h3{margin:0;font-family:var(--serif);font-size:1.06rem;line-height:1.25;font-weight:600}
+.keycard p{margin:0;font-size:.86rem;color:var(--muted)}
+.keycard .qline{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--gold2);border-left:2px solid var(--line);padding-left:10px}
+.quote{border:1px solid var(--line);border-radius:13px;background:linear-gradient(140deg,var(--surface2),var(--surface));padding:18px 20px;margin:0}
+.quote p{margin:0;font-family:var(--serif);font-size:1.02rem;line-height:1.5}
+.quote span{display:block;margin-top:8px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+
+/* ============ CRONOLOGÍA ============ */
+.tl{list-style:none;margin:0;padding:0 0 0 12px;display:grid;gap:0}
+.tl li{position:relative;padding:0 0 20px 34px;border-left:1px solid var(--line2)}
+.tl li:last-child{border-left-color:transparent;padding-bottom:0}
+.tl li::before{content:attr(data-step);position:absolute;left:-14px;top:0;width:27px;height:27px;border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-size:.7rem;background:var(--surface2);border:1px solid var(--line);color:var(--gold)}
+.tl h3{margin:2px 0 4px;font-size:.94rem;color:var(--ink);font-weight:600}
+.tl p{margin:0;font-size:.88rem;color:var(--muted)}
+.tl .tag{font-family:var(--mono);font-size:.67rem;color:var(--faint);text-transform:uppercase;letter-spacing:.1em}
+.tl b{color:var(--ink)}
+
+/* ============ PREGUNTAS ============ */
+.qindex{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+.qindex a{font-family:var(--mono);font-size:.74rem;text-decoration:none;color:var(--muted);border:1px solid var(--line2);background:var(--surface);border-radius:7px;padding:5px 9px;transition:.15s}
+.qindex a:hover{color:var(--gold);border-color:var(--gold)}
+.qcard{border:1px solid var(--line2);background:var(--surface);border-radius:16px;padding:0;margin:0 0 16px;overflow:hidden;box-shadow:var(--shadow)}
+.qhead{display:flex;gap:14px;align-items:flex-start;padding:18px 20px 0}
+.qn{font-family:var(--serif);font-size:1.5rem;line-height:1;color:var(--gold);min-width:44px;font-variant-numeric:tabular-nums}
+.qhead h3{margin:0 0 2px;font-size:.96rem;font-weight:600;letter-spacing:0}
+.qmeta{margin:0;font-size:.71rem;color:var(--faint);letter-spacing:.05em;text-transform:uppercase}
+.qbody{padding:12px 20px 20px}
+.stem{margin:8px 0 14px;font-size:.95rem;color:var(--ink)}
+.stem b{color:var(--gold)}
+.opts{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:6px}
+.opt{display:grid;grid-template-columns:26px 1fr;gap:9px;align-items:start;border:1px solid var(--line2);border-radius:9px;padding:8px 11px;font-size:.88rem;color:var(--muted);background:var(--surface2)}
+.opt .k{font-family:var(--mono);font-size:.78rem;color:var(--faint);line-height:1.55}
+.opt.ok{border-color:color-mix(in srgb,var(--ok) 52%,transparent);background:color-mix(in srgb,var(--ok) 9%,var(--surface2));color:var(--ink);grid-template-columns:26px 1fr 16px}
+.opt.ok .k{color:var(--ok);font-weight:700}
+.opt.ok::after{content:"✓";grid-column:3;color:var(--ok);font-weight:700;font-size:.8rem}
+.answer{border-top:1px dashed var(--line2);padding-top:14px;display:grid;gap:12px}
+.aline{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.86rem}
+.aline .tagclave{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--on-gold);background:linear-gradient(150deg,var(--gold2),var(--gold));padding:3px 9px;border-radius:99px}
+.aline b{color:var(--ink)}
+.why h4,.ex h4,.not h4,.rub h4{margin:0 0 4px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sea);font-weight:700}
+.why p,.not p{margin:0;font-size:.89rem;color:var(--muted)}
+.why p b,.not p b{color:var(--ink)}
+.ex{margin:0;border-left:3px solid var(--gold);background:color-mix(in srgb,var(--gold) 6%,transparent);border-radius:0 10px 10px 0;padding:12px 15px}
+.ex h4{color:var(--gold)}
+.ex blockquote{margin:0;font-size:.89rem;color:var(--ink)}
+.ex blockquote b{color:var(--gold)}
+.src{margin:0;font-size:.75rem;color:var(--faint);font-family:var(--mono);line-height:1.5}
+.not{display:grid;gap:4px}
+.not .x{color:var(--rose);font-weight:600}
+body.sin-claves .answer{display:none}
+body.sin-claves .opt.ok{background:var(--surface2);border-color:var(--line2);color:var(--muted);grid-template-columns:26px 1fr}
+body.sin-claves .opt.ok .k{color:var(--faint);font-weight:400}
+body.sin-claves .opt.ok::after{content:""}
+body.sin-claves .trow .key{color:transparent;user-select:none}
+body.sin-claves .spoiler{display:none}
+.note{border:1px dashed var(--line);border-radius:11px;padding:11px 14px;font-size:.84rem;color:var(--muted);background:color-mix(in srgb,var(--gold) 5%,transparent);margin:12px 0}
+.note b{color:var(--gold)}
+.note.warn{border-color:color-mix(in srgb,var(--rose) 45%,transparent);background:color-mix(in srgb,var(--rose) 6%,transparent)}
+.note.warn b{color:var(--rose)}
+
+/* ============ ABIERTA ============ */
+.open{border-color:var(--line);background:linear-gradient(135deg,var(--surface2),var(--surface))}
+.open .qn{color:var(--sea)}
+.openbox{display:grid;gap:12px}
+.rub{border:1px solid var(--line2);border-radius:12px;padding:13px 15px;background:var(--surface)}
+.rub ul{list-style:none;margin:6px 0 0;padding:0;display:grid;gap:5px}
+.rub li{font-size:.85rem;color:var(--muted);position:relative;padding-left:22px;line-height:1.5}
+.rub li::before{content:"□";position:absolute;left:0;top:0;color:var(--gold);font-size:.9rem;line-height:1.4}
+.rub li b{color:var(--ink)}
+.models{display:grid;gap:11px}
+.model{border-left:3px solid var(--sea);background:color-mix(in srgb,var(--sea) 6%,transparent);border-radius:0 10px 10px 0;padding:13px 16px}
+.model h4{margin:0 0 5px;font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sea);font-weight:700}
+.model p{margin:0;font-size:.89rem;color:var(--ink)}
+.model p+p{margin-top:7px}
+.model .meta{margin-top:8px;font-size:.72rem;color:var(--faint);font-family:var(--mono)}
+.formula{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:12px 0 0;font-size:.81rem}
+.formula span{border:1px solid var(--line2);background:var(--surface);border-radius:8px;padding:6px 11px;color:var(--muted)}
+.formula span b{color:var(--gold)}
+.formula .plus{color:var(--faint);border:0;background:none;padding:0 2px}
+
+/* ============ AUTOEVALUACIÓN ============ */
+.chk{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.chk li{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line2);border-radius:10px;padding:9px 12px;background:var(--surface2);font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s}
+.chk li:hover{border-color:var(--line)}
+.chk li .box{width:17px;height:17px;border-radius:5px;border:1px solid var(--line);flex:0 0 auto;display:grid;place-items:center;font-size:.64rem;color:transparent;margin-top:2px;background:var(--surface)}
+.chk li.on{border-color:color-mix(in srgb,var(--ok) 48%,transparent);background:color-mix(in srgb,var(--ok) 8%,var(--surface2));color:var(--ink)}
+.chk li.on .box{background:var(--ok);border-color:var(--ok);color:#04241a}
+.score{display:flex;align-items:baseline;gap:10px;margin-top:12px}
+.score .big{font-family:var(--serif);font-size:1.5rem;color:var(--gold)}
+.score .lbl{font-size:.79rem;color:var(--muted)}
+.plan{list-style:none;margin:12px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--line2);font-size:.82rem;color:var(--muted);align-items:baseline}
+.plan li:first-child{border-top:0}
+.plan .t{font-family:var(--mono);font-size:.7rem;color:var(--gold);white-space:nowrap}
+footer{border-top:1px solid var(--line2);margin-top:30px;padding:26px 0 40px;font-size:.79rem;color:var(--faint)}
+footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer b{color:var(--muted)}
+
+@media (max-width:600px){
+  .brand{display:none}
+  #keyBtn{font-size:0;padding:0 10px}
+  #keyBtn::before{content:"👁";font-size:.92rem}
+  .tb-in{justify-content:flex-end}
+  .tb-in>a.ibtn{margin-right:auto}
+}
+@media print{
+  :root{
+    --bg:#fff; --bg2:#fff; --surface:#fff; --surface2:#f6f3ec;
+    --ink:#111; --muted:#333; --faint:#555; --line:#b9b9b9; --line2:#d2d2d2;
+    --gold:#7a5310; --gold2:#7a5310; --teal:#0b5f5a; --sea:#0b5f5a;
+    --ok:#0b6b4a; --rose:#8d2f2b; --violet:#4a3aa8; --on-gold:#fff;
+    --shadow:none; --glow:transparent;
+  }
+  @page{margin:14mm}
+  .topbar,.cta,.qindex,.ibtn,.btn,#scrollLine,footer .row>div:last-child{display:none!important}
+  body{background:#fff;color:#111;font-size:10.5pt}
+  .hero{padding:0 0 10px}
+  .sec{padding:16px 0}
+  .sec-head{break-inside:avoid;page-break-inside:avoid}
+  .qhead{break-after:avoid;page-break-after:avoid}
+  .qcard{box-shadow:none;border-color:#bbb;break-inside:avoid;page-break-inside:avoid;overflow:visible}
+  .opt,.why,.ex,.model,.rub{break-inside:avoid;page-break-inside:avoid}
+  .trow{break-inside:avoid;page-break-inside:avoid}
+  .answer{display:grid!important}
+  .opt.ok{background:#eef7f0;grid-template-columns:26px 1fr 16px}
+  a{color:#111;text-decoration:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body data-ns="quiz6naut.">
+<a class="skip" href="#preguntas">Saltar a las preguntas</a>
+<div id="scrollLine" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="wrap tb-in">
+    <a class="ibtn" href="../index.html" title="Volver al índice" aria-label="Volver al índice">←</a>
+    <a class="brand" href="#inicio"><span class="dot"></span>Náufrago · <b>Quiz 6</b></a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#mapa">Mapa</a><a href="#historia">La historia</a><a href="#claves">Claves</a><a href="#preguntas">Preguntas</a><a href="#abierta">Abierta</a><a href="#autoevaluacion">Autoevaluación</a>
+    </nav>
+    <button class="ibtn" id="keyBtn" aria-pressed="false" title="Ocultar o mostrar las respuestas">Ocultar claves</button>
+    <button class="ibtn" id="printBtn" title="Imprimir o guardar en PDF" aria-label="Imprimir o guardar en PDF">🖨</button>
+    <button class="ibtn" id="themeBtn" title="Cambiar tema" aria-label="Cambiar tema claro u oscuro">
+      <span class="i-sun">☀</span><span class="i-moon">☾</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="eyebrow">Lectura crítica · 9° · Tercer periodo</p>
+    <h1>Diez días, <em>una balsa</em></h1>
+    <p class="lede">Guía del <b>Quiz 6</b> sobre <b><i>Relato de un náufrago</i></b> de Gabriel García Márquez (capítulos I a V). Las once preguntas, con la clave, la explicación, la cita del libro y una <b>respuesta de ejemplo</b> en cada una, incluida la pregunta abierta del avión.</p>
+    <div class="chips">
+      <span class="chip">⏱ <b>40 min</b></span>
+      <span class="chip">✎ <b>10</b> cerradas + <b>1</b> abierta</span>
+      <span class="chip">📖 caps. <b>I–V</b></span>
+      <span class="chip">🧠 literal + inferencial + crítica</span>
+      <span class="chip">✅ modelos de respuesta</span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-primary" href="#preguntas">Ir a las respuestas →</a>
+      <a class="btn btn-ghost" href="#historia">Repasar la historia</a>
+      <a class="btn btn-ghost" href="#abierta">Ver la pregunta abierta</a>
+      <a class="btn btn-ghost" href="Quiz%20%236%C2%A0LECTURA%20Relato%20de%20un%20naufrago.pdf">Ver el quiz original</a>
+    </div>
+    <div class="obj">
+      <h2>Qué evalúa este quiz</h2>
+      <p>Comprobar si comprendes <b>cómo se construye la tensión</b> en los primeros capítulos: el miedo antes del viaje, la confianza de los marineros, la catástrofe, la muerte de los compañeros y la falsa esperanza del avión. Casi todas las preguntas piden <b>inferir</b>, no repetir: hay que leer la causa detrás del hecho.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="mapa">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">01 / MAPA DEL QUIZ</span>
+      <h2>Las once preguntas de un vistazo</h2>
+      <p>Diez de selección múltiple y una abierta. La abierta no tiene letra: pide explicar un efecto narrativo y se responde con tesis, evidencia y comentario.</p>
+    </div>
+    <div class="tbl" role="table" aria-label="Mapa de las once preguntas">
+      <div class="trow thead" role="row"><span>#</span><span>Qué se pregunta</span><span class="tipo">Tipo</span><span>Clave</span></div>
+      <div class="trow"><span class="num">01</span><span>El miedo tras ver <i>El Motín del Caine</i></span><span class="tipo">Inferencial</span><span class="key">b</span></div>
+      <div class="trow"><span class="num">02</span><span>El pacto secreto con Ramón Herrera</span><span class="tipo">Inferencial</span><span class="key">c</span></div>
+      <div class="trow"><span class="num">03</span><span>La frase de Rengifo: «ese día se marea el mar»</span><span class="tipo">Ironía</span><span class="key">a</span></div>
+      <div class="trow"><span class="num">04</span><span>La orden de pasar a babor</span><span class="tipo">Literal + inferencial</span><span class="key">c</span></div>
+      <div class="trow"><span class="num">05</span><span>El mareo de Miguel Ortega</span><span class="tipo">Inferencial</span><span class="key">d</span></div>
+      <div class="trow"><span class="num">06</span><span>El fracaso del intento de rescate</span><span class="tipo">Literal</span><span class="key">a</span></div>
+      <div class="trow"><span class="num">07</span><span>La mano alzada de Luis Rengifo</span><span class="tipo">Símbolo</span><span class="key">b</span></div>
+      <div class="trow"><span class="num">08</span><span>El reloj marcando las doce en punto</span><span class="tipo">Interpretación</span><span class="key">b</span></div>
+      <div class="trow"><span class="num">09</span><span>Las tres tarjetas del almacén de Mobile</span><span class="tipo">Inferencial</span><span class="key">d</span></div>
+      <div class="trow"><span class="num">10</span><span>Por qué la noche parece más larga</span><span class="tipo">Inferencial</span><span class="key">a</span></div>
+      <div class="trow"><span class="num">11</span><span>El avión negro que lo ve y no lo rescata</span><span class="tipo">Abierta · crítica</span><span class="key">—</span></div>
+    </div>
+    <div class="note spoiler"><b>Ojo con la 5:</b> la opción <b>b</b> es la trampa. El texto dice que el narrador <b>acomodó a Ortega en su litera de babor</b>, no en la opuesta, y añade que si se hubiera quedado en su litera no habría muerto. La respuesta que explica cómo su salud influyó en el desenlace es la <b>d</b>.</div>
+  </div>
+</section>
+
+<section class="sec" id="historia">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">02 / LA HISTORIA</span>
+      <h2>Cinco capítulos, una sola caída</h2>
+      <p>Si ordenas los hechos, las respuestas aparecen solas. Esta es la línea de tiempo de lo que cubre el quiz: desde Mobile hasta el avión que pasa tres veces.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <ol class="tl">
+          <li data-step="I"><h3>Mobile: ocho meses en tierra</h3><p class="tag">Antes del viaje</p><p>Velasco y sus compañeros ven <i>El Motín del Caine</i>. La tormenta de la película los impresiona. Él siente una inquietud que no sabe explicar: <b>había perdido la costumbre del mar</b>.</p></li>
+          <li data-step="I"><h3>Joe Palooka: el pacto</h3><p class="tag">La noche antes</p><p>En la despedida, Velasco le confiesa a <b>Ramón Herrera</b> que abandonará la marina al llegar a Cartagena. Herrera confiesa lo mismo. Bajo la alegría del regreso hay <b>cansancio y deseo de cambio</b>.</p></li>
+          <li data-step="II"><h3>27 de febrero: el baile y la orden</h3><p class="tag">Medianoche</p><p>El barco se mueve con fuerza. A medianoche, por los altoparlantes: <b>«Todo el personal pasarse al lado de babor»</b>. El barco escora peligrosamente a estribor. Primera vez en dos años que siente verdadero miedo del mar.</p></li>
+          <li data-step="III"><h3>28 de febrero: la ola</h3><p class="tag">11:50–12:00</p><p>Una ola gigantesca lo lanza al agua. El destructor desaparece tras las olas. Alcanza una balsa. Ve a cuatro compañeros: Castillo, Caraballo, Herrera y Rengifo. <b>No logra rescatar a ninguno.</b></p></li>
+        </ol>
+      </div>
+      <div class="card">
+        <ol class="tl">
+          <li data-step="III"><h3>La muerte de Rengifo</h3><p class="tag">Mediodía</p><p>El marinero más experimentado nada con serenidad, pero pierde el salvavidas. Se hunde a menos de dos metros del remo, con <b>la mano levantada</b> como cuando sostenía los auriculares.</p></li>
+          <li data-step="III"><h3>Doce en punto</h3><p class="tag">Diez minutos</p><p>Mira el reloj: son «las doce clavadas». Cree que ha pasado muchísimo tiempo, pero solo han transcurrido <b>diez minutos</b> desde la última vez que miró la hora.</p></li>
+          <li data-step="IV"><h3>La primera noche</h3><p class="tag">28 de febrero</p><p>No ocurre nada: por eso es interminable. Frío, miedo a los animales invisibles, el reloj fosforescente. Se orienta con la <b>Osa Menor</b> y recuerda Cartagena.</p></li>
+          <li data-step="V"><h3>El avión negro</h3><p class="tag">12:35</p><p>Un avión del servicio de guardacostas de la Zona del Canal pasa tan bajo que ve al tripulante con <b>binóculos</b>. Grita «¡Me han visto!». El avión vuelve a pasar dos veces más… y se va. El rescate no llega.</p></li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="grid g3" style="margin-top:14px">
+      <div class="quote"><p>«En ocho meses había perdido la costumbre del mar.»</p><span>Cap. I · el origen del miedo</span></div>
+      <div class="quote"><p>«El barco estaba escorando peligrosamente a estribor y se trataba de equilibrarlo con nuestro peso.»</p><span>Cap. II · la orden de babor</span></div>
+      <div class="quote"><p>«Me pareció que hacía mucho tiempo que todo había ocurrido, pero en realidad sólo habían transcurrido diez minutos.»</p><span>Cap. III · el tiempo del trauma</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="claves">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">03 / CLAVES DE LECTURA</span>
+      <h2>Seis ideas que explican casi todo</h2>
+      <p>No son datos sueltos: son las fuerzas que mueven el relato. Si las entiendes, puedes inferir aunque no recuerdes la frase exacta.</p>
+    </div>
+    <div class="grid g3">
+      <article class="keycard">
+        <span class="who">Cap. I · el miedo</span>
+        <h3>Perder la costumbre</h3>
+        <p>El miedo no nace de una falla técnica, sino de <b>ocho meses en tierra</b>. El cuerpo y la mente se acostumbran a la seguridad; el mar vuelve a ser un extraño.</p>
+      </article>
+      <article class="keycard">
+        <span class="who">Cap. I · el pacto</span>
+        <h3>La alegría y el desgaste</h3>
+        <p>La fiesta, los regalos y las familias celebran el regreso. Debajo, dos marineros confiesan que <b>ya no quieren navegar</b>. Las dos cosas son verdad a la vez.</p>
+      </article>
+      <article class="keycard">
+        <span class="who">Cap. II · la ironía</span>
+        <h3>La confianza del experto</h3>
+        <p>Rengifo se burla del mareo: «el día que yo me maree, ese día se marea el mar». La frase es <b>ironía trágica</b>: el mar no se marea; él muere.</p>
+      </article>
+      <article class="keycard">
+        <span class="who">Cap. III · el tiempo</span>
+        <h3>El trauma lo estira</h3>
+        <p>Diez minutos se sienten como horas. La adrenalina, el peligro y la pérdida hacen que el cerebro <b>grabe cada segundo</b> y el tiempo se alargue.</p>
+      </article>
+      <article class="keycard">
+        <span class="who">Cap. III · el símbolo</span>
+        <h3>La mano del marino</h3>
+        <p>Rengifo muere con la mano alzada, igual que sostenía los auriculares de guardia. El gesto resume <b>su identidad y su serenidad</b> hasta el final.</p>
+      </article>
+      <article class="keycard">
+        <span class="who">Cap. V · la esperanza</span>
+        <h3>Ver no es salvar</h3>
+        <p>El avión pasa tan cerca que el náufrago ve los binóculos. La máxima cercanía produce la máxima <b>impotencia</b>: ser visto y no ser rescatado es peor que estar solo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="preguntas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">04 / PREGUNTA POR PREGUNTA</span>
+      <h2>Respuestas explicadas y modelos</h2>
+      <p>Intenta responder antes de mirar. Puedes ocultar todas las claves con el botón de arriba y volver a mostrarlas cuando quieras. Las citas están tomadas de la edición en PDF que acompaña a la carpeta.</p>
+    </div>
+    <nav class="qindex" aria-label="Ir a una pregunta">
+      <a href="#q1">01</a><a href="#q2">02</a><a href="#q3">03</a><a href="#q4">04</a><a href="#q5">05</a><a href="#q6">06</a>
+      <a href="#q7">07</a><a href="#q8">08</a><a href="#q9">09</a><a href="#q10">10</a><a href="#abierta">11</a>
+    </nav>
+
+    <!-- 1 -->
+    <article class="qcard" id="q1">
+      <div class="qhead"><div class="qn">01</div><div><h3>El miedo antes de zarpar</h3><p class="qmeta">Inferencial · cap. I</p></div></div>
+      <div class="qbody">
+        <p class="stem">En el capítulo I, el grupo de marinos asiste a la proyección de la película <i>El Motín del Caine</i>. A pesar de ser un marinero experimentado, ¿por qué la tormenta de la película despierta un temor inédito en el narrador antes de emprender el viaje?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">A)</span><span>Porque presentía que el buque A.R.C. Caldas tenía fallas graves en sus armamentos electrónicos.</span></li>
+          <li class="opt ok"><span class="k">B)</span><span>Porque tras pasar ocho meses en tierra firme había perdido la familiaridad con el entorno marino y experimentaba una inquietud que desafiaba su entrenamiento.</span></li>
+          <li class="opt"><span class="k">C)</span><span>Porque sospechaba que la carga ilícita acumulada en la popa desestabilizaría la navegación.</span></li>
+          <li class="opt"><span class="k">D)</span><span>Porque nunca antes había navegado por las rutas peligrosas del golfo de México en esa época del año.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>B)</b> <span>Ocho meses en tierra le hicieron perder la costumbre.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>El propio narrador lo explica: «En ocho meses había perdido la costumbre del mar». Su entrenamiento sigue intacto —«el instructor nos había enseñado a defendernos en un naufragio»—, pero la <b>familiaridad emocional</b> con el mar se había gastado. La película le da una imagen concreta a una inquietud que no sabía nombrar: por eso el miedo es «inédito».</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>B)</b>. El narrador llevaba ocho meses en Mobile, lejos del mar, y aunque conservaba su entrenamiento, había perdido la costumbre del entorno marino. Por eso la tormenta de <i>El Motín del Caine</i> le produce una inquietud que no había sentido antes: la película hace visible un temor que no venía de una falla del barco, sino de volver a enfrentarse a algo que ya no sentía familiar.</blockquote>
+          </div>
+          <p class="src">Evidencia: «En ocho meses había perdido la costumbre del mar… no era normal la inquietud que sentía aquella noche en que vimos <i>El Motín del Caine</i>» (cap. I).</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">A)</span> No hay ninguna sospecha de fallas electrónicas; el texto dice que el buque había sido reparado. <span class="x">C)</span> Lleva mercancía (radios, neveras), pero no sabe nada de una carga ilícita ni teme que desestabilice la nave. <span class="x">D)</span> Llevaba casi doce años en la marina y la ruta era Mobile–Cartagena, no el golfo de México.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="qcard" id="q2">
+      <div class="qhead"><div class="qn">02</div><div><h3>El pacto de Joe Palooka</h3><p class="qmeta">Inferencial · cap. I</p></div></div>
+      <div class="qbody">
+        <p class="stem">Ramón Herrera y el narrador acuerdan de forma confidencial en la taberna Joe Palooka que abandonarán la marina tan pronto como pisen Cartagena. ¿Qué revela este pacto sobre el ambiente previo al zarpe?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">A)</span><span>Que existía una certeza meteorológica absoluta dentro de la tripulación de que ocurriría una catástrofe en el Caribe.</span></li>
+          <li class="opt"><span class="k">B)</span><span>Que los marineros planeaban desertar de sus obligaciones para regresar de inmediato a los Estados Unidos.</span></li>
+          <li class="opt ok"><span class="k">C)</span><span>Que, por debajo del entusiasmo generalizado por el regreso a casa, coexistía un desgaste psicológico y una necesidad de cambio tras la larga estancia en tierra.</span></li>
+          <li class="opt"><span class="k">D)</span><span>Que sospechaban un sabotaje militar de la oposición similar al argumento cinematográfico que presenciaron días antes.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>C)</b> <span>Alegría por volver, cansancio de navegar.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>El pacto es una confesión privada: el narrador decide «tan pronto como llegara a Cartagena abandonaría la marina» y solo se lo cuenta a su amigo íntimo, que responde que él también lo había decidido. Es decir, bajo la fiesta, los regalos y las ganas de volver, había <b>desgaste y deseo de cambiar de vida</b>. Esa mezcla vuelve más humana la tripulación y más doloroso el naufragio.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>C)</b>. El pacto con Ramón Herrera muestra que, aunque todos celebraban el regreso a Colombia, los dos marineros estaban cansados de navegar y querían dejar la marina al llegar. Debajo del entusiasmo colectivo había un desgaste psicológico y una necesidad de cambio después de ocho meses en tierra, no una certeza de catástrofe.</blockquote>
+          </div>
+          <p class="src">Evidencia: «Tomé una determinación: tan pronto como llegara a Cartagena abandonaría la marina… al único que comuniqué mi determinación fue a mi amigo íntimo, el marinero segundo Ramón Herrera, quien me confesó que también había decidido abandonar la marina» (cap. I).</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">A)</span> Él mismo aclara: «No quiero decir que desde ese instante empecé a presentir la catástrofe». <span class="x">B)</span> No planeaban desertar ni quedarse en Estados Unidos: querían <b>dejar la marina</b> al llegar a Cartagena. <span class="x">D)</span> No hay ninguna sospecha de sabotaje; la película solo los impresiona.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="qcard" id="q3">
+      <div class="qhead"><div class="qn">03</div><div><h3>«Ese día se marea el mar»</h3><p class="qmeta">Ironía · cap. II</p></div></div>
+      <div class="qbody">
+        <p class="stem">A bordo del destructor, el ingeniero Luis Rengifo sostiene con orgullo la frase: «El día que yo me maree, ese día se marea el mar». En la economía del relato, esta declaración funciona principalmente como:</p>
+        <ul class="opts">
+          <li class="opt ok"><span class="k">A)</span><span>Una ironía trágica que enfatiza la excesiva confianza del ser humano frente a la fuerza implacable e impredecible de la naturaleza.</span></li>
+          <li class="opt"><span class="k">B)</span><span>Una demostración técnica de que los oficiales entrenados en Washington poseían una resistencia física superior al resto.</span></li>
+          <li class="opt"><span class="k">C)</span><span>Un indicio de la rivalidad y desprecio que sentía hacia los tripulantes nacidos en el interior del país, como los bogotanos.</span></li>
+          <li class="opt"><span class="k">D)</span><span>Un recurso anticipatorio que delata que él sería el único tripulante capaz de mantenerse a flote de forma consciente tras el accidente.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>A)</b> <span>La confianza del experto, desmentida por el mar.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>Rengifo es el marino experimentado que se burla del mareo. La frase es <b>ironía trágica</b> porque el lector ya sabe —o sabrá— que el mar no se va a marear: el que muere es él. El relato no se ríe del personaje: usa su exceso de confianza para mostrar la <b>fragilidad humana frente a una naturaleza impredecible</b>.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>A)</b>. La frase de Rengifo es una ironía trágica: el marino más experimentado presume de que jamás se mareará, pero el mar termina con él. El relato usa esa confianza excesiva para mostrar que nadie, ni el más experto, controla la naturaleza; por eso la frase, que en su momento suena graciosa, después se vuelve dolorosa.</blockquote>
+          </div>
+          <p class="src">Evidencia: «El día que yo me maree, ese día se marea el mar… Pero esa noche casi no tuvo tiempo de terminarla» (cap. II); su muerte, en el cap. III.</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">B)</span> El texto no compara entrenamientos ni dice que los oficiales de Washington sean más resistentes. <span class="x">C)</span> No hay rivalidad con los bogotanos en esa frase; Rengifo habla con humor, no con desprecio. <span class="x">D)</span> Es todo lo contrario: Rengifo muere, aunque nada con serenidad.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="qcard" id="q4">
+      <div class="qhead"><div class="qn">04</div><div><h3>La orden de pasar a babor</h3><p class="qmeta">Literal + inferencial · cap. II</p></div></div>
+      <div class="qbody">
+        <p class="stem">Durante la medianoche del 27 de febrero, se emite la orden de emergencia de trasladar a todo el personal al lado de babor. ¿Por qué esta instrucción en particular desata el miedo genuino del narrador por primera vez en dos años?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">A)</span><span>Porque babor era la zona designada para el desembarco de emergencia en botes y significaba abandonar el buque.</span></li>
+          <li class="opt"><span class="k">B)</span><span>Porque implicaba que el capitán del destructor había ordenado apagar los motores principales en medio del oleaje.</span></li>
+          <li class="opt ok"><span class="k">C)</span><span>Porque ponía en evidencia que la estabilidad del barco estaba seriamente comprometida debido a una inclinación peligrosa hacia estribor.</span></li>
+          <li class="opt"><span class="k">D)</span><span>Porque obligaba a los marineros de guardia a exponerse directamente a las ráfagas heladas del viento de babor.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>C)</b> <span>La orden delata que el barco se estaba escorando.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>El narrador explica el sentido de la orden: «El barco estaba escorando peligrosamente a estribor y se trataba de equilibrarlo con nuestro peso». No era una maniobra rutinaria: era la confesión de que el buque <b>había perdido estabilidad</b>. Por eso, «por primera vez, en dos años de navegación», siente verdadero miedo del mar.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>C)</b>. La orden de pasar todos a babor no era un ejercicio: el barco se estaba inclinando peligrosamente hacia estribor y la tripulación debía equilibrarlo con su peso. Esa instrucción le revela al narrador que la estabilidad del destructor estaba comprometida y, por eso, siente por primera vez en dos años un miedo real.</blockquote>
+          </div>
+          <p class="src">Evidencia: «Yo sabía lo que significaba esa orden. El barco estaba escorando peligrosamente a estribor y se trataba de equilibrarlo con nuestro peso. Por primera vez, en dos años de navegación, tuve un verdadero miedo del mar» (cap. II).</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">A)</span> Babor es un costado del barco, no una zona de desembarco. <span class="x">B)</span> El texto no menciona que se apaguen los motores. <span class="x">D)</span> El viento y el frío se mencionan, pero el miedo nace de la <b>inclinación</b>, no del frío.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="qcard" id="q5">
+      <div class="qhead"><div class="qn">05</div><div><h3>El mareo de Miguel Ortega</h3><p class="qmeta">Inferencial · caps. II–III</p></div></div>
+      <div class="qbody">
+        <p class="stem">A partir de las intensas crisis de mareo que padeció el cabo primero Miguel Ortega desde el inicio del viaje, ¿qué se puede inferir sobre la influencia directa de su estado de salud en su trágico desenlace?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">A)</span><span>Que su malestar físico provocó que el suboficial de guardia lo confinara a la popa como castigo disciplinario.</span></li>
+          <li class="opt"><span class="k">B)</span><span>Que al encontrarse en la litera opuesta a la orden de babor, el impacto inicial del agua lo sepultó de manera inmediata.</span></li>
+          <li class="opt"><span class="k">C)</span><span>Que la debilidad crónica le impidió escuchar las alarmas y las órdenes del altoparlante para usar el chaleco salvavidas.</span></li>
+          <li class="opt ok"><span class="k">D)</span><span>Que el agotamiento absoluto y la desorientación redujeron a cero su capacidad de reacción física y equilibrio para sostenerse cuando el agua barrió la cubierta.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>D)</b> <span>Sin fuerzas no hay reacción posible.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>El texto acumula señales: Ortega llevaba tres días sin probar alimentos, «casi no podía hablar» y tenía «el rostro verde y descompuesto». Cuando suena la orden, intenta levantarse y <b>cae de nuevo en la litera, «vencido por el mareo y el agotamiento»</b>. Esa es la cadena causal: su salud no lo mató directamente, pero le quitó la fuerza y la orientación necesarias para reaccionar cuando el agua entró.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>D)</b>. Miguel Ortega llevaba tres días sin probar alimentos y estaba tan débil que casi no podía hablar ni levantarse; cuando oyó la orden de pasar a babor, intentó incorporarse y volvió a caer vencido por el mareo. Su estado de salud no causó el naufragio, pero redujo a cero su capacidad de reacción y de equilibrio cuando el agua barrió la cubierta.</blockquote>
+          </div>
+          <p class="src">Evidencia: «Desde cuando salimos de Mobile, tres días antes, no había probado alimentos. Casi no podía hablar y tenía el rostro verde y descompuesto»; «había caído nuevamente en su litera, vencido por el mareo y el agotamiento» (caps. II–III).</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">A)</span> No hay ningún castigo: el narrador lo ayuda y lo acomoda. <span class="x">B)</span> El texto dice que lo colocaron en su litera <b>de babor</b>, no en la opuesta; además, la pregunta indaga por el efecto de su salud, no por el lugar. <span class="x">C)</span> Ortega sí escucha la orden (intenta levantarse); las alarmas y el chaleco no aparecen como causa.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6 -->
+    <article class="qcard" id="q6">
+      <div class="qhead"><div class="qn">06</div><div><h3>El rescate imposible</h3><p class="qmeta">Literal · cap. III</p></div></div>
+      <div class="qbody">
+        <p class="stem">Cuando el narrador consigue abordar la balsa, divisa a sus compañeros flotando a pocos metros y manipula los remos con desesperación para alcanzarlos. ¿Cuál es el factor determinante de su fracaso en este intento de rescate?</p>
+        <ul class="opts">
+          <li class="opt ok"><span class="k">A)</span><span>La pesadez estructural de la balsa combinada con la resistencia física de la brisa en contra anularon sus esfuerzos, evidenciando la impotencia del hombre ante el mar de leva.</span></li>
+          <li class="opt"><span class="k">B)</span><span>El resplandor metálico del sol del mediodía nubló por completo su sentido de la orientación, haciéndolo remar en sentido inverso.</span></li>
+          <li class="opt"><span class="k">C)</span><span>Los remos de la balsa se quebraron de inmediato debido a que ninguna de las balsas del destructor estaba debidamente dotada.</span></li>
+          <li class="opt"><span class="k">D)</span><span>La presencia masiva de tiburones alrededor de los náufragos bloqueó la trayectoria física de la embarcación.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>A)</b> <span>Peso + viento en contra = un metro perdido.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>El narrador lo dice con una precisión dolorosa: la balsa «tenía casi 2 metros de largo», «era muy pesada en aquel mar encabritado» y él «tenía que remar contra la brisa». Conclusión: «Creo que no logré hacerla avanzar un metro». No falla la técnica ni se rompe nada: fallan la <b>fuerza del cuerpo</b> frente al <b>peso y al viento</b>.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>A)</b>. El intento de rescate fracasa porque la balsa era muy pesada y él debía remar contra la brisa; el propio narrador calcula que no logró avanzarla ni un metro. La escena muestra la impotencia del ser humano frente al mar: no es que no quisiera salvar a sus compañeros, es que la fuerza del viento y el peso de la balsa hacían imposible el rescate.</blockquote>
+          </div>
+          <p class="src">Evidencia: «La balsa tenía casi 2 metros de largo. Era muy pesada en aquel mar encabritado y yo tenía que remar contra la brisa. Creo que no logré hacerla avanzar un metro» (cap. III).</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">B)</span> El sol lo deslumbra más tarde; no rema en sentido inverso. <span class="x">C)</span> Los remos no se rompen: los usa hasta el final. <span class="x">D)</span> Los tiburones aparecen a las cinco de la tarde, no durante el rescate.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7 -->
+    <article class="qcard" id="q7">
+      <div class="qhead"><div class="qn">07</div><div><h3>La mano levantada</h3><p class="qmeta">Símbolo · cap. III</p></div></div>
+      <div class="qbody">
+        <p class="stem">La inmersión definitiva de Luis Rengifo se describe como uno de los momentos más desoladores para el náufrago. ¿Qué detalle de su desaparición simboliza su identidad y resistencia como marino hasta el último instante?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">A)</span><span>El hecho de que intentara amarrarse a una de las cajas de ropa flotantes para usarla como soporte.</span></li>
+          <li class="opt ok"><span class="k">B)</span><span>Que mantuvo su mano alzada fuera del agua, replicando la postura con la que operaba los auriculares de guardia en el buque.</span></li>
+          <li class="opt"><span class="k">C)</span><span>Que se quitara la camisa en un intento desesperado por disminuir el peso y nadar con mayor agilidad hacia el remo.</span></li>
+          <li class="opt"><span class="k">D)</span><span>El grito insistente invocando los nombres de sus seis hijos que lo esperaban en el puerto de Cartagena.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>B)</b> <span>Muere con el gesto de su oficio.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>Cuando Rengifo se hunde, «la mano levantada, la que pocos minutos antes había tratado de evitar que se hundieran los auriculares, se hundió en ese momento para siempre». El gesto no es casual: repite la postura con la que trabajaba en el buque. Así, su muerte conserva <b>su identidad de marino</b> y su serenidad, incluso cuando ya no puede salvarse.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>B)</b>. Rengifo se hunde con la mano levantada, igual que cuando sostenía los auriculares durante su guardia. Ese detalle simboliza su identidad de marino y su resistencia hasta el final: no muere gritando ni pataleando, sino conservando el gesto de su oficio, lo que hace su desaparición mucho más dolorosa.</blockquote>
+          </div>
+          <p class="src">Evidencia: «Levantó la mano como cuando sostenía en ella los auriculares… la mano levantada, la que pocos minutos antes había tratado de evitar que se hundieran los auriculares, se hundió en ese momento para siempre» (cap. III).</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">A)</span> No se amarra a ninguna caja: nada con serenidad y pierde el salvavidas. <span class="x">C)</span> Sí se había quitado la camisa para nadar mejor, pero eso no es el detalle que simboliza su identidad. <span class="x">D)</span> En el texto no se mencionan seis hijos ni ese grito; sus últimas palabras son un llamado: «¡Gordo… Gordo…».</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 8 -->
+    <article class="qcard" id="q8">
+      <div class="qhead"><div class="qn">08</div><div><h3>Las doce en punto</h3><p class="qmeta">Interpretación · cap. III</p></div></div>
+      <div class="qbody">
+        <p class="stem">Tras quedar en absoluta soledad, el narrador consulta su reloj y nota que marca exactamente las doce en punto. ¿Qué revela este pasaje sobre la percepción psicológica del tiempo en situaciones de trauma?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">A)</span><span>Muestra que el mecanismo fosforescente se vio alterado por la presión del agua, provocando una detención ficticia del tiempo.</span></li>
+          <li class="opt ok"><span class="k">B)</span><span>Ilustra cómo la intensidad de un evento catastrófico altera la mente del individuo, haciendo que apenas diez minutos de vivencia se perciban como un lapso sumamente prolongado.</span></li>
+          <li class="opt"><span class="k">C)</span><span>Confirma que el náufrago poseía un control matemático perfecto del tiempo que le permitiría predecir los días exactos de su deriva.</span></li>
+          <li class="opt"><span class="k">D)</span><span>Sugiere que la hora del mediodía representaba un alivio racional al asegurar la llegada inminente de los aviones guardacostas.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>B)</b> <span>Diez minutos que parecen horas.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>El narrador aclara el dato: cree que ha pasado muchísimo tiempo, pero «en realidad sólo habían transcurrido diez minutos». La catástrofe concentra tantas sensaciones —caer, nadar, ver morir a cuatro compañeros, quedar solo— que la mente <b>estira el tiempo</b>. Es una descripción precisa del efecto del trauma, no un fallo del reloj.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>B)</b>. Aunque el reloj marca las doce en punto, el narrador siente que ha pasado muchísimo tiempo; el texto aclara que solo habían transcurrido diez minutos desde la última vez que miró la hora. La intensidad del naufragio —la caída, la muerte de sus compañeros, la soledad— hace que la mente perciba ese lapso como mucho más largo.</blockquote>
+          </div>
+          <p class="src">Evidencia: «Me pareció que hacía mucho tiempo que todo había ocurrido, pero en realidad sólo habían transcurrido diez minutos» (cap. III).</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">A)</span> El reloj funciona bien; lo alterado es la percepción. <span class="x">C)</span> No hay ningún control matemático: precisamente pierde la noción del tiempo. <span class="x">D)</span> El mediodía no le asegura nada; solo espera que lleguen los aviones.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 9 -->
+    <article class="qcard" id="q9">
+      <div class="qhead"><div class="qn">09</div><div><h3>Las tres tarjetas</h3><p class="qmeta">Inferencial · cap. III</p></div></div>
+      <div class="qbody">
+        <p class="stem">En medio de su primer día a la deriva, el narrador extrae de sus bolsillos tres tarjetas de un almacén de Mobile y se dedica a leerlas. Desde la perspectiva de la supervivencia, ¿qué función vital cumple este acto?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">A)</span><span>Le provee información logística y direcciones útiles que planeaba registrar dentro de una botella de vidrio.</span></li>
+          <li class="opt"><span class="k">B)</span><span>Le permite medir el desgaste de su piel utilizando el reverso del papel como protección contra la sal marina.</span></li>
+          <li class="opt"><span class="k">C)</span><span>Le facilita aplicar las directrices técnicas que su instructor naval le había enseñado en las simulaciones de la escuela.</span></li>
+          <li class="opt ok"><span class="k">D)</span><span>Funciona como un refugio cognitivo temporal que contrarresta el impacto del aislamiento al enlazarlo afectivamente con su cotidianidad social.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>D)</b> <span>Leer para no volverse loco.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>El narrador no busca instrucciones: «me puse a leer las tarjetas <b>para distraerme</b> mientras me rescataban». Las tarjetas vienen de un almacén de Mobile y se las dieron un día de compras con Mary Address; al leerlas, piensa en meter una en una botella y contarlo a sus amigos en Cartagena. Son un <b>puente con su vida social</b>: lo sacan por un momento del aislamiento y lo mantienen mentalmente entero.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>D)</b>. El narrador lee las tarjetas «para distraerse» mientras espera el rescate, y al hacerlo recuerda el almacén de Mobile y a Mary Address, e incluso imagina la broma de meter una en una botella para contarla a sus amigos. No son instrucciones de supervivencia: son un refugio mental que lo conecta con su vida cotidiana y lo protege del aislamiento.</blockquote>
+          </div>
+          <p class="src">Evidencia: «Como no tenía nada que hacer, me puse a leer las tarjetas para distraerme mientras me rescataban… hubiera metido dentro una de las tarjetas, jugando al náufrago, para tener esa noche algo divertido que contarles a mis amigos en Cartagena» (cap. III).</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">A)</span> Las tarjetas no tienen direcciones útiles ni un plan logístico. <span class="x">B)</span> No las usa para medir la piel ni como protector solar. <span class="x">C)</span> No aplica ninguna directriz de sus instructores: solo lee para distraerse. <b>Dato extra:</b> masticarlas para aliviar la garganta ocurre mucho después, en el séptimo día; esta pregunta habla de la <b>lectura</b> del primer día.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 10 -->
+    <article class="qcard" id="q10">
+      <div class="qhead"><div class="qn">10</div><div><h3>La noche interminable</h3><p class="qmeta">Inferencial · cap. IV</p></div></div>
+      <div class="qbody">
+        <p class="stem">El náufrago sostiene que la noche en alta mar es desmesuradamente más extensa que el día. ¿A qué se debe principalmente esta tortuosa distorsión de la duración nocturna?</p>
+        <ul class="opts">
+          <li class="opt ok"><span class="k">A)</span><span>A que la oscuridad total agudiza el aislamiento y el desamparo, mientras que el frío arrecia y la mente se concentra bajo la tensión constante de escuchar la fauna marina invisible.</span></li>
+          <li class="opt"><span class="k">B)</span><span>A que el comportamiento de los tiburones se vuelve significativamente más agresivo y violento al ocultarse el sol.</span></li>
+          <li class="opt"><span class="k">C)</span><span>A que la balsa se detiene por completo al disiparse las corrientes de aire nocturnas, anulando cualquier sensación de avance.</span></li>
+          <li class="opt"><span class="k">D)</span><span>A la necesidad de mantenerse de pie de forma ininterrumpida para evitar que el piso de la balsa ceda ante el peso.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>A)</b> <span>Nada ocurre, todo se escucha, el frío aprieta.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>El narrador explica que lo que hizo más larga la noche fue que «no ocurrió absolutamente nada»: sin estímulos, la mente se queda a solas con el miedo. A eso se suman el <b>frío intenso</b> de la madrugada y la tensión de escuchar «a los animales» sin poder verlos. La oscuridad no alarga las horas: alarga la <b>experiencia</b> de las horas.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>A)</b>. La noche se hace interminable porque no ocurre nada: la oscuridad total lo deja a solas con el miedo, el frío de la madrugada arrecia y pasa horas escuchando ruidos de animales que no puede ver. No es que la noche dure más, sino que la falta de estímulos y la tensión hacen que cada minuto se viva con una intensidad enorme.</blockquote>
+          </div>
+          <p class="src">Evidencia: «Lo que hizo más larga mi primera noche en el mar fue que en ella no ocurrió absolutamente nada… se tiene terror a los animales… el frío fue más intenso en las horas de la madrugada» (cap. IV).</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">B)</span> Los tiburones son «puntuales» a las cinco y se van con la oscuridad; no se vuelven más agresivos de noche. <span class="x">C)</span> La balsa sigue avanzando con la brisa; lo que se pierde es la referencia, no el movimiento. <span class="x">D)</span> No pasa la noche de pie: se sienta y se acuesta en la balsa.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="note warn"><b>La pregunta 11 es distinta:</b> no se responde con una letra. Pide explicar un <b>efecto irónico</b>, así que necesita tesis, evidencia y comentario. En la sección siguiente tienes dos modelos y la rúbrica con la que se evalúa.</div>
+  </div>
+</section>
+
+<section class="sec" id="abierta">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">05 / PREGUNTA ABIERTA</span>
+      <h2>El avión que lo ve y no lo salva</h2>
+      <p>La pregunta 11 vale tanto como las otras: no por la extensión, sino por la calidad del razonamiento. Aquí tienes qué se evalúa, cómo se arma y dos respuestas modelo.</p>
+    </div>
+
+    <article class="qcard open" id="q11">
+      <div class="qhead"><div class="qn">11</div><div><h3>La ironía del avión negro</h3><p class="qmeta">Abierta · cap. V</p></div></div>
+      <div class="qbody">
+        <p class="stem">En el capítulo V, un gran avión negro del servicio de guardacostas de la Zona del Canal sobrevuela la balsa a muy baja altura, permitiendo al narrador ver incluso los binóculos del tripulante. ¿Qué efecto irónico produce este episodio a nivel narrativo?</p>
+
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Qué se espera</span><span>Una tesis clara + una cita + el efecto sobre el lector.</span></div>
+
+          <div class="why">
+            <h4>La idea central</h4>
+            <p>El episodio es irónico porque <b>ver no es salvar</b>. El avión pasa tan cerca que el náufrago distingue los binóculos del tripulante y cree que lo han descubierto; sin embargo, el rescate no llega. La máxima cercanía produce la máxima impotencia. La ironía es <b>trágica</b>: el lector sabe que la alegría de «¡me han visto!» es una falsa esperanza, y que esa esperanza hará más duro el abandono.</p>
+          </div>
+
+          <div class="rub">
+            <h4>Rúbrica: qué debe tener tu respuesta</h4>
+            <ul>
+              <li><b>Identifica el contraste:</b> el avión lo ve, pero no lo rescata.</li>
+              <li><b>Explica la ironía:</b> la esperanza más grande nace del gesto que confirma el abandono.</li>
+              <li><b>Cita el texto:</b> los binóculos, «¡Me han visto!», las tres pasadas del avión.</li>
+              <li><b>Comenta el efecto:</b> desconcierto, angustia, compasión; el lector entiende lo que el personaje todavía no sabe.</li>
+              <li><b>Cierra con el tema:</b> la soledad, la falsa esperanza o la indiferencia de la naturaleza.</li>
+            </ul>
+          </div>
+
+          <div class="models">
+            <div class="model">
+              <h4>Respuesta modelo 1 · desarrollada (recomendada)</h4>
+              <p>El episodio produce una <b>ironía trágica</b>: el avión pasa tan bajo que el narrador ve al tripulante «examinando el mar con un par de binóculos negros» y cree que lo han descubierto, pero el rescate nunca llega. Cuanto más cerca está el avión, más grande es la esperanza y, después, más profunda la desolación. El lector comprende lo que el náufrago todavía no: que ser visto no equivale a ser salvado. La escena condensa el tema del capítulo: en el mar, la cercanía de la ayuda puede ser tan cruel como la soledad, porque convierte la alegría en una burla.</p>
+              <p class="meta">≈ 95 palabras · tesis + cita + efecto + tema</p>
+            </div>
+            <div class="model">
+              <h4>Respuesta modelo 2 · breve</h4>
+              <p>La ironía consiste en que el avión lo ve —el narrador distingue incluso los binóculos del tripulante— pero no lo rescata. El momento en que debería empezar el salvamento se convierte en la confirmación del abandono: la frase «¡Me han visto!» suena triunfal y, sin embargo, anuncia la decepción. Es una ironía trágica porque el personaje interpreta como esperanza lo que el lector reconoce como desamparo.</p>
+              <p class="meta">≈ 65 palabras · suficiente si el tiempo aprieta</p>
+            </div>
+          </div>
+
+          <div class="card" style="background:var(--surface2)">
+            <h4 style="margin:0 0 6px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700">Fórmula para responder una pregunta abierta</h4>
+            <div class="formula"><span><b>1.</b> Tesis</span><span class="plus">+</span><span><b>2.</b> Evidencia</span><span class="plus">+</span><span><b>3.</b> Efecto</span><span class="plus">+</span><span><b>4.</b> Tema</span></div>
+            <p style="margin:10px 0 0;font-size:.85rem;color:var(--muted)"><b style="color:var(--ink)">Tesis:</b> «Produce una ironía trágica». <b style="color:var(--ink)">Evidencia:</b> los binóculos y «¡Me han visto!». <b style="color:var(--ink)">Efecto:</b> la esperanza se vuelve burla. <b style="color:var(--ink)">Tema:</b> la soledad y la falsa esperanza. Con eso ya tienes una respuesta completa.</p>
+          </div>
+
+          <p class="src">Evidencia: «Pude ver nítidamente la cabeza de un hombre asomado a la cabina, examinando el mar con un par de binóculos negros… “¡Me han descubierto!”, grité, dichoso» (cap. V).</p>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="sec" id="autoevaluacion">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">06 / ANTES DE ENTREGAR</span>
+      <h2>Autoevaluación</h2>
+      <p>Marca lo que ya cumpliste. Lo que quede sin marcar es lo que todavía tienes que repasar.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <ul class="chk" id="chk">
+          <li><span class="box">✓</span><span>Respondí las once preguntas <b>antes</b> de mirar la clave.</span></li>
+          <li><span class="box">✓</span><span>Puedo explicar por qué el miedo del capítulo I no viene de una falla del barco.</span></li>
+          <li><span class="box">✓</span><span>Entiendo qué revela el pacto con Ramón Herrera.</span></li>
+          <li><span class="box">✓</span><span>Reconozco la ironía trágica de la frase de Rengifo.</span></li>
+          <li><span class="box">✓</span><span>Sé qué significa la orden de pasar a babor.</span></li>
+          <li><span class="box">✓</span><span>No confundo la litera de Ortega con la opuesta: estaba en <b>babor</b>.</span></li>
+          <li><span class="box">✓</span><span>Puedo explicar por qué fracasa el rescate (peso + viento).</span></li>
+          <li><span class="box">✓</span><span>Interpreté la mano levantada de Rengifo como símbolo de su oficio.</span></li>
+          <li><span class="box">✓</span><span>Entiendo la distorsión del tiempo (diez minutos que parecen horas).</span></li>
+          <li><span class="box">✓</span><span>Diferencio las tarjetas <b>leídas</b> el primer día de las <b>masticadas</b> el séptimo.</span></li>
+          <li><span class="box">✓</span><span>Escribí la respuesta abierta con tesis, cita y efecto.</span></li>
+          <li><span class="box">✓</span><span>Revisé ortografía y tildes antes de pasar en limpio.</span></li>
+        </ul>
+        <div class="score"><span class="big" id="score">0/12</span><span class="lbl" id="scoreMsg">Empieza marcando lo que ya tienes.</span></div>
+        <button class="btn btn-ghost btn-sm" id="resetChk" style="margin-top:10px">Borrar marcas</button>
+      </div>
+      <div class="card">
+        <h3 style="font-family:var(--serif);font-size:1.1rem;margin:0 0 8px">Plan de 40 minutos</h3>
+        <ul class="plan">
+          <li><span class="t">0–5 min</span><span>Lee la línea de tiempo y las seis claves.</span></li>
+          <li><span class="t">5–15 min</span><span>Preguntas 1–4.</span></li>
+          <li><span class="t">15–25 min</span><span>Preguntas 5–8.</span></li>
+          <li><span class="t">25–32 min</span><span>Preguntas 9–10.</span></li>
+          <li><span class="t">32–38 min</span><span>Pregunta 11: escribe la respuesta abierta.</span></li>
+          <li><span class="t">38–40 min</span><span>Revisa y pasa en limpio.</span></li>
+        </ul>
+        <h3 style="font-family:var(--serif);font-size:1.1rem;margin:18px 0 8px">Cómo se lee tu resultado</h3>
+        <p style="font-size:.86rem;color:var(--muted);margin:0 0 6px"><b style="color:var(--ok)">Nivel alto:</b> aciertas y puedes citar la escena que lo prueba.</p>
+        <p style="font-size:.86rem;color:var(--muted);margin:0 0 6px"><b style="color:var(--gold)">Nivel medio:</b> aciertas de memoria, pero no explicas la causa.</p>
+        <p style="font-size:.86rem;color:var(--muted);margin:0"><b style="color:var(--rose)">Nivel bajo:</b> eliges por descarte y no puedes justificar.</p>
+        <div class="note" style="margin-bottom:0"><b>Consejo:</b> casi todas las preguntas piden una <b>causa</b>. Si una opción solo describe un hecho y no explica por qué ocurrió, probablemente no es la respuesta.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div><b>Quiz 6 · Lectura crítica 9°</b> — <i>Relato de un náufrago</i>, de Gabriel García Márquez, capítulos I–V.<br>Guía de estudio · Colegio CEDAP · Docente: Geraldine Rodríguez.</div>
+    <div>Sin conexión · Nada se envía a internet · Tus marcas se guardan solo en este navegador.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const NS=document.body.dataset.ns||"quiz.";
+const store={
+  get(k,d){try{const v=localStorage.getItem(NS+k);return v===null?d:JSON.parse(v);}catch(e){return d;}},
+  set(k,v){try{localStorage.setItem(NS+k,JSON.stringify(v));}catch(e){}},
+  del(k){try{localStorage.removeItem(NS+k);}catch(e){}}
+};
+const html=document.documentElement;
+function setTheme(t){html.setAttribute("data-theme",t);store.set("theme",t);}
+setTheme(store.get("theme","dark"));
+$("#themeBtn").addEventListener("click",()=>setTheme(html.getAttribute("data-theme")==="dark"?"light":"dark"));
+
+/* línea de progreso */
+const line=$("#scrollLine");
+const onScroll=()=>{
+  const h=document.documentElement;
+  const p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
+  line.style.width=(p*100).toFixed(2)+"%";
+};
+addEventListener("scroll",onScroll,{passive:true});onScroll();
+
+/* mostrar / ocultar claves */
+const keyBtn=$("#keyBtn");
+let hidden=store.get("hidden",false);
+function paintKeys(){
+  document.body.classList.toggle("sin-claves",hidden);
+  keyBtn.textContent=hidden?"Mostrar claves":"Ocultar claves";
+  keyBtn.setAttribute("aria-pressed",String(hidden));
+}
+paintKeys();
+keyBtn.addEventListener("click",()=>{hidden=!hidden;store.set("hidden",hidden);paintKeys();});
+
+/* imprimir */
+$("#printBtn").addEventListener("click",()=>{if(hidden){hidden=false;paintKeys();}setTimeout(()=>window.print(),80);});
+
+/* checklist */
+const chk=$("#chk"), score=$("#score"), msg=$("#scoreMsg");
+let marks=store.get("chk",[]);
+function paintChk(){
+  const items=$$("li",chk);
+  items.forEach((li,i)=>li.classList.toggle("on",!!marks[i]));
+  const n=marks.filter(Boolean).length;
+  score.textContent=n+"/"+items.length;
+  msg.textContent=n===0?"Empieza marcando lo que ya tienes."
+    :n<7?"Vas por buen camino: revisa lo que falta."
+    :n<11?"Casi listo: te faltan detalles."
+    :n<12?"Muy bien: revisa la última."
+    :"Listo para entregar.";
+  store.set("chk",marks);
+}
+paintChk();
+chk.addEventListener("click",e=>{
+  const li=e.target.closest("li");if(!li)return;
+  const i=$$("li",chk).indexOf(li);
+  marks[i]=!marks[i];paintChk();
+});
+$("#resetChk").addEventListener("click",()=>{marks=[];paintChk();});
+})();
+</script>
+</body>
+</html>

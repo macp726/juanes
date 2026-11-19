@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="dark light">
+<title>Quiz 5 · Carpe Diem · Caps. 40–42 · Respuestas explicadas</title>
+<meta name="description" content="Guía del Quiz 5 de Lectura crítica 9° sobre Carpe Diem (caps. 40, 41 y 42): las diez preguntas con respuesta correcta, explicación, evidencia y una respuesta de ejemplo.">
+<style>
+/* ============ TOKENS ============ */
+:root{
+  --max:1080px; --r:16px;
+  --serif:"Iowan Old Style","Palatino Linotype",Palatino,"Book Antiqua",Georgia,serif;
+  --sans:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;
+}
+[data-theme="dark"]{
+  --bg:#070b16; --bg2:#0c1324; --surface:#101a2e; --surface2:#16213a;
+  --line:rgba(230,181,103,.24); --line2:rgba(255,255,255,.09);
+  --ink:#eeebe4; --muted:#a9b0c2; --faint:#7d87a1;
+  --gold:#e6b567; --gold2:#f7d9a0; --teal:#5fd3c4; --rose:#f09595; --violet:#a99cf5;
+  --ok:#63d6a6; --bad:#f08a8a;
+  --shadow:0 30px 70px -42px rgba(0,0,0,.95);
+  --on-gold:#101321; --glow:rgba(230,181,103,.15);
+  --code:rgba(255,255,255,.05);
+}
+[data-theme="light"]{
+  --bg:#f7f2e8; --bg2:#efe7d8; --surface:#fffdf7; --surface2:#faf4e8;
+  --line:rgba(150,105,35,.28); --line2:rgba(30,35,50,.12);
+  --ink:#1b2233; --muted:#555d70; --faint:#848a98;
+  --gold:#9d6c1c; --gold2:#b8811f; --teal:#0d7268; --rose:#b4433f; --violet:#5f4fc9;
+  --ok:#0e7a55; --bad:#b0392f;
+  --shadow:0 24px 60px -42px rgba(70,50,20,.34);
+  --on-gold:#fffaf0; --glow:rgba(157,108,28,.13);
+  --code:rgba(30,35,50,.05);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--sans);color:var(--ink);line-height:1.62;
+  background:
+    radial-gradient(1100px 600px at 84% -10%,var(--glow),transparent 62%),
+    radial-gradient(900px 520px at -8% 20%,rgba(95,211,196,.07),transparent 62%),
+    var(--bg);
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+}
+img,svg{max-width:100%;display:block}
+a{color:var(--gold)}
+::selection{background:var(--gold);color:var(--on-gold)}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px;border-radius:6px}
+.wrap{width:min(var(--max),100% - 40px);margin-inline:auto}
+section{scroll-margin-top:82px}
+.skip{position:absolute;left:-9999px;top:0;background:var(--gold);color:var(--on-gold);padding:10px 16px;z-index:999;border-radius:0 0 10px 0}
+.skip:focus{left:0}
+
+/* ============ TOPBAR ============ */
+#scrollLine{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--teal));z-index:200;transition:width .1s linear}
+.topbar{position:sticky;top:0;z-index:100;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(16px) saturate(120%);border-bottom:1px solid var(--line2)}
+.tb-in{display:flex;align-items:center;gap:10px;height:60px}
+.brand{font-family:var(--serif);font-size:.98rem;white-space:nowrap;text-decoration:none;color:var(--ink);display:flex;align-items:center;gap:9px}
+.brand .dot{width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(230,181,103,.14)}
+.brand b{color:var(--gold);font-weight:600}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{color:var(--muted);text-decoration:none;font-size:.78rem;padding:7px 9px;border-radius:8px;white-space:nowrap;transition:.18s}
+.nav a:hover{color:var(--ink);background:var(--surface)}
+.ibtn{display:grid;place-items:center;height:36px;min-width:36px;padding:0 9px;border:1px solid var(--line2);background:var(--surface);color:var(--ink);border-radius:9px;cursor:pointer;transition:.18s;font-size:.85rem;font-family:var(--sans)}
+.ibtn:hover{border-color:var(--gold);color:var(--gold)}
+[data-theme="dark"] .i-sun{display:none}
+[data-theme="light"] .i-moon{display:none}
+@media (max-width:880px){.nav{display:none}.brand{min-width:0;overflow:hidden;text-overflow:ellipsis}}
+@media (max-width:520px){.tb-in{gap:6px}.ibtn{padding:0 7px;font-size:.78rem}}
+
+/* ============ HERO ============ */
+.hero{position:relative;padding:60px 0 30px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background-image:radial-gradient(circle at 1px 1px,rgba(230,181,103,.18) 1px,transparent 0);background-size:26px 26px;opacity:.45;mask-image:radial-gradient(580px 330px at 78% 10%,#000,transparent 72%);pointer-events:none}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.71rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:600;margin:0 0 14px}
+.eyebrow::before{content:"";width:26px;height:1px;background:var(--gold)}
+h1{font-family:var(--serif);font-weight:600;font-size:clamp(2rem,5vw,3.2rem);line-height:1.07;letter-spacing:-.015em;margin:0 0 15px;max-width:20ch;text-wrap:balance}
+h1 em{font-style:italic;color:var(--gold)}
+.lede{font-size:1.02rem;color:var(--muted);max-width:64ch;margin:0 0 20px}
+.lede b{color:var(--ink);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.chip{font-size:.75rem;color:var(--muted);border:1px solid var(--line2);background:var(--surface);border-radius:99px;padding:6px 12px;display:inline-flex;align-items:center;gap:6px}
+.chip b{color:var(--ink)}
+.cta{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;border-radius:10px;padding:11px 18px;font-size:.88rem;font-weight:600;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:.18s;font-family:var(--sans)}
+.btn-primary{background:linear-gradient(160deg,var(--gold2),var(--gold));color:var(--on-gold);box-shadow:0 14px 30px -18px rgba(230,181,103,.8)}
+.btn-primary:hover{transform:translateY(-1px);filter:brightness(1.05)}
+.btn-ghost{border-color:var(--line2);background:var(--surface);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold)}
+.btn-sm{padding:8px 13px;font-size:.79rem;border-radius:8px}
+.obj{position:relative;border:1px solid var(--line);border-left:3px solid var(--gold);background:linear-gradient(120deg,var(--surface2),var(--surface));border-radius:0 13px 13px 0;padding:17px 20px;max-width:80ch}
+.obj h2{margin:0 0 5px;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.obj p{margin:0;font-size:.93rem;color:var(--muted)}
+.obj p b{color:var(--ink)}
+
+/* ============ SECCIONES ============ */
+.sec{padding:42px 0}
+.sec-head{margin-bottom:22px}
+.sec-head .n{font-family:var(--mono);font-size:.71rem;color:var(--gold);letter-spacing:.18em}
+.sec-head h2{font-family:var(--serif);font-size:clamp(1.4rem,2.9vw,1.98rem);line-height:1.22;margin:6px 0 8px;letter-spacing:-.01em;font-weight:600}
+.sec-head p{margin:0;color:var(--muted);font-size:.93rem;max-width:72ch}
+.card{border:1px solid var(--line2);background:var(--surface);border-radius:var(--r);padding:20px}
+.grid{display:grid;gap:13px}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr))}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media (max-width:900px){.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:640px){.g2,.g3{grid-template-columns:1fr}}
+
+/* ============ TABLA ============ */
+.tbl{border:1px solid var(--line2);border-radius:12px;overflow:hidden;font-size:.85rem}
+.trow{display:grid;grid-template-columns:.4fr 1.7fr .9fr .5fr;gap:12px;padding:10px 14px;border-top:1px solid var(--line2);align-items:start}
+.trow:first-child{border-top:0}
+.trow.thead{background:var(--surface2);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);font-weight:700}
+.trow:nth-child(even){background:color-mix(in srgb,var(--surface2) 42%,transparent)}
+.trow span{color:var(--muted);line-height:1.45}
+.trow span b{color:var(--ink)}
+.trow .num{font-family:var(--mono);color:var(--gold)}
+.trow .key{font-family:var(--mono);font-size:.8rem;color:var(--ok);font-weight:700}
+@media (max-width:680px){
+  .trow{grid-template-columns:32px 1fr 62px;gap:8px;padding:10px 12px}
+  .trow.thead{display:none}
+  .trow .tipo{display:none}
+  .trow .key{text-align:right}
+}
+
+/* ============ CLAVES ============ */
+.keycard{border:1px solid var(--line2);background:var(--surface);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:8px;transition:.2s}
+.keycard:hover{border-color:var(--line);transform:translateY(-2px)}
+.keycard .who{font-size:.67rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);font-weight:700}
+.keycard h3{margin:0;font-family:var(--serif);font-size:1.06rem;line-height:1.25;font-weight:600}
+.keycard p{margin:0;font-size:.86rem;color:var(--muted)}
+.keycard .qline{font-family:var(--serif);font-style:italic;font-size:.9rem;color:var(--gold2);border-left:2px solid var(--line);padding-left:10px}
+.quote{border:1px solid var(--line);border-radius:13px;background:linear-gradient(140deg,var(--surface2),var(--surface));padding:18px 20px;margin:0}
+.quote p{margin:0;font-family:var(--serif);font-size:1.02rem;line-height:1.5}
+.quote span{display:block;margin-top:8px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--faint)}
+
+/* ============ PREGUNTAS ============ */
+.qindex{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 18px}
+.qindex a{font-family:var(--mono);font-size:.74rem;text-decoration:none;color:var(--muted);border:1px solid var(--line2);background:var(--surface);border-radius:7px;padding:5px 9px;transition:.15s}
+.qindex a:hover{color:var(--gold);border-color:var(--gold)}
+.qcard{border:1px solid var(--line2);background:var(--surface);border-radius:16px;padding:0;margin:0 0 16px;overflow:hidden;box-shadow:var(--shadow)}
+.qhead{display:flex;gap:14px;align-items:flex-start;padding:18px 20px 0}
+.qn{font-family:var(--serif);font-size:1.5rem;line-height:1;color:var(--gold);min-width:44px;font-variant-numeric:tabular-nums}
+.qhead h3{margin:0 0 2px;font-size:.96rem;font-weight:600;letter-spacing:0}
+.qmeta{margin:0;font-size:.71rem;color:var(--faint);letter-spacing:.05em;text-transform:uppercase}
+.qbody{padding:12px 20px 20px}
+.stem{margin:8px 0 14px;font-size:.95rem;color:var(--ink)}
+.stem b{color:var(--gold)}
+.opts{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:6px}
+.opt{display:grid;grid-template-columns:26px 1fr;gap:9px;align-items:start;border:1px solid var(--line2);border-radius:9px;padding:8px 11px;font-size:.88rem;color:var(--muted);background:var(--surface2)}
+.opt .k{font-family:var(--mono);font-size:.78rem;color:var(--faint);line-height:1.55}
+.opt.ok{border-color:color-mix(in srgb,var(--ok) 52%,transparent);background:color-mix(in srgb,var(--ok) 9%,var(--surface2));color:var(--ink)}
+.opt.ok .k{color:var(--ok);font-weight:700}
+.opt.ok::after{content:"✓";grid-column:3;color:var(--ok);font-weight:700;font-size:.8rem}
+.opt.ok{grid-template-columns:26px 1fr 16px}
+.answer{border-top:1px dashed var(--line2);padding-top:14px;display:grid;gap:12px}
+.aline{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-size:.86rem}
+.aline .tagclave{font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--on-gold);background:linear-gradient(150deg,var(--gold2),var(--gold));padding:3px 9px;border-radius:99px}
+.aline b{color:var(--ink)}
+.why h4,.ex h4,.not h4{margin:0 0 4px;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--teal);font-weight:700}
+.why p,.not p{margin:0;font-size:.89rem;color:var(--muted)}
+.why p b,.not p b{color:var(--ink)}
+.ex{margin:0;border-left:3px solid var(--gold);background:color-mix(in srgb,var(--gold) 6%,transparent);border-radius:0 10px 10px 0;padding:12px 15px}
+.ex h4{color:var(--gold)}
+.ex blockquote{margin:0;font-size:.89rem;color:var(--ink)}
+.ex blockquote b{color:var(--gold)}
+.src{margin:0;font-size:.75rem;color:var(--faint);font-family:var(--mono);line-height:1.5}
+.not{display:grid;gap:4px}
+.not .x{color:var(--rose);font-weight:600}
+body.sin-claves .answer{display:none}
+body.sin-claves .opt.ok{background:var(--surface2);border-color:var(--line2);color:var(--muted)}
+body.sin-claves .opt.ok .k{color:var(--faint);font-weight:400}
+body.sin-claves .opt.ok::after{content:""}
+body.sin-claves .trow .key{color:transparent;user-select:none}
+body.sin-claves .spoiler,body.sin-claves .finalnote{display:none}
+
+/* ============ MÉTODO ============ */
+.formula{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:14px 0 0;font-size:.82rem}
+.formula span{border:1px solid var(--line2);background:var(--surface2);border-radius:8px;padding:6px 11px;color:var(--muted)}
+.formula span b{color:var(--gold)}
+.formula .plus{color:var(--faint);border:0;background:none;padding:0 2px}
+.model-ex{border:1px solid var(--line);border-radius:12px;padding:14px 16px;background:color-mix(in srgb,var(--teal) 5%,transparent);font-size:.88rem}
+.model-ex p{margin:0 0 8px;color:var(--muted)}
+.model-ex p:last-child{margin:0}
+.model-ex mark{background:color-mix(in srgb,var(--gold) 24%,transparent);color:var(--ink);padding:0 3px;border-radius:3px}
+.legend{display:flex;flex-wrap:wrap;gap:12px;font-size:.74rem;color:var(--faint);margin-top:8px}
+.legend i{font-style:normal;display:inline-flex;align-items:center;gap:5px}
+.legend i::before{content:"";width:9px;height:9px;border-radius:3px;display:inline-block}
+.legend .l1::before{background:color-mix(in srgb,var(--gold) 24%,transparent);border:1px solid var(--gold)}
+.legend .l2::before{background:color-mix(in srgb,var(--teal) 22%,transparent);border:1px solid var(--teal)}
+
+/* ============ AUTOEVALUACIÓN ============ */
+.chk{list-style:none;margin:0;padding:0;display:grid;gap:7px}
+.chk li{display:flex;gap:10px;align-items:flex-start;border:1px solid var(--line2);border-radius:10px;padding:9px 12px;background:var(--surface2);font-size:.85rem;color:var(--muted);cursor:pointer;transition:.15s}
+.chk li:hover{border-color:var(--line)}
+.chk li .box{width:17px;height:17px;border-radius:5px;border:1px solid var(--line);flex:0 0 auto;display:grid;place-items:center;font-size:.64rem;color:transparent;margin-top:2px;background:var(--surface)}
+.chk li.on{border-color:color-mix(in srgb,var(--ok) 48%,transparent);background:color-mix(in srgb,var(--ok) 8%,var(--surface2));color:var(--ink)}
+.chk li.on .box{background:var(--ok);border-color:var(--ok);color:#04241a}
+.score{display:flex;align-items:baseline;gap:10px;margin-top:12px}
+.score .big{font-family:var(--serif);font-size:1.5rem;color:var(--gold)}
+.score .lbl{font-size:.79rem;color:var(--muted)}
+.plan{list-style:none;margin:12px 0 0;padding:0}
+.plan li{display:grid;grid-template-columns:62px 1fr;gap:10px;padding:7px 0;border-top:1px dashed var(--line2);font-size:.82rem;color:var(--muted);align-items:baseline}
+.plan li:first-child{border-top:0}
+.plan .t{font-family:var(--mono);font-size:.7rem;color:var(--gold);white-space:nowrap}
+.note{border:1px dashed var(--line);border-radius:11px;padding:11px 14px;font-size:.84rem;color:var(--muted);background:color-mix(in srgb,var(--gold) 5%,transparent);margin:12px 0}
+.note b{color:var(--gold)}
+footer{border-top:1px solid var(--line2);margin-top:30px;padding:26px 0 40px;font-size:.79rem;color:var(--faint)}
+footer .row{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+footer b{color:var(--muted)}
+
+@media (max-width:600px){
+  .brand{display:none}
+  #keyBtn{font-size:0;padding:0 10px}
+  #keyBtn::before{content:"👁";font-size:.92rem}
+  .tb-in{justify-content:flex-end}
+  .tb-in>a.ibtn{margin-right:auto}
+}
+@media print{
+  :root{
+    --bg:#fff; --bg2:#fff; --surface:#fff; --surface2:#f6f3ec;
+    --ink:#111; --muted:#333; --faint:#555; --line:#b9b9b9; --line2:#d2d2d2;
+    --gold:#7a5310; --gold2:#7a5310; --teal:#0b5f5a; --sea:#0b5f5a;
+    --ok:#0b6b4a; --rose:#8d2f2b; --violet:#4a3aa8; --on-gold:#fff;
+    --shadow:none; --glow:transparent;
+  }
+  @page{margin:14mm}
+  .topbar,.cta,.qindex,.ibtn,.btn,#scrollLine,footer .row>div:last-child{display:none!important}
+  body{background:#fff;color:#111;font-size:10.5pt}
+  .hero{padding:0 0 10px}
+  .sec{padding:16px 0}
+  .sec-head{break-inside:avoid;page-break-inside:avoid}
+  .qhead{break-after:avoid;page-break-after:avoid}
+  .qcard{box-shadow:none;border-color:#bbb;break-inside:avoid;page-break-inside:avoid;overflow:visible}
+  .opt,.why,.ex,.model,.rub{break-inside:avoid;page-break-inside:avoid}
+  .trow{break-inside:avoid;page-break-inside:avoid}
+  .answer{display:grid!important}
+  .opt.ok{background:#eef7f0;grid-template-columns:26px 1fr 16px}
+  a{color:#111;text-decoration:none}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body data-ns="quiz5carpe.">
+<a class="skip" href="#preguntas">Saltar a las preguntas</a>
+<div id="scrollLine" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="wrap tb-in">
+    <a class="ibtn" href="../index.html" title="Volver al índice" aria-label="Volver al índice">←</a>
+    <a class="brand" href="#inicio"><span class="dot"></span>Carpe Diem · <b>Quiz 5</b></a>
+    <nav class="nav" aria-label="Secciones">
+      <a href="#mapa">Mapa</a><a href="#claves">Claves</a><a href="#preguntas">Preguntas</a><a href="#metodo">Cómo justificar</a><a href="#autoevaluacion">Autoevaluación</a>
+    </nav>
+    <button class="ibtn" id="keyBtn" aria-pressed="false" title="Ocultar o mostrar las respuestas">Ocultar claves</button>
+    <button class="ibtn" id="printBtn" title="Imprimir o guardar en PDF" aria-label="Imprimir o guardar en PDF">🖨</button>
+    <button class="ibtn" id="themeBtn" title="Cambiar tema" aria-label="Cambiar tema claro u oscuro">
+      <span class="i-sun">☀</span><span class="i-moon">☾</span>
+    </button>
+  </div>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="wrap">
+    <p class="eyebrow">Lectura crítica · 9° · Tercer periodo</p>
+    <h1>Date prisa <em>en vivir</em></h1>
+    <p class="lede">Guía del <b>Quiz 5</b> sobre <b><i>Carpe Diem</i></b> de Emilio del Río (capítulos 40, 41 y 42). Las diez preguntas, con la clave, la explicación, la cita que la sostiene y una <b>respuesta de ejemplo</b> redactada como se escribe en el taller.</p>
+    <div class="chips">
+      <span class="chip">⏱ <b>40 min</b></span>
+      <span class="chip">✎ <b>10</b> preguntas</span>
+      <span class="chip">📖 caps. <b>40–42</b></span>
+      <span class="chip">🧠 literal + inferencial</span>
+      <span class="chip">✅ respuesta modelo en cada una</span>
+    </div>
+    <div class="cta">
+      <a class="btn btn-primary" href="#preguntas">Ir a las respuestas →</a>
+      <a class="btn btn-ghost" href="#claves">Repasar las claves</a>
+      <a class="btn btn-ghost" href="#metodo">Cómo justificar</a>
+      <a class="btn btn-ghost" href="TALLER%C2%A0%23%205%20Quiz%20LECTURA%20%20-%20CARPE%20DIEM.pdf">Ver el quiz original</a>
+    </div>
+    <div class="obj">
+      <h2>Qué evalúa este quiz</h2>
+      <p>Comprobar si reconoces las <b>ideas centrales del carpe diem</b> y si sabes relacionarlas con las fuentes clásicas que cita el autor (Borges, Quevedo, Séneca, Horacio, Marco Aurelio) y con referentes actuales como Fangoria. No basta con acertar la letra: hay que poder <b>explicar por qué</b> y citar el texto.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="mapa">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">01 / MAPA DEL QUIZ</span>
+      <h2>Las diez preguntas de un vistazo</h2>
+      <p>Todas giran alrededor de una sola idea: <b>el presente es lo único que tenemos</b>. Cambia el disfraz —una cita de Borges, un soneto de Quevedo, una canción de Fangoria— pero la pregunta de fondo es la misma.</p>
+    </div>
+    <div class="tbl" role="table" aria-label="Mapa de las diez preguntas">
+      <div class="trow thead" role="row"><span>#</span><span>Qué se pregunta</span><span class="tipo">Tipo</span><span>Clave</span></div>
+      <div class="trow"><span class="num">01</span><span><b>Borges y la felicidad</b> en el prólogo de <i>Los conjurados</i></span><span class="tipo">Inferencial</span><span class="key">b</span></div>
+      <div class="trow"><span class="num">02</span><span><b>Quevedo:</b> «escucho con mis ojos a los muertos»</span><span class="tipo">Figura literaria</span><span class="key">d</span></div>
+      <div class="trow"><span class="num">03</span><span><b>Nuccio Ordine:</b> los clásicos «para la vida»</span><span class="tipo">Literal</span><span class="key">b</span></div>
+      <div class="trow"><span class="num">04</span><span><b>Séneca:</b> postergar deja una vida incompleta</span><span class="tipo">Inferencial</span><span class="key">c</span></div>
+      <div class="trow"><span class="num">05</span><span><b>Fangoria:</b> «Momentismo absoluto»</span><span class="tipo">Inferencial</span><span class="key">b</span></div>
+      <div class="trow"><span class="num">06</span><span><b>Estoicismo y epicureísmo:</b> su punto en común</span><span class="tipo">Comparación</span><span class="key">d</span></div>
+      <div class="trow"><span class="num">07</span><span><b>Los funambulistas:</b> caminar sin red</span><span class="tipo">Metáfora</span><span class="key">b</span></div>
+      <div class="trow"><span class="num">08</span><span><b>Historia Augusta:</b> origen de las colchonetas</span><span class="tipo">Literal</span><span class="key">b</span></div>
+      <div class="trow"><span class="num">09</span><span><b>Marco Aurelio:</b> el libro de agradecimientos</span><span class="tipo">Literal</span><span class="key">c</span></div>
+      <div class="trow"><span class="num">10</span><span><b>Horacio:</b> «contén la esperanza»</span><span class="tipo">Interpretación</span><span class="key">c</span></div>
+    </div>
+    <div class="note spoiler"><b>Ojo:</b> en la pregunta 10 el taller cita «Odas II», pero el tópico del <i>carpe diem</i> está en <b>Horacio, Odas I, 11</b> («carpe diem, quam minimum credula postero»). Responde con la opción que corresponde a la idea, no con el número de la oda: la clave es la <b>c</b>.</div>
+  </div>
+</section>
+
+<section class="sec" id="claves">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">02 / SEIS CLAVES</span>
+      <h2>Lo que hay que tener en la cabeza</h2>
+      <p>Si memorizas estas seis ideas, puedes responder las diez preguntas sin volver al libro. Cada tarjeta trae la cita que sirve como evidencia.</p>
+    </div>
+    <div class="grid g3">
+      <article class="keycard">
+        <span class="who">Borges · cap. 40</span>
+        <h3>La felicidad es frecuente</h3>
+        <p>No es un estado permanente ni una meta lejana: aparece en <b>pequeños instantes</b>, casi todos los días.</p>
+        <p class="qline">«La belleza, como la felicidad, es frecuente. No pasa un día en que no estemos, un instante, en el paraíso.»</p>
+      </article>
+      <article class="keycard">
+        <span class="who">Quevedo · cap. 40</span>
+        <h3>Leer es oír a los muertos</h3>
+        <p>«Escucho con mis ojos» es una <b>sinestesia</b>: mezcla la vista y el oído. Leer pone a dialogar al lector con los autores del pasado.</p>
+        <p class="qline">«Vivo en conversación con los difuntos / y escucho con mis ojos a los muertos.»</p>
+      </article>
+      <article class="keycard">
+        <span class="who">Nuccio Ordine · cap. 40</span>
+        <h3>Clásicos para la vida</h3>
+        <p>Los griegos y romanos no son arqueología: son <b>sabiduría y consuelo</b>. Enseñan a vivir y a ser mejores personas.</p>
+        <p class="qline">«Clásicos para la vida» es el título de Ordine: una «pequeña biblioteca ideal» que ayuda a vivir.</p>
+      </article>
+      <article class="keycard">
+        <span class="who">Séneca · cap. 40</span>
+        <h3>Mientras aplazas, la vida pasa</h3>
+        <p>El que reserva siempre algo para el futuro vive con <b>ansiedad y miedo</b>. No se trata de no planear: se trata de no postergar la vida.</p>
+        <p class="qline">«Mientras se aplaza, la vida transcurre.» (<i>Cartas a Lucilio</i>)</p>
+      </article>
+      <article class="keycard">
+        <span class="who">Horacio · cap. 40</span>
+        <h3>Carpe diem</h3>
+        <p>Aprovecha el día y <b>no confíes en el mañana</b>. «Contén la esperanza» significa limitar las expectativas: no dar el futuro por seguro.</p>
+        <p class="qline">«Carpe diem, quam minimum credula postero.»</p>
+      </article>
+      <article class="keycard">
+        <span class="who">Marco Aurelio · cap. 40</span>
+        <h3>Vivir es caminar sin red</h3>
+        <p>La vida es un <b>equilibrio permanente</b> sobre la cuerda floja. No hay garantía absoluta; los clásicos son la red que nos sostiene.</p>
+        <p class="qline">«Vivir es andar sobre la cuerda de los funambulistas. Y sin red.»</p>
+      </article>
+    </div>
+
+    <div class="quote" style="margin-top:16px">
+      <p>«Al cabo de los años he observado que la belleza, como la felicidad, es frecuente. No pasa un día en que no estemos, un instante, en el paraíso.»</p>
+      <span>Borges · prólogo a <i>Los conjurados</i> (1985) · la cita que abre el capítulo 40 y la pregunta 1</span>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="preguntas">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">03 / PREGUNTA POR PREGUNTA</span>
+      <h2>Respuestas explicadas y modelos</h2>
+      <p>Primero intenta responder sin mirar. Luego compara: la letra sola no enseña nada; la explicación y la respuesta de ejemplo sí. Puedes ocultar todas las claves con el botón <b>«Ocultar claves»</b> de arriba.</p>
+    </div>
+    <nav class="qindex" aria-label="Ir a una pregunta">
+      <a href="#q1">01</a><a href="#q2">02</a><a href="#q3">03</a><a href="#q4">04</a><a href="#q5">05</a>
+      <a href="#q6">06</a><a href="#q7">07</a><a href="#q8">08</a><a href="#q9">09</a><a href="#q10">10</a>
+    </nav>
+
+    <!-- 1 -->
+    <article class="qcard" id="q1">
+      <div class="qhead">
+        <div class="qn">01</div>
+        <div><h3>Borges y la felicidad</h3><p class="qmeta">Inferencial · cap. 40</p></div>
+      </div>
+      <div class="qbody">
+        <p class="stem">Según la cita de Borges sobre su libro <i>Los conjurados</i>, ¿cuál es su perspectiva sobre la felicidad?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">a)</span><span>Es un estado permanente que se alcanza únicamente en la vejez.</span></li>
+          <li class="opt ok"><span class="k">b)</span><span>Es frecuente y se experimenta en pequeños instantes diarios en el paraíso.</span></li>
+          <li class="opt"><span class="k">c)</span><span>Es una meta lejana que requiere toda una vida de esfuerzo para lograrse.</span></li>
+          <li class="opt"><span class="k">d)</span><span>Es un concepto ilusorio que no existe en el mundo real.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>b)</b> <span>Es frecuente y ocurre en instantes cotidianos.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>Borges escribe en el prólogo de <i>Los conjurados</i>: «Al cabo de los años he observado que la belleza, como la felicidad, es frecuente. No pasa un día en que no estemos, un instante, en el paraíso». La palabra clave es <b>«frecuente»</b>: no dice que sea permanente ni que haya que esperar toda una vida, sino que se aparece a diario en momentos breves.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>b)</b>. En el prólogo de <i>Los conjurados</i>, Borges afirma que «la belleza, como la felicidad, es frecuente» y que «no pasa un día en que no estemos, un instante, en el paraíso». Por eso no habla de un estado permanente ni de una meta lejana, sino de <b>pequeños instantes que se repiten cada día</b> y que hay que aprender a reconocer.</blockquote>
+          </div>
+          <p class="src">Evidencia: Jorge Luis Borges, prólogo a <i>Los conjurados</i> (1985), citado en el cap. 40.</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">a)</span> Confunde «al cabo de los años» con una felicidad que solo llega en la vejez; el texto dice que es frecuente. <span class="x">c)</span> Presenta la felicidad como una meta lejana, justo lo contrario de «un instante». <span class="x">d)</span> Si fuera ilusoria, Borges no diría que estamos «en el paraíso».</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2 -->
+    <article class="qcard" id="q2">
+      <div class="qhead">
+        <div class="qn">02</div>
+        <div><h3>Quevedo: «escucho con mis ojos»</h3><p class="qmeta">Figura literaria · cap. 40</p></div>
+      </div>
+      <div class="qbody">
+        <p class="stem">Cuando Quevedo escribe «escucho con mis ojos a los muertos», el autor señala que usa una sinestesia. ¿Qué representa textualmente este «escuchar» visual?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">a)</span><span>Una condición médica o literal del poeta al leer.</span></li>
+          <li class="opt"><span class="k">b)</span><span>La creencia supersticiosa de que los espíritus hablan a través de las páginas.</span></li>
+          <li class="opt"><span class="k">c)</span><span>El acto de leer en voz alta para poder comprender a los antiguos.</span></li>
+          <li class="opt ok"><span class="k">d)</span><span>El diálogo íntimo y la conexión que se establece al leer las palabras de autores del pasado.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>d)</b> <span>Leer es conversar con los muertos.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>La sinestesia mezcla dos sentidos: <b>ver</b> y <b>oír</b>. Quevedo no oye fantasmas ni lee en voz alta: lo que hace es <b>leer</b>. Al leer, los autores del pasado vuelven a hablar y se produce una conversación íntima con ellos. El propio soneto lo dice: «con pocos, pero doctos libros juntos, / vivo en conversación con los difuntos».</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>d)</b>. En el soneto de Quevedo, «escucho con mis ojos a los muertos» es una <b>sinestesia</b>: el poeta no oye espíritus, lee. Al leer, las palabras de los autores del pasado vuelven a sonar y se establece una conversación íntima con ellos, tal como dice el verso «vivo en conversación con los difuntos». La lectura se convierte así en un diálogo que vence a la muerte.</blockquote>
+          </div>
+          <p class="src">Evidencia: Francisco de Quevedo, «Retirado en la paz de estos desiertos…»; comentado en el cap. 40.</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">a)</span> La sinestesia es una figura literaria, no una enfermedad. <span class="x">b)</span> El poema habla de libros, no de espíritus. <span class="x">c)</span> Nada indica que lea en voz alta: precisamente «escucha con los ojos», es decir, en silencio.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3 -->
+    <article class="qcard" id="q3">
+      <div class="qhead">
+        <div class="qn">03</div>
+        <div><h3>Los clásicos «para la vida»</h3><p class="qmeta">Literal · cap. 40</p></div>
+      </div>
+      <div class="qbody">
+        <p class="stem">El autor cita a Nuccio Ordine para referirse a los autores griegos y romanos como «clásicos para la vida». Según el fragmento, ¿cuál es el valor principal de estos autores?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">a)</span><span>Ofrecer datos históricos precisos sobre las guerras antiguas.</span></li>
+          <li class="opt ok"><span class="k">b)</span><span>Ser una fuente de sabiduría y bienestar emocional que enseña a ser mejores personas.</span></li>
+          <li class="opt"><span class="k">c)</span><span>Dictar reglas gramaticales complejas para perfeccionar el idioma.</span></li>
+          <li class="opt"><span class="k">d)</span><span>Crear historias de ficción diseñadas exclusivamente para el entretenimiento juvenil.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>b)</b> <span>Sabiduría y bienestar, no erudición.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>Ordine, en <i>Clásicos para la vida</i>, defiende que los clásicos no se leen para acumular datos ni para aprobar un examen, sino porque <b>ayudan a vivir</b>: consuelan, orientan y enseñan a ser mejores personas. De ahí la expresión «para la vida»: su valor es <b>formativo y emocional</b>, no meramente informativo.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>b)</b>. Para Nuccio Ordine, los griegos y romanos son «clásicos para la vida» porque no se leen como piezas de museo ni como manuales de historia, sino como una fuente de sabiduría que ayuda a vivir y a ser mejor persona. Su valor está en el consuelo y la orientación emocional que ofrecen, no en los datos que transmiten.</blockquote>
+          </div>
+          <p class="src">Evidencia: Nuccio Ordine, <i>Clásicos para la vida</i> (2017), citado en el cap. 40.</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">a)</span> Los datos históricos son un subproducto, no el valor principal. <span class="x">c)</span> La gramática no es el motivo: el autor insiste en la vida, no en la lengua. <span class="x">d)</span> «Exclusivamente para el entretenimiento juvenil» reduce y falsifica la propuesta.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4 -->
+    <article class="qcard" id="q4">
+      <div class="qhead">
+        <div class="qn">04</div>
+        <div><h3>Séneca: la vida que se aplaza</h3><p class="qmeta">Inferencial · cap. 40</p></div>
+      </div>
+      <div class="qbody">
+        <p class="stem">Según el análisis de las <i>Cartas a Lucilio</i> de Séneca, ¿por qué el hábito de postergar las cosas nos deja con una «vida incompleta»?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">a)</span><span>Porque dedicamos demasiado tiempo a analizar los errores del pasado.</span></li>
+          <li class="opt"><span class="k">b)</span><span>Porque los seres humanos no planifican adecuadamente sus metas a largo plazo.</span></li>
+          <li class="opt ok"><span class="k">c)</span><span>Porque al reservar siempre algo para el futuro, nos llenamos de ansiedad y miedo por el mañana.</span></li>
+          <li class="opt"><span class="k">d)</span><span>Porque la vida biológica es demasiado corta para cumplir todas las metas.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>c)</b> <span>El futuro devora el presente.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>Séneca sostiene que el tiempo es lo único que de verdad nos pertenece y que, mientras lo aplazamos todo, <b>la vida se escapa</b> («mientras se aplaza, la vida transcurre»). Quien reserva siempre algo para el futuro no habita el presente: vive esperando y, por eso, con ansiedad y miedo. Resultado: una vida que nunca se vive del todo, es decir, <b>incompleta</b>.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>c)</b>. Séneca advierte en las <i>Cartas a Lucilio</i> que el tiempo es lo único que nos pertenece y que, mientras lo aplazamos todo, la vida se escapa. Quien reserva siempre algo para el futuro vive pendiente del mañana, lleno de ansiedad y miedo, y nunca habita el presente; por eso su vida queda incompleta: no es que haya sido corta, es que no se atrevió a vivirla.</blockquote>
+          </div>
+          <p class="src">Evidencia: Séneca, <i>Cartas a Lucilio</i> (ep. 1) y <i>Sobre la brevedad de la vida</i>; cap. 40.</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">a)</span> El problema no es mirar el pasado, sino dejar de vivir el presente. <span class="x">b)</span> Planear no es el defecto: el defecto es <b>postergar la vida</b>. <span class="x">d)</span> Séneca afirma lo contrario: la vida es suficientemente larga si no la desperdiciamos.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5 -->
+    <article class="qcard" id="q5">
+      <div class="qhead">
+        <div class="qn">05</div>
+        <div><h3>Fangoria y el «momentismo absoluto»</h3><p class="qmeta">Inferencial · cap. 40</p></div>
+      </div>
+      <div class="qbody">
+        <p class="stem">Al mencionar la canción «Momentismo absoluto» de Fangoria, ¿qué idea clave se busca reforzar respecto al tiempo y la filosofía clásica?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">a)</span><span>Que el pasado es la única verdad y debemos aprender a conservarlo.</span></li>
+          <li class="opt ok"><span class="k">b)</span><span>Que aferrarse al pasado o al futuro genera frustración, y hay que vivir en el ahora.</span></li>
+          <li class="opt"><span class="k">c)</span><span>Que debemos prepararnos de forma estricta para las incertidumbres del mañana.</span></li>
+          <li class="opt"><span class="k">d)</span><span>Que el éxito se logra recordando constantemente los buenos momentos vividos.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>b)</b> <span>Solo existe el ahora.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>El título lo dice todo: <b>momentismo absoluto</b> es la idea de que solo existe el momento presente. El autor la usa para mostrar que el <i>carpe diem</i> no es una reliquia antigua: sigue vivo en la cultura pop. Aferrarse al pasado o vivir pendiente del futuro produce frustración; la salida es habitar el ahora.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>b)</b>. La canción «Momentismo absoluto» de Fangoria sirve para mostrar que la filosofía del <i>carpe diem</i> sigue vigente: aferrarse al pasado o vivir pendiente del futuro solo produce frustración. La única forma de habitar la vida es el presente, y eso es exactamente lo que los clásicos llamaban aprovechar el día.</blockquote>
+          </div>
+          <p class="src">Evidencia: Fangoria, «Momentismo absoluto»; cap. 40.</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">a)</span> El pasado como «única verdad» es lo contrario del <i>carpe diem</i>. <span class="x">c)</span> Prepararse «de forma estricta» para el mañana es justo la ansiedad que Séneca critica. <span class="x">d)</span> Recordar buenos momentos es mirar atrás, no vivir el ahora.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6 -->
+    <article class="qcard" id="q6">
+      <div class="qhead">
+        <div class="qn">06</div>
+        <div><h3>Estoicos y epicúreos: el punto en común</h3><p class="qmeta">Comparación · cap. 40</p></div>
+      </div>
+      <div class="qbody">
+        <p class="stem">A pesar de pertenecer a escuelas filosóficas diferentes, ¿en qué punto fundamental coinciden el estoicismo y el epicureísmo según el texto?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">a)</span><span>En que la felicidad se alcanza renunciando por completo a todos los placeres.</span></li>
+          <li class="opt"><span class="k">b)</span><span>En que la búsqueda del placer desmedido es la única clave de la existencia.</span></li>
+          <li class="opt"><span class="k">c)</span><span>En que la vida se debe enfocar en controlar el futuro mediante el esfuerzo diario.</span></li>
+          <li class="opt ok"><span class="k">d)</span><span>En que no se debe desperdiciar la vida esperando el futuro, ya que solo genera frustración.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>d)</b> <span>No esperar: vivir el presente.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>Los estoicos buscan la <b>virtud</b> y la serenidad; los epicúreos, el <b>placer</b> entendido como ausencia de dolor y tranquilidad del alma. Difieren en el camino, pero coinciden en algo: <b>no se debe desperdiciar la vida esperando un futuro que no está garantizado</b>. Esa espera solo produce frustración. El <i>carpe diem</i> es, en ese punto, un terreno común.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>d)</b>. Aunque los estoicos buscan la virtud y los epicúreos el placer entendido como ausencia de dolor, ambas escuelas coinciden en que no hay que desperdiciar la vida esperando el futuro: esa espera solo genera frustración. Para las dos, la felicidad se juega en el presente, no en lo que todavía no ha llegado.</blockquote>
+          </div>
+          <p class="src">Evidencia: Séneca, <i>Cartas a Lucilio</i>; Epicuro, <i>Carta a Meneceo</i>; Horacio, <i>Odas</i>; cap. 40.</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">a)</span> Es una caricatura del estoico: no se trata de renunciar a todo placer, sino de no depender de él. <span class="x">b)</span> El placer desmedido es hedonismo, no epicureísmo. <span class="x">c)</span> Ninguna de las dos escuelas cree que podamos controlar el futuro: justamente enseñan a aceptar lo que no depende de nosotros.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7 -->
+    <article class="qcard" id="q7">
+      <div class="qhead">
+        <div class="qn">07</div>
+        <div><h3>Los funambulistas: vivir sin red</h3><p class="qmeta">Metáfora · cap. 40</p></div>
+      </div>
+      <div class="qbody">
+        <p class="stem">El autor utiliza la figura de los funambulistas o equilibristas como una metáfora. ¿Qué aspecto de la condición humana representa caminar sobre la cuerda floja?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">a)</span><span>La necesidad de acumular bienes materiales para asegurar el éxito.</span></li>
+          <li class="opt ok"><span class="k">b)</span><span>Que la vida es un ejercicio de equilibrio permanente que transcurre sin una red de seguridad absoluta.</span></li>
+          <li class="opt"><span class="k">c)</span><span>Que todos los seres humanos buscan el peligro extremo para sentirse realizados.</span></li>
+          <li class="opt"><span class="k">d)</span><span>El destino inevitable del ser humano a fracasar en sus proyectos.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>b)</b> <span>Equilibrio, fragilidad y ausencia de garantías.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>El autor escribe: «Vivir es andar sobre la cuerda de los funambulistas. Y sin red». La imagen condensa tres ideas: la vida exige <b>equilibrio permanente</b>, estamos expuestos a <b>caer</b> y no existe una <b>seguridad absoluta</b>. Los clásicos, dice, son nuestra red: no eliminan el riesgo, pero ayudan a sostenernos.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>b)</b>. La cuerda floja representa la vida como un ejercicio de equilibrio permanente: avanzamos sin una red de seguridad absoluta y estamos expuestos a caer. El autor añade que los clásicos son nuestra red, no para evitar el riesgo, sino para sostenernos cuando perdemos el equilibrio.</blockquote>
+          </div>
+          <p class="src">Evidencia: cap. 40, «Date prisa en vivir: carpe diem».</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">a)</span> Los bienes materiales no dan equilibrio: el texto critica esa ilusión. <span class="x">c)</span> No somos buscadores de peligro; el peligro es una condición, no una meta. <span class="x">d)</span> La metáfora no anuncia el fracaso seguro: habla de fragilidad y de equilibrio, no de derrota inevitable.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 8 -->
+    <article class="qcard" id="q8">
+      <div class="qhead">
+        <div class="qn">08</div>
+        <div><h3>El origen histórico de las colchonetas</h3><p class="qmeta">Literal · cap. 40</p></div>
+      </div>
+      <div class="qbody">
+        <p class="stem">De acuerdo con el testimonio de Julio Capitolino en la <i>Historia Augusta</i>, ¿cuál fue el origen histórico de las redes de seguridad (o colchones) en los espectáculos de equilibrismo?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">a)</span><span>Una exigencia de Plinio el Joven para proteger a los gladiadores.</span></li>
+          <li class="opt ok"><span class="k">b)</span><span>Un decreto de Marco Aurelio motivado por la caída de un joven funambulista.</span></li>
+          <li class="opt"><span class="k">c)</span><span>Una estrategia comercial para atraer a un público que temía ver accidentes.</span></li>
+          <li class="opt"><span class="k">d)</span><span>Un invento de los propios trapecistas para realizar acrobacias más altas.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>b)</b> <span>Marco Aurelio y el joven que cayó.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>Julio Capitolino cuenta en la <i>Historia Augusta</i> («Vida de Marco Aurelio») que, después de que un joven funambulista <b>cayera</b> durante un espectáculo, el emperador ordenó colocar <b>colchones</b> debajo de la cuerda. Es el primer antecedente conocido de una red de seguridad, y el autor lo usa para explicar que nosotros no tenemos un emperador que nos proteja: tenemos los libros.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>b)</b>. Según Julio Capitolino en la <i>Historia Augusta</i>, después de que un joven funambulista cayera, el emperador Marco Aurelio ordenó poner colchones debajo de la cuerda. Ese gesto es el origen histórico de las redes de seguridad que el autor convierte en metáfora de la protección que los clásicos ofrecen a quien vive.</blockquote>
+          </div>
+          <p class="src">Evidencia: <i>Historia Augusta</i>, «Vida de Marco Aurelio», de Julio Capitolino; cap. 40.</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">a)</span> Plinio no aparece en el episodio, y los gladiadores no caminaban sobre cuerdas. <span class="x">c)</span> La decisión fue del emperador, no una estrategia de mercado. <span class="x">d)</span> El relato no habla de trapecistas ni de acrobacias más altas.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 9 -->
+    <article class="qcard" id="q9">
+      <div class="qhead">
+        <div class="qn">09</div>
+        <div><h3>El libro de los agradecimientos</h3><p class="qmeta">Literal · cap. 41</p></div>
+      </div>
+      <div class="qbody">
+        <p class="stem">En el capítulo «Me han ayudado a ser mejor persona», el autor estructura su agradecimiento en forma de lista. ¿En qué obra clásica se inspira para abrir su libro de esta manera?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">a)</span><span>En las <i>Cartas a Lucilio</i> de Séneca, donde habla del aprecio a los amigos.</span></li>
+          <li class="opt"><span class="k">b)</span><span>En el diálogo <i>Sobre la vejez</i> de Catón el Viejo.</span></li>
+          <li class="opt ok"><span class="k">c)</span><span>En las <i>Meditaciones</i> de Marco Aurelio, quien inicia agradeciendo a quienes moldearon su carácter.</span></li>
+          <li class="opt"><span class="k">d)</span><span>En las <i>Odas</i> de Horacio, donde enumera las virtudes del vino y la prudencia.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>c)</b> <span>El libro I de las <i>Meditaciones</i>.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>Marco Aurelio abre las <i>Meditaciones</i> con una lista de agradecimientos: qué aprendió de su abuelo, de su padre, de sus maestros y de sus amigos. El autor imita esa estructura en el capítulo 41: en lugar de empezar con teorías, empieza <b>nombrando a las personas que lo ayudaron a ser mejor</b>.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>c)</b>. El autor se inspira en el libro I de las <i>Meditaciones</i> de Marco Aurelio, donde el emperador agradece uno por uno a quienes formaron su carácter. De la misma manera, el capítulo «Me han ayudado a ser mejor persona» abre el libro con una lista de agradecimientos a las personas que lo hicieron mejor.</blockquote>
+          </div>
+          <p class="src">Evidencia: Marco Aurelio, <i>Meditaciones</i>, libro I; cap. 41.</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">a)</span> Las <i>Cartas</i> reflexionan sobre la amistad, pero no son una lista de agradecimientos. <span class="x">b)</span> <i>Sobre la vejez</i> es un diálogo de Cicerón sobre la ancianidad, no un catálogo de personas queridas. <span class="x">d)</span> Las <i>Odas</i> celebran el vino, el amor y la prudencia; no agradecen a maestros.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 10 -->
+    <article class="qcard" id="q10">
+      <div class="qhead">
+        <div class="qn">10</div>
+        <div><h3>«Contén la esperanza»</h3><p class="qmeta">Interpretación · caps. 40 y 42</p></div>
+      </div>
+      <div class="qbody">
+        <p class="stem">En el poema de Horacio (<i>Odas</i>), ¿qué significado profundo tiene la advertencia «contén la esperanza» dentro del concepto de <i>carpe diem</i>?</p>
+        <ul class="opts">
+          <li class="opt"><span class="k">a)</span><span>Que se deben tener expectativas muy altas para motivar el espíritu.</span></li>
+          <li class="opt"><span class="k">b)</span><span>Que el tiempo se detiene cuando los seres humanos dejan de planificar.</span></li>
+          <li class="opt ok"><span class="k">c)</span><span>Que no se debe depender de las promesas del mañana ni dar por sentado el futuro, sino limitar las expectativas al presente.</span></li>
+          <li class="opt"><span class="k">d)</span><span>Que la prudencia consiste en esperar pacientemente a que las circunstancias mejoren.</span></li>
+        </ul>
+        <div class="answer">
+          <div class="aline"><span class="tagclave">Clave</span><b>c)</b> <span>Menos esperanza en el mañana, más vida en el hoy.</span></div>
+          <div class="why">
+            <h4>Por qué</h4>
+            <p>Horacio escribe «carpe diem, quam minimum credula postero»: aprovecha el día y <b>confía lo menos posible en el mañana</b>. En otra formulación, «corta la esperanza larga» (<i>spem longam reseces</i>). «Contener la esperanza» no es desesperarse: es <b>no apostarlo todo al futuro</b>, no dar por seguro lo que todavía no existe, y poner la atención y el disfrute en el presente.</p>
+          </div>
+          <div class="ex">
+            <h4>Respuesta de ejemplo</h4>
+            <blockquote>La respuesta correcta es la <b>c)</b>. En la oda, Horacio aconseja no confiar en el mañana («quam minimum credula postero») y «cortar» la esperanza larga. «Contén la esperanza» significa, entonces, no depender de las promesas del futuro ni darlo por seguro: limitar las expectativas al presente y aprovechar el día que sí tenemos.</blockquote>
+          </div>
+          <p class="src">Evidencia: Horacio, <i>Odas</i> I, 11; cap. 40. El taller lo cita como «Odas II».</p>
+          <div class="not">
+            <h4>Por qué no las otras</h4>
+            <p><span class="x">a)</span> Expectativas altas es lo contrario de «contener». <span class="x">b)</span> El tiempo no se detiene: precisamente porque corre, hay que vivir. <span class="x">d)</span> Esperar pacientemente es seguir viviendo en el futuro, lo que Horacio critica.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="note finalnote"><b>Si tu profesor pide solo la letra:</b> b, d, b, c, b, d, b, b, c, c. Si pide justificar, usa la fórmula de la sección siguiente: <b>opción + razón + cita</b>. La cita es lo que demuestra que leíste.</div>
+  </div>
+</section>
+
+<section class="sec" id="metodo">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">04 / MÉTODO</span>
+      <h2>Cómo justificar una respuesta sin perder puntos</h2>
+      <p>En lectura crítica, una respuesta correcta sin justificación vale la mitad. La fórmula es siempre la misma y cabe en tres oraciones.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <h3 style="font-family:var(--serif);font-size:1.1rem;margin:0 0 8px">La fórmula de tres pasos</h3>
+        <div class="formula"><span><b>1.</b> Opción</span><span class="plus">+</span><span><b>2.</b> Razón</span><span class="plus">+</span><span><b>3.</b> Cita</span></div>
+        <p style="font-size:.87rem;color:var(--muted);margin:12px 0 0"><b style="color:var(--ink)">Opción:</b> «La respuesta correcta es la b)». <b style="color:var(--ink)">Razón:</b> explica con tus palabras qué dice el texto. <b style="color:var(--ink)">Cita:</b> copia entre comillas la frase exacta que lo demuestra.</p>
+        <p style="font-size:.87rem;color:var(--muted);margin:10px 0 0">Si la pregunta es de inferencia, añade una cuarta frase: <b style="color:var(--ink)">«Esto se deduce de…»</b> y explica el paso lógico.</p>
+      </div>
+      <div class="card">
+        <h3 style="font-family:var(--serif);font-size:1.1rem;margin:0 0 8px">Ejemplo comentado</h3>
+        <div class="model-ex">
+          <p><mark>La respuesta correcta es la b).</mark> <mark>Borges considera que la felicidad es frecuente y que aparece en instantes cotidianos.</mark> <mark>En el prólogo de <i>Los conjurados</i> escribe: «la belleza, como la felicidad, es frecuente. No pasa un día en que no estemos, un instante, en el paraíso».</mark> Por eso no se trata de un estado permanente ni de una meta lejana.</p>
+        </div>
+        <div class="legend"><i class="l1">Opción</i><i class="l1">Razón</i><i class="l1">Cita</i><i class="l2">Cierre</i></div>
+      </div>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <h3 style="font-family:var(--serif);font-size:1.1rem;margin:0 0 10px">Las trampas más comunes</h3>
+      <div class="tbl" role="table" aria-label="Errores frecuentes y cómo evitarlos">
+        <div class="trow thead" style="grid-template-columns:.9fr 1.7fr 1.4fr"><span>Trampa</span><span>Qué pasa</span><span>Cómo evitarla</span></div>
+        <div class="trow" style="grid-template-columns:.9fr 1.7fr 1.4fr"><span><b>Confundir «frecuente» con «permanente»</b></span><span>Borges dice que la felicidad aparece a diario, no que dure para siempre.</span><span>Busca el adverbio o el adjetivo exacto en la cita.</span></div>
+        <div class="trow" style="grid-template-columns:.9fr 1.7fr 1.4fr"><span><b>Leer la sinestesia como superstición</b></span><span>«Escuchar con los ojos» es leer, no oír espíritus.</span><span>Pregúntate qué acción real describe la imagen.</span></div>
+        <div class="trow" style="grid-template-columns:.9fr 1.7fr 1.4fr"><span><b>Creer que Séneca critica planear</b></span><span>El problema no es planear, sino aplazar la vida.</span><span>Distingue «organizar el futuro» de «vivir en el futuro».</span></div>
+        <div class="trow" style="grid-template-columns:.9fr 1.7fr 1.4fr"><span><b>Tomar el estoicismo como renuncia total</b></span><span>El estoico no huye del placer: no depende de él.</span><span>Asocia estoicismo con virtud y autocontrol, no con castigo.</span></div>
+        <div class="trow" style="grid-template-columns:.9fr 1.7fr 1.4fr"><span><b>Leer «contén la esperanza» como pesimismo</b></span><span>No es dejar de esperar: es no depender del mañana.</span><span>Relaciónalo con «confía lo menos posible en el futuro».</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="autoevaluacion">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="n">05 / ANTES DE ENTREGAR</span>
+      <h2>Autoevaluación</h2>
+      <p>Marca lo que ya cumpliste. Lo que quede sin marcar es lo que todavía tienes que repasar.</p>
+    </div>
+    <div class="grid g2">
+      <div class="card">
+        <ul class="chk" id="chk">
+          <li><span class="box">✓</span><span>Respondí las diez preguntas <b>antes</b> de mirar la clave.</span></li>
+          <li><span class="box">✓</span><span>Puedo explicar por qué la opción correcta lo es, sin leerla.</span></li>
+          <li><span class="box">✓</span><span>Identifiqué la cita de Borges y sé qué significa «frecuente».</span></li>
+          <li><span class="box">✓</span><span>Reconozco la sinestesia de Quevedo y la explico con mis palabras.</span></li>
+          <li><span class="box">✓</span><span>No confundo el estoicismo con la renuncia total al placer.</span></li>
+          <li><span class="box">✓</span><span>Sé qué representa la cuerda floja y qué son «la red» y los clásicos.</span></li>
+          <li><span class="box">✓</span><span>Ubico el origen de las colchonetas en Marco Aurelio.</span></li>
+          <li><span class="box">✓</span><span>Entiendo «contén la esperanza» como limitar la confianza en el mañana.</span></li>
+          <li><span class="box">✓</span><span>Escribí al menos una justificación completa con cita.</span></li>
+          <li><span class="box">✓</span><span>Revisé ortografía y tildes antes de pasar en limpio.</span></li>
+        </ul>
+        <div class="score"><span class="big" id="score">0/10</span><span class="lbl" id="scoreMsg">Empieza marcando lo que ya tienes.</span></div>
+        <button class="btn btn-ghost btn-sm" id="resetChk" style="margin-top:10px">Borrar marcas</button>
+      </div>
+      <div class="card">
+        <h3 style="font-family:var(--serif);font-size:1.1rem;margin:0 0 8px">Plan de 40 minutos</h3>
+        <ul class="plan">
+          <li><span class="t">0–5 min</span><span>Lee el mapa y las seis claves.</span></li>
+          <li><span class="t">5–15 min</span><span>Preguntas 1–4.</span></li>
+          <li><span class="t">15–25 min</span><span>Preguntas 5–7.</span></li>
+          <li><span class="t">25–32 min</span><span>Preguntas 8–10.</span></li>
+          <li><span class="t">32–37 min</span><span>Revisa las que fallaste y lee la explicación.</span></li>
+          <li><span class="t">37–40 min</span><span>Autoevaluación y paso en limpio.</span></li>
+        </ul>
+        <h3 style="font-family:var(--serif);font-size:1.1rem;margin:18px 0 8px">Cómo se lee tu resultado</h3>
+        <p style="font-size:.86rem;color:var(--muted);margin:0 0 6px"><b style="color:var(--ok)">Nivel alto:</b> aciertas y puedes citar la frase que lo prueba.</p>
+        <p style="font-size:.86rem;color:var(--muted);margin:0 0 6px"><b style="color:var(--gold)">Nivel medio:</b> aciertas de memoria, pero no ubicas la cita.</p>
+        <p style="font-size:.86rem;color:var(--muted);margin:0"><b style="color:var(--rose)">Nivel bajo:</b> eliges por descarte y no puedes justificar.</p>
+        <div class="note" style="margin-bottom:0"><b>Consejo:</b> si solo tienes cinco minutos, memoriza las seis claves de la sección 02. Con ellas se responde casi todo el quiz.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap row">
+    <div><b>Quiz 5 · Lectura crítica 9°</b> — <i>Carpe Diem. Autoayúdate con los clásicos</i>, de Emilio del Río (Espasa, 2025), capítulos 40–42.<br>Guía de estudio · Colegio CEDAP · Docente: Geraldine Rodríguez.</div>
+    <div>Sin conexión · Nada se envía a internet · Tus marcas se guardan solo en este navegador.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+"use strict";
+const $=(s,r=document)=>r.querySelector(s);
+const $$=(s,r=document)=>Array.from(r.querySelectorAll(s));
+const NS=document.body.dataset.ns||"quiz.";
+const store={
+  get(k,d){try{const v=localStorage.getItem(NS+k);return v===null?d:JSON.parse(v);}catch(e){return d;}},
+  set(k,v){try{localStorage.setItem(NS+k,JSON.stringify(v));}catch(e){}},
+  del(k){try{localStorage.removeItem(NS+k);}catch(e){}}
+};
+const html=document.documentElement;
+function setTheme(t){html.setAttribute("data-theme",t);store.set("theme",t);}
+setTheme(store.get("theme","dark"));
+$("#themeBtn").addEventListener("click",()=>setTheme(html.getAttribute("data-theme")==="dark"?"light":"dark"));
+
+/* línea de progreso */
+const line=$("#scrollLine");
+const onScroll=()=>{
+  const h=document.documentElement;
+  const p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);
+  line.style.width=(p*100).toFixed(2)+"%";
+};
+addEventListener("scroll",onScroll,{passive:true});onScroll();
+
+/* mostrar / ocultar claves */
+const keyBtn=$("#keyBtn");
+let hidden=store.get("hidden",false);
+function paintKeys(){
+  document.body.classList.toggle("sin-claves",hidden);
+  keyBtn.textContent=hidden?"Mostrar claves":"Ocultar claves";
+  keyBtn.setAttribute("aria-pressed",String(hidden));
+}
+paintKeys();
+keyBtn.addEventListener("click",()=>{hidden=!hidden;store.set("hidden",hidden);paintKeys();});
+
+/* imprimir */
+$("#printBtn").addEventListener("click",()=>{if(hidden){hidden=false;paintKeys();}setTimeout(()=>window.print(),80);});
+
+/* checklist */
+const chk=$("#chk"), score=$("#score"), msg=$("#scoreMsg");
+let marks=store.get("chk",[]);
+function paintChk(){
+  const items=$$("li",chk);
+  items.forEach((li,i)=>li.classList.toggle("on",!!marks[i]));
+  const n=marks.filter(Boolean).length;
+  score.textContent=n+"/"+items.length;
+  msg.textContent=n===0?"Empieza marcando lo que ya tienes."
+    :n<6?"Vas por buen camino: revisa lo que falta."
+    :n<9?"Casi listo: te faltan detalles."
+    :n<10?"Muy bien: revisa la última."
+    :"Listo para entregar.";
+  store.set("chk",marks);
+}
+paintChk();
+chk.addEventListener("click",e=>{
+  const li=e.target.closest("li");if(!li)return;
+  const i=$$("li",chk).indexOf(li);
+  marks[i]=!marks[i];paintChk();
+});
+$("#resetChk").addEventListener("click",()=>{marks=[];paintChk();});
+})();
+</script>
+</body>
+</html>
